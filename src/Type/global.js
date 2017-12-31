@@ -3,7 +3,7 @@ import {hiDPI} from 'polished'
 import {antialias, legible, speedy} from './CSS'
 
 
-injectGlobal`
+export default injectGlobal`
   html {
     word-wrap: break-word;
     text-size-adjust: 100%;

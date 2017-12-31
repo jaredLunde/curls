@@ -4,7 +4,7 @@ import {FlexBox} from '../Box'
 import {createSFCNode, getTheme, getIn} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
-import defaultTheme, {colors} from './defaultTheme'
+import defaultTheme from './defaultTheme'
 import {fontColor} from './utils'
 
 
@@ -24,9 +24,9 @@ export default function Type ({children, ...props}) {
     ...props,
     children: function ({className, ...sfcProps}) {
       // adds color based on the theme
-      const theme = getTheme(colors, getIn(sfcProps.theme, 'colors'))
+      const theme = getTheme(defaultTheme, sfcProps.theme)
       className = cx(className, fontColor(sfcProps, theme))
-      sfcProps = reduceProps(sfcProps, theme)
+      sfcProps = reduceProps(sfcProps, theme.colors)
       // renders the element
       return TypeSFC({...sfcProps, className, children})
     }

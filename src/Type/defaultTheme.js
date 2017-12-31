@@ -15,4 +15,4 @@ export const scale = {
 export const colors = defaultColors
 
 
-export default {scale}
+export default {colors, scale}

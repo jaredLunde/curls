@@ -1,5 +1,5 @@
 import {css} from 'react-emotion'
-import {scaleRem, directionalRemScale, isDirectional, colorize} from '../utils'
+import {directionalRemScale, isDirectional, colorize} from '../utils'
 
 export const pr = css`position: relative;`
 export const pa = css`position: absolute;`
