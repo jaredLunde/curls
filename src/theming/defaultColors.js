@@ -20,7 +20,6 @@ export const orange = '#e87d34'
 export const darkOrange = darken(0.10, orange)
 export const lightOrange = lighten(0.25, darkOrange)
 
-
 export const lightestGrey = '#f4f4f5'
 export const lighterGrey = '#dbdbda'
 export const lightGrey = darken(0.25, lighterGrey)

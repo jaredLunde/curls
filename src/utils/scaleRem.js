@@ -1,3 +1,3 @@
-export default function (intensity, theme) {
-  return intensity * theme.rem
+export default function (amount, theme) {
+  return amount * theme.rem
 }

@@ -9,17 +9,6 @@ export const breakpoints = {
 }
 
 
-export const gutter = {
-  xxs: 4,
-  xs: 4,
-  sm: 6,
-  md: 6,
-  lg: 8,
-  xl: 12,
-  xxl: 16
-}
-
-
 export const columns = {
   xxs: 2,
   xs: 4,
@@ -31,4 +20,4 @@ export const columns = {
 }
 
 
-export default {breakpoints, gutter, columns}
+export default {breakpoints, columns}

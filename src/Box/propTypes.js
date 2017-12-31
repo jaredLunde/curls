@@ -26,4 +26,8 @@ export default {
   dib: PropTypes.bool,
   // display inline
   di: PropTypes.bool,
+  // width: 100%
+  fw: PropTypes.bool,
+  // height: 100%
+  fh: PropTypes.bool
 }

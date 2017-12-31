@@ -1,9 +1,6 @@
-import {css} from 'react-emotion'
-/*
-$width: percentage($x / $columns);
-max-width: $width;
-@include flex-basis($width);
-*/
-export default css`
+import {FlexBox} from '../Box'
 
-`
+
+export default function Row (props) {
+  return FlexBox({flex: true, row: true, wrap: true, pr: true, fw: true, ...props})
+}

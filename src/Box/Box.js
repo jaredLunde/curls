@@ -1,5 +1,4 @@
-import gridPropTypes from '../Grid/propTypes'
-import * as gridCSS from '../Grid/CSS'
+import Grid from '../Grid'
 import flexPropTypes from '../Flex/propTypes'
 import * as flexCSS from '../Flex/CSS'
 import propTypes from './propTypes'
@@ -8,31 +7,20 @@ import defaultTheme from './defaultTheme'
 import {createSFC} from '../utils'
 
 
-export const Box = createSFC({
-  name: 'Box',
-  propTypes: {
-    ...flexPropTypes,
-    ...propTypes
-  },
-  CSS: {
-    ...flexCSS,
-    ...CSS
-  },
+export const Box = createSFC({name: 'BasicBox', propTypes, CSS, defaultTheme})
+
+export const FlexBox = createSFC({
+  name: 'FlexBox',
+  propTypes: {...flexPropTypes, ...propTypes},
+  CSS: {...flexCSS, ...CSS},
   defaultTheme
 })
 
-
-export default createSFC({
-  name: 'Box',
-  propTypes: {
-    ...gridPropTypes,
-    ...flexPropTypes,
-    ...propTypes
-  },
-  CSS: {
-    ...gridCSS,
-    ...flexCSS,
-    ...CSS
-  },
-  defaultTheme
-})
+export default function ({children, ...props}) {
+  return Grid({
+    ...props,
+    children: function (gridProps) {
+      return FlexBox({...gridProps, children})
+    }
+  })
+}

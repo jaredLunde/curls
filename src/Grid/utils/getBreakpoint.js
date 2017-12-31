@@ -17,7 +17,7 @@ export default function (size, theme) {
 
   switch (size) {
     case 'xxl':
-      return mediaQuery(`only screen and (min-width: ${stripUnit(px)}px)`)
+      return mediaQuery(`only screen and (min-width: 0)`)
     default:
       return mediaQuery(`only screen and (max-width: ${stripUnit(px)}px)`)
   }

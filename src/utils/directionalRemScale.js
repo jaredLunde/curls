@@ -12,6 +12,11 @@ const defaultDirections = {
 }
 
 
+export function isDirectional (value) {
+  return typeof value === 'string' && value.length > 1
+}
+
+
 export default function directionalRemScale (
   prefix,
   modScale,
@@ -20,15 +25,17 @@ export default function directionalRemScale (
 ) {
   let CSS = []
 
-  for (let val of modValue.split(' ')) {
-    let [abbr, value] = val.split(directionalRe)
+  modValue.split(' ').forEach(
+    function (val) {
+      let [abbr, value] = val.split(directionalRe)
 
-    CSS = CSS.concat(
-      directions[abbr].map(
-        xyz => `${prefix.replace('{XYZ}', xyz)}: ${modScale[value]}rem;`
+      directions[abbr].forEach(
+        function (xyz) {
+          CSS.push(`${prefix.replace('{XYZ}', xyz)}: ${modScale[value]}rem;`)
+        }
       )
-    )
-  }
+    }
+  )
 
   return css`${CSS.join(' ')}`
 }

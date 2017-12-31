@@ -2,43 +2,14 @@ import isMergeableObject from 'is-mergeable-object'
 
 
 function mergeIfMergeable (value) {
-	return isMergeableObject(value)
+	return (
+    isMergeableObject(value)
 		? deepMerge(Array.isArray(value) ? [] : {}, value)
 		: value
+  )
 }
 
-/**
-export function arrayMergeOverwrite (target, source, optionsArgument) {
-  if (target === source) {
-    return target
-  }
-
-  const output = [...target]
-
-  for (let x = 0; x < source.length; x++) {
-    output[x] = mergeIfMergeable(source[x], optionsArgument)
-  }
-
-  return output
-}
-
-
-export function arrayMergeConcat (target, source, optionsArgument) {
-  if (target === source) {
-    return target
-  }
-
-  const output = [...target]
-
-  for (let x = 0; x < source.length; x++) {
-    output.push(mergeIfMergeable(source[x], optionsArgument))
-  }
-
-  return output
-}
-*/
-
-export function arrayMergeReplace (target, source) {
+function arrayMergeReplace (target, source) {
   if (target === source) {
     return target
   }
@@ -75,7 +46,7 @@ function mergeObject (target, source) {
 }
 
 
-function deepMerge (target, source) {
+export default function deepMerge (target, source) {
 	const sourceIsArray = Array.isArray(source)
 	const targetIsArray = Array.isArray(target)
 	const sourceAndTargetTypesMatch = sourceIsArray === targetIsArray
@@ -89,6 +60,3 @@ function deepMerge (target, source) {
 		return mergeObject(target, source)
 	}
 }
-
-
-export default deepMerge

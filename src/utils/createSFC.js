@@ -5,7 +5,6 @@ import reduceProps from 'react-cake/es/utils/reduceProps'
 import getClassNames from './getClassNames'
 import getTheme from './getTheme'
 import getIn from './getIn'
-import modify from './modify'
 
 
 export default function ({
@@ -13,8 +12,7 @@ export default function ({
   propTypes,
   CSS = {},
   defaultTheme = {},
-  themePath = '',
-  modifier = modify
+  themePath = ''
 }) {
   propTypes.children = PropTypes.oneOf([
     PropTypes.element,
@@ -30,7 +28,7 @@ export default function ({
       {
         ...reduceProps(props, propTypes),
         className: cx(
-          getClassNames(modifier, propTypes, {...props, theme, CSS}),
+          getClassNames(propTypes, {...props, theme, CSS}),
           props.className
         )
       }

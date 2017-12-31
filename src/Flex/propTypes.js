@@ -24,6 +24,8 @@ export default {
   reverseX: PropTypes.bool,
   // flex--y-reverse (col-reverse)
   reverseY: PropTypes.bool,
+  // flex--wrap
+  wrap: PropTypes.bool,
   // flex--nowrap
   nowrap: PropTypes.bool,
   // flex--wrap-reverse

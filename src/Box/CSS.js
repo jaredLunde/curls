@@ -7,16 +7,16 @@ export const pf = css`position: fixed;`
 export const db = css`display: block;`
 export const dib = css`display: inline-block;`
 export const di = css`display: inline;`
+export const fw = css`min-width: 100%;`
+export const fh = css`min-height: 100%;`
 
 
 export function bg (value, theme) {
-  console.log(theme)
   return colorize('background-color', value, theme)
 }
 
 
 export function bc (value, theme) {
-  console.log(theme)
   return colorize('border-color', value, theme)
 }
 
@@ -81,7 +81,6 @@ export function m (value, theme) {
 
 export function p (value, theme) {
   const {spacingScale} = theme
-
   if (isDirectional(value)) {
     return directionalRemScale('padding-{XYZ}', spacingScale, value)
   } else {

@@ -1,9 +1,6 @@
-import {css} from 'react-emotion'
-/*
-$width: percentage($x / $columns);
-max-width: $width;
-@include flex-basis($width);
-*/
-export default css`
+import Box from '../Box'
 
-`
+
+export default function Col (props) {
+  return Box({pr: true, fluid: true, ...props})
+}
