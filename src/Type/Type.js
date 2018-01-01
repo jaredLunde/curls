@@ -1,7 +1,7 @@
 import {css, cx} from 'emotion'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import {FlexBox} from '../Box'
-import {createSFCNode, getTheme, getIn} from '../utils'
+import {createSFCNode, mergeThemeDefaults} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -23,12 +23,23 @@ export default function Type ({children, ...props}) {
   return FlexBox({
     ...props,
     children: function ({className, ...sfcProps}) {
-      // adds color based on the theme
-      const theme = getTheme(defaultTheme, sfcProps.theme)
-      className = cx(className, fontColor(sfcProps, theme))
+      // merges the default colors and sizes to the theme
+      const theme = mergeThemeDefaults({
+        defaultTheme,
+        themePath,
+        props: sfcProps,
+        defaults: ['defaultColor', 'defaultSize']
+      })
+      // adds color class and removes colors from the props
+      className = cx(fontColor(sfcProps, theme), className)
       sfcProps = reduceProps(sfcProps, theme.colors)
       // renders the element
-      return TypeSFC({...sfcProps, className, children})
+      return TypeSFC({
+        [theme.defaultSize]: true,
+        ...sfcProps,
+        className,
+        children
+      })
     }
   })
 }
@@ -66,4 +77,13 @@ const p = css`
 
 export function P ({className, ...props}) {
   return Type({nodeType: 'p', sm: true, className: cx(p, className), ...props})
+}
+
+
+const a = css`
+  cursor: pointer;
+`
+
+export function A ({className, ...props}) {
+  return Type({nodeType: 'a', sm: true, className: cx(a, className), ...props})
 }

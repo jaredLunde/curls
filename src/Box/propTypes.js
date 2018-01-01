@@ -9,7 +9,7 @@ export default {
   // border width
   bw: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   // border color
-  bc: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  bc: PropTypes.string,
   // margin
   m: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   // padding
@@ -29,5 +29,7 @@ export default {
   // width: 100%
   fw: PropTypes.bool,
   // height: 100%
-  fh: PropTypes.bool
+  fh: PropTypes.bool,
+  // clear: both
+  cb: PropTypes.bool
 }

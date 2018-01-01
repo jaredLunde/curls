@@ -9,6 +9,7 @@ export const dib = css`display: inline-block;`
 export const di = css`display: inline;`
 export const fw = css`min-width: 100%;`
 export const fh = css`min-height: 100%;`
+export const cb = css`clear: both;`
 
 
 export function bg (value, theme) {

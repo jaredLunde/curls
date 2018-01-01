@@ -13,6 +13,7 @@ export const scale = {
 
 
 export const colors = defaultColors
+export const defaultColor = 'darkGrey'
+export const defaultSize = 'sm'
 
-
-export default {colors, scale}
+export default {colors, defaultSize, defaultColor, scale}
