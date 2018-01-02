@@ -5,6 +5,7 @@ import reduceProps from 'react-cake/es/utils/reduceProps'
 import getClassNames from './getClassNames'
 import getTheme from './getTheme'
 import getIn from './getIn'
+import {curlsTheme} from '../theming/injectTheme'
 
 
 export default function ({
@@ -21,7 +22,8 @@ export default function ({
   ]).isRequired
 
   function SFC (props/*{children, className, ...props}*/) {
-    const theme = getTheme(defaultTheme, getIn(props.theme, themePath))
+    const mainTheme = getTheme(defaultTheme, getIn(curlsTheme, themePath))
+    const theme = getTheme(mainTheme, getIn(props.theme, themePath))
 
     return createOptimized(
       props.children,

@@ -1,5 +1,8 @@
 export * from './global'
 export * from './utils'
+export {injectTheme, replaceTheme} from './theming'
+
+
 export Box, {FlexBox} from './Box'
 export Button from './Button'
 export Col from './Col'

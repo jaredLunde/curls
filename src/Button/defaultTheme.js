@@ -33,7 +33,7 @@ export const scale = {
   }
 }
 
-export const defaultBorderRadius = 1
+export const defaultBorderRadius = 5
 export const defaultBorderWidth = 1
 export const defaultBorderColor = 'translucentLight'
 export const defaultColor = 'blue'

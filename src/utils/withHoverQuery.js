@@ -3,18 +3,18 @@ import {css} from 'emotion'
 
 export default function withHoverQuery (CSS, noneCSS) {
   return css`
-    ${CSS}
+    ${CSS};
 
     @media (hover: hover) {
-      ${CSS}
+      ${CSS};
     }
 
     @media (hover: on-demand) {
-      ${noneCSS}
+      ${noneCSS};
     }
 
     @media (hover: none) {
-      ${noneCSS}
+      ${noneCSS};
     }
   `
 }

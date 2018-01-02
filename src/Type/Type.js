@@ -76,7 +76,7 @@ const p = css`
 `
 
 export function P ({className, ...props}) {
-  return Type({nodeType: 'p', sm: true, className: cx(p, className), ...props})
+  return Type({nodeType: 'p', className: cx(p, className), ...props})
 }
 
 
@@ -85,5 +85,5 @@ const a = css`
 `
 
 export function A ({className, ...props}) {
-  return Type({nodeType: 'a', sm: true, className: cx(a, className), ...props})
+  return Type({nodeType: 'a', className: cx(a, className), ...props})
 }
