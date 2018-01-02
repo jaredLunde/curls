@@ -1,14 +1,5 @@
-import {css} from 'react-emotion'
+import {css} from 'emotion'
 
-/**
-$FLEX-ALIGN: (top, bottom, center, stretch, baseline);
-$FLEX-ALIGN-CONTENT: (top, bottom, center, stretch, between, around);
-$FLEX-ALIGN-SELF: (top, bottom, center, baseline, stretch);
-$FLEX-JUSTIFY: (left, right, center, around, between);
-$FLEX-BASE: (fixed, fluid, first, last, grow, shrink, x-reverse, y-reverse,
-             wrap, wrap-reverse, nowrap, x, y);
-
-*/
 
 export const flex = css`display: flex;`
 export const fixed = css`flex: 0 0 auto;`

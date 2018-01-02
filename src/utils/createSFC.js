@@ -1,4 +1,4 @@
-import {cx} from 'react-emotion'
+import {cx} from 'emotion'
 import PropTypes from 'prop-types'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import reduceProps from 'react-cake/es/utils/reduceProps'

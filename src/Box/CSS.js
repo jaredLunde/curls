@@ -1,4 +1,4 @@
-import {css} from 'react-emotion'
+import {css} from 'emotion'
 import {directionalRemScale, isDirectional, colorize} from '../utils'
 
 export const pr = css`position: relative;`
