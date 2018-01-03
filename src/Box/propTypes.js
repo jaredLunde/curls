@@ -26,10 +26,14 @@ export default {
   dib: PropTypes.bool,
   // display inline
   di: PropTypes.bool,
+  // display none
+  dn: PropTypes.bool,
   // width: 100%
   fw: PropTypes.bool,
   // height: 100%
   fh: PropTypes.bool,
   // clear: both
-  cb: PropTypes.bool
+  cb: PropTypes.bool,
+  // -webkit-overflow-scrolling: touch;
+  touchScrolling: PropTypes.bool
 }

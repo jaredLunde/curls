@@ -3,6 +3,7 @@ import babel from 'rollup-plugin-babel'
 import replace from 'rollup-plugin-replace'
 import uglify from 'rollup-plugin-uglify'
 import commonjs from 'rollup-plugin-commonjs'
+import {minify} from 'uglify-es'
 
 
 var env = process.env.NODE_ENV
@@ -11,10 +12,10 @@ var config = {
     name: 'Curls',
     format: 'umd'
   },
-  external: ['react', 'immutable'],
+  external: ['react', 'prop-types'],
   globals: {
     react: 'React',
-    immutable: 'Immutable'
+    'prop-types': 'PropTypes'
   },
   plugins: [
     nodeResolve({
@@ -44,15 +45,18 @@ var config = {
 
 if (env === 'production') {
   config.plugins.push(
-    uglify({
-      compress: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false,
-        dead_code: true
-      }
-    })
+    uglify(
+      {
+        compress: {
+          pure_getters: true,
+          unsafe: true,
+          unsafe_comps: true,
+          warnings: false,
+          dead_code: true
+        }
+      },
+      minify
+    )
   )
 }
 

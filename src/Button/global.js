@@ -1,6 +1,5 @@
 import {injectGlobal} from 'emotion'
 import {hiDPI} from 'polished'
-import {antialias, legible, speedy} from './CSS'
 
 
 // resets default button styles

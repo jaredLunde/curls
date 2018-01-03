@@ -7,13 +7,14 @@ export const pf = css`position: fixed;`
 export const db = css`display: block;`
 export const dib = css`display: inline-block;`
 export const di = css`display: inline;`
+export const dn = css`display: none;`
 export const fw = css`min-width: 100%;`
 export const fh = css`min-height: 100%;`
 export const cb = css`clear: both;`
-
+export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
 
 export function bg (value, theme) {
-  return colorize('background-color', value, theme)
+  return colorize('background', value, theme)
 }
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import reduceProps from 'react-cake/es/utils/reduceProps'
-import {styled, cx, css} from 'emotion'
+import {cx, css} from 'emotion'
 import {createSFCNode, mergeThemeDefaults} from '../utils'
 import {FlexBox} from '../Box'
 import propTypes from './propTypes'
