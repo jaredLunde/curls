@@ -27,22 +27,23 @@ export function easing (value, theme) {
 }
 
 
-function createEasingFunc (name) {
+function createTimingFunc (name) {
   return function (_, theme) {
     return easing(name, theme)
   }
 }
 
-export const boomerang = createEasingFunc('boomerang')
-export const easeOut = createEasingFunc('easeOut')
-export const easeIn = createEasingFunc('easeIn')
-export const easeInOut = createEasingFunc('easeInOut')
-export const swiftMove = createEasingFunc('swiftMove')
-export const swifterMove = createEasingFunc('swifterMove')
-export const heavyMove = createEasingFunc('heavyMove')
-export const swiftIn = createEasingFunc('swiftIn')
-export const swiftOut = createEasingFunc('swiftOut')
-export const linear = createEasingFunc('linear')
+export const boomerang = createTimingFunc('boomerang')
+export const bounce = createTimingFunc('bounce')
+export const easeOut = createTimingFunc('easeOut')
+export const easeIn = createTimingFunc('easeIn')
+export const easeInOut = createTimingFunc('easeInOut')
+export const swiftMove = createTimingFunc('swiftMove')
+export const swifterMove = createTimingFunc('swifterMove')
+export const heavyMove = createTimingFunc('heavyMove')
+export const swiftIn = createTimingFunc('swiftIn')
+export const swiftOut = createTimingFunc('swiftOut')
+export const linear = createTimingFunc('linear')
 
 
 export function delay (value, theme) {

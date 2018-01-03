@@ -8,7 +8,7 @@ export const speed = {
 
 export const easing = {
   boomerang: [0.41, 1.19, 0.54, 1.44],
-  bounce: [0.93, 0.13, 0.65, 1.34],
+  bounce: [0.93, 0.13, 0.382, 1.618],
   easeOut: 'ease-out',
   easeIn: 'ease-in',
   easeInOut: 'ease-in-out',
