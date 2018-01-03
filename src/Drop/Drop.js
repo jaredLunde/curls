@@ -27,7 +27,6 @@ export default function Drop ({children, visible = null, ...props}) {
       {...props}
     >
       {function (sfcProps) {
-        // merges the default colors and sizes to the theme
         const theme = mergeThemeDefaults({
           defaultTheme,
           themePath,

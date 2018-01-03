@@ -19,16 +19,17 @@ const fadeControls = [
 const transitionProperties = 'visibility, opacity'
 
 
-export default function Fade ({children, visible = null, ...props}) {
+export default function Fade ({children, visible = null, from = 0, to = 1, ...props}) {
   return (
     <Toggle
       propName='isVisible'
       controls={fadeControls}
       initialValue={visible}
+      from={from}
+      to={to}
       {...props}
     >
       {function (sfcProps) {
-        // merges the default colors and sizes to the theme
         const theme = mergeThemeDefaults({
           defaultTheme,
           themePath,
