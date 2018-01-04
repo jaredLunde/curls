@@ -1,4 +1,4 @@
-import {injectGlobal} from 'emotion'
+import {injectGlobal, css} from 'emotion'
 
 
 injectGlobal`
@@ -74,3 +74,4 @@ injectGlobal`
 
 export const MAX_Z_INDEX = 2147483647;
 export const MAX_PX = '10000000px';
+export const maxZIndex = css`z-index: ${MAX_Z_INDEX}`

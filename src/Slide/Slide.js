@@ -6,6 +6,7 @@ import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
 import {createSFC, mergeThemeDefaults} from '../utils'
+import {getPosFromProps} from './utils'
 
 
 const themePath = 'slide'
@@ -19,6 +20,9 @@ const transitionProperties = 'visibility, transform'
 
 
 export default function Slide ({children, visible = null, ...props}) {
+  const position = getPosFromProps(props)
+  delete props[position]
+
   return (
     <Toggle
       propName='isVisible'
@@ -34,8 +38,7 @@ export default function Slide ({children, visible = null, ...props}) {
           defaults: ['defaultSpeed', 'defaultEasing', 'defaultDirection']
         })
 
-        return SlideSFC({
-          [theme.defaultDirection]: true,
+        const renderProps = {
           ...sfcProps,
           children: function (transProps) {
             return Transitionable({
@@ -47,7 +50,10 @@ export default function Slide ({children, visible = null, ...props}) {
               children
             })
           }
-        })
+        }
+
+        renderProps[position === void 0 ? theme.defaultDirection : position] = true
+        return SlideSFC(renderProps)
       }}
     </Toggle>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import {cx} from 'emotion'
 import Toggle from 'react-cake/es/Toggle'
 import propTypes from '../Slide/propTypes'
+import {getPosFromProps} from '../Slide/utils'
 import * as CSS from './CSS'
 import defaultTheme from '../Slide/defaultTheme'
 import Transitionable from '../Transitionable'
@@ -19,6 +20,9 @@ const transitionProperties = 'visibility, transform, opacity'
 
 
 export default function Drop ({children, visible = null, ...props}) {
+  const position = getPosFromProps(props)
+  delete props[position]
+
   return (
     <Toggle
       propName='isVisible'
@@ -34,7 +38,7 @@ export default function Drop ({children, visible = null, ...props}) {
           defaults: ['defaultSpeed', 'defaultEasing', 'defaultDirection']
         })
 
-        return DropSFC({
+        const renderProps = {
           [theme.defaultDirection]: true,
           ...sfcProps,
           children: function (transProps) {
@@ -47,7 +51,10 @@ export default function Drop ({children, visible = null, ...props}) {
               children
             })
           }
-        })
+        }
+
+        renderProps[position === void 0 ? theme.defaultDirection : position] = true
+        return DropSFC(renderProps)
       }}
     </Toggle>
   )

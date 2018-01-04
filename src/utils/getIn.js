@@ -2,7 +2,9 @@ export default function getIn(obj, path) {
   if (obj === void 0 || obj === null || !path.length) {
     return obj
   }
-
+  
+  return obj[path]
+  /**
   const parts = path.split('.')
   let out = obj
 
@@ -15,4 +17,5 @@ export default function getIn(obj, path) {
   }
 
   return obj
+  */
 }
