@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import getClassNames from './getClassNames'
-import getTheme from './getTheme'
-import getIn from './getIn'
-import {curlsTheme} from '../theming/injectTheme'
+import getComponentTheme from './getComponentTheme'
 
 
 export default function ({
@@ -22,8 +20,7 @@ export default function ({
   ]).isRequired
 
   function SFC (props/*{children, className, ...props}*/) {
-    const mainTheme = getTheme(defaultTheme, getIn(curlsTheme, themePath))
-    const theme = getTheme(mainTheme, getIn(props.theme, themePath))
+    const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
     return createOptimized(
       props.children,

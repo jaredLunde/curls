@@ -1,21 +1,17 @@
 import React from 'react'
 import {cx} from 'emotion'
 import Toggle from 'react-cake/es/Toggle'
+import {fadeControls as slideControls} from '../Fade/Fade'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createSFC, mergeThemeDefaults} from '../utils'
+import {createSFC, getComponentTheme} from '../utils'
 import {getPosFromProps} from './utils'
 
 
 const themePath = 'slide'
 const SlideSFC = createSFC({name: 'Slide', propTypes, CSS, defaultTheme, themePath})
-
-const slideControls = [
-  {name: 'slideIn', value: true},
-  {name: 'slideOut', value: null}
-]
 const transitionProperties = 'visibility, transform'
 
 
@@ -31,12 +27,7 @@ export default function Slide ({children, visible = null, ...props}) {
       {...props}
     >
       {function (sfcProps) {
-        const theme = mergeThemeDefaults({
-          defaultTheme,
-          themePath,
-          props: sfcProps,
-          defaults: ['defaultSpeed', 'defaultEasing', 'defaultDirection']
-        })
+        const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
 
         const renderProps = {
           ...sfcProps,

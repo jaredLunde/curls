@@ -4,7 +4,7 @@ import {maxZIndex} from '../global'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
 import {getPosFromProps} from '../Slide/utils'
-import {createSFC, mergeThemeDefaults} from '../utils'
+import {createSFC, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -49,28 +49,19 @@ export default function Drawer ({children, pa, ...props}) {
     touchScrolling: true,
     ...props,
     children: function (slideProps) {
-      const theme = mergeThemeDefaults({
-        defaultTheme,
-        themePath,
-        props: slideProps,
-        defaults: ['defaultDirection']
-      })
+      const theme = getComponentTheme(defaultTheme, slideProps.theme, themePath)
 
       slideProps = {
         ...slideProps,
-        children: function ({slideIn, slideOut, className, ...sfcProps}) {
+        children: function ({className, ...sfcProps}) {
           // renders the element
           const renderProps = {
-            [theme.defaultDirection]: position === void 0,
-            show: slideIn,
-            hide: slideOut,
             className: cx(drawerCSS, className),
             pa,
             ...sfcProps,
-            [position]: true,
             children
           }
-          
+
           renderProps[position === void 0 ? theme.defaultDirection : position] = true
           return DrawerSFC(renderProps)
         }

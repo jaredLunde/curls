@@ -11,9 +11,9 @@ import {createSFC, mergeThemeDefaults} from '../utils'
 const themePath = 'fade'
 const FadeSFC = createSFC({name: 'Fade', propTypes, CSS, defaultTheme, themePath})
 
-const fadeControls = [
-  {name: 'fadeIn', value: true},
-  {name: 'fadeOut', value: null}
+export const fadeControls = [
+  {name: 'show', value: true},
+  {name: 'hide', value: null}
 ]
 
 const transitionProperties = 'visibility, opacity'
