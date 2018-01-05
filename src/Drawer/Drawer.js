@@ -5,6 +5,7 @@ import {FlexBox} from '../Box'
 import Slide from '../Slide'
 import {getPosFromProps} from '../Slide/utils'
 import {createSFC, getComponentTheme} from '../utils'
+import {db, pf} from '../Box/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -19,9 +20,8 @@ const DrawerSFC = createSFC({
   themePath
 })
 const drawerCSS = css`
-  display: block;
-  position: fixed;
-  background: $drawer-background;
+  ${db};
+  ${pf};
   ${maxZIndex};
 `
 

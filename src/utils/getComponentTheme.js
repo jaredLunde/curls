@@ -4,6 +4,11 @@ import {curlsTheme} from '../theming/injectTheme'
 
 
 export default function (defaultTheme, userTheme, themePath) {
-  const mainTheme = getTheme(defaultTheme, getIn(curlsTheme, themePath))
+  let mainTheme = getTheme(defaultTheme, curlsTheme)
+  
+  if (themePath) {
+    mainTheme = getTheme(mainTheme, getIn(curlsTheme, themePath))
+  }
+
   return getTheme(mainTheme, getIn(userTheme, themePath))
 }

@@ -1,6 +1,7 @@
 import {css, cx} from 'emotion'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import {FlexBox} from '../Box'
+import {flex, row, align} from '../Flex/CSS'
 import {createSFCNode, mergeThemeDefaults} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
@@ -17,6 +18,11 @@ const ButtonSFC = createSFCNode({
   themePath,
   defaultNodeType: 'button'
 })
+const buttonCSS = css`
+  ${flex};
+  ${row};
+  ${align.center};
+`
 
 
 export default function Button ({
@@ -26,6 +32,7 @@ export default function Button ({
   bw = null,
   bc = null,
   bg,
+  className,
   ...props
 }) {
   if (nodeType !== 'button') {
@@ -33,9 +40,7 @@ export default function Button ({
   }
 
   return FlexBox({
-    flex: true,
-    row: true,
-    align: 'center',
+    className: cx(buttonCSS, className),
     nodeType,
     ...props,
     children: function ({className, ...sfcProps}) {

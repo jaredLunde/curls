@@ -1,6 +1,7 @@
 import {css} from 'emotion'
 import {directionalRemScale, isDirectional, colorize} from '../utils'
 
+
 export const pr = css`position: relative;`
 export const pa = css`position: absolute;`
 export const pf = css`position: fixed;`
@@ -12,9 +13,18 @@ export const fw = css`min-width: 100%;`
 export const fh = css`min-height: 100%;`
 export const cb = css`clear: both;`
 export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
+export const sticky = css`
+  position: sticky;
+  top: 0;
+`
 
 export function bg (value, theme) {
   return colorize('background', value, theme)
+}
+
+
+export function bs (value, theme) {
+  return theme.getBoxShadow(value)
 }
 
 

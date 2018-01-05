@@ -1,8 +1,9 @@
 import React from 'react'
-import {cx} from 'emotion'
+import {cx, css} from 'emotion'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import Toggle from 'react-cake/es/Toggle'
 import {dn} from '../Box/CSS'
+import {flex, align, justify} from '../Flex/CSS'
 import {FlexBox} from '../Box'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
@@ -33,6 +34,11 @@ import defaultCheckMark from './defaultCheckMark'
 */
 const themePath = 'checkBox'
 const SFC = createSFC({name: 'CheckBox', propTypes, defaultTheme, themePath})
+const checkBoxCSS = css`
+  ${flex};
+  ${align.center};
+  ${justify.center};
+`
 
 
 export default function CheckBox ({
@@ -54,12 +60,11 @@ export default function CheckBox ({
         const CheckBoxInput = function ({
           nodeType = 'span',
           children = defaultCheckMark,
+          className,
           ...checkboxInputProps
         }) {
           return FlexBox({
-            flex: true,
-            align: 'center',
-            justify: 'center',
+            className: cx(checkBoxCSS, className),
             p: theme.defaultPadding,
             bg: theme.defaultBg,
             br: theme.defaultBorderRadius,

@@ -2,6 +2,8 @@ import React from 'react'
 import {cx, css} from 'emotion'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
+import {flex, align, justify} from '../Flex/CSS'
+import {pf, fw, fh, touchScrolling} from '../Box/CSS'
 import {FlexBox} from '../Box'
 import Drop from '../Drop'
 import defaultTheme from './defaultTheme'
@@ -41,8 +43,16 @@ const themePath = 'modal'
 const fixedContainer = css`
   ${baseIsNotVisible};
   ${maxZIndex};
+  ${flex};
+  ${align.center};
+  ${justify.center};
+  ${pf};
+  ${fw};
+  ${fh};
+  ${touchScrolling};
   left: 0;
   top: 0;
+  overflow: auto;
 `
 
 
@@ -56,12 +66,15 @@ export default function Modal ({children, transitionType = Drop, theme, ...props
 
       function ModalBox ({nodeType = 'div', children, ...boxProps}) {
         return FlexBox({
+          /**
           flex: true,
           align: 'center',
           justify: 'center',
           pf: true,
           fw: true,
           fh: true,
+          touchScrolling: true,
+          */
           className: cx(fixedContainer, isVisible && baseIsVisible),
           children: function (box2Props) {
             return FlexBox({
@@ -76,7 +89,10 @@ export default function Modal ({children, transitionType = Drop, theme, ...props
                   <div {...box2Props}>
                     {createOptimized(
                       nodeType,
-                      {className: cx(className, modalClassName), ...containerProps},
+                      {
+                        className: cx(className, modalClassName),
+                        ...containerProps
+                      },
                       children({
                         isVisible,
                         show,

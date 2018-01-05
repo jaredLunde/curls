@@ -3,6 +3,7 @@ import reduceProps from 'react-cake/es/utils/reduceProps'
 import {cx, css} from 'emotion'
 import {createSFCNode, mergeThemeDefaults} from '../utils'
 import {FlexBox} from '../Box'
+import {fw, db, pr, cb} from '../Box/CSS'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
 import {dividerColor} from './utils'
@@ -18,16 +19,18 @@ const DividerSFC = createSFCNode({
   themePath,
   defaultNodeType: 'div'
 })
-
+const dividerCSS = css`
+  ${fw};
+  ${db};
+  ${pr};
+  ${cb};
+`
 
 export default function Divider (dividerProps = {}) {
   const {className, ...props} = dividerProps
 
   return FlexBox({
-    fw: true,
-    db: true,
-    pr: true,
-    cb: true,
+    className: dividerCSS,
     ...props,
     children: function ({className, ...sfcProps}) {
       // merges the default colors and sizes to the theme

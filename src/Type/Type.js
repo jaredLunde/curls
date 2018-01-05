@@ -34,12 +34,17 @@ export default function Type ({children, ...props}) {
       className = cx(fontColor(sfcProps, theme), className)
       sfcProps = reduceProps(sfcProps, theme.colors)
       // renders the element
-      return TypeSFC({
-        [theme.defaultSize]: true,
+      sfcProps = {
         ...sfcProps,
         className,
         children
-      })
+      }
+
+      return TypeSFC(
+        sfcProps[theme.defaultSize]
+        ? sfcProps
+        : {[theme.defaultSize]: true, ...sfcProps}
+      )
     }
   })
 }

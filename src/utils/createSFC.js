@@ -21,7 +21,7 @@ export default function ({
 
   function SFC (props/*{children, className, ...props}*/) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-
+  
     return createOptimized(
       props.children,
       {

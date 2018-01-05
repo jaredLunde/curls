@@ -1,11 +1,13 @@
 import React from 'react'
-import {cx} from 'emotion'
+import {css, cx} from 'emotion'
 import WithViewport from 'react-cake/es/Viewport/WithViewport'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import compose from 'react-cake/es/utils/compose'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import loadImages from 'react-cake/es/utils/loadImages'
 import {FlexBox} from '../Box'
+import {pf} from '../Box/CSS'
+import {flex} from '../Flex/CSS'
 import Drop from '../Drop'
 import {getPosFromProps} from '../Slide/utils'
 import defaultTheme from './defaultTheme'
@@ -40,7 +42,10 @@ Popover({
 })
 */
 const themePath = 'popover'
-
+const poBoxCSS = css`
+  ${flex};
+  ${pf};
+`
 
 class PopoverContainer extends React.PureComponent {
   imageLoader = null
@@ -117,8 +122,7 @@ class PopoverContainer extends React.PureComponent {
 
     const PopoverBox = ({nodeType = 'div', children, ...boxProps}) => {
       return FlexBox({
-        flex: true,
-        pf: true,
+        className: cx(poBoxCSS, className),
         p: theme.defaultPadding,
         bg: theme.defaultBg,
         br: theme.defaultBorderRadius,

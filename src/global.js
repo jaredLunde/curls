@@ -33,7 +33,9 @@ injectGlobal`
     vertical-align: baseline;
   }
 
-  ol, ul {
+  ol,
+  ul,
+  li {
     list-style: none;
   }
 
