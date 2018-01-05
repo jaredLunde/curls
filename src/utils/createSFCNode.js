@@ -9,7 +9,13 @@ export default function ({name, defaultNodeType = 'div', ...otherOpt}) {
     return SFC({
       ...props,
       children: function (sfcNodeProps) {
-        return createOptimized(nodeType, {ref: innerRef, ...sfcNodeProps}, children)
+        sfcNodeProps = {ref: innerRef, ...sfcNodeProps}
+
+        if (typeof children === 'function') {
+          children = children(sfcNodeProps)
+        }
+
+        return createOptimized(nodeType, sfcNodeProps, children)
       }
     })
   }

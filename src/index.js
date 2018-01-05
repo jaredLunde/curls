@@ -2,7 +2,7 @@ export * from './global'
 export * from './utils'
 export {injectTheme, replaceTheme} from './theming'
 
-
+export Avatar from './Avatar'
 export Box, {FlexBox} from './Box'
 export Button from './Button'
 export Col from './Col'

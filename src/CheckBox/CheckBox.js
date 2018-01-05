@@ -49,11 +49,7 @@ export default function CheckBox ({
   ...props
 }) {
   return (
-    <Toggle
-      propName='isChecked'
-      initialValue={checked}
-      {...props}
-    >
+    <Toggle propName='isChecked' initialValue={checked} {...props}>
       {function (sfcProps) {
         const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
 
