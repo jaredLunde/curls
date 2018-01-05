@@ -14,7 +14,7 @@ import defaultCheckMark from './defaultCheckMark'
 /**
 <CheckBox checked name='amIChecked' value='foobar'>
 {
-  ({CheckBoxInput, toggle, check, unCheck, isChecked, ...props}) => (
+  ({CheckBoxInput, toggle, on, off, isChecked, ...props}) => (
     <Type nodeType='label' bold darkGrey m='l2'>
       <CheckBoxInput p={3}>
         {function ({isChecked}) {
@@ -32,11 +32,7 @@ import defaultCheckMark from './defaultCheckMark'
 </Checkbox>
 */
 const themePath = 'checkBox'
-const CheckBoxSFC = createSFC({name: 'CheckBox', propTypes, defaultTheme, themePath})
-const checkBoxControls = [
-  {name: 'check', value: true},
-  {name: 'unCheck', value: false}
-]
+const SFC = createSFC({name: 'CheckBox', propTypes, defaultTheme, themePath})
 
 
 export default function CheckBox ({
@@ -49,7 +45,6 @@ export default function CheckBox ({
   return (
     <Toggle
       propName='isChecked'
-      controls={checkBoxControls}
       initialValue={checked}
       {...props}
     >
@@ -85,7 +80,7 @@ export default function CheckBox ({
               return (
                 <>
                   {checkBoxInput}
-                  {React.createElement(
+                  {createOptimized(
                     nodeType,
                     boxProps,
                     children({isChecked: sfcProps.isChecked})
@@ -96,7 +91,7 @@ export default function CheckBox ({
           })
         }
 
-        return CheckBoxSFC({...sfcProps, CheckBoxInput, children})
+        return SFC({...sfcProps, CheckBoxInput, children})
       }}
     </Toggle>
   )

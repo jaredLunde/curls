@@ -14,5 +14,8 @@ export default {
   subscribe: PropTypes.func,
   unsubscribe: PropTypes.func,
   viewportWidth: PropTypes.number,
-  viewportHeight: PropTypes.number
+  viewportHeight: PropTypes.number,
+  orientation: PropTypes.string,
+  screenOrientation: PropTypes.string,
+  scrollTo: PropTypes.func,
 }

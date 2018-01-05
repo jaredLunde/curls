@@ -5,11 +5,11 @@ import createSFC from './createSFC'
 export default function ({name, defaultNodeType = 'div', ...otherOpt}) {
   const SFC = createSFC({name, ...otherOpt})
 
-  function SFCNode ({nodeType = defaultNodeType, children, ...props}) {
+  function SFCNode ({nodeType = defaultNodeType, children, innerRef, ...props}) {
     return SFC({
       ...props,
       children: function (sfcNodeProps) {
-        return createOptimized(nodeType, sfcNodeProps, children)
+        return createOptimized(nodeType, {ref: innerRef, ...sfcNodeProps}, children)
       }
     })
   }

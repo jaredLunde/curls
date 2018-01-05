@@ -35,7 +35,7 @@
     "is-mergeable-object": "^1.1.0",
     "lru-memoize-map": "^0.1.0",
     "polished": "^1.9.0",
-    "react-cake": "^0.4.1"
+    "react-cake": "^0.4.2"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development node server.js",

@@ -8,7 +8,7 @@ import getComponentTheme from './getComponentTheme'
 
 export default function ({
   name,
-  propTypes,
+  propTypes = {},
   CSS = {},
   defaultTheme = {},
   themePath = ''
