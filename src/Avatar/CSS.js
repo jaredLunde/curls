@@ -31,7 +31,6 @@ export function xxl (v, t) {
 }
 
 export function orientation (v, t) {
-  console.log("HERE", v)
   let height, width
 
   switch (v) {

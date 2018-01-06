@@ -1,6 +1,6 @@
 import {css} from 'emotion'
 import {buttonSize} from './utils'
-import {br as boxBr, bc as boxBc, bw as boxBw} from '../Box/CSS'
+import {br as boxBr, bc as boxBc, bw as boxBw, bs as boxBs} from '../Box/CSS'
 
 
 export function xxs (v, t) {

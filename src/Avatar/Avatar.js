@@ -52,6 +52,9 @@ export default function (props) {
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
   return FlexBox({
+    bw: theme.defaultBorderWidth,
+    bc: theme.defaultBorderColor,
+    bs: theme.defaultBoxShadow,
     br: theme.defaultBorderRadius,
     ...props,
     children: function (sfcProps) {

@@ -3,6 +3,11 @@ import {css} from 'emotion'
 
 export default function (dp, reverse) {
   dp = parseInt(dp)
+
+  if (dp === 0) {
+    return
+  }
+
   const ambientY = dp
   const multiple = reverse === true ? -1 : 1
   let ambientAlpha = (dp + 10 + (dp / 9.38)) / 100

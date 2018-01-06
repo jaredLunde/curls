@@ -1,7 +1,7 @@
 import {css} from 'emotion'
 
 
-const directionalRe = /(?=\d+)/
+export const directionalRe = /(?=\d+)/
 const defaultDirections = {
   t: ['top'],
   r: ['right'],
@@ -24,8 +24,7 @@ export default function directionalRemScale (
   directions = defaultDirections
 ) {
   let CSS = []
-
-  modValue.split(' ').forEach(
+  String(modValue).split(' ').forEach(
     function (val) {
       let [abbr, value] = val.split(directionalRe)
 

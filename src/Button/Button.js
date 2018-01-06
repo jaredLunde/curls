@@ -31,6 +31,7 @@ export default function Button ({
   br = null,
   bw = null,
   bc = null,
+  bs = null,
   bg,
   className,
   ...props
@@ -39,18 +40,21 @@ export default function Button ({
     props.role = 'button'
   }
 
+  const theme = mergeThemeDefaults({
+    defaultTheme,
+    themePath,
+    props: props,
+    defaults: ['defaultColor', 'defaultSize']
+  })
+
   return FlexBox({
     className: cx(buttonCSS, className),
     nodeType,
+    bs: theme.defaultBoxShadow,
     ...props,
     children: function ({className, ...sfcProps}) {
       // merges the default colors and sizes to the theme
-      const theme = mergeThemeDefaults({
-        defaultTheme,
-        themePath,
-        props: sfcProps,
-        defaults: ['defaultColor', 'defaultSize']
-      })
+
       // adds color class and removes colors from the props
       className = cx(buttonColor(sfcProps, theme), className)
       sfcProps = reduceProps(sfcProps, theme.colors)

@@ -83,6 +83,7 @@ export default function Modal ({children, transitionType = Drop, theme, ...props
               br: theme.defaultBorderRadius,
               bc: theme.defaultBorderColor,
               bw: theme.defaultBorderWidth,
+              bs: theme.defaultBoxShadow,
               ...boxProps,
               children: function ({className, ...containerProps}) {
                 return (

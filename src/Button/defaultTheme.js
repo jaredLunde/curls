@@ -36,6 +36,7 @@ export const scale = {
 export const defaultBorderRadius = 5
 export const defaultBorderWidth = 1
 export const defaultBorderColor = 'translucentLight'
+export const defaultBoxShadow = 0
 export const defaultColor = 'blue'
 export const defaultSize = 'md'
 export const colors = defaultColors
@@ -55,6 +56,7 @@ export default {
   scale,
   defaultColor,
   defaultSize,
+  defaultBoxShadow,
   defaultBorderRadius,
   defaultBorderWidth,
   defaultBorderColor,

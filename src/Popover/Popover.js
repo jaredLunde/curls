@@ -128,6 +128,7 @@ class PopoverContainer extends React.PureComponent {
         br: theme.defaultBorderRadius,
         bc: theme.defaultBorderColor,
         bw: theme.defaultBorderWidth,
+        bs: theme.defaultBoxShadow,
         ...boxProps,
         children: ({className, style, ...poProps}) => {
           return createOptimized(
