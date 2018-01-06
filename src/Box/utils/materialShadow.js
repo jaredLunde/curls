@@ -17,9 +17,8 @@ export default function (dp, reverse) {
   const directBlur = dp === 1 ? 3 : dp * 2
   const directAlpha = (24 - Math.floor(dp / 20)) / 100
   shadow = `${shadow}, 0 ${(directY * multiple) / 16}rem ${directBlur}px rgba(0, 0, 0, ${ambientAlpha})`
-
+  //border-top: ${1/16}rem solid rgba(0, 0, 0, 0.04);
   return css`
-    border-top: ${1/16}rem solid rgba(0, 0, 0, 0.04);
     box-shadow: ${shadow};
   `
 }

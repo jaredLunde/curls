@@ -41,7 +41,7 @@ export default function Type ({children, ...props}) {
       }
 
       return TypeSFC(
-        sfcProps[theme.defaultSize]
+        sfcProps.hasOwnProperty(theme.defaultSize)
         ? sfcProps
         : {[theme.defaultSize]: true, ...sfcProps}
       )
@@ -82,13 +82,4 @@ const p = css`
 
 export function P ({className, ...props}) {
   return Type({nodeType: 'p', className: cx(p, className), ...props})
-}
-
-
-const a = css`
-  cursor: pointer;
-`
-
-export function A ({className, ...props}) {
-  return Type({nodeType: 'a', className: cx(a, className), ...props})
 }

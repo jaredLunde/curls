@@ -76,14 +76,8 @@ export default function ({children, className, br, ...props}) {
     className: cx(cardCSS, className),
     ...props,
     children: function (sfcProps) {
-      console.log({
-        br: br || theme.defaultBorderRadius,
-        ...sfcProps,
-        className: cx(cardCSS, sfcProps.className),
-        children
-      })
       return SFC({
-        cardBr: br || theme.defaultBorderRadius,
+        br: br || theme.defaultBorderRadius,
         ...sfcProps,
         className: cx(cardCSS, sfcProps.className),
         children

@@ -4,11 +4,11 @@ export const defaultBorderColor = 'translucentLight'
 export const defaultBoxShadow = 0
 
 export const scale = {
-  xxs: 16/16,
-  xs: 24/16,
-  sm: 36/16,
-  md: 72/16,
-  lg: 128/16,
+  xxs: 20/16,
+  xs: 36/16,
+  sm: 72/16,
+  md: 128/16,
+  lg: 172/16,
   xl: 256/16,
   xxl: 360/16
 }

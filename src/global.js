@@ -7,10 +7,6 @@ injectGlobal`
     box-sizing: border-box;
   }
 
-  a {
-    cursor: pointer;
-  }
-
   /**
    ** Browser resets
    **/
@@ -59,11 +55,6 @@ injectGlobal`
 
   svg:not(:root) {
     overflow: hidden;
-  }
-
-  a:active,
-  a:hover {
-    outline-width: 0;
   }
 
   details,

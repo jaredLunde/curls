@@ -1,0 +1,1 @@
+export linkColor from './linkColor'

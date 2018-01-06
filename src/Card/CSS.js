@@ -1,10 +1,10 @@
 import {css} from 'emotion'
-import {br} from '../Box/CSS'
+import {br as boxBr} from '../Box/CSS'
 import {mergeThemeDefaults} from '../utils'
 import {directionalRe} from '../utils/directionalRemScale'
 import defaultTheme from '../Box/defaultTheme'
 
-export function cardBr (val, t) {
+export function br (val, t) {
   const theme = mergeThemeDefaults({
     defaultTheme,
     themePath: 'card',
@@ -59,16 +59,16 @@ export function cardBr (val, t) {
   }
 
   return css`
-    ${br(val, theme)}
+    ${boxBr(val, theme)}
 
     & > *:first-child {
-      ${br(topRadius, theme)};
-      ${br('b0', theme)};
+      ${boxBr(topRadius, theme)};
+      ${boxBr('b0', theme)};
     }
 
     & > *:last-child {
-      ${br(bottomRadius, theme)};
-      ${br('t0', theme)};
+      ${boxBr(bottomRadius, theme)};
+      ${boxBr('t0', theme)};
     }
   `
 }

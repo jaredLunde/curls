@@ -17,13 +17,13 @@ import viewport from '../PropTypes/viewport'
 
 
 /**
-Popover({
+PopOver({
   delay: 200,
   fromBottom: true,
-  children: function ({PopoverBox, popoverRef, show, hide, ...props}) {
+  children: function ({PopOverBox, popOverRef, show, hide, ...props}) {
     return (
-      <div ref={popoverRef}>
-        {PopoverBox({
+      <div ref={popOverRef}>
+        {PopOverBox({
           p: 5,
           bg: 'darkestGrey',
           onMouseEnter: show,
@@ -41,13 +41,13 @@ Popover({
   }
 })
 */
-const themePath = 'popover'
+const themePath = 'popOver'
 const poBoxCSS = css`
   ${flex};
   ${pf};
 `
 
-class PopoverContainer extends React.PureComponent {
+class PopOverContainer extends React.PureComponent {
   imageLoader = null
   container = null
   state = {}
@@ -81,22 +81,22 @@ class PopoverContainer extends React.PureComponent {
   }
 
   setContainerRef = el => this.container = el
-  setPopoverBoxRef = el => this.popoverBox = el
+  setPopOverBoxRef = el => this.popOverBox = el
 
   setPositionState () {
-    let {popoverDirection, theme, getViewportSize} = this.props
+    let {popOverDirection, theme, getViewportSize} = this.props
     const direction = (
-      popoverDirection
+      popOverDirection
       || getComponentTheme(defaultTheme, theme, themePath).defaultDirection
     )
 
     this.setState(
-      setDirectionStyle(direction, this.container, this.popoverBox, getViewportSize())
+      setDirectionStyle(direction, this.container, this.popOverBox, getViewportSize())
     )
   }
 
   reposition = () => {
-    this.imageLoader = loadImages(this.popoverBox)
+    this.imageLoader = loadImages(this.popOverBox)
     this.imageLoader.then(
       () => {
         this.setPositionState.bind(this)()
@@ -120,7 +120,7 @@ class PopoverContainer extends React.PureComponent {
     theme = getComponentTheme(defaultTheme, theme, themePath)
     const poClassName = className
 
-    const PopoverBox = ({nodeType = 'div', children, ...boxProps}) => {
+    const PopOverBox = ({nodeType = 'div', children, ...boxProps}) => {
       return FlexBox({
         className: cx(poBoxCSS, className),
         p: theme.defaultPadding,
@@ -135,7 +135,7 @@ class PopoverContainer extends React.PureComponent {
             nodeType,
             {
               className: cx(poClassName, className),
-              ref: this.setPopoverBoxRef,
+              ref: this.setPopOverBoxRef,
               style: {...this.state, ...style},
               ...poProps
             },
@@ -148,34 +148,34 @@ class PopoverContainer extends React.PureComponent {
     return createOptimized(
       children,
       {
-        PopoverBox,
+        PopOverBox,
         isVisible,
         show,
         hide,
         toggle,
         ...props,
-        popoverRef: this.setContainerRef
+        popOverRef: this.setContainerRef
       }
     )
   }
 }
 
 
-const ComposedPopover = compose([WithViewport, PopoverContainer])
+const ComposedPopOver = compose([WithViewport, PopOverContainer])
 
 
-export default function Popover ({children, transitionType = Drop, ...props}) {
-  const popoverDirection = getPosFromProps(props)
+export default function PopOver ({children, transitionType = Drop, ...props}) {
+  const popOverDirection = getPosFromProps(props)
 
   return transitionType({
     ...props,
-    children: function (popoverProps) {
+    children: function (popOverProps) {
       return createOptimized(
-        ComposedPopover,
+        ComposedPopOver,
         {
           children,
-          popoverDirection,
-          ...popoverProps
+          popOverDirection,
+          ...popOverProps
         }
       )
     }
