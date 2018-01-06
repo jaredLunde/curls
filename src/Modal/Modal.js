@@ -66,15 +66,6 @@ export default function Modal ({children, transitionType = Drop, theme, ...props
 
       function ModalBox ({nodeType = 'div', children, ...boxProps}) {
         return FlexBox({
-          /**
-          flex: true,
-          align: 'center',
-          justify: 'center',
-          pf: true,
-          fw: true,
-          fh: true,
-          touchScrolling: true,
-          */
           className: cx(fixedContainer, isVisible && baseIsVisible),
           children: function (box2Props) {
             return FlexBox({

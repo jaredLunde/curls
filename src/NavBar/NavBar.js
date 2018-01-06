@@ -32,13 +32,6 @@ export default function NavBar ({children, className, ...props}) {
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
   return Box({
-    /*
-    flex: true,
-    row: true,
-    nowrap: true,
-    align: 'center',
-    justify: 'left',
-    */
     bg: theme.defaultBg,
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,
