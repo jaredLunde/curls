@@ -1,6 +1,7 @@
 import getTheme from './getTheme'
 import getIn from './getIn'
 import {curlsTheme} from '../theming/injectTheme'
+import defaultRem from '../theming/defaultRem'
 
 
 const GLOBALS = ['colors', 'hover', 'active', 'typeFaces']
@@ -12,6 +13,7 @@ export default function (defaultTheme, userTheme, themePath) {
 
   // ensure no funky mutations take place on the output
   let out = {...mainTheme}
+  out.rem = curlsTheme.rem || defaultRem
   // get the component-level theme if there is one
   userTheme = getIn(userTheme, themePath)
 
@@ -29,6 +31,8 @@ export default function (defaultTheme, userTheme, themePath) {
         out[g] = getTheme(curlsGlobal, getTheme(mainTheme[g], userGlobal))
       }
     }
+
+    out.rem = userTheme.rem || out.rem
   } else {
     // merge global themes (colors, typeFaces) to the output
     for (let x = 0; x < GLOBALS.length; x++) {
@@ -41,6 +45,6 @@ export default function (defaultTheme, userTheme, themePath) {
     }
   }
 
-  out.rem = curlsTheme.rem || defaultTheme.rem
+
   return out
 }

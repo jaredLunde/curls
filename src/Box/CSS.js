@@ -44,7 +44,7 @@ export function bw (value, theme) {
   } else {
     return css`
       border-style: solid;
-      border-width: ${borderWidthScale[value] / theme.rem}rem;
+      border-width: ${borderWidthScale[value]}rem;
     `
   }
 }
@@ -76,7 +76,7 @@ export function br (value, theme) {
       )};
     `
   } else {
-    return css`border-radius: ${borderRadiusScale[value] / theme.rem}rem;`
+    return css`border-radius: ${borderRadiusScale[value]}rem;`
   }
 }
 
@@ -87,7 +87,7 @@ export function m (value, theme) {
   if (isDirectional(value)) {
     return directionalRemScale('margin-{XYZ}', spacingScale, value, theme)
   } else {
-    return css`margin: ${spacingScale[value] / theme.rem}rem;`
+    return css`margin: ${spacingScale[value]}rem;`
   }
 }
 
@@ -97,6 +97,7 @@ export function p (value, theme) {
   if (isDirectional(value)) {
     return directionalRemScale('padding-{XYZ}', spacingScale, value, theme)
   } else {
-    return css`padding: ${spacingScale[value] / theme.rem}rem;`
+    console.log("HERE", spacingScale[value], spacingScale)
+    return css`padding: ${spacingScale[value]}rem;`
   }
 }
