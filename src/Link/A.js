@@ -13,7 +13,6 @@ const themePath = 'link'
 export default function A ({children, nodeType = 'a', color = null, className, ...props}) {
   // merges the default colors and sizes to the theme
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-  console.log('Link theme:', theme)
   // adds color class and removes colors from the props
   className = cx(linkColor(color, theme), className)
   props[theme.defaultWeight] = true
