@@ -5,9 +5,11 @@ import {curlsTheme} from '../theming/injectTheme'
 
 const GLOBALS = ['colors', 'hover', 'active', 'typeFaces']
 
+
 export default function (defaultTheme, userTheme, themePath) {
   // merge the component's default theme with the injected theme
   const mainTheme = getTheme(defaultTheme, getIn(curlsTheme, themePath))
+
   // ensure no funky mutations take place on the output
   let out = {...mainTheme}
   // get the component-level theme if there is one
@@ -39,5 +41,6 @@ export default function (defaultTheme, userTheme, themePath) {
     }
   }
 
+  out.rem = curlsTheme.rem || defaultTheme.rem
   return out
 }

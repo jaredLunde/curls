@@ -14,6 +14,7 @@ export default injectGlobal`
     -moz-appearance: none;
     -webkit-appearance: none;
     outline: none;
+    margin: 0;
   }
 
   [type="search"] {

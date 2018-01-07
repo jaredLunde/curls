@@ -3,7 +3,10 @@ import {bg as boxBg} from '../Box/CSS'
 
 
 export function thickness (value, theme) {
-  return css`height: ${value === null ? theme.defaultThickness : value}rem;`
+  return css`height: ${
+      (value === null ? theme.defaultThickness : value) / theme.rem
+    }rem;
+  `
 }
 
 export function bg (value, theme) {

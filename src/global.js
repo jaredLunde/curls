@@ -1,10 +1,15 @@
 import {injectGlobal, css} from 'emotion'
+import {defaultRem} from './theming'
 
 
 injectGlobal`
   *, *:before, *:after {
     /** border-box for all, as it should be */
     box-sizing: border-box;
+  }
+
+  html {
+    font-size: ${defaultRem}px;
   }
 
   /**

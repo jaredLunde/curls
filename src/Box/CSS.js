@@ -24,7 +24,7 @@ export function bg (value, theme) {
 
 
 export function bs (value, theme) {
-  return theme.getBoxShadow(value)
+  return theme.getBoxShadow(value, theme)
 }
 
 
@@ -39,12 +39,12 @@ export function bw (value, theme) {
   if (isDirectional(value)) {
     return css`
       border-style: solid;
-      ${directionalRemScale('border-{XYZ}-width', borderWidthScale, value)};
+      ${directionalRemScale('border-{XYZ}-width', borderWidthScale, value, theme)};
     `
   } else {
     return css`
       border-style: solid;
-      border-width: ${borderWidthScale[value]}rem;
+      border-width: ${borderWidthScale[value] / theme.rem}rem;
     `
   }
 }
@@ -71,11 +71,12 @@ export function br (value, theme) {
         'border-{XYZ}-radius',
         borderRadiusScale,
         value,
+        theme,
         borderRadiusDirections
       )};
     `
   } else {
-    return css`border-radius: ${borderRadiusScale[value]}rem;`
+    return css`border-radius: ${borderRadiusScale[value] / theme.rem}rem;`
   }
 }
 
@@ -84,9 +85,9 @@ export function m (value, theme) {
   const {spacingScale} = theme
 
   if (isDirectional(value)) {
-    return directionalRemScale('margin-{XYZ}', spacingScale, value)
+    return directionalRemScale('margin-{XYZ}', spacingScale, value, theme)
   } else {
-    return css`margin: ${spacingScale[value]}rem;`
+    return css`margin: ${spacingScale[value] / theme.rem}rem;`
   }
 }
 
@@ -94,8 +95,8 @@ export function m (value, theme) {
 export function p (value, theme) {
   const {spacingScale} = theme
   if (isDirectional(value)) {
-    return directionalRemScale('padding-{XYZ}', spacingScale, value)
+    return directionalRemScale('padding-{XYZ}', spacingScale, value, theme)
   } else {
-    return css`padding: ${spacingScale[value]}rem;`
+    return css`padding: ${spacingScale[value] / theme.rem}rem;`
   }
 }

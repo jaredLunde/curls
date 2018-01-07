@@ -1,34 +1,35 @@
-import {defaultColors, defaultHoverColors, defaultActiveColors} from '../theming'
+import {defaultColors, defaultHoverColors, defaultActiveColors, defaultRem} from '../theming'
 import {borderRadiusScale, borderWidthScale, getBoxShadow} from '../Box/defaultTheme'
 
+export const rem = defaultRem
 export const scale = {
   xxs: {
-    x: 12/16,
-    y: 6/16,
+    x: 12,
+    y: 6,
   },
   xs: {
-    x: 16/16,
-    y: 8/16,
+    x: 16,
+    y: 8,
   },
   sm: {
-    x: 20/16,
-    y: 10/16,
+    x: 20,
+    y: 10,
   },
   md: {
-    x: 24/16,
-    y: 12/16,
+    x: 24,
+    y: 12,
   },
   lg: {
-    x: 32/16,
-    y: 16/16,
+    x: 32,
+    y: 16,
   },
   xl: {
-    x: 40/16,
-    y: 20/16,
+    x: 40,
+    y: 20,
   },
   xxl: {
-    x: 48/16,
-    y: 24/16,
+    x: 48,
+    y: 24,
   }
 }
 
@@ -49,6 +50,7 @@ export {borderRadiusScale, borderWidthScale, getBoxShadow} from '../Box/defaultT
 
 
 export default {
+  rem,
   colors,
   active,
   hover,

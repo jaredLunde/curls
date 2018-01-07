@@ -16,6 +16,7 @@ export {
 } from './utils'
 
 export {
+  injectRem,
   injectTheme,
   replaceTheme
 } from './theming'

@@ -5,7 +5,6 @@ import {pr, fw} from '../Box/CSS'
 import {flex, column} from '../Flex/CSS'
 import {createSFCNode, getComponentTheme, supportsCSS} from '../utils'
 import defaultTheme from './defaultTheme'
-import propTypes from './propTypes'
 import {br as cssBr} from './CSS'
 
 

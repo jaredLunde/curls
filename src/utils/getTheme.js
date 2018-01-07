@@ -17,8 +17,11 @@ const memoizer = memoize(1024, {multiArgs: true})(deepMerge)
 
 
 export default function (defaultTheme = emptyObj, userTheme) {
-  if (typeof userTheme !== 'object' && userTheme !== null) {
+  if (userTheme === void 0 || userTheme === null) {
     return defaultTheme
+  }
+  else if (typeof userTheme !== 'object'|| defaultTheme === emptyObj) {
+    return userTheme
   }
 
   return memoizer(defaultTheme, userTheme)

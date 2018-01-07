@@ -21,6 +21,7 @@ export default function directionalRemScale (
   prefix,
   modScale,
   modValue,
+  theme,
   directions = defaultDirections
 ) {
   let CSS = []
@@ -30,7 +31,7 @@ export default function directionalRemScale (
 
       directions[abbr].forEach(
         function (xyz) {
-          CSS.push(`${prefix.replace('{XYZ}', xyz)}: ${modScale[value]}rem;`)
+          CSS.push(`${prefix.replace('{XYZ}', xyz)}: ${modScale[value] / theme.rem}rem;`)
         }
       )
     }
