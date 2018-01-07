@@ -1,6 +1,6 @@
 import {css, cx} from 'emotion'
 import {FlexBox} from '../Box'
-import {createSFCNode, mergeThemeProp} from '../utils'
+import {createSFCNode, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -26,7 +26,7 @@ export default function Type ({children, ...props}) {
     ...props,
     children: function (sfcProps) {
       // merges the default colors and sizes to the theme
-      const theme = mergeThemeProp(defaultTheme, sfcProps, themePath)
+      const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
 
       // renders the element
       sfcProps = {

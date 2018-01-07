@@ -10,7 +10,7 @@ export {
   createSFCNode as createComponent,
   directionalRemScale,
   getTheme,
-  mergeThemeProp,
+  getComponentTheme,
   supportsCSS,
   withHoverQuery
 } from './utils'

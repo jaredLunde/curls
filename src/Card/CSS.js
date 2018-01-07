@@ -1,19 +1,15 @@
 import {css} from 'emotion'
 import {br as boxBr} from '../Box/CSS'
-import {mergeThemeProp} from '../utils'
+import {getComponentTheme} from '../utils'
 import {directionalRe} from '../utils/directionalRemScale'
-import defaultTheme from '../Box/defaultTheme'
+
 
 export function br (val, theme) {
-  theme = mergeThemeProp(
-    defaultTheme,
-    {theme},
-    'card'
-  )
+  val = val || theme.defaultBorderRadius
   let abbr, value
   let topRadius = 't0', bottomRadius = 'b0'
 
-  if (typeof val === 'number' || typeof val === string && parseInt(val) > -1) {
+  if (typeof val === 'number' || typeof val === 'string' && parseInt(val) > -1) {
     value = val
   } else {
     const av = String(val).split(directionalRe)

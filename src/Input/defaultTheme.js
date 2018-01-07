@@ -1,4 +1,4 @@
-import * as defaultColors from '../theming/defaultColors'
+import defaultColors from '../theming/defaultColors'
 
 
 export const defaultBg = 'white'

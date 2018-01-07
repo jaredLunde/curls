@@ -6,16 +6,14 @@ import {flex, column} from '../Flex/CSS'
 import {createSFCNode, getComponentTheme, supportsCSS} from '../utils'
 import defaultTheme from './defaultTheme'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import {br as cssBr} from './CSS'
 
 
 const themePath = 'card'
 const SFC = createSFCNode({
   name: 'Card',
-  propTypes,
   defaultTheme,
   themePath,
-  CSS,
   defaultNodeType: 'div'
 })
 const cardCSS = css`
@@ -67,11 +65,10 @@ export default function ({children, className, br, ...props}) {
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,
     bs: theme.defaultBoxShadow,
-    className: cx(cardCSS, className),
+    className: cx(cardCSS, cssBr(br, theme), className),
     ...props,
     children: function (sfcProps) {
       return SFC({
-        br: br || theme.defaultBorderRadius,
         ...sfcProps,
         className: cx(cardCSS, sfcProps.className),
         children

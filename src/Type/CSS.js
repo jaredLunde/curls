@@ -44,6 +44,7 @@ export function xxl (v, t) {
   return fontSize('xxl', t)
 }
 
+
 // Face
 export function face (value, theme) {
   return css`font-family: ${theme.typeFaces[value]};`

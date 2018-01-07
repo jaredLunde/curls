@@ -1,7 +1,7 @@
 import {css} from 'emotion'
 import {FlexBox} from '../Box'
 import {flex, row, align} from '../Flex/CSS'
-import {createSFCNode, mergeThemeProp} from '../utils'
+import {createSFCNode, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -36,7 +36,7 @@ export default function Button ({
   if (nodeType !== 'button') {
     props.role = 'button'
   }
-  const theme = mergeThemeProp(defaultTheme, props, themePath)
+  const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
   return FlexBox({
     nodeType,

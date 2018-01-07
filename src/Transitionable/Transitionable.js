@@ -4,4 +4,5 @@ import defaultTheme from './defaultTheme'
 import {createSFC} from '../utils'
 
 
-export default createSFC({name: 'Transitionable', propTypes, CSS, defaultTheme})
+const themePath = 'transitionable'
+export default createSFC({name: 'Transitionable', propTypes, CSS, defaultTheme, themePath})

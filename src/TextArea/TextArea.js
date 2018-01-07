@@ -1,6 +1,6 @@
 import {cx} from 'emotion'
 import Type from '../Type'
-import {getTheme, mergeThemeProp} from '../utils'
+import {getComponentTheme} from '../utils'
 import {placeholder} from '../Input/utils'
 import defaultTheme from './defaultTheme'
 
@@ -9,7 +9,7 @@ const themePath = 'textArea'
 
 
 export default function TextArea (props) {
-  const theme = mergeThemeProp(defaultTheme, props, themePath)
+  const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
   return Type({
     bg: theme.defaultBg,

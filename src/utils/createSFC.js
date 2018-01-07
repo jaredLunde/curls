@@ -6,11 +6,14 @@ import getClassNames from './getClassNames'
 import getComponentTheme from './getComponentTheme'
 
 
+const emptyObj = {}
+
+
 export default function ({
   name,
-  propTypes = {},
-  CSS = {},
-  defaultTheme = {},
+  propTypes = emptyObj,
+  CSS = emptyObj,
+  defaultTheme = emptyObj,
   themePath = ''
 }) {
   propTypes.children = PropTypes.oneOf([
@@ -21,7 +24,7 @@ export default function ({
 
   function SFC (props/*{children, className, ...props}*/) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-  
+
     return createOptimized(
       props.children,
       {

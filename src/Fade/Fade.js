@@ -5,7 +5,7 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createSFC, mergeThemeProp} from '../utils'
+import {createSFC, getComponentTheme} from '../utils'
 
 
 const themePath = 'fade'
@@ -30,7 +30,7 @@ export default function Fade ({children, visible = null, from = 0, to = 1, ...pr
       {...props}
     >
       {function (sfcProps) {
-        const theme = mergeThemeProp(defaultTheme, sfcProps, themePath)
+        const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
 
         return FadeSFC({
           ...sfcProps,

@@ -1,35 +1,52 @@
 import {rgba, lighten, darken} from 'polished'
 
-export const blue = '#30A9DE'
-export const darkBlue = darken(0.5, blue)
-export const lightBlue = lighten(0.15, blue)
+const blue = '#30A9DE'
+const green = '#2dc483'
+const red = '#E53A40'
+const yellow = '#ffc952'
+const orange = '#e87d34'
+const darkOrange = darken(0.10, orange)
+const lightestGrey = '#f4f4f5'
+const lighterGrey = '#dbdbda'
+const grey = '#6f6567'
+const darkestGrey = darken(0.20, grey)
+const white = '#fefeff'
 
-export const green = '#2dc483'
-export const darkGreen = darken(0.5, green)
-export const lightGreen = lighten(0.30, green)
+const defaultColors = {
+  blue,
+  darkBlue: darken(0.5, blue),
+  lightBlue: lighten(0.15, blue),
 
-export const red = '#E53A40'
-export const darkRed = darken(0.10, red)
-export const lightRed = lighten(0.10, red)
+  green,
+  darkGreen: darken(0.5, green),
+  lightGreen: lighten(0.30, green),
 
-export const yellow = '#ffc952'
-export const darkYellow = darken(0.10, yellow)
-export const lightYellow = lighten(0.10, yellow)
+  red,
+  darkRed: darken(0.10, red),
+  lightRed: lighten(0.10, red),
 
-export const orange = '#e87d34'
-export const darkOrange = darken(0.10, orange)
-export const lightOrange = lighten(0.25, darkOrange)
+  yellow,
+  darkYellow: darken(0.10, yellow),
+  lightYellow: lighten(0.10, yellow),
 
-export const lightestGrey = '#f4f4f5'
-export const lighterGrey = '#dbdbda'
-export const lightGrey = darken(0.25, lighterGrey)
-export const grey = '#6f6567'
-export const darkGrey = darken(0.10, grey)
-export const darkerGrey = darken(0.15, grey)
-export const darkestGrey = darken(0.20, grey)
-export const black = darken(0.5, darkestGrey)
-export const white = '#fefeff'
-export const translucentDark = rgba(0, 0, 0, 0.6)
-export const translucent = rgba(0, 0, 0, 0.4)
-export const translucentLight = rgba(0, 0, 0, 0.2)
-export const translucentWhite = rgba(255, 255, 255, 0.6)
+  orange,
+  darkOrange,
+  lightOrange: lighten(0.25, darkOrange),
+
+  lightestGrey,
+  lighterGrey,
+  lightGrey: darken(0.25, lighterGrey),
+  grey,
+  darkGrey: darken(0.10, grey),
+  darkerGrey: darken(0.15, grey),
+  darkestGrey,
+  black: darken(0.5, darkestGrey),
+  white,
+  translucentDark: rgba(0, 0, 0, 0.6),
+  translucent: rgba(0, 0, 0, 0.4),
+  translucentLight: rgba(0, 0, 0, 0.2),
+  translucentWhite: rgba(255, 255, 255, 0.6),
+}
+
+
+export default defaultColors
