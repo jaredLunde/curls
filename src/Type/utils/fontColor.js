@@ -1,4 +1,3 @@
-import {css} from 'emotion'
 import {colorizeProps} from '../../utils'
 
 

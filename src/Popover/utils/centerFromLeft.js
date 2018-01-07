@@ -7,7 +7,7 @@ export default function (containerRect, boxRect, {width, height}) {
 
   if (containerRect.left - boxRect.width > -1) {
     left = containerRect.left - boxRect.width
-  } else if (containerRect.right + boxRect.width < width) {
+  } else if (containerRect.right + ((boxRect.width - containerRect.width) / 2) < width) {
     left = containerRect.right
   } else {
     // left = containerRect.left + ((containerRect.width - boxRect.width) / 2)

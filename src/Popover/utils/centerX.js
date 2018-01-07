@@ -1,7 +1,7 @@
 export default function (containerRect, boxRect, width) {
   let right = 'auto'
   let left = containerRect.left + ((containerRect.width - boxRect.width) / 2)
-  const boxWidth = Math.abs(boxRect.width / 2)
+  const boxWidth = ((boxRect.width - containerRect.width) / 2)
   const doesNotFitLeft = left < containerRect.left && (containerRect.left - boxWidth < 0)
   const doesNotFitRight = containerRect.right + boxWidth > width
 

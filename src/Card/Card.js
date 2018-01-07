@@ -9,11 +9,6 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 
 
-/**
-<Card>
-
-</Card>
-*/
 const themePath = 'card'
 const SFC = createSFCNode({
   name: 'Card',
@@ -50,7 +45,6 @@ const cardCSS = css`
   }
 
   & > * {
-    ${flex};
     ${fw};
   }
 

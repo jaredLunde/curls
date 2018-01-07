@@ -8,4 +8,9 @@ export default injectGlobal`
     -webkit-appearance: none;
     outline: none;
   }
+
+  ::-moz-placeholder {
+  	color: white;
+  	opacity: 1;
+  }
 `

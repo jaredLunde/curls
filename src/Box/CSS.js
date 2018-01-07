@@ -86,7 +86,7 @@ export function m (value, theme) {
   if (isDirectional(value)) {
     return directionalRemScale('margin-{XYZ}', spacingScale, value)
   } else {
-    return css`padding: ${spacingScale[value]}rem;`
+    return css`margin: ${spacingScale[value]}rem;`
   }
 }
 

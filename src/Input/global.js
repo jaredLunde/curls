@@ -3,7 +3,7 @@ import {textInputs} from 'polished'
 
 
 // Resets
-export default css`
+export default injectGlobal`
   [type="number"]::-webkit-inner-spin-button,
   [type="number"]::-webkit-outer-spin-button {
     height: auto;
@@ -23,5 +23,15 @@ export default css`
 
   :focus {
     outline: 0
+  }
+
+  :-moz-placeholder {
+  	color: white;
+  	opacity: 1;
+  }
+
+  ::-moz-placeholder {
+  	color: white;
+  	opacity: 1;
   }
 `
