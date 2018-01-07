@@ -33,6 +33,7 @@
     "emotion": "^9.0.0-1",
     "emotion-utils": "^9.0.0-0",
     "is-mergeable-object": "^1.1.0",
+    "json2mq": "^0.2.0",
     "lru-memoize-map": "^0.1.0",
     "polished": "^1.9.0",
     "react-cake": "^0.4.2"

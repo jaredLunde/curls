@@ -1,5 +1,8 @@
 import {css} from 'emotion'
-import getBreakpoint from './getBreakpoint'
+import getBreakPoint from './getBreakPoint'
+
+
+const mediaQuery = q => content => `@media ${q}`
 
 
 export default function (size, x, theme) {
@@ -7,7 +10,7 @@ export default function (size, x, theme) {
   const width = `${(x / theme.columns[size]) * 100}%`
 
   return css`
-    ${getBreakpoint(size, theme)} {
+    ${mediaQuery(getBreakPoint(size, theme))} {
       max-width: ${width};
       flex-basis: ${width};
     }

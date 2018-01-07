@@ -66,5 +66,5 @@ injectGlobal`
 
 
 export const MAX_Z_INDEX = 2147483647;
-export const MAX_PX = '10000000px';
+export const MAX_REM = 10000000/16;
 export const maxZIndex = css`z-index: ${MAX_Z_INDEX}`

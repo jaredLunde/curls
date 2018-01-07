@@ -12,10 +12,11 @@ var config = {
     name: 'Curls',
     format: 'umd'
   },
-  external: ['react', 'prop-types'],
+  external: ['react', 'prop-types', 'react-router-dom'],
   globals: {
     react: 'React',
-    'prop-types': 'PropTypes'
+    'prop-types': 'PropTypes',
+    'react-router-dom': 'Router'
   },
   plugins: [
     nodeResolve({
@@ -30,7 +31,7 @@ var config = {
       include: 'node_modules/**',
       namedExports: {
         'node_modules/react/react.js': ['createElement'],
-        'node_modules/react-dom/**': ['createPortal'],
+        // 'node_modules/react-dom/**': ['createPortal'],
       }
     }),
     babel({

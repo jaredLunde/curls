@@ -25,6 +25,7 @@ export default injectGlobal`
 
   button::-moz-focus-inner {
     border: 0;
+    margin: 0;
     padding: 0;
   }
 

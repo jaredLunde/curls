@@ -1,11 +1,11 @@
 export const breakpoints = {
-  xxs: 240,
-  xs: 324,
-  sm: 639,
-  md: 1023,
-  lg: 1359,
-  xl: 1599,
-  xxl: 1600
+  xxs: 'only screen and (max-width: 240px)',
+  xs: 'only screen and (max-width: 324px)',
+  sm: 'only screen and (max-width: 639px)',
+  md: 'only screen and (max-width: 1023px)',
+  lg: 'only screen and (max-width: 1359px)',
+  xl: 'only screen and (max-width: 1599px)',
+  xxl: 'only screen and (min-width: 0)',
 }
 
 
