@@ -33,4 +33,11 @@ export default injectGlobal`
     text-align: center;
     text-decoration: none;
   }
+
+  button:hover,
+  button:active,
+  [role=button]:hover,
+  [role=button]:active {
+    cursor: pointer;
+  }
 `

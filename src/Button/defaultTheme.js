@@ -1,6 +1,5 @@
 import {defaultColors, defaultHoverColors, defaultActiveColors} from '../theming'
-import {borderRadiusScale, borderWidthScale} from '../Box/defaultTheme'
-
+import {borderRadiusScale, borderWidthScale, getBoxShadow} from '../Box/defaultTheme'
 
 export const scale = {
   xxs: {
@@ -37,7 +36,7 @@ export const defaultBorderRadius = 5
 export const defaultBorderWidth = 1
 export const defaultBorderColor = 'translucentLight'
 export const defaultBoxShadow = 0
-export const defaultColor = 'blue'
+export const defaultBg = 'blue'
 export const defaultSize = 'md'
 export const colors = defaultColors
 export const hover = {
@@ -46,20 +45,21 @@ export const hover = {
 export const active = {
   colors: defaultActiveColors
 }
-export {borderRadiusScale, borderWidthScale} from '../Box/defaultTheme'
+export {borderRadiusScale, borderWidthScale, getBoxShadow} from '../Box/defaultTheme'
 
 
 export default {
   colors,
-  hover,
   active,
+  hover,
   scale,
-  defaultColor,
+  defaultBg,
   defaultSize,
   defaultBoxShadow,
   defaultBorderRadius,
   defaultBorderWidth,
   defaultBorderColor,
   borderRadiusScale,
-  borderWidthScale
+  borderWidthScale,
+  getBoxShadow
 }

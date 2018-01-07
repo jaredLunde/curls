@@ -1,12 +1,10 @@
-import {css, cx} from 'emotion'
-import reduceProps from 'react-cake/es/utils/reduceProps'
+import {css} from 'emotion'
 import {FlexBox} from '../Box'
 import {flex, row, align} from '../Flex/CSS'
-import {createSFCNode, mergeThemeDefaults} from '../utils'
+import {createSFCNode, mergeThemeProp} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
-import {buttonColor} from './utils'
 
 
 const themePath = 'button'
@@ -31,41 +29,28 @@ export default function Button ({
   br = null,
   bw = null,
   bc = null,
+  bg = null,
   bs = null,
-  bg,
-  className,
   ...props
 }) {
   if (nodeType !== 'button') {
     props.role = 'button'
   }
-
-  const theme = mergeThemeDefaults({
-    defaultTheme,
-    themePath,
-    props: props,
-    defaults: ['defaultColor', 'defaultSize']
-  })
+  const theme = mergeThemeProp(defaultTheme, props, themePath)
 
   return FlexBox({
-    className: cx(buttonCSS, className),
     nodeType,
-    bs: theme.defaultBoxShadow,
     ...props,
-    children: function ({className, ...sfcProps}) {
-      // merges the default colors and sizes to the theme
-
-      // adds color class and removes colors from the props
-      className = cx(buttonColor(sfcProps, theme), className)
-      sfcProps = reduceProps(sfcProps, theme.colors)
+    children: function (sfcProps) {
       // renders the element
       return ButtonSFC({
         [theme.defaultSize]: true,
         br,
         bw,
         bc,
+        bg,
+        bs,
         ...sfcProps,
-        className,
         children
       })
     }

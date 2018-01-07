@@ -6,12 +6,11 @@ export {
 
 export {
   colorize,
-  colorizeProps,
   createSFC as createWrapper,
   createSFCNode as createComponent,
   directionalRemScale,
   getTheme,
-  mergeThemeDefaults,
+  mergeThemeProp,
   supportsCSS,
   withHoverQuery
 } from './utils'

@@ -1,26 +1,11 @@
 import {css} from 'emotion'
-import {colorizeProps, withHoverQuery} from '../../utils'
+import {colorize, withHoverQuery} from '../../utils'
 
 
-export default function buttonColor (props, theme) {
-  const backgroundColor = colorizeProps(
-    'background-color',
-    props,
-    theme,
-    theme.defaultColor
-  )
-  const hoverBackgroundColor = colorizeProps(
-    'background-color',
-    props,
-    theme.hover,
-    theme.defaultColor
-  )
-  const activeBackgroundColor = colorizeProps(
-    'background-color',
-    props,
-    theme.active,
-    theme.defaultColor
-  )
+export default function buttonColor (color, theme) {
+  const backgroundColor = colorize('background-color', color, theme)
+  const hoverBackgroundColor = colorize('background-color', color, theme.hover)
+  const activeBackgroundColor = colorize('background-color', color, theme.active)
 
   const style = css`
     ${backgroundColor};
@@ -28,7 +13,6 @@ export default function buttonColor (props, theme) {
 
   const hoverStyle = css`
     &:hover {
-      cursor: pointer;
       ${hoverBackgroundColor};
     }
   `
@@ -41,7 +25,6 @@ export default function buttonColor (props, theme) {
 
   const activeStyle = css`
     &:active {
-      cursor: pointer;
       ${activeBackgroundColor};
     }
   `

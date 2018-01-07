@@ -1,6 +1,7 @@
 import {injectGlobal} from 'emotion'
 import {hiDPI} from 'polished'
 import {antialias, legible, speedy} from './CSS'
+import {defaultTypeFaces} from '../theming'
 
 
 export default injectGlobal`
@@ -18,7 +19,7 @@ export default injectGlobal`
 
   body {
     ${speedy}
-    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Helvetica", sans-serif;
+    font-family: ${defaultTypeFaces.system};
 
     ${hiDPI(1.5)} {
       ${legible}

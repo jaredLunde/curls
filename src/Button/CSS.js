@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import {buttonSize} from './utils'
+import {buttonSize, buttonColor} from './utils'
 import {br as boxBr, bc as boxBc, bw as boxBw, bs as boxBs} from '../Box/CSS'
 
 
@@ -48,4 +48,12 @@ export function bw (value, theme) {
 
 export function bc (value, theme) {
   return boxBc(value === null ? theme.defaultBorderColor : value, theme)
+}
+
+export function bs (value, theme) {
+  return boxBs(value === null ? theme.defaultBoxShadow : value, theme)
+}
+
+export function bg (value, theme) {
+  return buttonColor(value === null ? theme.defaultBg : value, theme)
 }

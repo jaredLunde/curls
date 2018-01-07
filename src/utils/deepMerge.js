@@ -54,7 +54,7 @@ export default function deepMerge (target, source) {
 	if (!sourceAndTargetTypesMatch) {
 		return mergeIfMergeable(source)
 	} else if (sourceIsArray) {
-		const arrayMerge = arrayMergeOverwrite
+		const arrayMerge = arrayMergeReplace
 		return arrayMergeReplace(target, source)
 	} else {
 		return mergeObject(target, source)

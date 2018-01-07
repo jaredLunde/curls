@@ -1,5 +1,6 @@
 import {css} from 'emotion'
 import {fontSize} from './utils'
+import {colorize} from '../utils'
 
 
 // Weights
@@ -41,6 +42,17 @@ export function xl (v, t) {
 
 export function xxl (v, t) {
   return fontSize('xxl', t)
+}
+
+// Face
+export function face (value, theme) {
+  return css`font-family: ${theme.typeFaces[value]};`
+}
+
+
+// Color
+export function color (value, theme) {
+  return colorize('color', value, theme)
 }
 
 

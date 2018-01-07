@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
 
 
+const numOrStr = PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+
+
 export default {
   // Sizes
   xxs: PropTypes.bool,
@@ -11,9 +14,13 @@ export default {
   xl: PropTypes.bool,
   xxl: PropTypes.bool,
   // border radius
-  br: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  br: numOrStr,
   // border width
-  bw: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  bw: numOrStr,
   // border color
   bc: PropTypes.string,
+  // background
+  bg: PropTypes.string,
+  // box-shadow
+  bs:  numOrStr,
 }

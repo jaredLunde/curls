@@ -1,16 +1,15 @@
 import {css} from 'emotion'
 import {br as boxBr} from '../Box/CSS'
-import {mergeThemeDefaults} from '../utils'
+import {mergeThemeProp} from '../utils'
 import {directionalRe} from '../utils/directionalRemScale'
 import defaultTheme from '../Box/defaultTheme'
 
-export function br (val, t) {
-  const theme = mergeThemeDefaults({
+export function br (val, theme) {
+  theme = mergeThemeProp(
     defaultTheme,
-    themePath: 'card',
-    props: {theme: t},
-    defaults: ['borderRadiusScale']
-  })
+    {theme},
+    'card'
+  )
   let abbr, value
   let topRadius = 't0', bottomRadius = 'b0'
 

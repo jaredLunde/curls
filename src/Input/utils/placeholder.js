@@ -1,10 +1,10 @@
 import {css} from 'emotion'
-import {colorizeProps} from '../../utils'
+import {colorize} from '../../utils'
 // import * as CSS from '../Type/CSS'
 
-export default function (props, theme) {
+export default function (value, theme) {
   const placeholder = css`
-    ${colorizeProps('color', props, theme, theme.defaultPlaceholderColor)};
+    ${colorize('color', value === null ? theme.defaultPlaceholderColor : value, theme)};
     opacity: ${theme.defaultPlaceholderOpacity};
   `
   //${colorizeProps('color', props, theme, theme.defaultFontColor)};

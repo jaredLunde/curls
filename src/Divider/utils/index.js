@@ -1,1 +1,0 @@
-export dividerColor from './dividerColor'

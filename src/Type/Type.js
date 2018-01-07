@@ -1,13 +1,15 @@
 import {css, cx} from 'emotion'
-import reduceProps from 'react-cake/es/utils/reduceProps'
 import {FlexBox} from '../Box'
-import {createSFCNode, mergeThemeDefaults} from '../utils'
+import {createSFCNode, mergeThemeProp} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
-import {fontColor} from './utils'
 
+/**
+<Type bold xxl color='white' face='primary'>
 
+</Type>
+*/
 const themePath = 'type'
 const TypeSFC = createSFCNode({
   name: 'Type',
@@ -22,21 +24,15 @@ const TypeSFC = createSFCNode({
 export default function Type ({children, ...props}) {
   return FlexBox({
     ...props,
-    children: function ({className, ...sfcProps}) {
+    children: function (sfcProps) {
       // merges the default colors and sizes to the theme
-      const theme = mergeThemeDefaults({
-        defaultTheme,
-        themePath,
-        props: sfcProps,
-        defaults: ['defaultColor', 'defaultSize']
-      })
-      // adds color class and removes colors from the props
-      className = cx(fontColor(sfcProps, theme), className)
-      sfcProps = reduceProps(sfcProps, theme.colors)
+      const theme = mergeThemeProp(defaultTheme, sfcProps, themePath)
+
       // renders the element
       sfcProps = {
+        face: theme.defaultFace,
+        color: theme.defaultColor,
         ...sfcProps,
-        className,
         children
       }
 

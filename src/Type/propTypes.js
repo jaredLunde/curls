@@ -29,4 +29,8 @@ export default {
   legible: PropTypes.bool,
   speedy: PropTypes.bool,
   antialias: PropTypes.bool,
+  // Color
+  color: PropTypes.string,
+  // Typeface
+  face: PropTypes.string
 }

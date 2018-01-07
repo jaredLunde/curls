@@ -1,14 +1,13 @@
 import {css} from 'emotion'
-import {colorizeProps, withHoverQuery} from '../../utils'
+import {colorize, withHoverQuery} from '../../utils'
 
 
-export default function (props, theme) {
-  const color = colorizeProps('color', props, theme, theme.defaultColor)
-  const hoverColor = colorizeProps('color', props, theme.hover, theme.defaultColor)
-  const style = css`${color};`
+export default function (value, theme) {
+  value = value === null ? theme.defaultColor : value
+  const color = colorize('color', value, theme)
   const hoverStyle = css`
     &:hover {
-      ${hoverColor};
+      ${colorize('color', value, theme.hover)};
     }
   `
   const noneStyle = css`
@@ -18,7 +17,7 @@ export default function (props, theme) {
   `
 
   return css`
-    ${style};
+    ${color};
     ${withHoverQuery(hoverStyle, noneStyle)};
   `
 }
