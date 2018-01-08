@@ -15,7 +15,12 @@ export default function A ({children, nodeType = 'a', color = null, className, .
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
   // adds color class and removes colors from the props
   className = cx(linkColor(color, theme), className)
-  props[theme.defaultWeight] = true
   // renders the element
-  return Type({children, nodeType, className, ...props})
+  return Type({
+    children,
+    nodeType,
+    className,
+    [theme.defaultWeight]: true,
+    ...props
+  })
 }
