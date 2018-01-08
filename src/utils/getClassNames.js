@@ -1,4 +1,3 @@
-import {cx} from 'emotion'
 import getCSS from './getCSS'
 
 
@@ -14,6 +13,7 @@ export default function getClassNames (propTypes, props, theme, CSS) {
 
     if (propVal !== void 0 && propVal !== false && propName !== 'children') {
       const getCSS = CSS[propName]
+
       classNames.push(
         getCSS === void 0
         ? getCSS
@@ -26,5 +26,5 @@ export default function getClassNames (propTypes, props, theme, CSS) {
     }
   }
 
-  return cx(classNames)
+  return classNames
 }
