@@ -25,14 +25,14 @@ export default function ({
 
   function SFC (props/*{children, className, ...props}*/) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-    
+
     return createOptimized(
       props.children,
       {
         ...reduceProps(props, propTypes),
         className: cx(
           defaultCSS,
-          getClassNames(propTypes, {...props, theme, CSS}),
+          getClassNames(propTypes, props, theme, CSS),
           props.className
         )
       }
