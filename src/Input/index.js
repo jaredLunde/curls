@@ -1,2 +1,2 @@
-import global from './global'
+import './global'
 export default from './Input'

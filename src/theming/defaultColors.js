@@ -42,7 +42,7 @@ const defaultColors = {
   darkestGrey,
   black: darken(0.5, darkestGrey),
   white,
-  translucentDark: rgba(0, 0, 0, 0.6),
+  translucentDark: rgba(0, 0, 0, 0.7),
   translucent: rgba(0, 0, 0, 0.4),
   translucentLight: rgba(0, 0, 0, 0.2),
   translucentWhite: rgba(255, 255, 255, 0.6),

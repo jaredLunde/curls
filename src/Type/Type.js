@@ -24,7 +24,7 @@ const TypeSFC = createSFCNode({
 export default function Type (props) {
   // merges the default colors and sizes to the theme
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-  
+
   return FlexBox({
     ...props,
     children: function (sfcProps) {
@@ -75,6 +75,6 @@ const p = css`
   line-height: 1.4;
 `
 
-export function P ({className, ...props}) {
-  return Type({nodeType: 'p', m: 'b2', className: cx(p, className), ...props})
+export function P (props) {
+  return Type({nodeType: 'p', m: 'b2', ...props, className: cx(p, props.className)})
 }

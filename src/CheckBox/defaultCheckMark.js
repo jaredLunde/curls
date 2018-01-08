@@ -7,8 +7,8 @@ const SPAN = <span/>
 
 export default function ({isChecked}) {
   return FlexBox({
-    p: 2,
-    bg: isChecked ? 'green' : 'white',
+    p: 1,
+    bg: isChecked ? 'black' : 'white',
     br: 5,
     children: SPAN
   })

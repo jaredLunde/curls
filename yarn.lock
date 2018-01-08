@@ -1763,9 +1763,9 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-cake@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.4.2.tgz#300cdf002f91b58a22710dce965622607464e5a4"
+react-cake@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.4.3.tgz#6bbad91c819bd6771af921e734062eb3b162b634"
   dependencies:
     cancelable-promise "^2.3.0"
     fast-memoize "^2.2.7"

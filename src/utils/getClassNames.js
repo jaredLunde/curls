@@ -1,3 +1,4 @@
+import {cx} from 'emotion'
 import getCSS from './getCSS'
 
 
@@ -16,5 +17,5 @@ export default function getClassNames (propTypes, props) {
     }
   }
 
-  return classNames
+  return cx(classNames)
 }

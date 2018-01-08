@@ -1,5 +1,4 @@
-// Uses react-router-dom Link and NavLink
+import './global'
 export A from './A'
 export NavLink from './NavLink'
 export default from './Link'
-import global from './global'

@@ -36,7 +36,7 @@
     "json2mq": "^0.2.0",
     "lru-memoize-map": "^0.1.0",
     "polished": "^1.9.0",
-    "react-cake": "^0.4.2"
+    "react-cake": "^0.4.3"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development node server.js",
