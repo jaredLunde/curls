@@ -8,19 +8,20 @@ import defaultTheme from './defaultTheme'
 
 
 const themePath = 'button'
+const defaultCSS = css`
+  ${flex};
+  ${row};
+  ${align.center};
+`
 const ButtonSFC = createSFCNode({
   name: 'Button',
   propTypes,
   CSS,
   defaultTheme,
   themePath,
+  defaultCSS,
   defaultNodeType: 'button'
 })
-const buttonCSS = css`
-  ${flex};
-  ${row};
-  ${align.center};
-`
 
 
 export default function Button ({

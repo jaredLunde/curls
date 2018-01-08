@@ -2,26 +2,33 @@ import createOptimized from 'react-cake/es/utils/createOptimized'
 import createSFC from './createSFC'
 
 
-export default function ({name, defaultNodeType = 'div', ...otherOpt}) {
-  const SFC = createSFC({name, ...otherOpt})
+export default function ({defaultNodeType = 'div', ...otherOpt}) {
+  const SFC = createSFC(otherOpt)
 
-  function SFCNode ({nodeType = defaultNodeType, children, innerRef, ...props}) {
+  function SFCNode (props) {
     return SFC({
       ...props,
-      children: function (sfcNodeProps) {
-        sfcNodeProps = {ref: innerRef, ...sfcNodeProps}
-
+      children: function ({...sfcNodeProps}) {
+        delete sfcNodeProps.nodeType
+        let children = props.children
         if (typeof children === 'function') {
           children = children(sfcNodeProps)
         }
+        else if (typeof children === 'string') {
+          sfcNodeProps.ref = props.innerRef
+        }
 
-        return createOptimized(nodeType, sfcNodeProps, children)
+        return createOptimized(
+          props.nodeType || defaultNodeType,
+          sfcNodeProps,
+          children
+        )
       }
     })
   }
 
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
-    SFCNode.displayName = name
+    SFCNode.displayName = otherOpt.name
   }
 
   return SFCNode

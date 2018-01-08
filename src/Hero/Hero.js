@@ -11,15 +11,7 @@ import * as CSS from './CSS'
 
 
 const themePath = 'hero'
-const HeroSFC = createSFCNode({
-  name: 'Hero',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath,
-  defaultNodeType: 'div'
-})
-const heroCSS = css`
+const defaultCSS = css`
   ${flex};
   ${column};
   ${align.center};
@@ -28,19 +20,19 @@ const heroCSS = css`
   ${pr};
   ${touchScrolling};
 `
+const HeroSFC = createSFCNode({
+  name: 'Hero',
+  propTypes,
+  CSS,
+  defaultTheme,
+  defaultCSS,
+  themePath,
+  defaultNodeType: 'div'
+})
 
-export default function ({children, bg = null, className, ...props}) {
+
+export default function ({children, bg = null, ...props}) {
   return FlexBox({
-    /**
-    flex: true,
-    column: true,
-    align: 'center',
-    justify: 'center',
-    fw: true,
-    pr: true,
-    touchScrolling: true,
-    */
-    className: cx(heroCSS, className),
     ...props,
     children: function (vpProps) {
       return FillViewport({

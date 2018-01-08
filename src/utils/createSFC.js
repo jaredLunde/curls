@@ -13,6 +13,7 @@ export default function ({
   name,
   propTypes = emptyObj,
   CSS = emptyObj,
+  defaultCSS,
   defaultTheme = emptyObj,
   themePath = ''
 }) {
@@ -30,6 +31,7 @@ export default function ({
       {
         ...reduceProps(props, propTypes),
         className: cx(
+          defaultCSS,
           getClassNames(propTypes, {...props, theme, CSS}),
           props.className
         )

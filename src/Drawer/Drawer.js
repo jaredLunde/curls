@@ -12,18 +12,20 @@ import defaultTheme from './defaultTheme'
 
 
 const themePath = 'drawer'
-const DrawerSFC = createSFC({
-  name: 'Drawer',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath
-})
-const drawerCSS = css`
+const defaultCSS = css`
   ${db};
   ${pf};
   ${maxZIndex};
 `
+const DrawerSFC = createSFC({
+  name: 'Drawer',
+  propTypes,
+  CSS,
+  defaultCSS,
+  defaultTheme,
+  themePath
+})
+
 
 
 /**
@@ -53,15 +55,9 @@ export default function Drawer ({children, pa, ...props}) {
 
       slideProps = {
         ...slideProps,
-        children: function ({className, ...sfcProps}) {
+        children: function (sfcProps) {
           // renders the element
-          const renderProps = {
-            className: cx(drawerCSS, className),
-            pa,
-            ...sfcProps,
-            children
-          }
-
+          const renderProps = {pa, ...sfcProps, children}
           renderProps[position === void 0 ? theme.defaultDirection : position] = true
           return DrawerSFC(renderProps)
         }

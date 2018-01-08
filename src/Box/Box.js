@@ -16,11 +16,11 @@ export const FlexBox = createSFC({
   defaultTheme
 })
 
-export default function ({children, ...props}) {
+export default function (props) {
   return Grid({
     ...props,
     children: function (gridProps) {
-      return FlexBox({...gridProps, children})
+      return FlexBox({...gridProps, children: props.children})
     }
   })
 }

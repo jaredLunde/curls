@@ -33,12 +33,12 @@ import defaultCheckMark from './defaultCheckMark'
 </Checkbox>
 */
 const themePath = 'checkBox'
-const SFC = createSFC({name: 'CheckBox', propTypes, defaultTheme, themePath})
-const checkBoxCSS = css`
+const defaultCSS = css`
   ${flex};
   ${align.center};
   ${justify.center};
 `
+const SFC = createSFC({name: 'CheckBox', propTypes, defaultTheme, defaultCSS, themePath})
 
 
 export default function CheckBox ({
@@ -56,11 +56,9 @@ export default function CheckBox ({
         const CheckBoxInput = function ({
           nodeType = 'span',
           children = defaultCheckMark,
-          className,
           ...checkboxInputProps
         }) {
           return FlexBox({
-            className: cx(checkBoxCSS, className),
             p: theme.defaultPadding,
             bg: theme.defaultBg,
             br: theme.defaultBorderRadius,

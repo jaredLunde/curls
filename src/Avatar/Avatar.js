@@ -15,16 +15,7 @@ import defaultTheme from './defaultTheme'
 <Avatar md src='...'/>
 */
 const themePath = 'avatar'
-const SFC = createSFCNode({
-  name: 'Avatar',
-  propTypes,
-  defaultTheme,
-  themePath,
-  CSS,
-  defaultNodeType: 'span'
-})
-const SFCWithImageStat = compose([ImageStat, SFC])
-const avatarCSS = css`
+const defaultCSS = css`
   ${flex}
   ${align.center}
   ${justify.center}
@@ -35,6 +26,16 @@ const avatarCSS = css`
     object-fit: cover;
   }
 `
+const SFC = createSFCNode({
+  name: 'Avatar',
+  propTypes,
+  defaultTheme,
+  themePath,
+  CSS,
+  defaultCSS,
+  defaultNodeType: 'span'
+})
+const SFCWithImageStat = compose([ImageStat, SFC])
 
 
 function getImage ({src, defaultSrc, imageRef}) {
@@ -61,7 +62,6 @@ export default function (props) {
       const SFCNode = supportsObjectFit ? SFC : SFCWithImageStat
       sfcProps = {
         ...sfcProps,
-        className: cx(avatarCSS, sfcProps.className),
         children: function (sfcNodeProps) {
           return (sfcProps.getImage || getImage)({...sfcProps, ...sfcNodeProps})
         }

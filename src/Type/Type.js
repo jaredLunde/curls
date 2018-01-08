@@ -21,19 +21,19 @@ const TypeSFC = createSFCNode({
 })
 
 
-export default function Type ({children, ...props}) {
+export default function Type (props) {
+  // merges the default colors and sizes to the theme
+  const theme = getComponentTheme(defaultTheme, props.theme, themePath)
+  
   return FlexBox({
     ...props,
     children: function (sfcProps) {
-      // merges the default colors and sizes to the theme
-      const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
-
       // renders the element
       sfcProps = {
         face: theme.defaultFace,
         color: theme.defaultColor,
         ...sfcProps,
-        children
+        children: props.children
       }
 
       return TypeSFC(
@@ -73,9 +73,8 @@ export function H6 (props) {
 const p = css`
   word-break: break-word;
   line-height: 1.4;
-  margin-bottom: 1rem;
 `
 
 export function P ({className, ...props}) {
-  return Type({nodeType: 'p', className: cx(p, className), ...props})
+  return Type({nodeType: 'p', m: 'b2', className: cx(p, className), ...props})
 }

@@ -9,12 +9,6 @@ import {br as cssBr} from './CSS'
 
 
 const themePath = 'card'
-const SFC = createSFCNode({
-  name: 'Card',
-  defaultTheme,
-  themePath,
-  defaultNodeType: 'div'
-})
 const cardCSS = css`
   ${flex};
   ${column};
@@ -55,6 +49,14 @@ const cardCSS = css`
     display: block;
   }
 `
+const SFC = createSFCNode({
+  name: 'Card',
+  defaultTheme,
+  themePath,
+  defaultCSS: cardCSS,
+  defaultNodeType: 'div'
+})
+
 
 export default function ({children, className, br, ...props}) {
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
@@ -64,12 +66,11 @@ export default function ({children, className, br, ...props}) {
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,
     bs: theme.defaultBoxShadow,
-    className: cx(cardCSS, cssBr(br, theme), className),
+    className: cx(cssBr(br, theme), className),
     ...props,
     children: function (sfcProps) {
       return SFC({
         ...sfcProps,
-        className: cx(cardCSS, sfcProps.className),
         children
       })
     }

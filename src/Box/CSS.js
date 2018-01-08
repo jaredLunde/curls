@@ -97,7 +97,6 @@ export function p (value, theme) {
   if (isDirectional(value)) {
     return directionalRemScale('padding-{XYZ}', spacingScale, value, theme)
   } else {
-    console.log("HERE", spacingScale[value], spacingScale)
     return css`padding: ${spacingScale[value]}rem;`
   }
 }

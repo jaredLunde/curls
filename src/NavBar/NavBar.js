@@ -9,14 +9,6 @@ import defaultTheme from './defaultTheme'
 
 
 const themePath = 'navBar'
-const NavBarSFC = createSFCNode({
-  name: 'NavBar',
-  CSS,
-  propTypes,
-  defaultTheme,
-  defaultNodeType: 'nav'
-})
-
 const navCSS = css`
   ${flex}
   ${row}
@@ -27,8 +19,17 @@ const navCSS = css`
     padding: 1rem;
   }
 `
+const NavBarSFC = createSFCNode({
+  name: 'NavBar',
+  CSS,
+  propTypes,
+  defaultTheme,
+  defaultCSS: navCSS,
+  defaultNodeType: 'nav'
+})
 
-export default function NavBar ({children, className, ...props}) {
+
+export default function NavBar (props) {
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
   return Box({
@@ -36,11 +37,9 @@ export default function NavBar ({children, className, ...props}) {
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,
     bs: theme.defaultBoxShadow,
-    p: 'x2',
-    className: cx(navCSS, className),
     ...props,
     children: function (sfcProps) {
-      return NavBarSFC({...sfcProps, children})
+      return NavBarSFC({...sfcProps, children: props.children})
     }
   })
 }

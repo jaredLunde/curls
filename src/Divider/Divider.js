@@ -9,26 +9,27 @@ import * as CSS from './CSS'
 
 
 const themePath = 'divider'
-const DividerSFC = createSFCNode({
-  name: 'Divider',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath,
-  defaultNodeType: 'div'
-})
-const dividerCSS = css`
+const defaultCSS = css`
   ${fw};
   ${db};
   ${pr};
   ${cb};
 `
+const DividerSFC = createSFCNode({
+  name: 'Divider',
+  propTypes,
+  CSS,
+  defaultCSS,
+  defaultTheme,
+  themePath,
+  defaultNodeType: 'div'
+})
+
 
 export default function Divider (dividerProps = {}) {
-  const {bg = null, thickness = null, className, ...props} = dividerProps
+  const {bg = null, thickness = null, ...props} = dividerProps
 
   return FlexBox({
-    className: cx(dividerCSS, className),
     ...props,
     children: function (sfcProps) {
       return DividerSFC({thickness, bg, ...sfcProps})
