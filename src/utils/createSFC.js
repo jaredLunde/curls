@@ -23,20 +23,16 @@ export default function ({
     PropTypes.func
   ]).isRequired
 
-  function SFC (props/*{children, className, ...props}*/) {
+  function SFC (props) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-
-    return createOptimized(
-      props.children,
-      {
-        ...reduceProps(props, propTypes),
-        className: cx(
-          defaultCSS,
-          getClassNames(propTypes, props, theme, CSS),
-          props.className
-        )
-      }
+    const renderProps = reduceProps(props, propTypes)
+    renderProps.className = cx(
+      defaultCSS,
+      getClassNames(propTypes, props, theme, CSS),
+      props.className
     )
+
+    return createOptimized(props.children, renderProps)
   }
 
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
