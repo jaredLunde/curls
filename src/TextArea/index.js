@@ -1,2 +1,2 @@
-import './global'
+import * from './global'
 export default from './TextArea'

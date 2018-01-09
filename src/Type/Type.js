@@ -4,6 +4,9 @@ import {createNode, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
+import GLOBAL from './global'
+const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
+
 
 /**
 <Type bold xxl color='white' face='primary'>

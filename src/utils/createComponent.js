@@ -17,12 +17,6 @@ export default function ({
   defaultTheme = emptyObj,
   themePath = ''
 }) {
-  propTypes.children = PropTypes.oneOf([
-    PropTypes.element,
-    PropTypes.node,
-    PropTypes.func
-  ]).isRequired
-
   function SFC (props) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
     const renderProps = reduceProps(props, propTypes)
@@ -31,7 +25,8 @@ export default function ({
       getClassNames(propTypes, props, theme, CSS),
       props.className
     )
-
+    delete renderProps.children
+    
     return createOptimized(props.children, renderProps)
   }
 
