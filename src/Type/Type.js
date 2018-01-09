@@ -1,6 +1,6 @@
 import {css, cx} from 'emotion'
 import {FlexBox} from '../Box'
-import {createComponent, getComponentTheme} from '../utils'
+import {createNode, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -11,7 +11,7 @@ import defaultTheme from './defaultTheme'
 </Type>
 */
 const themePath = 'type'
-const TypeSFC = createComponent({
+const TypeSFC = createNode({
   name: 'Type',
   propTypes,
   CSS,

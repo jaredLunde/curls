@@ -4,7 +4,7 @@ import {maxZIndex} from '../global'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
 import {getPosFromProps} from '../Slide/utils'
-import {createFactory, getComponentTheme} from '../utils'
+import {createComponent, getComponentTheme} from '../utils'
 import {db, pf} from '../Box/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
@@ -17,7 +17,7 @@ const defaultCSS = css`
   ${pf};
   ${maxZIndex};
 `
-const DrawerSFC = createFactory({
+const DrawerSFC = createComponent({
   name: 'Drawer',
   propTypes,
   CSS,

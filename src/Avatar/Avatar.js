@@ -5,7 +5,7 @@ import compose from 'react-cake/es/utils/compose'
 import {FlexBox} from '../Box'
 import {pr} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import {createComponent, getComponentTheme, supportsCSS} from '../utils'
+import {createNode, getComponentTheme, supportsCSS} from '../utils'
 import * as CSS from './CSS'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
@@ -26,7 +26,7 @@ const defaultCSS = css`
     object-fit: cover;
   }
 `
-const SFC = createComponent({
+const SFC = createNode({
   name: 'Avatar',
   propTypes,
   defaultTheme,

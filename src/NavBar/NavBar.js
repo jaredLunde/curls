@@ -1,6 +1,6 @@
 import React from 'react'
 import {cx, css} from 'emotion'
-import {createComponent, getComponentTheme} from '../utils'
+import {createNode, getComponentTheme} from '../utils'
 import Box from '../Box'
 import {flex, row, nowrap, align, justify} from '../Flex/CSS'
 import propTypes from './propTypes'
@@ -16,7 +16,7 @@ const navCSS = css`
   ${align.center};
   ${justify.left};
 `
-const NavBarSFC = createComponent({
+const SFC = createNode({
   name: 'NavBar',
   CSS,
   propTypes,
@@ -37,7 +37,7 @@ export default function NavBar (props) {
     ...props,
     children: function (sfcProps) {
       sfcProps.children = props.children
-      return NavBarSFC(sfcProps)
+      return SFC(sfcProps)
     }
   })
 }

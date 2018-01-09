@@ -2,7 +2,7 @@ import {css, cx} from 'emotion'
 import {FlexBox} from '../Box'
 import {pr, fw} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
-import {createComponent} from '../utils'
+import {createNode} from '../utils'
 
 
 const defaultCSS = css`
@@ -12,7 +12,7 @@ const defaultCSS = css`
   ${row};
   ${wrap};
 `
-const SFC = createComponent({name: 'Row', defaultCSS})
+const SFC = createNode({name: 'Row', defaultCSS})
 
 
 export default function Row (props) {

@@ -8,7 +8,7 @@ import {FlexBox} from '../Box'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createFactory, getComponentTheme} from '../utils'
+import {createComponent, getComponentTheme} from '../utils'
 import defaultCheckMark from './defaultCheckMark'
 
 
@@ -38,7 +38,7 @@ const defaultCSS = css`
   ${align.center};
   ${justify.center};
 `
-const SFC = createFactory({name: 'CheckBox', propTypes, defaultTheme, defaultCSS, themePath})
+const SFC = createComponent({name: 'CheckBox', propTypes, defaultTheme, defaultCSS, themePath})
 
 
 export default function CheckBox ({

@@ -7,11 +7,11 @@ import {fadeControls as dropControls} from '../Fade/Fade'
 import * as CSS from './CSS'
 import defaultTheme from '../Slide/defaultTheme'
 import Transitionable from '../Transitionable'
-import {createFactory, getComponentTheme} from '../utils'
+import {createComponent, getComponentTheme} from '../utils'
 
 
 const themePath = 'drop'
-const DropSFC = createFactory({name: 'Drop', propTypes, CSS, defaultTheme, themePath})
+const DropSFC = createComponent({name: 'Drop', propTypes, CSS, defaultTheme, themePath})
 const transitionProperties = 'visibility, transform, opacity'
 
 

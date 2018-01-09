@@ -2,14 +2,14 @@ import {css} from 'emotion'
 import Box from '../Box'
 import {pr} from '../Box/CSS'
 import {fluid} from '../Flex/CSS'
-import {createComponent} from '../utils'
+import {createNode} from '../utils'
 
 
 const defaultCSS = css`
   ${pr};
   ${fluid};
 `
-const SFC = createComponent({name: 'Col', defaultCSS})
+const SFC = createNode({name: 'Col', defaultCSS})
 
 
 export default function Col (props) {

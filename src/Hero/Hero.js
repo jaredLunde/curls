@@ -3,7 +3,7 @@ import FillViewport from '../FillViewport'
 import {FlexBox} from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
 import {fw, pr, touchScrolling} from '../Box/CSS'
-import {createComponent} from '../utils'
+import {createNode} from '../utils'
 import {getStyle} from './utils'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
@@ -20,7 +20,7 @@ const defaultCSS = css`
   ${pr};
   ${touchScrolling};
 `
-const HeroSFC = createComponent({
+const HeroSFC = createNode({
   name: 'Hero',
   propTypes,
   CSS,

@@ -6,8 +6,8 @@ export {
 
 export {
   colorize,
-  createFactory,
   createComponent,
+  createNode,
   directionalRemScale,
   getTheme,
   getComponentTheme,

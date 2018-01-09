@@ -4,12 +4,12 @@ import * as flexCSS from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
-import {createFactory} from '../utils'
+import {createComponent} from '../utils'
 
 
-export const BasicBox = createFactory({name: 'BasicBox', propTypes, CSS, defaultTheme})
+export const BasicBox = createComponent({name: 'BasicBox', propTypes, CSS, defaultTheme})
 
-export const FlexBox = createFactory({
+export const FlexBox = createComponent({
   name: 'FlexBox',
   propTypes: {...flexPropTypes, ...propTypes},
   CSS: {...flexCSS, ...CSS},

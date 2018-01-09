@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, cx} from 'emotion'
-import {createComponent} from '../utils'
+import {createNode} from '../utils'
 import {FlexBox} from '../Box'
 import {fw, db, pr, cb} from '../Box/CSS'
 import propTypes from './propTypes'
@@ -15,7 +15,7 @@ const defaultCSS = css`
   ${pr};
   ${cb};
 `
-const DividerSFC = createComponent({
+const DividerSFC = createNode({
   name: 'Divider',
   propTypes,
   CSS,

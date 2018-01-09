@@ -1,31 +1,44 @@
+import {cx} from 'emotion'
+import PropTypes from 'prop-types'
 import createOptimized from 'react-cake/es/utils/createOptimized'
-import createFactory from './createFactory'
+import reduceProps from 'react-cake/es/utils/reduceProps'
+import getClassNames from './getClassNames'
+import getComponentTheme from './getComponentTheme'
 
 
-export default function ({defaultNodeType = 'div', ...otherOpt}) {
-  const SFC = createFactory(otherOpt)
+const emptyObj = {}
 
-  function SFCNode (props) {
-    return SFC({
-      ...props,
-      children: function ({nodeType, innerRef, ...sfcNodeProps}) {
-        let children = props.children
 
-        if (typeof children === 'function') {
-          children = children(sfcNodeProps)
-        }
-        else if (typeof children === 'string') {
-          sfcNodeProps.ref = innerRef
-        }
+export default function ({
+  name,
+  propTypes = emptyObj,
+  CSS = emptyObj,
+  defaultCSS,
+  defaultTheme = emptyObj,
+  themePath = ''
+}) {
+  propTypes.children = PropTypes.oneOf([
+    PropTypes.element,
+    PropTypes.node,
+    PropTypes.func
+  ]).isRequired
 
-        return createOptimized(nodeType || defaultNodeType, sfcNodeProps, children)
-      }
-    })
+  function SFC (props) {
+    const theme = getComponentTheme(defaultTheme, props.theme, themePath)
+    const renderProps = reduceProps(props, propTypes)
+    renderProps.className = cx(
+      defaultCSS,
+      getClassNames(propTypes, props, theme, CSS),
+      props.className
+    )
+
+    return createOptimized(props.children, renderProps)
   }
 
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
-    SFCNode.displayName = otherOpt.name
+    SFC.displayName = name
+    SFC.propTypes = propTypes
   }
 
-  return SFCNode
+  return SFC
 }

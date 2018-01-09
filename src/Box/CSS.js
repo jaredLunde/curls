@@ -14,6 +14,7 @@ export const fh = css`min-height: 100%;`
 export const cb = css`clear: both;`
 export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
 export const sticky = css`
+  position: relative;
   position: sticky;
   top: 0;
 `

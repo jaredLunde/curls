@@ -5,11 +5,11 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createFactory, getComponentTheme} from '../utils'
+import {createComponent, getComponentTheme} from '../utils'
 
 
 const themePath = 'fade'
-const FadeSFC = createFactory({name: 'Fade', propTypes, CSS, defaultTheme, themePath})
+const FadeSFC = createComponent({name: 'Fade', propTypes, CSS, defaultTheme, themePath})
 
 export const fadeControls = [
   {name: 'show', value: true},
