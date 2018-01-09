@@ -1,7 +1,7 @@
 import React from 'react'
 import {cx, css} from 'emotion'
 import {createNode, getComponentTheme} from '../utils'
-import Box from '../Box'
+import {GridBox} from '../Box'
 import {flex, row, nowrap, align, justify} from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
@@ -29,7 +29,7 @@ const SFC = createNode({
 export default function NavBar (props) {
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
-  return Box({
+  return GridBox({
     bg: theme.defaultBg,
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,

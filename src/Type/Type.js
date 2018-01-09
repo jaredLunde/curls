@@ -1,5 +1,5 @@
 import {css, cx} from 'emotion'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import {createNode, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
@@ -28,7 +28,7 @@ export default function Type (props) {
   // merges the default colors and sizes to the theme
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
-  return FlexBox({
+  return Box({
     ...props,
     children: function (sfcProps) {
       // renders the element

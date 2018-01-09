@@ -3,6 +3,7 @@ import {css} from 'emotion'
 
 export const directionalRe = /(?=\d+)/
 const defaultDirections = {
+  _: ['top', 'right', 'bottom', 'left'],
   t: ['top'],
   r: ['right'],
   b: ['bottom'],
@@ -25,9 +26,14 @@ export default function directionalRemScale (
   directions = defaultDirections
 ) {
   let CSS = []
+
   String(modValue).split(' ').forEach(
     function (val) {
       let [abbr, value] = val.split(directionalRe)
+      if (!isNaN(parseInt(abbr))) {
+        value = abbr
+        abbr = '_'
+      }
 
       directions[abbr].forEach(
         function (xyz) {

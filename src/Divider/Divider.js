@@ -1,7 +1,7 @@
 import React from 'react'
 import {css, cx} from 'emotion'
 import {createNode} from '../utils'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import {fw, db, pr, cb} from '../Box/CSS'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
@@ -29,7 +29,7 @@ const emptyObj = {}
 export default function Divider (dividerProps = emptyObj) {
   const {bg = null, thickness = null, ...props} = dividerProps
 
-  return FlexBox({
+  return Box({
     ...props,
     children: function (sfcProps) {
       return DividerSFC({thickness, bg, ...sfcProps})

@@ -1,6 +1,5 @@
 import {cx} from 'emotion'
 import reduceProps from 'react-cake/es/utils/reduceProps'
-import {FlexBox} from '../Box'
 import Type from '../Type'
 import {getComponentTheme} from '../utils'
 import * as defaultTheme from './defaultTheme'

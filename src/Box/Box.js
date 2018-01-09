@@ -13,14 +13,15 @@ export const BasicBox = createComponent({
   CSS,
   defaultTheme
 })
+
 export const FlexBox = createComponent({
-  name: 'FlexBox',
+  name: 'Box',
   propTypes: {...flexPropTypes, ...propTypes},
   CSS: {...flexCSS, ...CSS},
   defaultTheme
 })
 
-export default function Box (props) {
+export function GridBox (props) {
   return Grid({
     ...props,
     children: function (gridProps) {
@@ -29,3 +30,5 @@ export default function Box (props) {
     }
   })
 }
+
+export default FlexBox

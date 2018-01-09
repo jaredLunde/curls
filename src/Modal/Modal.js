@@ -4,7 +4,7 @@ import createOptimized from 'react-cake/es/utils/createOptimized'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {pf, fw, fh, touchScrolling} from '../Box/CSS'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
 import {getComponentTheme} from '../utils'
@@ -65,10 +65,10 @@ export default function Modal ({children, transitionType = Drop, theme, ...props
       const modalClassName = className
 
       function ModalBox ({nodeType = 'div', children, ...boxProps}) {
-        return FlexBox({
+        return Box({
           className: cx(fixedContainer, isVisible && baseIsVisible),
           children: function (box2Props) {
-            return FlexBox({
+            return Box({
               p: theme.defaultPadding,
               bg: theme.defaultBg,
               br: theme.defaultBorderRadius,

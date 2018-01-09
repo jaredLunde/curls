@@ -2,7 +2,7 @@ import React from 'react'
 import {css, cx} from 'emotion'
 import ImageStat from 'react-cake/es/ImageStat'
 import compose from 'react-cake/es/utils/compose'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import {pr} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {createNode, getComponentTheme, supportsCSS} from '../utils'
@@ -52,7 +52,7 @@ export default function (props) {
   const supportsObjectFit = supportsCSS('object-fit')
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
-  return FlexBox({
+  return Box({
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,
     bs: theme.defaultBoxShadow,

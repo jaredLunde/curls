@@ -4,7 +4,7 @@ import createOptimized from 'react-cake/es/utils/createOptimized'
 import Toggle from 'react-cake/es/Toggle'
 import {dn} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
@@ -58,7 +58,7 @@ export default function CheckBox ({
           children = defaultCheckMark,
           ...checkboxInputProps
         }) {
-          return FlexBox({
+          return Box({
             p: theme.defaultPadding,
             bg: theme.defaultBg,
             br: theme.defaultBorderRadius,

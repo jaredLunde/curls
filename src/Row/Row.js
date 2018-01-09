@@ -1,5 +1,5 @@
 import {css, cx} from 'emotion'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import {pr, fw} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
 import {createNode} from '../utils'
@@ -16,7 +16,7 @@ const SFC = createNode({name: 'Row', defaultCSS})
 
 
 export default function Row (props) {
-  return FlexBox({
+  return Box({
     ...props,
     children: function (sfcProps) {
       sfcProps.children = props.children

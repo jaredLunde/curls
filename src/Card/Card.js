@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, cx} from 'emotion'
-import Box from '../Box'
+import {GridBox} from '../Box'
 import {pr, fw} from '../Box/CSS'
 import {flex, column} from '../Flex/CSS'
 import {createNode, getComponentTheme, supportsCSS} from '../utils'
@@ -61,7 +61,7 @@ const SFC = createNode({
 export default function ({children, className, br, ...props}) {
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
-  return Box({
+  return GridBox({
     bg: theme.defaultBg,
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,

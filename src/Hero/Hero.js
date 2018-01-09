@@ -1,6 +1,6 @@
 import {css, cx} from 'emotion'
 import FillViewport from '../FillViewport'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
 import {fw, pr, touchScrolling} from '../Box/CSS'
 import {createNode} from '../utils'
@@ -32,7 +32,7 @@ const HeroSFC = createNode({
 
 
 export default function ({children, bg = null, ...props}) {
-  return FlexBox({
+  return Box({
     ...props,
     children: function (vpProps) {
       return FillViewport({

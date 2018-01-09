@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import {flex, row, align} from '../Flex/CSS'
 import {createNode, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
@@ -41,7 +41,7 @@ export default function Button ({
   }
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
-  return FlexBox({
+  return Box({
     nodeType,
     ...props,
     children: function (sfcProps) {

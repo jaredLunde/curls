@@ -1,7 +1,7 @@
 import {css, cx} from 'emotion'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import {maxZIndex} from '../global'
-import {FlexBox} from '../Box'
+import Box from '../Box'
 import Slide from '../Slide'
 import {getPosFromProps} from '../Slide/utils'
 import {createComponent, getComponentTheme} from '../utils'
@@ -47,7 +47,7 @@ export default function Drawer ({children, pa, ...props}) {
   const position = getPosFromProps(props)
   delete props[position]
 
-  return FlexBox({
+  return Box({
     touchScrolling: true,
     ...props,
     children: function (slideProps) {

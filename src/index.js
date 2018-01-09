@@ -23,7 +23,7 @@ export {
 
 
 export Avatar from './Avatar'
-export Box, {FlexBox} from './Box'
+export Box, {GridBox, BasicBox} from './Box'
 export BreakPoint from './BreakPoint'
 export Button from './Button'
 export Card from './Card'
