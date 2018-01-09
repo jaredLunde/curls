@@ -16,7 +16,7 @@ export const FlexBox = createComponent({
   defaultTheme
 })
 
-export default function (props) {
+export default function Box (props) {
   return Grid({
     ...props,
     children: function (gridProps) {
