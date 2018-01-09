@@ -5,7 +5,7 @@ import Box from '../Box'
 import {flex, row, nowrap, align, justify} from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 
 
 const themePath = 'navBar'

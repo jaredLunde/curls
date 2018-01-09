@@ -1,36 +1,36 @@
-import PropTypes from 'prop-types'
+import {bool, string} from 'prop-types'
 
 
 export default {
   // Sizes
-  xxs: PropTypes.bool,
-  xs: PropTypes.bool,
-  sm: PropTypes.bool,
-  md: PropTypes.bool,
-  lg: PropTypes.bool,
-  xl: PropTypes.bool,
-  xxl: PropTypes.bool,
+  xxs: bool,
+  xs: bool,
+  sm: bool,
+  md: bool,
+  lg: bool,
+  xl: bool,
+  xxl: bool,
   // Weights
-  thin: PropTypes.bool,
-  ultraLight: PropTypes.bool,
-  light: PropTypes.bool,
-  regular: PropTypes.bool,
-  medium: PropTypes.bool,
-  semiBold: PropTypes.bool,
-  bold: PropTypes.bool,
-  heavy: PropTypes.bool,
-  ultraHeavy: PropTypes.bool,
+  thin: bool,
+  ultraLight: bool,
+  light: bool,
+  regular: bool,
+  medium: bool,
+  semiBold: bool,
+  bold: bool,
+  heavy: bool,
+  ultraHeavy: bool,
   // Alignment
-  left: PropTypes.bool,
-  center: PropTypes.bool,
-  right: PropTypes.bool,
-  ellipsis: PropTypes.bool,
+  left: bool,
+  center: bool,
+  right: bool,
+  ellipsis: bool,
   // Legibility
-  legible: PropTypes.bool,
-  speedy: PropTypes.bool,
-  antialias: PropTypes.bool,
+  legible: bool,
+  speedy: bool,
+  antialias: bool,
   // Color
-  color: PropTypes.string,
+  color: string,
   // Typeface
-  face: PropTypes.string
+  face: string
 }

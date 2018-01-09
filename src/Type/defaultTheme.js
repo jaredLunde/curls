@@ -15,5 +15,3 @@ export const defaultColor = 'darkGrey'
 export const defaultSize = 'sm'
 export const typeFaces = defaultTypeFaces
 export const defaultFace = 'system'
-
-export default {colors, typeFaces, defaultSize, defaultFace, defaultColor, scale}

@@ -4,7 +4,7 @@ import {createNode} from '../utils'
 import {FlexBox} from '../Box'
 import {fw, db, pr, cb} from '../Box/CSS'
 import propTypes from './propTypes'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 import * as CSS from './CSS'
 
 

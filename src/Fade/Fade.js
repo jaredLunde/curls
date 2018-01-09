@@ -3,7 +3,7 @@ import {cx} from 'emotion'
 import Toggle from 'react-cake/es/Toggle'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
 import {createComponent, getComponentTheme} from '../utils'
 

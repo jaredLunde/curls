@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types'
+import {func, bool} from 'prop-types'
 
 
 export default {
-  toggle: PropTypes.func,
-  isVisible: PropTypes.bool,
-  show: PropTypes.func,
-  hide: PropTypes.func
+  toggle: func,
+  isVisible: bool,
+  show: func,
+  hide: func
 }

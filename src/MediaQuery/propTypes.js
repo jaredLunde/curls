@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types'
+import {oneOfType, string, object, any, arrayOf} from 'prop-types'
 
 
 export default {
-  queries: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object]))
+  queries: oneOfType([
+    string,
+    object,
+    arrayOf(oneOfType([string, object]))
   ]).isRequired,
-  children: PropTypes.any.isRequired
+  children: any.isRequired
 }

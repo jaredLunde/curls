@@ -12,11 +12,3 @@ export const scale = {
   xl: 256/16,
   xxl: 360/16
 }
-
-export default {
-  defaultBorderWidth,
-  defaultBorderColor,
-  defaultBoxShadow,
-  defaultBorderRadius,
-  scale
-}

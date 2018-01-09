@@ -14,19 +14,3 @@ export const defaultTypeFace = 'system'
 export const defaultPlaceholderOpacity = 0.8
 export const defaultPlaceholderColor = 'darkGrey'
 export const colors = defaultColors
-
-export default {
-  colors,
-  defaultBg,
-  defaultPadding,
-  defaultBorderColor,
-  defaultBorderWidth,
-  defaultBorderRadius,
-  defaultBoxShadow,
-  defaultTypeSize,
-  defaultTypeWeight,
-  defaultTypeColor,
-  defaultTypeFace,
-  defaultPlaceholderOpacity,
-  defaultPlaceholderColor
-}

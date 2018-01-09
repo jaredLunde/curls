@@ -3,7 +3,7 @@ import reduceProps from 'react-cake/es/utils/reduceProps'
 import {FlexBox} from '../Box'
 import Type from '../Type'
 import {getComponentTheme} from '../utils'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 import {linkColor} from './utils'
 import GLOBAL from './global'
 const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me

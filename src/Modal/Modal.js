@@ -6,7 +6,7 @@ import {flex, align, justify} from '../Flex/CSS'
 import {pf, fw, fh, touchScrolling} from '../Box/CSS'
 import {FlexBox} from '../Box'
 import Drop from '../Drop'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 import {getComponentTheme} from '../utils'
 import {maxZIndex} from '../global'
 

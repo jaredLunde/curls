@@ -6,7 +6,7 @@ import {dn} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {FlexBox} from '../Box'
 import propTypes from './propTypes'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
 import {createComponent, getComponentTheme} from '../utils'
 import defaultCheckMark from './defaultCheckMark'
@@ -89,7 +89,7 @@ export default function CheckBox ({
             }
           })
         }
-        
+
         sfcProps.CheckboxInput = CheckboxInput
         sfcProps.children = children
 

@@ -10,12 +10,3 @@ export const hover = {
 export const active = {
   colors: defaultActiveColors
 }
-
-
-export default {
-  colors,
-  hover,
-  active,
-  defaultColor,
-  defaultWeight
-}

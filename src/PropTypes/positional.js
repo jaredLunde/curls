@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
+import {oneOf, bool, number, string} from 'prop-types'
 
-const pType = PropTypes.oneOf([PropTypes.bool, PropTypes.number, PropTypes.string])
+const pType = oneOf([bool, number, string])
 export default {
   fromTop: pType,
   fromRight: pType,

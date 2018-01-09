@@ -2,7 +2,9 @@ import {cx} from 'emotion'
 import Type from '../Type'
 import {getComponentTheme} from '../utils'
 import {placeholder} from '../Input/utils'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
+import GLOBAL from './global'
+const __GLOBAL = GLOBAL  // prevents tree-shaking from removing
 
 
 const themePath = 'textArea'

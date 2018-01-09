@@ -5,7 +5,7 @@ import propTypes from '../Slide/propTypes'
 import {getPosFromProps} from '../Slide/utils'
 import {fadeControls as dropControls} from '../Fade/Fade'
 import * as CSS from './CSS'
-import defaultTheme from '../Slide/defaultTheme'
+import * as defaultTheme from '../Slide/defaultTheme'
 import Transitionable from '../Transitionable'
 import {createComponent, getComponentTheme} from '../utils'
 

@@ -18,6 +18,3 @@ export const columns = {
   xl: 16,
   xxl: 16
 }
-
-
-export default {breakpoints, columns}

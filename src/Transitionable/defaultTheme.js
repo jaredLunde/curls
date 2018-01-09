@@ -19,6 +19,3 @@ export const easing = {
   swiftIn: [0.4, 0, 1, 1],
   swiftOut: [0, 0, 0.58, 1]
 }
-
-
-export default {speed, easing}

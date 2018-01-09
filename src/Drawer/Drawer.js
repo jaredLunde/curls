@@ -8,7 +8,7 @@ import {createComponent, getComponentTheme} from '../utils'
 import {db, pf} from '../Box/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 
 
 const themePath = 'drawer'

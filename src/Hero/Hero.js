@@ -6,7 +6,7 @@ import {fw, pr, touchScrolling} from '../Box/CSS'
 import {createNode} from '../utils'
 import {getStyle} from './utils'
 import propTypes from './propTypes'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 import * as CSS from './CSS'
 
 

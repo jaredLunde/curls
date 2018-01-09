@@ -31,7 +31,8 @@ export const borderRadiusScale = [
   1000
 ]
 export const getBoxShadow = materialShadow
-
+export const colors = defaultColors
+/**
 export default {
   colors: defaultColors,
   spacingScale,
@@ -39,3 +40,4 @@ export default {
   borderRadiusScale,
   getBoxShadow
 }
+*/

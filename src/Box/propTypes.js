@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types'
+import {bool, string, number, oneOfType} from 'prop-types'
 
 
-const strOrNum = PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+const strOrNum = oneOfType([number, string])
 
 export default {
   // background-color
-  bg: PropTypes.string,
+  bg: string,
   // border radius
   br: strOrNum,
   // border width
   bw: strOrNum,
   // border color
-  bc: PropTypes.string,
+  bc: string,
   // box-shadow
   bs: strOrNum,
   // margin
@@ -19,27 +19,27 @@ export default {
   // padding
   p: strOrNum,
   // position relative
-  pr: PropTypes.bool,
+  pr: bool,
   // position absolute
-  pa: PropTypes.bool,
+  pa: bool,
   // position fixed
-  pf: PropTypes.bool,
+  pf: bool,
   // position: stick
-  sticky: PropTypes.bool,
+  sticky: bool,
   // display block
-  db: PropTypes.bool,
+  db: bool,
   // display inline block
-  dib: PropTypes.bool,
+  dib: bool,
   // display inline
-  di: PropTypes.bool,
+  di: bool,
   // display none
-  dn: PropTypes.bool,
+  dn: bool,
   // width: 100%
-  fw: PropTypes.bool,
+  fw: bool,
   // height: 100%
-  fh: PropTypes.bool,
+  fh: bool,
   // clear: both
-  cb: PropTypes.bool,
+  cb: bool,
   // -webkit-overflow-scrolling: touch;
-  touchScrolling: PropTypes.bool
+  touchScrolling: bool
 }

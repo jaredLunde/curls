@@ -1,21 +1,21 @@
-import PropTypes from 'prop-types'
+import {func, number, string} from 'prop-types'
 
 
 export default {
-  inView: PropTypes.func,
-  inViewX: PropTypes.func,
-  inViewY: PropTypes.func,
-  inFullView: PropTypes.func,
-  inFullViewX: PropTypes.func,
-  inFullViewY: PropTypes.func,
-  getViewportSize: PropTypes.func,
-  getViewportScroll: PropTypes.func,
-  getAspect: PropTypes.func,
-  subscribe: PropTypes.func,
-  unsubscribe: PropTypes.func,
-  viewportWidth: PropTypes.number,
-  viewportHeight: PropTypes.number,
-  orientation: PropTypes.string,
-  screenOrientation: PropTypes.string,
-  scrollTo: PropTypes.func,
+  inView: func,
+  inViewX: func,
+  inViewY: func,
+  inFullView: func,
+  inFullViewX: func,
+  inFullViewY: func,
+  getViewportSize: func,
+  getViewportScroll: func,
+  getAspect: func,
+  subscribe: func,
+  unsubscribe: func,
+  viewportWidth: number,
+  viewportHeight: number,
+  orientation: string,
+  screenOrientation: string,
+  scrollTo: func,
 }

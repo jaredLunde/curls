@@ -2,7 +2,7 @@ import {cx} from 'emotion'
 import Type from '../Type'
 import {getComponentTheme} from '../utils'
 import {placeholder} from './utils'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 import GLOBAL from './global'
 const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
 

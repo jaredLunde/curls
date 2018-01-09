@@ -36,7 +36,7 @@ export const defaultBorderRadius = 5
 export const defaultBorderWidth = 1
 export const defaultBorderColor = 'translucentLight'
 export const defaultBoxShadow = 0
-export const defaultBg = 'blue'
+export const defaultBg = 'translucentDark'
 export const defaultSize = 'md'
 export const colors = defaultColors
 export const hover = {
@@ -46,20 +46,3 @@ export const active = {
   colors: defaultActiveColors
 }
 export {borderRadiusScale, borderWidthScale, getBoxShadow} from '../Box/defaultTheme'
-
-
-export default {
-  colors,
-  active,
-  hover,
-  scale,
-  defaultBg,
-  defaultSize,
-  defaultBoxShadow,
-  defaultBorderRadius,
-  defaultBorderWidth,
-  defaultBorderColor,
-  borderRadiusScale,
-  borderWidthScale,
-  getBoxShadow
-}

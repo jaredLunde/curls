@@ -8,7 +8,7 @@ import {flex, align, justify} from '../Flex/CSS'
 import {createNode, getComponentTheme, supportsCSS} from '../utils'
 import * as CSS from './CSS'
 import propTypes from './propTypes'
-import defaultTheme from './defaultTheme'
+import * as defaultTheme from './defaultTheme'
 
 
 /**

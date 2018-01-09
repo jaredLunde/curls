@@ -1,41 +1,41 @@
-import PropTypes from 'prop-types'
+import {bool, string} from 'prop-types'
 
 
 export default {
   // flex (display: flex)
-  flex: PropTypes.bool,
+  flex: bool,
   // flex--fixed (flex(0, 0, auto))
-  fixed: PropTypes.bool,
+  fixed: bool,
   // flex--fluid (flex(1, 0, auto))
-  fluid: PropTypes.bool,
+  fluid: bool,
   // flex--first
-  first: PropTypes.bool,
+  first: bool,
   // flex--last
-  last: PropTypes.bool,
+  last: bool,
   // flex--grow
-  grow: PropTypes.bool,
+  grow: bool,
   // flex--shrink
-  shrink: PropTypes.bool,
+  shrink: bool,
   // flex--x
-  row: PropTypes.bool,
+  row: bool,
   // flex--y
-  column: PropTypes.bool,
+  column: bool,
   // flex--x-reverse (row-reverse)
-  reverseX: PropTypes.bool,
+  reverseX: bool,
   // flex--y-reverse (col-reverse)
-  reverseY: PropTypes.bool,
+  reverseY: bool,
   // flex--wrap
-  wrap: PropTypes.bool,
+  wrap: bool,
   // flex--nowrap
-  nowrap: PropTypes.bool,
+  nowrap: bool,
   // flex--wrap-reverse
-  wrapReverse: PropTypes.bool,
+  wrapReverse: bool,
   // flex--x-{left|center|right|around|between}
-  justify: PropTypes.string,
+  justify: string,
   // flex--y-{top|center|bottom|around|between|stretch}
-  align: PropTypes.string,
+  align: string,
   // flex--content-{top|center|bottom|around}
-  alignContent: PropTypes.string,
+  alignContent: string,
   // flex--self-{top|center|bottom|around}
-  alignSelf: PropTypes.string
+  alignSelf: string
 }

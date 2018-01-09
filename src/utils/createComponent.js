@@ -26,7 +26,7 @@ export default function ({
       props.className
     )
     delete renderProps.children
-    
+
     return createOptimized(props.children, renderProps)
   }
 

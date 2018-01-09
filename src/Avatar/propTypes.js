@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types'
+import {bool, string, number, func} from 'prop-types'
 
 
 export default {
-  xxs: PropTypes.bool,
-  xs: PropTypes.bool,
-  sm: PropTypes.bool,
-  md: PropTypes.bool,
-  lg: PropTypes.bool,
-  xl: PropTypes.bool,
-  xxl: PropTypes.bool,
+  xxs: bool,
+  xs: bool,
+  sm: bool,
+  md: bool,
+  lg: bool,
+  xl: bool,
+  xxl: bool,
   // for object-fit polyfilling
-  src: PropTypes.string,
-  defaultSrc: PropTypes.string,
-  orientation: PropTypes.string.isRequired,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  naturalWidth: PropTypes.number,
-  naturalHeight: PropTypes.number,
-  complete: PropTypes.bool,
-  getImage: PropTypes.func.isRequired,
-  // imageRef: PropTypes.func,
+  src: string,
+  defaultSrc: string,
+  orientation: string.isRequired,
+  width: number,
+  height: number,
+  naturalWidth: number,
+  naturalHeight: number,
+  complete: bool,
+  getImage: func.isRequired,
+  // imageRef: func,
 }

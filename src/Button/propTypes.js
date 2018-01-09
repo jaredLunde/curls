@@ -1,26 +1,26 @@
-import PropTypes from 'prop-types'
+import {bool, string, number, oneOfType} from 'prop-types'
 
 
-const numOrStr = PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+const numOrStr = oneOfType([number, string])
 
 
 export default {
   // Sizes
-  xxs: PropTypes.bool,
-  xs: PropTypes.bool,
-  sm: PropTypes.bool,
-  md: PropTypes.bool,
-  lg: PropTypes.bool,
-  xl: PropTypes.bool,
-  xxl: PropTypes.bool,
+  xxs: bool,
+  xs: bool,
+  sm: bool,
+  md: bool,
+  lg: bool,
+  xl: bool,
+  xxl: bool,
   // border radius
   br: numOrStr,
   // border width
   bw: numOrStr,
   // border color
-  bc: PropTypes.string,
+  bc: string,
   // background
-  bg: PropTypes.string,
+  bg: string,
   // box-shadow
   bs:  numOrStr,
 }

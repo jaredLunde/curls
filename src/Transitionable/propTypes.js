@@ -1,29 +1,29 @@
-import PropTypes from 'prop-types'
+import {bool, string, number} from 'prop-types'
 
 
 export default {
   // transition-duration
-  veryFast: PropTypes.bool,
-  fast: PropTypes.bool,
-  med: PropTypes.bool,
-  slow: PropTypes.bool,
-  verySlow: PropTypes.bool,
-  speed: PropTypes.string,
+  veryFast: bool,
+  fast: bool,
+  med: bool,
+  slow: bool,
+  verySlow: bool,
+  speed: string,
   // transition-timing-functions
-  boomerang: PropTypes.bool,
-  bounce: PropTypes.bool,
-  easeOut: PropTypes.bool,
-  easeIn: PropTypes.bool,
-  easeInOut: PropTypes.bool,
-  swiftMove: PropTypes.bool,
-  swifterMove: PropTypes.bool,
-  heavyMove: PropTypes.bool,
-  swiftIn: PropTypes.bool,
-  swiftOut: PropTypes.bool,
-  linear: PropTypes.bool,
-  easing: PropTypes.string,
+  boomerang: bool,
+  bounce: bool,
+  easeOut: bool,
+  easeIn: bool,
+  easeInOut: bool,
+  swiftMove: bool,
+  swifterMove: bool,
+  heavyMove: bool,
+  swiftIn: bool,
+  swiftOut: bool,
+  linear: bool,
+  easing: string,
   // transition-delay
-  delay: PropTypes.number,
+  delay: number,
   // transition-property
-  property: PropTypes.string
+  property: string
 }
