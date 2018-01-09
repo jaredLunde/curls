@@ -10,14 +10,11 @@ import defaultTheme from './defaultTheme'
 
 const themePath = 'navBar'
 const navCSS = css`
-  ${flex}
-  ${row}
-  ${nowrap}
-  ${align.center}
-  ${justify.left}
-  & > :not(div):not(table):not(nav):not(ul):not(ol) {
-    padding: 1rem;
-  }
+  ${flex};
+  ${row};
+  ${nowrap};
+  ${align.center};
+  ${justify.left};
 `
 const NavBarSFC = createComponent({
   name: 'NavBar',

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 
-
+const pType = PropTypes.oneOf([PropTypes.bool, PropTypes.number, PropTypes.string])
 export default {
-  fromTop: PropTypes.bool,
-  fromRight: PropTypes.bool,
-  fromBottom: PropTypes.bool,
-  fromLeft: PropTypes.bool,
+  fromTop: pType,
+  fromRight: pType,
+  fromBottom: pType,
+  fromLeft: pType,
 }

@@ -1,7 +1,7 @@
 import getTheme from './getTheme'
 import getIn from './getIn'
 import {curlsTheme} from '../theming/injectTheme'
-
+import defaultRem from '../theming/defaultRem'
 
 const GLOBALS = ['colors', 'hover', 'active', 'typeFaces']
 
