@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, cx} from 'emotion'
-import {createSFCNode} from '../utils'
+import {createComponent} from '../utils'
 import {FlexBox} from '../Box'
 import {fw, db, pr, cb} from '../Box/CSS'
 import propTypes from './propTypes'
@@ -15,7 +15,7 @@ const defaultCSS = css`
   ${pr};
   ${cb};
 `
-const DividerSFC = createSFCNode({
+const DividerSFC = createComponent({
   name: 'Divider',
   propTypes,
   CSS,
@@ -24,9 +24,9 @@ const DividerSFC = createSFCNode({
   themePath,
   defaultNodeType: 'div'
 })
+const emptyObj = {}
 
-
-export default function Divider (dividerProps = {}) {
+export default function Divider (dividerProps = emptyObj) {
   const {bg = null, thickness = null, ...props} = dividerProps
 
   return FlexBox({

@@ -1,7 +1,7 @@
 import {css} from 'emotion'
 import {FlexBox} from '../Box'
 import {flex, row, align} from '../Flex/CSS'
-import {createSFCNode, getComponentTheme} from '../utils'
+import {createComponent, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -13,7 +13,7 @@ const defaultCSS = css`
   ${row};
   ${align.center};
 `
-const ButtonSFC = createSFCNode({
+const ButtonSFC = createComponent({
   name: 'Button',
   propTypes,
   CSS,

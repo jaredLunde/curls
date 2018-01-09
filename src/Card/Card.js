@@ -3,7 +3,7 @@ import {css, cx} from 'emotion'
 import Box from '../Box'
 import {pr, fw} from '../Box/CSS'
 import {flex, column} from '../Flex/CSS'
-import {createSFCNode, getComponentTheme, supportsCSS} from '../utils'
+import {createComponent, getComponentTheme, supportsCSS} from '../utils'
 import defaultTheme from './defaultTheme'
 import {br as cssBr} from './CSS'
 
@@ -49,7 +49,7 @@ const cardCSS = css`
     display: block;
   }
 `
-const SFC = createSFCNode({
+const SFC = createComponent({
   name: 'Card',
   defaultTheme,
   themePath,

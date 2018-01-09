@@ -1,6 +1,3 @@
-import getCSS from './getCSS'
-
-
 export default function getClassNames (propTypes, props, theme, CSS) {
   const classNames = []
   const propKeys = Object.keys(props)

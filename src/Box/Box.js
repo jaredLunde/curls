@@ -4,12 +4,12 @@ import * as flexCSS from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
-import {createSFC} from '../utils'
+import {createFactory} from '../utils'
 
 
-export const Box = createSFC({name: 'BasicBox', propTypes, CSS, defaultTheme})
+export const BasicBox = createFactory({name: 'BasicBox', propTypes, CSS, defaultTheme})
 
-export const FlexBox = createSFC({
+export const FlexBox = createFactory({
   name: 'FlexBox',
   propTypes: {...flexPropTypes, ...propTypes},
   CSS: {...flexCSS, ...CSS},
@@ -20,7 +20,8 @@ export default function (props) {
   return Grid({
     ...props,
     children: function (gridProps) {
-      return FlexBox({...gridProps, children: props.children})
+      gridProps.children = props.children
+      return FlexBox(gridProps)
     }
   })
 }

@@ -6,12 +6,12 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createSFC, getComponentTheme} from '../utils'
+import {createFactory, getComponentTheme} from '../utils'
 import {getPosFromProps} from './utils'
 
 
 const themePath = 'slide'
-const SlideSFC = createSFC({name: 'Slide', propTypes, CSS, defaultTheme, themePath})
+const SlideSFC = createFactory({name: 'Slide', propTypes, CSS, defaultTheme, themePath})
 const transitionProperties = 'visibility, transform'
 
 

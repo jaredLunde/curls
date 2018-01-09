@@ -1,6 +1,6 @@
 import {css, cx} from 'emotion'
 import {FlexBox} from '../Box'
-import {createSFCNode, getComponentTheme} from '../utils'
+import {createComponent, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
@@ -11,7 +11,7 @@ import defaultTheme from './defaultTheme'
 </Type>
 */
 const themePath = 'type'
-const TypeSFC = createSFCNode({
+const TypeSFC = createComponent({
   name: 'Type',
   propTypes,
   CSS,

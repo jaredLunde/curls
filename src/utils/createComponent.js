@@ -1,9 +1,9 @@
 import createOptimized from 'react-cake/es/utils/createOptimized'
-import createSFC from './createSFC'
+import createFactory from './createFactory'
 
 
 export default function ({defaultNodeType = 'div', ...otherOpt}) {
-  const SFC = createSFC(otherOpt)
+  const SFC = createFactory(otherOpt)
 
   function SFCNode (props) {
     return SFC({

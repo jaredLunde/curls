@@ -1,10 +1,10 @@
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import defaultTheme from './defaultTheme'
-import {createSFC} from '../utils'
+import {createFactory} from '../utils'
 
 
-export default createSFC({
+export default createFactory({
   name: 'Grid',
   propTypes,
   CSS,

@@ -25,7 +25,8 @@ export default function ({children, ...props}) {
   return ViewportSize({
     ...props,
     children: function (fillViewportProps) {
-      return FillViewport({...fillViewportProps, children})
+      fillViewportProps.children = children
+      return FillViewport(fillViewportProps)
     }
   })
 }

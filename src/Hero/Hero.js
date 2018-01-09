@@ -3,7 +3,7 @@ import FillViewport from '../FillViewport'
 import {FlexBox} from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
 import {fw, pr, touchScrolling} from '../Box/CSS'
-import {createSFCNode} from '../utils'
+import {createComponent} from '../utils'
 import {getStyle} from './utils'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
@@ -20,7 +20,7 @@ const defaultCSS = css`
   ${pr};
   ${touchScrolling};
 `
-const HeroSFC = createSFCNode({
+const HeroSFC = createComponent({
   name: 'Hero',
   propTypes,
   CSS,
@@ -39,7 +39,7 @@ export default function ({children, bg = null, ...props}) {
         ...vpProps,
         children: function ({trimHeight, style, ...heroProps}) {
           style = getStyle(style, trimHeight)
-          return HeroSFC({...heroProps, bg, style, children})
+          return HeroSFC({bg, ...heroProps, style, children})
         }
       })
     }

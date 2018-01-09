@@ -8,7 +8,7 @@ import {FlexBox} from '../Box'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createSFC, getComponentTheme} from '../utils'
+import {createFactory, getComponentTheme} from '../utils'
 import defaultCheckMark from './defaultCheckMark'
 
 
@@ -38,7 +38,7 @@ const defaultCSS = css`
   ${align.center};
   ${justify.center};
 `
-const SFC = createSFC({name: 'CheckBox', propTypes, defaultTheme, defaultCSS, themePath})
+const SFC = createFactory({name: 'CheckBox', propTypes, defaultTheme, defaultCSS, themePath})
 
 
 export default function CheckBox ({
@@ -89,8 +89,11 @@ export default function CheckBox ({
             }
           })
         }
+        
+        sfcProps.CheckboxInput = CheckboxInput
+        sfcProps.children = children
 
-        return SFC({...sfcProps, CheckBoxInput, children})
+        return SFC(sfcProps)
       }}
     </Toggle>
   )

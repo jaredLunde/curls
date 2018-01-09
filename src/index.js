@@ -6,8 +6,8 @@ export {
 
 export {
   colorize,
-  createSFC as createWrapper,
-  createSFCNode as createComponent,
+  createFactory,
+  createComponent,
   directionalRemScale,
   getTheme,
   getComponentTheme,

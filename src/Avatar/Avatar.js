@@ -5,7 +5,7 @@ import compose from 'react-cake/es/utils/compose'
 import {FlexBox} from '../Box'
 import {pr} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import {createSFCNode, getComponentTheme, supportsCSS} from '../utils'
+import {createComponent, getComponentTheme, supportsCSS} from '../utils'
 import * as CSS from './CSS'
 import propTypes from './propTypes'
 import defaultTheme from './defaultTheme'
@@ -26,7 +26,7 @@ const defaultCSS = css`
     object-fit: cover;
   }
 `
-const SFC = createSFCNode({
+const SFC = createComponent({
   name: 'Avatar',
   propTypes,
   defaultTheme,
@@ -60,15 +60,13 @@ export default function (props) {
     ...props,
     children: function (sfcProps) {
       const SFCNode = supportsObjectFit ? SFC : SFCWithImageStat
-      sfcProps = {
-        ...sfcProps,
-        children: function (sfcNodeProps) {
-          return (sfcProps.getImage || getImage)({...sfcProps, ...sfcNodeProps})
-        }
+
+      sfcProps.children = function (sfcNodeProps) {
+        return (sfcProps.getImage || getImage)({...sfcProps, ...sfcNodeProps})
       }
 
       if (supportsObjectFit) {
-        sfcProps['orientation'] = 'square'
+        sfcProps.orientation = 'square'
       }
 
       return SFCNode(sfcProps)

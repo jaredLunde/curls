@@ -1,6 +1,6 @@
 import React from 'react'
 import {cx, css} from 'emotion'
-import {createSFCNode, getComponentTheme} from '../utils'
+import {createComponent, getComponentTheme} from '../utils'
 import Box from '../Box'
 import {flex, row, nowrap, align, justify} from '../Flex/CSS'
 import propTypes from './propTypes'
@@ -19,7 +19,7 @@ const navCSS = css`
     padding: 1rem;
   }
 `
-const NavBarSFC = createSFCNode({
+const NavBarSFC = createComponent({
   name: 'NavBar',
   CSS,
   propTypes,
@@ -39,7 +39,8 @@ export default function NavBar (props) {
     bs: theme.defaultBoxShadow,
     ...props,
     children: function (sfcProps) {
-      return NavBarSFC({...sfcProps, children: props.children})
+      sfcProps.children = props.children
+      return NavBarSFC(sfcProps)
     }
   })
 }

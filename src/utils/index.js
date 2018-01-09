@@ -1,6 +1,6 @@
 export colorize from './colorize'
-export createSFC from './createSFC'
-export createSFCNode from './createSFCNode'
+export createFactory from './createFactory'
+export createComponent from './createComponent'
 export deepMerge from './deepMerge'
 export directionalRemScale, {isDirectional} from './directionalRemScale'
 export getClassNames from './getClassNames'
