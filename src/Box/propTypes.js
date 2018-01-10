@@ -24,7 +24,7 @@ export default {
   pa: bool,
   // position fixed
   pf: bool,
-  // position: stick
+  // position: sticky
   sticky: bool,
   // display block
   db: bool,
@@ -41,5 +41,9 @@ export default {
   // clear: both
   cb: bool,
   // -webkit-overflow-scrolling: touch;
-  touchScrolling: bool
+  touchScrolling: bool,
+  // width: __
+  w: strOrNum,
+  // height: __
+  h: strOrNum,
 }

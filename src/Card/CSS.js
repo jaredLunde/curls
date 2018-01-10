@@ -1,7 +1,7 @@
 import {css} from 'emotion'
 import {br as boxBr} from '../Box/CSS'
 import {getComponentTheme} from '../utils'
-import {directionalRe} from '../utils/directionalRemScale'
+import {directionalRe} from '../utils/directionalScale'
 
 
 export function br (val, theme) {

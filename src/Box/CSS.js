@@ -1,23 +1,23 @@
 import {css} from 'emotion'
-import {directionalRemScale, isDirectional, colorize} from '../utils'
+import {directionalScale, isDirectional, colorize} from '../utils'
 
 
 export const pr = css`position: relative;`
 export const pa = css`position: absolute;`
 export const pf = css`position: fixed;`
-export const db = css`display: block;`
-export const dib = css`display: inline-block;`
-export const di = css`display: inline;`
-export const dn = css`display: none;`
-export const fw = css`min-width: 100%;`
-export const fh = css`min-height: 100%;`
-export const cb = css`clear: both;`
-export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
 export const sticky = css`
   position: relative;
   position: sticky;
   top: 0;
 `
+export const db = css`display: block;`
+export const dib = css`display: inline-block;`
+export const di = css`display: inline;`
+export const dn = css`display: none;`
+export const fw = css`width: 100%;`
+export const fh = css`height: 100%;`
+export const cb = css`clear: both;`
+export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
 
 export function bg (value, theme) {
   return colorize('background', value, theme)
@@ -40,7 +40,7 @@ export function bw (value, theme) {
   if (isDirectional(value)) {
     return css`
       border-style: solid;
-      ${directionalRemScale('border-{XYZ}-width', borderWidthScale, value, theme)};
+      ${directionalScale('border-{XYZ}-width', borderWidthScale, value, theme)};
     `
   } else {
     return css`
@@ -48,6 +48,23 @@ export function bw (value, theme) {
       border-width: ${borderWidthScale[value]}rem;
     `
   }
+}
+
+
+function toSize (value) {
+  if (isNaN(value)) {
+    return value
+  } else {
+    return `${value}px`
+  }
+}
+
+export function w (value) {
+  return css`width: ${toSize(value)};`;
+}
+
+export function h (value) {
+  return css`height: ${toSize(value)};`;
 }
 
 
@@ -68,7 +85,7 @@ export function br (value, theme) {
 
   if (isDirectional(value)) {
     return css`
-      ${directionalRemScale(
+      ${directionalScale(
         'border-{XYZ}-radius',
         borderRadiusScale,
         value,
@@ -86,7 +103,7 @@ export function m (value, theme) {
   const {spacingScale} = theme
 
   if (isDirectional(value)) {
-    return directionalRemScale('margin-{XYZ}', spacingScale, value, theme)
+    return directionalScale('margin-{XYZ}', spacingScale, value, theme)
   } else {
     return css`margin: ${spacingScale[value]}rem;`
   }
@@ -96,7 +113,7 @@ export function m (value, theme) {
 export function p (value, theme) {
   const {spacingScale} = theme
   if (isDirectional(value)) {
-    return directionalRemScale('padding-{XYZ}', spacingScale, value, theme)
+    return directionalScale('padding-{XYZ}', spacingScale, value, theme)
   } else {
     return css`padding: ${spacingScale[value]}rem;`
   }

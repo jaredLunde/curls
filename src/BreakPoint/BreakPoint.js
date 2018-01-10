@@ -1,7 +1,7 @@
 import React from 'react'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import MediaQuery from '../MediaQuery'
-import * as efaultTheme from '../Grid/defaultTheme'
+import * as defaultTheme from '../Grid/defaultTheme'
 import {getBreakPoint} from '../Grid/utils'
 import {getTheme} from '../utils'
 

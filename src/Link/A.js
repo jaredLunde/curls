@@ -11,17 +11,15 @@ const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
 const themePath = 'link'
 
 
-export default function A ({children, nodeType = 'a', color = null, className, ...props}) {
+export default function A (props) {
   // merges the default colors and sizes to the theme
   const theme = getComponentTheme(defaultTheme, props.theme, themePath)
   // adds color class and removes colors from the props
-  className = cx(linkColor(color, theme), className)
   // renders the element
   return Type({
-    children,
-    nodeType,
-    className,
-    [theme.defaultWeight]: true,
-    ...props
+    nodeType: 'a',
+    ...props,
+    color: void 0,
+    className: cx(linkColor(props.color, theme), props.className)
   })
 }

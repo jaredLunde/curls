@@ -8,9 +8,9 @@ export {
   colorize,
   createComponent,
   createNode,
-  directionalRemScale,
-  getTheme,
-  getComponentTheme,
+  directionalScale,
+  // getTheme,
+  getComponentTheme as getTheme,
   supportsCSS,
   withHoverQuery
 } from './utils'
@@ -18,7 +18,11 @@ export {
 export {
   injectRem,
   injectTheme,
-  replaceTheme
+  replaceTheme,
+  defaultColors,
+  defaultHoverColors,
+  defaultActiveColors,
+  defaultTypeFaces
 } from './theming'
 
 

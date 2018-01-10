@@ -22,7 +22,7 @@ export default function ({
     const renderProps = reduceProps(props, propTypes)
     renderProps.className = cx(
       defaultCSS,
-      getClassNames(propTypes, props, theme, CSS),
+      getClassNames(props, theme, CSS),
       props.className
     )
     delete renderProps.children

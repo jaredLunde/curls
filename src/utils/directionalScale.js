@@ -18,7 +18,7 @@ export function isDirectional (value) {
 }
 
 
-export default function directionalRemScale (
+export default function directionalScale (
   prefix,
   modScale,
   modValue,

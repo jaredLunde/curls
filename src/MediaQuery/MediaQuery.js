@@ -40,13 +40,18 @@ export default class MediaQuery extends React.Component {
 
   componentDidUpdate ({query}) {
     if (queriesDidChange(query, this.props.query)) {
+      this.removeMediaQueries()
       this.setQueriesList(this.props)
       this.updateMatches(this.props)
     }
   }
 
+  componentWillUnmount () {
+    this.removeMediaQueries()
+  }
+
   getMatchesState (query) {
-    let matches = this.mediaQueries.map(mql => mql.matches)
+    let matches = this.mediaQueries.map(mql => mql[0].matches)
 
     if (Array.isArray(query) === false) {
       matches = matches[0]
@@ -62,7 +67,7 @@ export default class MediaQuery extends React.Component {
   updateSingleMatch = x => () => {
     this.setState(
       function ({matches}) {
-        matches[x] = this.mediaQueries[x].matches
+        matches[x] = this.mediaQueries[x][0].matches
         matches = [...matches]
         return {matches}
       }
@@ -80,14 +85,16 @@ export default class MediaQuery extends React.Component {
       const mq = typeof query[x] === 'string' ? query[x] : json2mq(query[x])
 
       const mql = window.matchMedia(query)
-      mql.addListener(this.updateSingleMatch(x))
-      this.mediaQueries.push(mql)
+      const cb = this.updateSingleMatch(x)
+      mql.addListener(cb)
+      this.mediaQueries.push([mql, cb])
     }
   }
 
-  componentWillUnmount () {
+  removeMediaQueries () {
     for (let x = 0; x < this.mediaQueries.length; x++) {
-      this.mediaQueries[x].removeListener(this.updateSingleMatch(x))
+      const [mq, cb] = this.mediaQueries[x]
+      mq.removeListener(cb)
     }
   }
 
