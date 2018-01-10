@@ -1,4 +1,4 @@
-import {bool, string} from 'prop-types'
+import {bool, oneOf} from 'prop-types'
 
 
 export default {
@@ -31,11 +31,11 @@ export default {
   // flex--wrap-reverse
   wrapReverse: bool,
   // flex--x-{left|center|right|around|between}
-  justify: string,
+  justify: oneOf(['start', 'center', 'end', 'around', 'between']),
   // flex--y-{top|center|bottom|around|between|stretch}
-  align: string,
+  align: oneOf(['start', 'center', 'end', 'around', 'stretch', 'baseline']),
   // flex--content-{top|center|bottom|around}
-  alignContent: string,
+  alignContent: oneOf(['start', 'center', 'end', 'stretch', 'between', 'around']),
   // flex--self-{top|center|bottom|around}
-  alignSelf: string
+  alignSelf: oneOf(['start', 'center', 'end', 'stretch', 'baseline'])
 }

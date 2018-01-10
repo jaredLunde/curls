@@ -19,30 +19,30 @@ export const nowrap = css`flex-wrap: nowrap;`
 export const wrap = css`flex-wrap: wrap;`
 export const wrapReverse = css`flex-wrap: wrap-reverse;`
 export const justify = {
-  left: css`justify-content: flex-start;`,
-  right: css`justify-content: flex-end;`,
+  start: css`justify-content: flex-start;`,
+  end: css`justify-content: flex-end;`,
   center: css`justify-content: center;`,
   around: css`justify-content: space-around;`,
   between: css`justify-content: space-between;`,
 }
 export const align = {
-  top: css`align-items: flex-start;`,
-  bottom: css`align-items: flex-end;`,
+  start: css`align-items: flex-start;`,
+  end: css`align-items: flex-end;`,
   center: css`align-items: center;`,
   stretch: css`align-items: stretch;`,
   baseline: css`align-items: baseline;`,
 }
 export const alignContent = {
-  top: css`align-content: flex-start;`,
-  bottom: css`align-content: flex-end;`,
+  start: css`align-content: flex-start;`,
+  end: css`align-content: flex-end;`,
   center: css`align-content: center;`,
   stretch: css`align-content: stretch;`,
   between: css`align-content: space-between;`,
   around: css`align-content: space-around;`,
 }
 export const alignSelf = {
-  top: css`align-self: flex-start;`,
-  bottom: css`align-self: flex-end;`,
+  start: css`align-self: flex-start;`,
+  end: css`align-self: flex-end;`,
   center: css`align-self: center;`,
   stretch: css`align-self: stretch;`,
   baseline: css`align-self: baseline;`

@@ -14,7 +14,7 @@ const navCSS = css`
   ${row};
   ${nowrap};
   ${align.center};
-  ${justify.left};
+  ${justify.start};
 `
 const SFC = createNode({
   name: 'NavBar',

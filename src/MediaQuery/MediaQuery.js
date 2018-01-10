@@ -99,13 +99,13 @@ export default class MediaQuery extends React.Component {
   }
 
   render () {
-    let {children, ...props} = this.props
-    props = reduceProps(props, propTypes)
-    const {matches} = this.state
+    const children = this.props.children
+    const props = reduceProps(this.props, propTypes, ['children'])
+    const matches = this.state.matches
 
     if (Array.isArray(matches)) {
-      props.matchesAny = this.state.matches.some(isTrue)
-      props.matchesAll = this.state.matches.every(isTrue)
+      props.matchesAny = matches.some(isTrue)
+      props.matchesAll = matches.every(isTrue)
     }
 
     props.matches = matches
