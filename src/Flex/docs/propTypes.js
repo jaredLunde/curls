@@ -26,12 +26,12 @@ export default {
   },
   // flex--grow
   grow: {
-    type: 'bool',
+    type: 'bool|number',
     description: '',
   },
   // flex--shrink
   shrink: {
-    type: 'bool',
+    type: 'bool|number',
     description: '',
   },
   // flex--x

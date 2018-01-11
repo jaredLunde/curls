@@ -7,6 +7,7 @@ import {createNode} from '../utils'
 
 const defaultCSS = css`
   ${pr};
+  min-width: 0;
 `
 const SFC = createNode({name: 'Col', defaultCSS})
 

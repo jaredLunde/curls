@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-
+import {toSize} from '../utils'
 
 export const flex = css`display: flex;`
 export const fixed = css`flex: 0 0 auto;`
@@ -9,8 +9,15 @@ export const fluid = css`
 `
 export const first = css`order: 1;`
 export const last = css`order: -1;`
-export const grow = css`flex-grow: 1;`
-export const shrink = css`flex-shrink: 1;`
+export function grow (value) {
+  return css`flex-grow: ${value === true ? 1 : value};`
+}
+export function shrink (value) {
+  return css`flex-shrink: ${value === true ? 1 : value};`
+}
+export function basis (value) {
+  return css`flex-basis: ${toSize(value)};`
+}
 export const row = css`flex-direction: row;`
 export const column = css`flex-direction: column;`
 export const reverseX = css`flex-direction: row-reverse;`

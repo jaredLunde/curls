@@ -13,6 +13,7 @@ const cardCSS = css`
   ${flex};
   ${column};
   ${pr};
+  min-width: 0;
 
   & > *:not(.button):not(button):not([role=button]):first-child {
     border-top: 0;

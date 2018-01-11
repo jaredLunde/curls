@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import {directionalScale, isDirectional, colorize} from '../utils'
+import {directionalScale, isDirectional, colorize, toSize} from '../utils'
 
 
 export const pr = css`position: relative;`
@@ -47,15 +47,6 @@ export function bw (value, theme) {
       border-style: solid;
       border-width: ${borderWidthScale[value]}rem;
     `
-  }
-}
-
-
-function toSize (value) {
-  if (isNaN(value)) {
-    return value
-  } else {
-    return `${value}px`
   }
 }
 

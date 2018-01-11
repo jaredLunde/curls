@@ -1,6 +1,7 @@
-import {bool, oneOf} from 'prop-types'
+import {bool, oneOf, oneOfType, number, string} from 'prop-types'
 
-
+const boolOrNum = oneOfType([bool, number])
+const strOrNum = oneOfType([string, number])
 export default {
   // flex (display: flex)
   flex: bool,
@@ -13,9 +14,11 @@ export default {
   // flex--last
   last: bool,
   // flex--grow
-  grow: bool,
+  grow: boolOrNum,
   // flex--shrink
-  shrink: bool,
+  shrink: boolOrNum,
+  // flex-basis
+  basis: strOrNum,
   // flex--x
   row: bool,
   // flex--y
