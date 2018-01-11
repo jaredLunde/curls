@@ -8,17 +8,19 @@ export default function ({defaultNodeType = 'div', ...otherOpt}) {
   function SFCNode (props) {
     return SFC({
       ...props,
-      children: function ({nodeType, innerRef, ...sfcNodeProps}) {
+      children: function ({nodeType = defaultNodeType, ...sfcNodeProps}) {
         let children = props.children
 
         if (typeof children === 'function') {
           children = children(sfcNodeProps)
         }
-        else if (typeof children === 'string') {
-          sfcNodeProps.ref = innerRef
+
+        if (typeof nodeType === 'string') {
+          sfcNodeProps.ref = sfcNodeProps.innerRef
+          delete sfcNodeProps.innerRef
         }
 
-        return createOptimized(nodeType || defaultNodeType, sfcNodeProps, children)
+        return createOptimized(nodeType, sfcNodeProps, children)
       }
     })
   }

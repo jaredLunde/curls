@@ -1,3 +1,4 @@
 export default `
-  The \`Flex\` component provides flex-specific styles to its child component.
+  The \`Box\` component provides \`Flex\` and \`BasicBox\` styles
+  to its child component.
 `

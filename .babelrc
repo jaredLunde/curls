@@ -16,10 +16,10 @@
         "@babel/preset-stage-0"
       ],
       "plugins": [
+        ["emotion", { "hoist": true }],
         "transform-react-pure-components",
         "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types",
-        "emotion"
+        "transform-react-remove-prop-types"
       ]
     },
     "commonjs": {
@@ -36,11 +36,11 @@
         "@babel/preset-stage-0"
       ],
       "plugins": [
+        ["emotion", { "hoist": true }],
         "@babel/plugin-transform-runtime",
         "transform-react-pure-components",
         "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types",
-        "emotion"
+        "transform-react-remove-prop-types"
       ]
     },
     "es": {
@@ -56,11 +56,11 @@
         "@babel/preset-stage-0"
       ],
       "plugins": [
+        ["emotion", { "hoist": true }],
         "@babel/plugin-transform-runtime",
         "transform-react-pure-components",
         "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types",
-        "emotion"
+        "transform-react-remove-prop-types"
       ]
     },
     "development": {
@@ -79,11 +79,11 @@
         "@babel/preset-stage-0"
       ],
       "plugins": [
+        ["emotion", { "sourceMap": true, "autoLabel": true }],
         "@babel/plugin-transform-runtime",
         "transform-react-pure-components",
         "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types",
-        "emotion"
+        "transform-react-remove-prop-types"
       ]
     },
     "cli": {
@@ -99,11 +99,11 @@
         "@babel/preset-stage-0"
       ],
       "plugins": [
+        ["emotion", { "hoist": true }],
         "@babel/plugin-transform-runtime",
         "transform-react-pure-components",
         "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types",
-        "emotion"
+        "transform-react-remove-prop-types"
       ]
     }
   }

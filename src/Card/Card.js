@@ -13,7 +13,6 @@ const cardCSS = css`
   ${flex};
   ${column};
   ${pr};
-  overflow: hidden;
 
   & > *:not(.button):not(button):not([role=button]):first-child {
     border-top: 0;

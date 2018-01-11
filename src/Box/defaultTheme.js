@@ -6,7 +6,7 @@ export const spacingScale = [
   0,
   (1/4),
   (1/2),
-  (3/4),
+  // (3/4),
   1,
   2,
   4,
