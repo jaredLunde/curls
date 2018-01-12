@@ -35,4 +35,8 @@ export default injectGlobal`
   	color: white;
   	opacity: 1;
   }
+
+  label {
+    cursor: pointer;
+  }
 `

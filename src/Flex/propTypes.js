@@ -7,12 +7,8 @@ export default {
   flex: bool,
   // flex--fixed (flex(0, 0, auto))
   fixed: bool,
-  // flex--fluid (flex(1, 0, auto))
+  // flex--fluid (flex(1, 1, auto))
   fluid: bool,
-  // flex--first
-  first: bool,
-  // flex--last
-  last: bool,
   // flex--grow
   grow: boolOrNum,
   // flex--shrink
@@ -37,6 +33,8 @@ export default {
   justify: oneOf(['start', 'center', 'end', 'around', 'between']),
   // flex--y-{top|center|bottom|around|between|stretch}
   align: oneOf(['start', 'center', 'end', 'around', 'stretch', 'baseline']),
+  // order: _
+  order: number,
   // flex--content-{top|center|bottom|around}
   alignContent: oneOf(['start', 'center', 'end', 'stretch', 'between', 'around']),
   // flex--self-{top|center|bottom|around}

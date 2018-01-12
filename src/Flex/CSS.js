@@ -7,8 +7,6 @@ export const fluid = css`
   flex: 1 1 auto;
   max-width: none;
 `
-export const first = css`order: 1;`
-export const last = css`order: -1;`
 export function grow (value) {
   return css`flex-grow: ${value === true ? 1 : value};`
 }
@@ -17,6 +15,9 @@ export function shrink (value) {
 }
 export function basis (value) {
   return css`flex-basis: ${toSize(value)};`
+}
+export function order (value) {
+  return css`order: ${value};`
 }
 export const row = css`flex-direction: row;`
 export const column = css`flex-direction: column;`

@@ -11,7 +11,7 @@ export const scale = {
   xxl: 3
 }
 export const colors = defaultColors
-export const defaultColor = 'darkGrey'
+export const defaultColor = 'darkestGrey'
 export const defaultSize = 'sm'
 export const typeFaces = defaultTypeFaces
 export const defaultFace = 'system'

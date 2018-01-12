@@ -14,12 +14,12 @@ const white = '#fefeff'
 
 const defaultColors = {
   blue,
-  darkBlue: darken(0.5, blue),
+  darkBlue: darken(0.15, blue),
   lightBlue: lighten(0.15, blue),
 
   green,
-  darkGreen: darken(0.5, green),
-  lightGreen: lighten(0.30, green),
+  darkGreen: darken(0.15, green),
+  lightGreen: lighten(0.15, green),
 
   red,
   darkRed: darken(0.10, red),
@@ -31,16 +31,16 @@ const defaultColors = {
 
   orange,
   darkOrange,
-  lightOrange: lighten(0.25, darkOrange),
+  lightOrange: lighten(0.15, darkOrange),
 
   lightestGrey,
   lighterGrey,
-  lightGrey: darken(0.25, lighterGrey),
+  lightGrey: darken(0.15, lighterGrey),
   grey,
   darkGrey: darken(0.10, grey),
   darkerGrey: darken(0.15, grey),
   darkestGrey,
-  black: darken(0.5, darkestGrey),
+  black: darken(0.08, darkestGrey),
   white,
   translucentDark: rgba(0, 0, 0, 0.7),
   translucent: rgba(0, 0, 0, 0.4),

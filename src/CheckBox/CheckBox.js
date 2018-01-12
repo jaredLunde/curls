@@ -37,8 +37,9 @@ const defaultCSS = css`
   ${flex};
   ${align.center};
   ${justify.center};
+  cursor: pointer;
 `
-const SFC = createComponent({name: 'CheckBox', propTypes, defaultTheme, defaultCSS, themePath})
+const SFC = createComponent({name: 'CheckBox', propTypes, defaultTheme, themePath})
 
 
 export default function CheckBox ({
@@ -56,7 +57,7 @@ export default function CheckBox ({
         const CheckBoxInput = function ({
           nodeType = 'span',
           children = defaultCheckMark,
-          ...checkboxInputProps
+          ...checkBoxInputProps
         }) {
           return Box({
             p: theme.defaultPadding,
@@ -64,10 +65,11 @@ export default function CheckBox ({
             br: theme.defaultBorderRadius,
             bc: theme.defaultBorderColor,
             bw: theme.defaultBorderWidth,
-            ...checkboxInputProps,
+            className: defaultCSS,
+            ...checkBoxInputProps,
             children: function (boxProps) {
               const checkBoxInput = <input
-                type='checkbox'
+                type='checkBox'
                 name={name}
                 value={value}
                 checked={sfcProps.isChecked}
@@ -90,7 +92,7 @@ export default function CheckBox ({
           })
         }
 
-        sfcProps.CheckboxInput = CheckboxInput
+        sfcProps.CheckBoxInput = CheckBoxInput
         sfcProps.children = children
 
         return SFC(sfcProps)
