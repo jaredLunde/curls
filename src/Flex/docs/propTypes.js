@@ -15,12 +15,12 @@ export default {
     description: 'Adds a class for `flex-drection: column`',
   },
   // flex--x-reverse (row-reverse)
-  reverseX: {
+  rowReverse: {
     type: 'bool',
     description: 'Adds a class for `flex-direction: row-reverse`',
   },
   // flex--y-reverse (col-reverse)
-  reverseY: {
+  columnReverse: {
     type: 'bool',
     description: 'Adds a class for `flex-direction: column-reverse`',
   },

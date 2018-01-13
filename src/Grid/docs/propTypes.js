@@ -1,96 +1,30 @@
 export default {
-  // flex (display: flex)
-  flex: {
-    type: 'bool',
-    description: '',
+  xxl: {
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxl` breakpoint to its child component.',
   },
-  // flex--fixed (flex(0, 0, auto))
-  fixed: {
-    type: 'bool',
-    description: '',
+  xl: {
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `xl` breakpoint to its child component.',
   },
-  // flex--fluid (flex(1, 0, auto))
-  fluid: {
-    type: 'bool',
-    description: '',
+  lg: {
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `lg` breakpoint to its child component.',
   },
-  // flex--first
-  first: {
-    type: 'bool',
-    description: '',
+  md: {
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `md` breakpoint to its child component.',
   },
-  // flex--last
-  last: {
-    type: 'bool',
-    description: '',
+  sm: {
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `sm` breakpoint to its child component.',
   },
-  // flex--grow
-  grow: {
-    type: 'bool',
-    description: '',
+  xs: {
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `xs` breakpoint to its child component.',
   },
-  // flex--shrink
-  shrink: {
-    type: 'bool',
-    description: '',
+  xxs: {
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
-  // flex--x
-  row: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y
-  column: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-reverse (row-reverse)
-  reverseX: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y-reverse (col-reverse)
-  reverseY: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap
-  wrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--nowrap
-  nowrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap-reverse
-  wrapReverse: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-{start|center|end|around|between}
-  justify: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'between'],
-    description: '',
-  },
-  // flex--y-{start|center|end|around|between|stretch}
-  align: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'stretch', 'baseline'],
-    description: '',
-  },
-  // flex--content-{start|center|end|around}
-  alignContent: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'between', 'around'],
-    description: '',
-  },
-  // flex--self-{start|center|end|around}
-  alignSelf: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'baseline'],
-    description: '',
-  }
 }

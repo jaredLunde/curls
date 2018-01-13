@@ -20,9 +20,9 @@ export default {
   // flex--y
   column: bool,
   // flex--x-reverse (row-reverse)
-  reverseX: bool,
+  rowReverse: bool,
   // flex--y-reverse (col-reverse)
-  reverseY: bool,
+  columnReverse: bool,
   // flex--wrap
   wrap: bool,
   // flex--nowrap

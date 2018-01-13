@@ -1,5 +1,3 @@
-import {borderRadiusScale} from '../Box/defaultTheme'
-
 export {borderRadiusScale} from '../Box/defaultTheme'
 export const defaultBg = 'white'
 export const defaultBorderRadius = 2

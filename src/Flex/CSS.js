@@ -21,8 +21,8 @@ export function order (value) {
 }
 export const row = css`flex-direction: row;`
 export const column = css`flex-direction: column;`
-export const reverseX = css`flex-direction: row-reverse;`
-export const reverseY = css`flex-direction: column-reverse;`
+export const rowReverse = css`flex-direction: row-reverse;`
+export const columnReverse = css`flex-direction: column-reverse;`
 export const nowrap = css`flex-wrap: nowrap;`
 export const wrap = css`flex-wrap: wrap;`
 export const wrapReverse = css`flex-wrap: wrap-reverse;`
