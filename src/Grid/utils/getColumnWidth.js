@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import {dn} from '../../Box/CSS'
+import {d} from '../../Box/CSS'
 import getBreakPoint from './getBreakPoint'
 
 
@@ -17,7 +17,7 @@ export default function (size, x, theme) {
   const width = `${(x / numColumns) * 100}%`
   return css`
     ${mediaQuery(getBreakPoint(size, theme))} {
-      ${x === 0 ? dn : void 0};
+      ${x === 0 ? d.none : void 0};
       max-width: ${width};
       flex-basis: ${width};
     }

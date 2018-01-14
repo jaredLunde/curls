@@ -2,7 +2,7 @@ import React from 'react'
 import {cx, css} from 'emotion'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import Toggle from 'react-cake/es/Toggle'
-import {dn} from '../Box/CSS'
+import {d} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import Box from '../Box'
 import propTypes from './propTypes'
@@ -75,7 +75,7 @@ export default function CheckBox ({
                 checked={sfcProps.isChecked}
                 readOnly
                 disabled
-                className={dn}
+                className={d.none}
               />
 
               return (

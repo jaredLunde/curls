@@ -3,7 +3,7 @@ import {css, cx} from 'emotion'
 import ImageStat from 'react-cake/es/ImageStat'
 import compose from 'react-cake/es/utils/compose'
 import Box from '../Box'
-import {pr} from '../Box/CSS'
+import {pos} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {createNode, getComponentTheme, supportsCSS} from '../utils'
 import * as CSS from './CSS'
@@ -19,7 +19,7 @@ const defaultCSS = css`
   ${flex}
   ${align.center}
   ${justify.center}
-  ${pr}
+  ${pos.relative}
   overflow: hidden;
 
   & > img {

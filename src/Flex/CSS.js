@@ -19,13 +19,26 @@ export function basis (value) {
 export function order (value) {
   return css`order: ${value};`
 }
-export const row = css`flex-direction: row;`
-export const column = css`flex-direction: column;`
-export const rowReverse = css`flex-direction: row-reverse;`
-export const columnReverse = css`flex-direction: column-reverse;`
-export const nowrap = css`flex-wrap: nowrap;`
-export const wrap = css`flex-wrap: wrap;`
-export const wrapReverse = css`flex-wrap: wrap-reverse;`
+const rowCSS = css`flex-direction: row;`
+export const row = {
+  [true]: rowCSS,
+  row: rowCSS,
+  reverse: css`flex-direction: row-reverse;`
+}
+const columnCSS = css`flex-direction: column;`
+export const column = {
+  [true]: columnCSS,
+  column: columnCSS,
+  reverse: css`flex-direction: column-reverse;`
+}
+const wrapCSS = css`flex-wrap: wrap;`
+export const wrap = {
+  [true]: wrapCSS,
+  wrap: wrapCSS,
+  no: css`flex-wrap: nowrap;`,
+  reverse: css`flex-wrap: wrap-reverse;`,
+}
+// export const wrapReverse = css`flex-wrap: wrap-reverse;`
 export const justify = {
   start: css`justify-content: flex-start;`,
   end: css`justify-content: flex-end;`,

@@ -2,7 +2,7 @@ import React from 'react'
 import {cx, css} from 'emotion'
 import {createNode, getComponentTheme} from '../utils'
 import {GridBox} from '../Box'
-import {flex, row, nowrap, align, justify} from '../Flex/CSS'
+import {flex, row, wrap, align, justify} from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
@@ -11,8 +11,8 @@ import * as defaultTheme from './defaultTheme'
 const themePath = 'navBar'
 const navCSS = css`
   ${flex};
-  ${row};
-  ${nowrap};
+  ${row.row};
+  ${wrap.no};
   ${align.center};
   ${justify.start};
 `

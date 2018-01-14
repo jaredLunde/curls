@@ -1,12 +1,12 @@
 import {css} from 'emotion'
 import {GridBox} from '../Box'
-import {pr} from '../Box/CSS'
+import {pos} from '../Box/CSS'
 import {grow} from '../Flex/CSS'
 import {createNode} from '../utils'
 
 
 const defaultCSS = css`
-  ${pr};
+  ${pos.relative};
   min-width: 0;
 `
 const SFC = createNode({name: 'Col', defaultCSS})

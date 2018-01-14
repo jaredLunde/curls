@@ -1,4 +1,5 @@
 import {css} from 'emotion'
+import toSize from './toSize'
 
 
 export const directionalRe = /(?=\d+)/
@@ -35,9 +36,15 @@ export default function directionalScale (
         abbr = '_'
       }
 
-      directions[abbr].forEach(
+      const direction = directions[abbr]
+      if (direction === void 0) {
+        console.warn(`Direction '${abbr}' unrecognized in ${JSON.stringify(Object.keys(directions))}`)
+        return
+      }
+
+      direction.forEach(
         function (xyz) {
-          CSS.push(`${prefix.replace('{XYZ}', xyz)}: ${modScale[value]}rem;`)
+          CSS.push(`${prefix.replace('{XYZ}', xyz)}: ${toSize(modScale[value])};`)
         }
       )
     }

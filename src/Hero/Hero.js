@@ -2,7 +2,7 @@ import {css, cx} from 'emotion'
 import FillViewport from '../FillViewport'
 import Box from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
-import {fw, pr, touchScrolling} from '../Box/CSS'
+import {w, pos, touchScrolling} from '../Box/CSS'
 import {createNode} from '../utils'
 import {getStyle} from './utils'
 import propTypes from './propTypes'
@@ -13,11 +13,11 @@ import * as CSS from './CSS'
 const themePath = 'hero'
 const defaultCSS = css`
   ${flex};
-  ${column};
+  ${column.column};
   ${align.center};
   ${justify.center};
-  ${fw};
-  ${pr};
+  ${w('100%')};
+  ${pos.relative};
   ${touchScrolling};
 `
 const HeroSFC = createNode({

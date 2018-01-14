@@ -2,7 +2,7 @@ import React from 'react'
 import {css, cx} from 'emotion'
 import {createNode} from '../utils'
 import Box from '../Box'
-import {fw, db, pr, cb} from '../Box/CSS'
+import {w, d, pos} from '../Box/CSS'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
 import * as CSS from './CSS'
@@ -10,10 +10,10 @@ import * as CSS from './CSS'
 
 const themePath = 'divider'
 const defaultCSS = css`
-  ${fw};
-  ${db};
-  ${pr};
-  ${cb};
+  ${w('100%')};
+  ${d.block};
+  ${pos.relative};
+  clear: both;
 `
 const DividerSFC = createNode({
   name: 'Divider',

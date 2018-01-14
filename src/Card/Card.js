@@ -1,7 +1,7 @@
 import React from 'react'
 import {css, cx} from 'emotion'
 import {GridBox} from '../Box'
-import {pr, fw} from '../Box/CSS'
+import {pos, w} from '../Box/CSS'
 import {flex, column} from '../Flex/CSS'
 import {createNode, getComponentTheme, supportsCSS} from '../utils'
 import * as defaultTheme from './defaultTheme'
@@ -11,8 +11,8 @@ import {br as cssBr} from './CSS'
 const themePath = 'card'
 const cardCSS = css`
   ${flex};
-  ${column};
-  ${pr};
+  ${column.column};
+  ${pos.relative};
   min-width: 0;
 
   & > *:not(.button):not(button):not([role=button]):first-child {
@@ -36,7 +36,7 @@ const cardCSS = css`
   }
 
   & > * {
-    ${fw};
+    ${w('100%')};
   }
 
   & > img,

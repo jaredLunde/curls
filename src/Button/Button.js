@@ -12,7 +12,7 @@ const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
 const themePath = 'button'
 const defaultCSS = css`
   ${flex};
-  ${row};
+  ${row.row};
   ${align.center};
 `
 const ButtonSFC = createNode({

@@ -1,96 +1,70 @@
 export default {
-  // flex (display: flex)
-  flex: {
-    type: 'bool',
-    description: '',
+  w: {
+    defaultValue: 240,
+    type: 'string|number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
-  // flex--fixed (flex(0, 0, auto))
-  fixed: {
-    type: 'bool',
-    description: '',
+  h: {
+    defaultValue: 120,
+    type: 'string|number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
-  // flex--fluid (flex(1, 0, auto))
-  fluid: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--first
-  first: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--last
-  last: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--grow
-  grow: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--shrink
-  shrink: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x
-  row: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y
-  column: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-reverse (row-reverse)
-  reverseX: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y-reverse (col-reverse)
-  reverseY: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap
-  wrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--nowrap
-  nowrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap-reverse
-  wrapReverse: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-{start|center|end|around|between}
-  justify: {
+  bg: {
+    defaultValue: 'white',
     type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'between'],
-    description: '',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
-  // flex--y-{start|center|end|around|between|stretch}
-  align: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'stretch', 'baseline'],
-    description: '',
+  br: {
+    defaultValue: 'br3 l1',
+    type: 'string|number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
-  // flex--content-{start|center|end|around}
-  alignContent: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'between', 'around'],
-    description: '',
+  bw: {
+    defaultValue: '1 b0',
+    type: 'string|number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
-  // flex--self-{start|center|end|around}
-  alignSelf: {
+  bc: {
+    defaultValue: 'translucentLight',
     type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'baseline'],
-    description: '',
-  }
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
+  },
+  bs: {
+    defaultValue: 2,
+    type: 'number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
+  },
+  m: {
+    defaultValue: 4,
+    type: 'string|number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
+  },
+  p: {
+    type: 'string|number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
+  },
+  pos: {
+    type: 'string',
+    enumVals: ['relative', 'absolute', 'fixed', 'sticky', 'static'],
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
+  },
+  d: {
+    type: 'string',
+    enumVals: ['block', 'inlineBlock', 'inline', 'none'],
+    description: 'foo'
+  },
+  v: {
+    type: 'string',
+    enumVals: ['visible', 'hidden'],
+    description: 'foo'
+  },
+  o: {
+    type: 'string',
+    enumVals: ['auto', 'autoX', 'autoY', 'hidden', 'hiddenX', 'hiddenY', 'scroll', 'scrollX', 'scrollY'],
+    description: 'foo'
+  },
+  touchScrolling: {
+    type: 'bool',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
+  },
 }

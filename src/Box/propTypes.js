@@ -1,4 +1,4 @@
-import {bool, string, number, oneOfType} from 'prop-types'
+import {bool, string, number, oneOf, oneOfType} from 'prop-types'
 
 
 const strOrNum = oneOfType([number, string])
@@ -18,28 +18,14 @@ export default {
   m: strOrNum,
   // padding
   p: strOrNum,
-  // position relative
-  pr: bool,
-  // position absolute
-  pa: bool,
-  // position fixed
-  pf: bool,
-  // position: sticky
-  sticky: bool,
-  // display block
-  db: bool,
-  // display inline block
-  dib: bool,
-  // display inline
-  di: bool,
-  // display none
-  dn: bool,
-  // width: 100%
-  fw: bool,
-  // height: 100%
-  fh: bool,
-  // clear: both
-  cb: bool,
+  // position
+  pos: oneOf(['relative', 'absolute', 'fixed', 'static', 'sticky']),
+  // display
+  d: oneOf(['block', 'inline', 'inlineBlock', 'none']),
+  // visibility
+  v: oneOf(['hidden', 'visible']),
+  // overflow
+  o: string,
   // -webkit-overflow-scrolling: touch;
   touchScrolling: bool,
   // width: __

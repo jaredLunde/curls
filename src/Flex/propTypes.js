@@ -2,6 +2,7 @@ import {bool, oneOf, oneOfType, number, string} from 'prop-types'
 
 const boolOrNum = oneOfType([bool, number])
 const strOrNum = oneOfType([string, number])
+const boolOrStr = oneOfType([bool, string])
 export default {
   // flex (display: flex)
   flex: bool,
@@ -16,19 +17,11 @@ export default {
   // flex-basis
   basis: strOrNum,
   // flex--x
-  row: bool,
+  row: boolOrStr,
   // flex--y
-  column: bool,
-  // flex--x-reverse (row-reverse)
-  rowReverse: bool,
-  // flex--y-reverse (col-reverse)
-  columnReverse: bool,
+  column: boolOrStr,
   // flex--wrap
-  wrap: bool,
-  // flex--nowrap
-  nowrap: bool,
-  // flex--wrap-reverse
-  wrapReverse: bool,
+  wrap: boolOrStr,
   // flex--x-{left|center|right|around|between}
   justify: oneOf(['start', 'center', 'end', 'around', 'between']),
   // flex--y-{top|center|bottom|around|between|stretch}

@@ -2,6 +2,18 @@ import {css} from 'emotion'
 import {directionalScale, isDirectional, colorize, toSize} from '../utils'
 
 
+export const pos = {
+  relative: css`position: relative;`,
+  absolute: css`position: absolute;`,
+  fixed: css`position: fixed;`,
+  sticky: css`
+    position: relative;
+    position: sticky;
+    top: 0;
+  `,
+  static: css`position: static;`
+}
+/*
 export const pr = css`position: relative;`
 export const pa = css`position: absolute;`
 export const pf = css`position: fixed;`
@@ -10,13 +22,54 @@ export const sticky = css`
   position: sticky;
   top: 0;
 `
+*/
+export const d = {
+  block: css`display: block;`,
+  inlineBlock: css`display: inline-block;`,
+  inline: css`display: inline;`,
+  none: css`display: none;`
+}
+export const v = {
+  hidden: css`visibility: hidden;`,
+  visible: css`visibility: visible;`
+}
+const overflow = {
+  auto: css`overflow: auto;`,
+  autoX: css`overflow-x: auto;`,
+  autoY: css`overflow-y: auto;`,
+  hidden: css`overflow: hidden;`,
+  hiddenX: css`overflow-x: hidden;`,
+  hiddenY: css`overflow-y: hidden;`,
+  scroll: css`overflow: scroll;`,
+  scrollX: css`overflow-x: scroll;`,
+  scrollY: css`overflow-y: scroll;`,
+}
+export function o (value) {
+  const vals = value.split(' ')
+
+  if (vals.length === 1) {
+    return overflow[value]
+  }
+
+  let css
+  for (let x = 0; x < vals.length; x++) {
+    const val = vals[x]
+    if (css) {
+      css = css`${css} ${overflow[val]};`
+    } else {
+      css = css`${overflow[val]};`
+    }
+  }
+
+  return css
+}
+/**
 export const db = css`display: block;`
 export const dib = css`display: inline-block;`
 export const di = css`display: inline;`
 export const dn = css`display: none;`
-export const fw = css`width: 100%;`
-export const fh = css`height: 100%;`
-export const cb = css`clear: both;`
+*/
+
 export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
 
 export function bg (value, theme) {
@@ -45,7 +98,7 @@ export function bw (value, theme) {
   } else {
     return css`
       border-style: solid;
-      border-width: ${borderWidthScale[value]}rem;
+      border-width: ${toSize(borderWidthScale[value])};
     `
   }
 }
@@ -85,7 +138,7 @@ export function br (value, theme) {
       )};
     `
   } else {
-    return css`border-radius: ${borderRadiusScale[value]}rem;`
+    return css`border-radius: ${toSize(borderRadiusScale[value])};`
   }
 }
 
@@ -96,7 +149,7 @@ export function m (value, theme) {
   if (isDirectional(value)) {
     return directionalScale('margin-{XYZ}', spacingScale, value, theme)
   } else {
-    return css`margin: ${spacingScale[value]}rem;`
+    return css`margin: ${toSize(spacingScale[value])};`
   }
 }
 
@@ -106,6 +159,6 @@ export function p (value, theme) {
   if (isDirectional(value)) {
     return directionalScale('padding-{XYZ}', spacingScale, value, theme)
   } else {
-    return css`padding: ${spacingScale[value]}rem;`
+    return css`padding: ${toSize(spacingScale[value])};`
   }
 }

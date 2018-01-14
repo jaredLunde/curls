@@ -4,41 +4,6 @@ export default {
     type: 'bool',
     description: 'Adds a class for `display: flex`'
   },
-  // flex--x
-  row: {
-    type: 'bool',
-    description: 'Adds a class for `flex-direction: row`',
-  },
-  // flex--y
-  column: {
-    type: 'bool',
-    description: 'Adds a class for `flex-drection: column`',
-  },
-  // flex--x-reverse (row-reverse)
-  rowReverse: {
-    type: 'bool',
-    description: 'Adds a class for `flex-direction: row-reverse`',
-  },
-  // flex--y-reverse (col-reverse)
-  columnReverse: {
-    type: 'bool',
-    description: 'Adds a class for `flex-direction: column-reverse`',
-  },
-  // flex--wrap
-  wrap: {
-    type: 'bool',
-    description: 'Adds a class for `flex-wrap: wrap`',
-  },
-  // flex--nowrap
-  nowrap: {
-    type: 'bool',
-    description: 'Adds a class for `flex-wrap: nowrap`',
-  },
-  // flex--wrap-reverse
-  wrapReverse: {
-    type: 'bool',
-    description: 'Adds a class for `flex-wrap: wrap-reverse`',
-  },
   // flex--fixed (flex(0, 0, auto))
   fixed: {
     type: 'bool',
@@ -49,7 +14,6 @@ export default {
     type: 'bool',
     description: 'Adds a class for `flex: 1 1 auto;`',
   },
-
   // flex--grow
   grow: {
     type: ['bool', 'number'],
@@ -69,6 +33,24 @@ export default {
   order: {
     type: 'number',
     description: 'Adds a class for `order: @value`',
+  },
+  // flex--x
+  row: {
+    type: ['bool', 'string'],
+    enumVals: ['row', 'reverse'],
+    description: 'Adds a class for `flex-direction: row` if `true` or `row`, and `row-reverse` if `reverse`',
+  },
+  // flex--y
+  column: {
+    type: ['bool', 'string'],
+    enumVals: ['column', 'reverse'],
+    description: 'Adds a class for `flex-direction: column` if `true` or `column`, and `column-reverse` if `reverse`',
+  },
+  // flex-wrap
+  wrap: {
+    type: ['bool', 'string'],
+    enumVals: ['wrap', 'reverse', 'no'],
+    description: 'Adds a class for `flex-wrap: wrap;` if `true` or `wrap`, a class for `nowrap` if `no` and `wrap-reverse` if `reverse`.',
   },
   // flex--x-{start|center|end|around|between}
   justify: {

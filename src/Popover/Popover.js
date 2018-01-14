@@ -6,7 +6,7 @@ import compose from 'react-cake/es/utils/compose'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import loadImages from 'react-cake/es/utils/loadImages'
 import {GridBox} from '../Box'
-import {pf} from '../Box/CSS'
+import {pos} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
 import Drop from '../Drop'
 import {getPosFromProps} from '../Slide/utils'
@@ -44,7 +44,7 @@ PopOver({
 const themePath = 'popOver'
 const poBoxCSS = css`
   ${flex};
-  ${pf};
+  ${pos.fixed};
 `
 
 class PopOverContainer extends React.PureComponent {

@@ -1,16 +1,16 @@
 import {css, cx} from 'emotion'
 import Box from '../Box'
-import {pr, fw} from '../Box/CSS'
+import {pos, w} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
 import {createNode} from '../utils'
 
 
 const defaultCSS = css`
-  ${pr};
-  ${fw};
+  ${pos.relative};
+  ${w('100%')};
   ${flex};
-  ${row};
-  ${wrap};
+  ${row.row};
+  ${wrap.wrap};
 `
 const SFC = createNode({name: 'Row', defaultCSS})
 

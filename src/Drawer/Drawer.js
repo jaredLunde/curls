@@ -6,7 +6,7 @@ import Box from '../Box'
 import Slide from '../Slide'
 import {getPosFromProps} from '../Slide/utils'
 import {createComponent, getComponentTheme} from '../utils'
-import {db, pf} from '../Box/CSS'
+import {d, pos} from '../Box/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
@@ -14,8 +14,8 @@ import * as defaultTheme from './defaultTheme'
 
 const themePath = 'drawer'
 const defaultCSS = css`
-  ${db};
-  ${pf};
+  ${d.block};
+  ${pos.fixed};
   ${maxZIndex};
 `
 const SFC = createComponent({
@@ -52,14 +52,14 @@ export default function Drawer (props) {
   props.children = function (sfcProps) {
     // renders the element
     const renderProps = {
-      pa: props.pa,
+      pos: props.pos,
       ...sfcProps,
       children: function (drawerProps) {
         const classNameFromDrawer = drawerProps.className
         // Box component passed to the child function
         drawerProps.DrawerBox = function DrawerBox (boxProps) {
           return Box({
-            fh: true,
+            h: '100%',
             ...boxProps,
             children: function (drawerBoxProps) {
               const nodeType = drawerBoxProps.nodeType || 'div'

@@ -36,4 +36,4 @@ export const fromLeft = css`
   right: auto;
 `
 
-export {pa} from '../Box/CSS'
+export {pos} from '../Box/CSS'

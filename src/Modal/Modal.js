@@ -3,7 +3,7 @@ import {cx, css} from 'emotion'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import {pf, fw, fh, touchScrolling} from '../Box/CSS'
+import {pos, w, h, touchScrolling} from '../Box/CSS'
 import Box from '../Box'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
@@ -46,9 +46,9 @@ const fixedContainer = css`
   ${flex};
   ${align.center};
   ${justify.center};
-  ${pf};
-  ${fw};
-  ${fh};
+  ${pos.fixed};
+  ${w('100%')};
+  ${h('100%')};
   ${touchScrolling};
   left: 0;
   top: 0;
