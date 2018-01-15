@@ -4,6 +4,7 @@ import createOptimized from 'react-cake/es/utils/createOptimized'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import getClassNames from './getClassNames'
 import getComponentTheme from './getComponentTheme'
+import assignOrdered from './assignOrdered'
 
 
 const emptyObj = {}
@@ -19,6 +20,7 @@ export default function ({
 }) {
   function SFC (props) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
+    props = assignOrdered(theme.defaultProps, props)
     const renderProps = reduceProps(props, propTypes)
     renderProps.className = cx(
       defaultCSS,

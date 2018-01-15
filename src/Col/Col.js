@@ -1,24 +1,26 @@
 import {css} from 'emotion'
 import {GridBox} from '../Box'
-import {pos} from '../Box/CSS'
-import {grow} from '../Flex/CSS'
-import {createNode} from '../utils'
+import {createComponent, renderNode} from '../utils'
+import * as defaultTheme from './defaultTheme'
 
 
-const defaultCSS = css`
-  ${pos.relative};
-  min-width: 0;
-`
-const SFC = createNode({name: 'Col', defaultCSS})
+const defaultCSS = css`min-width: 0;`
+const nodeType = 'div'
+const SFC = createComponent({name: 'Col', defaultTheme, defaultCSS})
 
 
-export default function Col (props) {
-  return GridBox({
-    grow: true,
+
+export default function Type (props) {
+  return SFC({
     ...props,
-    children: function (sfcProps) {
-      sfcProps.children = props.children
-      return SFC(sfcProps)
+    children: function (boxProps) {
+      boxProps.children = function (nodeProps) {
+        nodeProps.children = props.children
+        nodeProps.nodeType = nodeProps.nodeType || nodeType
+        return renderNode(nodeProps)
+      }
+
+      return GridBox(boxProps)
     }
   })
 }

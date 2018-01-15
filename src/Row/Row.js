@@ -1,26 +1,22 @@
-import {css, cx} from 'emotion'
 import Box from '../Box'
-import {pos, w} from '../Box/CSS'
-import {flex, row, wrap} from '../Flex/CSS'
-import {createNode} from '../utils'
+import {createComponent, renderNode} from '../utils'
+import * as defaultTheme from './defaultTheme'
 
 
-const defaultCSS = css`
-  ${pos.relative};
-  ${w('100%')};
-  ${flex};
-  ${row.row};
-  ${wrap.wrap};
-`
-const SFC = createNode({name: 'Row', defaultCSS})
+const nodeType = 'div'
+const SFC = createComponent({name: 'Row', defaultTheme})
 
 
-export default function Row (props) {
-  return Box({
+export default function Type (props) {
+  return SFC({
     ...props,
-    children: function (sfcProps) {
-      sfcProps.children = props.children
-      return SFC(sfcProps)
+    children: function (boxProps) {
+      boxProps.children = function (nodeProps) {
+        nodeProps.children = props.children
+        nodeProps.nodeType = nodeProps.nodeType || nodeType
+        return renderNode(nodeProps)
+      }
+
+      return Box(boxProps)
     }
   })
-}

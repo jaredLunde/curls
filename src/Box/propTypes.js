@@ -13,7 +13,7 @@ export default {
   // border color
   bc: string,
   // box-shadow
-  bs: strOrNum,
+  sh: strOrNum,
   // margin
   m: strOrNum,
   // padding
@@ -22,10 +22,10 @@ export default {
   pos: oneOf(['relative', 'absolute', 'fixed', 'static', 'sticky']),
   // display
   d: oneOf(['block', 'inline', 'inlineBlock', 'none']),
-  // visibility
-  v: oneOf(['hidden', 'visible']),
   // overflow
-  o: string,
+  ov: string,
+  // z-index
+  z: number,
   // -webkit-overflow-scrolling: touch;
   touchScrolling: bool,
   // width: __

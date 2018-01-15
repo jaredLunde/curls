@@ -20,8 +20,8 @@ export {
   injectTheme,
   replaceTheme,
   defaultColors,
-  defaultHoverColors,
-  defaultActiveColors,
+  // defaultHoverColors,
+  // defaultActiveColors,
   defaultTypeFaces
 } from './theming'
 

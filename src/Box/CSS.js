@@ -13,26 +13,14 @@ export const pos = {
   `,
   static: css`position: static;`
 }
-/*
-export const pr = css`position: relative;`
-export const pa = css`position: absolute;`
-export const pf = css`position: fixed;`
-export const sticky = css`
-  position: relative;
-  position: sticky;
-  top: 0;
-`
-*/
+
 export const d = {
   block: css`display: block;`,
   inlineBlock: css`display: inline-block;`,
   inline: css`display: inline;`,
   none: css`display: none;`
 }
-export const v = {
-  hidden: css`visibility: hidden;`,
-  visible: css`visibility: visible;`
-}
+
 const overflow = {
   auto: css`overflow: auto;`,
   autoX: css`overflow-x: auto;`,
@@ -44,7 +32,7 @@ const overflow = {
   scrollX: css`overflow-x: scroll;`,
   scrollY: css`overflow-y: scroll;`,
 }
-export function o (value) {
+export function ov (value) {
   const vals = value.split(' ')
 
   if (vals.length === 1) {
@@ -63,12 +51,10 @@ export function o (value) {
 
   return css
 }
-/**
-export const db = css`display: block;`
-export const dib = css`display: inline-block;`
-export const di = css`display: inline;`
-export const dn = css`display: none;`
-*/
+
+export function z (value) {
+  return css`z-index: ${value};`
+}
 
 export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
 
@@ -77,7 +63,7 @@ export function bg (value, theme) {
 }
 
 
-export function bs (value, theme) {
+export function sh (value, theme) {
   return theme.getBoxShadow(value, theme)
 }
 

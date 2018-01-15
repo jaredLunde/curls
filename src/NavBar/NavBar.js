@@ -33,7 +33,7 @@ export default function NavBar (props) {
     bg: theme.defaultBg,
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,
-    bs: theme.defaultBoxShadow,
+    sh: theme.defaultBoxShadow,
     ...props,
     children: function (sfcProps) {
       sfcProps.children = props.children

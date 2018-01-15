@@ -5,7 +5,7 @@ export default {
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
   h: {
-    defaultValue: 120,
+    defaultValue: 324,
     type: 'string|number',
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
@@ -15,7 +15,7 @@ export default {
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
   br: {
-    defaultValue: 'br3 l1',
+    defaultValue: 2,
     type: 'string|number',
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
@@ -29,18 +29,22 @@ export default {
     type: 'string',
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
-  bs: {
-    defaultValue: 2,
+  sh: {
+    defaultValue: 16,
     type: 'number',
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
   m: {
-    defaultValue: 4,
+    defaultValue: 5,
     type: 'string|number',
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
   p: {
     type: 'string|number',
+    description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
+  },
+  z: {
+    type: 'number',
     description: 'Provides emotion class for `@value` number of columns in the `xxs` breakpoint to its child component.',
   },
   pos: {
@@ -53,12 +57,7 @@ export default {
     enumVals: ['block', 'inlineBlock', 'inline', 'none'],
     description: 'foo'
   },
-  v: {
-    type: 'string',
-    enumVals: ['visible', 'hidden'],
-    description: 'foo'
-  },
-  o: {
+  ov: {
     type: 'string',
     enumVals: ['auto', 'autoX', 'autoY', 'hidden', 'hiddenX', 'hiddenY', 'scroll', 'scrollX', 'scrollY'],
     description: 'foo'

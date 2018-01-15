@@ -1,6 +1,6 @@
 import {css, cx} from 'emotion'
 import Box from '../Box'
-import {createNode, getComponentTheme} from '../utils'
+import {createComponent, renderNode, getComponentTheme} from '../utils'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
@@ -13,41 +13,31 @@ const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
 
 </Type>
 */
-const themePath = 'type'
-const TypeSFC = createNode({
+const nodeType = 'span'
+const SFC = createComponent({
   name: 'Type',
   propTypes,
   CSS,
   defaultTheme,
-  themePath,
-  defaultNodeType: 'span'
+  themePath: 'type'
 })
 
 
-export default function Type (props) {
-  // merges the default colors and sizes to the theme
-  const theme = getComponentTheme(defaultTheme, props.theme, themePath)
 
-  return Box({
+export default function Type (props) {
+  return SFC({
     ...props,
-    children: function (sfcProps) {
-      // renders the element
-      sfcProps = {
-        face: theme.defaultFace,
-        color: theme.defaultColor,
-        ...sfcProps,
-        children: props.children
+    children: function (boxProps) {
+      boxProps.children = function (nodeProps) {
+        nodeProps.children = props.children
+        nodeProps.nodeType = nodeProps.nodeType || nodeType
+        return renderNode(nodeProps)
       }
 
-      return TypeSFC(
-        sfcProps.hasOwnProperty(theme.defaultSize)
-        ? sfcProps
-        : {[theme.defaultSize]: true, ...sfcProps}
-      )
+      return Box(boxProps)
     }
   })
 }
-
 
 export function H1 (props) {
   return Type({nodeType: 'h1', xxl: true, ...props})

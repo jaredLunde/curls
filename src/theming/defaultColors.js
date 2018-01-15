@@ -46,6 +46,7 @@ const defaultColors = {
   translucent: rgba(0, 0, 0, 0.4),
   translucentLight: rgba(0, 0, 0, 0.16),
   translucentWhite: rgba(255, 255, 255, 0.6),
+  transparent: rgba(255, 255, 255, 0.0)
 }
 
 

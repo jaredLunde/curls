@@ -65,7 +65,7 @@ export default function ({children, className, br, ...props}) {
     bg: theme.defaultBg,
     bw: theme.defaultBorderWidth,
     bc: theme.defaultBorderColor,
-    bs: theme.defaultBoxShadow,
+    sh: theme.defaultBoxShadow,
     className: cx(cssBr(br, theme), className),
     ...props,
     children: function (sfcProps) {

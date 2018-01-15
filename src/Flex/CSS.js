@@ -38,7 +38,7 @@ export const wrap = {
   no: css`flex-wrap: nowrap;`,
   reverse: css`flex-wrap: wrap-reverse;`,
 }
-// export const wrapReverse = css`flex-wrap: wrap-reverse;`
+
 export const justify = {
   start: css`justify-content: flex-start;`,
   end: css`justify-content: flex-end;`,

@@ -44,11 +44,12 @@ export default function directionalScale (
 
       direction.forEach(
         function (xyz) {
-          CSS.push(`${prefix.replace('{XYZ}', xyz)}: ${toSize(modScale[value])};`)
+          CSS.push(css`${prefix.replace('{XYZ}', xyz)}: ${toSize(modScale[value])};`)
         }
       )
     }
   )
 
-  return css`${CSS.join(' ')}`
+  // return css`${CSS}`
+  return CSS
 }
