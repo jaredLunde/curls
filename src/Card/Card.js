@@ -1,15 +1,15 @@
 import React from 'react'
-import {css, cx} from 'emotion'
+import {css} from 'emotion'
 import {GridBox} from '../Box'
 import {pos, w} from '../Box/CSS'
 import {flex, column} from '../Flex/CSS'
-import {createNode, getComponentTheme, supportsCSS} from '../utils'
+import {createComponent, renderNode} from '../utils'
 import * as defaultTheme from './defaultTheme'
-import {br as cssBr} from './CSS'
+import propTypes from './propTypes'
+import * as CSS from './CSS'
 
 
-const themePath = 'card'
-const cardCSS = css`
+const defaultCSS = css`
   ${flex};
   ${column.column};
   ${pos.relative};
@@ -49,30 +49,29 @@ const cardCSS = css`
     display: block;
   }
 `
-const SFC = createNode({
+
+
+const nodeType = 'div'
+const SFC = createComponent({
   name: 'Card',
+  propTypes,
+  CSS,
   defaultTheme,
-  themePath,
-  defaultCSS: cardCSS,
-  defaultNodeType: 'div'
+  themePath: 'card'
 })
 
 
-export default function ({children, className, br, ...props}) {
-  const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-
-  return GridBox({
-    bg: theme.defaultBg,
-    bw: theme.defaultBorderWidth,
-    bc: theme.defaultBorderColor,
-    sh: theme.defaultBoxShadow,
-    className: cx(cssBr(br, theme), className),
+export default function Card (props) {
+  return SFC({
     ...props,
-    children: function (sfcProps) {
-      return SFC({
-        ...sfcProps,
-        children
-      })
+    children: function (boxProps) {
+      boxProps.children = function (nodeProps) {
+        nodeProps.children = props.children
+        nodeProps.nodeType = nodeProps.nodeType || nodeType
+        return renderNode(nodeProps, defaultCSS)
+      }
+
+      return GridBox(boxProps)
     }
   })
 }

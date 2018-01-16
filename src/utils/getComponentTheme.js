@@ -3,46 +3,38 @@ import getIn from './getIn'
 import {curlsTheme} from '../theming/injectTheme'
 import defaultRem from '../theming/defaultRem'
 
-const GLOBALS = ['colors', 'hover', 'active', 'typeFaces']
+//const GLOBALS = ['colors', 'typeFaces']
 
 
 export default function (defaultTheme, userTheme, themePath) {
+  const hasThemePath = themePath.length
   // merge the component's default theme with the injected theme
-  const mainTheme = getTheme(defaultTheme, getIn(curlsTheme, themePath))
-
-  // ensure no funky mutations take place on the output
-  let out = {...mainTheme}
-  out.rem = curlsTheme.rem || defaultRem
+  const mainTheme = getTheme(
+    defaultTheme,
+    hasThemePath === 0 ? curlsTheme : curlsTheme[themePath]
+  )
+  // ensure no funky mutations take place on the output. only need to do this
+  // when a theme path is defined because otherwise nothing will be assigned
+  // directly to `out`
+  let out = hasThemePath ? Object.assign({}, mainTheme) : mainTheme
   // get the component-level theme if there is one
-  userTheme = getIn(userTheme, themePath)
+  userTheme = userTheme && userTheme[themePath]
 
   if (typeof userTheme === 'object' && userTheme !== null) {
     // merge the component-level theme to the main theme
     out = getTheme(mainTheme, userTheme)
-    // merge global themes (colors, typeFaces) to the output
-    for (let x = 0; x < GLOBALS.length; x++) {
-      const g = GLOBALS[x]
 
-      if (mainTheme[g] !== void 0) {
-        // only inherits themes that are defined in the defaultTheme
-        const curlsGlobal = getIn(curlsTheme, g)
-        const userGlobal = getIn(userTheme, g)
-        out[g] = getTheme(curlsGlobal, getTheme(mainTheme[g], userGlobal))
-      }
+    if (hasThemePath) {
+      out.colors = getTheme(curlsTheme.colors, mainTheme.colors)
+      out.typeFaces = getTheme(curlsTheme.typeFaces, mainTheme.typeFaces)
     }
-
-    out.rem = userTheme.rem || out.rem
-  } else {
+  }
+  else if (hasThemePath) {
     // no component-level theme was defined
-    // merge global themes (colors, typeFaces) to the output
-    for (let x = 0; x < GLOBALS.length; x++) {
-      const g = GLOBALS[x]
-
-      if (mainTheme[g] !== void 0) {
-        // only inherits themes that are defined in the defaultTheme
-        out[g] = getTheme(getIn(curlsTheme, g), mainTheme[g])
-      }
-    }
+    // merge global themes (colors, typeFaces) to the output if they weren't
+    // merged above already
+    out.colors = getTheme(curlsTheme.colors, mainTheme.colors)
+    out.typeFaces = getTheme(curlsTheme.typeFaces, mainTheme.typeFaces)
   }
 
 

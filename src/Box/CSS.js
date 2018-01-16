@@ -21,7 +21,7 @@ export const d = {
   none: css`display: none;`
 }
 
-const overflow = {
+export const overflow = {
   auto: css`overflow: auto;`,
   autoX: css`overflow-x: auto;`,
   autoY: css`overflow-y: auto;`,

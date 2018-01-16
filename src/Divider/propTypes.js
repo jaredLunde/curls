@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types'
+import {oneOf, number, string} from 'prop-types'
 
 
 export default {
-  thickness: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
-  bg: PropTypes.string
+  thickness: oneOf([number, string])
 }

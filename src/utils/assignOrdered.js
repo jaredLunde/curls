@@ -1,14 +1,6 @@
 export default function (objectA, objectB) {
-  if (typeof objectB !== 'object' || objectB === null) {
-    return objectA
-  }
-  else if (typeof objectA !== 'object' || objectA === null) {
-    return objectB
-  }
-
   const output = {}
   const objectAKeys = Object.keys(objectA)
-  const objectBKeys = Object.keys(objectB)
 
   for (let x = 0; x < objectAKeys.length; x++) {
     const key = objectAKeys[x]
@@ -17,6 +9,8 @@ export default function (objectA, objectB) {
       output[key] = objectA[key]
     }
   }
+
+  const objectBKeys = Object.keys(objectB)
 
   for (let x = 0; x < objectBKeys.length; x++) {
     const key = objectBKeys[x]

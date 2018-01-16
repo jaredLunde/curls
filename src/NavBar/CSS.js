@@ -1,8 +1,8 @@
 import {css} from 'emotion'
-import {touchScrolling} from '../Box/CSS'
+import {touchScrolling, ov} from '../Box/CSS'
 
 
 export const scrollable = css`
   ${touchScrolling};
-  overflow-x: auto;
+  ${ov.scrollX};
 `

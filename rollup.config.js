@@ -19,6 +19,9 @@ var config = {
     'react-router-dom': 'Router'
   },
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(env)
+    }),
     nodeResolve({
       jsnext: true,
       module: true,
@@ -30,15 +33,11 @@ var config = {
     commonjs({
       include: 'node_modules/**',
       namedExports: {
-        'node_modules/react/react.js': ['createElement'],
-        // 'node_modules/react-dom/**': ['createPortal'],
+        'node_modules/react/react.js': ['createElement']
       }
     }),
     babel({
       exclude: 'node_modules/**'
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(env)
     })
   ]
 }
@@ -49,9 +48,15 @@ if (env === 'production') {
     uglify(
       {
         compress: {
+          passes: 3,
+          keep_infinity: true,
+          drop_console: true,
           pure_getters: true,
           unsafe: true,
           unsafe_comps: true,
+          unsafe_Func: true,
+          unsafe_math: true,
+          unsafe_regexp: true,
           warnings: false,
           dead_code: true
         }

@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.0.0-beta.35",
     "@babel/preset-react": "^7.0.0-beta.36",
     "@babel/preset-stage-0": "^7.0.0-beta.36",
-    "@babel/runtime": "^7.0.0-beta.36",
+    "@babel/runtime": "^7.0.0-beta.37",
     "babel-plugin-emotion": "^8.0.12",
     "babel-plugin-transform-react-pure-components": "^3.1.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
@@ -27,7 +27,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "uglify-es": "^3.3.4"
+    "uglify-es": "^3.3.7"
   },
   "dependencies": {
     "emotion": "^9.0.0-1",

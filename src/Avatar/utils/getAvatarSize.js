@@ -1,9 +1,10 @@
 import {css} from 'emotion'
+import {toSize} from '../../utils'
 
 
 export default function (size, theme) {
   return css`
-    width: ${theme.scale[size]}rem;
-    height: ${theme.scale[size]}rem;
+    width: ${toSize(theme.scale[size])};
+    height: ${toSize(theme.scale[size])};
   `
 }

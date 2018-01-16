@@ -1,30 +1,26 @@
 import {css} from 'emotion'
 import {lighten, darken} from 'polished'
 import {withHoverQuery} from '../utils'
-import {defaultColors, defaultHoverColors, defaultActiveColors} from '../theming'
 
+
+export colors from '../theming/defaultColors'
 
 export const sizes = {
-  xxs: css`padding: 12px 6px;`,
-  xs: css`padding: 16px 8px;`,
-  sm: css`padding: 20px 10px;`,
-  md: css`padding: 24px 12px;`,
-  lg: css`padding: 32px 16px;`,
-  xl: css`padding: 40px 20px;`,
-  xxl: css`padding: 48px 24px;`,
+  xxs: css`padding: 6px 12px;`,
+  xs: css`padding: 8px 16px;`,
+  sm: css`padding: 12px 24px;`,
+  md: css`padding: 16px 32px;`,
+  lg: css`padding: 20px 40px;`,
+  xl: css`padding: 24px 48px;`,
+  xxl: css`padding: 30px 60px;`,
 }
 
-
 export const defaultProps = {
-  flex: true,
-  row: true,
-  align: 'center',
-  justify: 'center',
   br: 5,
   bw: 1,
   bc: 'translucentLight',
   bg: 'translucentDark',
-  sm: true,
+  md: true,
   role: 'button'
 }
 
@@ -55,6 +51,3 @@ export function getActiveClass (props, theme) {
     }
   `
 }
-
-
-export const colors = defaultColors

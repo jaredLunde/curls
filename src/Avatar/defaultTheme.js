@@ -1,14 +1,16 @@
-export const defaultBorderRadius = 5
-export const defaultBorderWidth = 1
-export const defaultBorderColor = 'translucentLight'
-export const defaultBoxShadow = 0
-
 export const scale = {
-  xxs: 20/16,
-  xs: 36/16,
-  sm: 72/16,
-  md: 128/16,
-  lg: 172/16,
-  xl: 256/16,
-  xxl: 360/16
+  xxs: 20,
+  xs: 36,
+  sm: 72,
+  md: 128,
+  lg: 172,
+  xl: 256,
+  xxl: 360
+}
+
+
+export const defaultProps = {
+  br: 5,
+  bw: 1,
+  bc: 'translucentLight'
 }

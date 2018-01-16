@@ -14,22 +14,29 @@ export default function ({
   name,
   propTypes = emptyObj,
   CSS = emptyObj,
-  defaultCSS,
+  //defaultCSS,
   defaultTheme = emptyObj,
   themePath = ''
 }) {
   function SFC (props) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-    props = assignOrdered(theme.defaultProps, props)
-    const renderProps = reduceProps(props, propTypes)
-    renderProps.className = cx(
-      defaultCSS,
-      getClassNames(props, theme, CSS),
-      props.className
-    )
-    delete renderProps.children
+    props = theme.defaultProps ? assignOrdered(theme.defaultProps, props) : props
 
-    return createOptimized(props.children, renderProps)
+    const children = props.children
+    delete props.children
+
+    const renderProps = (
+      propTypes === emptyObj
+      ? Object.assign({}, props)
+      : reduceProps(props, propTypes)
+    )
+
+    if (CSS !== emptyObj) {
+      renderProps.className = cx(getClassNames(props, theme, CSS), props.className)
+    }
+
+
+    return children(renderProps)
   }
 
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {

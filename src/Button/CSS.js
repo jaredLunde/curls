@@ -36,7 +36,7 @@ export function xxl (v, t) {
 }
 
 
-export function bg (v, t, props) {
+export function __buttonStyles (v, t, props) {
   return css`
     ${t.getHoverClass(props, t)};
     ${t.getActiveClass(props, t)}

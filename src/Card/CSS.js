@@ -5,7 +5,6 @@ import {directionalRe} from '../utils/directionalScale'
 
 
 export function br (val, theme) {
-  val = val || theme.defaultBorderRadius
   let abbr, value
   let topRadius = 't0', bottomRadius = 'b0'
 

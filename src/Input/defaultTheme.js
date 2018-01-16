@@ -1,16 +1,29 @@
-import defaultColors from '../theming/defaultColors'
+import {css} from 'emotion'
+import {colorize} from '../utils'
 
+export colors from '../theming/defaultColors'
+export function getPlaceholderClass (props, theme) {
+  return css`
+    opacity: 0.8;
+    ${colorize('color', props.color, theme)};
+  `
+}
 
-export const defaultBg = 'white'
-export const defaultPadding = 2
-export const defaultBorderColor = 'translucentLight'
-export const defaultBorderWidth = 1
-export const defaultBorderRadius = 5
-export const defaultBoxShadow = 0
-export const defaultTypeColor = 'darkGrey'
-export const defaultTypeWeight = 'light'
-export const defaultTypeSize = 'sm'
-export const defaultTypeFace = 'system'
-export const defaultPlaceholderOpacity = 0.8
-export const defaultPlaceholderColor = 'darkGrey'
-export const colors = defaultColors
+export function getHoverClass (props, theme) {
+  return
+}
+
+export function getFocusClass (props, theme) {
+  return
+}
+
+export const defaultProps = {
+  bg: 'white',
+  p: 2,
+  bc: 'translucentLight',
+  bw: 1,
+  br: 5,
+  color: 'darkGrey',
+  light: true,
+  sm: true
+}

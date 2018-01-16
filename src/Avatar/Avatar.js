@@ -1,75 +1,76 @@
-import React from 'react'
-import {css, cx} from 'emotion'
+import {css} from 'emotion'
 import ImageStat from 'react-cake/es/ImageStat'
 import compose from 'react-cake/es/utils/compose'
 import Box from '../Box'
-import {pos} from '../Box/CSS'
+import {pos, ov} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import {createNode, getComponentTheme, supportsCSS} from '../utils'
+import {createComponent, renderNode, supportsCSS} from '../utils'
 import * as CSS from './CSS'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
+import getImage from './getImage'
 
 
 /**
-<Avatar md src='...'/>
+<Avatar md src='...'>
+  {({innerRef, ...props}) => (
+    <img {...props} ref={innerRef}/>
+  )}
+</Avatar>
 */
-const themePath = 'avatar'
+
+
+const nodeType = 'span'
 const defaultCSS = css`
   ${flex}
   ${align.center}
   ${justify.center}
   ${pos.relative}
-  overflow: hidden;
+  ${ov('hidden')};
 
   & > img {
     object-fit: cover;
   }
 `
-const SFC = createNode({
+const SFC = createComponent({
   name: 'Avatar',
   propTypes,
   defaultTheme,
-  themePath,
   CSS,
-  defaultCSS,
-  defaultNodeType: 'span'
+  themePath: 'avatar'
 })
 const SFCWithImageStat = compose([ImageStat, SFC])
+const supportsObjectFit = supportsCSS('object-fit')
 
 
-function getImage ({src, defaultSrc, imageRef}) {
-  return <img
-    key={src || defaultSrc}
-    src={src || defaultSrc}
-    onError={e => e.target.src = defaultSrc || ''}
-    ref={imageRef}
-  />
-}
-
-
-export default function (props) {
-  const supportsObjectFit = supportsCSS('object-fit')
-  const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-
-  return Box({
-    bw: theme.defaultBorderWidth,
-    bc: theme.defaultBorderColor,
-    bs: theme.defaultBoxShadow,
-    br: theme.defaultBorderRadius,
+export default function Avatar (props) {
+  const sfcProps = {
     ...props,
-    children: function (sfcProps) {
-      const SFCNode = supportsObjectFit ? SFC : SFCWithImageStat
+    children: function (boxProps) {
+      // adds child prop for 'Box' and rendering the avatar node
+      boxProps.children = function (nodeProps) {
+        nodeProps.nodeType = nodeProps.nodeType || nodeType
+        const innerRef = nodeProps.imageRef
+        delete nodeProps.imageRef
 
-      sfcProps.children = function (sfcNodeProps) {
-        return (sfcProps.getImage || getImage)({...sfcProps, ...sfcNodeProps})
+        nodeProps.children = function ({...imgProps}) {
+          imgProps.src = props.src
+          imgProps.defaultSrc = props.defaultSrc
+          imgProps.innerRef = innerRef
+
+          return (props.children || getImage)(imgProps)
+        }
+
+        return renderNode(nodeProps, defaultCSS)
       }
 
-      if (supportsObjectFit) {
-        sfcProps.orientation = 'square'
-      }
-
-      return SFCNode(sfcProps)
+      return Box(boxProps)
     }
-  })
+  }
+
+  if (supportsObjectFit) {
+    sfcProps.orientation = 'square'
+  }
+
+  return (supportsObjectFit ? SFC : SFCWithImageStat)(sfcProps)
 }

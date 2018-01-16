@@ -17,7 +17,7 @@ export default injectGlobal`
     margin: 0;
   }
 
-  [type="search"] {
+  [type='search'] {
     -webkit-appearance: none;
     outline-offset: -2px;
   }

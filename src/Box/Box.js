@@ -1,4 +1,6 @@
-import Grid from '../Grid'
+import gridPropTypes from '../Grid/propTypes'
+import * as gridCSS from '../Grid/CSS'
+import * as gridDefaultTheme from '../Grid/defaultTheme'
 import flexPropTypes from '../Flex/propTypes'
 import * as flexCSS from '../Flex/CSS'
 import propTypes from './propTypes'
@@ -21,14 +23,12 @@ export const FlexBox = createComponent({
   defaultTheme
 })
 
-export function GridBox (props) {
-  return Grid({
-    ...props,
-    children: function (gridProps) {
-      gridProps.children = props.children
-      return FlexBox(gridProps)
-    }
-  })
-}
+export const GridBox = createComponent({
+  name: 'GridBox',
+  propTypes: {...gridPropTypes, ...flexPropTypes, ...propTypes},
+  CSS: {...gridCSS, ...flexCSS, ...CSS},
+  defaultTheme: {...gridDefaultTheme, ...defaultTheme}
+})
+
 
 export default FlexBox

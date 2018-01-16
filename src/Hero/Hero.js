@@ -1,16 +1,13 @@
-import {css, cx} from 'emotion'
+import {css} from 'emotion'
 import FillViewport from '../FillViewport'
 import Box from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
 import {w, pos, touchScrolling} from '../Box/CSS'
-import {createNode} from '../utils'
+import {createComponent, renderNode} from '../utils'
 import {getStyle} from './utils'
-import propTypes from './propTypes'
-import * as defaultTheme from './defaultTheme'
-import * as CSS from './CSS'
 
 
-const themePath = 'hero'
+const nodeType = 'div'
 const defaultCSS = css`
   ${flex};
   ${column.column};
@@ -20,26 +17,24 @@ const defaultCSS = css`
   ${pos.relative};
   ${touchScrolling};
 `
-const HeroSFC = createNode({
-  name: 'Hero',
-  propTypes,
-  CSS,
-  defaultTheme,
-  defaultCSS,
-  themePath,
-  defaultNodeType: 'div'
-})
+const SFC = createComponent({name: 'Hero', themePath: 'hero'})
 
 
-export default function ({children, bg = null, ...props}) {
-  return Box({
+export default function Hero (props) {
+  return SFC({
     ...props,
     children: function (vpProps) {
       return FillViewport({
         ...vpProps,
-        children: function ({trimHeight, style, ...heroProps}) {
-          style = getStyle(style, trimHeight)
-          return HeroSFC({bg, ...heroProps, style, children})
+        children: function ({trimHeight, style, ...boxProps}) {
+          boxProps.children = function (nodeProps) {
+            nodeProps.children = props.children
+            nodeProps.nodeType = nodeProps.nodeType || nodeType
+            nodeProps.style = getStyle(style, trimHeight)
+            return renderNode(nodeProps, defaultCSS)
+          }
+
+          return Box(boxProps)
         }
       })
     }

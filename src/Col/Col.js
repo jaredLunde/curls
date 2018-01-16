@@ -10,7 +10,7 @@ const SFC = createComponent({name: 'Col', defaultTheme, defaultCSS})
 
 
 
-export default function Type (props) {
+export default function Col (props) {
   return SFC({
     ...props,
     children: function (boxProps) {

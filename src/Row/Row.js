@@ -7,7 +7,7 @@ const nodeType = 'div'
 const SFC = createComponent({name: 'Row', defaultTheme})
 
 
-export default function Type (props) {
+export default function Row (props) {
   return SFC({
     ...props,
     children: function (boxProps) {
@@ -20,3 +20,4 @@ export default function Type (props) {
       return Box(boxProps)
     }
   })
+}
