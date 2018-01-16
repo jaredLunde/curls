@@ -1,4 +1,3 @@
-import {getComponentTheme} from '../../utils'
 import * as defaultTheme from '../defaultTheme'
 
 
@@ -7,24 +6,26 @@ breakpointOrder.reverse()
 
 
 export default function (props) {
-  const theme = getComponentTheme(defaultTheme, props.theme, 'grid')
   const nextProps = {}
+  const propKeys = Object.keys(props)
 
+  let foundBreakpoint = false
   for (let x = 0; x < breakpointOrder.length; x++) {
     const bp = breakpointOrder[x]
 
     if (props[bp] !== void 0) {
       nextProps[bp] = props[bp]
+      foundBreakpoint = true
     }
   }
 
-  const propKeys = Object.keys(props)
+  if (foundBreakpoint === false) {
+    return props
+  }
+
   for (let x = 0; x < propKeys.length; x++) {
     const key = propKeys[x]
-
-    if (breakpointOrder.indexOf(key) === -1) {
-      nextProps[key] = props[key]
-    }
+    nextProps[key] = props[key]
   }
 
   return nextProps

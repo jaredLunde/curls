@@ -7,7 +7,7 @@ import {createComponent, renderNode} from '../utils'
 
 const defaultCSS = css`
   min-width: 0;
-  ${grow};
+  ${grow(true)};
   ${pos.relative};
 `
 const nodeType = 'div'

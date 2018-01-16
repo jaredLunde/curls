@@ -12,8 +12,8 @@ const emptyObj = {}
 
 export default function ({
   name,
+  CSS,
   propTypes = emptyObj,
-  CSS = emptyObj,
   defaultTheme = emptyObj,
   themePath = ''
 }) {
@@ -33,7 +33,7 @@ export default function ({
     )
     delete renderProps.children
 
-    if (CSS !== emptyObj) {
+    if (CSS !== void 0) {
       renderProps.className = cx(getClassNames(props, theme, CSS), props.className)
     }
 
