@@ -1,9 +1,5 @@
 import getTheme from './getTheme'
-import getIn from './getIn'
 import {curlsTheme} from '../theming/injectTheme'
-import defaultRem from '../theming/defaultRem'
-
-//const GLOBALS = ['colors', 'typeFaces']
 
 
 export default function (defaultTheme, userTheme, themePath) {

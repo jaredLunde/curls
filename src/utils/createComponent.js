@@ -14,10 +14,14 @@ export default function ({
   name,
   propTypes = emptyObj,
   CSS = emptyObj,
-  //defaultCSS,
   defaultTheme = emptyObj,
   themePath = ''
 }) {
+  if (defaultTheme !== emptyObj) {
+    // translates __esModule stuff to plain obj
+    defaultTheme = {...defaultTheme}
+  }
+
   function SFC (props) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
     props = theme.defaultProps ? assignOrdered(theme.defaultProps, props) : props
