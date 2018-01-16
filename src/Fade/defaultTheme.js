@@ -1,2 +1,4 @@
-export const defaultSpeed = 'med'
-export const defaultEasing = 'swiftMove'
+export const defaultProps = {
+  easing: 'swiftMove',
+  speed: 'med'
+}

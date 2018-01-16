@@ -1,11 +1,10 @@
 import React from 'react'
-import {cx} from 'emotion'
 import Toggle from 'react-cake/es/Toggle'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createComponent, getComponentTheme} from '../utils'
+import {createComponent} from '../utils'
 
 
 const themePath = 'fade'
@@ -30,21 +29,14 @@ export default function Fade ({children, visible = null, from = 0, to = 1, ...pr
       {...props}
     >
       {function (sfcProps) {
-        const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
+        sfcProps.children = function (transProps) {
+          transProps.property = transitionProperties
+          transProps.children = children
 
-        return FadeSFC({
-          ...sfcProps,
-          children: function (transProps) {
-            return Transitionable({
-              [theme.defaultSpeed]: true,
-              [theme.defaultEasing]: true,
-              property: transitionProperties,
-              isVisible: sfcProps.isVisible,
-              ...transProps,
-              children
-            })
-          }
-        })
+          return Transitionable(transProps)
+        }
+
+        return FadeSFC(sfcProps)
       }}
     </Toggle>
   )

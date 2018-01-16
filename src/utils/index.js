@@ -1,6 +1,5 @@
 export colorize from './colorize'
 export createComponent from './createComponent'
-export createNode from './createNode'
 export deepMerge from './deepMerge'
 export directionalScale, {isDirectional} from './directionalScale'
 export getClassNames from './getClassNames'

@@ -7,9 +7,7 @@ export {
 export {
   colorize,
   createComponent,
-  createNode,
   directionalScale,
-  // getTheme,
   getComponentTheme as getTheme,
   supportsCSS,
   withHoverQuery
@@ -46,6 +44,7 @@ export Link, {NavLink, A} from './Link'
 export MediaQuery from './MediaQuery'
 export Modal from './Modal'
 export NavBar from './NavBar'
+export Overlay from './Overlay'
 export PopOver from './PopOver'
 export Row from './Row'
 export Slide from './Slide'

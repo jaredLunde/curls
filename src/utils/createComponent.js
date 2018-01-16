@@ -22,21 +22,19 @@ export default function ({
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
     props = theme.defaultProps ? assignOrdered(theme.defaultProps, props) : props
 
-    const children = props.children
-    delete props.children
-
     const renderProps = (
       propTypes === emptyObj
       ? Object.assign({}, props)
       : reduceProps(props, propTypes)
     )
+    delete renderProps.children
 
     if (CSS !== emptyObj) {
       renderProps.className = cx(getClassNames(props, theme, CSS), props.className)
     }
 
 
-    return children(renderProps)
+    return props.children(renderProps)
   }
 
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {

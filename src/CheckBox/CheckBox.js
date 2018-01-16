@@ -5,10 +5,8 @@ import Toggle from 'react-cake/es/Toggle'
 import {d} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import Box from '../Box'
-import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
-import Transitionable from '../Transitionable'
-import {createComponent, getComponentTheme} from '../utils'
+import {createComponent, renderNode} from '../utils'
 import defaultCheckMark from './defaultCheckMark'
 
 
@@ -32,14 +30,14 @@ import defaultCheckMark from './defaultCheckMark'
 }
 </Checkbox>
 */
-const themePath = 'checkBox'
+const nodeType = 'span'
 const defaultCSS = css`
   ${flex};
   ${align.center};
   ${justify.center};
   cursor: pointer;
 `
-const SFC = createComponent({name: 'CheckBox', propTypes, defaultTheme, themePath})
+const SFC = createComponent({name: 'CheckBox', defaultTheme, themePath: 'checkBox'})
 
 
 export default function CheckBox ({
@@ -52,50 +50,34 @@ export default function CheckBox ({
   return (
     <Toggle propName='isChecked' initialValue={checked} {...props}>
       {function (sfcProps) {
-        const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
-
-        const CheckBoxInput = function ({
-          nodeType = 'span',
-          children = defaultCheckMark,
-          ...checkBoxInputProps
-        }) {
-          return Box({
-            p: theme.defaultPadding,
-            bg: theme.defaultBg,
-            br: theme.defaultBorderRadius,
-            bc: theme.defaultBorderColor,
-            bw: theme.defaultBorderWidth,
-            className: defaultCSS,
+        function CheckBoxInput (checkBoxInputProps) {
+          return SFC({
             ...checkBoxInputProps,
             children: function (boxProps) {
-              const checkBoxInput = <input
-                type='checkBox'
-                name={name}
-                value={value}
-                checked={sfcProps.isChecked}
-                readOnly
-                disabled
-                className={d.none}
-              />
+              return Box({
+                ...boxProps,
+                children: function (nodeProps) {
+                  const checkBoxInput = <input
+                    type='checkBox'
+                    name={name}
+                    value={value}
+                    checked={sfcProps.isChecked}
+                    readOnly
+                    disabled
+                    className={d.none}
+                  />
 
-              return (
-                <>
-                  {checkBoxInput}
-                  {createOptimized(
-                    nodeType,
-                    boxProps,
-                    children({isChecked: sfcProps.isChecked})
-                  )}
-                </>
-              )
+                  nodeProps.children = checkBoxInputProps.children({isChecked: sfcProps.isChecked})
+                  nodeProps.nodeType = nodeProps.nodeType || nodeType
+                  return renderNode(nodeProps, defaultCSS)
+                }
+              })
             }
           })
         }
 
         sfcProps.CheckBoxInput = CheckBoxInput
-        sfcProps.children = children
-
-        return SFC(sfcProps)
+        return children(sfcProps)
       }}
     </Toggle>
   )

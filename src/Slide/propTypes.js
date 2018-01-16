@@ -3,6 +3,5 @@ import positional from '../PropTypes/positional'
 
 
 export default {
-  isVisible: PropTypes.bool,
   ...positional,
 }

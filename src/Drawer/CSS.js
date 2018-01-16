@@ -35,5 +35,3 @@ export const fromLeft = css`
   left: 0;
   right: auto;
 `
-
-export {pos} from '../Box/CSS'

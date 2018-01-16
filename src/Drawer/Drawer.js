@@ -4,15 +4,13 @@ import createOptimized from 'react-cake/es/utils/createOptimized'
 import {maxZIndex} from '../global'
 import Box from '../Box'
 import Slide from '../Slide'
-import {getPosFromProps} from '../Slide/utils'
-import {createComponent, getComponentTheme} from '../utils'
+import {createComponent, renderNode} from '../utils'
 import {d, pos} from '../Box/CSS'
-import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 
 
-const themePath = 'drawer'
+const nodeType = 'div'
 const defaultCSS = css`
   ${d.block};
   ${pos.fixed};
@@ -20,10 +18,9 @@ const defaultCSS = css`
 `
 const SFC = createComponent({
   name: 'Drawer',
-  propTypes,
   CSS,
   defaultTheme,
-  themePath
+  themePath: 'drawer'
 })
 
 
@@ -42,59 +39,43 @@ Drawer({
   }
 })
 */
-export default function Drawer (props) {
-  const transitionType = props.transitionType || Slide
-  const position = getPosFromProps(props)
+export default function Drawer ({...props}) {
+  const transition = props.transition || Slide
   const childComponent = props.children
-  delete props[position]
 
-  const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-  props.children = function (sfcProps) {
-    // renders the element
-    const renderProps = {
-      pos: props.pos,
-      ...sfcProps,
-      children: function (drawerProps) {
-        const classNameFromDrawer = drawerProps.className
-        // Box component passed to the child function
-        drawerProps.DrawerBox = function DrawerBox (boxProps) {
-          return Box({
-            h: '100%',
-            ...boxProps,
-            children: function (drawerBoxProps) {
-              const nodeType = drawerBoxProps.nodeType || 'div'
-              drawerBoxProps.className = cx(
-                defaultCSS,
-                sfcProps.className,
-                classNameFromDrawer,
-                boxProps.className,
-                drawerBoxProps.className
-              )
-              delete drawerBoxProps.nodeType
-              return createOptimized(
-                nodeType,
-                drawerBoxProps,
-                boxProps.children({
-                  isVisible: sfcProps.isVisble,
-                  show: sfcProps.show,
-                  hide: sfcProps.hide,
-                  toggle: sfcProps.toggle
-                })
-              )
-            }
-          })
-        }
-        delete drawerProps.className
+  props.children = function (transitionProps) {
+    transitionProps.children = function (drawerProps) {
+      const classNameFromDrawer = drawerProps.className
+      // Box component passed to the child function
+      drawerProps.DrawerBox = function DrawerBox (boxProps) {
+        return Box({
+          ...boxProps,
+          children: function (drawerBoxProps) {
+            drawerBoxProps.nodeType = drawerBoxProps.nodeType || nodeType
+            drawerBoxProps.className = cx(
+              transitionProps.className,
+              classNameFromDrawer,
+              boxProps.className,
+              drawerBoxProps.className
+            )
+            drawerBoxProps.children = boxProps.children({
+              isVisible: drawerProps.isVisible,
+              show: drawerProps.show,
+              hide: drawerProps.hide,
+              toggle: drawerProps.toggle
+            })
 
-        return createOptimized(childComponent, drawerProps)
+            return renderNode(drawerBoxProps, defaultCSS)
+          }
+        })
       }
-    }
-    renderProps[position === void 0 ? theme.defaultDirection : position] = true
-    delete renderProps.className
+      delete drawerProps.className
 
-    return SFC(renderProps)
+      return childComponent(drawerProps)
+    }
+
+    return transition(transitionProps)
   }
 
-  props[position === void 0 ? theme.defaultDirection : position] = true
-  return transitionType(props)
+  return SFC(props)
 }

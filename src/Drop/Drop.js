@@ -1,24 +1,18 @@
 import React from 'react'
-import {cx} from 'emotion'
 import Toggle from 'react-cake/es/Toggle'
 import propTypes from '../Slide/propTypes'
-import {getPosFromProps} from '../Slide/utils'
 import {fadeControls as dropControls} from '../Fade/Fade'
 import * as CSS from './CSS'
 import * as defaultTheme from '../Slide/defaultTheme'
 import Transitionable from '../Transitionable'
-import {createComponent, getComponentTheme} from '../utils'
+import {createComponent} from '../utils'
 
 
-const themePath = 'drop'
-const DropSFC = createComponent({name: 'Drop', propTypes, CSS, defaultTheme, themePath})
+const SFC = createComponent({name: 'Drop', propTypes, CSS, defaultTheme, themePath: 'drop'})
 const transitionProperties = 'visibility, transform, opacity'
 
 
 export default function Drop ({children, visible = null, ...props}) {
-  const position = getPosFromProps(props)
-  delete props[position]
-
   return (
     <Toggle
       propName='isVisible'
@@ -27,25 +21,14 @@ export default function Drop ({children, visible = null, ...props}) {
       {...props}
     >
       {function (sfcProps) {
-        const theme = getComponentTheme(defaultTheme, sfcProps.theme, themePath)
+        sfcProps.children = function (transProps) {
+          transProps.property = transitionProperties
+          transProps.children = children
 
-        const renderProps = {
-          [theme.defaultDirection]: true,
-          ...sfcProps,
-          children: function (transProps) {
-            return Transitionable({
-              [theme.defaultSpeed]: true,
-              [theme.defaultEasing]: true,
-              property: transitionProperties,
-              isVisible: sfcProps.isVisible,
-              ...transProps,
-              children
-            })
-          }
+          return Transitionable(transProps)
         }
 
-        renderProps[position === void 0 ? theme.defaultDirection : position] = true
-        return DropSFC(renderProps)
+        return SFC(sfcProps)
       }}
     </Toggle>
   )

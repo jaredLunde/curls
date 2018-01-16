@@ -1,116 +1,86 @@
-import React from 'react'
-import {cx, css} from 'emotion'
-import createOptimized from 'react-cake/es/utils/createOptimized'
+import {cx} from 'emotion'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {pos, w, h, touchScrolling} from '../Box/CSS'
 import Box from '../Box'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
-import {getComponentTheme} from '../utils'
 import {maxZIndex} from '../global'
-
+import {createComponent, renderNode} from '../utils'
 
 /**
-<Modal transitionType={Fade}>
+<Modal>
   {
-    ({ModalBox, show, hide, toggle, isVisible}) => (
-      <Hero bg='black'>
-        {ModalBox({
-          p: 4,
-          children: function ({show, hide, toggle, isVisible}) {
-            return (
-              <Type black>
-                Im a modal</br>
+    ({ModalBox, show, hide, toggle, isVisible, className}) => (
+      <>
+        <div clasName={className}>
+          {ModalBox({
+            p: 4,
+            children: function ({show, hide, toggle, isVisible}) {
+              return (
+                <Type color='black'>
+                  Im a modal
 
-                <Button onClick={hide}>
-                  Close
-                </Button>
-              </Type>
-            )
-          }
-        })}
+                  <Button onClick={hide}>
+                    Close
+                  </Button>
+                </Type>
+              )
+            }
+          })}
+        </div>
 
         <Button md onClick={toggle}>
           Get yours today
         </Button>
-      </Hero>
+      </>
     )
   }
 </Modal>
 **/
-const themePath = 'modal'
-const fixedContainer = css`
-  ${baseIsNotVisible};
-  ${maxZIndex};
-  ${flex};
-  ${align.center};
-  ${justify.center};
-  ${pos.fixed};
-  ${w('100%')};
-  ${h('100%')};
-  ${touchScrolling};
-  left: 0;
-  top: 0;
-  overflow: auto;
-`
+const nodeType = 'div'
+const SFC = createComponent({name: 'Modal', defaultTheme, themePath: 'modal'})
 
 
-export default function Modal ({children, transitionType = Drop, theme, ...props}) {
-  theme = getComponentTheme(defaultTheme, theme, themePath)
+export default function Modal ({...props}) {
+  const transition = props.transition || Drop
+  const childComponent = props.children
 
-  return transitionType({
-    ...props,
-    children: function ({isVisible, show, hide, toggle, className, ...modalProps}) {
-      const modalClassName = className
+  props.children = function (modalProps) {
+    const classNameFromTransition = modalProps.className
+    delete modalProps.className
+    // Box component passed to the child function
+    modalProps.ModalBox = function ModalBox (sfcProps) {
+      return SFC({
+        ...sfcProps,
+        children: function (boxProps) {
+          return Box({
+            ...boxProps,
+            className: modalProps.isVisible && baseIsVisible,
+            children: function (modalBoxProps) {
+              modalBoxProps.nodeType = modalBoxProps.nodeType || nodeType
+              modalBoxProps.className = cx(
+                classNameFromTransition,
+                boxProps.className,
+                modalBoxProps.className
+              )
+              modalBoxProps.children = sfcProps.children({
+                isVisible: modalProps.isVisible,
+                show: modalProps.show,
+                hide: modalProps.hide,
+                toggle: modalProps.toggle
+              })
 
-      function ModalBox ({nodeType = 'div', children, ...boxProps}) {
-        return Box({
-          className: cx(fixedContainer, isVisible && baseIsVisible),
-          children: function (box2Props) {
-            return Box({
-              p: theme.defaultPadding,
-              bg: theme.defaultBg,
-              br: theme.defaultBorderRadius,
-              bc: theme.defaultBorderColor,
-              bw: theme.defaultBorderWidth,
-              sh: theme.defaultBoxShadow,
-              ...boxProps,
-              children: function ({className, ...containerProps}) {
-                return (
-                  <div {...box2Props}>
-                    {createOptimized(
-                      nodeType,
-                      {
-                        className: cx(className, modalClassName),
-                        ...containerProps
-                      },
-                      children({
-                        isVisible,
-                        show,
-                        hide,
-                        toggle
-                      })
-                    )}
-                  </div>
-                )
-              }
-            })
-          }
-        })
-      }
-
-      return createOptimized(
-        children,
-        {
-          ModalBox,
-          isVisible,
-          show,
-          hide,
-          toggle,
-          ...modalProps
+              return renderNode(modalBoxProps)
+            }
+          })
         }
-      )
+      })
+
     }
-  })
+
+    return childComponent(modalProps)
+  }
+
+  return transition(props)
 }

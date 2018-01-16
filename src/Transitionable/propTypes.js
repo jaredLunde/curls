@@ -10,17 +10,6 @@ export default {
   verySlow: bool,
   speed: string,
   // transition-timing-functions
-  boomerang: bool,
-  bounce: bool,
-  easeOut: bool,
-  easeIn: bool,
-  easeInOut: bool,
-  swiftMove: bool,
-  swifterMove: bool,
-  heavyMove: bool,
-  swiftIn: bool,
-  swiftOut: bool,
-  linear: bool,
   easing: string,
   // transition-delay
   delay: number,

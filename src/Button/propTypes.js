@@ -9,5 +9,6 @@ export default {
   md: bool,
   lg: bool,
   xl: bool,
-  xxl: bool
+  xxl: bool,
+  __buttonStyles: bool
 }

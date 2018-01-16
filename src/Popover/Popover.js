@@ -5,35 +5,34 @@ import createOptimized from 'react-cake/es/utils/createOptimized'
 import compose from 'react-cake/es/utils/compose'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import loadImages from 'react-cake/es/utils/loadImages'
-import {GridBox} from '../Box'
-import {pos} from '../Box/CSS'
+import Box from '../Box'
+import {pos, z} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
 import Drop from '../Drop'
 import {getPosFromProps} from '../Slide/utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
-import {getComponentTheme} from '../utils'
+import {createComponent, renderNode} from '../utils'
 import viewport from '../PropTypes/viewport'
 
 
 /**
 PopOver({
   delay: 200,
-  fromBottom: true,
-  children: function ({PopOverBox, popOverRef, show, hide, ...props}) {
+  fromLeft: true,
+  children: function ({PopOverBox, popOverRef, renderPosition, show, hide, ...props}) {
     return (
-      <div ref={popOverRef}>
+      <div>
         {PopOverBox({
-          p: 5,
-          bg: 'darkestGrey',
+          p: 4,
           onMouseEnter: show,
           onMouseLeave: hide,
           children: function ({isVisible, show, hide, toggle}) {
-            return <Type bold white>Hello</Type>
+            return <Type bold color='black'>Hello</Type>
           }
         })}
 
-        <Button onMouseEnter={show} onMouseLeave={hide}>
+        <Button innerRef={popOverRef} onMouseEnter={show} onMouseLeave={hide}>
           Hover me
         </Button>
       </div>
@@ -41,11 +40,14 @@ PopOver({
   }
 })
 */
-const themePath = 'popOver'
-const poBoxCSS = css`
+const defaultCSS = css`
   ${flex};
   ${pos.fixed};
+  ${z(1)};
 `
+const nodeType = 'div'
+const SFC = createComponent({name: 'Popover', defaultTheme, themePath: 'popOver'})
+
 
 class PopOverContainer extends React.PureComponent {
   imageLoader = null
@@ -87,7 +89,7 @@ class PopOverContainer extends React.PureComponent {
     let {popOverDirection, theme, getViewportSize} = this.props
     const direction = (
       popOverDirection
-      || getComponentTheme(defaultTheme, theme, themePath).defaultDirection
+      || getPosFromProps(defaultTheme.defaultProps)
     )
 
     this.setState(
@@ -109,7 +111,6 @@ class PopOverContainer extends React.PureComponent {
     let {
       children,
       className,
-      theme,
       show,
       hide,
       toggle,
@@ -117,46 +118,44 @@ class PopOverContainer extends React.PureComponent {
       ...props
     } = this.props
     props = reduceProps(props, viewport)
-    theme = getComponentTheme(defaultTheme, theme, themePath)
     const poClassName = className
 
-    const PopOverBox = ({nodeType = 'div', children, ...boxProps}) => {
-      return GridBox({
-        className: cx(poBoxCSS, className),
-        p: theme.defaultPadding,
-        bg: theme.defaultBg,
-        br: theme.defaultBorderRadius,
-        bc: theme.defaultBorderColor,
-        bw: theme.defaultBorderWidth,
-        bs: theme.defaultBoxShadow,
-        ...boxProps,
-        children: ({className, style, ...poProps}) => {
-          return createOptimized(
-            nodeType,
-            {
-              className: cx(poClassName, className),
-              ref: this.setPopOverBoxRef,
-              style: {...this.state, ...style},
-              ...poProps
-            },
-            children({isVisible, reposition: this.reposition, show, hide, toggle})
-          )
+    const PopOverBox = props => {
+      return SFC({
+        ...props,
+        children: boxProps => {
+          const {renderPosition, ...state} = this.state
+          boxProps.children = nodeProps => {
+            nodeProps.children = props.children({
+              isVisible,
+              reposition: this.reposition,
+              show,
+              hide,
+              toggle,
+              renderPosition
+            })
+            nodeProps.innerRef = this.setPopOverBoxRef
+            nodeProps.style = {...state, ...nodeProps.style}
+            nodeProps.nodeType = nodeProps.nodeType || nodeType
+            nodeProps.className = cx(className, nodeProps.className)
+            return renderNode(nodeProps, defaultCSS)
+          }
+
+          return Box(boxProps)
         }
       })
     }
 
-    return createOptimized(
-      children,
-      {
-        PopOverBox,
-        isVisible,
-        show,
-        hide,
-        toggle,
-        ...props,
-        popOverRef: this.setContainerRef
-      }
-    )
+    return children({
+      PopOverBox,
+      isVisible,
+      show,
+      hide,
+      toggle,
+      renderPosition: this.state.renderPosition,
+      ...props,
+      popOverRef: this.setContainerRef
+    })
   }
 }
 
@@ -164,10 +163,10 @@ class PopOverContainer extends React.PureComponent {
 const ComposedPopOver = compose([WithViewport, PopOverContainer])
 
 
-export default function PopOver ({children, transitionType = Drop, ...props}) {
+export default function PopOver ({children, transition = Drop, ...props}) {
   const popOverDirection = getPosFromProps(props)
 
-  return transitionType({
+  return transition({
     ...props,
     children: function (popOverProps) {
       return createOptimized(
