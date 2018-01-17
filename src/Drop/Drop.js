@@ -12,7 +12,7 @@ const SFC = createComponent({name: 'Drop', propTypes, CSS, defaultTheme, themePa
 const transitionProperties = 'visibility, transform, opacity'
 
 
-export default function Drop ({children, visible = null, ...props}) {
+export default function Drop ({children, visible = false, ...props}) {
   return (
     <Toggle
       propName='isVisible'

@@ -12,13 +12,13 @@ const FadeSFC = createComponent({name: 'Fade', propTypes, CSS, defaultTheme, the
 
 export const fadeControls = [
   {name: 'show', value: true},
-  {name: 'hide', value: null}
+  {name: 'hide', value: false}
 ]
 
 const transitionProperties = 'visibility, opacity'
 
 
-export default function Fade ({children, visible = null, from = 0, to = 1, ...props}) {
+export default function Fade ({children, visible = false, from = 0, to = 1, ...props}) {
   return (
     <Toggle
       propName='isVisible'

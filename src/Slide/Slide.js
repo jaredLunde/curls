@@ -12,7 +12,7 @@ const SFC = createComponent({name: 'Slide', propTypes, CSS, defaultTheme, themeP
 const transitionProperties = 'visibility, transform'
 
 
-export default function Slide ({children, visible = null, ...props}) {
+export default function Slide ({children, visible = false, ...props}) {
   return (
     <Toggle
       propName='isVisible'

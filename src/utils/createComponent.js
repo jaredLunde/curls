@@ -32,10 +32,10 @@ export default function ({
     )
     delete renderProps.children
 
-    if (CSS !== void 0 && theme !== void 0) {
+    if (CSS !== void 0) {
       const classNames = getClassNames(props, theme, CSS)
 
-      if (classNames !== void 0 && classNames.length) {
+      if (classNames !== void 0) {
         renderProps.className = cx(classNames, props.className)
       }
     }
