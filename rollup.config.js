@@ -1,50 +1,69 @@
-import nodeResolve from 'rollup-plugin-node-resolve'
-import babel from 'rollup-plugin-babel'
-import replace from 'rollup-plugin-replace'
+import resolve from 'rollup-plugin-node-resolve'
 import uglify from 'rollup-plugin-uglify'
-import commonjs from 'rollup-plugin-commonjs'
+import replace from 'rollup-plugin-replace'
+import babel from 'rollup-plugin-babel'
+import cjs from 'rollup-plugin-commonjs'
+import path from 'path'
 import {minify} from 'uglify-es'
 
 
-var env = process.env.NODE_ENV
-var config = {
-  output: {
-    name: 'Curls',
-    format: 'umd'
-  },
-  external: ['react', 'prop-types', 'react-router-dom'],
-  globals: {
-    react: 'React',
-    'prop-types': 'PropTypes',
-    'react-router-dom': 'Router'
-  },
-  plugins: [
+const pkg = require('./package.json')
+
+const basePlugins = [
+  resolve({
+    jsnext: true,
+    esnext: true,
+    'jsnext:main': true,
+    main: true,
+    preferBuiltins: true,
+    browser: true
+  }),
+  cjs({exclude: [path.join(__dirname, './src/**/*'), path.join(__dirname, './node_modules/@babel/runtime/core-js/array/from.js')]}),
+  babel({
+    // exclude: [path.join(__dirname, './node_modules/**/*')],
+    presets: [
+      [
+        '@babel/env',
+        {
+          loose: true,
+          modules: false
+        }
+      ],
+      '@babel/stage-2',
+      '@babel/react'
+    ],
+    plugins: [
+      'transform-react-pure-components',
+      '@babel/transform-react-constant-elements',
+      '@babel/transform-react-inline-elements',
+      '@babel/proposal-do-expressions',
+      '@babel/proposal-export-default-from',
+      '@babel/proposal-nullish-coalescing-operator',
+      '@babel/proposal-optional-chaining',
+      '@babel/proposal-pipeline-operator',
+      'transform-react-remove-prop-types',
+      'closure-elimination'
+    ],
+    babelrc: false
+  }),
+]
+
+const baseConfig = {input: './src/index.js', exports: 'named'}
+const baseExternal = ['react', 'react-dom', 'react-router-dom', 'prop-types', 'preact']
+
+//const mainConfig = Object.assign({}, baseConfig, {
+//  plugins: basePlugins,
+//  output: [
+//    { file: pkg.main, format: 'cjs' },
+//    { file: pkg.module, format: 'es' }
+//  ]
+//})
+
+const umdConfig = Object.assign({}, baseConfig, {
+  plugins: basePlugins.concat(
     replace({
-      'process.env.NODE_ENV': JSON.stringify(env)
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    nodeResolve({
-      jsnext: true,
-      module: true,
-      esnext: true,
-      main: true,
-      preferBuiltins: true,
-      browser: true
-    }),
-    commonjs({
-      include: 'node_modules/**',
-      namedExports: {
-        'node_modules/react/react.js': ['createElement']
-      }
-    }),
-    babel({
-      exclude: 'node_modules/**'
-    })
-  ]
-}
-
-
-if (env === 'production') {
-  config.plugins.push(
     uglify(
       {
         compress: {
@@ -63,8 +82,16 @@ if (env === 'production') {
       },
       minify
     )
-  )
-}
+  ),
+  output: {
+    file: './dist/curls.js',
+    format: 'umd',
+    name: 'Curls',
+    globals: {react: 'React', 'react-dom': 'ReactDOM', 'react-router-dom': 'Router', 'prop-types': 'PropTypes', preact: 'preact'},
+  },
+  external: baseExternal,
+})
 
 
-export default config
+// export default [mainConfig, umdConfig]
+export default umdConfig

@@ -1,109 +1,45 @@
 {
   "env": {
-    "production": {
-      "presets": [
-        "@babel/preset-react",
-        [
-          "@babel/preset-env", {
-            "debug": true,
-            "modules": false,
-            "useBuiltIns": "usage",
-            "targets": {
-              "browsers": "defaults"
-            }
-          }
-        ],
-        "@babel/preset-stage-0"
-      ],
-      "plugins": [
-        ["emotion", { "hoist": true }],
-        "transform-react-pure-components",
-        "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types"
-      ]
-    },
     "commonjs": {
       "presets": [
-        "@babel/preset-react",
-        [
-          "@babel/preset-env", {
-            "debug": true,
-            "loose": true,
-            "modules": "commonjs",
-            "useBuiltIns": "usage"
-          }
-        ],
-        "@babel/preset-stage-0"
+        "@babel/env",
+        "@babel/react",
+        "@babel/stage-2"
       ],
       "plugins": [
         ["emotion", { "hoist": true }],
-        "@babel/plugin-transform-runtime",
+        "@babel/transform-runtime",
         "transform-react-pure-components",
-        "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types"
+        "@babel/transform-react-constant-elements",
+        "@babel/transform-react-inline-elements",
+        "@babel/proposal-do-expressions",
+        "@babel/proposal-export-default-from",
+        "@babel/proposal-nullish-coalescing-operator",
+        "@babel/proposal-optional-chaining",
+        "@babel/proposal-pipeline-operator",
+        "transform-react-remove-prop-types",
+        "closure-elimination"
       ]
     },
     "es": {
       "presets": [
-        "@babel/preset-react",
-        [
-          "@babel/preset-env", {
-            "debug": true,
-            "modules": false,
-            "useBuiltIns": "usage"
-          }
-        ],
-        "@babel/preset-stage-0"
+        "@babel/react",
+        ["@babel/env", {"modules": false}],
+        "@babel/stage-2"
       ],
       "plugins": [
         ["emotion", { "hoist": true }],
-        "@babel/plugin-transform-runtime",
+        "@babel/transform-runtime",
         "transform-react-pure-components",
-        "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types"
-      ]
-    },
-    "development": {
-      "presets": [
-        "@babel/preset-react",
-        [
-          "@babel/preset-env", {
-            "debug": false,
-            "modules": false,
-            "useBuiltIns": "usage",
-            "targets": {
-              "browsers": ["chrome >= 56"]
-            }
-          }
-        ],
-        "@babel/preset-stage-0"
-      ],
-      "plugins": [
-        ["emotion", { "sourceMap": true, "autoLabel": true }],
-        "@babel/plugin-transform-runtime",
-        "transform-react-pure-components",
-        "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types"
-      ]
-    },
-    "cli": {
-      "presets": [
-        "@babel/preset-react",
-        [
-          "@babel/preset-env", {
-            "debug": true,
-            "modules": false,
-            "useBuiltIns": "usage"
-          }
-        ],
-        "@babel/preset-stage-0"
-      ],
-      "plugins": [
-        ["emotion", { "hoist": true }],
-        "@babel/plugin-transform-runtime",
-        "transform-react-pure-components",
-        "@babel/plugin-transform-react-constant-elements",
-        "transform-react-remove-prop-types"
+        "@babel/transform-react-constant-elements",
+        "@babel/transform-react-inline-elements",
+        "@babel/proposal-do-expressions",
+        "@babel/proposal-export-default-from",
+        "@babel/proposal-nullish-coalescing-operator",
+        "@babel/proposal-optional-chaining",
+        "@babel/proposal-pipeline-operator",
+        "transform-react-remove-prop-types",
+        "closure-elimination"
       ]
     }
   }

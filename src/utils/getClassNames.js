@@ -1,13 +1,8 @@
 export default function getClassNames (props, theme, CSS) {
   const classNames = []
   const propKeys = Object.keys(props)
-  const propKeysLength = propKeys.length
-
-  if (propKeysLength === 0) {
-    return
-  }
-
-  for (let x = 0; x < propKeysLength; x++) {
+  
+  for (let x = 0; x < propKeys.length; x++) {
     const propName = propKeys[x]
     const getCSS = CSS[propName]
 

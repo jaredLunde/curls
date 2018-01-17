@@ -1,24 +1,21 @@
 import {css} from 'emotion'
 import {createComponent, renderNode} from '../utils'
-import Box from '../Box'
-import {w, d, pos} from '../Box/CSS'
-import propTypes from './propTypes'
+import {BasicBox} from '../Box'
+import {w, h, d, pos} from '../Box/CSS'
 import * as defaultTheme from './defaultTheme'
-import * as CSS from './CSS'
 
 
 const emptyObj = {}
 const nodeType = 'div'
 const defaultCSS = css`
   ${w('100%')};
+  ${h(1)};
   ${d.block};
   ${pos.relative};
   clear: both;
 `
 const SFC = createComponent({
   name: 'Divider',
-  propTypes,
-  CSS,
   defaultTheme,
   themePath: 'divider'
 })
@@ -34,7 +31,7 @@ export default function Divider (props = emptyObj) {
         return renderNode(nodeProps, defaultCSS)
       }
 
-      return Box(boxProps)
+      return BasicBox(boxProps)
     }
   })
 }

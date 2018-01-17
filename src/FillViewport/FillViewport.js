@@ -8,16 +8,13 @@ function FillViewport (initialProps) {
   let {children, style, viewportHeight, ...props} = initialProps
   props = reduceProps(props, viewport)
 
-  return createOptimized(
-    children,
-    {
-      style: {
-        ...style,
-        height: isNaN(viewportHeight) ? '100vh' : viewportHeight
-      },
-      ...props
-    }
-  )
+  return children({
+    style: {
+      ...style,
+      height: isNaN(viewportHeight) ? '100vh' : viewportHeight
+    },
+    ...props
+  })
 }
 
 

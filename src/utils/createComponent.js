@@ -1,6 +1,5 @@
 import {cx} from 'emotion'
 import PropTypes from 'prop-types'
-import createOptimized from 'react-cake/es/utils/createOptimized'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import getClassNames from './getClassNames'
 import getComponentTheme from './getComponentTheme'
@@ -34,7 +33,11 @@ export default function ({
     delete renderProps.children
 
     if (CSS !== void 0) {
-      renderProps.className = cx(getClassNames(props, theme, CSS), props.className)
+      const classNames = getClassNames(props, theme, CSS)
+
+      if (classNames !== void 0 && classNames.length) {
+        renderProps.className = cx(classNames, props.className)
+      }
     }
 
 

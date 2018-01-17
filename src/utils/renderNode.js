@@ -10,7 +10,7 @@ export default function (nodeProps, defaultCSS) {
   if (typeof children === 'function') {
     children = children({...nodeProps})
   }
-  
+
   if (typeof nodeType === 'string') {
     nodeProps.ref = nodeProps.innerRef
     delete nodeProps.innerRef

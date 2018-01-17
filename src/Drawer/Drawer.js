@@ -5,7 +5,7 @@ import {maxZIndex} from '../global'
 import Box from '../Box'
 import Slide from '../Slide'
 import {createComponent, renderNode} from '../utils'
-import {d, pos} from '../Box/CSS'
+import {d, pos, ov, h} from '../Box/CSS'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 
@@ -15,6 +15,8 @@ const defaultCSS = css`
   ${d.block};
   ${pos.fixed};
   ${maxZIndex};
+  ${ov.autoY};
+  ${h('100%')};
 `
 const SFC = createComponent({
   name: 'Drawer',

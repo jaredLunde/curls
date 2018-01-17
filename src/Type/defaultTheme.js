@@ -1,4 +1,4 @@
-import {defaultColors, defaultTypeFaces, defaultRem} from '../theming'
+import {defaultColors, defaultTypeFaces} from '../theming'
 
 
 export const scale = {
@@ -13,7 +13,6 @@ export const scale = {
 export const colors = defaultColors
 export const typeFaces = defaultTypeFaces
 export const defaultProps = {
-  face: 'system',
   sm: true,
   color: 'darkerGrey',
 }
