@@ -14,6 +14,7 @@ export {
 } from './utils'
 
 export {
+  curlsTheme as theme,
   injectRem,
   injectTheme,
   replaceTheme,
