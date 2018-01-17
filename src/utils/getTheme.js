@@ -1,16 +1,17 @@
 import memoize from '../utils/lru'
 import deepMerge from './deepMerge'
 
-
-let unCached = 0
+/**
+let uncached = 0
 function getTheme (defaultTheme = {}, userTheme) {
-  unCached += 1
+  uncached += 1
+  console.log('[Uncached]', uncached)
   return deepMerge(defaultTheme, userTheme)
 }
-
+*/
 
 const emptyObj = {}
-const memoizer = memoize(4096, {multiArgs: true})(getTheme)
+const memoizer = memoize(4096, {multiArgs: true})(deepMerge)
 
 
 export default function (defaultTheme = emptyObj, userTheme) {

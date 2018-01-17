@@ -8,7 +8,7 @@ import {createComponent} from '../utils'
 
 
 const themePath = 'fade'
-const FadeSFC = createComponent({name: 'Fade', propTypes, CSS, defaultTheme, themePath})
+const SFC = createComponent({name: 'Fade', propTypes, CSS, defaultTheme, themePath})
 
 export const fadeControls = [
   {name: 'show', value: true},
@@ -36,7 +36,7 @@ export default function Fade ({children, visible = false, from = 0, to = 1, ...p
           return Transitionable(transProps)
         }
 
-        return FadeSFC(sfcProps)
+        return SFC(sfcProps)
       }}
     </Toggle>
   )

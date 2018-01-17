@@ -1,21 +1,20 @@
 import {css} from 'emotion'
-import {lighten} from 'polished'
 import {withHoverQuery} from '../utils'
 
-export colors from '../theming/defaultColors'
+// export colors from '../theming/defaultColors'
 
 export function getHoverClass (props, theme) {
   // adds css classes for hover and active states
   const color = props.color
   const hoverStyle = css`
     &:hover {
-      color: ${lighten(0.05, theme.colors[color])};
+      opacity: 0.8;
     }
   `
 
   const noneStyle = css`
     &:hover {
-      color: ${theme.colors[color]};
+      opacity: 1.0;
     }
   `
 

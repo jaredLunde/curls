@@ -1,9 +1,7 @@
 import {css} from 'emotion'
-import {lighten, darken} from 'polished'
+import {darken} from 'polished'
 import {withHoverQuery} from '../utils'
-
-
-export colors from '../theming/defaultColors'
+// export colors from '../theming/defaultColors'
 
 export const sizes = {
   xxs: css`padding: 6px 12px;`,
@@ -27,16 +25,15 @@ export const defaultProps = {
 
 export function getHoverClass (props, theme) {
   // adds css classes for hover and active states
-  const bg = props.bg
   const hoverStyle = css`
     &:hover {
-      background-color: ${lighten(0.05, theme.colors[bg])};
+      opacity: 0.8;
     }
   `
 
   const noneStyle = css`
     &:hover {
-      background-color: ${theme.colors[bg]};
+      opacity: 1.0;
     }
   `
 

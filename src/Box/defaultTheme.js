@@ -1,4 +1,4 @@
-import {defaultColors} from '../theming'
+// import {defaultColors} from '../theming'
 import {materialShadow} from './utils'
 
 
@@ -30,7 +30,7 @@ export const borderRadiusScale = [
   1000 * 16
 ]
 export const getBoxShadow = materialShadow
-export const colors = defaultColors
+// export const colors = defaultColors
 /**
 export default {
   colors: defaultColors,

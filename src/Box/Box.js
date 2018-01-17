@@ -13,6 +13,7 @@ export const BasicBox = createComponent({
   name: 'BasicBox',
   propTypes,
   CSS,
+  themePath: 'box',
   defaultTheme
 })
 
@@ -20,6 +21,7 @@ export const FlexBox = createComponent({
   name: 'Box',
   propTypes: {...flexPropTypes, ...propTypes},
   CSS: {...flexCSS, ...CSS},
+  themePath: 'box',
   defaultTheme
 })
 
@@ -27,6 +29,7 @@ export const GridBox = createComponent({
   name: 'GridBox',
   propTypes: {...gridPropTypes, ...flexPropTypes, ...propTypes},
   CSS: {...gridCSS, ...flexCSS, ...CSS},
+  themePath: 'box',
   defaultTheme: {...gridDefaultTheme, ...defaultTheme}
 })
 

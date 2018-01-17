@@ -11,11 +11,15 @@ export default function ({
   CSS,
   propTypes,
   defaultTheme,
-  themePath = ''
+  themePath
 }) {
   if (defaultTheme !== void 0) {
     // translates __esModule stuff to plain obj
     defaultTheme = {...defaultTheme}
+  }
+
+  if (themePath === void 0) {
+    throw new Error(`[${name}] Curls components must be initialized with a 'themePath' option set.`)
   }
 
   function SFC (props) {
