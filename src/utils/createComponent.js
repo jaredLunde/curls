@@ -6,33 +6,33 @@ import getComponentTheme from './getComponentTheme'
 import assignOrdered from './assignOrdered'
 
 
-const emptyObj = {}
-
-
 export default function ({
   name,
   CSS,
-  propTypes = emptyObj,
-  defaultTheme = emptyObj,
+  propTypes,
+  defaultTheme,
   themePath = ''
 }) {
-  if (defaultTheme !== emptyObj) {
+  if (defaultTheme !== void 0) {
     // translates __esModule stuff to plain obj
     defaultTheme = {...defaultTheme}
   }
 
   function SFC (props) {
     const theme = getComponentTheme(defaultTheme, props.theme, themePath)
-    props = theme.defaultProps ? assignOrdered(theme.defaultProps, props) : props
-
+    props = (
+      theme.defaultProps === void 0
+      ? props
+      : assignOrdered(theme.defaultProps, props)
+    )
     const renderProps = (
-      propTypes === emptyObj
+      propTypes === void 0
       ? Object.assign({}, props)
       : reduceProps(props, propTypes)
     )
     delete renderProps.children
 
-    if (CSS !== void 0) {
+    if (CSS !== void 0 && theme !== void 0) {
       const classNames = getClassNames(props, theme, CSS)
 
       if (classNames !== void 0 && classNames.length) {
