@@ -11,14 +11,14 @@
         "@babel/transform-runtime",
         "transform-react-pure-components",
         "@babel/transform-react-constant-elements",
-        "@babel/transform-react-inline-elements",
         "@babel/proposal-do-expressions",
         "@babel/proposal-export-default-from",
         "@babel/proposal-nullish-coalescing-operator",
         "@babel/proposal-optional-chaining",
         "@babel/proposal-pipeline-operator",
         "transform-react-remove-prop-types",
-        "closure-elimination"
+        "closure-elimination",
+        "polished"
       ]
     },
     "es": {
@@ -32,14 +32,14 @@
         "@babel/transform-runtime",
         "transform-react-pure-components",
         "@babel/transform-react-constant-elements",
-        "@babel/transform-react-inline-elements",
         "@babel/proposal-do-expressions",
         "@babel/proposal-export-default-from",
         "@babel/proposal-nullish-coalescing-operator",
         "@babel/proposal-optional-chaining",
         "@babel/proposal-pipeline-operator",
         "transform-react-remove-prop-types",
-        "closure-elimination"
+        "closure-elimination",
+        "polished"
       ]
     }
   }

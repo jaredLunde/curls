@@ -42,7 +42,8 @@ const basePlugins = [
       '@babel/proposal-optional-chaining',
       '@babel/proposal-pipeline-operator',
       'transform-react-remove-prop-types',
-      'closure-elimination'
+      'closure-elimination',
+      'polished'
     ],
     babelrc: false
   }),

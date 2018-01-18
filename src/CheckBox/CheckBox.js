@@ -69,7 +69,12 @@ export default function CheckBox ({
 
                   nodeProps.children = checkBoxInputProps.children({isChecked: sfcProps.isChecked})
                   nodeProps.nodeType = nodeProps.nodeType || nodeType
-                  return renderNode(nodeProps, defaultCSS)
+                  return (
+                    <>
+                      {renderNode(nodeProps, defaultCSS)}
+                      {checkBoxInput}
+                    </>
+                  )
                 }
               })
             }
