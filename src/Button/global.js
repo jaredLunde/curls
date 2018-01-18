@@ -30,7 +30,6 @@ export default injectGlobal`
   }
 
   [role="button"] {
-    text-align: center;
     text-decoration: none;
   }
 
@@ -39,5 +38,9 @@ export default injectGlobal`
   [role=button]:hover,
   [role=button]:active {
     cursor: pointer;
+  }
+
+  button {
+    text-align: inherit;
   }
 `
