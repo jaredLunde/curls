@@ -3,7 +3,7 @@ import {cx} from 'emotion'
 import PropTypes from 'prop-types'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import getClassNames from './getClassNames'
-import getComponentTheme from './getComponentTheme'
+import getTheme from './getTheme'
 import assignOrdered from './assignOrdered'
 import ThemeConsumer from '../ThemeConsumer'
 
@@ -28,7 +28,7 @@ export default function ({
     return (
       <ThemeConsumer path={themePath}>
         {function (themeProps) {
-          const theme = getComponentTheme(defaultTheme, themeProps.theme)
+          const theme = getTheme(defaultTheme, themeProps.theme)
           props = (
             theme.defaultProps === void 0
             ? props
@@ -49,13 +49,12 @@ export default function ({
             }
           }
 
-
           return props.children(renderProps)
         }}
       </ThemeConsumer>
     )
     /**
-    const theme = getComponentTheme(defaultTheme, props.theme)
+    const theme = getTheme(defaultTheme, props.theme)
     props = (
       theme.defaultProps === void 0
       ? props

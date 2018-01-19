@@ -8,7 +8,7 @@ export {
   colorize,
   createComponent,
   directionalScale,
-  getComponentTheme as getTheme,
+  getTheme as mergeTheme,
   supportsCSS,
   withHoverQuery
 } from './utils'

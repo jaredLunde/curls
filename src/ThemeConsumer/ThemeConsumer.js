@@ -1,6 +1,25 @@
 import React from 'react'
-import contextTypes from '../ThemeProvider/contextTypes'
 import {string} from 'prop-types'
+import contextTypes from '../ThemeProvider/contextTypes'
+import memoize from '../utils/lru'
+
+
+const mergeGlobals_ = memoize(1024)(
+  // this is memoized for defaultTheme merging efficiency and sCU in children
+  function (curlsTheme, theme) {
+    const {colors, typeFaces, rem} = curlsTheme
+    return {colors, typeFaces, rem, ...theme}
+  }
+)
+
+function mergeGlobals (curlsTheme, componentThemePath) {
+  if (componentThemePath === void 0) {
+    return curlsTheme
+  }
+  else {
+    return mergeGlobals_(curlsTheme, curlsTheme[componentThemePath])
+  }
+}
 
 
 export default class ThemeConsumer extends React.Component {
@@ -17,7 +36,13 @@ export default class ThemeConsumer extends React.Component {
     }
 
     context.curls.subscribe(this.inheritTheme)
-    this.prevTheme = context.curls.theme
+    this.state = mergeGlobals(context.curls.getTheme(), props.path)
+  }
+
+  componentDidUpdate ({path}) {
+    if (path !== this.props.path) {
+      this.setState(mergeGlobals(this.context.curls.getTheme(), props.path))
+    }
   }
 
   componentWillUnmount () {
@@ -29,25 +54,19 @@ export default class ThemeConsumer extends React.Component {
 
     if (
       path === void 0
-      || nextTheme.colors !== this.prevTheme.colors
-      || nextTheme.typeFaces !== this.prevTheme.typeFaces
-      || nextTheme.rem !== this.prevTheme.rem
+      || nextTheme.colors !== this.state.colors
+      || nextTheme.typeFaces !== this.state.typeFaces
+      || nextTheme.rem !== this.state.rem
+      || this.state[path] !== nextTheme[path]
     ) {
-      this.forceUpdate()
+      this.setState(mergeGlobals(nextTheme, path))
     }
-    else if (this.prevTheme[path] !== nextTheme[path]) {
-      this.forceUpdate()
-    }
-
-    this.prevTheme = nextTheme
   }
 
   render () {
     const curls = this.context.curls
-    const path = this.props.path
-    const theme = path === void 0 ? curls.theme : curls.theme[path]
     return this.props.children({
-      theme,
+      theme: this.state,
       replaceTheme: curls.replaceTheme,
       setTheme: curls.setTheme
     })

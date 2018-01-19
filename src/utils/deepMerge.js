@@ -37,7 +37,8 @@ function mergeObject (target, source) {
 
     if (!isMergeableObject(source[key]) || target[key] === void 0) {
 			destination[key] = mergeIfMergeable(source[key])
-		} else {
+		}
+    else {
 			destination[key] = deepMerge(target[key], source[key])
 		}
   }
@@ -53,10 +54,12 @@ export default function deepMerge (target, source) {
 
 	if (!sourceAndTargetTypesMatch) {
 		return mergeIfMergeable(source)
-	} else if (sourceIsArray) {
+	}
+  else if (sourceIsArray) {
 		const arrayMerge = arrayMergeReplace
 		return arrayMergeReplace(target, source)
-	} else {
+	}
+  else {
 		return mergeObject(target, source)
 	}
 }

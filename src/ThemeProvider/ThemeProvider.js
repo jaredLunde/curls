@@ -21,11 +21,12 @@ class ThemeProvider extends React.Component {
 
   componentDidUpdate () {
     if (this.prevTheme !== curlsTheme) {
+      console.log("HERE")
       this.props.notify(curlsTheme)
     }
   }
 
-  // getTheme = () => curlsTheme
+  getTheme = () => curlsTheme
   setTheme = theme => this.props.notify(injectTheme(theme))
   replaceTheme = theme => this.props.notify(replaceTheme(theme))
 
@@ -33,7 +34,7 @@ class ThemeProvider extends React.Component {
     const {subscribe, unsubscribe} = this.props
     return {
       curls: {
-        theme: curlsTheme,
+        getTheme: this.getTheme,
         setTheme: this.setTheme,
         replaceTheme: this.replaceTheme,
         subscribe,
