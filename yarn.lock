@@ -1763,9 +1763,9 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-cake@^0.4.9:
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.4.9.tgz#99b4c98df1c807fbab3672256002ab5138236210"
+react-cake@^0.4.11:
+  version "0.4.11"
+  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.4.11.tgz#a402ecbde972cefd9e9f9e3d33b9c41ac0113414"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.36"
     cancelable-promise "^2.3.0"

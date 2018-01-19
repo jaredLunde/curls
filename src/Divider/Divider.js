@@ -10,6 +10,7 @@ const nodeType = 'div'
 const defaultCSS = css`
   ${w('100%')};
   ${h(1)};
+  min-height: 1px;
   ${d.block};
   ${pos.relative};
   clear: both;

@@ -22,20 +22,13 @@ const basePlugins = [
   babel({
     // exclude: [path.join(__dirname, './node_modules/**/*')],
     presets: [
-      [
-        '@babel/env',
-        {
-          loose: true,
-          modules: false
-        }
-      ],
+      ['@babel/env', {modules: false}],
       '@babel/stage-2',
       '@babel/react'
     ],
     plugins: [
       'transform-react-pure-components',
       '@babel/transform-react-constant-elements',
-      '@babel/transform-react-inline-elements',
       '@babel/proposal-do-expressions',
       '@babel/proposal-export-default-from',
       '@babel/proposal-nullish-coalescing-operator',

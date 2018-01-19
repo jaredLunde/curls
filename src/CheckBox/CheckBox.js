@@ -1,6 +1,5 @@
 import React from 'react'
 import {cx, css} from 'emotion'
-import createOptimized from 'react-cake/es/utils/createOptimized'
 import Toggle from 'react-cake/es/Toggle'
 import {d} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'

@@ -37,7 +37,7 @@
     "is-mergeable-object": "^1.1.0",
     "json2mq": "^0.2.0",
     "polished": "^1.9.0",
-    "react-cake": "^0.4.9"
+    "react-cake": "^0.4.11"
   },
   "scripts": {
     "build": "npm run build:es && npm run build:commonjs && npm run build:dist",

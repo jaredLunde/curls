@@ -23,7 +23,8 @@ export {
   // defaultActiveColors,
   defaultTypeFaces
 } from './theming'
-
+export ThemeProvider from './ThemeProvider'
+export ThemeConsumer from './ThemeConsumer'
 
 export Avatar from './Avatar'
 export Box, {GridBox, BasicBox} from './Box'
