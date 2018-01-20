@@ -47,6 +47,7 @@ class ThemeProvider extends React.Component {
     const {subscribe, unsubscribe, notify, children,...props} = this.props
     props.setTheme = this.setTheme
     props.replaceTheme = this.replaceTheme
+    props.getTheme = this.getTheme
     return createOptimized(children, props)
   }
 }

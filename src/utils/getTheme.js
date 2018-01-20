@@ -11,7 +11,7 @@ function getTheme (defaultTheme = {}, userTheme) {
 */
 
 const emptyObj = {}
-const memoizer = memoize(4096, {multiArgs: true})(deepMerge)
+const memoizer = memoize(128)(deepMerge)
 
 
 export default function (defaultTheme = emptyObj, userTheme) {

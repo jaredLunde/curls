@@ -36,7 +36,7 @@ function LRUCache (size) {
       // return the entry
       return item
     }
-    // console.log('Uncached:', key)
+    console.log('Uncached:', key)
     // no entry found in cache, return undefined
     return void 0
   }

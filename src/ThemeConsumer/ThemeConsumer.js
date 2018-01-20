@@ -3,10 +3,12 @@ import {string} from 'prop-types'
 import contextTypes from '../ThemeProvider/contextTypes'
 import memoize from '../utils/lru'
 
-
-const mergeGlobals_ = memoize(1024)(
+let uncached = 0
+const mergeGlobals_ = memoize(128)(
   // this is memoized for defaultTheme merging efficiency and sCU in children
   function (curlsTheme, theme) {
+    uncached += 1
+    console.log('Uncached:', uncached)
     const {colors, typeFaces, rem} = curlsTheme
     return {colors, typeFaces, rem, ...theme}
   }
@@ -36,12 +38,12 @@ export default class ThemeConsumer extends React.Component {
     }
 
     context.curls.subscribe(this.inheritTheme)
-    this.state = mergeGlobals(context.curls.getTheme(), props.path)
+    this.state = {theme: mergeGlobals(context.curls.getTheme(), props.path)}
   }
 
   componentDidUpdate ({path}) {
     if (path !== this.props.path) {
-      this.setState(mergeGlobals(this.context.curls.getTheme(), props.path))
+      this.setState({theme: mergeGlobals(this.context.curls.getTheme(), props.path)})
     }
   }
 
@@ -59,14 +61,14 @@ export default class ThemeConsumer extends React.Component {
       || nextTheme.rem !== this.state.rem
       || this.state[path] !== nextTheme[path]
     ) {
-      this.setState(mergeGlobals(nextTheme, path))
+      this.setState({theme: mergeGlobals(nextTheme, path)})
     }
   }
 
   render () {
     const curls = this.context.curls
     return this.props.children({
-      theme: this.state,
+      theme: this.state.theme,
       replaceTheme: curls.replaceTheme,
       setTheme: curls.setTheme
     })
