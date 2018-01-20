@@ -1,25 +1,46 @@
 import React from 'react'
 import {string} from 'prop-types'
 import contextTypes from '../ThemeProvider/contextTypes'
-import memoize from '../utils/lru'
+import memoize from '../utils/memoize'
 
-let uncached = 0
-const mergeGlobals_ = memoize(128)(
+// let uncached = 0
+const mergeGlobals_ = memoize(WeakMap)(
   // this is memoized for defaultTheme merging efficiency and sCU in children
   function (curlsTheme, theme) {
-    uncached += 1
-    console.log('Uncached:', uncached)
-    const {colors, typeFaces, rem} = curlsTheme
-    return {colors, typeFaces, rem, ...theme}
+    // uncached += 1
+    // console.log('Uncached:', uncached)
+    return Object.assign(
+      {
+        colors: curlsTheme.colors,
+        typeFaces: curlsTheme.typeFaces
+      },
+      theme
+    )
   }
 )
 
 function mergeGlobals (curlsTheme, componentThemePath) {
-  if (componentThemePath === void 0) {
-    return curlsTheme
-  }
-  else {
-    return mergeGlobals_(curlsTheme, curlsTheme[componentThemePath])
+  return function (prevState) {
+    if (componentThemePath === void 0) {
+      return curlsTheme
+    }
+    else {
+      if (curlsTheme[componentThemePath] === void 0) {
+        return {
+          colors: curlsTheme.colors,
+          typeFaces: curlsTheme.typeFaces
+        }
+      }
+
+      const theme = mergeGlobals_(curlsTheme, curlsTheme[componentThemePath])
+
+      if (theme === prevState.theme) {
+        return null
+      }
+      else {
+        return {theme}
+      }
+    }
   }
 }
 
@@ -38,12 +59,12 @@ export default class ThemeConsumer extends React.Component {
     }
 
     context.curls.subscribe(this.inheritTheme)
-    this.state = {theme: mergeGlobals(context.curls.getTheme(), props.path)}
+    this.state = mergeGlobals(context.curls.getTheme(), props.path)({})
   }
 
   componentDidUpdate ({path}) {
     if (path !== this.props.path) {
-      this.setState({theme: mergeGlobals(this.context.curls.getTheme(), props.path)})
+      this.setState(mergeGlobals(this.context.curls.getTheme(), props.path))
     }
   }
 
@@ -54,15 +75,7 @@ export default class ThemeConsumer extends React.Component {
   inheritTheme = nextTheme => {
     const path = this.props.path
 
-    if (
-      path === void 0
-      || nextTheme.colors !== this.state.colors
-      || nextTheme.typeFaces !== this.state.typeFaces
-      || nextTheme.rem !== this.state.rem
-      || this.state[path] !== nextTheme[path]
-    ) {
-      this.setState({theme: mergeGlobals(nextTheme, path)})
-    }
+    this.setState(mergeGlobals(nextTheme, path))
   }
 
   render () {

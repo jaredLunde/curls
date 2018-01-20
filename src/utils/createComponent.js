@@ -6,7 +6,7 @@ import getClassNames from './getClassNames'
 import getTheme from './getTheme'
 import assignOrdered from './assignOrdered'
 import ThemeConsumer from '../ThemeConsumer'
-
+import {curlsTheme} from '../theming/injectTheme'
 
 export default function ({
   name,
@@ -55,6 +55,8 @@ export default function ({
     )
     /**
     const theme = getTheme(defaultTheme, props.theme)
+    theme.colors = curlsTheme.colors
+    theme.typeFaces = curlsTheme.colors
     props = (
       theme.defaultProps === void 0
       ? props

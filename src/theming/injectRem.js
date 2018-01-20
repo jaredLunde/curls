@@ -5,7 +5,6 @@ import {toSize} from '../utils'
 
 export default function (rem) {
   rem = toSize(rem)
-  injectTheme({rem})
 
   injectGlobal`
     html {

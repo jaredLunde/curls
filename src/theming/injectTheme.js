@@ -1,11 +1,9 @@
 import deepMerge from '../utils/deepMerge'
 import defaultColors from './defaultColors'
 import defaultTypeFaces from './defaultTypeFaces'
-import defaultRem from './defaultRem'
 
 
 export let curlsTheme = {
-  rem: defaultRem,
   colors: defaultColors,
   typeFaces: defaultTypeFaces
 }

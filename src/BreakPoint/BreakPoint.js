@@ -33,7 +33,7 @@ function getMatches (sizes, rawMatches) {
 }
 
 
-export default function ({children, theme, ...props}) {
+export default function BreakPoint ({children, theme, ...props}) {
   theme = getTheme(defaultTheme, theme, 'grid')
   const [sizes, queries] = findBreakPoints(props, theme)
   props = reduceProps(props, theme.breakpoints)

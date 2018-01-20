@@ -9,7 +9,7 @@ import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'
 class ThemeProvider extends React.Component {
   static childContextTypes = contextTypes
   static propTypes = {
-    theme: PropTypes.object.isRequired
+    theme: PropTypes.object
   }
 
   constructor (props) {
