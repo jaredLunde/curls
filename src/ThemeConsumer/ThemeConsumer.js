@@ -1,7 +1,9 @@
 import React from 'react'
-import {string} from 'prop-types'
-import contextTypes from '../ThemeProvider/contextTypes'
+import {string, object} from 'prop-types'
 import memoize from 'memoize-two-args'
+import contextTypes from '../ThemeProvider/contextTypes'
+import getTheme from '../utils/getTheme'
+
 
 // let uncached = 0
 const mergeGlobals_ = memoize(
@@ -9,37 +11,30 @@ const mergeGlobals_ = memoize(
   function (curlsTheme, theme) {
     // uncached += 1
     // console.log('Uncached:', uncached)
-    return Object.assign(
-      {
-        colors: curlsTheme.colors,
-        typeFaces: curlsTheme.typeFaces
-      },
-      theme
-    )
+    const base = {
+      colors: curlsTheme.colors,
+      typeFaces: curlsTheme.typeFaces
+    }
+
+    return theme === emptyObj ? base : Object.assign(base, theme)
   }
 )
 
-function mergeGlobals (curlsTheme, componentThemePath) {
-  return function (prevState) {
-    if (componentThemePath === void 0) {
-      return curlsTheme
+
+const emptyObj = {}
+
+function mergeGlobals (curlsTheme) {
+  return function (prevState, props = emptyObj) {
+    if (props.path === void 0) {
+      return {theme: getTheme(props.defaultTheme, curlsTheme || emptyObj)}
     }
     else {
-      if (curlsTheme[componentThemePath] === void 0) {
-        return {
-          colors: curlsTheme.colors,
-          typeFaces: curlsTheme.typeFaces
-        }
-      }
+      const theme = getTheme(
+        props.defaultTheme,
+        mergeGlobals_(curlsTheme, curlsTheme[props.path] || emptyObj)
+      )
 
-      const theme = mergeGlobals_(curlsTheme, curlsTheme[componentThemePath])
-
-      if (theme === prevState.theme) {
-        return null
-      }
-      else {
-        return {theme}
-      }
+      return theme === prevState.theme ? null : {theme}
     }
   }
 }
@@ -48,7 +43,8 @@ function mergeGlobals (curlsTheme, componentThemePath) {
 export default class ThemeConsumer extends React.Component {
   static contextTypes = contextTypes
   static propTypes = {
-    path: string
+    path: string,
+    defaultTheme: object
   }
 
   constructor (props, context) {
@@ -59,12 +55,12 @@ export default class ThemeConsumer extends React.Component {
     }
 
     context.curls.subscribe(this.inheritTheme)
-    this.state = mergeGlobals(context.curls.getTheme(), props.path)({})
+    this.state = mergeGlobals(context.curls.getTheme())(emptyObj, props)
   }
 
   componentDidUpdate ({path}) {
     if (path !== this.props.path) {
-      this.setState(mergeGlobals(this.context.curls.getTheme(), props.path))
+      this.setState(mergeGlobals(this.context.curls.getTheme()))
     }
   }
 
@@ -73,9 +69,7 @@ export default class ThemeConsumer extends React.Component {
   }
 
   inheritTheme = nextTheme => {
-    const path = this.props.path
-
-    this.setState(mergeGlobals(nextTheme, path))
+    this.setState(mergeGlobals(nextTheme))
   }
 
   render () {

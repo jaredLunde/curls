@@ -1,14 +1,6 @@
 import memoize from 'memoize-two-args'
 import deepMerge from './deepMerge'
 
-/**
-let uncached = 0
-function getTheme (defaultTheme = {}, userTheme) {
-  uncached += 1
-  console.log('[Uncached]', uncached)
-  return deepMerge(defaultTheme, userTheme)
-}
-*/
 
 const emptyObj = {}
 const memoizer = memoize(deepMerge)
