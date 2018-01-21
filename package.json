@@ -1,7 +1,10 @@
 {
   "name": "styled-curls",
   "version": "1.0.0",
-  "main": "es/index.js",
+  "main": "commonjs/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "esnext": "es/index.js",
   "repository": "https://github.com/jaredlunde/styled-curls",
   "author": "Jared Lunde",
   "license": "MIT",
@@ -36,6 +39,7 @@
     "emotion-utils": "^9.0.0-0",
     "is-mergeable-object": "^1.1.0",
     "json2mq": "^0.2.0",
+    "memoize-two-args": "^1.0.5",
     "polished": "^1.9.0",
     "react-cake": "^0.4.11",
     "shallowequal": "^1.0.2"

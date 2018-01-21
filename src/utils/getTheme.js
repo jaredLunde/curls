@@ -1,4 +1,4 @@
-import memoize from '../utils/memoize'
+import memoize from 'memoize-two-args'
 import deepMerge from './deepMerge'
 
 /**
@@ -11,7 +11,7 @@ function getTheme (defaultTheme = {}, userTheme) {
 */
 
 const emptyObj = {}
-const memoizer = memoize(WeakMap)(deepMerge)
+const memoizer = memoize(deepMerge)
 
 
 export default function (defaultTheme = emptyObj, userTheme) {

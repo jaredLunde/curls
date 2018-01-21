@@ -3,10 +3,13 @@ import defaultColors from './defaultColors'
 import defaultTypeFaces from './defaultTypeFaces'
 
 
-export let curlsTheme = {
+const baseTheme = {
   colors: defaultColors,
   typeFaces: defaultTypeFaces
 }
+
+
+export let curlsTheme = {...baseTheme}
 
 
 function throwThemeError () {
@@ -17,6 +20,8 @@ function throwThemeError () {
 
 
 export function replaceTheme (theme) {
+  theme = {...baseTheme, ...theme}
+
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
     curlsTheme = Object.freeze(theme)
     throwThemeError()
@@ -30,8 +35,10 @@ export function replaceTheme (theme) {
 
 
 export default function injectTheme (theme) {
+  theme = deepMerge(curlsTheme, theme)
+  
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
-    curlsTheme = Object.freeze(deepMerge(curlsTheme, theme))
+    curlsTheme = Object.freeze(theme)
     throwThemeError()
   }
   else {

@@ -1,6 +1,5 @@
 import {css} from 'emotion'
 import {br as boxBr} from '../Box/CSS'
-import {getComponentTheme} from '../utils'
 import {directionalRe} from '../utils/directionalScale'
 
 

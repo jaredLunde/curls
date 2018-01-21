@@ -1,10 +1,10 @@
 import React from 'react'
 import {string} from 'prop-types'
 import contextTypes from '../ThemeProvider/contextTypes'
-import memoize from '../utils/memoize'
+import memoize from 'memoize-two-args'
 
 // let uncached = 0
-const mergeGlobals_ = memoize(WeakMap)(
+const mergeGlobals_ = memoize(
   // this is memoized for defaultTheme merging efficiency and sCU in children
   function (curlsTheme, theme) {
     // uncached += 1
