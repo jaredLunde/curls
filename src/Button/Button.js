@@ -1,7 +1,7 @@
 import {css} from 'emotion'
 import Box from '../Box'
 import {flex, row, align, justify} from '../Flex/CSS'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'

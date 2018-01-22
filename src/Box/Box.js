@@ -6,7 +6,7 @@ import * as flexCSS from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import {createComponent} from '../utils'
+import createComponent from '../createComponent'
 
 
 export const BasicBox = createComponent({

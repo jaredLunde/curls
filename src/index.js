@@ -6,7 +6,6 @@ export {
 
 export {
   colorize,
-  createComponent,
   directionalScale,
   getTheme as mergeTheme,
   supportsCSS,
@@ -26,6 +25,7 @@ export {
 export ThemeProvider from './ThemeProvider'
 export ThemeConsumer from './ThemeConsumer'
 
+export createComponent from './createComponent'
 export Avatar from './Avatar'
 export Box, {GridBox, BasicBox} from './Box'
 export BreakPoint from './BreakPoint'

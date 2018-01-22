@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 import {GridBox} from '../Box'
 import {flex, row, wrap, align, justify} from '../Flex/CSS'
 import propTypes from './propTypes'

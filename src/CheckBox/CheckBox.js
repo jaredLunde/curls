@@ -5,7 +5,7 @@ import {d} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import Box from '../Box'
 import * as defaultTheme from './defaultTheme'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 import defaultCheckMark from './defaultCheckMark'
 
 

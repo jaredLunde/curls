@@ -2,7 +2,7 @@ import {css} from 'emotion'
 import {GridBox} from '../Box'
 import {pos} from '../Box/CSS'
 import {grow} from '../Flex/CSS'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 
 
 const defaultCSS = css`

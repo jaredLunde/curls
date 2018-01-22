@@ -4,7 +4,7 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
-import {createComponent} from '../utils'
+import createComponent from '../createComponent'
 
 
 const themePath = 'fade'

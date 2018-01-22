@@ -6,7 +6,7 @@ import Box from '../Box'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
 import {maxZIndex} from '../global'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 
 /**
 <Modal>

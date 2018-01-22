@@ -2,7 +2,7 @@ import {css} from 'emotion'
 import {pos, w} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
 import Box from '../Box'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 
 
 const nodeType = 'div'

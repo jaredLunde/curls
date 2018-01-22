@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 import {BasicBox} from '../Box'
 import {w, h, d, pos} from '../Box/CSS'
 import * as defaultTheme from './defaultTheme'

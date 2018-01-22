@@ -5,7 +5,7 @@ import {fadeControls as dropControls} from '../Fade/Fade'
 import * as CSS from './CSS'
 import * as defaultTheme from '../Slide/defaultTheme'
 import Transitionable from '../Transitionable'
-import {createComponent} from '../utils'
+import createComponent from '../createComponent'
 
 
 const SFC = createComponent({name: 'Drop', propTypes, CSS, defaultTheme, themePath: 'drop'})

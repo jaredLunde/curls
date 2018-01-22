@@ -1,4 +1,4 @@
-import {createComponent} from '../utils'
+import createComponent from '../createComponent'
 import Type from '../Type'
 import propTypes from '../Input/propTypes'
 import * as CSS from '../Input/CSS'

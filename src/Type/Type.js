@@ -1,6 +1,6 @@
 import {css, cx} from 'emotion'
 import Box from '../Box'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'

@@ -12,7 +12,7 @@ import Drop from '../Drop'
 import {getPosFromProps} from '../Slide/utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 import viewport from '../PropTypes/viewport'
 
 

@@ -3,7 +3,7 @@ import FillViewport from '../FillViewport'
 import Box from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
 import {w, pos, touchScrolling} from '../Box/CSS'
-import {createComponent, renderNode} from '../utils'
+import createComponent, {renderNode} from '../createComponent'
 import {getStyle} from './utils'
 
 
