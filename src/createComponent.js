@@ -1,6 +1,5 @@
 import React from 'react'
 import {cx} from 'emotion'
-import PropTypes from 'prop-types'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import getClassNames from './utils/getClassNames'

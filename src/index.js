@@ -8,7 +8,6 @@ export {
   colorize,
   directionalScale,
   getTheme as mergeTheme,
-  supportsCSS,
   withHoverQuery
 } from './utils'
 
