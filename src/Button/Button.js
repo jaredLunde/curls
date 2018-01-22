@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import Type from '../Type'
+import Box from '../Box'
 import {flex, row, align, justify} from '../Flex/CSS'
 import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
@@ -26,16 +26,23 @@ const SFC = createComponent({
 
 
 
-export default function Button ({className, children, ...props}) {
+export default function Button ({className, ...props}) {
   return SFC({
     __buttonStyles: true,
     ...props,
-    children: function (typeProps) {
+    children: function (boxProps) {
       // this is done so css in defaultTheme.sizes can be overridden
-      typeProps.className = [defaultCSS, typeProps.className, className]
-      typeProps.children = children
-      typeProps.nodeType = typeProps.nodeType || nodeType
-      return Type(typeProps)
+      const sfcClassName = boxProps.className
+      // this is done so css in defaultTheme.sizes can be overridden
+      boxProps.className = className
+      boxProps.children = function (nodeProps) {
+        nodeProps.children = props.children
+        nodeProps.nodeType = nodeProps.nodeType || nodeType
+
+        return renderNode(nodeProps, [defaultCSS, sfcClassName])
+      }
+
+      return Box(boxProps)
     }
   })
 }
