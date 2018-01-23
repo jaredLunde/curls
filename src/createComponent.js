@@ -8,26 +8,29 @@ import ThemeConsumer from './ThemeConsumer'
 
 
 export function renderNode (nodeProps, defaultCSS) {
-  const nodeType = nodeProps.nodeType
-  delete nodeProps.nodeType
-  let children = nodeProps.children
-
-  if (typeof children === 'function') {
-    children = children({...nodeProps})
-  }
-
-  if (typeof nodeType === 'string') {
-    nodeProps.ref = nodeProps.innerRef
-    delete nodeProps.innerRef
+  if (typeof nodeProps.children === 'function') {
+    nodeProps.children = nodeProps.children({...nodeProps})
   }
 
   if (defaultCSS !== void 0) {
     nodeProps.className = cx(defaultCSS, nodeProps.className)
   }
 
-  return createOptimized(nodeType, nodeProps, children)
+  return renderNodeFast(nodeProps)
 }
 
+
+export function renderNodeFast (nodeProps) {
+  const nodeType = nodeProps.nodeType
+  delete nodeProps.nodeType
+
+  if (typeof nodeType === 'string') {
+    nodeProps.ref = nodeProps.innerRef
+    delete nodeProps.innerRef
+  }
+
+  return createOptimized(nodeType, nodeProps)
+}
 
 
 export default function ({

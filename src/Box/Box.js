@@ -6,7 +6,7 @@ import * as flexCSS from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import createComponent, {renderNode} from '../createComponent'
+import createComponent, {renderNodeFast} from '../createComponent'
 
 
 export const BasicBox = createComponent({
@@ -40,7 +40,7 @@ export default function Box (props) {
     children: function (boxProps) {
       boxProps.nodeType = boxProps.nodeType || 'div'
       boxProps.children = props.children
-      return renderNode(boxProps)
+      return renderNodeFast(boxProps)
     }
   })
 }

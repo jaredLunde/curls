@@ -11,6 +11,7 @@ const example = `
       8 * 16,     // 6
       16 * 16,    // 7
     ],
+
     borderWidthScale: [
       0,          // 0
       1,          // 1
@@ -19,6 +20,7 @@ const example = `
       6,          // 4
       10          // 5
     ],
+
     borderRadiusScale: [
       0,          // 0
       (1/4) * 16, // 1
@@ -27,7 +29,7 @@ const example = `
       2 * 16,     // 4
       1000 * 16   // 5
     ],
-    colors: defaultColors,
+
     getBoxShadow: function (dp, theme) {
       dp = parseInt(dp)
 
@@ -57,8 +59,7 @@ const example = `
 const details = `
 Theme \`defaultColors\` can be found on the [defaultColors](defaultColors) page.
 
-You can override the scales with as many or few scale values as you'd like, but
-they must be in rem.
+You can override the scales with as many or few scale values as you'd like.
 `
 
 
