@@ -6,7 +6,7 @@ import * as flexCSS from '../Flex/CSS'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import createComponent from '../createComponent'
+import createComponent, {renderNode} from '../createComponent'
 
 
 export const BasicBox = createComponent({
@@ -32,6 +32,17 @@ export const GridBox = createComponent({
   themePath: 'box',
   defaultTheme: {...gridDefaultTheme, ...defaultTheme}
 })
+
+export function NodeBox (props) {
+  return FlexBox({
+    ...props,
+    children: function (boxProps) {
+      boxProps.nodeType = boxProps.nodeType || 'div'
+      boxProps.children = props.children
+      return renderNode(boxProps)
+    }
+  })
+}
 
 
 export default FlexBox

@@ -12,7 +12,7 @@ export default function getClassNames (props, theme, CSS) {
     if (propVal !== void 0/*&& propVal !== false*/) {
       const typeofCSS = typeof getCSS
       classNames.push(
-        typeofCSS === 'string'
+        typeofCSS === 'string' && propVal !== false
         ? getCSS
         : typeofCSS === 'function'
           ? getCSS(propVal, theme, props)

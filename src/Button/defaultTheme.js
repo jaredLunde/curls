@@ -16,8 +16,7 @@ export const sizes = {
 export const defaultProps = {
   br: 5,
   bw: 1,
-  bc: 'translucentLight',
-  bg: 'blue',
+  bg: 'white',
   md: true,
   role: 'button'
 }
