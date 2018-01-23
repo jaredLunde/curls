@@ -26,7 +26,7 @@ export ThemeConsumer from './ThemeConsumer'
 
 export createComponent from './createComponent'
 export Avatar from './Avatar'
-export Box, {GridBox, BasicBox, NodeBox} from './Box'
+export Box, {GridBox, BasicBox, FlexBox} from './Box'
 export BreakPoint from './BreakPoint'
 export Button from './Button'
 export Card from './Card'

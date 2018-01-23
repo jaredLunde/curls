@@ -3,7 +3,7 @@ import {cx, css} from 'emotion'
 import Toggle from 'react-cake/es/Toggle'
 import {d} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import * as defaultTheme from './defaultTheme'
 import createComponent, {renderNode} from '../createComponent'
 import defaultCheckMark from './defaultCheckMark'
@@ -53,7 +53,7 @@ export default function CheckBox ({
           return SFC({
             ...checkBoxInputProps,
             children: function (boxProps) {
-              return Box({
+              return FlexBox({
                 ...boxProps,
                 children: function (nodeProps) {
                   const checkBoxInput = <input

@@ -5,7 +5,7 @@ import createOptimized from 'react-cake/es/utils/createOptimized'
 import compose from 'react-cake/es/utils/compose'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import loadImages from 'react-cake/es/utils/loadImages'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import {pos, z} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
 import Drop from '../Drop'
@@ -141,7 +141,7 @@ class PopOverContainer extends React.PureComponent {
             return renderNode(nodeProps, defaultCSS)
           }
 
-          return Box(boxProps)
+          return FlexBox(boxProps)
         }
       })
     }

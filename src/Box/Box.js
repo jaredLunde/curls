@@ -33,7 +33,8 @@ export const GridBox = createComponent({
   defaultTheme: {...gridDefaultTheme, ...defaultTheme}
 })
 
-export function NodeBox (props) {
+
+export default function Box (props) {
   return FlexBox({
     ...props,
     children: function (boxProps) {
@@ -43,6 +44,3 @@ export function NodeBox (props) {
     }
   })
 }
-
-
-export default FlexBox

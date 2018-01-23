@@ -2,7 +2,7 @@ import {cx, css} from 'emotion'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {pos, w, h, touchScrolling} from '../Box/CSS'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
 import {maxZIndex} from '../global'
@@ -65,7 +65,7 @@ export default function Overlay ({transition = Fade, ...props}) {
       return SFC({
         ...sfcProps,
         children: function (boxProps) {
-          return Box({
+          return FlexBox({
             ...boxProps,
             children: function ({isVisible, show, hide, toggle, ...overlayBoxProps}) {
               overlayBoxProps.nodeType = overlayBoxProps.nodeType || nodeType

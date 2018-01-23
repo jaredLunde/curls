@@ -1,7 +1,7 @@
 import {css} from 'emotion'
 import {pos, w} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
 
 
@@ -26,7 +26,7 @@ export default function Row (props) {
         return renderNode(nodeProps, defaultCSS)
       }
 
-      return Box(boxProps)
+      return FlexBox(boxProps)
     }
   })
 }

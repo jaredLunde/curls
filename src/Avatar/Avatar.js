@@ -1,7 +1,7 @@
 import {css} from 'emotion'
 import ImageStat from 'react-cake/es/ImageStat'
 import compose from 'react-cake/es/utils/compose'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import {pos, ov} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import createComponent, {renderNode} from '../createComponent'
@@ -65,7 +65,7 @@ export default function Avatar (props) {
         return renderNode(nodeProps, defaultCSS)
       }
 
-      return Box(boxProps)
+      return FlexBox(boxProps)
     }
   }
 

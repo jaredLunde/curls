@@ -1,6 +1,6 @@
 import {css} from 'emotion'
 import FillViewport from '../FillViewport'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
 import {w, pos, touchScrolling} from '../Box/CSS'
 import createComponent, {renderNode} from '../createComponent'
@@ -34,7 +34,7 @@ export default function Hero (props) {
             return renderNode(nodeProps, defaultCSS)
           }
 
-          return Box(boxProps)
+          return FlexBox(boxProps)
         }
       })
     }

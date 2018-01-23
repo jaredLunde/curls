@@ -2,7 +2,7 @@ import {css, cx} from 'emotion'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import createOptimized from 'react-cake/es/utils/createOptimized'
 import {maxZIndex} from '../global'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import Slide from '../Slide'
 import createComponent, {renderNode} from '../createComponent'
 import {d, pos, ov, h} from '../Box/CSS'
@@ -50,7 +50,7 @@ export default function Drawer ({...props}) {
       const classNameFromDrawer = drawerProps.className
       // Box component passed to the child function
       drawerProps.DrawerBox = function DrawerBox (boxProps) {
-        return Box({
+        return FlexBox({
           ...boxProps,
           children: function (drawerBoxProps) {
             drawerBoxProps.nodeType = drawerBoxProps.nodeType || nodeType

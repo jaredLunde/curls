@@ -1,2 +1,1 @@
-export default from './Box'
-export {GridBox, BasicBox} from './Box'
+export default, {GridBox, BasicBox, FlexBox} from './Box'

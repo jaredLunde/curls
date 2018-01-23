@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import {flex, row, align, justify} from '../Flex/CSS'
 import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
@@ -42,7 +42,7 @@ export default function Button ({className, ...props}) {
         return renderNode(nodeProps, [defaultCSS, sfcClassName])
       }
 
-      return Box(boxProps)
+      return FlexBox(boxProps)
     }
   })
 }

@@ -1,5 +1,5 @@
 import {css, cx} from 'emotion'
-import Box from '../Box'
+import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
@@ -34,7 +34,7 @@ export default function Type (props) {
         return renderNode(nodeProps)
       }
 
-      return Box(boxProps)
+      return FlexBox(boxProps)
     }
   })
 }

@@ -54,7 +54,7 @@ export default function Modal ({...props}) {
       return SFC({
         ...sfcProps,
         children: function (boxProps) {
-          return Box({
+          return FlexBox({
             ...boxProps,
             className: modalProps.isVisible && baseIsVisible,
             children: function (modalBoxProps) {
