@@ -1,7 +1,7 @@
 import React from 'react'
 import {css, cx} from 'emotion'
 import WithViewport from 'react-cake/es/Viewport/WithViewport'
-import createOptimized from 'react-cake/es/utils/createOptimized'
+// import createOptimized from 'react-cake/es/utils/createOptimized'
 import compose from 'react-cake/es/utils/compose'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import loadImages from 'react-cake/es/utils/loadImages'
@@ -169,14 +169,7 @@ export default function PopOver ({children, transition = Drop, ...props}) {
   return transition({
     ...props,
     children: function (popOverProps) {
-      return createOptimized(
-        ComposedPopOver,
-        {
-          children,
-          popOverDirection,
-          ...popOverProps
-        }
-      )
+      return ComposedPopOver({children, popOverDirection, ...popOverProps})
     }
   })
 }

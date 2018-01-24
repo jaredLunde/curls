@@ -1,7 +1,7 @@
 import React from 'react'
 import Subscriptions from 'react-cake/es/Subscriptions'
 import compose from 'react-cake/es/utils/compose'
-import createOptimized from 'react-cake/es/utils/createOptimized'
+// import createOptimized from 'react-cake/es/utils/createOptimized'
 import contextTypes from './contextTypes'
 import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'
 
@@ -48,7 +48,7 @@ class ThemeProvider extends React.Component {
     props.setTheme = this.setTheme
     props.replaceTheme = this.replaceTheme
     props.getTheme = this.getTheme
-    return createOptimized(children, props)
+    return React.createElement(children, props)
   }
 }
 

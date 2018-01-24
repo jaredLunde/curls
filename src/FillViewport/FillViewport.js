@@ -1,5 +1,4 @@
 import ViewportSize from 'react-cake/es/Viewport/ViewportSize'
-import createOptimized from 'react-cake/es/utils/createOptimized'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import viewport from '../PropTypes/viewport'
 
