@@ -1,35 +1,43 @@
 const example = `
 {
   box: {
+    // Default properties provided to the <Box> on each render
+    defaultProps: {},
+
+    // Default spacing scale for margins and padding
     spacingScale: [
-      0,          // 0
-      (1/4) * 16, // 1
-      (2/4) * 16, // 2
-      16,         // 3
-      2 * 16,     // 4
-      4 * 16,     // 5
-      8 * 16,     // 6
-      16 * 16,    // 7
+      0,          // 0 [0px]
+      (1/4) * 16, // 1 [4px]
+      (1/2) * 16, // 2 [8px]
+      16,         // 3 [16px]
+      2 * 16,     // 4 [32px]
+      4 * 16,     // 5 [64px]
+      8 * 16,     // 6 [128x]
+      16 * 16,    // 7 [256px]
+      32 * 16     // 8 [512px]
     ],
 
+    // Default border-width scale
     borderWidthScale: [
-      0,          // 0
-      1,          // 1
-      2,          // 2
-      4,          // 3
-      6,          // 4
-      10          // 5
+      0,          // 0 [0px]
+      1,          // 1 [1px]
+      2,          // 2 [2px]
+      4,          // 3 [4px]
+      6,          // 4 [6px]
+      10          // 5 [10px]
     ],
 
+    // Default border-radius scale
     borderRadiusScale: [
-      0,          // 0
-      (1/4) * 16, // 1
-      (1/2) * 16, // 2
-      16,         // 3
-      2 * 16,     // 4
-      1000 * 16   // 5
+      0,          // 0 [0px]
+      (1/4) * 16, // 1 [4px]
+      (1/2) * 16, // 2 [8px]
+      16,         // 3 [16px]
+      2 * 16,     // 4 [32px]
+      1000 * 16   // 5 [16000px]
     ],
 
+    // Default box-shadow callback
     getBoxShadow: function (dp, theme) {
       dp = parseInt(dp)
 
@@ -57,9 +65,10 @@ const example = `
 
 
 const details = `
-Theme \`defaultColors\` can be found on the [defaultColors](defaultColors) page.
-
 You can override the scales with as many or few scale values as you'd like.
+See the [theming](/theming) page for more info about overriding defaults.
+
+Theme colors can be found on the [defaultColors](defaultColors) page.
 `
 
 

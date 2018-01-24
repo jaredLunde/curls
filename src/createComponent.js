@@ -8,9 +8,9 @@ import ThemeConsumer from './ThemeConsumer'
 
 
 export function renderNode (nodeProps, defaultCSS) {
-  if (typeof nodeProps.children === 'function') {
-    nodeProps.children = nodeProps.children({...nodeProps})
-  }
+  // if (typeof nodeProps.children === 'function') {
+  //   nodeProps.children = nodeProps.children({...nodeProps})
+  // }
 
   if (defaultCSS !== void 0) {
     nodeProps.className = cx(defaultCSS, nodeProps.className)
