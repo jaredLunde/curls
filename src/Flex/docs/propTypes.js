@@ -1,4 +1,8 @@
 export default {
+  children: {
+    type: 'function',
+    description: 'Children should expect an object containing a `className` property and any other properties not defined by this component that were passed to the component.'
+  },
   // flex (display: flex)
   flex: {
     type: 'bool',

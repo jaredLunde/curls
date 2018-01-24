@@ -1,5 +1,5 @@
 export default `
-  The \`Box\` component creates a React element with \`Flex\` and \`BasicBox\`
+  The \`Box\` component creates a React element with \`FlexBox\`
   styles reflected in its \`className\`.
 
   The default element created is \`div\` but this can be changed with the

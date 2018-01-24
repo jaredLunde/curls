@@ -2,8 +2,6 @@ import {css} from 'emotion'
 import createComponent, {renderNode} from '../createComponent'
 import {GridBox} from '../Box'
 import {flex, row, wrap, align, justify} from '../Flex/CSS'
-import propTypes from './propTypes'
-import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 
 
@@ -15,13 +13,7 @@ const defaultCSS = css`
   ${align.center};
   ${justify.start};
 `
-const SFC = createComponent({
-  name: 'NavBar',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath: 'navBar'
-})
+const SFC = createComponent({name: 'NavBar', defaultTheme, themePath: 'navBar'})
 
 
 export default function Divider (props = emptyObj) {

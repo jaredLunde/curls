@@ -1,5 +1,5 @@
 export default `
-\`Grid\` is a "render prop" or "child as function" component which provides a
+\`Grid\` is a "render prop" or "function as child" component which provides a
 system for defining the number of columns that a child component should occupy
 at various media query breakpoints.
 

@@ -26,8 +26,6 @@ export default {
   ov: string,
   // z-index
   z: number,
-  // -webkit-overflow-scrolling: touch;
-  touchScrolling: bool,
   // width: __
   w: strOrNum,
   // height: __

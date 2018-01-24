@@ -31,6 +31,7 @@ export const overflow = {
   scroll: css`overflow: scroll;`,
   scrollX: css`overflow-x: scroll;`,
   scrollY: css`overflow-y: scroll;`,
+  touch: css`-webkit-overflow-scrolling: touch;`
 }
 export function ov (value) {
   const vals = value.split(' ')
@@ -39,24 +40,23 @@ export function ov (value) {
     return overflow[value]
   }
 
-  let css
+  let CSS
   for (let x = 0; x < vals.length; x++) {
     const val = vals[x]
-    if (css) {
-      css = css`${css} ${overflow[val]};`
+    if (CSS) {
+      CSS = css`${CSS} ${overflow[val]};`
     } else {
-      css = css`${overflow[val]};`
+      CSS = css`${overflow[val]};`
     }
   }
 
-  return css
+  return CSS
 }
 
 export function z (value) {
   return css`z-index: ${value};`
 }
 
-export const touchScrolling = css`-webkit-overflow-scrolling: touch;`
 
 export function bg (value, theme) {
   return colorize('background', value, theme)

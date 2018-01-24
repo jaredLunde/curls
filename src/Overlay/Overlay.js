@@ -1,7 +1,7 @@
 import {cx, css} from 'emotion'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import {pos, w, h, touchScrolling} from '../Box/CSS'
+import {pos, w, h, ov} from '../Box/CSS'
 import {FlexBox} from '../Box'
 import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
@@ -50,10 +50,10 @@ const defaultCSS = css`
   ${pos.fixed};
   ${w('100%')};
   ${h('100%')};
-  ${touchScrolling};
+  ${ov.auto};
+  ${ov.touch}
   left: 0;
   top: 0;
-  overflow: auto;
 `
 const SFC = createComponent({name: 'Overlay', defaultTheme, themePath: 'overlay'})
 

@@ -2,7 +2,7 @@ import {css} from 'emotion'
 import FillViewport from '../FillViewport'
 import {FlexBox} from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
-import {w, pos, touchScrolling} from '../Box/CSS'
+import {w, pos, ov} from '../Box/CSS'
 import createComponent, {renderNode} from '../createComponent'
 import {getStyle} from './utils'
 
@@ -15,7 +15,7 @@ const defaultCSS = css`
   ${justify.center};
   ${w('100%')};
   ${pos.relative};
-  ${touchScrolling};
+  ${ov.touch};
 `
 const SFC = createComponent({name: 'Hero', themePath: 'hero'})
 

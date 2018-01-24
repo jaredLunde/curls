@@ -1,4 +1,7 @@
+import {propTypes} from '../../Flex/docs'
+
 export default {
+  children: propTypes.children,
   xxl: {
     type: 'number',
     description: 'Provides emotion class for `@value` number of columns in the `xxl` breakpoint to its child component.',

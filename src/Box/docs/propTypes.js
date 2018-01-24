@@ -1,4 +1,9 @@
-export default {
+import {propTypes as flexPropTypes_} from '../../Flex/docs'
+
+const flexPropTypes = {...flexPropTypes_}
+delete flexPropTypes.children
+
+export const boxPropTypes = {
   children: {
     type: 'valid React children'
   },
@@ -146,11 +151,10 @@ The order of your definitions absolutely matters as styles are applied in order.
   },
   ov: {
     type: 'string',
-    enumVals: ['auto', 'autoX', 'autoY', 'hidden', 'hiddenX', 'hiddenY', 'scroll', 'scrollX', 'scrollY'],
+    enumVals: ['auto', 'autoX', 'autoY', 'hidden', 'hiddenX', 'hiddenY', 'scroll', 'scrollX', 'scrollY', 'touch'],
     description: 'Provides emotion class for `overflow: @value`. Multiple values may be provided, for instance `ov="autoY hiddenX"` would set styles for `overflow-y: auto;` and `overflow-x: hidden;`.',
   },
-  touchScrolling: {
-    type: 'bool',
-    description: 'Provides emotion class for `-webkit-overflow-scrolling: touch;`.'
-  },
 }
+
+
+export default {...boxPropTypes, ...flexPropTypes}
