@@ -47,7 +47,7 @@ export function xxl (v, t) {
 
 // Face
 export function face (value, theme) {
-  return css`font-family: ${theme.typeFaces[value]};`
+  return css`font-family: ${theme.typeFaces[value] || value};`
 }
 
 
@@ -65,9 +65,12 @@ export const justified = css`text-align: justify;`
 
 
 // Legibility
-export const legible = css`text-rendering: optimizeLegibility;`
-export const speedy = css`text-rendering: optimizeSpeed;`
+export const optimizeFor = {
+  speed: css`text-rendering: optimizeLegibility;`,
+  legibility: css`text-rendering: optimizeLegibility;`
+}
 export const antialias = css`
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
 `
@@ -76,8 +79,7 @@ export const antialias = css`
 // Other
 export const ellipsis = css`
   max-width: 100%;
-  display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
 `

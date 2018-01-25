@@ -10,6 +10,7 @@ export const scale = {
 
 
 export const defaultProps = {
+  sm: true,
   br: 5,
   bw: 1,
   bc: 'translucentLight'

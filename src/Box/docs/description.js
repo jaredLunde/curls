@@ -2,16 +2,12 @@ export default `
   The \`Box\` component creates a React element with \`FlexBox\`
   styles reflected in its \`className\`.
 
+  Styles are computed in the same order provided in \`props\`.
+
   The default element created is \`div\` but this can be changed with the
   \`nodeType\` prop.
 
   You may pass props in addition to those defined below, such as
   \`aria-role='foo'\`, which will render the component
   with \`<div aria-role='foo' className='bar'>\` in the DOM.
-
-  \`\`\`
-  <Box p={3} m='b2' bg='white'>
-    Hi, I am a box!
-  </Box>
-  \`\`\`
 `

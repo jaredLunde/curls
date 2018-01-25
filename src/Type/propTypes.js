@@ -1,4 +1,4 @@
-import {bool, string} from 'prop-types'
+import {bool, string, oneOf} from 'prop-types'
 
 
 export default {
@@ -26,8 +26,7 @@ export default {
   right: bool,
   ellipsis: bool,
   // Legibility
-  legible: bool,
-  speedy: bool,
+  optimizeFor: oneOf(['legibility', 'speed']),
   antialias: bool,
   // Color
   color: string,

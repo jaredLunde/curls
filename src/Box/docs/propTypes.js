@@ -152,7 +152,21 @@ The order of your definitions absolutely matters as styles are applied in order.
   ov: {
     type: 'string',
     enumVals: ['auto', 'autoX', 'autoY', 'hidden', 'hiddenX', 'hiddenY', 'scroll', 'scrollX', 'scrollY', 'touch'],
-    description: 'Provides emotion class for `overflow: @value`. Multiple values may be provided, for instance `ov="autoY hiddenX"` would set styles for `overflow-y: auto;` and `overflow-x: hidden;`.',
+    description: `Provides emotion class for \`overflow: @value\`. Multiple
+values may be provided, for instance \`ov="autoY hiddenX"\` would set styles
+for \`overflow-y: auto;\` and \`overflow-x: hidden;\`.
+
+- \`auto\`: \`overflow: auto;\`,
+- \`autoX\`: \`overflow-x: auto;\`,
+- \`autoY\`: \`overflow-y: auto;\`,
+- \`hidden\`: \`overflow: hidden;\`,
+- \`hiddenX\`: \`overflow-x: hidden;\`,
+- \`hiddenY\`: \`overflow-y: hidden;\`,
+- \`scroll\`: \`overflow: scroll;\`,
+- \`scrollX\`: \`overflow-x: scroll;\`,
+- \`scrollY\`: \`overflow-y: scroll;\`,
+- \`touch\`: \`-webkit-overflow-scrolling: touch;\`
+`
   },
 }
 

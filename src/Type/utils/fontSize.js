@@ -1,9 +1,12 @@
 import {css} from 'emotion'
-import {legible, speedy} from '../CSS'
+import {optimizeFor, antialias} from '../CSS'
 
-const legibleText = ['lg', 'xl', 'xxl']
+const legibleText = ['xl', 'xxl']
 
 export default function fontSize (size, theme) {
-  const textRendering = legibleText.indexOf(size) > -1 ? legible : speedy
-  return css`font-size: ${theme.scale[size]}rem; ${textRendering};`
+  const isLg = legibleText.indexOf(size) > -1
+  const textRendering = optimizeFor[isLg ? 'legibility' : 'speed']
+  return css`
+    font-size: ${theme.scale[size]}rem; ${textRendering}; ${isLg && antialias};
+  `
 }

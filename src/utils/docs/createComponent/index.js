@@ -1,3 +1,4 @@
-export const type = 'Component'
+export const type = 'Function'
 export description from './description'
-// export defaultTheme from '../defaultTheme'
+export propTypes from './propTypes'
+export usage from './usage'

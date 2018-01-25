@@ -1,9 +1,8 @@
 import {css} from 'emotion'
 import ImageStat from 'react-cake/es/ImageStat'
 import compose from 'react-cake/es/utils/compose'
-import {FlexBox} from '../Box'
-import {pos, ov} from '../Box/CSS'
-import {flex, align, justify} from '../Flex/CSS'
+import {BasicBox} from '../Box'
+import {pos, d, ov} from '../Box/CSS'
 import createComponent, {renderNode} from '../createComponent'
 import {supportsCSS} from '../utils'
 import * as CSS from './CSS'
@@ -23,9 +22,8 @@ import getImage from './getImage'
 
 const nodeType = 'span'
 const defaultCSS = css`
-  ${flex}
-  ${align.center}
-  ${justify.center}
+  ${d.inlineBlock};
+  text-align: center;
   ${pos.relative}
   ${ov('hidden')};
 
@@ -53,19 +51,18 @@ export default function Avatar (props) {
         nodeProps.nodeType = nodeProps.nodeType || nodeType
         const innerRef = nodeProps.imageRef
         delete nodeProps.imageRef
-
-        nodeProps.children = function ({...imgProps}) {
-          imgProps.src = props.src
-          imgProps.defaultSrc = props.defaultSrc
-          imgProps.innerRef = innerRef
-
-          return (props.children || getImage)(imgProps)
+        const imgProps = {
+          ...nodeProps,
+          src: props.src,
+          defaultSrc: props.defaultSrc,
+          innerRef
         }
 
+        nodeProps.children = (props.children || getImage)(imgProps)
         return renderNode(nodeProps, defaultCSS)
       }
 
-      return FlexBox(boxProps)
+      return BasicBox(boxProps)
     }
   }
 

@@ -1,6 +1,6 @@
 import {injectGlobal} from 'emotion'
 import {hiDPI} from 'polished'
-import {antialias, legible, speedy} from './CSS'
+import {antialias, optimizeFor} from './CSS'
 import {defaultTypeFaces} from '../theming'
 
 
@@ -18,12 +18,12 @@ export default injectGlobal`
 
 
   body {
-    ${speedy}
+    ${optimizeFor.speed};
     font-family: ${defaultTypeFaces.system};
 
     ${hiDPI(1.5)} {
-      ${legible}
-      ${antialias}
+      ${optimizeFor.legibility};
+      ${antialias};
     }
   }
 
@@ -33,7 +33,6 @@ export default injectGlobal`
   h4,
   h5,
   h6  {
-    ${legible}
-    ${antialias}
+    ${optimizeFor.legibility};
   }
 `

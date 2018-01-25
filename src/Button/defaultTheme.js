@@ -3,7 +3,7 @@ import {darken} from 'polished'
 import {withHoverQuery} from '../utils'
 // export colors from '../theming/defaultColors'
 
-export const sizes = {
+export const scale = {
   xxs: css`padding: 6px 12px;`,
   xs: css`padding: 8px 16px;`,
   sm: css`padding: 12px 24px;`,
@@ -41,9 +41,25 @@ export function getHoverClass (props, theme) {
 
 
 export function getActiveClass (props, theme) {
+  if (props.bg === void 0) {
+    return
+  }
+
+  let color
+
+  try {
+    color = darken(0.05, theme.colors[props.bg] || props.bg)
+  } catch (e) {
+    if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
+      console.warn(`Color '${props.bg}' could not be darkened in Link.getActiveClass`)
+    }
+
+    return
+  }
+
   return css`
     &:active {
-      background-color: ${darken(0.05, theme.colors[props.bg])};
+      background-color: ${darken(0.05, theme.colors[props.bg] || props.bg)};
     }
   `
 }
