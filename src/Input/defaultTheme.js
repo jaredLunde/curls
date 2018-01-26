@@ -1,7 +1,6 @@
 import {css} from 'emotion'
 import {colorize} from '../utils'
 
-export colors from '../theming/defaultColors'
 export function getPlaceholderClass (props, theme) {
   return css`
     opacity: 0.8;
@@ -19,6 +18,7 @@ export function getFocusClass (props, theme) {
 
 export const defaultProps = {
   bg: 'white',
+  m: 0,
   p: 2,
   bc: 'translucentLight',
   bw: 1,

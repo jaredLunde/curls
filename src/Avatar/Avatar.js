@@ -51,8 +51,12 @@ export default function Avatar (props) {
         nodeProps.nodeType = nodeProps.nodeType || nodeType
         const innerRef = nodeProps.imageRef
         delete nodeProps.imageRef
+        const alt = nodeProps.alt
+        delete nodeProps.alt
+
         const imgProps = {
           ...nodeProps,
+          alt,
           src: props.src,
           defaultSrc: props.defaultSrc,
           innerRef

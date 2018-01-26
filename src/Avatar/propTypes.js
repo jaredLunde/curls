@@ -18,6 +18,5 @@ export default {
   naturalWidth: number,
   naturalHeight: number,
   complete: bool,
-  getImage: func.isRequired,
   // imageRef: func,
 }

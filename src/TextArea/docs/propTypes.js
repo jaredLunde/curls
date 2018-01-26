@@ -1,96 +1,23 @@
-export default {
-  // flex (display: flex)
-  flex: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--fixed (flex(0, 0, auto))
-  fixed: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--fluid (flex(1, 0, auto))
-  fluid: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--first
-  first: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--last
-  last: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--grow
-  grow: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--shrink
-  shrink: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x
-  row: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y
-  column: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-reverse (row-reverse)
-  reverseX: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y-reverse (col-reverse)
-  reverseY: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap
-  wrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--nowrap
-  nowrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap-reverse
-  wrapReverse: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-{start|center|end|around|between}
-  justify: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'between'],
-    description: '',
-  },
-  // flex--y-{start|center|end|around|between|stretch}
-  align: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'stretch', 'baseline'],
-    description: '',
-  },
-  // flex--content-{start|center|end|around}
-  alignContent: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'between', 'around'],
-    description: '',
-  },
-  // flex--self-{start|center|end|around}
-  alignSelf: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'baseline'],
-    description: '',
-  }
-}
+import typeProps from '../../Type/docs/propTypes'
+
+const ptypes = {...typeProps}
+delete ptypes.nodeType
+ptypes.children = {...ptypes.children}
+ptypes.children.defaultValue = 'Hello World'
+ptypes.children.type = 'string|undefined'
+ptypes.center = {...ptypes.center}
+delete ptypes.center.defaultValue
+ptypes.lg = {...ptypes.lg}
+delete ptypes.lg.defaultValue
+ptypes.antialias = {...ptypes.antialias}
+delete ptypes.antialias.defaultValue
+ptypes.w = {...ptypes.w}
+ptypes.w.defaultValue = 280
+ptypes.p = {...ptypes.p}
+ptypes.p.defaultValue = '3'
+ptypes.br = {...ptypes.br}
+ptypes.br.defaultValue = 1
+ptypes.sh = {...ptypes.sh}
+ptypes.sh.defaultValue = 2
+
+export default ptypes

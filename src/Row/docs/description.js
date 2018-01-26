@@ -1,3 +1,14 @@
 export default `
-  The \`Flex\` component provides flex-specific styles to its child component.
+  The \`Row\` component creates a React element with \`FlexBox\` styles
+  reflected in its \`className\` and is meant to be a nice wrapper for
+  the \`Col\` component.
+
+  Styles are computed in the same order provided in \`props\`.
+
+  The default element created is \`div\` but this can be changed with the
+  \`nodeType\` prop.
+
+  You may pass props in addition to those defined below, such as
+  \`aria-role='foo'\`, which will render the component
+  with \`<div aria-role='foo' className='bar'>\` in the DOM.
 `

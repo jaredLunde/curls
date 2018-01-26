@@ -1,3 +1,4 @@
 export const defaultProps = {
-  bg: 'translucentLight'
+  bg: 'translucentLight',
+  'aria-role': 'separator'
 }

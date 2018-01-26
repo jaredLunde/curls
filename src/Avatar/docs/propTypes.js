@@ -1,96 +1,53 @@
+import {propTypes as basicBoxTypes_} from '../../Box/docs/BasicBox'
+import {resetDocTypes} from '../../utils/docs'
+
+
+const basicBoxTypes = resetDocTypes(basicBoxTypes_)
+basicBoxTypes.m.defaultValue = 3
+basicBoxTypes.br.defaultValue = 5
+basicBoxTypes.bw.defaultValue = 1
+basicBoxTypes.bc.defaultValue = 'translucentLight'
+delete basicBoxTypes.children
+
+
 export default {
-  // flex (display: flex)
-  flex: {
-    type: 'bool',
-    description: '',
+  children: {
+    type: 'function',
+    description: `A function for rendering the \`<img>\` node. The default is:
+\`\`\`
+function ({src, defaultSrc, innerRef, alt, ...props}) {
+  return <img
+    key={src || defaultSrc}
+    src={src || defaultSrc}
+    alt={alt}
+    onError={e => e.target.src = defaultSrc || ''}
+    ref={innerRef}
+  />
+}
+\`\`\`
+    `
   },
-  // flex--fixed (flex(0, 0, auto))
-  fixed: {
-    type: 'bool',
-    description: '',
+  nodeType: {
+    type: 'React.Component|string',
+    description: 'The type of React element created when rendered. The default value is `span`.'
   },
-  // flex--fluid (flex(1, 0, auto))
-  fluid: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--first
-  first: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--last
-  last: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--grow
-  grow: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--shrink
-  shrink: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x
-  row: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y
-  column: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-reverse (row-reverse)
-  reverseX: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--y-reverse (col-reverse)
-  reverseY: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap
-  wrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--nowrap
-  nowrap: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--wrap-reverse
-  wrapReverse: {
-    type: 'bool',
-    description: '',
-  },
-  // flex--x-{start|center|end|around|between}
-  justify: {
+  defaultSrc: {
     type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'between'],
-    description: '',
+    description: 'The default image to show when `src` is undefined or null'
   },
-  // flex--y-{start|center|end|around|between|stretch}
-  align: {
+  src: {
     type: 'string',
-    enum: ['start', 'center', 'end', 'around', 'stretch', 'baseline'],
-    description: '',
+    description: 'The src of the underlying `<img>`.',
+    defaultValue: 'http://creekviewstudios.weebly.com/uploads/5/7/6/6/57660793/260585_orig.jpg'
   },
-  // flex--content-{start|center|end|around}
-  alignContent: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'between', 'around'],
-    description: '',
-  },
-  // flex--self-{start|center|end|around}
-  alignSelf: {
-    type: 'string',
-    enum: ['start', 'center', 'end', 'stretch', 'baseline'],
-    description: '',
-  }
+  xxs: {type: 'bool', description: 'Adds a class for `scale.xxs;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.'},
+  xs: {type: 'bool', description: 'Adds a class for `scale.xs;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.'},
+  sm: {type: 'bool', description: 'Adds a class for `scale.sm;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.`'},
+  md: {type: 'bool', description: 'Adds a class for `scale.md;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.', defaultValue: true},
+  lg: {type: 'bool', description: 'Adds a class for `scale.lg;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.`'},
+  xl: {type: 'bool', description: 'Adds a class for `scale.xl;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.`'},
+  xxl: {type: 'bool', description: 'Adds a class for `scale.xxl;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.`'},
+
+  // GridBox
+  ...basicBoxTypes
 }

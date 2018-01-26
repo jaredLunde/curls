@@ -17,6 +17,7 @@ export default function Input (props) {
     ...props,
     children: function (typeProps) {
       typeProps.nodeType = 'textarea'
+      typeProps.children = props.children
       return Type(typeProps)
     }
   })
