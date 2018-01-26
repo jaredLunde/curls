@@ -1,3 +1,12 @@
 export default `
-  The \`Flex\` component provides flex-specific styles to its child component.
+  The \`H2\` component creates a React element with special heading-specific
+  styles and \`FlexBox\` styles reflected in its \`className\`.
+
+  Styles are computed in the same order provided in \`props\`.
+
+  The default element created is \`h2\`.
+
+  You may pass props in addition to those defined below, such as
+  \`aria-role='foo'\`, which will render the component
+  with \`<h2 aria-role='foo' className='bar'>\` in the DOM.
 `

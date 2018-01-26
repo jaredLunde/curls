@@ -56,11 +56,11 @@ export function H4 (props) {
 }
 
 export function H5 (props) {
-  return Type({nodeType: 'h5', sm: true, ...props})
+  return Type({nodeType: 'h5', md: true, ...props})
 }
 
 export function H6 (props) {
-  return Type({nodeType: 'h6', sm: true, ...props})
+  return Type({nodeType: 'h6', md: true, ...props})
 }
 
 const p = css`

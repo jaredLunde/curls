@@ -55,9 +55,10 @@ const example = `
 
 
 const details = `
-The size scale *must* be defined in rem.
+The size scale can be any css you choose.
 
-See the [theming](/theming) page for more info about overriding defaults.
+See the [theming](/theming) page for more info about overriding defaults and
+defining your own \`defaultProps\`.
 
 Theme colors can be found on the [defaultColors](defaultColors) page.
 `

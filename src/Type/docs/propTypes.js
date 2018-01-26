@@ -5,9 +5,11 @@ const boxPropTypes = {...boxPropTypes_}
 delete boxPropTypes.children
 boxPropTypes.h = {...boxPropTypes.h}
 boxPropTypes.p = {...boxPropTypes.p}
+boxPropTypes.m = {...boxPropTypes.m}
 boxPropTypes.sh = {...boxPropTypes.sh}
 boxPropTypes.h.defaultValue = null
 boxPropTypes.p.defaultValue = 3
+boxPropTypes.m.defaultValue = 'y5 x3'
 boxPropTypes.sh.defaultValue = 4
 delete boxPropTypes.nodeType
 
