@@ -7,6 +7,6 @@ export default `
   \`nodeType\` prop.
 
   You may pass props in addition to those defined below, such as
-  \`aria-role='separator'\`, which will render the component
-  with \`<div aria-role='separator' className='bar'>\` in the DOM.
+  \`role='separator'\`, which will render the component
+  with \`<div role='separator' className='bar'>\` in the DOM.
 `

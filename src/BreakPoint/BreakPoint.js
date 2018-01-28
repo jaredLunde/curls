@@ -1,6 +1,7 @@
 import React from 'react'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import MediaQuery from '../MediaQuery'
+import ThemeConsumer from '../ThemeConsumer'
 import * as defaultTheme from '../Grid/defaultTheme'
 import {getBreakPoint} from '../Grid/utils'
 import {getTheme} from '../utils'
@@ -33,17 +34,22 @@ function getMatches (sizes, rawMatches) {
 }
 
 
-export default function BreakPoint ({children, theme, ...props}) {
-  theme = getTheme(defaultTheme, theme, 'grid')
-  const [sizes, queries] = findBreakPoints(props, theme)
-  props = reduceProps(props, theme.breakpoints)
-
+export default function BreakPoint (props) {
   return (
-    <MediaQuery query={queries} {...props}>
-      {function ({matches, ...props}) {
-        props.matches = getMatches(sizes, matches)
-        return children(props)
+    <ThemeConsumer path='grid' defaultTheme={defaultTheme}>
+      {function (themeProps) {
+        const [sizes, queries] = findBreakPoints(props, themeProps.theme)
+        props = reduceProps(props, themeProps.theme.breakpoints)
+
+        return (
+          <MediaQuery query={queries} {...props}>
+            {function (mqProps) {
+              mqProps.matches = getMatches(sizes, mqProps.matches)
+              return props.children(mqProps)
+            }}
+          </MediaQuery>
+        )
       }}
-    </MediaQuery>
+    </ThemeConsumer>
   )
 }

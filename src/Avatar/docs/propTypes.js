@@ -15,9 +15,8 @@ export default {
     type: 'function',
     description: `A function for rendering the \`<img>\` node. The default is:
 \`\`\`
-function ({src, defaultSrc, innerRef, alt, ...props}) {
+function ({src, defaultSrc, innerRef, alt}) {
   return <img
-    key={src || defaultSrc}
     src={src || defaultSrc}
     alt={alt}
     onError={e => e.target.src = defaultSrc || ''}
@@ -38,7 +37,7 @@ function ({src, defaultSrc, innerRef, alt, ...props}) {
   src: {
     type: 'string',
     description: 'The src of the underlying `<img>`.',
-    defaultValue: 'http://creekviewstudios.weebly.com/uploads/5/7/6/6/57660793/260585_orig.jpg'
+    defaultValue: 'https://rightorron.files.wordpress.com/2017/01/vincent-van-gogh-self-portrait-14.jpg'
   },
   xxs: {type: 'bool', description: 'Adds a class for `scale.xxs;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.'},
   xs: {type: 'bool', description: 'Adds a class for `scale.xs;` This property is backed by a scale defined in the prop `scale` of the [default theme](#theme-example) below. The `@value` provided represents the key in the scale object.'},

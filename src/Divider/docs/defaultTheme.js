@@ -3,7 +3,7 @@ const example = `
   divider: {
     defaultProps: {
       bg: 'translucentLight',
-      'aria-role': 'separator'
+      role: 'separator'
     }
   }
 }
