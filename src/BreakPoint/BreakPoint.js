@@ -39,10 +39,10 @@ export default function BreakPoint (props) {
     <ThemeConsumer path='grid' defaultTheme={defaultTheme}>
       {function (themeProps) {
         const [sizes, queries] = findBreakPoints(props, themeProps.theme)
-        props = reduceProps(props, themeProps.theme.breakpoints)
+        const renderProps = reduceProps(props, themeProps.theme.breakpoints)
 
         return (
-          <MediaQuery query={queries} {...props}>
+          <MediaQuery query={queries} {...renderProps}>
             {function (mqProps) {
               mqProps.matches = getMatches(sizes, mqProps.matches)
               return props.children(mqProps)

@@ -1,11 +1,11 @@
 {
-  "name": "styled-curls",
+  "name": "curls",
   "version": "1.0.0",
   "main": "commonjs/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "esnext": "es/index.js",
-  "repository": "https://github.com/jaredlunde/styled-curls",
+  "repository": "https://github.com/jaredlunde/curls",
   "author": "Jared Lunde",
   "license": "MIT",
   "private": true,

@@ -5,7 +5,7 @@ import {flex, row, wrap, align, justify} from '../Flex/CSS'
 import * as defaultTheme from './defaultTheme'
 
 
-const nodeType = 'div'
+const nodeType = 'nav'
 const defaultCSS = css`
   ${flex};
   ${row.row};
@@ -16,7 +16,7 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'NavBar', defaultTheme, themePath: 'navBar'})
 
 
-export default function Divider (props = emptyObj) {
+export default function NavBar (props = emptyObj) {
   return SFC({
     ...props,
     children: function (boxProps) {
