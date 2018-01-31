@@ -66,7 +66,8 @@ export default class MediaQuery extends React.Component {
 
   updateSingleMatch = x => () => {
     this.setState(
-      function ({matches}) {
+      prevState => {
+        const matches = prevState.matches
         matches[x] = this.mediaQueries[x][0].matches
         matches = [...matches]
         return {matches}
@@ -84,7 +85,7 @@ export default class MediaQuery extends React.Component {
     for (let x = 0; x < query.length; x++) {
       const mq = typeof query[x] === 'string' ? query[x] : json2mq(query[x])
 
-      const mql = window.matchMedia(query)
+      const mql = window.matchMedia(mq)
       const cb = this.updateSingleMatch(x)
       mql.addListener(cb)
       this.mediaQueries.push([mql, cb])
