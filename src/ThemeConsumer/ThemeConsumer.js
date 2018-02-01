@@ -50,10 +50,12 @@ export default class ThemeConsumer extends React.Component {
   constructor (props, context) {
     super(props)
 
-    if (context === void 0 || context.curls === void 0) {
-      throw new Error('`ThemeConsumer` must be used within a `ThemeProvider` component.')
+    if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
+      if (context === void 0 || context.curls === void 0) {
+        throw new Error('`ThemeConsumer` must be used within a `ThemeProvider` component.')
+      }
     }
-
+  
     context.curls.subscribe(this.inheritTheme)
     this.state = mergeGlobals(context.curls.getTheme())(emptyObj, props)
   }

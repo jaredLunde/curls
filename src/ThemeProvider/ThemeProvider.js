@@ -1,6 +1,7 @@
 import React from 'react'
 import Subscriptions from 'react-cake/es/Subscriptions'
 import compose from 'react-cake/es/utils/compose'
+import reduceProps from 'react-cake/es/utils/reduceProps'
 // import createOptimized from 'react-cake/es/utils/createOptimized'
 import contextTypes from './contextTypes'
 import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'
@@ -21,7 +22,6 @@ class ThemeProvider extends React.Component {
 
   componentDidUpdate () {
     if (this.prevTheme !== curlsTheme) {
-      console.log("HERE")
       this.props.notify(curlsTheme)
     }
   }
@@ -31,24 +31,23 @@ class ThemeProvider extends React.Component {
   replaceTheme = theme => this.props.notify(replaceTheme(theme))
 
   getChildContext () {
-    const {subscribe, unsubscribe} = this.props
     return {
       curls: {
         getTheme: this.getTheme,
         setTheme: this.setTheme,
         replaceTheme: this.replaceTheme,
-        subscribe,
-        unsubscribe
+        subscribe: this.props.subscribe,
+        unsubscribe: this.props.unsubscribe
       }
     }
   }
 
   render () {
-    const {subscribe, unsubscribe, notify, children,...props} = this.props
+    const props = reduceProps(this.props, ['subscribe', 'unsubscribe', 'notify', 'children'])
     props.setTheme = this.setTheme
     props.replaceTheme = this.replaceTheme
     props.getTheme = this.getTheme
-    return React.createElement(children, props)
+    return React.createElement(this.props.children, props)
   }
 }
 

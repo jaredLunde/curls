@@ -61,7 +61,7 @@ export default function ({
     delete renderProps.children
 
     const classNames = CSS && getClassNames(props, theme, CSS)
-    
+
     if (classNames !== void 0 || Array.isArray(props.className)) {
       renderProps.className = cx(classNames, props.className)
     }
