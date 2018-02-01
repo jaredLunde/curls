@@ -67,8 +67,13 @@ export default class MediaQuery extends React.Component {
   updateSingleMatch = x => () => {
     this.setState(
       prevState => {
+        const doesMatch = this.mediaQueries[x][0].matches
+        if (doesMatch === prevState.matches[x]) {
+          return null
+        }
+
         const matches = [...prevState.matches]
-        matches[x] = this.mediaQueries[x][0].matches
+        matches[x] = doesMatch
         return {matches}
       }
     )

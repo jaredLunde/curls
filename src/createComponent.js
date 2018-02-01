@@ -60,12 +60,13 @@ export default function ({
     )
     delete renderProps.children
 
+    let classNames
     if (CSS !== void 0) {
-      const classNames = getClassNames(props, theme, CSS)
+      classNames = getClassNames(props, theme, CSS)
+    }
 
-      if (classNames !== void 0) {
-        renderProps.className = cx(classNames, props.className)
-      }
+    if (classNames !== void 0 || Array.isArray(props.className)) {
+      renderProps.className = cx(classNames, props.className)
     }
 
     return props.children(renderProps)

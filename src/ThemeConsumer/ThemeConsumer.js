@@ -58,8 +58,8 @@ export default class ThemeConsumer extends React.Component {
     this.state = mergeGlobals(context.curls.getTheme())(emptyObj, props)
   }
 
-  componentDidUpdate ({path}) {
-    if (path !== this.props.path) {
+  componentDidUpdate (prevProps) {
+    if (prevProps.path !== this.props.path) {
       this.setState(mergeGlobals(this.context.curls.getTheme()))
     }
   }
