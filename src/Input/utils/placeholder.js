@@ -3,13 +3,19 @@ import {css} from 'emotion'
 
 export default function (placeholder) {
   return css`
-    &::-moz-placeholder {
+    ::-webkit-input-placeholder {
       ${placeholder};
     }
-    &::-webkit-placeholder {
+
+    ::-moz-placeholder {
       ${placeholder};
     }
-    &::-placeholder {
+
+    :-ms-input-placeholder {
+      ${placeholder};
+    }
+
+    ::placeholder {
       ${placeholder};
     }
   `
