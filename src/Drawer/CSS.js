@@ -5,6 +5,8 @@ const fromY = css`
   right: 0;
   left: 0;
   min-width: 100%;
+  width: 100%;
+  min-height: auto;
   overflow-x: auto;
 `
 
@@ -12,6 +14,7 @@ const fromX = css`
   top: 0;
   bottom: 0;
   min-height: 100%;
+  min-width: auto;
   overflow-y: auto;
 `
 

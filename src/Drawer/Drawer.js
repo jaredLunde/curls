@@ -16,7 +16,6 @@ const defaultCSS = css`
   ${pos.fixed};
   ${maxZIndex};
   ${ov.autoY};
-  ${h('100%')};
 `
 const SFC = createComponent({
   name: 'Drawer',
@@ -46,7 +45,7 @@ export default function Drawer ({...props}) {
   const childComponent = props.children
 
   props.children = function (transitionProps) {
-    transitionProps.children = function (drawerProps) {
+    transitionProps.children = function ({...drawerProps}) {
       const classNameFromDrawer = drawerProps.className
       // Box component passed to the child function
       drawerProps.DrawerBox = function DrawerBox (boxProps) {

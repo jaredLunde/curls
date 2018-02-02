@@ -72,4 +72,4 @@ injectGlobal`
 
 export const MAX_Z_INDEX = 2147483647;
 export const MAX_REM = 10000000/defaultRem;
-export const maxZIndex = css`z-index: ${MAX_Z_INDEX}`
+export const maxZIndex = css`z-index: ${MAX_Z_INDEX};`
