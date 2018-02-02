@@ -1,7 +1,7 @@
 import {cx} from 'emotion'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
-import {pos, w, h, touchScrolling} from '../Box/CSS'
+import {pos, w, h} from '../Box/CSS'
 import Box from '../Box'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'

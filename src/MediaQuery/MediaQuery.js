@@ -74,6 +74,7 @@ export default class MediaQuery extends React.Component {
 
         const matches = [...prevState.matches]
         matches[x] = doesMatch
+        console.log("HERE")
         return {matches}
       }
     )

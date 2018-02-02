@@ -2,26 +2,44 @@ import React from 'react'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 import MediaQuery from '../MediaQuery'
 import ThemeConsumer from '../ThemeConsumer'
+import memoizeMap from 'lru-memoize-map'
 import memoize from 'memoize-two-args'
 import * as defaultTheme from '../Grid/defaultTheme'
 import {getBreakPoint} from '../Grid/utils'
 import {getTheme} from '../utils'
 
 
-function findBreakPoints_ (props, theme) {
-  const breakPoints = []
+function getSizes (props, theme) {
   const sizes = []
+  const keys = Object.keys(theme.breakpoints)
 
-  for (let size in theme.breakpoints) {
-    if (props[size] === true) {
-      breakPoints.push(theme.breakpoints[size])
-      sizes.push(size)
+  for (let x = 0; x < keys.length; x++) {
+    const k = keys[x]
+    if (props[k] === true) {
+      sizes.push(k)
     }
   }
 
-  return [sizes, breakPoints]
+  return sizes
 }
-const findBreakPoints = memoize(findBreakPoints_)
+
+const memoizedFindBreakPoints = memoizeMap(512, {multiArgs: true})(
+  function (theme, ...sizes) {
+    const breakPoints = []
+
+    for (let size in theme.breakpoints) {
+      if (sizes.indexOf(size) > -1) {
+        breakPoints.push(theme.breakpoints[size])
+      }
+    }
+
+    return [sizes, breakPoints]
+  }
+)
+
+function findBreakPoints (props, theme) {
+  return memoizedFindBreakPoints(theme, ...getSizes(props, theme))
+}
 
 
 function getMatches_ (sizes, rawMatches) {

@@ -19,6 +19,7 @@ function FillViewport (initialProps) {
 
 export default function ({children, ...props}) {
   return ViewportSize({
+    withCoords: true,
     ...props,
     children: function (fillViewportProps) {
       fillViewportProps.children = children
