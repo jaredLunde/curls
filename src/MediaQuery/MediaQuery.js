@@ -74,7 +74,6 @@ export default class MediaQuery extends React.Component {
 
         const matches = [...prevState.matches]
         matches[x] = doesMatch
-        console.log("HERE")
         return {matches}
       }
     )
@@ -105,16 +104,15 @@ export default class MediaQuery extends React.Component {
   }
 
   render () {
-    const children = this.props.children
-    const props = reduceProps(this.props, propTypes, ['children'])
-    const matches = this.state.matches
-
-    if (Array.isArray(matches)) {
-      props.matchesAny = matches.some(isTrue)
-      props.matchesAll = matches.every(isTrue)
+    const props = {
+      matches: this.state.matches
     }
 
-    props.matches = matches
-    return children(props)
+    if (Array.isArray(props.matches)) {
+      props.matchesAny = props.matches.some(isTrue)
+      props.matchesAll = props.matches.every(isTrue)
+    }
+
+    return this.props.children(props)
   }
 }

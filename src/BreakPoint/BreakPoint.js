@@ -23,7 +23,7 @@ function getSizes (props, theme) {
   return sizes
 }
 
-const memoizedFindBreakPoints = memoizeMap(512, {multiArgs: true})(
+const memoizedFindBreakPoints = memoizeMap(36, {multiArgs: true})(
   function (theme, ...sizes) {
     const breakPoints = []
 
@@ -37,6 +37,7 @@ const memoizedFindBreakPoints = memoizeMap(512, {multiArgs: true})(
   }
 )
 
+// This is about enforcing immutability, not micro-optimizing
 function findBreakPoints (props, theme) {
   return memoizedFindBreakPoints(theme, ...getSizes(props, theme))
 }
@@ -52,6 +53,7 @@ function getMatches_ (sizes, rawMatches) {
 
   return matches
 }
+// This is about enforcing immutability, not micro-optimizing
 const getMatches = memoize(getMatches_)
 
 
@@ -60,10 +62,9 @@ export default function BreakPoint (props) {
     <ThemeConsumer path='grid' defaultTheme={defaultTheme}>
       {function (themeProps) {
         const [sizes, queries] = findBreakPoints(props, themeProps.theme)
-        const renderProps = reduceProps(props, themeProps.theme.breakpoints)
 
         return (
-          <MediaQuery query={queries} {...renderProps}>
+          <MediaQuery query={queries}>
             {function (mqProps) {
               mqProps.matches = getMatches(sizes, mqProps.matches)
               return props.children(mqProps)
