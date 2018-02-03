@@ -70,11 +70,11 @@ export default function ({
   }
 
   function SFC (props) {
-    return (
-      <ThemeConsumer path={themePath} defaultTheme={defaultTheme}>
-        {function (themeProps) { return renderer(props, themeProps) }}
-      </ThemeConsumer>
-    )
+    return ThemeConsumer({
+      path: themePath,
+      defaultTheme,
+      children: function (themeProps) { return renderer(props, themeProps) }
+    })
   }
 
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {

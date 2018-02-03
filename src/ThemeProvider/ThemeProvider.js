@@ -1,5 +1,4 @@
 import React from 'react'
-import Subscriptions from 'react-cake/es/Subscriptions'
 import compose from 'react-cake/es/utils/compose'
 import reduceProps from 'react-cake/es/utils/reduceProps'
 // import createOptimized from 'react-cake/es/utils/createOptimized'
@@ -7,8 +6,14 @@ import contextTypes from './contextTypes'
 import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'
 
 
-class ThemeProvider extends React.Component {
-  static childContextTypes = contextTypes
+export const CurlsContext = React.createContext({
+  getTheme: null,
+  setTheme: null,
+  replaceTheme: null
+})
+
+
+export default class ThemeProvider extends React.Component {
   static propTypes = {
     theme: PropTypes.object
   }
@@ -16,40 +21,34 @@ class ThemeProvider extends React.Component {
   constructor (props) {
     super(props)
     injectTheme(props.theme)
-    this.prevTheme = curlsTheme
     console.log('[🎉 injectTheme]', curlsTheme)
   }
 
-  componentDidUpdate () {
-    if (this.prevTheme !== curlsTheme) {
-      this.props.notify(curlsTheme)
+  getContext () {
+    return {
+      theme: curlsTheme,
+      setTheme: this.setTheme,
+      replaceTheme: this.replaceTheme
     }
   }
 
-  getTheme = () => curlsTheme
-  setTheme = theme => this.props.notify(injectTheme(theme))
-  replaceTheme = theme => this.props.notify(replaceTheme(theme))
+  setTheme = theme => {
+    injectTheme(theme)
+    this.forceUpdate()
+  }
 
-  getChildContext () {
-    return {
-      curls: {
-        getTheme: this.getTheme,
-        setTheme: this.setTheme,
-        replaceTheme: this.replaceTheme,
-        subscribe: this.props.subscribe,
-        unsubscribe: this.props.unsubscribe
-      }
-    }
+  replaceTheme = theme => {
+    replaceTheme(theme)
+    this.forceUpdate()
   }
 
   render () {
-    const props = reduceProps(this.props, ['subscribe', 'unsubscribe', 'notify', 'children'])
-    props.setTheme = this.setTheme
-    props.replaceTheme = this.replaceTheme
-    props.getTheme = this.getTheme
-    return React.createElement(this.props.children, props)
+    const context = this.getContext()
+
+    return (
+      <CurlsContext.Provider value={context}>
+        {React.createElement(this.props.children, context)}
+      </CurlsContext.Provider>
+    )
   }
 }
-
-
-export default compose([Subscriptions, ThemeProvider])
