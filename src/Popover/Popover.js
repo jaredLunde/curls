@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, cx} from 'emotion'
-import WithViewport from 'react-cake/es/Viewport/WithViewport'
+import ViewportConsumer from 'react-cake/es/Viewport/ViewportConsumer'
 // import createOptimized from 'react-cake/es/utils/createOptimized'
 // import compose from 'react-cake/es/utils/compose'
 // import reduceProps from 'react-cake/es/utils/reduceProps'
@@ -164,11 +164,15 @@ class PopOverContainer extends React.Component {
 
 function ViewportPopOver (props) {
   return (
-    <WithViewport>
+    <ViewportConsumer>
       {function (vpProps) {
-        return <PopOverContainer {...vpProps.getViewportSize()} {...props}/>
+        return <PopOverContainer
+          width={vpProps.width}
+          height={vpProps.height}
+          {...props}
+        />
       }}
-    </WithViewport>
+    </ViewportConsumer>
   )
 }
 

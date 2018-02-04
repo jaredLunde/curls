@@ -1,4 +1,4 @@
-import WithViewport from 'react-cake/es/Viewport/WithViewport'
+import ViewportConsumer from 'react-cake/es/Viewport/ViewportConsumer'
 
 
 function FillViewport (initialProps) {
@@ -14,10 +14,10 @@ function FillViewport (initialProps) {
 
 
 export default function (props) {
-  return WithViewport({
-    children: function (vpContext) {
+  return ViewportConsumer({
+    children: function (context) {
       return FillViewport({
-        ...vpContext.getViewportSize(),
+        height: context.height,
         children: props.children
       })
     }
