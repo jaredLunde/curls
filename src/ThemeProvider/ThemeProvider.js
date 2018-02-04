@@ -1,5 +1,4 @@
 import React from 'react'
-// import createOptimized from 'react-cake/es/utils/createOptimized'
 import contextTypes from './contextTypes'
 import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'
 

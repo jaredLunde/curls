@@ -1,7 +1,6 @@
 import React from 'react'
 import {cx} from 'emotion'
 import reduceProps from 'react-cake/es/utils/reduceProps'
-// import createOptimized from 'react-cake/es/utils/createOptimized'
 import getClassNames from './utils/getClassNames'
 import assignOrdered from './utils/assignOrdered'
 import ThemeConsumer from './ThemeConsumer'

@@ -3,7 +3,6 @@
 //
 // License: MIT
 import React from 'react'
-// import createOptimized from 'react-cake/es/utils/createOptimized'
 import json2mq from 'json2mq'
 import propTypes from './propTypes'
 

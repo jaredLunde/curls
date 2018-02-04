@@ -1,6 +1,5 @@
 import {css} from 'emotion'
 import ImageStat from 'react-cake/es/ImageStat'
-import compose from 'react-cake/es/utils/compose'
 import {BasicBox} from '../Box'
 import {pos, d, ov} from '../Box/CSS'
 import createComponent, {renderNode} from '../createComponent'
