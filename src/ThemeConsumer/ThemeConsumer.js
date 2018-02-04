@@ -4,12 +4,12 @@ import {CurlsContext} from '../ThemeProvider'
 import getTheme from '../utils/getTheme'
 
 
-let uncached = 0
+// let uncached = 0
 const mergeGlobals_ = memoize(
   // this is memoized for defaultTheme merging efficiency and sCU in children
   function (curlsTheme, theme) {
-    uncached += 1
-    console.log('Uncached:', uncached)
+    // uncached += 1
+    // console.log('Uncached:', uncached)
     const base = {
       colors: curlsTheme.colors,
       typeFaces: curlsTheme.typeFaces
@@ -24,7 +24,9 @@ const emptyObj = {}
 
 function mergeGlobals (curlsTheme, props) {
   if (props.path === void 0) {
-    return getTheme(props.defaultTheme, curlsTheme || emptyObj)
+    return (
+      !curlsTheme ? props.defaultTheme : getTheme(props.defaultTheme, curlsTheme)
+    )
   }
   else {
     const theme = getTheme(
@@ -37,17 +39,17 @@ function mergeGlobals (curlsTheme, props) {
 }
 
 
-export default function (props) {
+export default function ThemeConsumer (props) {
   return (
     <CurlsContext.Consumer>
       {function (consumerProps) {
-        consumerProps = {
+        const renderProps = {
           theme: mergeGlobals(consumerProps.theme, props),
           setTheme: consumerProps.setTheme,
           replaceTheme: consumerProps.replaceTheme,
         }
 
-        return props.children(consumerProps)
+        return props.children(renderProps)
       }}
     </CurlsContext.Consumer>
   )

@@ -1,7 +1,6 @@
 import {oneOfType, string, object, any, arrayOf} from 'prop-types'
 
-
-export default {
+const propTypes = {
   queries: oneOfType([
     string,
     object,
@@ -9,3 +8,6 @@ export default {
   ]).isRequired,
   children: any.isRequired
 }
+
+
+export default propTypes

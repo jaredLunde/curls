@@ -4,25 +4,22 @@ import viewport from '../PropTypes/viewport'
 
 
 function FillViewport (initialProps) {
-  let {children, style, viewportHeight, ...props} = initialProps
-  props = reduceProps(props, viewport)
+  let {children, style, viewportHeight} = initialProps
 
   return children({
     style: {
       ...style,
       height: isNaN(viewportHeight) ? '100vh' : viewportHeight
-    },
-    ...props
+    }
   })
 }
 
 
-export default function ({children, ...props}) {
+export default function (props) {
   return ViewportSize({
     withCoords: true,
-    ...props,
     children: function (fillViewportProps) {
-      fillViewportProps.children = children
+      fillViewportProps.children = props.children
       return FillViewport(fillViewportProps)
     }
   })

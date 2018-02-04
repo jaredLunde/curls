@@ -25,16 +25,16 @@ export default function Hero (props) {
     ...props,
     children: function (vpProps) {
       return FillViewport({
-        ...vpProps,
-        children: function ({trimHeight, style, ...boxProps}) {
-          boxProps.children = function (nodeProps) {
+        children: function ({style}) {
+          vpProps.children = function (nodeProps) {
             nodeProps.children = props.children
             nodeProps.nodeType = nodeProps.nodeType || nodeType
-            nodeProps.style = getStyle(style, trimHeight)
+            nodeProps.style = getStyle(style, nodeProps.trimHeight)
+            delete nodeProps.trimHeight
             return renderNode(nodeProps, defaultCSS)
           }
 
-          return FlexBox(boxProps)
+          return FlexBox(vpProps)
         }
       })
     }
