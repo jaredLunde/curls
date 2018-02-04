@@ -1,6 +1,4 @@
 import React from 'react'
-import compose from 'react-cake/es/utils/compose'
-import reduceProps from 'react-cake/es/utils/reduceProps'
 // import createOptimized from 'react-cake/es/utils/createOptimized'
 import contextTypes from './contextTypes'
 import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'

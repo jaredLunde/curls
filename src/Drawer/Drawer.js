@@ -1,6 +1,4 @@
 import {css, cx} from 'emotion'
-import reduceProps from 'react-cake/es/utils/reduceProps'
-// import createOptimized from 'react-cake/es/utils/createOptimized'
 import {maxZIndex} from '../global'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
@@ -60,6 +58,7 @@ export default function Drawer (props) {
               boxProps.className,
               drawerBoxProps.className
             )
+
             drawerBoxProps.children = boxProps.children({
               isVisible: drawerProps.isVisible,
               show: drawerProps.show,

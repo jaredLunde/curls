@@ -42,7 +42,7 @@
     "lru-memoize-map": "^0.2.0",
     "memoize-two-args": "^1.0.5",
     "polished": "^1.9.0",
-    "react-cake": "^0.4.11",
+    "react-cake": "^0.5.2",
     "shallowequal": "^1.0.2"
   },
   "scripts": {

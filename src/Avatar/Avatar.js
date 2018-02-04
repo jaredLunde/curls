@@ -38,7 +38,15 @@ const SFC = createComponent({
   CSS,
   themePath: 'avatar'
 })
-const SFCWithImageStat = compose([ImageStat, SFC])
+const SFCWithImageStat = function (props) {
+  return (
+    <ImageStat>
+      {function (statContext) {
+        return SFC({...statContext, ...props})
+      }}
+    </ImageStat>
+  )
+}
 const supportsObjectFit = supportsCSS('object-fit')
 
 

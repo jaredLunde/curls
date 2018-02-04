@@ -1,5 +1,4 @@
 import React from 'react'
-import reduceProps from 'react-cake/es/utils/reduceProps'
 import MediaQuery from '../MediaQuery'
 import ThemeConsumer from '../ThemeConsumer'
 import memoizeMap from 'lru-memoize-map'

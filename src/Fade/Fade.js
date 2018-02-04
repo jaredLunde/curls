@@ -20,23 +20,16 @@ const transitionProperties = 'visibility, opacity'
 
 export default function Fade ({children, visible = false, from = 0, to = 1, ...props}) {
   return (
-    <Toggle
-      propName='isVisible'
-      controls={fadeControls}
-      initialValue={visible}
-      from={from}
-      to={to}
-      {...props}
-    >
-      {function (sfcProps) {
-        sfcProps.children = function (transProps) {
+    <Toggle propName='isVisible' controls={fadeControls} initialValue={visible}>
+      {function (toggleContext) {
+        toggleContext.children = function (transProps) {
           transProps.property = transitionProperties
           transProps.children = children
 
           return Transitionable(transProps)
         }
 
-        return SFC(sfcProps)
+        return SFC({...toggleContext, from, to, ...props})
       }}
     </Toggle>
   )

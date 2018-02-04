@@ -47,8 +47,8 @@ export default function CheckBox ({
   ...props
 }) {
   return (
-    <Toggle propName='isChecked' initialValue={checked} {...props}>
-      {function (sfcProps) {
+    <Toggle propName='isChecked' initialValue={checked}>
+      {function (toggleContext) {
         function CheckBoxInput (checkBoxInputProps) {
           return SFC({
             ...checkBoxInputProps,
@@ -60,13 +60,15 @@ export default function CheckBox ({
                     type='checkBox'
                     name={name}
                     value={value}
-                    checked={sfcProps.isChecked}
+                    checked={toggleContext.isChecked}
                     readOnly
                     disabled
                     className={d.none}
                   />
 
-                  nodeProps.children = checkBoxInputProps.children({isChecked: sfcProps.isChecked})
+                  nodeProps.children = checkBoxInputProps.children({
+                    isChecked: toggleContext.isChecked
+                  })
                   nodeProps.nodeType = nodeProps.nodeType || nodeType
                   return (
                     <>
@@ -80,8 +82,7 @@ export default function CheckBox ({
           })
         }
 
-        sfcProps.CheckBoxInput = CheckBoxInput
-        return children(sfcProps)
+        return children({...toggleContext, CheckBoxInput, ...props})
       }}
     </Toggle>
   )

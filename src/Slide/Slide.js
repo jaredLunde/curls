@@ -14,21 +14,16 @@ const transitionProperties = 'visibility, transform'
 
 export default function Slide ({children, visible = false, ...props}) {
   return (
-    <Toggle
-      propName='isVisible'
-      controls={slideControls}
-      initialValue={visible}
-      {...props}
-    >
-      {function (sfcProps) {
-        sfcProps.children = function (transProps) {
+    <Toggle propName='isVisible' controls={slideControls} initialValue={visible}>
+      {function (toggleContext) {
+        toggleContext.children = function (transProps) {
           transProps.property = transitionProperties
           transProps.children = children
 
           return Transitionable(transProps)
         }
 
-        return SFC(sfcProps)
+        return SFC({...toggleContext, ...props})
       }}
     </Toggle>
   )

@@ -1,9 +1,6 @@
 import React from 'react'
 import {css, cx} from 'emotion'
 import ViewportConsumer from 'react-cake/es/Viewport/ViewportConsumer'
-// import createOptimized from 'react-cake/es/utils/createOptimized'
-// import compose from 'react-cake/es/utils/compose'
-// import reduceProps from 'react-cake/es/utils/reduceProps'
 import loadImages from 'react-cake/es/utils/loadImages'
 import {FlexBox} from '../Box'
 import {pos, z} from '../Box/CSS'
@@ -134,20 +131,6 @@ class PopOverContainer extends React.Component {
   }
 
   render () {
-    /**
-    const props = reduceProps(
-      this.props,
-      [
-        'children',
-        'show',
-        'hide',
-        'toggle',
-        'isVisible',
-        'width',
-        'height'
-      ]
-    )
-    */
     return this.props.children({
       PopOverBox: this.PopOverBox,
       isVisible: this.props.isVisible,
@@ -155,8 +138,7 @@ class PopOverContainer extends React.Component {
       hide: this.props.hide,
       toggle: this.props.toggle,
       renderPosition: this.state.renderPosition,
-      popOverRef: this.setContainerRef,
-      // ...props,
+      popOverRef: this.setContainerRef
     })
   }
 }

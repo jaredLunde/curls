@@ -14,21 +14,16 @@ const transitionProperties = 'visibility, transform, opacity'
 
 export default function Drop ({children, visible = false, ...props}) {
   return (
-    <Toggle
-      propName='isVisible'
-      controls={dropControls}
-      initialValue={visible}
-      {...props}
-    >
-      {function (sfcProps) {
-        sfcProps.children = function (transProps) {
+    <Toggle propName='isVisible' controls={dropControls} initialValue={visible}>
+      {function (toggleContext) {
+        toggleContext.children = function (transProps) {
           transProps.property = transitionProperties
           transProps.children = children
 
           return Transitionable(transProps)
         }
 
-        return SFC(sfcProps)
+        return SFC({...props, ...toggleContext})
       }}
     </Toggle>
   )
