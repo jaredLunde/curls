@@ -1,26 +1,25 @@
-import ViewportSize from 'react-cake/es/Viewport/ViewportSize'
-import reduceProps from 'react-cake/es/utils/reduceProps'
-import viewport from '../PropTypes/viewport'
+import WithViewport from 'react-cake/es/Viewport/WithViewport'
 
 
 function FillViewport (initialProps) {
-  let {children, style, viewportHeight} = initialProps
+  const {children, style, height} = initialProps
 
   return children({
     style: {
       ...style,
-      height: isNaN(viewportHeight) ? '100vh' : viewportHeight
+      height: isNaN(height) ? '100vh' : height
     }
   })
 }
 
 
 export default function (props) {
-  return ViewportSize({
-    withCoords: true,
-    children: function (fillViewportProps) {
-      fillViewportProps.children = props.children
-      return FillViewport(fillViewportProps)
+  return WithViewport({
+    children: function (vpContext) {
+      return FillViewport({
+        ...vpContext.getViewportSize(),
+        children: props.children
+      })
     }
   })
 }

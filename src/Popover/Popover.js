@@ -59,11 +59,15 @@ class PopOverContainer extends React.Component {
     }
   }
 
-  componentDidUpdate ({width, height}) {
-    if (
-      this.props.isVisible === true
-      && width !== this.props.width
-      && height !== this.props.height
+  componentDidUpdate ({width, height, isVisible}) {
+    if ((
+        this.props.isVisible === true
+        && this.props.isVisible !== isVisible
+      ) || (
+        this.props.isVisible === true
+        && width !== this.props.width
+        && height !== this.props.height
+      )
     ) {
       this.reposition()
     }

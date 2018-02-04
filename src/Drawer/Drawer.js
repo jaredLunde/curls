@@ -40,7 +40,8 @@ Drawer({
   }
 })
 */
-export default function Drawer ({...props}) {
+export default function Drawer (props) {
+  props = Object.assign({}, props)
   const transition = props.transition || Slide
   const childComponent = props.children
 
