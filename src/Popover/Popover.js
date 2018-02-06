@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, cx} from 'emotion'
-import ViewportConsumer from 'react-cake/es/Viewport/ViewportConsumer'
+import ViewportConsumer from '@render-props/viewport/es/ViewportConsumer'
 import loadImages from 'react-cake/es/utils/loadImages'
 import {FlexBox} from '../Box'
 import {pos, z} from '../Box/CSS'

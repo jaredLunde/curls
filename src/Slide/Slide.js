@@ -1,6 +1,5 @@
 import React from 'react'
-import Toggle from 'react-cake/es/Toggle'
-import {fadeControls as slideControls} from '../Fade/Fade'
+import Toggle from '@render-props/toggle'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
@@ -12,18 +11,27 @@ const SFC = createComponent({name: 'Slide', propTypes, CSS, defaultTheme, themeP
 const transitionProperties = 'visibility, transform'
 
 
-export default function Slide ({children, visible = false, ...props}) {
+export default function Slide ({
+  children,
+  initiallyVisible = false,
+  visible,
+  ...props
+}) {
   return (
-    <Toggle propName='isVisible' controls={slideControls} initialValue={visible}>
+    <Toggle value={visible} initialValue={initiallyVisible}>
       {function (toggleContext) {
-        toggleContext.children = function (transProps) {
-          transProps.property = transitionProperties
-          transProps.children = children
-
-          return Transitionable(transProps)
-        }
-
-        return SFC({...toggleContext, ...props})
+        return SFC({
+          isVisible: toggleContext.value,
+          ...props,
+          children: function (transProps) {
+            transProps.property = transitionProperties
+            transProps.children = children
+            transProps.show = toggleContext.on
+            transProps.hide = toggleContext.off
+            transProps.toggle = toggleContext.toggle
+            return Transitionable(transProps)
+          }
+        })
       }}
     </Toggle>
   )

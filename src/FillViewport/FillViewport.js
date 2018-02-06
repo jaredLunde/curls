@@ -1,15 +1,10 @@
-import ViewportConsumer from 'react-cake/es/Viewport/ViewportConsumer'
+import ViewportConsumer from '@render-props/viewport/es/ViewportConsumer'
 
 
 function FillViewport (initialProps) {
-  const {children, style, height} = initialProps
-
-  return children({
-    style: {
-      ...style,
-      height: isNaN(height) ? '100vh' : height
-    }
-  })
+  let {children, style, height} = initialProps
+  style = style || {height: isNaN(height) ? '100vh' : height}
+  return children({style})
 }
 
 

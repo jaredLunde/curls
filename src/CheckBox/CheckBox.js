@@ -1,6 +1,6 @@
 import React from 'react'
 import {cx, css} from 'emotion'
-import Toggle from 'react-cake/es/Toggle'
+import Toggle from '@render-props/toggle'
 import {d} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {FlexBox} from '../Box'
@@ -47,7 +47,7 @@ export default function CheckBox ({
   ...props
 }) {
   return (
-    <Toggle propName='isChecked' initialValue={checked}>
+    <Toggle initialValue={checked}>
       {function (toggleContext) {
         function CheckBoxInput (checkBoxInputProps) {
           return SFC({
@@ -60,14 +60,14 @@ export default function CheckBox ({
                     type='checkBox'
                     name={name}
                     value={value}
-                    checked={toggleContext.isChecked}
+                    checked={toggleContext.value}
                     readOnly
                     disabled
                     className={d.none}
                   />
 
                   nodeProps.children = checkBoxInputProps.children({
-                    isChecked: toggleContext.isChecked
+                    isChecked: toggleContext.value
                   })
                   nodeProps.nodeType = nodeProps.nodeType || nodeType
                   return (

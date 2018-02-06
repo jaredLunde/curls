@@ -665,7 +665,7 @@
     "@babel/plugin-syntax-dynamic-import" "7.0.0-beta.39"
     "@babel/plugin-syntax-import-meta" "7.0.0-beta.39"
 
-"@babel/runtime@^7.0.0-beta.36", "@babel/runtime@^7.0.0-beta.37":
+"@babel/runtime@^7.0.0-beta.36", "@babel/runtime@^7.0.0-beta.37", "@babel/runtime@^7.0.0-beta.39":
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.39.tgz#e4b763b78d31a2c209165bae2772f103594a8972"
   dependencies:
@@ -718,6 +718,64 @@
     esutils "^2.0.2"
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
+
+"@render-props/events@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@render-props/events/-/events-0.1.1.tgz#0c8b5499c5039c8ccc0c47f9e1e3c0ac1f57029d"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+
+"@render-props/rect@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@render-props/rect/-/rect-0.1.0.tgz#39dd11cca4ff8459c483e0f466af04390bb3d67e"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    "@render-props/events" "^0.1.1"
+    "@render-props/throttle" "^0.1.2"
+
+"@render-props/throttle@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@render-props/throttle/-/throttle-0.1.2.tgz#760155b23fc832441120c97bf3b25484eac40823"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    "@render-props/utils" "^0.1.0"
+    react-cake "^0.6.0"
+
+"@render-props/toggle@^0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@render-props/toggle/-/toggle-0.1.17.tgz#255790ce0d2b662e7f0185b28c75cb5113c6ef0e"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    "@render-props/value" "^0.1.13"
+
+"@render-props/utils@^0.1.0", "@render-props/utils@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@render-props/utils/-/utils-0.1.1.tgz#f7e5acb8df3be8681d85662ea5350158c83b7f89"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+
+"@render-props/utils@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@render-props/utils/-/utils-0.1.3.tgz#20866c32bf0a3d3a78d4b0824277b6aec73df522"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+
+"@render-props/value@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@render-props/value/-/value-0.1.13.tgz#7ae6908d286f3990d13a35e65d1f73f3148951d7"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    "@render-props/utils" "^0.1.1"
+
+"@render-props/viewport@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@render-props/viewport/-/viewport-0.1.14.tgz#38e21d81a054ed3b0723a99a1733963a3733635c"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    "@render-props/events" "^0.1.1"
+    "@render-props/rect" "^0.1.0"
+    "@render-props/throttle" "^0.1.2"
+    "@render-props/utils" "^0.1.3"
 
 abbrev@1:
   version "1.1.1"
@@ -1805,6 +1863,15 @@ rc@^1.1.7:
 react-cake@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.5.2.tgz#795428a262da0dec330b50b37f4aece67e1e2f11"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.36"
+    cancelable-promise "^2.3.0"
+    fast-memoize "^2.2.7"
+    invariant "^2.2.2"
+
+react-cake@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.6.0.tgz#e86cb01b7809ebbad7bc005a60d85fbd06d95888"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.36"
     cancelable-promise "^2.3.0"

@@ -1,5 +1,5 @@
 import React from 'react'
-import Toggle from 'react-cake/es/Toggle'
+import Toggle from '@render-props/toggle'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
@@ -10,26 +10,33 @@ import createComponent from '../createComponent'
 const themePath = 'fade'
 const SFC = createComponent({name: 'Fade', propTypes, CSS, defaultTheme, themePath})
 
-export const fadeControls = [
-  {name: 'show', value: true},
-  {name: 'hide', value: false}
-]
 
 const transitionProperties = 'visibility, opacity'
 
 
-export default function Fade ({children, visible = false, from = 0, to = 1, ...props}) {
+export default function Fade ({
+  children,
+  from = 0,
+  to = 1,
+  initiallyVisible = false,
+  visible,
+  ...props
+}) {
   return (
-    <Toggle propName='isVisible' controls={fadeControls} initialValue={visible}>
+    <Toggle value={visible} initialValue={initiallyVisible}>
       {function (toggleContext) {
-        toggleContext.children = function (transProps) {
-          transProps.property = transitionProperties
-          transProps.children = children
-
-          return Transitionable(transProps)
-        }
-
-        return SFC({...toggleContext, from, to, ...props})
+        return SFC({
+          isVisible: toggleContext.value,
+          ...props,
+          children: function (transProps) {
+            transProps.property = transitionProperties
+            transProps.children = children
+            transProps.show = toggleContext.on
+            transProps.hide = toggleContext.off
+            transProps.toggle = toggleContext.toggle
+            return Transitionable(transProps)
+          }
+        })
       }}
     </Toggle>
   )
