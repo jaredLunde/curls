@@ -725,6 +725,13 @@
   dependencies:
     "@babel/runtime" "^7.0.0-beta.39"
 
+"@render-props/image-props@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@render-props/image-props/-/image-props-0.1.0.tgz#ee733a8f571f0eecf4d03676f7a0177c36147616"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    "@render-props/viewport" "^0.1.15"
+
 "@render-props/rect@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@render-props/rect/-/rect-0.1.0.tgz#39dd11cca4ff8459c483e0f466af04390bb3d67e"
@@ -770,6 +777,16 @@
 "@render-props/viewport@^0.1.14":
   version "0.1.14"
   resolved "https://registry.yarnpkg.com/@render-props/viewport/-/viewport-0.1.14.tgz#38e21d81a054ed3b0723a99a1733963a3733635c"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    "@render-props/events" "^0.1.1"
+    "@render-props/rect" "^0.1.0"
+    "@render-props/throttle" "^0.1.2"
+    "@render-props/utils" "^0.1.3"
+
+"@render-props/viewport@^0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@render-props/viewport/-/viewport-0.1.15.tgz#bde8acf1c3447b957d0d9b08d2200bae8245c851"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.39"
     "@render-props/events" "^0.1.1"

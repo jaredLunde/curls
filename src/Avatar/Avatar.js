@@ -1,5 +1,5 @@
 import {css} from 'emotion'
-import ImageStat from 'react-cake/es/ImageStat'
+import ImageProps from '@render-props/image-props'
 import {BasicBox} from '../Box'
 import {pos, d, ov} from '../Box/CSS'
 import createComponent, {renderNode} from '../createComponent'
@@ -37,13 +37,13 @@ const SFC = createComponent({
   CSS,
   themePath: 'avatar'
 })
-const SFCWithImageStat = function (props) {
+const SFCWithImageProps = function (props) {
   return (
-    <ImageStat>
-      {function (statContext) {
-        return SFC({...statContext, ...props})
+    <ImageProps>
+      {function (imageContext) {
+        return SFC({...imageContext, ...props})
       }}
-    </ImageStat>
+    </ImageProps>
   )
 }
 const supportsObjectFit = supportsCSS('object-fit')
@@ -81,5 +81,5 @@ export default function Avatar (props) {
     sfcProps.orientation = 'square'
   }
 
-  return (supportsObjectFit ? SFC : SFCWithImageStat)(sfcProps)
+  return (supportsObjectFit ? SFC : SFCWithImageProps)(sfcProps)
 }

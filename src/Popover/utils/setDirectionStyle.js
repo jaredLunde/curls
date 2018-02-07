@@ -1,4 +1,4 @@
-import rect from 'react-cake/es/Rect/utils/rect'
+import rect from '@render-props/rect/es/utils/rect'
 import centerFromTop from './centerFromTop'
 import centerFromBottom from './centerFromBottom'
 import centerFromLeft from './centerFromLeft'

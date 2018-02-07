@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.37",
+    "@render-props/image-props": "^0.1.0",
+    "@render-props/rect": "^0.1.0",
     "@render-props/toggle": "^0.1.17",
     "@render-props/utils": "^0.1.3",
     "@render-props/viewport": "^0.1.14",
