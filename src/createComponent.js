@@ -1,6 +1,6 @@
 import React from 'react'
 import {cx} from 'emotion'
-import reduceProps from 'react-cake/es/utils/reduceProps'
+import objectWithoutProps from 'object-without-props'
 import getClassNames from './utils/getClassNames'
 import assignOrdered from './utils/assignOrdered'
 import ThemeConsumer from './ThemeConsumer'
@@ -55,7 +55,7 @@ export default function ({
     const renderProps = (
       propTypes === void 0
       ? Object.assign({}, props)
-      : reduceProps(props, propTypes)
+      : objectWithoutProps(props, propTypes)
     )
     delete renderProps.children
 
