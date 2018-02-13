@@ -27,6 +27,8 @@ export default function Fade ({
       {function (toggleContext) {
         return SFC({
           isVisible: toggleContext.value,
+          from,
+          to,
           ...props,
           children: function (transProps) {
             transProps.property = transitionProperties

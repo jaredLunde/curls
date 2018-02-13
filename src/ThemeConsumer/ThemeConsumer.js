@@ -39,7 +39,7 @@ function mergeGlobals (curlsTheme, props) {
 
 export default function ThemeConsumer (props) {
   const consumerProps = {}
-  
+
   return (
     <CurlsContext.Consumer>
       {consumerContext => {
@@ -51,40 +51,3 @@ export default function ThemeConsumer (props) {
     </CurlsContext.Consumer>
   )
 }
-
-/*
-class ThemeConsumer extends React.Component {
-  static displayName = 'ThemeConsumer'
-
-  constructor (props) {
-    super(props)
-    this.consumerContext = {
-      setTheme: props.setTheme,
-      replaceTheme: props.replaceTheme,
-      theme: mergeGlobals(props.theme, props)
-    }
-  }
-
-  render () {
-    this.consumerContext.theme = mergeGlobals(this.props.theme, this.props)
-    return this.props.children(this.consumerContext)
-  }
-}
-
-
-export default function ThemeConsumerContext (props) {
-  const consumerProps = {defaultTheme: props.defaultTheme, path: props.path}
-
-  return (
-    <CurlsContext.Consumer>
-      {function (consumerContext) {
-        return React.createElement(
-          ThemeConsumer,
-          Object.assign(consumerProps, consumerContext),
-          props.children
-        )
-      }}
-    </CurlsContext.Consumer>
-  )
-}
-*/
