@@ -19,31 +19,33 @@ function throwThemeError () {
 }
 
 
-export function replaceTheme (theme) {
+export function replaceTheme (prevTheme, theme) {
+  let nextTheme
   theme = {...baseTheme, ...theme}
 
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
-    curlsTheme = Object.freeze(theme)
+    nextTheme = Object.freeze(theme)
     throwThemeError()
   }
   else {
-    curlsTheme = theme
+    nextTheme = theme
   }
 
-  return curlsTheme
+  return nextTheme
 }
 
 
-export default function injectTheme (theme) {
-  theme = deepMerge(curlsTheme, theme)
-  
+export default function injectTheme (prevTheme, theme) {
+  let nextTheme
+  theme = deepMerge(prevTheme, theme)
+
   if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
-    curlsTheme = Object.freeze(theme)
+    nextTheme = Object.freeze(theme)
     throwThemeError()
   }
   else {
-    curlsTheme = theme
+    nextTheme = theme
   }
 
-  return curlsTheme
+  return nextTheme
 }

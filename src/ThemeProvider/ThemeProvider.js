@@ -16,27 +16,25 @@ export default class ThemeProvider extends React.Component {
 
   constructor (props) {
     super(props)
-    injectTheme(props.theme)
     console.log('[🎉 injectTheme]', curlsTheme)
+    this.state = {theme: injectTheme(curlsTheme, props.theme)}
     this.themeProviderContext = {
-      theme: curlsTheme,
+      theme: this.state.theme,
       setTheme: this.setTheme,
       replaceTheme: this.replaceTheme
     }
   }
 
-  setTheme = theme => {
-    injectTheme(theme)
-    this.forceUpdate()
-  }
+  setTheme = theme => this.setState(
+    prevState => ({theme: injectTheme(prevState.theme, theme)})
+  )
 
-  replaceTheme = theme => {
-    replaceTheme(theme)
-    this.forceUpdate()
-  }
+  replaceTheme = theme => this.setState(
+    prevState => ({theme: replaceTheme(prevState.theme, theme)})
+  )
 
   render () {
-    this.themeProviderContext.theme = curlsTheme
+    this.themeProviderContext.theme = this.state.theme
 
     return (
       <CurlsContext.Provider value={this.themeProviderContext}>
