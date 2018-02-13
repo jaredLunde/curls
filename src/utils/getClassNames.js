@@ -20,11 +20,10 @@ export default function getClassNames (props, theme, CSS) {
           : getCSS[propVal]
       )
 
-      if (!result) {
+      if (result === void 0 || result === null) {
         continue
       }
-
-      if (Array.isArray(result) || typeof result === 'string') {
+      else if (Array.isArray(result) || typeof result === 'string') {
         classNames.push(result)
       }
       else {

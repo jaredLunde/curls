@@ -63,7 +63,7 @@ export default function ({
 
     if (styles !== void 0) {
       if (styles.classNames.length) {
-        renderProps.className = cx(styles.classNames, props.className)
+        renderProps.className = cx(styles.classNames, renderProps.className)
       }
 
       if (styles.style !== void 0) {
@@ -73,6 +73,10 @@ export default function ({
           : styles.style
         )
       }
+    }
+
+    if (Array.isArray(renderProps.className)) {
+      renderProps.className = cx(renderProps.className)
     }
 
     return props.children(renderProps)
