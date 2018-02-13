@@ -59,10 +59,20 @@ export default function ({
     )
     delete renderProps.children
 
-    const classNames = CSS && getClassNames(props, theme, CSS)
+    const styles = CSS && getClassNames(props, theme, CSS)
 
-    if (classNames !== void 0 || Array.isArray(props.className)) {
-      renderProps.className = cx(classNames, props.className)
+    if (styles !== void 0) {
+      if (styles.classNames.length) {
+        renderProps.className = cx(styles.classNames, props.className)
+      }
+
+      if (styles.style !== void 0) {
+        renderProps.style = (
+          renderProps.style
+          ? {...renderProps.style, ...styles.style}
+          : styles.style
+        )
+      }
     }
 
     return props.children(renderProps)

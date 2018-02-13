@@ -1,5 +1,5 @@
 import React from 'react'
-import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'
+import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
 
 
 export const CurlsContext = React.createContext({
@@ -16,13 +16,14 @@ export default class ThemeProvider extends React.Component {
 
   constructor (props) {
     super(props)
-    console.log('[🎉 injectTheme]', curlsTheme)
-    this.state = {theme: injectTheme(curlsTheme, props.theme)}
+    this.state = {theme: injectTheme(baseTheme, props.theme)}
     this.themeProviderContext = {
       theme: this.state.theme,
       setTheme: this.setTheme,
       replaceTheme: this.replaceTheme
     }
+
+    console.log('[🎉 injectTheme]', this.state.theme)
   }
 
   setTheme = theme => this.setState(

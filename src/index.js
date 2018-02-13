@@ -12,10 +12,10 @@ export {
 } from './utils'
 
 export {
-  curlsTheme as theme,
+  // curlsTheme as theme,
   injectRem,
-  injectTheme,
-  replaceTheme,
+  // injectTheme,
+  // replaceTheme,
   defaultColors,
   // defaultHoverColors,
   // defaultActiveColors,

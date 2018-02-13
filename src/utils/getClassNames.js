@@ -1,5 +1,6 @@
 export default function getClassNames (props, theme, CSS) {
   const classNames = []
+  let style
   const propKeys = Object.keys(props)
 
   for (let x = 0; x < propKeys.length; x++) {
@@ -11,19 +12,30 @@ export default function getClassNames (props, theme, CSS) {
 
     if (propVal !== void 0/*&& propVal !== false*/) {
       const typeofCSS = typeof getCSS
-      classNames.push(
+      const result = (
         typeofCSS === 'string' && propVal !== false
         ? getCSS
         : typeofCSS === 'function'
           ? getCSS(propVal, theme, props)
           : getCSS[propVal]
       )
+
+      if (!result) {
+        continue
+      }
+
+      if (Array.isArray(result) || typeof result === 'string') {
+        classNames.push(result)
+      }
+      else {
+        style = style === void 0 ? result : Object.assign(style, result)
+      }
     }
   }
 
-  if (classNames.length === 0) {
+  if (classNames.length === 0 && style === void 0) {
     return
   }
 
-  return classNames
+  return {classNames, style}
 }
