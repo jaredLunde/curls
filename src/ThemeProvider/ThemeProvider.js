@@ -22,8 +22,7 @@ export default class ThemeProvider extends React.Component {
       setTheme: this.setTheme,
       replaceTheme: this.replaceTheme
     }
-
-    console.log('[🎉 injectTheme]', this.state.theme)
+    // console.log('[🎉 Theme]', this.state.theme)
   }
 
   setTheme = theme => this.setState(
