@@ -19,10 +19,7 @@ export default class ThemeProvider extends React.Component {
     super(props)
     injectTheme(props.theme)
     console.log('[🎉 injectTheme]', curlsTheme)
-  }
-
-  getContext () {
-    return {
+    this.themeProviderContext = {
       theme: curlsTheme,
       setTheme: this.setTheme,
       replaceTheme: this.replaceTheme
@@ -40,11 +37,11 @@ export default class ThemeProvider extends React.Component {
   }
 
   render () {
-    const context = this.getContext()
+    this.themeProviderContext.theme = curlsTheme
 
     return (
-      <CurlsContext.Provider value={context}>
-        {React.createElement(this.props.children, context)}
+      <CurlsContext.Provider value={this.themeProviderContext}>
+        {this.props.children}
       </CurlsContext.Provider>
     )
   }

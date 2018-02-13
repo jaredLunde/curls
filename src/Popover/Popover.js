@@ -99,6 +99,8 @@ class PopOverContainer extends React.Component {
         this._loader = null
       }
     )
+    
+    this.setPositionState()
   }
 
   PopOverBox = props => {
