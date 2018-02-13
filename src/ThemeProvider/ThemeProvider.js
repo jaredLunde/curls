@@ -1,5 +1,4 @@
 import React from 'react'
-import contextTypes from './contextTypes'
 import injectTheme, {replaceTheme, curlsTheme} from '../theming/injectTheme'
 
 

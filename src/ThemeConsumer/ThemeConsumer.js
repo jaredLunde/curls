@@ -38,13 +38,16 @@ function mergeGlobals (curlsTheme, props) {
 
 
 export default function ThemeConsumer (props) {
+  const consumerProps = {}
+  
   return (
     <CurlsContext.Consumer>
-      {consumerContext => props.children({
-        theme: mergeGlobals(consumerContext.theme, props),
-        setTheme: consumerContext.setTheme,
-        replaceTheme: consumerContext.replaceTheme,
-      })}
+      {consumerContext => {
+        consumerProps.theme = mergeGlobals(consumerContext.theme, props)
+        consumerProps.setTheme = consumerContext.setTheme
+        consumerProps.replaceTheme = consumerContext.replaceTheme
+        return props.children(consumerProps)
+      }}
     </CurlsContext.Consumer>
   )
 }
