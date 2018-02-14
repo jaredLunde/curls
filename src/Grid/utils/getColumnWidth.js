@@ -10,7 +10,7 @@ export default function (size, x, theme) {
   x = parseInt(x)
   const numColumns = theme.columns[size]
 
-  if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
+  if (__DEV__) {
     if (x < 0 || x > theme.columns[size]) {
       console.warn(`Column count for grid size '${size}' must be between 0 and ${numColumns}`)
     }

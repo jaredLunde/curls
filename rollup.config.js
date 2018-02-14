@@ -36,7 +36,8 @@ const basePlugins = [
       '@babel/proposal-pipeline-operator',
       'transform-react-remove-prop-types',
       'closure-elimination',
-      'polished'
+      'polished',
+      'dev-expression'
     ],
     babelrc: false
   }),

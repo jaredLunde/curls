@@ -20,7 +20,7 @@ export function replaceTheme (prevTheme, theme) {
   let nextTheme
   theme = {...baseTheme, ...theme}
 
-  if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
+  if (__DEV__) {
     nextTheme = Object.freeze(theme)
     throwThemeError(nextTheme)
   }
@@ -36,7 +36,7 @@ export default function injectTheme (prevTheme, theme) {
   let nextTheme
   theme = deepMerge(prevTheme, theme)
 
-  if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
+  if (__DEV__) {
     nextTheme = Object.freeze(theme)
     throwThemeError(nextTheme)
   }

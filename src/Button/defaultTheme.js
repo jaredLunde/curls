@@ -50,7 +50,7 @@ export function getActiveClass (props, theme) {
   try {
     color = darken(0.05, theme.colors[props.bg] || props.bg)
   } catch (e) {
-    if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
+    if (__DEV__) {
       console.warn(`Color '${props.bg}' could not be darkened in Link.getActiveClass`)
     }
 

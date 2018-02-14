@@ -90,7 +90,7 @@ export default function ({
     })
   }
 
-  if (typeof process !== void 0 && process.env.NODE_ENV !== 'production') {
+  if (__DEV__) {
     SFC.displayName = name
     SFC.propTypes = propTypes
   }
