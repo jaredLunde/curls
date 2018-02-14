@@ -1,8 +1,8 @@
 import memoize from 'memoize-two-args'
 import deepMerge from './deepMerge'
+import emptyObj from 'empty/object'
 
 
-const emptyObj = {}
 const memoizer = memoize(deepMerge)
 
 

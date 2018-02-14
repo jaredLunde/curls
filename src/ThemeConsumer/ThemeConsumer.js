@@ -2,6 +2,7 @@ import React from 'react'
 import memoize from 'memoize-two-args'
 import {CurlsContext} from '../ThemeProvider'
 import getTheme from '../utils/getTheme'
+import emptyObj from 'empty/object'
 
 
 // let uncached = 0
@@ -19,8 +20,6 @@ const mergeGlobals_ = memoize(
   }
 )
 
-
-const emptyObj = {}
 
 function mergeGlobals (curlsTheme, props) {
   if (props.path === void 0) {

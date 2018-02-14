@@ -3,9 +3,9 @@ import createComponent, {renderNode} from '../createComponent'
 import {BasicBox} from '../Box'
 import {w, h, d, pos} from '../Box/CSS'
 import * as defaultTheme from './defaultTheme'
+import emptyObj from 'empty/object'
 
 
-const emptyObj = {}
 const nodeType = 'div'
 const defaultCSS = css`
   ${w('100%')};

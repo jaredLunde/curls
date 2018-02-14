@@ -3,6 +3,7 @@ import createComponent, {renderNode} from '../createComponent'
 import {GridBox} from '../Box'
 import {flex, row, wrap, align, justify} from '../Flex/CSS'
 import * as defaultTheme from './defaultTheme'
+import emptyObj from 'empty/object'
 
 
 const nodeType = 'nav'
@@ -16,7 +17,7 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'NavBar', defaultTheme, themePath: 'navBar'})
 
 
-export default function NavBar (props = emptyObj) {
+export default function NavBar (props) {
   return SFC({
     ...props,
     children: function (boxProps) {
