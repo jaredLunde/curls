@@ -86,7 +86,7 @@ export default function ({
     return ThemeConsumer({
       path: themePath,
       defaultTheme,
-      children: function (themeProps) { return renderer(props, themeProps) }
+      children: themeProps => renderer(props, themeProps)
     })
   }
 
