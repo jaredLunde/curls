@@ -13,11 +13,13 @@ export default function getClassNames (props, theme, CSS) {
     if (propVal !== void 0/*&& propVal !== false*/) {
       const typeofCSS = typeof getCSS
       const result = (
-        typeofCSS === 'string' && propVal !== false
-        ? getCSS
-        : typeofCSS === 'function'
-          ? getCSS(propVal, theme, props)
-          : getCSS[propVal]
+        typeofCSS === 'string'
+          ? propVal === false
+            ? void 0
+            : getCSS
+          : typeofCSS === 'function'
+            ? getCSS(propVal, theme, props)
+            : getCSS[propVal]
       )
 
       if (result === void 0 || result === null) {

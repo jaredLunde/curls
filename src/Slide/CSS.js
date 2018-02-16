@@ -18,17 +18,21 @@ function transform (...args) {
 }
 
 export function fromTop(v, _, props) {
+  if (v === false) return;
   return transform(0, `${whichVal(v, -100, props)}%`, 0)
 }
 
 export function fromRight(v, _, props) {
+  if (v === false) return;
   return transform(`${whichVal(v, 100, props)}%`, 0, 0)
 }
 
 export function fromBottom(v, _, props) {
+  if (v === false) return;
   return transform(0, `${whichVal(v, 100, props)}%`, 0)
 }
 
 export function fromLeft(v, _, props) {
+  if (v === false) return;
   return transform(`${whichVal(v, -100, props)}%`, 0, 0)
 }
