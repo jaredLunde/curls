@@ -11,7 +11,11 @@ export const isNotVisible_ = css`${baseIsNotVisible}; opacity: 0;`
 export function isVisible (value, theme, props) {
   return (
     value === true
-    ? css`${baseIsVisible}; opacity: ${props.to};`
-    : css`${baseIsNotVisible}; opacity: ${props.from};`
+    ? props.to === 1
+      ? isVisible_
+      : css`${baseIsVisible}; opacity: ${props.to};`
+    : props.from === 0
+      ? isNotVisible_
+      : css`${baseIsNotVisible}; opacity: ${props.from};`
   )
 }
