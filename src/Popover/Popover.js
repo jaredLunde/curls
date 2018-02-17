@@ -99,7 +99,7 @@ class PopOverContainer extends React.Component {
         this._loader = null
       }
     )
-    
+
     this.setPositionState()
   }
 
@@ -140,6 +140,7 @@ class PopOverContainer extends React.Component {
       hide: this.props.hide,
       toggle: this.props.toggle,
       renderPosition: this.state.renderPosition,
+      reposition: this.reposition,
       popOverRef: this.setContainerRef
     })
   }

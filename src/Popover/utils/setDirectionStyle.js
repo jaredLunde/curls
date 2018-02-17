@@ -9,6 +9,10 @@ export default function (direction, container, popOverBox, viewportSize) {
   const containerRect = rect(container)
   const boxRect = rect(popOverBox)
 
+  if (!containerRect) {
+    return null
+  }
+
   switch (direction) {
     case 'fromTop':
       return centerFromTop(containerRect, boxRect, viewportSize)
