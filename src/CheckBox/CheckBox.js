@@ -58,7 +58,7 @@ export default function CheckBox ({
                 ...boxProps,
                 children: function (nodeProps) {
                   const checkBoxInput = <input
-                    type='checkBox'
+                    type={nodeProps.type || 'checkBox'}
                     name={name}
                     value={value}
                     checked={toggleContext.value}
@@ -66,7 +66,7 @@ export default function CheckBox ({
                     disabled
                     className={d.none}
                   />
-
+                  delete nodeProps.type
                   nodeProps.children = checkBoxInputProps.children({
                     isChecked: toggleContext.value
                   })

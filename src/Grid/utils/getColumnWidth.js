@@ -17,6 +17,7 @@ export default function (size, x, theme) {
   }
 
   const width = `${(x / numColumns) * 100}%`
+
   return css`
     ${mediaQuery(getBreakPoint(size, theme))} {
       ${x === 0 ? d.none : void 0};
