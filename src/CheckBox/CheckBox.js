@@ -44,10 +44,11 @@ export default function CheckBox ({
   name,
   value,
   checked,
+  initialChecked = false,
   ...props
 }) {
   return (
-    <Toggle initialValue={checked === void 0 ? false : void 0} value={checked}>
+    <Toggle initialValue={checked === void 0 ? initialChecked : void 0} value={checked}>
       {function (toggleContext) {
         function CheckBoxInput (checkBoxInputProps) {
           return SFC({
@@ -70,6 +71,7 @@ export default function CheckBox ({
                     isChecked: toggleContext.value
                   })
                   nodeProps.nodeType = nodeProps.nodeType || nodeType
+
                   return (
                     <>
                       {renderNode(nodeProps, defaultCSS)}
