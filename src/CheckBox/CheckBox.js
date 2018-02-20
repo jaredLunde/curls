@@ -44,11 +44,16 @@ export default function CheckBox ({
   name,
   value,
   checked,
+  onChange,
   initialChecked = false,
   ...props
 }) {
   return (
-    <Toggle initialValue={checked === void 0 ? initialChecked : void 0} value={checked}>
+    <Toggle
+      initialValue={checked === void 0 ? initialChecked : void 0}
+      value={checked}
+      onChange={onChange}
+    >
       {function (toggleContext) {
         function CheckBoxInput (checkBoxInputProps) {
           return SFC({
