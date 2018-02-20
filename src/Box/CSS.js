@@ -34,6 +34,7 @@ export const overflow = {
   touch: css`-webkit-overflow-scrolling: touch;`
 }
 export function ov (value) {
+  if (value === false) return null;
   const vals = value.split(' ')
 
   if (vals.length === 1) {
@@ -54,26 +55,32 @@ export function ov (value) {
 }
 
 export function z (value) {
+  if (value === false) return null;
   return css`z-index: ${value};`
 }
 
 
 export function bg (value, theme) {
+  if (value === false) return null;
   return colorize('background', value, theme)
 }
 
 
 export function sh (value, theme) {
+  if (value === false) return null;
+
   return theme.getBoxShadow(value, theme)
 }
 
 
 export function bc (value, theme) {
+  if (value === false) return null;
   return colorize('border-color', value, theme)
 }
 
 
 export function bw (value, theme) {
+  if (value === false) return null;
   const {borderWidthScale} = theme
 
   if (isDirectional(value)) {
@@ -111,6 +118,7 @@ const borderRadiusDirections = {
 
 
 export function br (value, theme) {
+  if (value === false) return null;
   const {borderRadiusScale} = theme
 
   if (isDirectional(value)) {
@@ -130,6 +138,7 @@ export function br (value, theme) {
 
 
 export function m (value, theme) {
+  if (value === false) return null;
   const {spacingScale} = theme
 
   if (isDirectional(value)) {
@@ -141,7 +150,9 @@ export function m (value, theme) {
 
 
 export function p (value, theme) {
+  if (value === false) return null;
   const {spacingScale} = theme
+  
   if (isDirectional(value)) {
     return directionalScale('padding-{XYZ}', spacingScale, value, theme)
   } else {
