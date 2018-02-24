@@ -2,8 +2,8 @@
 
 
 export const scale = {
-  xxs: 0.625,
-  xs: 0.8125,
+  xxs: 0.675,
+  xs: 0.75,
   sm: 1,
   md: 1.1875,
   lg: 1.5,
