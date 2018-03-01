@@ -1,5 +1,5 @@
 {
-  "name": "curls",
+  "name": "styled-curls",
   "version": "1.0.0",
   "main": "commonjs/index.js",
   "module": "es/index.js",

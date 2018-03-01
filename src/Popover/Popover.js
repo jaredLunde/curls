@@ -56,14 +56,17 @@ class PopOverContainer extends React.Component {
     }
   }
 
-  componentDidUpdate ({width, height, isVisible}) {
+  componentDidUpdate ({width, height, scrollY, isVisible}) {
     if ((
         this.props.isVisible === true
         && this.props.isVisible !== isVisible
       ) || (
         this.props.isVisible === true
-        && width !== this.props.width
-        && height !== this.props.height
+        && (
+          width !== this.props.width
+          || height !== this.props.height
+          || scrollY !== this.props.scrollY
+        )
       )
     ) {
       this.reposition()
@@ -154,6 +157,7 @@ function ViewportPopOver (props) {
         return <PopOverContainer
           width={vpProps.width}
           height={vpProps.height}
+          scrollY={props.repositionOnScroll && vpProps.scrollY}
           {...props}
         />
       }}
