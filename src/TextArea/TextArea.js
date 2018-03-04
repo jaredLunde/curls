@@ -19,8 +19,14 @@ const SFC = createComponent({
 
 
 function autoResize (e) {
-  e.target.style.height = 'auto'
-  e.target.style.height = e.target.scrollHeight + 'px'
+  if (!e.target.value) {
+    e.target.style.height = ''
+  }
+  else {
+    const nextHeight = e.target.scrollHeight
+    e.target.style.height = 'auto'
+    e.target.style.height = e.target.scrollHeight + 'px'
+  }
 }
 
 
@@ -32,8 +38,8 @@ export default function TextArea (props) {
       typeProps.nodeType = 'textarea'
 
       if (props.autoResize) {
-        typeProps.onInput = function (...args) {
-          callIfExists(props.onInput, ...args)
+        typeProps.onChange = function (...args) {
+          callIfExists(props.onChange, ...args)
           autoResize(...args)
         }
       }
