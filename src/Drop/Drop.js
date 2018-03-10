@@ -3,6 +3,7 @@ import Toggle from '@render-props/toggle'
 import propTypes from '../Slide/propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from '../Slide/defaultTheme'
+import {whichDelay} from '../Slide/utils'
 import Transitionable from '../Transitionable'
 import createComponent from '../createComponent'
 
@@ -29,6 +30,7 @@ export default function Drop ({
             transProps.show = toggleContext.on
             transProps.hide = toggleContext.off
             transProps.toggle = toggleContext.toggle
+            transProps.delay = whichDelay(toggleContext.value, props)
             return Transitionable(transProps)
           }
         })
