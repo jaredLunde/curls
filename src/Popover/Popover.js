@@ -151,15 +151,14 @@ class PopOverContainer extends React.Component {
 
 
 function ViewportPopOver (props) {
+  // props here can be safely mutated
   return (
     <ViewportConsumer>
       {function (vpProps) {
-        return <PopOverContainer
-          width={vpProps.width}
-          height={vpProps.height}
-          scrollY={props.repositionOnScroll && vpProps.scrollY}
-          {...props}
-        />
+        props.width = vpProps.width
+        props.height = vpProps.height
+        props.scrollY = props.repositionOnScroll && vpProps.scrollY
+        return React.createElement(PopOverContainer, props)
       }}
     </ViewportConsumer>
   )
