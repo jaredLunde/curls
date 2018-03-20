@@ -10,6 +10,7 @@ function FillViewport (initialProps) {
 
 export default function (props) {
   return ViewportConsumer({
+    observe: 'height',
     children: function (context) {
       return FillViewport({
         height: context.height,

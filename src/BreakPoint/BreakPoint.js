@@ -57,20 +57,20 @@ const getMatches = memoize(getMatches_)
 
 
 export default function BreakPoint (props) {
-  return (
-    <ThemeConsumer path='grid' defaultTheme={defaultTheme}>
-      {function (themeProps) {
-        const [sizes, queries] = findBreakPoints(props, themeProps.theme)
+  return ThemeConsumer({
+    path: 'grid',
+    defaultTheme,
+    children: function (themeProps) {
+      const [sizes, queries] = findBreakPoints(props, themeProps.theme)
 
-        return (
-          <MediaQuery query={queries}>
-            {function (mqProps) {
-              mqProps.matches = getMatches(sizes, mqProps.matches)
-              return props.children(mqProps)
-            }}
-          </MediaQuery>
-        )
-      }}
-    </ThemeConsumer>
-  )
+      return (
+        <MediaQuery query={queries}>
+          {function (mqProps) {
+            mqProps.matches = getMatches(sizes, mqProps.matches)
+            return props.children(mqProps)
+          }}
+        </MediaQuery>
+      )
+    }
+  })
 }

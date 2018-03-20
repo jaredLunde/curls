@@ -2,6 +2,7 @@ import React from 'react'
 import {css, cx} from 'emotion'
 import ViewportConsumer from '@render-props/viewport/es/ViewportConsumer'
 import loadImages from '@render-props/image-props/es/utils/loadImages'
+import strictShallowEqual from '@render-props/utils/es/strictShallowEqual'
 import {FlexBox} from '../Box'
 import {pos, z} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
@@ -79,6 +80,28 @@ class PopOverContainer extends React.Component {
     }
   }
 
+  shouldComponentUpdate ({scrollY, width, height, ...nextProps}, nextState) {
+    if (
+      this.props.isVisible && (
+        width !== this.props.width
+        || height !== this.props.height
+        || scrollY !== this.props.scrollY
+      )
+    ) {
+      return true
+    }
+
+    const prevProps = {...this.props}
+    delete prevProps.width
+    delete prevProps.height
+    delete prevProps.scrollY
+
+    return (
+      !strictShallowEqual(nextState, this.state)
+      || !strictShallowEqual(nextProps, prevProps)
+    )
+  }
+
   setContainerRef = el => this.container = el
   setPopOverBoxRef = el => this.popOverBox = el
 
@@ -152,16 +175,19 @@ class PopOverContainer extends React.Component {
 
 function ViewportPopOver (props) {
   // props here can be safely mutated
-  return (
-    <ViewportConsumer>
-      {function (vpProps) {
-        props.width = vpProps.width
-        props.height = vpProps.height
-        props.scrollY = props.repositionOnScroll && vpProps.scrollY
-        return React.createElement(PopOverContainer, props)
-      }}
-    </ViewportConsumer>
-  )
+  return ViewportConsumer({
+    observe: props.repositionOnScroll ? void 0 : 'size',
+    children: vpProps => {
+      props.width = vpProps.width
+      props.height = vpProps.height
+
+      if (props.repositionOnScroll) {
+        props.scrollY = vpProps.scrollY
+      }
+
+      return React.createElement(PopOverContainer, props)
+    }
+  })
 }
 
 

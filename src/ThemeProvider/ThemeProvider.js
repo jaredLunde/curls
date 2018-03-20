@@ -1,12 +1,15 @@
 import React from 'react'
+import ViewportProvider from '@render-props/viewport/es/ViewportProvider'
 import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
 
 
-export const CurlsContext = React.createContext({
-  getTheme: null,
-  setTheme: null,
-  replaceTheme: null
-})
+export const CurlsContext = React.createContext(
+  {
+    getTheme: null,
+    setTheme: null,
+    replaceTheme: null
+  }
+)
 
 
 export default class ThemeProvider extends React.Component {
@@ -37,9 +40,11 @@ export default class ThemeProvider extends React.Component {
     this.themeProviderContext.theme = this.state.theme
 
     return (
-      <CurlsContext.Provider value={this.themeProviderContext}>
-        {this.props.children}
-      </CurlsContext.Provider>
+      <ViewportProvider>
+        <CurlsContext.Provider value={this.themeProviderContext}>
+          {this.props.children}
+        </CurlsContext.Provider>
+      </ViewportProvider>
     )
   }
 }
