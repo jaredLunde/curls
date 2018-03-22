@@ -1,11 +1,8 @@
-import {oneOfType, string, object, any, arrayOf} from 'prop-types'
+import {oneOfType, string, object, bool, any, arrayOf} from 'prop-types'
 
 const propTypes = {
-  queries: oneOfType([
-    string,
-    object,
-    arrayOf(oneOfType([string, object]))
-  ]).isRequired,
+  queries: arrayOf(oneOfType([string, object])).isRequired,
+  defaultMatches: arrayOf(bool),
   children: any.isRequired
 }
 

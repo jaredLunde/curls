@@ -27,13 +27,22 @@ function queriesDidChange (prevQueries, nextQueries) {
 }
 
 
+/**
+TODO: defaultMatches
+*/
 export default class MediaQuery extends React.Component {
   static propTypes = propTypes
 
   constructor (props) {
     super(props)
     this.setQueriesList(props)
-    this.state = this.getMatchesState(props.query)
+
+    if (props.defaultMatches === void 0 || typeof window !== 'undefined') {
+      this.state = this.getMatchesState(props.query)
+    }
+    else {
+      this.state = {matches: props.defaultMatches}
+    }
   }
 
   componentDidUpdate ({query}) {
@@ -50,11 +59,6 @@ export default class MediaQuery extends React.Component {
 
   getMatchesState (query) {
     let matches = this.mediaQueries.map(mql => mql[0].matches)
-
-    if (Array.isArray(query) === false) {
-      matches = matches[0]
-    }
-
     return {matches}
   }
 
@@ -80,8 +84,8 @@ export default class MediaQuery extends React.Component {
   setQueriesList ({query}) {
     this.mediaQueries = []
 
-    if (Array.isArray(query) === false) {
-      query = [query]
+    if (typeof window === 'undefined') {
+      return
     }
 
     for (let x = 0; x < query.length; x++) {
@@ -106,10 +110,8 @@ export default class MediaQuery extends React.Component {
       matches: this.state.matches
     }
 
-    if (Array.isArray(props.matches)) {
-      props.matchesAny = props.matches.some(isTrue)
-      props.matchesAll = props.matches.every(isTrue)
-    }
+    props.matchesAny = props.matches.some(isTrue)
+    props.matchesAll = props.matches.every(isTrue)
 
     return this.props.children(props)
   }

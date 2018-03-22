@@ -2,5 +2,7 @@ import {toSize} from '../utils'
 
 
 export default function (fontSize) {
-  document.documentElement.style.fontSize = toSize(fontSize)
+  if (typeof document !== void 0) {
+    document.documentElement.style.fontSize = toSize(fontSize)
+  }
 }

@@ -55,6 +55,17 @@ function getMatches_ (sizes, rawMatches) {
 // This is about enforcing immutability, not micro-optimizing
 const getMatches = memoize(getMatches_)
 
+function getDefaultMatches (theme, sizes, defaultMatches) {
+  if (defaultMatches === void 0) {
+    return sizes.map(s => false)
+  }
+  else if (typeof defaultMatches === 'function') {
+    return defaultMatches(theme.userAgent)
+  }
+  else {
+    return sizes.map(size => defaultMatches.indexOf(size) > -1)
+  }
+}
 
 export default function BreakPoint (props) {
   return ThemeConsumer({
@@ -62,9 +73,14 @@ export default function BreakPoint (props) {
     defaultTheme,
     children: function (themeProps) {
       const [sizes, queries] = findBreakPoints(props, themeProps.theme)
+      const defaultMatches = getDefaultMatches(
+        themeProps.theme,
+        sizes,
+        props.defaultMatches
+      )
 
       return (
-        <MediaQuery query={queries}>
+        <MediaQuery query={queries} defaultMatches={defaultMatches}>
           {function (mqProps) {
             mqProps.matches = getMatches(sizes, mqProps.matches)
             return props.children(mqProps)
