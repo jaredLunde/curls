@@ -791,6 +791,13 @@
     "@babel/runtime" "^7.0.0-beta.39"
     raf "^3.4.0"
 
+"@render-props/utils@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@render-props/utils/-/utils-0.2.1.tgz#dffc9f6d14bdaf50fa642c95378a6e3fc473191b"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.39"
+    raf "^3.4.0"
+
 "@render-props/value@^0.1.15":
   version "0.1.16"
   resolved "https://registry.yarnpkg.com/@render-props/value/-/value-0.1.16.tgz#986f10ab49c7a22ab18652f71c378be49672e7fb"

@@ -1,3 +1,4 @@
+import React from 'react'
 import {css} from 'emotion'
 import ImageProps from '@render-props/image-props'
 import {BasicBox} from '../Box'

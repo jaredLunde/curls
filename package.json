@@ -41,7 +41,7 @@
     "@render-props/rect": "^0.1.0",
     "@render-props/throttle": "^0.1.5",
     "@render-props/toggle": "^0.1.17",
-    "@render-props/utils": "^0.2.0",
+    "@render-props/utils": "^0.2.1",
     "@render-props/viewport": "^0.2.1",
     "emotion": "^9.0.0-1",
     "emotion-utils": "^9.0.0-0",
