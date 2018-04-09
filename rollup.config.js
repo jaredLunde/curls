@@ -37,6 +37,7 @@ const basePlugins = [
       'transform-react-remove-prop-types',
       'closure-elimination',
       'polished',
+      'tailcall-optimization',
       'dev-expression'
     ],
     babelrc: false

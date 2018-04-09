@@ -23,6 +23,7 @@
     "babel-plugin-dev-expression": "^0.2.1",
     "babel-plugin-emotion": "^8.0.12",
     "babel-plugin-polished": "^1.1.0",
+    "babel-plugin-tailcall-optimization": "^1.0.12",
     "babel-plugin-transform-react-pure-components": "^3.1.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
     "cross-env": "^5.1.3",

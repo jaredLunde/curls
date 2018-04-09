@@ -18,6 +18,7 @@
         "@babel/proposal-pipeline-operator",
         "transform-react-remove-prop-types",
         "closure-elimination",
+        "tailcall-optimization",
         "polished",
         "dev-expression"
       ]
@@ -40,6 +41,7 @@
         "@babel/proposal-pipeline-operator",
         "transform-react-remove-prop-types",
         "closure-elimination",
+        "tailcall-optimization",
         "polished",
         "dev-expression"
       ]

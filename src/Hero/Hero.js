@@ -29,7 +29,10 @@ export default function Hero (props) {
           vpProps.children = function (nodeProps) {
             nodeProps.children = props.children
             nodeProps.nodeType = nodeProps.nodeType || nodeType
-            nodeProps.style = getStyle(style, nodeProps.trimHeight)
+            nodeProps.style = {
+              ...getStyle(style, nodeProps.trimHeight),
+              ...vpProps.style
+            }
             delete nodeProps.trimHeight
             return renderNode(nodeProps, defaultCSS)
           }

@@ -982,6 +982,10 @@ babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
 
+babel-plugin-tailcall-optimization@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/babel-plugin-tailcall-optimization/-/babel-plugin-tailcall-optimization-1.0.12.tgz#e4a17c68f2da43422e275fcc594cbf1d2f026ade"
+
 babel-plugin-transform-react-pure-components@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-pure-components/-/babel-plugin-transform-react-pure-components-3.1.2.tgz#47deec2b1c66e36d6775a454c2591c960666cb05"
