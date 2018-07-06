@@ -1,6 +1,6 @@
 {
   "name": "styled-curls",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "commonjs/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
@@ -8,7 +8,7 @@
   "repository": "https://github.com/jaredlunde/curls",
   "author": "Jared Lunde",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.35",
     "@babel/core": "^7.0.0-beta.35",
@@ -56,8 +56,7 @@
     "shallowequal": "^1.0.2"
   },
   "scripts": {
-    "build": "npm run build:es && npm run build:commonjs && npm run build:dist",
-    "build:dist": "rm -rf dist && rollup -c",
+    "build": "npm run build:es && npm run build:commonjs",
     "build:es": "rm -rf es && cross-env NODE_ENV=production cross-env BABEL_ENV=es babel src --out-dir es && npm run prettier:es",
     "build:commonjs": "rm -rf commonjs && cross-env NODE_ENV=production cross-env BABEL_ENV=commonjs babel src --out-dir commonjs && npm run prettier:commonjs",
     "watch:es": "cross-env NODE_ENV=development cross-env BABEL_ENV=es babel ./src -w --out-dir es",
