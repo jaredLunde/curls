@@ -59,13 +59,15 @@ function getDefaultMatches (theme, sizes, defaultMatches) {
   if (defaultMatches === void 0) {
     return sizes.map(s => false)
   }
-  else if (typeof defaultMatches === 'function') {
-    return defaultMatches(theme.userAgent)
-  }
   else {
+    if (typeof defaultMatches === 'function') {
+      defaultMatches = defaultMatches(theme)
+    }
+    
     return sizes.map(size => defaultMatches.indexOf(size) > -1)
   }
 }
+
 
 export default function BreakPoint (props) {
   return ThemeConsumer({

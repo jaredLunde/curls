@@ -1,4 +1,4 @@
-export default function (trimmed) {
+export default function getTrimmedPx (trimmed) {
   if (!trimmed) {
     return
   }

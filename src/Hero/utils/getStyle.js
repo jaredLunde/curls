@@ -1,10 +1,10 @@
 import getHeight from './getHeight'
 
 
-export default function (style, trimHeight) {
+export default function ({height}, trimHeight) {
   if (!trimHeight) {
-    return style
+    return {height}
   }
 
-  return {...style, height: getHeight(style.height, trimHeight)}
+  return {height: getHeight(height, trimHeight)}
 }

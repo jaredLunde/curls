@@ -17,31 +17,31 @@ export const ultraHeavy = css`font-weight: 900;`
 
 // Sizes
 export function xxs (v, t) {
-  return fontSize('xxs', t)
+  return v ? fontSize('xxs', t) : void 0
 }
 
 export function xs (v, t) {
-  return fontSize('xs', t)
+  return v ? fontSize('xs', t) : void 0
 }
 
 export function sm (v, t) {
-  return fontSize('sm', t)
+  return v ? fontSize('sm', t) : void 0
 }
 
 export function md (v, t) {
-  return fontSize('md', t)
+  return v ? fontSize('md', t) : void 0
 }
 
 export function lg (v, t) {
-  return fontSize('lg', t)
+  return v ? fontSize('lg', t) : void 0
 }
 
 export function xl (v, t) {
-  return fontSize('xl', t)
+  return v ? fontSize('xl', t) : void 0
 }
 
 export function xxl (v, t) {
-  return fontSize('xxl', t)
+  return v ? fontSize('xxl', t) : void 0
 }
 
 
