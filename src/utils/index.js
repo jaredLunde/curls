@@ -1,3 +1,4 @@
+export assignOrdered from './assignOrdered'
 export colorize from './colorize'
 export deepMerge from './deepMerge'
 export directionalScale, {isDirectional} from './directionalScale'
