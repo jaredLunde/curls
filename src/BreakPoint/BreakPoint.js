@@ -1,8 +1,7 @@
 import React from 'react'
 import MediaQuery from '../MediaQuery'
 import ThemeConsumer from '../ThemeConsumer'
-import memoizeMap from 'lru-memoize-map'
-import memoize from 'memoize-two-args'
+import memoize from 'cdll-memoize'
 import * as defaultTheme from '../Grid/defaultTheme'
 import {getBreakPoint} from '../Grid/utils'
 import {getTheme} from '../utils'
@@ -22,7 +21,7 @@ function getSizes (props, theme) {
   return sizes
 }
 
-const memoizedFindBreakPoints = memoizeMap(36, {multiArgs: true})(
+const memoizedFindBreakPoints = memoize(
   function (theme, ...sizes) {
     const breakPoints = []
 
@@ -33,7 +32,8 @@ const memoizedFindBreakPoints = memoizeMap(36, {multiArgs: true})(
     }
 
     return [sizes, breakPoints]
-  }
+  },
+  {size: 36}
 )
 
 // This is about enforcing immutability, not micro-optimizing
@@ -63,7 +63,7 @@ function getDefaultMatches (theme, sizes, defaultMatches) {
     if (typeof defaultMatches === 'function') {
       defaultMatches = defaultMatches(theme)
     }
-    
+
     return sizes.map(size => defaultMatches.indexOf(size) > -1)
   }
 }

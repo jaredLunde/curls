@@ -2,20 +2,25 @@
   "env": {
     "commonjs": {
       "presets": [
-        "@babel/env",
-        "@babel/react",
-        "@babel/stage-2"
+        ["@babel/env", {"loose": true}],
+        "@babel/react"
       ],
       "plugins": [
-        ["emotion", { "hoist": true }],
+        ["emotion", {"hoist": true}],
         "@babel/transform-runtime",
         "transform-react-pure-components",
         "@babel/transform-react-constant-elements",
         "@babel/proposal-do-expressions",
         "@babel/proposal-export-default-from",
+        "@babel/proposal-export-namespace-from",
+        "@babel/proposal-logical-assignment-operators",
         "@babel/proposal-nullish-coalescing-operator",
         "@babel/proposal-optional-chaining",
-        "@babel/proposal-pipeline-operator",
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-syntax-import-meta",
+        "@babel/plugin-proposal-object-rest-spread",
+        ["@babel/plugin-proposal-class-properties", {"loose": false}],
+        "@babel/plugin-proposal-json-strings",
         "transform-react-remove-prop-types",
         "closure-elimination",
         "tailcall-optimization",
@@ -26,19 +31,24 @@
     "es": {
       "presets": [
         "@babel/react",
-        ["@babel/env", {"modules": false}],
-        "@babel/stage-2"
+        ["@babel/env", {"modules": false, "loose": true}]
       ],
       "plugins": [
-        ["emotion", { "hoist": true }],
+        ["emotion", {"hoist": true}],
         "@babel/transform-runtime",
         "transform-react-pure-components",
         "@babel/transform-react-constant-elements",
         "@babel/proposal-do-expressions",
         "@babel/proposal-export-default-from",
+        "@babel/proposal-export-namespace-from",
+        "@babel/proposal-logical-assignment-operators",
         "@babel/proposal-nullish-coalescing-operator",
         "@babel/proposal-optional-chaining",
-        "@babel/proposal-pipeline-operator",
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-syntax-import-meta",
+        "@babel/plugin-proposal-object-rest-spread",
+        ["@babel/plugin-proposal-class-properties", {"loose": false}],
+        "@babel/plugin-proposal-json-strings",
         "transform-react-remove-prop-types",
         "closure-elimination",
         "tailcall-optimization",

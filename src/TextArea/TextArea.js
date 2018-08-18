@@ -1,4 +1,4 @@
-import callIfExists from '@render-props/utils/es/callIfExists'
+import {callIfExists} from '@render-props/utils'
 import createComponent from '../createComponent'
 import Type from '../Type'
 import propTypes from './propTypes'

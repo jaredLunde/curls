@@ -1,4 +1,4 @@
-import ViewportConsumer from '@render-props/viewport/es/ViewportConsumer'
+import {ViewportConsumer} from '@render-props/viewport'
 
 
 function FillViewport (initialProps) {

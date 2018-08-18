@@ -1,10 +1,12 @@
-export {
+export browserResets, {
   MAX_Z_INDEX,
   MAX_REM,
   maxZIndex
 } from './global'
 
 export {
+  assignOrdered,
+  toSize,
   colorize,
   directionalScale,
   getTheme as mergeTheme,
@@ -49,6 +51,7 @@ export Overlay from './Overlay'
 export PopOver from './PopOver'
 export Row from './Row'
 export Slide from './Slide'
+export * as slideUtils from './Slide/utils'
 export TextArea from './TextArea'
 export Transitionable from './Transitionable'
 export Type, {H1, H2, H3, H4, H5, H6, P} from './Type'

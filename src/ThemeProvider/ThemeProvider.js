@@ -1,5 +1,5 @@
 import React from 'react'
-import ViewportProvider from '@render-props/viewport/es/ViewportProvider'
+import {ViewportProvider} from '@render-props/viewport'
 import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
 
 
