@@ -30,8 +30,8 @@
     },
     "es": {
       "presets": [
-        "@babel/react",
-        ["@babel/env", {"modules": false, "loose": true}]
+        ["@babel/env", {"modules": false, "loose": true}],
+        "@babel/react"
       ],
       "plugins": [
         ["emotion", {"hoist": true}],
