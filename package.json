@@ -1,6 +1,6 @@
 {
   "name": "styled-curls",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "main": "commonjs/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
@@ -49,7 +49,7 @@
     "uglify-es": "^3.3.7"
   },
   "dependencies": {
-    "@babel/runtime-corejs2": "^7.0.0-rc.1",
+    "@babel/runtime": "^7.0.0-rc.1",
     "@render-props/image-props": "^0.1.7",
     "@render-props/rect": "^0.1.13",
     "@render-props/throttle": "^0.1.7",
