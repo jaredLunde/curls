@@ -26,7 +26,7 @@ export {
 export ThemeProvider from './ThemeProvider'
 export ThemeConsumer from './ThemeConsumer'
 
-export createComponent, {renderNode} from './createComponent'
+export createComponent, {renderNode, renderNodeFast} from './createComponent'
 export Avatar from './Avatar'
 export Box, {GridBox, BasicBox, FlexBox} from './Box'
 export BreakPoint from './BreakPoint'
