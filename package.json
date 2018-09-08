@@ -1,6 +1,6 @@
 {
   "name": "styled-curls",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
