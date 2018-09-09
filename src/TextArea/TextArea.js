@@ -19,7 +19,7 @@ const SFC = createComponent({
 
 
 function autoResize (e) {
-  if (!e.target.value) {
+  if (!e.target.defaultValue) {
     e.target.style.height = ''
   }
   else {

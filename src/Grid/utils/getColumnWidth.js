@@ -3,7 +3,7 @@ import {d} from '../../Box/CSS'
 import getBreakPoint from './getBreakPoint'
 
 
-const mediaQuery = q => content => `@media ${q}`
+const mediaQuery = q => content => css`@media ${q}`
 
 
 export default function (size, x, theme) {
