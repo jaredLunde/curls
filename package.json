@@ -1,6 +1,6 @@
 {
   "name": "styled-curls",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
@@ -45,6 +45,7 @@
   "peerDependencies": {
     "prop-types": "^15.x",
     "react": "^16.x",
-    "react-dom": "^16.x"
+    "react-dom": "^16.x",
+    "react-router-dom": "^4.x"
   }
 }
