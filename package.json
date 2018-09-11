@@ -1,6 +1,6 @@
 {
   "name": "styled-curls",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
@@ -36,9 +36,9 @@
   },
   "scripts": {
     "build": "npm run build:es && npm run build:cjs",
-    "build:es": "rm -rf es && cross-env NODE_ENV=production cross-env BABEL_ENV=es babel src --out-dir es && npm run prettier:es",
-    "build:cjs": "rm -rf cjs && cross-env NODE_ENV=production cross-env BABEL_ENV=cjs babel src --out-dir cjs && npm run prettier:cjs",
-    "watch": "cross-env NODE_ENV=development cross-env BABEL_ENV=es babel ./src -w --out-dir es",
+    "build:es": "rm -rf es && cross-env NODE_ENV=production BABEL_ENV=es babel src --out-dir es && npm run prettier:es",
+    "build:cjs": "rm -rf cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir cjs && npm run prettier:cjs",
+    "watch": "cross-env NODE_ENV=development BABEL_ENV=es babel ./src -w --out-dir es",
     "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"es/**/*.js\"",
     "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"cjs/**/*.js\""
   },
