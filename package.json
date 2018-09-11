@@ -1,6 +1,6 @@
 {
   "name": "styled-curls",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@inst-app/babel-preset-esx": "^1.0.0",
+    "@inst-app/babel-preset-esx": "^1.0.2",
     "@inst-app/babel-preset-react": "^1.0.0",
     "babel-plugin-emotion": "^9.2.8",
     "babel-plugin-polished": "^1.1.0",
@@ -18,15 +18,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@render-props/image-props": "^0.1.7",
-    "@render-props/rect": "^0.1.13",
-    "@render-props/throttle": "^0.1.7",
-    "@render-props/toggle": "^0.1.21",
-    "@render-props/utils": "^0.2.3",
-    "@render-props/viewport": "^0.2.8",
+    "@render-props/image-props": "^0.1.12",
+    "@render-props/rect": "^0.1.18",
+    "@render-props/throttle": "^0.1.12",
+    "@render-props/toggle": "^0.1.26",
+    "@render-props/utils": "^0.2.8",
+    "@render-props/viewport": "^0.2.13",
     "cdll-memoize": "^0.1.2",
     "emotion": "^9.2.8",
-    "emotion-utils": "^9.0.0-0",
+    "emotion-utils": "^9.1.0",
     "empty": "^0.10.1",
     "is-mergeable-object": "^1.1.0",
     "json2mq": "^0.2.0",
@@ -43,9 +43,9 @@
     "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"cjs/**/*.js\""
   },
   "peerDependencies": {
-    "prop-types": "^15.x",
-    "react": "^16.x",
-    "react-dom": "^16.x",
-    "react-router-dom": "^4.x"
+    "prop-types": ">= 15.6.0",
+    "react": ">= 16.3.0",
+    "react-dom": ">= 16.3.0",
+    "react-router-dom": "4.x"
   }
 }
