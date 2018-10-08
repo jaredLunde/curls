@@ -21,7 +21,7 @@ export default React.forwardRef(
       children: function (typeProps) {
         typeProps.nodeType = 'input'
         typeProps.type = typeProps.type || 'text'
-        return Type(typeProps)
+        return React.createElement(Type, typeProps)
       }
     })
   }

@@ -51,9 +51,9 @@ const supportsObjectFit = supportsCSS('object-fit')
 
 
 export default React.forwardRef(
-  function Avatar (props, ref) {
+  function Avatar (props, innerRef) {
     const sfcProps = {
-      innerRef: ref,
+      innerRef,
       ...props,
       children: function (boxProps) {
         // adds child prop for 'Box' and rendering the avatar node
@@ -69,7 +69,7 @@ export default React.forwardRef(
               }
             }
           }
-          
+
           delete nodeProps.imageRef
           const alt = nodeProps.alt
           delete nodeProps.alt

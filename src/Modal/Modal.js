@@ -6,7 +6,7 @@ import {pos, w, h} from '../Box/CSS'
 import Box, {FlexBox} from '../Box'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
-import {maxZIndex} from '../global'
+import {maxZIndex} from '../browser'
 import createComponent, {renderNode} from '../createComponent'
 
 /**
@@ -43,16 +43,16 @@ const nodeType = 'div'
 const SFC = createComponent({name: 'Modal', defaultTheme, themePath: 'modal'})
 
 
-export default React.forwardRef(
-  function Modal ({...props}, innerRef) {
-    const transition = props.transition || Drop
-    const childComponent = props.children
+export default function Modal ({...props}, innerRef) {
+  const transition = props.transition || Drop
+  const childComponent = props.children
 
-    props.children = function (modalProps) {
-      const classNameFromTransition = modalProps.className
-      delete modalProps.className
-      // Box component passed to the child function
-      modalProps.ModalBox = function ModalBox (sfcProps) {
+  props.children = function (modalProps) {
+    const classNameFromTransition = modalProps.className
+    delete modalProps.className
+    // Box component passed to the child function
+    modalProps.ModalBox = React.forwardRef(
+      function ModalBox (sfcProps, innerRef) {
         return SFC({
           innerRef,
           ...sfcProps,
@@ -79,12 +79,11 @@ export default React.forwardRef(
             })
           }
         })
-
       }
+    )
 
-      return childComponent(modalProps)
-    }
-
-    return transition(props)
+    return childComponent(modalProps)
   }
-)
+
+  return transition(props)
+}

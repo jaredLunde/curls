@@ -48,7 +48,7 @@ export default React.forwardRef(
         }
 
         typeProps.children = props.children
-        return Type(typeProps)
+        return React.createElement(Type, typeProps)
       }
     })
   }

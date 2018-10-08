@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, cx} from 'emotion'
-import {maxZIndex} from '../global'
+import {maxZIndex} from '../browser'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
 import createComponent, {renderNode} from '../createComponent'

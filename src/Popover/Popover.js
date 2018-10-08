@@ -129,34 +129,37 @@ class PopOverContainer extends React.Component {
     this.setPositionState()
   }
 
-  PopOverBox = props => {
-    return SFC({
-      ...props,
-      children: boxProps => {
-        const {renderPosition, ...state} = this.state
+  PopOverBox = React.forwardRef(
+    (props, innerRef) => {
+      return SFC({
+        innerRef,
+        ...props,
+        children: boxProps => {
+          const {renderPosition, ...state} = this.state
 
-        boxProps.children = nodeProps => {
-          nodeProps.children = props.children({
-            isVisible: this.props.isVisible,
-            reposition: this.reposition,
-            show: this.props.show,
-            hide: this.props.hide,
-            toggle: this.props.toggle,
-            renderPosition
-          })
+          boxProps.children = nodeProps => {
+            nodeProps.children = props.children({
+              isVisible: this.props.isVisible,
+              reposition: this.reposition,
+              show: this.props.show,
+              hide: this.props.hide,
+              toggle: this.props.toggle,
+              renderPosition
+            })
 
-          nodeProps.innerRef = this.setPopOverBoxRef
-          nodeProps.style = {...state, ...nodeProps.style}
-          nodeProps.nodeType = nodeProps.nodeType || nodeType
-          nodeProps.className = cx(this.props.className, nodeProps.className)
+            nodeProps.innerRef = this.setPopOverBoxRef
+            nodeProps.style = {...state, ...nodeProps.style}
+            nodeProps.nodeType = nodeProps.nodeType || nodeType
+            nodeProps.className = cx(this.props.className, nodeProps.className)
 
-          return renderNode(nodeProps, defaultCSS)
+            return renderNode(nodeProps, defaultCSS)
+          }
+
+          return FlexBox(boxProps)
         }
-
-        return FlexBox(boxProps)
-      }
-    })
-  }
+      })
+    }
+  )
 
   render () {
     return this.props.children({
@@ -191,16 +194,13 @@ function ViewportPopOver (props) {
 }
 
 
-export default React.forwardRef(
-  function PopOver ({children, transition = Drop, ...props}, innerRef) {
-    const popOverDirection = getPosFromProps(props)
+export default function PopOver ({children, transition = Drop, ...props}, innerRef) {
+  const popOverDirection = getPosFromProps(props)
 
-    return transition({
-      innerRef,
-      ...props,
-      children: function (popOverProps) {
-        return ViewportPopOver({children, popOverDirection, ...popOverProps})
-      }
-    })
-  }
-)
+  return transition({
+    ...props,
+    children: function (popOverProps) {
+      return ViewportPopOver({children, popOverDirection, ...popOverProps})
+    }
+  })
+}

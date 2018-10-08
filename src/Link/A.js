@@ -21,7 +21,7 @@ export default React.forwardRef(
       children: function (typeProps) {
         typeProps.nodeType = typeProps.nodeType || 'a'
         typeProps.children = props.children
-        return Type(typeProps)
+        return React.createElement(Type, typeProps)
       }
     })
   }

@@ -6,7 +6,7 @@ import {pos, w, h, ov} from '../Box/CSS'
 import {FlexBox} from '../Box'
 import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
-import {maxZIndex} from '../global'
+import {maxZIndex} from '../browser'
 import createComponent, {renderNode} from '../createComponent'
 
 /**
