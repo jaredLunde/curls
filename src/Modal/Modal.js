@@ -1,3 +1,4 @@
+import React from 'react'
 import {cx} from 'emotion'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
@@ -42,45 +43,48 @@ const nodeType = 'div'
 const SFC = createComponent({name: 'Modal', defaultTheme, themePath: 'modal'})
 
 
-export default function Modal ({...props}) {
-  const transition = props.transition || Drop
-  const childComponent = props.children
+export default React.forwardRef(
+  function Modal ({...props}, innerRef) {
+    const transition = props.transition || Drop
+    const childComponent = props.children
 
-  props.children = function (modalProps) {
-    const classNameFromTransition = modalProps.className
-    delete modalProps.className
-    // Box component passed to the child function
-    modalProps.ModalBox = function ModalBox (sfcProps) {
-      return SFC({
-        ...sfcProps,
-        children: function (boxProps) {
-          return FlexBox({
-            ...boxProps,
-            className: modalProps.isVisible && baseIsVisible,
-            children: function (modalBoxProps) {
-              modalBoxProps.nodeType = modalBoxProps.nodeType || nodeType
-              modalBoxProps.className = cx(
-                classNameFromTransition,
-                boxProps.className,
-                modalBoxProps.className
-              )
-              modalBoxProps.children = sfcProps.children({
-                isVisible: modalProps.isVisible,
-                show: modalProps.show,
-                hide: modalProps.hide,
-                toggle: modalProps.toggle
-              })
+    props.children = function (modalProps) {
+      const classNameFromTransition = modalProps.className
+      delete modalProps.className
+      // Box component passed to the child function
+      modalProps.ModalBox = function ModalBox (sfcProps) {
+        return SFC({
+          innerRef,
+          ...sfcProps,
+          children: function (boxProps) {
+            return FlexBox({
+              ...boxProps,
+              className: modalProps.isVisible && baseIsVisible,
+              children: function (modalBoxProps) {
+                modalBoxProps.nodeType = modalBoxProps.nodeType || nodeType
+                modalBoxProps.className = cx(
+                  classNameFromTransition,
+                  boxProps.className,
+                  modalBoxProps.className
+                )
+                modalBoxProps.children = sfcProps.children({
+                  isVisible: modalProps.isVisible,
+                  show: modalProps.show,
+                  hide: modalProps.hide,
+                  toggle: modalProps.toggle
+                })
 
-              return renderNode(modalBoxProps)
-            }
-          })
-        }
-      })
+                return renderNode(modalBoxProps)
+              }
+            })
+          }
+        })
 
+      }
+
+      return childComponent(modalProps)
     }
 
-    return childComponent(modalProps)
+    return transition(props)
   }
-
-  return transition(props)
-}
+)

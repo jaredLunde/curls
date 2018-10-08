@@ -7,10 +7,6 @@ import ThemeConsumer from './ThemeConsumer'
 
 
 export function renderNode (nodeProps, defaultCSS) {
-  // if (typeof nodeProps.children === 'function') {
-  //   nodeProps.children = nodeProps.children({...nodeProps})
-  // }
-
   if (defaultCSS !== void 0) {
     nodeProps.className = cx(defaultCSS, nodeProps.className)
   }
@@ -32,7 +28,7 @@ export function renderNodeFast (nodeProps) {
 }
 
 
-export default function ({
+export default function createComponent ({
   name,
   CSS,
   propTypes,
@@ -48,7 +44,7 @@ export default function ({
     throw new Error(`[${name}] Curls components must be initialized with a 'themePath' option set.`)
   }
 
-  function renderer (props, themeProps) {
+  function renderer (props, themeProps, ref) {
     const theme = themeProps.theme
     const defaults = theme.defaultProps
     props = defaults === void 0 ? props : assignOrdered(defaults, props)
@@ -82,11 +78,11 @@ export default function ({
     return props.children(renderProps)
   }
 
-  function SFC (props) {
+  function SFC (props, ref) {
     return ThemeConsumer({
       path: themePath,
       defaultTheme,
-      children: themeProps => renderer(props, themeProps)
+      children: themeProps => renderer(props, themeProps, ref)
     })
   }
 

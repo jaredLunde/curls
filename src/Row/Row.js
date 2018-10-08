@@ -1,3 +1,4 @@
+import React from 'react'
 import {css} from 'emotion'
 import {pos, w} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
@@ -16,17 +17,20 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'Row', themePath: 'row'})
 
 
-export default function Row (props) {
-  return SFC({
-    ...props,
-    children: function (boxProps) {
-      boxProps.children = function (nodeProps) {
-        nodeProps.children = props.children
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
-        return renderNode(nodeProps, defaultCSS)
-      }
+export default React.forwardRef(
+  function Row (props, innerRef) {
+    return SFC({
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        boxProps.children = function (nodeProps) {
+          nodeProps.children = props.children
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          return renderNode(nodeProps, defaultCSS)
+        }
 
-      return FlexBox(boxProps)
-    }
-  })
-}
+        return FlexBox(boxProps)
+      }
+    })
+  }
+)

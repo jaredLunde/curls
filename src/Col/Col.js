@@ -1,3 +1,4 @@
+import React from 'react'
 import {css} from 'emotion'
 import {GridBox} from '../Box'
 import {pos} from '../Box/CSS'
@@ -15,17 +16,21 @@ const SFC = createComponent({name: 'Col', themePath: 'col'})
 
 
 
-export default function Col (props) {
-  return SFC({
-    ...props,
-    children: function (boxProps) {
-      boxProps.children = function (nodeProps) {
-        nodeProps.children = props.children
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
-        return renderNode(nodeProps, defaultCSS)
-      }
+export default React.forwardRef(
+  function Col (props, innerRef) {
+    return SFC({
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        boxProps.children = function (nodeProps) {
+          nodeProps.children = props.children
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          return renderNode(nodeProps, defaultCSS)
+        }
 
-      return GridBox(boxProps)
-    }
-  })
-}
+        return GridBox(boxProps)
+      }
+    })
+  }
+
+)

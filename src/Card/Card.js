@@ -61,17 +61,20 @@ const SFC = createComponent({
 })
 
 
-export default function Card (props) {
-  return SFC({
-    ...props,
-    children: function (boxProps) {
-      boxProps.children = function (nodeProps) {
-        nodeProps.children = props.children
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
-        return renderNode(nodeProps, defaultCSS)
-      }
+export default React.forwardRef(
+  function Card (props, innerRef) {
+    return SFC({
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        boxProps.children = function (nodeProps) {
+          nodeProps.children = props.children
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          return renderNode(nodeProps, defaultCSS)
+        }
 
-      return GridBox(boxProps)
-    }
-  })
-}
+        return GridBox(boxProps)
+      }
+    })
+  }
+)

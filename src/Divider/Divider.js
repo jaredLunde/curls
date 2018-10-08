@@ -1,3 +1,4 @@
+import React from 'react'
 import {css} from 'emotion'
 import createComponent, {renderNode} from '../createComponent'
 import {BasicBox} from '../Box'
@@ -21,17 +22,21 @@ const SFC = createComponent({
 })
 
 
-export default function Divider (props = emptyObj) {
-  return SFC({
-    ...props,
-    children: function (boxProps) {
-      boxProps.children = function (nodeProps) {
-        nodeProps.children = props.children
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
-        return renderNode(nodeProps, defaultCSS)
-      }
+export default React.forwardRef(
+  function Divider (props = emptyObj, innerRef) {
+    return SFC({
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        boxProps.children = function (nodeProps) {
+          nodeProps.children = props.children
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          return renderNode(nodeProps, defaultCSS)
+        }
 
-      return BasicBox(boxProps)
-    }
-  })
-}
+        return BasicBox(boxProps)
+      }
+    })
+  }
+
+)

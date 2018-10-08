@@ -39,61 +39,67 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'CheckBox', defaultTheme, themePath: 'checkBox'})
 
 
-export default function CheckBox ({
-  children,
-  name,
-  value,
-  checked,
-  onChange,
-  initialChecked = false,
-  ...props
-}) {
-  return (
-    <Toggle
-      initialValue={checked === void 0 ? initialChecked : void 0}
-      value={checked}
-      onChange={onChange}
-    >
-      {function (toggleContext) {
-        function CheckBoxInput (checkBoxInputProps) {
-          return SFC({
-            ...checkBoxInputProps,
-            children: function (boxProps) {
-              return FlexBox({
-                ...boxProps,
-                children: function (nodeProps) {
-                  const checkBoxInput = <input
-                    type={nodeProps.type || 'checkBox'}
-                    name={name}
-                    value={value}
-                    checked={toggleContext.value}
-                    readOnly
-                    disabled
-                    className={d.none}
-                  />
-                  delete nodeProps.type
-                  nodeProps.children = checkBoxInputProps.children({
-                    isChecked: toggleContext.value
-                  })
-                  nodeProps.nodeType = nodeProps.nodeType || nodeType
+export default React.forwardRef(
+  function CheckBox (
+    {
+      children,
+      name,
+      value,
+      checked,
+      onChange,
+      initialChecked = false,
+      ...props
+    },
+    innerRef
+  ) {
+    return (
+      <Toggle
+        initialValue={checked === void 0 ? initialChecked : void 0}
+        value={checked}
+        onChange={onChange}
+      >
+        {function (toggleContext) {
+          function CheckBoxInput (checkBoxInputProps) {
+            return SFC({
+              innerRef,
+              ...checkBoxInputProps,
+              children: function (boxProps) {
+                return FlexBox({
+                  ...boxProps,
+                  children: function (nodeProps) {
+                    const checkBoxInput = <input
+                      type={nodeProps.type || 'checkBox'}
+                      name={name}
+                      value={value}
+                      checked={toggleContext.value}
+                      readOnly
+                      disabled
+                      className={d.none}
+                    />
+                    delete nodeProps.type
+                    nodeProps.children = checkBoxInputProps.children({
+                      isChecked: toggleContext.value
+                    })
+                    nodeProps.nodeType = nodeProps.nodeType || nodeType
 
-                  return (
-                    <>
-                      {renderNode(nodeProps, defaultCSS)}
-                      {checkBoxInput}
-                    </>
-                  )
-                }
-              })
-            }
-          })
-        }
+                    return (
+                      <>
+                        {renderNode(nodeProps, defaultCSS)}
+                        {checkBoxInput}
+                      </>
+                    )
+                  }
+                })
+              }
+            })
+          }
 
-        const cxt = {...toggleContext}
-        const isChecked = cxt.value
-        delete cxt.value
-        return children({isChecked, ...cxt, CheckBoxInput, ...props})
-      }}
-    </Toggle>
-  )
-}
+          const cxt = {...toggleContext}
+          const isChecked = cxt.value
+          delete cxt.value
+          return children({isChecked, ...cxt, CheckBoxInput, ...props})
+        }}
+      </Toggle>
+    )
+  }
+)

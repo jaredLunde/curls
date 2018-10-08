@@ -1,3 +1,4 @@
+import React from 'react'
 import {css} from 'emotion'
 import {FlexBox} from '../Box'
 import {flex, row, align, justify} from '../Flex/CSS'
@@ -26,23 +27,26 @@ const SFC = createComponent({
 
 
 
-export default function Button ({className, ...props}) {
-  return SFC({
-    __buttonStyles: true,
-    ...props,
-    children: function (boxProps) {
-      // this is done so css in defaultTheme.sizes can be overridden
-      const sfcClassName = boxProps.className
-      // this is done so css in defaultTheme.sizes can be overridden
-      boxProps.className = className
-      boxProps.children = function (nodeProps) {
-        nodeProps.children = props.children
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
+export default React.forwardRef(
+  function Button ({className, ...props}, innerRef) {
+    return SFC({
+      __buttonStyles: true,
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        // this is done so css in defaultTheme.sizes can be overridden
+        const sfcClassName = boxProps.className
+        // this is done so css in defaultTheme.sizes can be overridden
+        boxProps.className = className
+        boxProps.children = function (nodeProps) {
+          nodeProps.children = props.children
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
 
-        return renderNode(nodeProps, [defaultCSS, sfcClassName])
+          return renderNode(nodeProps, [defaultCSS, sfcClassName])
+        }
+
+        return FlexBox(boxProps)
       }
-
-      return FlexBox(boxProps)
-    }
-  })
-}
+    })
+  }
+)

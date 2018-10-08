@@ -1,3 +1,4 @@
+import React from 'react'
 import {css, cx} from 'emotion'
 import {maxZIndex} from '../global'
 import {FlexBox} from '../Box'
@@ -38,45 +39,47 @@ Drawer({
   }
 })
 */
-export default function Drawer (props) {
-  props = Object.assign({}, props)
-  const transition = props.transition || Slide
-  const childComponent = props.children
+export default React.forwardRef(
+  function Drawer (props, innerRef) {
+    props = Object.assign({innerRef}, props)
+    const transition = props.transition || Slide
+    const childComponent = props.children
 
-  props.children = function (transitionProps) {
-    transitionProps.children = function ({...drawerProps}) {
-      const classNameFromDrawer = drawerProps.className
-      // Box component passed to the child function
-      drawerProps.DrawerBox = function DrawerBox (boxProps) {
-        return FlexBox({
-          ...boxProps,
-          children: function (drawerBoxProps) {
-            drawerBoxProps.nodeType = drawerBoxProps.nodeType || nodeType
-            drawerBoxProps.className = cx(
-              transitionProps.className,
-              classNameFromDrawer,
-              boxProps.className,
-              drawerBoxProps.className
-            )
+    props.children = function (transitionProps) {
+      transitionProps.children = function ({...drawerProps}) {
+        const classNameFromDrawer = drawerProps.className
+        // Box component passed to the child function
+        drawerProps.DrawerBox = function DrawerBox (boxProps) {
+          return FlexBox({
+            ...boxProps,
+            children: function (drawerBoxProps) {
+              drawerBoxProps.nodeType = drawerBoxProps.nodeType || nodeType
+              drawerBoxProps.className = cx(
+                transitionProps.className,
+                classNameFromDrawer,
+                boxProps.className,
+                drawerBoxProps.className
+              )
 
-            drawerBoxProps.children = boxProps.children({
-              isVisible: drawerProps.isVisible,
-              show: drawerProps.show,
-              hide: drawerProps.hide,
-              toggle: drawerProps.toggle
-            })
+              drawerBoxProps.children = boxProps.children({
+                isVisible: drawerProps.isVisible,
+                show: drawerProps.show,
+                hide: drawerProps.hide,
+                toggle: drawerProps.toggle
+              })
 
-            return renderNode(drawerBoxProps, defaultCSS)
-          }
-        })
+              return renderNode(drawerBoxProps, defaultCSS)
+            }
+          })
+        }
+        delete drawerProps.className
+
+        return childComponent(drawerProps)
       }
-      delete drawerProps.className
 
-      return childComponent(drawerProps)
+      return transition(transitionProps)
     }
 
-    return transition(transitionProps)
+    return SFC(props)
   }
-
-  return SFC(props)
-}
+)

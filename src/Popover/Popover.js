@@ -191,13 +191,16 @@ function ViewportPopOver (props) {
 }
 
 
-export default function PopOver ({children, transition = Drop, ...props}) {
-  const popOverDirection = getPosFromProps(props)
+export default React.forwardRef(
+  function PopOver ({children, transition = Drop, ...props}, innerRef) {
+    const popOverDirection = getPosFromProps(props)
 
-  return transition({
-    ...props,
-    children: function (popOverProps) {
-      return ViewportPopOver({children, popOverDirection, ...popOverProps})
-    }
-  })
-}
+    return transition({
+      innerRef,
+      ...props,
+      children: function (popOverProps) {
+        return ViewportPopOver({children, popOverDirection, ...popOverProps})
+      }
+    })
+  }
+)

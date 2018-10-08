@@ -1,3 +1,4 @@
+import React from 'react'
 import gridPropTypes from '../Grid/propTypes'
 import * as gridCSS from '../Grid/CSS'
 import * as gridDefaultTheme from '../Grid/defaultTheme'
@@ -34,13 +35,16 @@ export const GridBox = createComponent({
 })
 
 
-export default function Box (props) {
-  return FlexBox({
-    ...props,
-    children: function (boxProps) {
-      boxProps.nodeType = boxProps.nodeType || 'div'
-      boxProps.children = props.children
-      return renderNodeFast(boxProps)
-    }
-  })
-}
+export default React.forwardRef(
+  function Box (props, innerRef) {
+    return FlexBox({
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        boxProps.nodeType = boxProps.nodeType || 'div'
+        boxProps.children = props.children
+        return renderNodeFast(boxProps)
+      }
+    })
+  }
+)

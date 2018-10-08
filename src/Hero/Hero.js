@@ -1,3 +1,4 @@
+import React from 'react'
 import {css} from 'emotion'
 import FillViewport from '../FillViewport'
 import {FlexBox} from '../Box'
@@ -20,26 +21,29 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'Hero', themePath: 'hero'})
 
 
-export default function Hero (props) {
-  return SFC({
-    ...props,
-    children: function (vpProps) {
-      return FillViewport({
-        children: function ({style}) {
-          vpProps.children = function (nodeProps) {
-            nodeProps.children = props.children
-            nodeProps.nodeType = nodeProps.nodeType || nodeType
-            nodeProps.style = {
-              ...getStyle(style, nodeProps.trimHeight),
-              ...vpProps.style
+export default React.forwardRef(
+  function Hero (props, innerRef) {
+    return SFC({
+      innerRef,
+      ...props,
+      children: function (vpProps) {
+        return FillViewport({
+          children: function ({style}) {
+            vpProps.children = function (nodeProps) {
+              nodeProps.children = props.children
+              nodeProps.nodeType = nodeProps.nodeType || nodeType
+              nodeProps.style = {
+                ...getStyle(style, nodeProps.trimHeight),
+                ...vpProps.style
+              }
+              delete nodeProps.trimHeight
+              return renderNode(nodeProps, defaultCSS)
             }
-            delete nodeProps.trimHeight
-            return renderNode(nodeProps, defaultCSS)
-          }
 
-          return FlexBox(vpProps)
-        }
-      })
-    }
-  })
-}
+            return FlexBox(vpProps)
+          }
+        })
+      }
+    })
+  }
+)

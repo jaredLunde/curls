@@ -50,37 +50,50 @@ const SFCWithImageProps = function (props) {
 const supportsObjectFit = supportsCSS('object-fit')
 
 
-export default function Avatar (props) {
-  const sfcProps = {
-    ...props,
-    children: function (boxProps) {
-      // adds child prop for 'Box' and rendering the avatar node
-      boxProps.children = function (nodeProps) {
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
-        const innerRef = nodeProps.imageRef
-        delete nodeProps.imageRef
-        const alt = nodeProps.alt
-        delete nodeProps.alt
+export default React.forwardRef(
+  function Avatar (props, ref) {
+    const sfcProps = {
+      innerRef: ref,
+      ...props,
+      children: function (boxProps) {
+        // adds child prop for 'Box' and rendering the avatar node
+        boxProps.children = function (nodeProps) {
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          let innerRef
 
-        const imgProps = {
-          ...nodeProps,
-          alt,
-          src: props.src,
-          defaultSrc: props.defaultSrc,
-          innerRef
+          if (nodeProps.imageRef) {
+            innerRef = (...args) => {
+              nodeProps.imageRef(...args)
+              if (nodeProps.innerRef) {
+                nodeProps.innerRef(...args)
+              }
+            }
+          }
+          
+          delete nodeProps.imageRef
+          const alt = nodeProps.alt
+          delete nodeProps.alt
+
+          const imgProps = {
+            ...nodeProps,
+            alt,
+            src: props.src,
+            defaultSrc: props.defaultSrc,
+            innerRef
+          }
+
+          nodeProps.children = (props.children || getImage)(imgProps)
+          return renderNode(nodeProps, defaultCSS)
         }
 
-        nodeProps.children = (props.children || getImage)(imgProps)
-        return renderNode(nodeProps, defaultCSS)
+        return BasicBox(boxProps)
       }
-
-      return BasicBox(boxProps)
     }
-  }
 
-  if (supportsObjectFit) {
-    sfcProps.orientation = 'square'
-  }
+    if (supportsObjectFit) {
+      sfcProps.orientation = 'square'
+    }
 
-  return (supportsObjectFit ? SFC : SFCWithImageProps)(sfcProps)
-}
+    return (supportsObjectFit ? SFC : SFCWithImageProps)(sfcProps)
+  }
+)

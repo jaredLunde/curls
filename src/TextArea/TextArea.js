@@ -1,3 +1,4 @@
+import React from 'react'
 import {callIfExists} from '@render-props/utils'
 import createComponent from '../createComponent'
 import Type from '../Type'
@@ -30,22 +31,25 @@ function autoResize (e) {
 }
 
 
-export default function TextArea (props) {
-  return SFC({
-    __inputStyles: true,
-    ...props,
-    children: function (typeProps) {
-      typeProps.nodeType = 'textarea'
+export default React.forwardRef(
+  function TextArea (props, innerRef) {
+    return SFC({
+      __inputStyles: true,
+      innerRef,
+      ...props,
+      children: function (typeProps) {
+        typeProps.nodeType = 'textarea'
 
-      if (props.autoResize) {
-        typeProps.onChange = function (...args) {
-          callIfExists(props.onChange, ...args)
-          autoResize(...args)
+        if (props.autoResize) {
+          typeProps.onChange = function (...args) {
+            callIfExists(props.onChange, ...args)
+            autoResize(...args)
+          }
         }
-      }
 
-      typeProps.children = props.children
-      return Type(typeProps)
-    }
-  })
-}
+        typeProps.children = props.children
+        return Type(typeProps)
+      }
+    })
+  }
+)

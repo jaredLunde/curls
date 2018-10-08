@@ -5,4 +5,10 @@ import createComponent from '../createComponent'
 
 
 const themePath = 'transitionable'
-export default createComponent({name: 'Transitionable', propTypes, CSS, defaultTheme, themePath})
+export default createComponent({
+  name: 'Transitionable',
+  propTypes,
+  CSS,
+  defaultTheme,
+  themePath
+})

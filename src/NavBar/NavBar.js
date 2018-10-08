@@ -1,3 +1,4 @@
+import React from 'react'
 import {css} from 'emotion'
 import createComponent, {renderNode} from '../createComponent'
 import {GridBox} from '../Box'
@@ -17,17 +18,20 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'NavBar', defaultTheme, themePath: 'navBar'})
 
 
-export default function NavBar (props) {
-  return SFC({
-    ...props,
-    children: function (boxProps) {
-      boxProps.children = function (nodeProps) {
-        nodeProps.children = props.children
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
-        return renderNode(nodeProps, defaultCSS)
-      }
+export default React.forwardRef(
+  function NavBar (props, innerRef) {
+    return SFC({
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        boxProps.children = function (nodeProps) {
+          nodeProps.children = props.children
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          return renderNode(nodeProps, defaultCSS)
+        }
 
-      return GridBox(boxProps)
-    }
-  })
-}
+        return GridBox(boxProps)
+      }
+    })
+  }
+)

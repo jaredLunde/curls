@@ -1,8 +1,8 @@
-import {injectGlobal, css} from 'emotion'
+import {css} from 'emotion'
 import {defaultRem} from './theming'
 
 
-export default injectGlobal`
+export default css`
   *, *:before, *:after {
     /** border-box for all, as it should be */
     box-sizing: border-box;

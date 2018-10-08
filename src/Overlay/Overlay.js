@@ -1,3 +1,4 @@
+import React from 'react'
 import {cx, css} from 'emotion'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
@@ -58,24 +59,27 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'Overlay', defaultTheme, themePath: 'overlay'})
 
 
-export default function Overlay ({transition = Fade, ...props}) {
-  return transition({
-    ...props,
-    children: function (sfcProps) {
-      return SFC({
-        ...sfcProps,
-        children: function (boxProps) {
-          return FlexBox({
-            ...boxProps,
-            children: function ({isVisible, show, hide, toggle, ...overlayBoxProps}) {
-              overlayBoxProps.nodeType = overlayBoxProps.nodeType || nodeType
-              overlayBoxProps.children = props.children({isVisible, show, hide, toggle})
+export default React.forwardRef(
+  function Overlay ({transition = Fade, ...props}, innerRef) {
+    return transition({
+      ...props,
+      children: function (sfcProps) {
+        return SFC({
+          innerRef,
+          ...sfcProps,
+          children: function (boxProps) {
+            return FlexBox({
+              ...boxProps,
+              children: function ({isVisible, show, hide, toggle, ...overlayBoxProps}) {
+                overlayBoxProps.nodeType = overlayBoxProps.nodeType || nodeType
+                overlayBoxProps.children = props.children({isVisible, show, hide, toggle})
 
-              return renderNode(overlayBoxProps, defaultCSS)
-            }
-          })
-        }
-      })
-    }
-  })
-}
+                return renderNode(overlayBoxProps, defaultCSS)
+              }
+            })
+          }
+        })
+      }
+    })
+  }
+)

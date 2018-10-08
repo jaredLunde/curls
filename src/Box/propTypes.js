@@ -30,4 +30,12 @@ export default {
   w: strOrNum,
   // height: __
   h: strOrNum,
+  // min-width
+  minW: strOrNum,
+  // min-height
+  minH: strOrNum,
+  // max-width
+  maxW: strOrNum,
+  // max-height
+  maxH: strOrNum,
 }

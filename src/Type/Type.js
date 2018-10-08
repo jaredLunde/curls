@@ -1,3 +1,4 @@
+import React from 'react'
 import {css, cx} from 'emotion'
 import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
@@ -24,50 +25,73 @@ const SFC = createComponent({
 
 
 
-export default function Type (props) {
-  return SFC({
-    ...props,
-    children: function (boxProps) {
-      boxProps.children = function (nodeProps) {
-        nodeProps.children = props.children
-        nodeProps.nodeType = nodeProps.nodeType || nodeType
-        return renderNode(nodeProps)
+export default React.forwardRef(
+  function Type (props, innerRef) {
+    return SFC({
+      innerRef,
+      ...props,
+      children: function (boxProps) {
+        boxProps.children = function (nodeProps) {
+          nodeProps.children = props.children
+          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          return renderNode(nodeProps)
+        }
+
+        return FlexBox(boxProps)
       }
+    })
+  }
+)
 
-      return FlexBox(boxProps)
-    }
-  })
-}
+export const H1 = React.forwardRef(
+  function H1 (props, innerRef) {
+    return Type({nodeType: 'h1', xxl: true, innerRef, ...props})
+  }
+)
 
-export function H1 (props) {
-  return Type({nodeType: 'h1', xxl: true, ...props})
-}
+export const H2 = React.forwardRef(
+  function H2 (props, innerRef) {
+    return Type({nodeType: 'h2', xl: true, innerRef, ...props})
+  }
+)
 
-export function H2 (props) {
-  return Type({nodeType: 'h2', xl: true, ...props})
-}
+export const H3 = React.forwardRef(
+  function H3 (props, innerRef) {
+    return Type({nodeType: 'h3', lg: true, innerRef, ...props})
+  }
+)
 
-export function H3 (props) {
-  return Type({nodeType: 'h3', lg: true, ...props})
-}
+export const H4 = React.forwardRef(
+  function H4 (props, innerRef) {
+    return Type({nodeType: 'h4', md: true, innerRef, ...props})
+  }
+)
 
-export function H4 (props) {
-  return Type({nodeType: 'h4', md: true, ...props})
-}
+export const H5 = React.forwardRef(
+  function H5 (props, innerRef) {
+    return Type({nodeType: 'h5', md: true, innerRef, ...props})
+  }
+)
 
-export function H5 (props) {
-  return Type({nodeType: 'h5', md: true, ...props})
-}
-
-export function H6 (props) {
-  return Type({nodeType: 'h6', md: true, ...props})
-}
+export const H6 = React.forwardRef(
+  function H6 (props, innerRef) {
+    return Type({nodeType: 'h6', md: true, innerRef, ...props})
+  }
+)
 
 const p = css`
   word-break: break-word;
   line-height: 1.4;
 `
 
-export function P (props) {
-  return Type({nodeType: 'p', m: 'b2', ...props, className: cx(p, props.className)})
-}
+export const P = React.forwardRef(
+  function P (props, innerRef) {
+    return Type({
+      nodeType: 'p',
+      m: 'b2',
+      innerRef,
+      ...props,
+      className: cx(p, props.className)
+    })
+  }
+)

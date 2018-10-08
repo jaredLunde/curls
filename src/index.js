@@ -2,7 +2,7 @@ export browserResets, {
   MAX_Z_INDEX,
   MAX_REM,
   maxZIndex
-} from './global'
+} from './browser'
 
 export {
   assignOrdered,

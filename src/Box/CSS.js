@@ -104,6 +104,21 @@ export function h (value) {
   return css`height: ${toSize(value)};`;
 }
 
+export function minW (value) {
+  return css`min-width: ${toSize(value)};`;
+}
+
+export function minH (value) {
+  return css`min-height: ${toSize(value)};`;
+}
+
+export function maxW (value) {
+  return css`max-width: ${toSize(value)};`;
+}
+
+export function maxH (value) {
+  return css`max-height: ${toSize(value)};`;
+}
 
 const borderRadiusDirections = {
   t: ['top-right', 'top-left'],
@@ -152,7 +167,7 @@ export function m (value, theme) {
 export function p (value, theme) {
   if (value === false) return null;
   const {spacingScale} = theme
-  
+
   if (isDirectional(value)) {
     return directionalScale('padding-{XYZ}', spacingScale, value, theme)
   } else {

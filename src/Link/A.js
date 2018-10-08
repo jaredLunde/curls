@@ -1,3 +1,4 @@
+import React from 'react'
 import createComponent from '../createComponent'
 import Type from '../Type'
 import propTypes from './propTypes'
@@ -11,14 +12,17 @@ const nodeType = 'a'
 const SFC = createComponent({name: 'Link', defaultTheme, propTypes, CSS, themePath: 'link'})
 
 
-export default function A (props) {
-  return SFC({
-    __linkStyles: true,
-    ...props,
-    children: function (typeProps) {
-      typeProps.nodeType = typeProps.nodeType || 'a'
-      typeProps.children = props.children
-      return Type(typeProps)
-    }
-  })
-}
+export default React.forwardRef(
+  function A (props, innerRef) {
+    return SFC({
+      __linkStyles: true,
+      innerRef,
+      ...props,
+      children: function (typeProps) {
+        typeProps.nodeType = typeProps.nodeType || 'a'
+        typeProps.children = props.children
+        return Type(typeProps)
+      }
+    })
+  }
+)

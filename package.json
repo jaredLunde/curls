@@ -1,14 +1,17 @@
 {
-  "name": "styled-curls",
-  "version": "0.1.30",
-  "main": "cjs/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
-  "esnext": "es/index.js",
-  "repository": "https://github.com/jaredlunde/styled-curls",
+  "name": "curls",
+  "version": "1.0.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "esnext": "dist/es/index.js",
+  "repository": "https://github.com/jaredlunde/curls",
   "author": "Jared Lunde",
   "license": "MIT",
   "private": false,
+  "sideEffects": [
+    "**/global.js"
+  ],
   "devDependencies": {
     "@inst-app/babel-preset-esx": "^1.0.2",
     "@inst-app/babel-preset-react": "^1.0.0",
@@ -36,11 +39,11 @@
   },
   "scripts": {
     "build": "npm run build:es && npm run build:cjs",
-    "build:es": "rm -rf es && cross-env NODE_ENV=production BABEL_ENV=es babel src --out-dir es && npm run prettier:es",
-    "build:cjs": "rm -rf cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir cjs && npm run prettier:cjs",
-    "watch": "cross-env NODE_ENV=development BABEL_ENV=es babel ./src -w --out-dir es",
-    "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"es/**/*.js\"",
-    "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"cjs/**/*.js\""
+    "build:es": "rm -rf dist/es && cross-env NODE_ENV=production BABEL_ENV=es babel src --out-dir dist/es && npm run prettier:es",
+    "build:cjs": "rm -rf dist/cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs && npm run prettier:cjs",
+    "watch": "cross-env NODE_ENV=development BABEL_ENV=es babel ./src -w --out-dir dist/es",
+    "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/es/**/*.js\"",
+    "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\""
   },
   "peerDependencies": {
     "prop-types": ">= 15.6.0",
