@@ -5,6 +5,7 @@ import {css, cx} from 'emotion'
 import {maxZIndex} from '../browser'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
+import {getPosFromProps} from '../Slide/utils'
 import createComponent, {renderNode} from '../createComponent'
 import {d, pos, ov, h} from '../Box/CSS'
 import * as CSS from './CSS'
@@ -91,8 +92,8 @@ export const DrawerBox = React.forwardRef(
 
 export default function Drawer (props) {
   return (props.transition || Slide)({
-    fromLeft: true,
     ...props,
+    [getPosFromProps(props) || 'fromBottom']: true,
     children: dropProps => <Provider value={dropProps} children={
       props.children(dropProps)
     }/>
