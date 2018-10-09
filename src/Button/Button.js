@@ -6,8 +6,7 @@ import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import GLOBAL from './global'
-const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
+import './global.css'
 
 
 const nodeType = 'button'
@@ -24,8 +23,6 @@ const SFC = createComponent({
   defaultTheme,
   themePath: 'button'
 })
-
-
 
 export default React.forwardRef(
   function Button ({className, ...props}, innerRef) {

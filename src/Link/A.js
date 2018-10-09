@@ -4,13 +4,11 @@ import Type from '../Type'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import GLOBAL from './global'
-const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
+import './global.css'
 
 
 const nodeType = 'a'
 const SFC = createComponent({name: 'Link', defaultTheme, propTypes, CSS, themePath: 'link'})
-
 
 export default React.forwardRef(
   function A (props, innerRef) {

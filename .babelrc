@@ -1,6 +1,6 @@
 {
   "presets": [
-    "@inst-app/react"
+    ["@inst-app/react", {"removePropTypes": false}]
   ],
   "plugins": [
     ["emotion", {"sourceMap": false, "hoist": true}],

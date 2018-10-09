@@ -1,4 +1,6 @@
 import React from 'react'
+import Portalize from 'react-portalize'
+import emptyObj from 'empty/object'
 import {css, cx} from 'emotion'
 import {maxZIndex} from '../browser'
 import {FlexBox} from '../Box'
@@ -6,9 +8,35 @@ import Slide from '../Slide'
 import createComponent, {renderNode} from '../createComponent'
 import {d, pos, ov, h} from '../Box/CSS'
 import * as CSS from './CSS'
-import * as defaultTheme from './defaultTheme'
 
 
+/**
+<Drawer fromBottom>
+  {({toggle, isVisible}) => {
+    return (
+      <>
+        <DrawerBox portal bg='black'>
+          {({isVisible, hide}) => {
+            return (
+              <Type>
+                Is visible? {String(isVisible)}
+
+                <Button onClick={hide}>
+                  Close
+                </Button>
+              </Type>
+            )
+          }}
+        </DrawerBox>
+
+        <Button onClick={toggle}>
+          Open
+        </Button>
+      </>
+    )
+  }}
+</Drawer>
+*/
 const nodeType = 'div'
 const defaultCSS = css`
   ${d.block};
@@ -19,67 +47,54 @@ const defaultCSS = css`
 const SFC = createComponent({
   name: 'Drawer',
   CSS,
-  defaultTheme,
   themePath: 'drawer'
 })
+const {Consumer, Provider} = React.createContext(emptyObj)
 
+export const DrawerConsumer = Consumer
+export const DrawerBox = React.forwardRef(
+  function DrawerBox (
+    {children, portal = false, ...props},
+    innerRef
+  ) {
+    return <Consumer children={
+      function ({className, ...transitionProps}) {
+        const boxChild =
+          typeof children === 'function' ? children(transitionProps) : children
 
-/**
-Drawer({
-  fromLeft: true,
-  children: function ({className, show, hide, toggle, isVisible, ...props}) {
-    <>
-      <div className={className}>
-      {/** this is the drawer *\/}
-      </div>
-      <button onClick={toggle}>
-
-      </button>
-    </>
-  }
-})
-*/
-export default React.forwardRef(
-  function Drawer (props, innerRef) {
-    props = Object.assign({innerRef}, props)
-    const transition = props.transition || Slide
-    const childComponent = props.children
-
-    props.children = function (transitionProps) {
-      transitionProps.children = function ({...drawerProps}) {
-        const classNameFromDrawer = drawerProps.className
-        // Box component passed to the child function
-        drawerProps.DrawerBox = function DrawerBox (boxProps) {
-          return FlexBox({
-            ...boxProps,
-            children: function (drawerBoxProps) {
-              drawerBoxProps.nodeType = drawerBoxProps.nodeType || nodeType
-              drawerBoxProps.className = cx(
-                transitionProps.className,
-                classNameFromDrawer,
-                boxProps.className,
-                drawerBoxProps.className
-              )
-
-              drawerBoxProps.children = boxProps.children({
-                isVisible: drawerProps.isVisible,
-                show: drawerProps.show,
-                hide: drawerProps.hide,
-                toggle: drawerProps.toggle
-              })
-
-              return renderNode(drawerBoxProps, defaultCSS)
+        let Component = SFC({
+          className,
+          ...props,
+          children: sfcProps => FlexBox({
+            ...sfcProps,
+            children: function (boxProps) {
+              boxProps.nodeType = boxProps.nodeType || nodeType
+              boxProps.children = boxChild
+              boxProps.innerRef = innerRef
+              return renderNode(boxProps, defaultCSS)
             }
           })
-        }
-        delete drawerProps.className
+        })
 
-        return childComponent(drawerProps)
+        return (
+          portal === false
+            ? Component
+            : <Portalize
+                children={Component}
+                entry={typeof portal === 'function' ? portal : void 0}
+              />
+        )
       }
-
-      return transition(transitionProps)
-    }
-
-    return SFC(props)
+    }/>
   }
 )
+
+export default function Drawer (props) {
+  return (props.transition || Slide)({
+    fromLeft: true,
+    ...props,
+    children: dropProps => <Provider value={dropProps} children={
+      props.children(dropProps)
+    }/>
+  })
+}

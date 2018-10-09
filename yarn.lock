@@ -2057,6 +2057,12 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-portalize@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/react-portalize/-/react-portalize-0.1.9.tgz#5d1df4b2ab38490a2ef43a1d61bbe307c134b590"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 readable-stream@^2.0.2, readable-stream@^2.0.6:
   version "2.3.6"
   resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"

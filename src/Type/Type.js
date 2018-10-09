@@ -5,8 +5,7 @@ import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import GLOBAL from './global'
-const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
+import './global.css'
 
 
 /**
@@ -23,7 +22,7 @@ const SFC = createComponent({
   themePath: 'type'
 })
 
-export default React.forwardRef(
+const Type = React.forwardRef(
   function Type (props, innerRef) {
     return SFC({
       innerRef,
@@ -40,6 +39,8 @@ export default React.forwardRef(
     })
   }
 )
+
+export default Type
 
 export const H1 = React.forwardRef(
   function H1 (props, innerRef) {

@@ -44,7 +44,7 @@ export default function createComponent ({
     throw new Error(`[${name}] Curls components must be initialized with a 'themePath' option set.`)
   }
 
-  function renderer (props, themeProps, ref) {
+  function renderer (props, themeProps) {
     const theme = themeProps.theme
     const defaults = theme.defaultProps
     props = defaults === void 0 ? props : assignOrdered(defaults, props)
@@ -78,11 +78,11 @@ export default function createComponent ({
     return props.children(renderProps)
   }
 
-  function SFC (props, ref) {
+  function SFC (props) {
     return ThemeConsumer({
       path: themePath,
       defaultTheme,
-      children: themeProps => renderer(props, themeProps, ref)
+      children: themeProps => renderer(props, themeProps)
     })
   }
 

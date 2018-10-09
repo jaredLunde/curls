@@ -17,7 +17,7 @@ export const defaultProps = {
   br: 5,
   bw: 1,
   bg: 'white',
-  md: true,
+  sm: true,
   role: 'button'
 }
 

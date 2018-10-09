@@ -5,8 +5,7 @@ import Type from '../Type'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import GLOBAL from './global'
-const __GLOBAL = GLOBAL  // prevent tree-shaking from elimating me
+import './global.css'
 
 
 const nodeType = 'textarea'
@@ -18,7 +17,6 @@ const SFC = createComponent({
   themePath: 'textArea'
 })
 
-
 function autoResize (e) {
   if (!e.target.defaultValue) {
     e.target.style.height = ''
@@ -29,7 +27,6 @@ function autoResize (e) {
     e.target.style.height = e.target.scrollHeight + 'px'
   }
 }
-
 
 export default React.forwardRef(
   function TextArea (props, innerRef) {

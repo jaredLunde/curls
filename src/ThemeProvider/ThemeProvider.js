@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import emptyObj from 'empty/object'
 import {ViewportProvider} from '@render-props/viewport'
 import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
 
@@ -15,6 +17,10 @@ export const CurlsContext = React.createContext(
 export default class ThemeProvider extends React.Component {
   static propTypes = {
     theme: PropTypes.object
+  }
+
+  static defaultProps = {
+    theme: emptyObj
   }
 
   constructor (props) {

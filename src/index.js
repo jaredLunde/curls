@@ -1,4 +1,5 @@
-export browserResets, {
+export {
+  browserResets,
   MAX_Z_INDEX,
   MAX_REM,
   maxZIndex
@@ -35,7 +36,7 @@ export Card from './Card'
 export Col from './Col'
 export CheckBox from './CheckBox'
 export Divider from './Divider'
-export Drawer from './Drawer'
+export Drawer, {DrawerBox, DrawerConsumer} from './Drawer'
 export Drop from './Drop'
 export Grid from './Grid'
 export Fade from './Fade'
@@ -45,10 +46,10 @@ export Hero from './Hero'
 export Input from './Input'
 export Link, {NavLink, A} from './Link'
 export MediaQuery from './MediaQuery'
-export Modal from './Modal'
+export Modal, {ModalBox, ModalConsumer} from './Modal'
 export NavBar from './NavBar'
 export Overlay from './Overlay'
-export PopOver from './PopOver'
+export PopOver, {PopOverBox, PopOverConsumer} from './PopOver'
 export Row from './Row'
 export Slide from './Slide'
 export * as slideUtils from './Slide/utils'

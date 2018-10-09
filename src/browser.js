@@ -2,7 +2,7 @@ import {css} from 'emotion'
 import {defaultRem} from './theming'
 
 
-export default css`
+export const browserResets = css`
   *, *:before, *:after {
     /** border-box for all, as it should be */
     box-sizing: border-box;

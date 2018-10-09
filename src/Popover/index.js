@@ -1,1 +1,1 @@
-export default from './PopOver'
+export default, {PopOverBox, PopOverConsumer} from './PopOver'

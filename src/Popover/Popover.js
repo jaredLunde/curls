@@ -1,10 +1,13 @@
 import React from 'react'
 import {css, cx} from 'emotion'
+import Portalize from 'react-portalize'
 import {ViewportConsumer} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
+import emptyObj from 'empty/object'
+import {maxZIndex} from '../browser'
 import {FlexBox} from '../Box'
-import {pos, z} from '../Box/CSS'
+import {pos} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
 import Drop from '../Drop'
 import {getPosFromProps} from '../Slide/utils'
@@ -14,42 +17,103 @@ import createComponent, {renderNode} from '../createComponent'
 
 
 /**
-PopOver({
-  delay: 200,
-  fromLeft: true,
-  children: function ({PopOverBox, popOverRef, renderPosition, show, hide, ...props}) {
+import {PopOver, PopOverBox} from 'curls'
+
+<PopOver fromRight enterDelay={600} leaveDelay={150}>
+  {function ({popOverRef, renderPosition, show, hide, ...props}) {
     return (
       <div>
-        {PopOverBox({
-          p: 4,
-          onMouseEnter: show,
-          onMouseLeave: hide,
-          children: function ({isVisible, show, hide, toggle}) {
-            return <Type bold color='black'>Hello</Type>
-          }
-        })}
+        <PopOverBox
+          onMouseEnter={show}
+          onMouseLeave={hide}
+        >
+          <Type bold color='black'>Hello</Type>
+        </PopOverBox>
 
-        <Button innerRef={popOverRef} onMouseEnter={show} onMouseLeave={hide}>
+        <Button ref={popOverRef} onMouseEnter={show} onMouseLeave={hide}>
           Hover me
         </Button>
       </div>
     )
-  }
-})
+  }}
+</PopOver>
 */
+const {Consumer, Provider} = React.createContext(emptyObj)
+export const PopOverConsumer = Consumer
 const defaultCSS = css`
   ${flex};
   ${pos.fixed};
-  ${z(1)};
+  ${maxZIndex};
 `
 const nodeType = 'div'
-const SFC = createComponent({name: 'Popover', defaultTheme, themePath: 'popOver'})
+const SFC = createComponent({name: 'PopOver', defaultTheme, themePath: 'popOver'})
 
+export const PopOverBox = React.forwardRef(
+  function PopOverBox (
+    {children, portal = false, ...props},
+    innerRef
+  ) {
+    return <Consumer children={
+      function ({className, popOverBoxRef, style, ...transitionProps}) {
+        const boxChild =
+          typeof children === 'function' ? children(transitionProps) : children
+
+        innerRef = innerRef === null ? popOverBoxRef : function (...args) {
+          innerRef(...args)
+          popOverBoxRef(...args)
+        }
+
+        let Component = SFC({
+          className,
+          ...props,
+          children: sfcProps => FlexBox({
+            ...sfcProps,
+            children: function (boxProps) {
+              boxProps.nodeType = boxProps.nodeType || nodeType
+              boxProps.children = boxChild
+              boxProps.innerRef = innerRef
+              boxProps.style = {...style, ...boxProps.style}
+              return renderNode(boxProps, defaultCSS)
+            }
+          })
+        })
+
+        return (
+          portal === false
+            ? Component
+            : <Portalize
+                children={Component}
+                entry={typeof portal === 'function' ? portal : void 0}
+              />
+        )
+      }
+    }/>
+  }
+)
 
 class PopOverContainer extends React.Component {
   imageLoader = null
   container = null
   state = {}
+
+  constructor (props) {
+    super(props)
+    this.popOverContext = {
+      isVisible: props.isVisible,
+      show: props.show,
+      hide: props.hide,
+      toggle: props.toggle,
+      renderPosition: this.state.renderPosition,
+      reposition: this.reposition,
+      popOverRef: this.setContainerRef
+    }
+    this.popOverBoxContext = {
+      ...this.popOverBoxContext,
+      className: props.className,
+      popOverBoxRef: this.setPopOverBoxRef
+    }
+    delete this.popOverBoxContext.popOverRef
+  }
 
   componentDidMount () {
     if (this.props.isVisible === true) {
@@ -111,7 +175,6 @@ class PopOverContainer extends React.Component {
       popOverDirection
       || getPosFromProps(defaultTheme.defaultProps)
     )
-
     this.setState(
       setDirectionStyle(direction, this.container, this.popOverBox, {width, height})
     )
@@ -129,49 +192,33 @@ class PopOverContainer extends React.Component {
     this.setPositionState()
   }
 
-  PopOverBox = React.forwardRef(
-    (props, innerRef) => {
-      return SFC({
-        innerRef,
-        ...props,
-        children: boxProps => {
-          const {renderPosition, ...state} = this.state
-
-          boxProps.children = nodeProps => {
-            nodeProps.children = props.children({
-              isVisible: this.props.isVisible,
-              reposition: this.reposition,
-              show: this.props.show,
-              hide: this.props.hide,
-              toggle: this.props.toggle,
-              renderPosition
-            })
-
-            nodeProps.innerRef = this.setPopOverBoxRef
-            nodeProps.style = {...state, ...nodeProps.style}
-            nodeProps.nodeType = nodeProps.nodeType || nodeType
-            nodeProps.className = cx(this.props.className, nodeProps.className)
-
-            return renderNode(nodeProps, defaultCSS)
-          }
-
-          return FlexBox(boxProps)
-        }
-      })
-    }
-  )
-
   render () {
-    return this.props.children({
-      PopOverBox: this.PopOverBox,
-      isVisible: this.props.isVisible,
-      show: this.props.show,
-      hide: this.props.hide,
-      toggle: this.props.toggle,
-      renderPosition: this.state.renderPosition,
-      reposition: this.reposition,
-      popOverRef: this.setContainerRef
-    })
+    if (
+      this.props.isVisible !== this.popOverContext.isVisible
+      || this.state.renderPosition !== this.popOverContext.renderPosition
+      || this.props.className !== this.popOverBoxContext.className
+    ) {
+      const {renderPosition, ...style} = this.state
+      this.popOverContext = {
+        ...this.popOverContext,
+        renderPosition,
+        isVisible: this.props.isVisible,
+        popOverRef: this.setContainerRef
+      }
+      this.popOverBoxContext = {
+        ...this.popOverContext,
+        style,
+        className: this.props.className,
+        popOverBoxRef: this.setPopOverBoxRef
+      }
+      delete this.popOverBoxContext.popOverRef
+    }
+
+    return (
+      <Provider value={this.popOverBoxContext}>
+        {this.props.children(this.popOverContext)}
+      </Provider>
+    )
   }
 }
 
@@ -194,13 +241,15 @@ function ViewportPopOver (props) {
 }
 
 
-export default function PopOver ({children, transition = Drop, ...props}, innerRef) {
-  const popOverDirection = getPosFromProps(props)
-
-  return transition({
+export default function PopOver ({...props}, innerRef) {
+  const popOverDirection = getPosFromProps(props) || 'fromBottom'
+  return (props.transition || Drop)({
+    [popOverDirection]: true,
     ...props,
     children: function (popOverProps) {
-      return ViewportPopOver({children, popOverDirection, ...popOverProps})
+      popOverProps.children = props.children
+      popOverProps.popOverDirection = popOverDirection
+      return ViewportPopOver(popOverProps)
     }
   })
 }
