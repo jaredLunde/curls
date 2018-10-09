@@ -1,5 +1,5 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css, cx} from 'emotion'
 import emptyObj from 'empty/object'
 import Portalize from 'react-portalize'
 import Overlay from '../Overlay'
@@ -54,8 +54,8 @@ export const ModalBox = React.forwardRef(
           typeof children === 'function' ? children(transitionProps) : children
 
         let Component = SFC({
-          className,
           ...props,
+          className: cx(className, props.className),
           children: sfcProps => FlexBox({
             ...sfcProps,
             children: function (boxProps) {

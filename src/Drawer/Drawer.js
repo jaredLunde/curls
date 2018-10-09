@@ -63,8 +63,8 @@ export const DrawerBox = React.forwardRef(
           typeof children === 'function' ? children(transitionProps) : children
 
         let Component = SFC({
-          className,
           ...props,
+          className: cx(className, props.className),
           children: sfcProps => FlexBox({
             ...sfcProps,
             children: function (boxProps) {

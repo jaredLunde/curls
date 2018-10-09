@@ -64,8 +64,8 @@ export const PopOverBox = React.forwardRef(
         }
 
         let Component = SFC({
-          className,
           ...props,
+          className: cx(className, props.className),
           children: sfcProps => FlexBox({
             ...sfcProps,
             children: function (boxProps) {
