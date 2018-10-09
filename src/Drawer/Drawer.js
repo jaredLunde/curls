@@ -1,7 +1,7 @@
 import React from 'react'
-import Portalize from 'react-portalize'
 import emptyObj from 'empty/object'
 import {css, cx} from 'emotion'
+import {portalize} from '../utils'
 import {maxZIndex} from '../browser'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
@@ -55,7 +55,7 @@ const {Consumer, Provider} = React.createContext(emptyObj)
 export const DrawerConsumer = Consumer
 export const DrawerBox = React.forwardRef(
   function DrawerBox (
-    {children, portal = false, ...props},
+    {children, portal, ...props},
     innerRef
   ) {
     return <Consumer children={
@@ -77,14 +77,7 @@ export const DrawerBox = React.forwardRef(
           })
         })
 
-        return (
-          portal === false
-            ? Component
-            : <Portalize
-                children={Component}
-                entry={typeof portal === 'function' ? portal : void 0}
-              />
-        )
+        return portalize(Component, portal)
       }
     }/>
   }

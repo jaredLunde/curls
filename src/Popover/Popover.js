@@ -1,6 +1,5 @@
 import React from 'react'
 import {css, cx} from 'emotion'
-import Portalize from 'react-portalize'
 import {ViewportConsumer} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
@@ -10,6 +9,7 @@ import {FlexBox} from '../Box'
 import {pos} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
 import Drop from '../Drop'
+import {portalize} from '../utils'
 import {getPosFromProps} from '../Slide/utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
@@ -50,7 +50,7 @@ const SFC = createComponent({name: 'PopOver', defaultTheme, themePath: 'popOver'
 
 export const PopOverBox = React.forwardRef(
   function PopOverBox (
-    {children, portal = false, ...props},
+    {children, portal, ...props},
     innerRef
   ) {
     return <Consumer children={
@@ -78,14 +78,7 @@ export const PopOverBox = React.forwardRef(
           })
         })
 
-        return (
-          portal === false
-            ? Component
-            : <Portalize
-                children={Component}
-                entry={typeof portal === 'function' ? portal : void 0}
-              />
-        )
+        return portalize(Component, portal)
       }
     }/>
   }

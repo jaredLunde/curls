@@ -5,12 +5,9 @@ import getTheme from '../utils/getTheme'
 import emptyObj from 'empty/object'
 
 
-// let uncached = 0
 const mergeGlobals_ = memoize(
   // this is memoized for defaultTheme merging efficiency and sCU in children
   function (curlsTheme, theme) {
-    // uncached += 1
-    // console.log('Uncached:', uncached)
     const base = {
       colors: curlsTheme.colors,
       typeFaces: curlsTheme.typeFaces
@@ -19,7 +16,6 @@ const mergeGlobals_ = memoize(
     return theme === emptyObj ? base : Object.assign(base, theme)
   }
 )
-
 
 function mergeGlobals (curlsTheme, props) {
   if (props.path === void 0) {
@@ -34,7 +30,6 @@ function mergeGlobals (curlsTheme, props) {
     return theme
   }
 }
-
 
 export default function ThemeConsumer (props) {
   const consumerProps = {}

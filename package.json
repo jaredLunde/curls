@@ -36,7 +36,7 @@
     "memoize-two-args": "^1.0.6",
     "object-without-props": "^0.1.1",
     "polished": "^2.0.3",
-    "react-portalize": "^0.1.9"
+    "react-portalize": "^1.0.3"
   },
   "scripts": {
     "build": "npm run build:es && npm run build:cjs",
