@@ -30,6 +30,14 @@ export default {
   w: strOrNum,
   // height: __
   h: strOrNum,
+  // top
+  t: strOrNum,
+  // right
+  r: strOrNum,
+  // bottmo
+  b: strOrNum,
+  // left
+  l: strOrNum,
   // min-width
   minW: strOrNum,
   // min-height

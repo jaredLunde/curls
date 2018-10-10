@@ -97,11 +97,33 @@ export function bw (value, theme) {
 }
 
 export function w (value) {
+  if (value === false) return null;
   return css`width: ${toSize(value)};`;
 }
 
 export function h (value) {
+  if (value === false) return null;
   return css`height: ${toSize(value)};`;
+}
+
+export function t (value) {
+  if (value === false) return null;
+  return css`top: ${toSize(value)};`;
+}
+
+export function r (value) {
+  if (value === false) return null;
+  return css`right: ${toSize(value)};`;
+}
+
+export function b (value) {
+  if (value === false) return null;
+  return css`bottom: ${toSize(value)};`;
+}
+
+export function l (value) {
+  if (value === false) return null;
+  return css`left: ${toSize(value)};`;
 }
 
 export function minW (value) {
