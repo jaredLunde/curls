@@ -3,8 +3,6 @@ import MediaQuery from '../MediaQuery'
 import ThemeConsumer from '../ThemeConsumer'
 import memoize from 'cdll-memoize'
 import * as defaultTheme from '../Grid/defaultTheme'
-import {getBreakPoint} from '../Grid/utils'
-import {getTheme} from '../utils'
 
 
 function getSizes (props, theme) {

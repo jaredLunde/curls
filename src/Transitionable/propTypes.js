@@ -1,17 +1,20 @@
-import {bool, string, number} from 'prop-types'
+import {bool, string, number, oneOfType} from 'prop-types'
 
 
 export default {
-  // transition-duration
+  // deprecated, use duration='' instead
   veryFast: bool,
   fast: bool,
   med: bool,
   slow: bool,
   verySlow: bool,
+  // transition-duration (in ms)
+  duration: oneOfType([string, number]),
+  // deprecated -> use duration instead
   speed: string,
   // transition-timing-functions
   easing: string,
-  // transition-delay
+  // transition-delay (in ms)
   delay: number,
   // transition-property
   property: string

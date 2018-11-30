@@ -1,22 +1,36 @@
 import {css} from 'emotion'
 
 
-export function speed (value, theme) {
-  return css`transition-duration: ${theme.speed[value]}ms;`
+export function duration (value, theme) {
+  return css`transition-duration: ${theme.duration[value] || value}ms;`
 }
 
+export function speed (...args) {
+  if (__DEV__) {
+    console.warn(`The speed='' prop  has been replaced with duration=''.`)
+  }
 
-function createSpeedFunc (name) {
+  return duration(...args)
+}
+
+function createDurationFunc (name) {
   return function (_, theme) {
-    return speed(name, theme)
+    if (__DEV__) {
+      console.warn(
+        `Duration shortcut props (veryFast, fast, med...) are deprecated. ` +
+        `Use duration='${name}' instead.`
+      )
+    }
+
+    return duration(name, theme)
   }
 }
 
-export const veryFast = createSpeedFunc('veryFast')
-export const fast = createSpeedFunc('fast')
-export const med = createSpeedFunc('med')
-export const slow = createSpeedFunc('slow')
-export const verySlow = createSpeedFunc('verySlow')
+export const veryFast = createDurationFunc('veryFast')
+export const fast = createDurationFunc('fast')
+export const med = createDurationFunc('med')
+export const slow = createDurationFunc('slow')
+export const verySlow = createDurationFunc('verySlow')
 
 
 export function easing (value, theme) {

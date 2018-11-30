@@ -2,14 +2,13 @@ import React from 'react'
 import Toggle from '@render-props/toggle'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
-import * as defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
 import createComponent from '../createComponent'
 import {whichDelay} from '../Slide/utils'
 
 
 const themePath = 'fade'
-const SFC = createComponent({name: 'Fade', propTypes, CSS, defaultTheme, themePath})
+const SFC = createComponent({name: 'Fade', propTypes, CSS, themePath})
 
 
 const transitionProperties = 'visibility, opacity'

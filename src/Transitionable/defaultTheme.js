@@ -1,4 +1,4 @@
-export const speed = {
+export const duration = {
   veryFast: 80,
   fast: 160,
   med: 320,
@@ -18,4 +18,8 @@ export const easing = {
   heavyMove: [0.7, 0, 0.6, 1],
   swiftIn: [0.4, 0, 1, 1],
   swiftOut: [0, 0, 0.58, 1]
+}
+
+export const defaultProps = {
+  duration: 'med'
 }
