@@ -1,5 +1,4 @@
 import {css} from 'emotion'
-import {darken} from 'polished'
 import {withHoverQuery} from '../utils'
 // export colors from '../theming/defaultColors'
 
@@ -45,21 +44,9 @@ export function getActiveClass (props, theme) {
     return
   }
 
-  let color
-
-  try {
-    color = darken(0.05, theme.colors[props.bg] || props.bg)
-  } catch (e) {
-    if (__DEV__) {
-      console.warn(`Color '${props.bg}' could not be darkened in Link.getActiveClass`)
-    }
-
-    return
-  }
-
   return css`
     &:active {
-      background-color: ${darken(0.05, theme.colors[props.bg] || props.bg)};
+      opacity: 1.0;
     }
   `
 }

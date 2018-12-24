@@ -1,5 +1,4 @@
 import {injectGlobal} from 'emotion'
-import {hiDPI} from 'polished'
 
 
 // resets default button styles

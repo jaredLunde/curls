@@ -1,5 +1,5 @@
 import {injectGlobal} from 'emotion'
-import {textInputs} from 'polished'
+import * as polished from 'polished'
 
 
 // Resets
@@ -9,7 +9,7 @@ export default injectGlobal`
     height: auto;
   }
 
-  ${textInputs()} {
+  ${polished.textInputs()} {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;

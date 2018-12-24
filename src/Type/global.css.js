@@ -1,5 +1,5 @@
 import {injectGlobal} from 'emotion'
-import {hiDPI} from 'polished'
+import * as polished from 'polished'
 import {antialias, optimizeFor} from './CSS'
 import {defaultTypeFaces} from '../theming'
 
@@ -21,7 +21,7 @@ export default injectGlobal`
     ${optimizeFor.speed};
     font-family: ${defaultTypeFaces.system};
 
-    ${hiDPI(1.5)} {
+    ${polished.hiDPI(1.5)} {
       ${optimizeFor.legibility};
       ${antialias};
     }

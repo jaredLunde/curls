@@ -5,9 +5,15 @@ export function duration (value, theme) {
   return css`transition-duration: ${theme.duration[value] || value}ms;`
 }
 
+let seen = false
 export function speed (...args) {
-  if (__DEV__) {
+  if (__DEV__ && seen === false) {
+    seen = true
     console.warn(`The speed='' prop  has been replaced with duration=''.`)
+
+    if (console.trace) {
+      console.trace()
+    }
   }
 
   return duration(...args)
