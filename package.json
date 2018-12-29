@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -13,8 +13,8 @@
     "**.css.js"
   ],
   "devDependencies": {
-    "@inst-app/babel-preset-esx": "^1.0.2",
-    "@inst-app/babel-preset-react": "^1.0.0",
+    "@inst-app/babel-preset-esx": "^1.0.15",
+    "@inst-app/babel-preset-react": "^1.0.4",
     "babel-plugin-emotion": "^9.2.8",
     "babel-plugin-polished": "^1.1.0",
     "prettier": "^1.10.2"
