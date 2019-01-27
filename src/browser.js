@@ -1,20 +1,15 @@
 import {css} from 'emotion'
-import {defaultRem} from './theming'
 
 
 export const browserResets = css`
   *, *:before, *:after {
-    /** border-box for all, as it should be */
     box-sizing: border-box;
   }
 
   html {
-    font-size: ${defaultRem}px;
+    font-size: 16px;
   }
 
-  /**
-   ** Browser resets
-   **/
   html, body, div, span, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,

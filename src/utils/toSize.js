@@ -1,4 +1,4 @@
-export default function (value) {
+export default function toSize (value) {
   if (isNaN(value)) {
     return value
   } else {

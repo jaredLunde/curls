@@ -1,5 +1,5 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {GridBox} from '../Box'
 import {pos, w} from '../Box/CSS'
 import {flex, column} from '../Flex/CSS'
@@ -51,7 +51,7 @@ const defaultCSS = css`
 `
 
 
-const nodeType = 'div'
+const as = 'div'
 const SFC = createComponent({
   name: 'Card',
   propTypes,
@@ -69,7 +69,7 @@ export default React.forwardRef(
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
-          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          nodeProps.as = nodeProps.as || as
           return renderNode(nodeProps, defaultCSS)
         }
 

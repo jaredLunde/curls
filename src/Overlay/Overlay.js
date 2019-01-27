@@ -1,7 +1,7 @@
 import React from 'react'
-import {cx, css} from 'emotion'
+import {css} from '@emotion/core'
 import Portalize from 'react-portalize'
-import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
+import {baseIsNotVisible} from '../Fade/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {pos, w, h, ov} from '../Box/CSS'
 import {FlexBox} from '../Box'
@@ -17,7 +17,7 @@ import createComponent, {renderNode} from '../createComponent'
   }}
 </Overlay>
 **/
-const nodeType = 'div'
+const as = 'div'
 const defaultCSS = css`
   ${baseIsNotVisible};
   ${maxZIndex};
@@ -28,7 +28,7 @@ const defaultCSS = css`
   ${w('100%')};
   ${h('100%')};
   ${ov.auto};
-  ${ov.touch}
+  ${ov.touch};
   left: 0;
   top: 0;
 `
@@ -47,7 +47,7 @@ export default React.forwardRef(
             return FlexBox({
               ...boxProps,
               children: function ({isVisible, show, hide, toggle, ...overlayBoxProps}) {
-                overlayBoxProps.nodeType = overlayBoxProps.nodeType || nodeType
+                overlayBoxProps.as = overlayBoxProps.as || as
                 overlayBoxProps.children =
                   typeof props.children === 'function'
                     ? props.children({isVisible, show, hide, toggle})

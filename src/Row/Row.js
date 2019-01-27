@@ -1,12 +1,12 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {pos, w} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
 import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
 
 
-const nodeType = 'div'
+const as = 'div'
 const defaultCSS = css`
   ${pos.relative};
   ${w('100%')};
@@ -25,7 +25,7 @@ export default React.forwardRef(
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
-          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          nodeProps.as = nodeProps.as || as
           return renderNode(nodeProps, defaultCSS)
         }
 

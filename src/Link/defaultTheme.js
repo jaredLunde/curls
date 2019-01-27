@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {withHoverQuery} from '../utils'
 
 // export colors from '../theming/defaultColors'

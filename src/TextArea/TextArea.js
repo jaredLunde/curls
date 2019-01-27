@@ -8,7 +8,6 @@ import * as defaultTheme from './defaultTheme'
 import './global.css'
 
 
-const nodeType = 'textarea'
 const SFC = createComponent({
   name: 'TextArea',
   defaultTheme,
@@ -35,7 +34,7 @@ export default React.forwardRef(
       innerRef,
       ...props,
       children: function (typeProps) {
-        typeProps.nodeType = 'textarea'
+        typeProps.as = 'textarea'
 
         if (props.autoResize) {
           typeProps.onChange = function (...args) {

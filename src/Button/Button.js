@@ -1,5 +1,5 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {FlexBox} from '../Box'
 import {flex, row, align, justify} from '../Flex/CSS'
 import createComponent, {renderNode} from '../createComponent'
@@ -9,7 +9,7 @@ import * as defaultTheme from './defaultTheme'
 import './global.css'
 
 
-const nodeType = 'button'
+const as = 'button'
 const defaultCSS = css`
   ${flex};
   ${row.row};
@@ -37,7 +37,7 @@ export default React.forwardRef(
         boxProps.className = className
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
-          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          nodeProps.as = nodeProps.as || as
 
           return renderNode(nodeProps, [defaultCSS, sfcClassName])
         }

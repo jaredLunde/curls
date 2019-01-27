@@ -1,19 +1,18 @@
-import React from 'react'
-import {cx, css} from 'emotion'
+// @jsx jsx
+import {jsx, css} from '@emotion/core'
 import Toggle from '@render-props/toggle'
 import {d} from '../Box/CSS'
 import {flex, align, justify} from '../Flex/CSS'
 import {FlexBox} from '../Box'
 import * as defaultTheme from './defaultTheme'
 import createComponent, {renderNode} from '../createComponent'
-import defaultCheckMark from './defaultCheckMark'
 
 
 /**
 <CheckBox checked name='amIChecked' value='foobar'>
 {
   ({CheckBoxInput, toggle, on, off, isChecked, ...props}) => (
-    <Type nodeType='label' bold darkGrey m='l2'>
+    <Type as='label' bold darkGrey m='l2'>
       <CheckBoxInput p={3}>
         {function ({isChecked}) {
           return isChecked && <CheckMark color='black'/>
@@ -29,7 +28,7 @@ import defaultCheckMark from './defaultCheckMark'
 }
 </Checkbox>
 */
-const nodeType = 'span'
+const as = 'span'
 const defaultCSS = css`
   ${flex};
   ${align.center};
@@ -74,13 +73,13 @@ export default React.forwardRef(
                       checked={toggleContext.value}
                       readOnly
                       disabled
-                      className={d.none}
+                      css={d.none}
                     />
                     delete nodeProps.type
                     nodeProps.children = checkBoxInputProps.children({
                       isChecked: toggleContext.value
                     })
-                    nodeProps.nodeType = nodeProps.nodeType || nodeType
+                    nodeProps.as = nodeProps.as || as
 
                     return (
                       <>

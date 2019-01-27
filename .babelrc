@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["@inst-app/react", {"removePropTypes": false}]
+    ["@stellar-apps/react", {"removePropTypes": false}]
   ],
   "plugins": [
     ["emotion", {"sourceMap": false, "hoist": true}],
@@ -10,7 +10,7 @@
     "cjs": {
       "presets": [
         [
-          "@inst-app/esx",
+          "@stellar-apps/es",
           {
             "env": {
               "targets": {"chrome": "41", "ie": "10"}
@@ -23,7 +23,7 @@
     "es": {
       "presets": [
         [
-          "@inst-app/esx",
+          "@stellar-apps/es",
           {
             "env": {
               "modules": false,

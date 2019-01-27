@@ -1,5 +1,5 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import FillViewport from '../FillViewport'
 import {FlexBox} from '../Box'
 import {flex, column, align, justify} from '../Flex/CSS'
@@ -8,7 +8,7 @@ import createComponent, {renderNode} from '../createComponent'
 import {getStyle} from './utils'
 
 
-const nodeType = 'div'
+const as = 'div'
 const defaultCSS = css`
   ${flex};
   ${column.column};
@@ -31,7 +31,7 @@ export default React.forwardRef(
           children: function ({style}) {
             vpProps.children = function (nodeProps) {
               nodeProps.children = props.children
-              nodeProps.nodeType = nodeProps.nodeType || nodeType
+              nodeProps.as = nodeProps.as || as
               nodeProps.style = {
                 ...getStyle(style, nodeProps.trimHeight),
                 ...vpProps.style

@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {colorize} from '../utils'
 
 export function getPlaceholderClass (props, theme) {
@@ -18,12 +18,8 @@ export function getFocusClass (props, theme) {
 
 export const defaultProps = {
   bg: 'white',
-  m: 0,
   p: 2,
   bc: 'translucentLight',
   bw: 1,
-  br: 5,
-  color: 'darkGrey',
-  light: true,
-  sm: true
+  br: 5
 }

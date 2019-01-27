@@ -41,7 +41,7 @@ export default React.forwardRef(
       innerRef,
       ...props,
       children: function (boxProps) {
-        boxProps.nodeType = boxProps.nodeType || 'div'
+        boxProps.as = boxProps.as || 'div'
         boxProps.children = props.children
         return renderNodeFast(boxProps)
       }

@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {isVisible_ as isSlideVisible} from '../Slide/CSS'
 import {isVisible_ as isFadeVisible, isNotVisible_} from '../Fade/CSS'
 

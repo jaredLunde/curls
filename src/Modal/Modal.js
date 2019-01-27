@@ -1,5 +1,5 @@
 import React from 'react'
-import {css, cx} from 'emotion'
+import {css, ClassNames} from '@emotion/core'
 import emptyObj from 'empty/object'
 import {portalize} from '../utils'
 import Overlay from '../Overlay'
@@ -33,7 +33,7 @@ import {Modal, ModalBox, ModalConsumer, Overlay} from 'curls'
 
 const {Consumer, Provider} = React.createContext(emptyObj)
 const SFC = createComponent({name: 'Modal', defaultTheme, themePath: 'modal'})
-const nodeType = 'div'
+const as = 'div'
 const defaultCSS = css`
   position: absolute;
   margin: auto;
@@ -48,32 +48,38 @@ export const ModalBox = React.forwardRef(
     {children, portal, withOverlay = false, ...props},
     innerRef
   ) {
-    return <Consumer children={
-      function ({className, ...transitionProps}) {
-        const boxChild =
-          typeof children === 'function' ? children(transitionProps) : children
+    return (
+      <ClassNames>
+        {({cx}) => (
+          <Consumer children={
+            function ({className, ...transitionProps}) {
+              const boxChild =
+                typeof children === 'function' ? children(transitionProps) : children
 
-        let Component = SFC({
-          ...props,
-          className: cx(className, props.className),
-          children: sfcProps => FlexBox({
-            ...sfcProps,
-            children: function (boxProps) {
-              boxProps.nodeType = boxProps.nodeType || nodeType
-              boxProps.children = boxChild
-              boxProps.innerRef = innerRef
-              return renderNode(boxProps, defaultCSS)
+              let Component = SFC({
+                ...props,
+                className: cx(className, props.className),
+                children: sfcProps => FlexBox({
+                  ...sfcProps,
+                  children: function (boxProps) {
+                    boxProps.as = boxProps.as || as
+                    boxProps.children = boxChild
+                    boxProps.innerRef = innerRef
+                    return renderNode(boxProps, defaultCSS)
+                  }
+                })
+              })
+
+              if (withOverlay === true) {
+                Component = <Overlay visible={transitionProps.isVisible} children={Component}/>
+              }
+
+              return portalize(Component, portal)
             }
-          })
-        })
-
-        if (withOverlay === true) {
-          Component = <Overlay visible={transitionProps.isVisible} children={Component}/>
-        }
-
-        return portalize(Component, portal)
-      }
-    }/>
+          }/>
+        )}
+      </ClassNames>
+    )
   }
 )
 

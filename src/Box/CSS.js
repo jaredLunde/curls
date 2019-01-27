@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {directionalScale, isDirectional, colorize, toSize} from '../utils'
 
 

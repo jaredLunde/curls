@@ -1,4 +1,3 @@
-// import {defaultColors} from '../theming'
 import {materialShadow} from './utils'
 
 

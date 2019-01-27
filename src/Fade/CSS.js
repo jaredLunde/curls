@@ -1,12 +1,10 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 
 
 export const baseIsNotVisible = css`visibility: hidden;`
 export const baseIsVisible = css`visibility: visible;`
-
 export const isVisible_ = css`${baseIsVisible}; opacity: 1.0;`
 export const isNotVisible_ = css`${baseIsNotVisible}; opacity: 0;`
-
 
 export function isVisible (value, theme, props) {
   return (

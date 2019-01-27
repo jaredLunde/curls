@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {toSize} from '../utils'
 
 export const flex = css`display: flex;`

@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
 import {toSize} from '../utils'
 
@@ -41,3 +41,4 @@ export function fromLeft(v, _, props) {
   if (v === false) return;
   return transform(`${whichVal(v, -100, props)}`, 0, 0)
 }
+

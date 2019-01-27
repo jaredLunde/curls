@@ -24,7 +24,8 @@ export function replaceTheme (prevTheme, theme) {
     nextTheme = Object.freeze(theme)
     throwThemeError(nextTheme)
   }
-  else {
+
+  if (!__DEV__) {
     nextTheme = theme
   }
 
@@ -40,7 +41,8 @@ export default function injectTheme (prevTheme, theme) {
     nextTheme = Object.freeze(theme)
     throwThemeError(nextTheme)
   }
-  else {
+
+  if (!__DEV__) {
     nextTheme = theme
   }
 

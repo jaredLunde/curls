@@ -1,32 +1,34 @@
-import React from 'react'
-import {cx} from 'emotion'
+import {jsx} from '@emotion/core'
 import objectWithoutProps from 'object-without-props'
-import getClassNames from './utils/getClassNames'
+import getCSS from './utils/getCSS'
 import assignOrdered from './utils/assignOrdered'
 import ThemeConsumer from './ThemeConsumer'
 
 
 export function renderNode (nodeProps, defaultCSS) {
   if (defaultCSS !== void 0) {
-    nodeProps.className = cx(defaultCSS, nodeProps.className)
+    nodeProps.css =
+      !nodeProps.css
+        ? defaultCSS
+        : Array.isArray(nodeProps.css)
+          ? [...nodeProps.css, defaultCSS]
+          : [nodeProps.css, defaultCSS]
   }
 
   return renderNodeFast(nodeProps)
 }
 
-
 export function renderNodeFast (nodeProps) {
-  const nodeType = nodeProps.nodeType
-  delete nodeProps.nodeType
+  const as = nodeProps.as
+  delete nodeProps.as
 
-  if (typeof nodeType === 'string') {
+  if (typeof as === 'string') {
     nodeProps.ref = nodeProps.innerRef
     delete nodeProps.innerRef
   }
 
-  return React.createElement(nodeType, nodeProps)
+  return jsx(as, nodeProps)
 }
-
 
 export default function createComponent ({
   name,
@@ -55,11 +57,11 @@ export default function createComponent ({
     )
     delete renderProps.children
 
-    const styles = CSS && getClassNames(props, theme, CSS)
+    const styles = CSS && getCSS(props, theme, CSS)
 
     if (styles !== void 0) {
-      if (styles.classNames.length) {
-        renderProps.className = cx(styles.classNames, renderProps.className)
+      if (styles.css.length) {
+        renderProps.css = [...styles.css, renderProps.css]
       }
 
       if (styles.style !== void 0) {
@@ -69,10 +71,6 @@ export default function createComponent ({
           : styles.style
         )
       }
-    }
-
-    if (Array.isArray(renderProps.className)) {
-      renderProps.className = cx(renderProps.className)
     }
 
     return props.children(renderProps)

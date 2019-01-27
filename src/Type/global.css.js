@@ -1,7 +1,7 @@
 import {injectGlobal} from 'emotion'
 import * as polished from 'polished'
 import {antialias, optimizeFor} from './CSS'
-import {defaultTypeFaces} from '../theming'
+import {defaultTypeFaces, defaultColors} from '../theming'
 
 
 export default injectGlobal`
@@ -20,7 +20,7 @@ export default injectGlobal`
   body {
     ${optimizeFor.speed};
     font-family: ${defaultTypeFaces.system};
-
+    color: ${defaultColors.darkGrey};
     ${polished.hiDPI(1.5)} {
       ${optimizeFor.legibility};
       ${antialias};
@@ -34,5 +34,11 @@ export default injectGlobal`
   h5,
   h6  {
     ${optimizeFor.legibility};
+  }
+  
+  p {
+    word-break: break-word;
+    line-height: 1.4;
+    margin-bottom: 1rem;
   }
 `

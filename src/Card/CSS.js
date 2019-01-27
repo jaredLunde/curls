@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import {br as boxBr} from '../Box/CSS'
 import {directionalRe} from '../utils/directionalScale'
 

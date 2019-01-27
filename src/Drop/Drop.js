@@ -11,7 +11,6 @@ import createComponent from '../createComponent'
 const SFC = createComponent({name: 'Drop', propTypes, CSS, defaultTheme, themePath: 'drop'})
 const transitionProperties = 'visibility, transform, opacity'
 
-
 export default function Drop ({
   children,
   initiallyVisible = false,

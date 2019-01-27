@@ -1,13 +1,11 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
 import {GridBox} from '../Box'
 import {flex, row, wrap, align, justify} from '../Flex/CSS'
-import * as defaultTheme from './defaultTheme'
-import emptyObj from 'empty/object'
 
 
-const nodeType = 'nav'
+const as = 'nav'
 const defaultCSS = css`
   ${flex};
   ${row.row};
@@ -15,7 +13,7 @@ const defaultCSS = css`
   ${align.center};
   ${justify.start};
 `
-const SFC = createComponent({name: 'NavBar', defaultTheme, themePath: 'navBar'})
+const SFC = createComponent({name: 'NavBar', themePath: 'navBar'})
 
 
 export default React.forwardRef(
@@ -26,7 +24,7 @@ export default React.forwardRef(
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
-          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          nodeProps.as = nodeProps.as || as
           return renderNode(nodeProps, defaultCSS)
         }
 

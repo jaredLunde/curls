@@ -12,7 +12,4 @@ export const scale = {
 }
 // export const colors = defaultColors
 // export const typeFaces = defaultTypeFaces
-export const defaultProps = {
-  sm: true,
-  color: 'darkerGrey',
-}
+export const defaultProps = {}

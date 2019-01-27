@@ -1,5 +1,5 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
 import {BasicBox} from '../Box'
 import {w, h, d, pos} from '../Box/CSS'
@@ -7,7 +7,7 @@ import * as defaultTheme from './defaultTheme'
 import emptyObj from 'empty/object'
 
 
-const nodeType = 'div'
+const as = 'div'
 const defaultCSS = css`
   ${w('100%')};
   ${h(1)};
@@ -30,7 +30,7 @@ export default React.forwardRef(
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
-          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          nodeProps.as = nodeProps.as || as
           return renderNode(nodeProps, defaultCSS)
         }
 

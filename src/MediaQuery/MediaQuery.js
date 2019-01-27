@@ -11,13 +11,13 @@ function isTrue (el) { return el === true }
 function queriesDidChange (prevQueries, nextQueries) {
   if (Array.isArray(prevQueries) && Array.isArray(nextQueries)) {
     if (prevQueries.length === nextQueries.length) {
-      for (let x = 0; x < nextQueries.length; x++) {
-        if (nextQueries[x] !== prevQueries[x]) {
+      for (let i = 0; i < nextQueries.length; i++) {
+        if (nextQueries[i] !== prevQueries[i]) {
           return true
         }
-
-        return false
       }
+
+      return false
     } else {
       return true
     }

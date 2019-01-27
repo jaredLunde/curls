@@ -1,12 +1,12 @@
 import memoize from 'memoize-two-args'
-import deepMerge from './deepMerge'
 import emptyObj from 'empty/object'
+import deepMerge from './deepMerge'
 
 
 const memoizer = memoize(deepMerge)
 
 
-export default function (defaultTheme = emptyObj, userTheme) {
+export default function getTheme (defaultTheme = emptyObj, userTheme) {
   if (userTheme === void 0 || userTheme === null) {
     return defaultTheme
   }

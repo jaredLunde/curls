@@ -1,6 +1,6 @@
 import React from 'react'
 import emptyObj from 'empty/object'
-import {css, cx} from 'emotion'
+import {ClassNames} from '@emotion/core'
 import {portalize} from '../utils'
 import {maxZIndex} from '../browser'
 import {FlexBox} from '../Box'
@@ -58,28 +58,34 @@ export const DrawerBox = React.forwardRef(
     {children, portal, ...props},
     innerRef
   ) {
-    return <Consumer children={
-      function ({className, ...transitionProps}) {
-        const boxChild =
-          typeof children === 'function' ? children(transitionProps) : children
+    return (
+      <ClassNames>
+        {({cx}) => (
+          <Consumer children={
+            function ({className, ...transitionProps}) {
+              const boxChild =
+                typeof children === 'function' ? children(transitionProps) : children
 
-        let Component = SFC({
-          ...props,
-          className: cx(className, props.className),
-          children: sfcProps => FlexBox({
-            ...sfcProps,
-            children: function (boxProps) {
-              boxProps.nodeType = boxProps.nodeType || nodeType
-              boxProps.children = boxChild
-              boxProps.innerRef = innerRef
-              return renderNode(boxProps, defaultCSS)
+              let Component = SFC({
+                ...props,
+                className: cx(className, props.className),
+                children: sfcProps => FlexBox({
+                  ...sfcProps,
+                  children: function (boxProps) {
+                    boxProps.nodeType = boxProps.nodeType || nodeType
+                    boxProps.children = boxChild
+                    boxProps.innerRef = innerRef
+                    return renderNode(boxProps, defaultCSS)
+                  }
+                })
+              })
+
+              return portalize(Component, portal)
             }
-          })
-        })
-
-        return portalize(Component, portal)
-      }
-    }/>
+          }/>
+        )}
+      </ClassNames>
+    )
   }
 )
 
@@ -87,8 +93,6 @@ export default function Drawer (props) {
   return (props.transition || Slide)({
     ...props,
     [getPosFromProps(props) || 'fromBottom']: true,
-    children: dropProps => <Provider value={dropProps} children={
-      props.children(dropProps)
-    }/>
+    children: dropProps => <Provider value={dropProps} children={props.children(dropProps)}/>
   })
 }

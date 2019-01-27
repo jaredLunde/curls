@@ -1,4 +1,5 @@
 import React from 'react'
+import {jsx} from '@emotion/core'
 import createComponent from '../createComponent'
 import Type from '../Type'
 import propTypes from './propTypes'
@@ -7,7 +8,7 @@ import * as defaultTheme from './defaultTheme'
 import './global.css'
 
 
-const nodeType = 'input'
+const as = 'input'
 const SFC = createComponent({name: 'Input', defaultTheme, propTypes, CSS, themePath: 'input'})
 
 export default React.forwardRef(
@@ -17,9 +18,9 @@ export default React.forwardRef(
       innerRef,
       ...props,
       children: function (typeProps) {
-        typeProps.nodeType = 'input'
+        typeProps.as = 'input'
         typeProps.type = typeProps.type || 'text'
-        return React.createElement(Type, typeProps)
+        return jsx(Type, typeProps)
       }
     })
   }

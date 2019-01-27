@@ -1,5 +1,5 @@
-export default function getClassNames (props, theme, CSS) {
-  const classNames = []
+export default function getCSSProps (props, theme, CSS) {
+  const css = []
   let style
   const propKeys = Object.keys(props)
 
@@ -22,21 +22,20 @@ export default function getClassNames (props, theme, CSS) {
             : getCSS[propVal]
       )
 
-      if (result === void 0 || result === null) {
-        continue
-      }
-      else if (Array.isArray(result) || typeof result === 'string') {
-        classNames.push(result)
-      }
-      else {
-        style = style === void 0 ? result : Object.assign(style, result)
+      if (result !== void 0 || result !== null) {
+        if (Array.isArray(result) || typeof result === 'string') {
+          css.push(result)
+        }
+        else {
+          style = style === void 0 ? result : Object.assign(style, result)
+        }
       }
     }
   }
 
-  if (classNames.length === 0 && style === void 0) {
+  if (css.length === 0 && style === void 0) {
     return
   }
 
-  return {classNames, style}
+  return {css, style}
 }

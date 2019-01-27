@@ -1,5 +1,4 @@
 export defaultColors from './defaultColors'
 export defaultTypeFaces from './defaultTypeFaces'
-export defaultRem from './defaultRem'
 export injectTheme, {replaceTheme, baseTheme} from './injectTheme'
 export injectRem from './injectRem'

@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import toSize from './toSize'
 
 
@@ -13,11 +13,9 @@ const defaultDirections = {
   x: ['right', 'left']
 }
 
-
 export function isDirectional (value) {
   return typeof value === 'string' && value.length > 1
 }
-
 
 export default function directionalScale (
   prefix,

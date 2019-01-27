@@ -9,10 +9,7 @@ import {whichDelay} from '../Slide/utils'
 
 const themePath = 'fade'
 const SFC = createComponent({name: 'Fade', propTypes, CSS, themePath})
-
-
 const transitionProperties = 'visibility, opacity'
-
 
 export default function Fade ({
   children,

@@ -1,5 +1,5 @@
 import React from 'react'
-import {css, cx} from 'emotion'
+import {css, ClassNames} from '@emotion/core'
 import {ViewportConsumer} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
@@ -43,42 +43,45 @@ const defaultCSS = css`
   ${pos.fixed};
   ${maxZIndex};
 `
-const nodeType = 'div'
+const as = 'div'
 const SFC = createComponent({name: 'PopOver', defaultTheme, themePath: 'popOver'})
 
 export const PopOverBox = React.forwardRef(
-  function PopOverBox (
-    {children, portal, ...props},
-    innerRef
-  ) {
-    return <Consumer children={
-      function ({className, popOverBoxRef, style, ...transitionProps}) {
-        const boxChild =
-          typeof children === 'function' ? children(transitionProps) : children
+  function PopOverBox ({children, portal, ...props}, innerRef) {
+    return (
+      <ClassNames>
+        {({cx}) => (
+          <Consumer children={
+            function ({className, popOverBoxRef, style, ...transitionProps}) {
+              const boxChild =
+                typeof children === 'function' ? children(transitionProps) : children
 
-        innerRef = innerRef === null ? popOverBoxRef : function (...args) {
-          innerRef(...args)
-          popOverBoxRef(...args)
-        }
+              innerRef = innerRef === null ? popOverBoxRef : function (...args) {
+                innerRef(...args)
+                popOverBoxRef(...args)
+              }
 
-        let Component = SFC({
-          ...props,
-          className: cx(className, props.className),
-          children: sfcProps => FlexBox({
-            ...sfcProps,
-            children: function (boxProps) {
-              boxProps.nodeType = boxProps.nodeType || nodeType
-              boxProps.children = boxChild
-              boxProps.innerRef = innerRef
-              boxProps.style = {...style, ...boxProps.style}
-              return renderNode(boxProps, defaultCSS)
+              let Component = SFC({
+                ...props,
+                className: cx(className, props.className),
+                children: sfcProps => FlexBox({
+                  ...sfcProps,
+                  children: function (boxProps) {
+                    boxProps.as = boxProps.as || as
+                    boxProps.children = boxChild
+                    boxProps.innerRef = innerRef
+                    boxProps.style = {...style, ...boxProps.style}
+                    return renderNode(boxProps, defaultCSS)
+                  }
+                })
+              })
+
+              return portalize(Component, portal)
             }
-          })
-        })
-
-        return portalize(Component, portal)
-      }
-    }/>
+          }/>
+        )}
+      </ClassNames>
+    )
   }
 )
 
@@ -162,12 +165,8 @@ class PopOverContainer extends React.Component {
 
   setPositionState = () => {
     let {popOverDirection, theme, width, height} = this.props
-    const direction = (
-      popOverDirection
-      || getPosFromProps(defaultTheme.defaultProps)
-    )
     this.setState(
-      setDirectionStyle(direction, this.container, this.popOverBox, {width, height})
+      setDirectionStyle(popOverDirection, this.container, this.popOverBox, {width, height})
     )
   }
 

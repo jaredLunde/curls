@@ -5,6 +5,6 @@ import A from './A'
 
 export default React.forwardRef(
   function NavLink (props, innerRef) {
-    return <A nodeType={RouterNavLink} ref={innerRef} {...props}/>
+    return <A as={RouterNavLink} ref={innerRef} {...props}/>
   }
 )

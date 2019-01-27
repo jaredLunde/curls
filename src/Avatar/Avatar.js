@@ -1,5 +1,5 @@
 import React from 'react'
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 import ImageProps from '@render-props/image-props'
 import {BasicBox} from '../Box'
 import {pos, d, ov} from '../Box/CSS'
@@ -20,7 +20,7 @@ import getImage from './getImage'
 */
 
 
-const nodeType = 'span'
+const as = 'span'
 const defaultCSS = css`
   ${d.inlineBlock};
   text-align: center;
@@ -58,7 +58,7 @@ export default React.forwardRef(
       children: function (boxProps) {
         // adds child prop for 'Box' and rendering the avatar node
         boxProps.children = function (nodeProps) {
-          nodeProps.nodeType = nodeProps.nodeType || nodeType
+          nodeProps.as = nodeProps.as || as
           let innerRef
 
           if (nodeProps.imageRef) {

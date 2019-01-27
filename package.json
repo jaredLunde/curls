@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "1.1.6",
+  "version": "2.0.0-dev",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -13,14 +13,16 @@
     "**.css.js"
   ],
   "devDependencies": {
-    "@inst-app/babel-preset-esx": "^1.0.15",
-    "@inst-app/babel-preset-react": "^1.0.4",
-    "babel-plugin-emotion": "^9.2.8",
+    "@stellar-apps/babel-preset-es": "^1.0.0",
+    "@stellar-apps/babel-preset-react": "^1.0.0",
+    "babel-plugin-emotion": "^10.0.6",
     "babel-plugin-polished": "^1.1.0",
+    "polished": "^2.3.3",
     "prettier": "^1.10.2"
   },
   "dependencies": {
-    "@babel/runtime-corejs2": "^7.2.0",
+    "@babel/runtime-corejs2": "^7.3.1",
+    "@emotion/core": "^10.0.6",
     "@render-props/image-props": "^0.1.12",
     "@render-props/rect": "^0.1.18",
     "@render-props/throttle": "^0.1.12",
@@ -28,14 +30,11 @@
     "@render-props/utils": "^0.2.8",
     "@render-props/viewport": "^0.2.13",
     "cdll-memoize": "^0.1.2",
-    "emotion": "^9.2.8",
-    "emotion-utils": "^9.1.0",
     "empty": "^0.10.1",
     "is-mergeable-object": "^1.1.0",
     "json2mq": "^0.2.0",
     "memoize-two-args": "^1.0.6",
     "object-without-props": "^0.1.1",
-    "polished": "^2.0.3",
     "react-portalize": "^1.0.3"
   },
   "scripts": {
@@ -44,7 +43,9 @@
     "build:cjs": "rm -rf dist/cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs && npm run prettier:cjs",
     "watch": "cross-env NODE_ENV=development BABEL_ENV=es babel ./src -w --out-dir dist/es",
     "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/es/**/*.js\"",
-    "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\""
+    "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\"",
+    "publish:dev": "yarn publish --tag dev",
+    "publish:next": "yarn publish --tag next"
   },
   "peerDependencies": {
     "prop-types": ">= 15.6.0",
