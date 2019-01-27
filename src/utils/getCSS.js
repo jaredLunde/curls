@@ -1,5 +1,5 @@
 export default function getCSSProps (props, theme, CSS) {
-  const css = []
+  let css = []
   let style
   const propKeys = Object.keys(props)
 
@@ -12,8 +12,14 @@ export default function getCSSProps (props, theme, CSS) {
 
     if (propVal !== void 0/*&& propVal !== false*/) {
       const typeofCSS = typeof getCSS
+      if (__DEV__) {
+        if (typeofCSS === 'string') {
+          throw 'CSS definitions can no longer contain strings. They must return @emotion/core css objects.'
+        }
+      }
+
       const result = (
-        typeofCSS === 'string'
+        typeofCSS === 'object' && getCSS.styles !== void 0
           ? propVal === false
             ? void 0
             : getCSS
@@ -22,8 +28,11 @@ export default function getCSSProps (props, theme, CSS) {
             : getCSS[propVal]
       )
 
-      if (result !== void 0 || result !== null) {
-        if (Array.isArray(result) || typeof result === 'string') {
+      if (result !== void 0 && result !== null) {
+        if (Array.isArray(result)) {
+          css.push.apply(css, result)
+        }
+        else if (typeof result === 'object' && result.styles !== void 0) {
           css.push(result)
         }
         else {

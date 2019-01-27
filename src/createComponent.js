@@ -8,11 +8,9 @@ import ThemeConsumer from './ThemeConsumer'
 export function renderNode (nodeProps, defaultCSS) {
   if (defaultCSS !== void 0) {
     nodeProps.css =
-      !nodeProps.css
+      nodeProps.css === void 0 || nodeProps.css === null || nodeProps.css === false
         ? defaultCSS
-        : Array.isArray(nodeProps.css)
-          ? [...nodeProps.css, defaultCSS]
-          : [nodeProps.css, defaultCSS]
+        : [defaultCSS, nodeProps.css]
   }
 
   return renderNodeFast(nodeProps)
@@ -61,7 +59,7 @@ export default function createComponent ({
 
     if (styles !== void 0) {
       if (styles.css.length) {
-        renderProps.css = [...styles.css, renderProps.css]
+        renderProps.css = [styles.css, renderProps.css]
       }
 
       if (styles.style !== void 0) {

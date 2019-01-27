@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "2.0.0-dev",
+  "version": "2.0.0-dev.1",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -9,9 +9,7 @@
   "author": "Jared Lunde",
   "license": "MIT",
   "private": false,
-  "sideEffects": [
-    "**.css.js"
-  ],
+  "sideEffects": false,
   "devDependencies": {
     "@stellar-apps/babel-preset-es": "^1.0.0",
     "@stellar-apps/babel-preset-react": "^1.0.0",

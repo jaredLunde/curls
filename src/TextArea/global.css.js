@@ -1,7 +1,7 @@
-import {injectGlobal} from 'emotion'
+import {css} from '@emotion/core'
 
 
-export default injectGlobal`
+export default css`
   textarea {
     appearance: none;
     -moz-appearance: none;

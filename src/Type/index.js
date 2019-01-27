@@ -1,1 +1,1 @@
-export default, {P} from './Type'
+export default from './Type'

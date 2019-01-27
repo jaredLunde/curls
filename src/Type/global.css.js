@@ -1,10 +1,11 @@
-import {injectGlobal} from 'emotion'
+import {css} from '@emotion/core'
 import * as polished from 'polished'
 import {antialias, optimizeFor} from './CSS'
 import {defaultTypeFaces, defaultColors} from '../theming'
 
 
-export default injectGlobal`
+const hiDPI = polished.hiDPI(1.5)
+export default css`
   html {
     word-wrap: break-word;
     text-size-adjust: 100%;
@@ -21,7 +22,7 @@ export default injectGlobal`
     ${optimizeFor.speed};
     font-family: ${defaultTypeFaces.system};
     color: ${defaultColors.darkGrey};
-    ${polished.hiDPI(1.5)} {
+    ${hiDPI} {
       ${optimizeFor.legibility};
       ${antialias};
     }

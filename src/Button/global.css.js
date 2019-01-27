@@ -1,8 +1,8 @@
-import {injectGlobal} from 'emotion'
+import {css} from '@emotion/core'
 
 
 // resets default button styles
-export default injectGlobal`
+export default css`
   button,
   [role=button] {
     outline: 0;

@@ -20,7 +20,6 @@ const defaultCSS = css`
 `
 const SFC = createComponent({name: 'Hero', themePath: 'hero'})
 
-
 export default React.forwardRef(
   function Hero (props, innerRef) {
     return SFC({

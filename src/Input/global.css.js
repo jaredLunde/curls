@@ -1,15 +1,16 @@
-import {injectGlobal} from 'emotion'
+import {css} from '@emotion/core'
 import * as polished from 'polished'
 
 
+const textInputs = polished.textInputs()
 // Resets
-export default injectGlobal`
+export default css`
   [type="number"]::-webkit-inner-spin-button,
   [type="number"]::-webkit-outer-spin-button {
     height: auto;
   }
 
-  ${polished.textInputs()} {
+  ${textInputs} {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;

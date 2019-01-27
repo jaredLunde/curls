@@ -1,4 +1,4 @@
-import {css} from 'emotion'
+import {css} from '@emotion/core'
 
 
 export const browserResets = css`
@@ -65,6 +65,6 @@ export const browserResets = css`
 `
 
 
-export const MAX_Z_INDEX = 2147483647;
-export const MAX_REM = 10000000/defaultRem;
+export const MAX_Z_INDEX = 2147483647
+export const MAX_REM = 10000000/16
 export const maxZIndex = css`z-index: ${MAX_Z_INDEX};`
