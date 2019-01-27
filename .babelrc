@@ -1,10 +1,10 @@
 {
   "presets": [
-    ["@stellar-apps/react", {"removePropTypes": false}]
+    ["@stellar-apps/react", {"removePropTypes": false}],
+    ["@emotion/css-prop", {"sourceMap": false, "hoist": true, "autoLabel":  false}]
   ],
   "plugins": [
-    "polished",
-    ["emotion", {"sourceMap": false, "hoist": true, "autoLabel":  false}]
+    "polished"
   ],
   "env": {
     "cjs": {

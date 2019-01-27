@@ -1,7 +1,7 @@
-import {injectGlobal} from 'emotion'
+import {css} from '@emotion/core'
 
 
-export default injectGlobal`
+export default css`
   a {
     cursor: pointer;
     text-decoration: none;

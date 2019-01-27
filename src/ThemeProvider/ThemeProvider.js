@@ -6,12 +6,13 @@ import {ThemeContext, Global} from '@emotion/core'
 import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
 import ButtonGlobals from '../Button/global.css'
 import InputGlobals from '../Input/global.css'
+import LinkGlobals from '../Link/global.css'
 import TextAreaGlobals from '../TextArea/global.css'
 import TypeGlobals from '../Type/global.css'
 
 
 export const CurlsContext = ThemeContext
-const globalStyles = [TypeGlobals, ButtonGlobals, InputGlobals, TextAreaGlobals]
+const globalStyles = [TypeGlobals, ButtonGlobals, LinkGlobals, InputGlobals, TextAreaGlobals]
 
 export default class ThemeProvider extends React.Component {
   static propTypes = {

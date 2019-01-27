@@ -4,7 +4,6 @@ import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
-import './global.css'
 
 
 /**

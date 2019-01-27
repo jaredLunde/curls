@@ -1,5 +1,4 @@
-// @jsx jsx
-import {jsx, css} from '@emotion/core'
+import {css} from '@emotion/core'
 import React from 'react'
 import Toggle from '@render-props/toggle'
 import {d} from '../Box/CSS'
