@@ -13,7 +13,7 @@
           "@stellar-apps/es",
           {
             "env": {
-              "targets": {"chrome": "41", "ie": "10"}
+              "targets": {"chrome": "41", "ie": "11"}
             },
             "runtime": {"corejs": 2}
           }
@@ -26,10 +26,11 @@
           "@stellar-apps/es",
           {
             "env": {
+              "useBuiltIns": false,
               "modules": false,
-              "targets": {"chrome": "41", "ie": "10"}
+              "targets": {"browsers": ">5% in US"}
             },
-            "runtime": {"corejs": 2}
+            "runtime": {"useESModules": true}
           }
         ]
       ]
