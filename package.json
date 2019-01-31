@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -21,19 +21,18 @@
   "dependencies": {
     "@babel/runtime": "^7.3.1",
     "@babel/runtime-corejs2": "^7.3.1",
-    "@render-props/image-props": "^0.1.12",
-    "@render-props/rect": "^0.1.18",
-    "@render-props/throttle": "^0.1.12",
-    "@render-props/toggle": "^0.1.26",
-    "@render-props/utils": "^0.2.8",
-    "@render-props/viewport": "^0.2.13",
-    "cdll-memoize": "^0.1.2",
+    "@render-props/image-props": "^0.1.15",
+    "@render-props/rect": "^0.1.21",
+    "@render-props/toggle": "^0.1.29",
+    "@render-props/utils": "^0.2.11",
+    "@render-props/viewport": "^0.2.16",
+    "cdll-memoize": "^0.1.8",
     "empty": "^0.10.1",
     "is-mergeable-object": "^1.1.0",
     "json2mq": "^0.2.0",
-    "memoize-two-args": "^1.0.6",
-    "object-without-props": "^0.1.1",
-    "react-portalize": "^1.0.3"
+    "memoize-two-args": "^1.0.7",
+    "object-without-props": "^0.1.2",
+    "react-portalize": "^1.0.4"
   },
   "scripts": {
     "build": "npm run build:es && npm run build:cjs",
