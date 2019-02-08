@@ -1,13 +1,11 @@
-import {css} from '@emotion/core'
-
 export const breakpoints = {
-  xxs: css`only screen and (max-width: 240px)`,
-  xs: css`only screen and (max-width: 324px)`,
-  sm: css`only screen and (max-width: 639px)`,
-  md: css`only screen and (max-width: 1023px)`,
-  lg: css`only screen and (max-width: 1279px)`,
-  xl: css`only screen and (max-width: 1599px)`,
-  xxl: css`only screen and (min-width: 0)`,
+  xxs: `only screen and (max-width: 240px)`,
+  xs: `only screen and (max-width: 324px)`,
+  sm: `only screen and (max-width: 639px)`,
+  md: `only screen and (max-width: 1023px)`,
+  lg: `only screen and (max-width: 1279px)`,
+  xl: `only screen and (max-width: 1599px)`,
+  xxl: `only screen and (min-width: 0)`,
 }
 
 
