@@ -3,7 +3,7 @@ import {css} from '@emotion/core'
 
 export default function (dp, theme) {
   if (dp === void 0 || dp === false || dp === null || dp == 0) {
-    return 'none'
+    return css`box-shadow: none;`
   }
 
   dp = parseInt(dp)

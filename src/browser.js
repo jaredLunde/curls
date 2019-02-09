@@ -62,6 +62,30 @@ export const browserResets = css`
   summary {
     display: block;
   }
+  
+  body {
+    quotes: "“" "”";
+  }
+
+  svg:not(:root) {
+    display: inline-block;
+  }
+
+  [data-strict=true] {
+    contain: strict;
+  }
+
+  [data-autosize=true] {
+    contain: content;
+  }
+
+  [data-autopaint=true] {
+    contain: layout style;
+  }
+  
+  [hidden] {
+    display: none !important;
+  }
 `
 
 

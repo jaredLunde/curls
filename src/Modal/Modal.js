@@ -49,36 +49,32 @@ export const ModalBox = React.forwardRef(
     innerRef
   ) {
     return (
-      <ClassNames>
-        {({cx}) => (
-          <Consumer children={
-            function ({className, ...transitionProps}) {
-              const boxChild =
-                typeof children === 'function' ? children(transitionProps) : children
+      <Consumer children={
+        function ({css, ...transitionProps}) {
+          const boxChild =
+            typeof children === 'function' ? children(transitionProps) : children
 
-              let Component = SFC({
-                ...props,
-                className: cx(className, props.className),
-                children: sfcProps => FlexBox({
-                  ...sfcProps,
-                  children: function (boxProps) {
-                    boxProps.as = boxProps.as || as
-                    boxProps.children = boxChild
-                    boxProps.innerRef = innerRef
-                    return renderNode(boxProps, defaultCSS)
-                  }
-                })
-              })
-
-              if (withOverlay === true) {
-                Component = <Overlay visible={transitionProps.isVisible} children={Component}/>
+          let Component = SFC({
+            ...props,
+            css: [css, props.className],
+            children: sfcProps => FlexBox({
+              ...sfcProps,
+              children: function (boxProps) {
+                boxProps.as = boxProps.as || as
+                boxProps.children = boxChild
+                boxProps.innerRef = innerRef
+                return renderNode(boxProps, defaultCSS)
               }
+            })
+          })
 
-              return portalize(Component, portal)
-            }
-          }/>
-        )}
-      </ClassNames>
+          if (withOverlay === true) {
+            Component = <Overlay visible={transitionProps.isVisible} children={Component}/>
+          }
+
+          return portalize(Component, portal)
+        }
+      }/>
     )
   }
 )

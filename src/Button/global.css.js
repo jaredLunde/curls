@@ -3,15 +3,13 @@ import {css} from '@emotion/core'
 
 // resets default button styles
 export default css`
-  button,
-  [role=button] {
+  button {
     outline: 0;
     background: none;
     border: 0;
     color: inherit;
     cursor: pointer;
     font: inherit;
-    line-height: normal;
     overflow: visible;
     padding: 0;
     margin: 0;
@@ -26,10 +24,6 @@ export default css`
     border: 0;
     margin: 0;
     padding: 0;
-  }
-
-  [role="button"] {
-    text-decoration: none;
   }
 
   button:hover,
