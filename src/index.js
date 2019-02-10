@@ -56,3 +56,6 @@ export * as slideUtils from './Slide/utils'
 export TextArea from './TextArea'
 export Transitionable from './Transitionable'
 export Type from './Type'
+
+// emotion exports
+export {css, ClassNames, Global, jsx} from '@emotion/core'
