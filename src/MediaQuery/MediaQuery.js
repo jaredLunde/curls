@@ -7,7 +7,6 @@ import json2mq from 'json2mq'
 import propTypes from './propTypes'
 
 
-function isTrue (el) { return el === true }
 function queriesDidChange (prevQueries, nextQueries) {
   if (Array.isArray(prevQueries) && Array.isArray(nextQueries)) {
     if (prevQueries.length === nextQueries.length) {
@@ -26,10 +25,6 @@ function queriesDidChange (prevQueries, nextQueries) {
   }
 }
 
-
-/**
-TODO: defaultMatches
-*/
 export default class MediaQuery extends React.Component {
   static propTypes = propTypes
 
@@ -38,18 +33,23 @@ export default class MediaQuery extends React.Component {
     this.setQueriesList(props)
 
     if (props.defaultMatches === void 0 || typeof window !== 'undefined') {
-      this.state = this.getMatchesState(props.query)
+      this.state = this.updateMatches()
     }
     else {
       this.state = {matches: props.defaultMatches}
     }
   }
 
+  componentDidMount () {
+    // having this here fixes hydration issues
+    this.setState(this.updateMatches)
+  }
+
   componentDidUpdate ({query}) {
     if (queriesDidChange(query, this.props.query)) {
       this.removeMediaQueries()
       this.setQueriesList(this.props)
-      this.updateMatches(this.props)
+      this.setState(this.updateMatches)
     }
   }
 
@@ -57,19 +57,28 @@ export default class MediaQuery extends React.Component {
     this.removeMediaQueries()
   }
 
-  getMatchesState (query) {
+  updateMatches = prevState => {
     let matches = this.mediaQueries.map(mql => mql[0].matches)
-    return {matches}
-  }
 
-  updateMatches ({query}) {
-    this.setState(this.getMatchesState(query))
+    if (prevState === void 0 || prevState.matches.length !== matches.length) {
+      return {matches}
+    }
+    else {
+      for (let i = 0; i < prevState.matches.length; i++) {
+        if (prevState.matches[i] !== matches[i]) {
+          return {matches}
+        }
+      }
+
+      return null
+    }
   }
 
   updateSingleMatch = x => () => {
     this.setState(
       prevState => {
         const doesMatch = this.mediaQueries[x][0].matches
+
         if (doesMatch === prevState.matches[x]) {
           return null
         }
@@ -106,13 +115,11 @@ export default class MediaQuery extends React.Component {
   }
 
   render () {
-    const props = {
-      matches: this.state.matches
-    }
-
-    props.matchesAny = props.matches.some(isTrue)
-    props.matchesAll = props.matches.every(isTrue)
-
-    return this.props.children(props)
+    const {matches} = this.state
+    return this.props.children({
+      matches,
+      matchesAny: matches.some(Boolean),
+      matchesAll: matches.every(Boolean)
+    })
   }
 }
