@@ -15,13 +15,9 @@ export {
 } from './utils'
 
 export {
-  // curlsTheme as theme,
-  injectRem,
-  // injectTheme,
-  // replaceTheme,
+  defaultBreakPoints,
   defaultColors,
-  // defaultHoverColors,
-  // defaultActiveColors,
+  defaultSpacingScale,
   defaultTypeFaces
 } from './theming'
 export ThemeProvider from './ThemeProvider'

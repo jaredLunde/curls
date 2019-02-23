@@ -221,21 +221,29 @@ function ViewportPopOver (props) {
         props.scrollY = vpProps.scrollY
       }
 
+      if (props.innerRef) {
+        props.ref = props.innerRef
+        delete props.innerRef
+      }
+
       return React.createElement(PopOverContainer, props)
     }
   })
 }
 
 
-export default function PopOver ({...props}, innerRef) {
-  const popOverDirection = getPosFromProps(props) || 'fromBottom'
-  return (props.transition || Drop)({
-    [popOverDirection]: true,
-    ...props,
-    children: function (popOverProps) {
-      popOverProps.children = props.children
-      popOverProps.popOverDirection = popOverDirection
-      return ViewportPopOver(popOverProps)
-    }
-  })
-}
+export default React.forwardRef(
+  function PopOver ({...props}, innerRef) {
+    const popOverDirection = getPosFromProps(props) || 'fromBottom'
+    return (props.transition || Drop)({
+      [popOverDirection]: true,
+      ...props,
+      children: function (popOverProps) {
+        popOverProps.children = props.children
+        popOverProps.popOverDirection = popOverDirection
+        popOverProps.innerRef = innerRef
+        return ViewportPopOver(popOverProps)
+      }
+    })
+  }
+)

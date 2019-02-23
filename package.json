@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "2.0.13",
+  "version": "2.0.15",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -38,7 +38,7 @@
     "build": "npm run build:es && npm run build:cjs",
     "build:es": "rm -rf dist/es && cross-env NODE_ENV=production BABEL_ENV=es babel src --out-dir dist/es && npm run prettier:es",
     "build:cjs": "rm -rf dist/cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs && npm run prettier:cjs",
-    "watch": "cross-env NODE_ENV=development BABEL_ENV=es babel ./src -w --out-dir dist/es",
+    "watch": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src -w --out-dir dist/es",
     "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/es/**/*.js\"",
     "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\"",
     "publish:dev": "yarn publish --tag dev",

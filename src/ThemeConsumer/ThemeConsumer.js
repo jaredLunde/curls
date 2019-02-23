@@ -1,5 +1,6 @@
 import React from 'react'
 import memoize from 'memoize-two-args'
+import {baseTheme} from '../theming'
 import {CurlsContext} from '../ThemeProvider'
 import getTheme from '../utils/getTheme'
 import emptyObj from 'empty/object'
@@ -7,27 +8,25 @@ import emptyObj from 'empty/object'
 
 const mergeGlobals_ = memoize(
   // this is memoized for defaultTheme merging efficiency and sCU in children
-  function (curlsTheme, theme) {
-    const base = {
-      colors: curlsTheme.colors,
-      typeFaces: curlsTheme.typeFaces
+  (curlsTheme, path) => {
+    const theme = curlsTheme[path]
+    const base = {}
+
+    for (let key in baseTheme) {
+      base[key] = curlsTheme[key]
     }
 
-    return theme === emptyObj ? base : Object.assign(base, theme)
-  }
+    return theme === emptyObj ? base : Object.assign(base, curlsTheme.locals, theme)
+  },
+  Map
 )
 
-function mergeGlobals (curlsTheme, props) {
+const mergeGlobals = (curlsTheme, props) => {
   if (props.path === void 0) {
     return !curlsTheme ? props.defaultTheme : getTheme(props.defaultTheme, curlsTheme)
   }
   else {
-    const theme = getTheme(
-      props.defaultTheme,
-      mergeGlobals_(curlsTheme, curlsTheme[props.path] || emptyObj)
-    )
-
-    return theme
+    return getTheme(props.defaultTheme, mergeGlobals_(curlsTheme, props.path))
   }
 }
 

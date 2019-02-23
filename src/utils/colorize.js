@@ -1,6 +1,5 @@
 import {css} from '@emotion/core'
 
 
-export default function colorize (property, color, theme) {
-  return css`${property}: ${theme.colors[color] || color};`
-}
+export default (property, color, theme) =>
+  color === false ? null : css`${property}: ${theme.colors[color] || color};`

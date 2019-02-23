@@ -1,17 +1,15 @@
 export const scale = {
-  xxs: 20,
-  xs: 36,
-  sm: 72,
-  md: 128,
-  lg: 172,
-  xl: 256,
-  xxl: 360
+  xxs: 1.25,
+  xs: 2.25,
+  sm: 4.5,
+  md: 8,
+  lg: 10.75,
+  xl: 16,
+  xxl: 22.5
 }
 
 
 export const defaultProps = {
   sm: true,
-  br: 5,
-  bw: 1,
-  bc: 'translucentLight'
+  br: 5
 }

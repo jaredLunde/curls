@@ -1,14 +1,3 @@
-export const breakpoints = {
-  xxs: `only screen and (max-width: 240px)`,
-  xs: `only screen and (max-width: 324px)`,
-  sm: `only screen and (max-width: 639px)`,
-  md: `only screen and (max-width: 1023px)`,
-  lg: `only screen and (max-width: 1279px)`,
-  xl: `only screen and (max-width: 1599px)`,
-  xxl: `only screen and (min-width: 0)`,
-}
-
-
 export const columns = {
   xxs: 2,
   xs: 4,
@@ -18,9 +7,3 @@ export const columns = {
   xl: 16,
   xxl: 16
 }
-
-
-export const userAgent =
-  typeof navigator === 'undefined'
-  ? 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
-  : navigator.userAgent

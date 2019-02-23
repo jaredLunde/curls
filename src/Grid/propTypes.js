@@ -1,4 +1,4 @@
-import {oneOfType, number, string} from 'prop-types'
+import {oneOfType, number, string, bool} from 'prop-types'
 
 
 const numOrStr = oneOfType([number, string])
@@ -11,4 +11,5 @@ export default {
   sm: numOrStr,
   xs: numOrStr,
   xxs: numOrStr,
+  useFlex: bool
 }

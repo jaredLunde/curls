@@ -1,7 +1,4 @@
-export default function getIn(obj, path) {
-  if (typeof obj === 'object' && obj !== null && path.length === 0) {
-    return obj[path]
-  }
-
-  return obj
-}
+export default (obj, path) =>
+  typeof obj === 'object' && obj !== null && path.length === 0
+    ? obj[path]
+    : obj

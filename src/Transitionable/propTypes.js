@@ -1,4 +1,4 @@
-import {bool, string, number, oneOfType} from 'prop-types'
+import {bool, string, arrayOf, number, oneOfType} from 'prop-types'
 
 
 export default {
@@ -9,5 +9,5 @@ export default {
   // transition-delay (in ms)
   delay: number,
   // transition-property
-  property: string
+  property: oneOfType([string, arrayOf(string)])
 }

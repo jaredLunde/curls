@@ -17,13 +17,14 @@ export function isDirectional (value) {
   return typeof value === 'string' && value.length > 1
 }
 
-export default function directionalScale (
+export default (
   prefix,
   modScale,
   modValue,
   theme,
-  directions = defaultDirections
-) {
+  directions = defaultDirections,
+  unit = 'px'
+) => {
   let CSS = []
 
   String(modValue).split(' ').forEach(
@@ -42,7 +43,7 @@ export default function directionalScale (
 
       direction.forEach(
         function (xyz) {
-          CSS.push(css`${prefix.replace('{XYZ}', xyz)}: ${toSize(modScale[value])};`)
+          CSS.push(css`${prefix.replace('{XYZ}', xyz)}: ${toSize(modScale[value], unit)};`)
         }
       )
     }

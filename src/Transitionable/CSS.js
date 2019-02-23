@@ -1,24 +1,19 @@
 import {css} from '@emotion/core'
+import {nullIfFalse} from '../utils'
 
 
-export function duration (value, theme) {
-  return css`transition-duration: ${theme.duration[value] || value}ms;`
-}
-
-export function easing (value, theme) {
+export const duration = nullIfFalse(
+  (value, theme) => css`transition-duration: ${theme.duration[value] || value}ms;`
+)
+export const easing = nullIfFalse((value, theme) => {
   let easing = theme.easing[value] || value
   easing = typeof easing === 'string' ? easing : `cubic-bezier(${easing.join(',')})`
 
   return css`transition-timing-function: ${easing};`
-}
-
-export function delay (value, theme) {
-  return css`transition-delay: ${value}ms;`
-}
-
-
-export function property (value, theme) {
-  return css`transition-property: ${
+})
+export const delay = nullIfFalse(value => css`transition-delay: ${value}ms;`)
+export const property = nullIfFalse(value =>
+  css`transition-property: ${
     typeof value === 'string' ? value : value.join(',')
   };`
-}
+)

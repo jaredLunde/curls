@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {GridBox} from '../Box'
+import {FlexBox} from '../Box'
 import {pos, w} from '../Box/CSS'
 import {flex, column} from '../Flex/CSS'
 import createComponent, {renderNode} from '../createComponent'
@@ -73,7 +73,7 @@ export default React.forwardRef(
           return renderNode(nodeProps, defaultCSS)
         }
 
-        return GridBox(boxProps)
+        return FlexBox(boxProps)
       }
     })
   }

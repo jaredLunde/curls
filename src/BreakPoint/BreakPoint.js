@@ -7,7 +7,7 @@ import * as defaultTheme from '../Grid/defaultTheme'
 
 function getSizes (props, theme) {
   const sizes = []
-  const keys = Object.keys(theme.breakpoints)
+  const keys = Object.keys(theme.breakPoints)
 
   for (let x = 0; x < keys.length; x++) {
     const k = keys[x]
@@ -23,9 +23,9 @@ const memoizedFindBreakPoints = memoize(
   function (theme, ...sizes) {
     const breakPoints = []
 
-    for (let size in theme.breakpoints) {
+    for (let size in theme.breakPoints) {
       if (sizes.indexOf(size) > -1) {
-        breakPoints.push(theme.breakpoints[size])
+        breakPoints.push(theme.breakPoints[size])
       }
     }
 

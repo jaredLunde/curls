@@ -1,44 +1,22 @@
 import {css} from '@emotion/core'
+import {fastMemoize, nullIfFalse} from '../utils'
 
 
-export function xxs (v, t) {
-  return t.scale['xxs']
-}
+const themeScale = fastMemoize('buttonSize', s => nullIfFalse(
+  (_, t, p) => typeof t.scale[s] === 'function' ? t.scale[s](t, p) : t.scale[s]
+))
+export const xxs = themeScale('xxs')
+export const xs = themeScale('xs')
+export const sm = themeScale('sm')
+export const md = themeScale('md')
+export const lg = themeScale('lg')
+export const xl = themeScale('xl')
+export const xxl = themeScale('xxl')
+export const size = (s, t, p) => themeScale(s)(true, t, p)
 
-
-export function xs (v, t) {
-  return t.scale['xs']
-}
-
-
-export function sm (v, t) {
-  return t.scale['sm']
-}
-
-
-export function md (v, t) {
-  return t.scale['md']
-}
-
-
-export function lg (v, t) {
-  return t.scale['lg']
-}
-
-
-export function xl (v, t) {
-  return t.scale['xl']
-}
-
-
-export function xxl (v, t) {
-  return t.scale['xxl']
-}
-
-
-export function __buttonStyles (v, t, props) {
+export function __buttonStyles (v, t, p) {
   return css`
-    ${t.getHoverClass(props, t)};
-    ${t.getActiveClass(props, t)}
+    ${t.getHoverClass(t, p)};
+    ${t.getActiveClass(t, p)}
   `
 }

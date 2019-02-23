@@ -1,7 +1,7 @@
 import {css} from '@emotion/core'
 
 
-export default function withHoverQuery (CSS, noneCSS) {
+export default (CSS, noneCSS) => {
   return css`
     ${CSS};
 

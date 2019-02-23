@@ -2,18 +2,15 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 import createComponent from '../createComponent'
-import {reorderBreakpoints} from './utils'
+import {orderBreakPoints} from './utils'
 
 
-const SFC = createComponent({
+export const plugins = [orderBreakPoints]
+export default createComponent({
   name: 'Grid',
   propTypes,
   CSS,
   defaultTheme,
-  themePath: 'grid'
+  themePath: 'grid',
+  plugins
 })
-
-
-export default function (props) {
-  return SFC(reorderBreakpoints(props))
-}

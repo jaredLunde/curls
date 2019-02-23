@@ -9,6 +9,7 @@ export default {
   lg: bool,
   xl: bool,
   xxl: bool,
+  size: string,
   // for object-fit polyfilling
   src: string,
   defaultSrc: string,

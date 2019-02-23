@@ -10,6 +10,7 @@ export default {
   lg: bool,
   xl: bool,
   xxl: bool,
+  size: string,
   // Weights
   thin: bool,
   ultraLight: bool,

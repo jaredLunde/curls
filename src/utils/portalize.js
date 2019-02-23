@@ -4,7 +4,7 @@ import ThemeConsumer from '../ThemeConsumer'
 import ThemeProvider from '../ThemeProvider'
 
 
-export default function portalize (Component, portal) {
+export default (Component, portal) => {
   if (portal === false || portal === void 0 || portal === null) {
     return Component
   }

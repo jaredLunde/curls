@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import emptyObj from 'empty/object'
 import {ViewportProvider} from '@render-props/viewport'
-import {ThemeContext, Global} from '@emotion/core'
+import {css, ThemeContext, Global} from '@emotion/core'
+import {toSize} from '../utils'
 import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
 import ButtonGlobals from '../Button/global.css'
 import InputGlobals from '../Input/global.css'
@@ -47,10 +48,15 @@ export default class ThemeProvider extends React.Component {
   )
 
   render () {
+    const remCSS = css`
+      html {
+        font-size: ${toSize(this.state.theme.baseRem, 'px')}
+      }
+    `
     return (
       <ViewportProvider>
         <CurlsContext.Provider value={this.state}>
-          <Global styles={globalStyles}/>
+          <Global styles={[...globalStyles, remCSS]}/>
           {this.props.children}
         </CurlsContext.Provider>
       </ViewportProvider>

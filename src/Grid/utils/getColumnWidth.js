@@ -1,12 +1,14 @@
 import {css} from '@emotion/core'
 import {d} from '../../Box/CSS'
-import getBreakPoint from './getBreakPoint'
+import {flex} from '../../Flex/CSS'
+import {getMediaQuery} from '../../utils'
 
 
-const mediaQuery = q => content => css`@media ${q}`
+export default (size, x, theme, props) => {
+  if (x === false) {
+    return null
+  }
 
-
-export default function (size, x, theme) {
   x = parseInt(x)
   const numColumns = theme.columns[size]
 
@@ -19,10 +21,11 @@ export default function (size, x, theme) {
   const width = `${(x / numColumns) * 100}%`
 
   return css`
-    ${mediaQuery(getBreakPoint(size, theme))} {
-      ${x === 0 ? d.none : void 0};
+    ${getMediaQuery(size, theme)} {
+      ${x === 0 ? d.none : props.d ? d[props.d] : props.flex ? flex : 'display: initial'};
       max-width: ${width};
-      flex-basis: ${width};
+      ${props.useFlex && `flex-basis: ${width}`};
     }
   `
+  // : `width: ${width}`
 }

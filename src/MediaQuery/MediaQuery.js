@@ -34,6 +34,7 @@ export default class MediaQuery extends React.Component {
 
     if (props.defaultMatches === void 0 || typeof window !== 'undefined') {
       this.state = this.updateMatches()
+      // this.state = {matches: []}
     }
     else {
       this.state = {matches: props.defaultMatches}
@@ -41,7 +42,7 @@ export default class MediaQuery extends React.Component {
   }
 
   componentDidMount () {
-    // having this here fixes hydration issues
+    // having this here helps some hydration issues
     this.setState(this.updateMatches)
   }
 

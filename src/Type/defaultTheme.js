@@ -1,5 +1,5 @@
 // import {defaultColors, defaultTypeFaces} from '../theming'
-
+export const legible = ['lg', 'xl', 'xxl']
 
 export const scale = {
   xxs: 0.675,
