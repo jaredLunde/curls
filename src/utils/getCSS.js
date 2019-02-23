@@ -29,7 +29,8 @@ export default (props, theme, CSS) => {
     if (propVal !== void 0/*&& propVal !== false*/) {
       if (__DEV__) {
         if (typeof getter === 'string') {
-          throw 'CSS definitions can no longer contain strings. They must return @emotion/core css objects.'
+          throw 'CSS definitions can no longer contain strings. They must return '
+            + '@emotion/core css objects.'
         }
       }
 
@@ -75,14 +76,15 @@ export default (props, theme, CSS) => {
     }
   }
 
-  mediaQueries = getBreakPointOrder(theme.breakPoints)
-    .map(bp =>
-      mediaQueries[bp] !== void 0
-      && emotionCSS`@media ${theme.breakPoints[bp]} { ${mediaQueries[bp]} }`)
-    .filter(Boolean)
+  // ensures that breakpoints are always ordered in a descending fashion so that
+  // shorter max-widths don't get cascaded by longer ones
+  const bps = getBreakPointOrder(theme.breakPoints)
+  for (i = 0; i < bps.length; i++) {
+    const bp = bps[i]
 
-  if (mediaQueries.length > 0) {
-    css = css.concat(mediaQueries)
+    if (mediaQueries[bp] !== void 0) {
+      css.push(emotionCSS`@media ${theme.breakPoints[bp]} { ${mediaQueries[bp]} }`)
+    }
   }
 
   return css.length > 0 || style !== void 0 ? {css, style} : void 0
