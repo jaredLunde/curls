@@ -15,13 +15,13 @@ export const heavy = css`font-weight: 800;`
 export const ultraHeavy = css`font-weight: 900;`
 // Sizes
 const createSizeShortcut = fastMemoize('typeSize', s => (v, t, p) => fontSize(s, t, p))
-export const xxs = createSizeShortcut('xxs')
-export const xs = createSizeShortcut('xs')
-export const sm = createSizeShortcut('sm')
-export const md = createSizeShortcut('md')
-export const lg = createSizeShortcut('lg')
-export const xl = createSizeShortcut('xl')
-export const xxl = createSizeShortcut('xxl')
+// export const xxs = createSizeShortcut('xxs')
+// export const xs = createSizeShortcut('xs')
+// export const sm = createSizeShortcut('sm')
+// export const md = createSizeShortcut('md')
+// export const lg = createSizeShortcut('lg')
+// export const xl = createSizeShortcut('xl')
+// export const xxl = createSizeShortcut('xxl')
 export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
 // Face
 export const face = nullIfFalse((v, t) => css`font-family: ${t.faces[v] || v};`)

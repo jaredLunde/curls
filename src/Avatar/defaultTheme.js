@@ -1,3 +1,5 @@
+export const sizeUnit = 'rem'
+
 export const scale = {
   xxs: 1.25,
   xs: 2.25,
@@ -10,6 +12,6 @@ export const scale = {
 
 
 export const defaultProps = {
-  sm: true,
+  size: 'sm',
   br: 5
 }

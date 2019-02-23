@@ -1,6 +1,11 @@
 import {materialShadow} from './utils'
 
 
+export const borderRadiusUnit = 'rem'
+export const borderWidthUnit = 'px'
+export const sizeUnit = 'px'
+export const posUnit = 'px'
+
 export const borderWidthScale = [
   0,
   0.5,

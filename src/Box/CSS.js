@@ -68,30 +68,28 @@ export const bw = nullIfFalse((value, theme) => {
       border-style: solid;
       ${directionalScale(
         'border-{XYZ}-width', 
-      theme.borderWidthScale, 
-      value, 
-      theme, 
-      void 0, 
-      'px'
-    )};
+        theme.borderWidthScale, 
+        value,
+        theme.borderWidthUnit
+      )};
     `
   } else {
     return css`
       border-style: solid;
-      border-width: ${toSize(theme.borderWidthScale[value], 'px')};
+      border-width: ${toSize(theme.borderWidthScale[value], theme.borderWidthUnit)};
     `
   }
 })
-export const w = nullIfFalse(value => css`width: ${toSize(value)};`)
-export const h = nullIfFalse(value => css`height: ${toSize(value)};`)
-export const t = nullIfFalse(value => css`top: ${toSize(value)};`)
-export const r = nullIfFalse(value => css`right: ${toSize(value)};`)
-export const b = nullIfFalse(value => css`bottom: ${toSize(value)};`)
-export const l = nullIfFalse(value => css`left: ${toSize(value)};`)
-export const minW = nullIfFalse(value => css`min-width: ${toSize(value)};`)
-export const minH = nullIfFalse(value => css`min-height: ${toSize(value)};`)
-export const maxW = nullIfFalse(value => css`max-width: ${toSize(value)};`)
-export const maxH = nullIfFalse(value => css`max-height: ${toSize(value)};`)
+export const w = nullIfFalse((v, t) => css`width: ${toSize(v, t.sizeUnit)};`)
+export const h = nullIfFalse((v, t) => css`height: ${toSize(v, t.sizeUnit)};`)
+export const minW = nullIfFalse((v, t) => css`min-width: ${toSize(v, t.sizeUnit)};`)
+export const minH = nullIfFalse((v, t) => css`min-height: ${toSize(v, t.sizeUnit)};`)
+export const maxW = nullIfFalse((v, t) => css`max-width: ${toSize(v, t.sizeUnit)};`)
+export const maxH = nullIfFalse((v, t) => css`max-height: ${toSize(v, t.sizeUnit)};`)
+export const t = nullIfFalse((v, t) => css`top: ${toSize(v, t.posUnit)};`)
+export const r = nullIfFalse((v, t) => css`right: ${toSize(v, t.posUnit)};`)
+export const b = nullIfFalse((v, t) => css`bottom: ${toSize(v, t.posUnit)};`)
+export const l = nullIfFalse((v, t) => css`left: ${toSize(v, t.posUnit)};`)
 
 const borderRadiusDirections = {
   t: ['top-right', 'top-left'],
@@ -113,13 +111,12 @@ export const br = nullIfFalse((value, theme) => {
         'border-{XYZ}-radius',
         borderRadiusScale,
         value,
-        theme,
+        theme.borderRadiusUnit,
         borderRadiusDirections,
-        'rem'
       )};
     `
   } else {
-    return css`border-radius: ${toSize(borderRadiusScale[value], 'rem')};`
+    return css`border-radius: ${toSize(borderRadiusScale[value], theme.borderRadiusUnit)};`
   }
 })
 
@@ -127,16 +124,26 @@ export const m = nullIfFalse((value, theme) => {
   const {spacingScale} = theme
 
   if (isDirectional(value)) {
-    return directionalScale('margin-{XYZ}', spacingScale, value, theme, void 0, 'rem')
+    return directionalScale(
+      'margin-{XYZ}',
+      spacingScale,
+      value,
+      theme.spacingUnit
+    )
   } else {
-    return css`margin: ${toSize(spacingScale[value], 'rem')};`
+    return css`margin: ${toSize(spacingScale[value], theme.spacingUnit)};`
   }
 })
 
 export const p = nullIfFalse((value, theme) => {
   if (isDirectional(value)) {
-    return directionalScale('padding-{XYZ}', theme.spacingScale, value, theme, void 0, 'rem')
+    return directionalScale(
+      'padding-{XYZ}',
+      theme.spacingScale,
+      value,
+      theme.spacingUnit
+    )
   } else {
-    return css`padding: ${toSize(theme.spacingScale[value], 'rem')};`
+    return css`padding: ${toSize(theme.spacingScale[value], theme.spacingUnit)};`
   }
 })

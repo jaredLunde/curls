@@ -36,7 +36,7 @@ const defaultCSS = css`
   }
 
   & > * {
-    ${w('100%')};
+    width: 100%;
   }
 
   & > img,

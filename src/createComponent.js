@@ -18,10 +18,7 @@ const composeThemePlugins = (...funcs) => {
 
 export const renderNode = (nodeProps, defaultCSS) => {
   if (defaultCSS !== void 0) {
-    nodeProps.css =
-      nodeProps.css === void 0 || nodeProps.css === null || nodeProps.css === false
-        ? defaultCSS
-        : [defaultCSS, nodeProps.css]
+    nodeProps.css = nodeProps.css ? [defaultCSS, nodeProps.css] : defaultCSS
   }
 
   return renderNodeFast(nodeProps)

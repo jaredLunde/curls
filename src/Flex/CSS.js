@@ -9,7 +9,9 @@ export const fluid = css`
 `
 export const grow = nullIfFalse(value => css`flex-grow: ${value === true ? 1 : value};`)
 export const shrink = nullIfFalse(value => css`flex-shrink: ${value === true ? 1 : value};`)
-export const basis = nullIfFalse(value => css`flex-basis: ${toSize(value)};`)
+export const basis = nullIfFalse(
+  (value, theme) => css`flex-basis: ${toSize(value, theme.basisUnit)};`
+)
 export const order = nullIfFalse(value => css`order: ${value};`)
 
 const rowCSS = css`flex-direction: row;`

@@ -1,5 +1,5 @@
 import React from 'react'
-import {css, ClassNames} from '@emotion/core'
+import {css} from '@emotion/core'
 import emptyObj from 'empty/object'
 import {portalize} from '../utils'
 import Overlay from '../Overlay'

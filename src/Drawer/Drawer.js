@@ -1,6 +1,6 @@
 import React from 'react'
 import emptyObj from 'empty/object'
-import {css, ClassNames} from '@emotion/core'
+import {css} from '@emotion/core'
 import {portalize} from '../utils'
 import {maxZIndex} from '../browser'
 import {FlexBox} from '../Box'

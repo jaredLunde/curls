@@ -1,2 +1,2 @@
 export getColumnWidth from './getColumnWidth'
-export orderBreakPoints from './orderBreakPoints'
+export insertBreakPoints from './insertBreakPoints'

@@ -17,9 +17,8 @@ export function getFocusClass (theme, props) {
 }
 
 export const defaultProps = {
-  bg: 'white',
-  p: 2,
-  bc: 'translucentLight',
+  size: 'sm',
+  p: 'x3 y2',
   bw: 1,
   br: 5
 }

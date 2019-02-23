@@ -1,4 +1,4 @@
-import deepMerge from '../utils/deepMerge'
+import getTheme from '../utils/getTheme'
 import * as polished from 'polished'
 
 export const defaultBreakPoints =  {
@@ -43,35 +43,35 @@ export const defaultSpacingScale = [
 export const baseTheme = {
   colors: defaultColors,
   baseRem: '100%',
-  spacingScale: defaultSpacingScale,
   breakPoints: defaultBreakPoints,
+  spacingScale: defaultSpacingScale,
+  spacingUnit: 'rem',
+  sizeUnit: 'px'
 }
 
 function throwThemeError (theme) {
-  if (theme.colors === void 0) {
-    throw new Error(`Curls themes must include a global 'colors' property.`)
+
+  for (let key in baseTheme) {
+    if (theme[key] === void 0 || theme[key] === null || theme[key] === false) {
+      throw new Error(`Curls themes must include a global '${key}' property.`)
+    }
   }
 }
 
-export function replaceTheme (prevTheme, theme) {
+export const mergeTheme = (prevTheme, theme) => {
   let nextTheme
-  theme = {...baseTheme, ...theme}
+  theme = getTheme(prevTheme, theme)
+  nextTheme = theme
 
   if (__DEV__) {
     throwThemeError(nextTheme)
   }
 
-  if (!__DEV__) {
-    nextTheme = theme
-  }
-
   return nextTheme
 }
 
-export default function injectTheme (prevTheme, theme) {
-  let nextTheme
-  theme = deepMerge(prevTheme, theme)
-  nextTheme = theme
+export default theme => {
+  let nextTheme = getTheme(baseTheme, theme)
 
   if (__DEV__) {
     throwThemeError(nextTheme)

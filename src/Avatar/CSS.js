@@ -16,19 +16,12 @@ function getAvatarSize (size, val, theme, props) {
   }
 
   return css`
-    width: ${toSize(avatarSize, 'rem')};
-    height: ${toSize(avatarSize, 'rem')};
+    width: ${toSize(avatarSize, theme.sizeUnit)};
+    height: ${toSize(avatarSize, theme.sizeUnit)};
   `
 }
 
 const createSizeShortcut = fastMemoize('avatarSize', s => (v, t, p) => getAvatarSize(s, v, t, p))
-export const xxs = createSizeShortcut('xxs')
-export const xs = createSizeShortcut('xs')
-export const sm = createSizeShortcut('sm')
-export const md = createSizeShortcut('md')
-export const lg = createSizeShortcut('lg')
-export const xl = createSizeShortcut('xl')
-export const xxl = createSizeShortcut('xxl')
 export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
 export const orientation = nullIfFalse(v => {
   let height, width

@@ -36,9 +36,9 @@ const defaultCSS = css`
   ${column.column};
   ${align.center};
   ${justify.center};
-  ${w('100%')};
   ${pos.relative};
   ${ov.touch};
+  width: 100%;
 `
 const SFC = createComponent({name: 'Hero', themePath: 'hero'})
 

@@ -1,7 +1,7 @@
 import {css} from '@emotion/core'
 import * as polished from 'polished'
+import {defaultColors} from '../ThemeProvider/createTheme'
 import {antialias, optimizeFor} from './CSS'
-import {defaultColors} from '../theming'
 import {faces} from './defaultTheme'
 
 

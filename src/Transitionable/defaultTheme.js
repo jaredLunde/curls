@@ -1,7 +1,7 @@
 export const duration = {
   veryFast: 80,
   fast: 160,
-  med: 320,
+  normal: 320,
   slow: 480,
   verySlow: 960
 }
@@ -21,5 +21,5 @@ export const easing = {
 }
 
 export const defaultProps = {
-  duration: 'med'
+  duration: 'normal'
 }

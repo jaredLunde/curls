@@ -3,10 +3,13 @@ import {getColumnWidth} from './utils'
 
 
 const createBreakPointShortcut = fastMemoize('gridSize', s => (v, t, p) => getColumnWidth(s, v, t, p))
-export const xxs = createBreakPointShortcut('xxs')
-export const xs = createBreakPointShortcut('xs')
-export const sm = createBreakPointShortcut('sm')
-export const md = createBreakPointShortcut('md')
-export const lg = createBreakPointShortcut('lg')
-export const xl = createBreakPointShortcut('xl')
-export const xxl = createBreakPointShortcut('xxl')
+
+export const __gridBreakPoints = (v, t, p) => {
+  const css = []
+
+  for (let size in v) {
+    css.push(createBreakPointShortcut(size)(v[size], t, p))
+  }
+
+  return css
+}

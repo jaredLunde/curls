@@ -1,7 +1,6 @@
 import {css} from '@emotion/core'
 import {withHoverQuery} from '../utils'
 
-// export colors from '../theming/defaultColors'
 
 export function getHoverClass (theme, props) {
   // adds css classes for hover and active states

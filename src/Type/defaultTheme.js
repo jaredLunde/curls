@@ -1,4 +1,3 @@
-// import {defaultColors, defaultTypeFaces} from '../theming'
 export const legible = ['lg', 'xl', 'xxl']
 
 export const scale = {
@@ -10,6 +9,8 @@ export const scale = {
   xl: 2.25,
   xxl: 3
 }
+
+export const sizeUnit = 'rem'
 
 export const faces = {
   system: '-apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Helvetica", sans-serif'

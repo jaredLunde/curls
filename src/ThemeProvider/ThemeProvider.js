@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 import emptyObj from 'empty/object'
 import {ViewportProvider} from '@render-props/viewport'
 import {css, ThemeContext, Global} from '@emotion/core'
+import createTheme, {mergeTheme, baseTheme} from './createTheme'
 import {toSize} from '../utils'
-import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
 import ButtonGlobals from '../Button/global.css'
 import InputGlobals from '../Input/global.css'
 import LinkGlobals from '../Link/global.css'
 import TextAreaGlobals from '../TextArea/global.css'
 import TypeGlobals from '../Type/global.css'
-
 
 export const CurlsContext = ThemeContext
 const globalStyles = [TypeGlobals, ButtonGlobals, LinkGlobals, InputGlobals, TextAreaGlobals]
@@ -26,7 +25,7 @@ export default class ThemeProvider extends React.Component {
 
   constructor (props) {
     super(props)
-    const userTheme = injectTheme(baseTheme, props.theme)
+    const userTheme = createTheme(props.theme)
     this.state = {
       userTheme,
       theme: Object.assign({}, userTheme),
@@ -37,21 +36,21 @@ export default class ThemeProvider extends React.Component {
 
   componentDidUpdate ({theme}) {
     if (this.props.theme !== theme) {
-      const userTheme = injectTheme(baseTheme, this.props.theme)
+      const userTheme = mergeTheme(baseTheme, this.props.theme)
       this.setState(state => ({userTheme, theme: Object.assign(state.theme, userTheme) }))
     }
   }
 
   setTheme = userTheme => this.setState(
     state => {
-      const userTheme = {userTheme: injectTheme(state.userTheme, userTheme)}
+      const userTheme = {userTheme: mergeTheme(state.userTheme, userTheme)}
       return {userTheme, theme: Object.assign(state.theme, userTheme)}
     }
   )
 
   replaceTheme = userTheme => this.setState(
-    state => {
-      const userTheme = replaceTheme(state.userTheme, userTheme)
+    () => {
+      const userTheme = createTheme(userTheme)
       return {userTheme, theme: Object.assign({}, userTheme)}
     }
   )

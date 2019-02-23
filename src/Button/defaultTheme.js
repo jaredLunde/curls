@@ -15,7 +15,7 @@ export const scale = {
 export const defaultProps = {
   br: 5,
   bw: 1,
-  sm: true,
+  size: 'sm',
   role: 'button'
 }
 

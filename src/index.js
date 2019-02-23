@@ -14,12 +14,11 @@ export {
   withHoverQuery
 } from './utils'
 
-export {
+export ThemeProvider, {
   defaultBreakPoints,
   defaultColors,
   defaultSpacingScale
-} from './theming'
-export ThemeProvider from './ThemeProvider'
+} from './ThemeProvider'
 export ThemeConsumer from './ThemeConsumer'
 
 export createComponent, {renderNode, renderNodeFast} from './createComponent'
@@ -29,7 +28,6 @@ export BreakPoint from './BreakPoint'
 export Button from './Button'
 export Card from './Card'
 export Col from './Col'
-export CheckBox from './CheckBox'
 export Divider from './Divider'
 export Drawer, {DrawerBox, DrawerConsumer} from './Drawer'
 export Drop from './Drop'

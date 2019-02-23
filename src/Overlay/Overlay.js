@@ -25,10 +25,10 @@ const defaultCSS = css`
   ${align.center};
   ${justify.center};
   ${pos.fixed};
-  ${w('100%')};
-  ${h('100%')};
   ${ov.auto};
   ${ov.touch};
+  width: 100%;
+  height: 100%;
   left: 0;
   top: 0;
 `

@@ -1,4 +1,5 @@
 import {css} from '@emotion/core'
+import {toSize} from '../../utils'
 import {optimizeFor, antialias} from '../CSS'
 
 
@@ -16,7 +17,7 @@ export default function fontSize (size, theme, props) {
     fontSize = fontSize(theme, props)
   }
   else if (typeOfFontSize !== 'object') {
-    fontSize = css`font-size: ${fontSize}rem;`
+    fontSize = css`font-size: ${toSize(fontSize, theme.sizeUnit)};`
   }
 
   return css`

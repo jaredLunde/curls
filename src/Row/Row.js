@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {pos, w} from '../Box/CSS'
+import {pos} from '../Box/CSS'
 import {flex, row, wrap} from '../Flex/CSS'
 import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
@@ -8,8 +8,8 @@ import createComponent, {renderNode} from '../createComponent'
 
 const as = 'div'
 const defaultCSS = css`
+  width: 100%;
   ${pos.relative};
-  ${w('100%')};
   ${flex};
   ${row.row};
   ${wrap.wrap};

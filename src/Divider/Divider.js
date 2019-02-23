@@ -9,11 +9,10 @@ import emptyObj from 'empty/object'
 
 const as = 'div'
 const defaultCSS = css`
-  ${w('100%')};
-  ${h(1)};
+  width: 100%;
   min-height: 1px;
-  ${pos.relative};
   clear: both;
+  ${pos.relative};
 `
 const SFC = createComponent({
   name: 'Divider',

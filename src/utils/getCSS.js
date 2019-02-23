@@ -41,14 +41,14 @@ export default (props, theme, CSS) => {
         result = getCSS(getter, propVal, theme, props)
 
         if (result !== void 0 && result !== null) {
-          if (Array.isArray(result)) {
-            css = css.concat(result)
+          if (Array.isArray(result) === true) {
+            css.push.apply(css, result)
           }
           else if (typeof result === 'object' && result.styles !== void 0) {
             css.push(result)
           }
           else {
-            style = style === void 0 ? result : Object.assign(style, result)
+            style = style === void 0 ? Object.assign({}, result) : Object.assign(style, result)
           }
         }
       }
@@ -64,7 +64,14 @@ export default (props, theme, CSS) => {
 
             if (cssValue !== null) {
               if (breakPoint !== void 0 && breakPoint.length > 0) {
-                (mediaQueries[breakPoint] = mediaQueries[breakPoint] || []).push(cssValue)
+                mediaQueries[breakPoint] = mediaQueries[breakPoint] || []
+
+                if (Array.isArray(cssValue) === true) {
+                  mediaQueries[breakPoint].push.apply(mediaQueries[breakPoint], cssValue)
+                }
+                else {
+                  mediaQueries[breakPoint].push(cssValue)
+                }
               }
               else {
                 css.push(cssValue)
@@ -83,7 +90,7 @@ export default (props, theme, CSS) => {
     const bp = bps[i]
 
     if (mediaQueries[bp] !== void 0) {
-      css.push(emotionCSS`@media ${theme.breakPoints[bp]} { ${mediaQueries[bp]} }`)
+      css.push(emotionCSS`@media ${theme.breakPoints[bp]} { ${mediaQueries[bp]}; }`)
     }
   }
 
