@@ -3,6 +3,5 @@ export injectTheme, {
   baseTheme,
   defaultBreakPoints,
   defaultColors,
-  defaultSpacingScale,
-  defaultTypeFaces
+  defaultSpacingScale
 } from './injectTheme'

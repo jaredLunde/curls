@@ -10,6 +10,11 @@ export const scale = {
   xl: 2.25,
   xxl: 3
 }
+
+export const faces = {
+  system: '-apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Helvetica", sans-serif'
+}
+
 // export const colors = defaultColors
 // export const typeFaces = defaultTypeFaces
 export const defaultProps = {}

@@ -17,17 +17,19 @@ const globalStyles = [TypeGlobals, ButtonGlobals, LinkGlobals, InputGlobals, Tex
 
 export default class ThemeProvider extends React.Component {
   static propTypes = {
-    theme: PropTypes.object
+    userTheme: PropTypes.object
   }
 
   static defaultProps = {
-    theme: emptyObj
+    userTheme: emptyObj
   }
 
   constructor (props) {
     super(props)
+    const userTheme = injectTheme(baseTheme, props.theme)
     this.state = {
-      theme: injectTheme(baseTheme, props.theme),
+      userTheme,
+      theme: Object.assign({}, userTheme),
       setTheme: this.setTheme,
       replaceTheme: this.replaceTheme
     }
@@ -35,22 +37,29 @@ export default class ThemeProvider extends React.Component {
 
   componentDidUpdate ({theme}) {
     if (this.props.theme !== theme) {
-      this.setState({theme: injectTheme(baseTheme, this.props.theme)})
+      const userTheme = injectTheme(baseTheme, this.props.theme)
+      this.setState(state => ({userTheme, theme: Object.assign(state.theme, userTheme) }))
     }
   }
 
-  setTheme = theme => this.setState(
-    prevState => ({theme: injectTheme(prevState.theme, theme)})
+  setTheme = userTheme => this.setState(
+    state => {
+      const userTheme = {userTheme: injectTheme(state.userTheme, userTheme)}
+      return {userTheme, theme: Object.assign(state.theme, userTheme)}
+    }
   )
 
-  replaceTheme = theme => this.setState(
-    prevState => ({theme: replaceTheme(prevState.theme, theme)})
+  replaceTheme = userTheme => this.setState(
+    state => {
+      const userTheme = replaceTheme(state.userTheme, userTheme)
+      return {userTheme, theme: Object.assign({}, userTheme)}
+    }
   )
 
   render () {
     const remCSS = css`
       html {
-        font-size: ${toSize(this.state.theme.baseRem, 'px')}
+        font-size: ${toSize(this.state.userTheme.baseRem, 'px')}
       }
     `
     return (

@@ -40,24 +40,16 @@ export const defaultSpacingScale = [
   32
 ]
 
-export const defaultTypeFaces = {
-  system: '-apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Helvetica", sans-serif'
-}
-
 export const baseTheme = {
-  breakPoints: defaultBreakPoints,
   colors: defaultColors,
   baseRem: '100%',
   spacingScale: defaultSpacingScale,
-  userAgent: typeof navigator === 'undefined'
-    ? 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
-    : navigator.userAgent,
-  typeFaces: defaultTypeFaces
+  breakPoints: defaultBreakPoints,
 }
 
 function throwThemeError (theme) {
-  if (theme.colors === void 0 || theme.typeFaces === void 0) {
-    throw new Error(`Curls themes must include a global 'colors' and 'typeFaces' property.`)
+  if (theme.colors === void 0) {
+    throw new Error(`Curls themes must include a global 'colors' property.`)
   }
 }
 

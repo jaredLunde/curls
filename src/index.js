@@ -17,8 +17,7 @@ export {
 export {
   defaultBreakPoints,
   defaultColors,
-  defaultSpacingScale,
-  defaultTypeFaces
+  defaultSpacingScale
 } from './theming'
 export ThemeProvider from './ThemeProvider'
 export ThemeConsumer from './ThemeConsumer'

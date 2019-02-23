@@ -15,18 +15,21 @@ const mergeGlobals_ = memoize(
     for (let key in baseTheme) {
       base[key] = curlsTheme[key]
     }
+    base.locals = curlsTheme.locals
 
-    return theme === emptyObj ? base : Object.assign(base, curlsTheme.locals, theme)
+    return theme === emptyObj ? base : Object.assign(base, theme)
   },
   Map
 )
 
-const mergeGlobals = (curlsTheme, props) => {
+const mergeGlobals = ({userTheme, theme}, props) => {
   if (props.path === void 0) {
-    return !curlsTheme ? props.defaultTheme : getTheme(props.defaultTheme, curlsTheme)
+    return theme
   }
   else {
-    return getTheme(props.defaultTheme, mergeGlobals_(curlsTheme, props.path))
+    const componentTheme = getTheme(props.defaultTheme, mergeGlobals_(userTheme, props.path))
+    theme[props.path] = getTheme(props.defaultTheme, userTheme[props.path])
+    return componentTheme
   }
 }
 
@@ -34,7 +37,7 @@ export default function ThemeConsumer (props) {
   const consumerProps = {}
 
   function Consumer (consumerContext) {
-    consumerProps.theme = mergeGlobals(consumerContext.theme, props)
+    consumerProps.theme = mergeGlobals(consumerContext, props)
     consumerProps.setTheme = consumerContext.setTheme
     consumerProps.replaceTheme = consumerContext.replaceTheme
     return props.children(consumerProps)

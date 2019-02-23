@@ -1,7 +1,8 @@
 import {css} from '@emotion/core'
 import * as polished from 'polished'
 import {antialias, optimizeFor} from './CSS'
-import {defaultTypeFaces, defaultColors} from '../theming'
+import {defaultColors} from '../theming'
+import {faces} from './defaultTheme'
 
 
 const hiDPI = polished.hiDPI(1.5)
@@ -20,7 +21,7 @@ export default css`
 
   body {
     ${optimizeFor.speed};
-    font-family: ${defaultTypeFaces.system};
+    font-family: ${faces.system};
     color: ${defaultColors.darkGrey};
     ${hiDPI} {
       ${optimizeFor.legibility};

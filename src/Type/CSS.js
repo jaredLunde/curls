@@ -24,7 +24,7 @@ export const xl = createSizeShortcut('xl')
 export const xxl = createSizeShortcut('xxl')
 export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
 // Face
-export const face = nullIfFalse((v, t) => css`font-family: ${t.typeFaces[v] || v};`)
+export const face = nullIfFalse((v, t) => css`font-family: ${t.faces[v] || v};`)
 // Color
 export const color = (v, t) => colorize('color', v, t) // colorize implements nullIfFalse
 // Alignment

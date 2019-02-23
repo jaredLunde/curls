@@ -1,6 +1,7 @@
 import {css as emotionCSS} from '@emotion/core'
 import getBreakPointOrder from './getBreakPointOrder'
 
+
 const getCSS = (fn, value, theme, props) => (
   typeof fn === 'object' && fn.styles !== void 0
     ? value === false
@@ -14,6 +15,7 @@ const getCSS = (fn, value, theme, props) => (
 export default (props, theme, CSS) => {
   let i,
       css = [],
+      mediaQueries = {},
       style,
       propKeys = Object.keys(props)
 
@@ -36,22 +38,32 @@ export default (props, theme, CSS) => {
       if (propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
         // these are just regular values, no media queries
         result = getCSS(getter, propVal, theme, props)
+
+        if (result !== void 0 && result !== null) {
+          if (Array.isArray(result)) {
+            css = css.concat(result)
+          }
+          else if (typeof result === 'object' && result.styles !== void 0) {
+            css.push(result)
+          }
+          else {
+            style = style === void 0 ? result : Object.assign(style, result)
+          }
+        }
       }
       else {
         // this parses values with media queries
-        let mediaQueries = {},
-            plainCSS = [],
-            values = propVal.split(' ')
+        let values = propVal.split(' ')
 
         for (i = 0; i < values.length; i++) {
           if (values[i].length) {
+            // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
             const [value, breakPoint] = values[i].split('@')
             const cssValue = getCSS(getter, value, theme, props)
 
             if (cssValue !== null) {
               if (breakPoint !== void 0 && breakPoint.length > 0) {
-                mediaQueries[breakPoint] =
-                  emotionCSS`@media ${theme.breakPoints[breakPoint]} { ${cssValue} }`
+                (mediaQueries[breakPoint] = mediaQueries[breakPoint] || []).push(cssValue)
               }
               else {
                 css.push(cssValue)
@@ -59,30 +71,19 @@ export default (props, theme, CSS) => {
             }
           }
         }
-
-        mediaQueries = getBreakPointOrder(theme.breakPoints)
-          .map(bp => mediaQueries[bp])
-          .filter(Boolean)
-        css = css.concat(plainCSS.length ? plainCSS.concat(mediaQueries) : mediaQueries)
-      }
-
-      if (result !== void 0 && result !== null) {
-        if (Array.isArray(result)) {
-          css = css.concat(result)
-        }
-        else if (typeof result === 'object' && result.styles !== void 0) {
-          css.push(result)
-        }
-        else {
-          style = style === void 0 ? result : Object.assign(style, result)
-        }
       }
     }
   }
 
-  if (css.length === 0 && style === void 0) {
-    return
+  mediaQueries = getBreakPointOrder(theme.breakPoints)
+    .map(bp =>
+      mediaQueries[bp] !== void 0
+      && emotionCSS`@media ${theme.breakPoints[bp]} { ${mediaQueries[bp]} }`)
+    .filter(Boolean)
+
+  if (mediaQueries.length > 0) {
+    css = css.concat(mediaQueries)
   }
 
-  return {css, style}
+  return css.length > 0 || style !== void 0 ? {css, style} : void 0
 }

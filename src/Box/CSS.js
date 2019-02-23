@@ -60,6 +60,8 @@ export const bg = (value, theme) => colorize('background', value, theme)
 export const sh = nullIfFalse((value, theme) => theme.getBoxShadow(value, theme))
 // colorize already implements nullIfFalse
 export const bc = (value, theme) => colorize('border-color', value, theme)
+// we don't use rem for border-width because it doesn't have business being relative to the
+// size of the font or zoom of the screen
 export const bw = nullIfFalse((value, theme) => {
   if (isDirectional(value)) {
     return css`
@@ -70,13 +72,13 @@ export const bw = nullIfFalse((value, theme) => {
       value, 
       theme, 
       void 0, 
-      'rem'
+      'px'
     )};
     `
   } else {
     return css`
       border-style: solid;
-      border-width: ${toSize(theme.borderWidthScale[value], 'rem')};
+      border-width: ${toSize(theme.borderWidthScale[value], 'px')};
     `
   }
 })
