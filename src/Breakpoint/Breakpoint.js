@@ -68,7 +68,7 @@ function getDefaultMatches (theme, sizes, defaultMatches) {
 }
 
 
-export default function BreakPoint (props) {
+export default function Breakpoint (props) {
   return ThemeConsumer({
     path: 'grid',
     defaultTheme,

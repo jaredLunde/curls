@@ -4,59 +4,59 @@ import {ViewportConsumer} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
 import emptyObj from 'empty/object'
+import Breakpoint from '../Breakpoint'
 import {MAX_Z_INDEX} from '../browser'
 import {FlexBox} from '../Box'
 import {pos} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
 import Drop from '../Drop'
 import {portalize} from '../utils'
-import {getPosFromProps} from '../Slide/utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
 import createComponent, {renderNode} from '../createComponent'
 
 
 /**
- import {PopOver, PopOverBox} from 'curls'
- <PopOver fromRight enterDelay={600} leaveDelay={150}>
- {function ({popOverRef, renderPosition, show, hide, ...props}) {
+ import {Popover, PopoverBox} from 'curls'
+ <Popover fromRight enterDelay={600} leaveDelay={150}>
+ {function ({popoverRef, renderPosition, show, hide, ...props}) {
     return (
       <div>
-        <PopOverBox
+        <PopoverBox
           onMouseEnter={show}
           onMouseLeave={hide}
         >
           <Type bold color='black'>Hello</Type>
-        </PopOverBox>
-        <Button ref={popOverRef} onMouseEnter={show} onMouseLeave={hide}>
+        </PopoverBox>
+        <Button ref={popoverRef} onMouseEnter={show} onMouseLeave={hide}>
           Hover me
         </Button>
       </div>
     )
   }}
- </PopOver>
+ </Popover>
  */
 const {Consumer, Provider} = React.createContext(emptyObj)
-export const PopOverConsumer = Consumer
+export const PopoverConsumer = Consumer
 const defaultCSS = css`
   ${flex};
   ${pos.fixed};
   z-index: ${MAX_Z_INDEX};
 `
 const as = 'div'
-const SFC = createComponent({name: 'PopOver', defaultTheme, themePath: 'popOver'})
+const SFC = createComponent({name: 'Popover', defaultTheme, themePath: 'popover'})
 
-export const PopOverBox = React.forwardRef(
-  function PopOverBox ({children, portal, ...props}, innerRef) {
+export const PopoverBox = React.forwardRef(
+  function PopoverBox ({children, portal, ...props}, innerRef) {
     return (
       <Consumer children={
-        function ({css: boxCSS, popOverBoxRef, style, ...transitionProps}) {
+        function ({css: boxCSS, popoverBoxRef, style, ...transitionProps}) {
           const boxChild =
             typeof children === 'function' ? children(transitionProps) : children
 
-          innerRef = innerRef === null ? popOverBoxRef : function (...args) {
+          innerRef = innerRef === null ? popoverBoxRef : function (...args) {
             innerRef(...args)
-            popOverBoxRef(...args)
+            popoverBoxRef(...args)
           }
 
           let Component = SFC({
@@ -81,28 +81,28 @@ export const PopOverBox = React.forwardRef(
   }
 )
 
-class PopOverContainer extends React.Component {
+class PopoverContainer extends React.Component {
   imageLoader = null
   container = null
   state = {}
 
   constructor (props) {
     super(props)
-    this.popOverContext = {
+    this.popoverContext = {
       isVisible: props.isVisible,
       show: props.show,
       hide: props.hide,
       toggle: props.toggle,
       renderPosition: this.state.renderPosition,
       reposition: this.reposition,
-      popOverRef: this.setContainerRef
+      popoverRef: this.setContainerRef
     }
-    this.popOverBoxContext = {
-      ...this.popOverBoxContext,
+    this.popoverBoxContext = {
+      ...this.popoverBoxContext,
       className: props.className,
-      popOverBoxRef: this.setPopOverBoxRef
+      popoverBoxRef: this.setPopoverBoxRef
     }
-    delete this.popOverBoxContext.popOverRef
+    delete this.popoverBoxContext.popoverRef
   }
 
   componentDidMount () {
@@ -116,7 +116,7 @@ class PopOverContainer extends React.Component {
       this.props.isVisible === true
       && this.props.isVisible !== isVisible
     ) || (
-      this.props.isVisible === true
+      (this.props.isVisible === true || this.state.hasRendered === true)
       && (
         width !== this.props.width
         || height !== this.props.height
@@ -136,7 +136,7 @@ class PopOverContainer extends React.Component {
 
   shouldComponentUpdate ({scrollY, width, height, ...nextProps}, nextState) {
     if (
-      this.props.isVisible && (
+      (this.props.isVisible === true || this.state.hasRendered === true) && (
         width !== this.props.width
         || height !== this.props.height
         || scrollY !== this.props.scrollY
@@ -157,17 +157,17 @@ class PopOverContainer extends React.Component {
   }
 
   setContainerRef = el => this.container = el
-  setPopOverBoxRef = el => this.popOverBox = el
+  setPopoverBoxRef = el => this.popoverBox = el
 
   setPositionState = () => {
-    let {popOverDirection, theme, width, height} = this.props
+    let {popoverDirection, theme, width, height} = this.props
     this.setState(
-      setDirectionStyle(popOverDirection, this.container, this.popOverBox, {width, height})
+      setDirectionStyle(popoverDirection, this.container, this.popoverBox, {width, height})
     )
   }
 
   reposition = () => {
-    this.imageLoader = loadImages(this.popOverBox)
+    this.imageLoader = loadImages(this.popoverBox)
     this.imageLoader.then(
       () => {
         this.setPositionState()
@@ -180,36 +180,36 @@ class PopOverContainer extends React.Component {
 
   render () {
     if (
-      this.props.isVisible !== this.popOverContext.isVisible
-      || this.state.renderPosition !== this.popOverContext.renderPosition
-      || this.props.css !== this.popOverBoxContext.css
+      this.props.isVisible !== this.popoverContext.isVisible
+      || this.state.renderPosition !== this.popoverContext.renderPosition
+      || this.props.css !== this.popoverBoxContext.css
     ) {
       const {renderPosition, ...style} = this.state
-      this.popOverContext = {
-        ...this.popOverContext,
+      this.popoverContext = {
+        ...this.popoverContext,
         renderPosition,
         isVisible: this.props.isVisible,
-        popOverRef: this.setContainerRef
+        popoverRef: this.setContainerRef
       }
-      this.popOverBoxContext = {
-        ...this.popOverContext,
+      this.popoverBoxContext = {
+        ...this.popoverContext,
         style,
         css: this.props.css,
-        popOverBoxRef: this.setPopOverBoxRef
+        popoverBoxRef: this.setPopoverBoxRef
       }
-      delete this.popOverBoxContext.popOverRef
+      delete this.popoverBoxContext.popoverRef
     }
 
     return (
-      <Provider value={this.popOverBoxContext}>
-        {this.props.children(this.popOverContext)}
+      <Provider value={this.popoverBoxContext}>
+        {this.props.children(this.popoverContext)}
       </Provider>
     )
   }
 }
 
 
-function ViewportPopOver (props) {
+function ViewportPopover (props) {
   // props here can be safely mutated
   return ViewportConsumer({
     observe: props.repositionOnScroll ? void 0 : 'size',
@@ -226,23 +226,37 @@ function ViewportPopOver (props) {
         delete props.innerRef
       }
 
-      return React.createElement(PopOverContainer, props)
+      return React.createElement(PopoverContainer, props)
     }
   })
 }
 
+const positions = ['fromTop', 'fromRight', 'fromBottom', 'fromLeft']
+
+function getBreakpoints (props) {
+  const keys = Object.keys(props)
+  const breakpoints = []
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    if (positions.indexOf(key) > -1) {
+      if (props[key].indexOf('@') > -1) {
+        breakpoints.push()
+      }
+    }
+  }
+}
 
 export default React.forwardRef(
-  function PopOver ({...props}, innerRef) {
-    const popOverDirection = getPosFromProps(props) || 'fromBottom'
+  function Popover ({...props}, innerRef) {
+
     return (props.transition || Drop)({
-      [popOverDirection]: true,
       ...props,
-      children: function (popOverProps) {
-        popOverProps.children = props.children
-        popOverProps.popOverDirection = popOverDirection
-        popOverProps.innerRef = innerRef
-        return ViewportPopOver(popOverProps)
+      children: function (popoverProps) {
+        popoverProps.children = props.children
+        popoverProps.popoverDirection = 'fromBottom'
+        popoverProps.innerRef = innerRef
+        return ViewportPopover(popoverProps)
       }
     })
   }

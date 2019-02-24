@@ -5,12 +5,11 @@ import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 import Transitionable from '../Transitionable'
 import createComponent from '../createComponent'
-import {whichDelay} from './utils'
+import {getDelay} from './utils'
 
 
 const SFC = createComponent({name: 'Slide', propTypes, CSS, defaultTheme, themePath: 'slide'})
 const transitionProperties = 'visibility, transform'
-
 
 export default function Slide ({
   children,
@@ -30,7 +29,7 @@ export default function Slide ({
             transProps.show = toggleContext.on
             transProps.hide = toggleContext.off
             transProps.toggle = toggleContext.toggle
-            transProps.delay = whichDelay(toggleContext.value, props)
+            transProps.delay = getDelay(toggleContext.value, props)
             return Transitionable(transProps)
           }
         })

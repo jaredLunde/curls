@@ -2,7 +2,7 @@ import {getMediaQuery, getTheme, fastMemoize} from '../utils'
 import * as polished from 'polished'
 
 
-export const defaultBreakPoints =  {
+export const defaultBreakpoints =  {
   phone: 0,    // only screen and (min-width: 0em)   // 0px
   tablet: 35,  // only screen and (min-width: 35em)  // 560px
   desktop: 80, // only screen and (min-width: 80em)  // 1280px
@@ -39,7 +39,7 @@ export const defaultSpacingScale = [
 
 export const baseTheme = {
   baseRem: 100,
-  breakPoints: defaultBreakPoints,
+  breakpoints: defaultBreakpoints,
   colors: defaultColors,
   locals: {},
   mediaQueries: {},
@@ -56,13 +56,13 @@ const throwThemeError = theme => {
   }
 }
 
-const parseBreakPoints = fastMemoize(
-  'parseBreakPoints',
-  breakPoints => {
+const parseBreakpoints = fastMemoize(
+  'parseBreakpoints',
+  breakpoints => {
     const parsed = {}
 
-    for (let key in breakPoints) {
-      parsed[key] = getMediaQuery(breakPoints[key])
+    for (let key in breakpoints) {
+      parsed[key] = getMediaQuery(breakpoints[key])
     }
 
     return parsed
@@ -77,7 +77,7 @@ export const mergeTheme = (prevTheme, theme) => {
     throwThemeError(theme)
   }
 
-  theme.breakPoints = parseBreakPoints(theme.breakPoints)
+  theme.breakpoints = parseBreakpoints(theme.breakpoints)
   return theme
 }
 
@@ -88,6 +88,6 @@ export default theme => {
     throwThemeError(nextTheme)
   }
 
-  nextTheme.breakPoints = parseBreakPoints(nextTheme.breakPoints)
+  nextTheme.breakpoints = parseBreakpoints(nextTheme.breakpoints)
   return nextTheme
 }

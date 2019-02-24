@@ -1,2 +1,1 @@
-export getPosFromProps from './getPosFromProps'
-export whichDelay from './whichDelay'
+export getDelay from './getDelay'

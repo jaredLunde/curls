@@ -1,4 +1,4 @@
-export default function whichDelay (value, props) {
+export default function getDelay (value, props) {
   return (
     value === true
     ? props.enterDelay !== void 0

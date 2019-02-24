@@ -1,4 +1,4 @@
-export default trimmed => {
+const getTrimmedPx = trimmed => {
   if (!trimmed) {
     return
   }
@@ -27,3 +27,5 @@ export default trimmed => {
 
   return trimmedPx
 }
+
+export default getTrimmedPx

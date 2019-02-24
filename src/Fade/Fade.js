@@ -4,7 +4,7 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 import Transitionable from '../Transitionable'
 import createComponent from '../createComponent'
-import {whichDelay} from '../Slide/utils'
+import {getDelay} from '../Slide/utils'
 
 
 const themePath = 'fade'
@@ -33,7 +33,7 @@ export default function Fade ({
             transProps.show = toggleContext.on
             transProps.hide = toggleContext.off
             transProps.toggle = toggleContext.toggle
-            transProps.delay = whichDelay(toggleContext.value, props)
+            transProps.delay = getDelay(toggleContext.value, props)
             return Transitionable(transProps)
           }
         })

@@ -1,5 +1,5 @@
 import {css as emotionCSS} from '@emotion/core'
-import getBreakPointOrder from './getBreakPointOrder'
+import getBreakpointOrder from './getBreakpointOrder'
 
 
 const getCSS = (fn, value, theme, props) => (
@@ -56,26 +56,27 @@ export default (props, theme, CSS) => {
             j = 0
 
         for (; j < values.length; j++) {
-          if (values[j].length) {
+          if (values[j].length > 0) {
             // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
-            const [value, breakPoint] = values[j].split('@')
-            const cssValue = getCSS(getter, value, theme, props)
+            let [value, breakpoint] = values[j].split('@')
+            value = value.length === 0 ? true : value
+            let cssValue = getCSS(getter, value, theme, props)
 
             if (cssValue !== null) {
-              if (breakPoint !== void 0 && breakPoint.length > 0) {
+              if (breakpoint !== void 0 && breakpoint.length > 0) {
                 if (__DEV__) {
-                  if (getBreakPointOrder(theme.breakPoints).indexOf(breakPoint) === -1) {
-                    throw `A break point for '${breakPoint}' was not found in '${bps.join(', ')}'`
+                  if (getBreakpointOrder(theme.breakpoints).indexOf(breakpoint) === -1) {
+                    throw `A break point for '${breakpoint}' was not found in '${bps.join(', ')}'`
                   }
                 }
 
-                (mediaQueries = mediaQueries || {})[breakPoint] = mediaQueries[breakPoint] || []
+                (mediaQueries = mediaQueries || {})[breakpoint] = mediaQueries[breakpoint] || []
 
                 if (Array.isArray(cssValue) === true) {
-                  mediaQueries[breakPoint].push.apply(mediaQueries[breakPoint], cssValue)
+                  mediaQueries[breakpoint].push.apply(mediaQueries[breakpoint], cssValue)
                 }
                 else {
-                  mediaQueries[breakPoint].push(cssValue)
+                  mediaQueries[breakpoint].push(cssValue)
                 }
               }
               else {
@@ -91,14 +92,14 @@ export default (props, theme, CSS) => {
   if (mediaQueries !== void 0) {
     // ensures that breakpoints are always ordered in a descending fashion so that
     // shorter max-widths don't get cascaded by longer ones
-    const breakPoints = getBreakPointOrder(theme.breakPoints)
+    const breakpoints = getBreakpointOrder(theme.breakpoints)
 
-    for (i = 0; i < breakPoints.length; i++) {
-      const breakPoint = breakPoints[i]
+    for (i = 0; i < breakpoints.length; i++) {
+      const breakpoint = breakpoints[i]
 
-      if (mediaQueries[breakPoint] !== void 0) {
+      if (mediaQueries[breakpoint] !== void 0) {
         css.push(emotionCSS`
-          @media ${theme.breakPoints[breakPoint]} { ${mediaQueries[breakPoint]}; }
+          @media ${theme.breakpoints[breakpoint]} { ${mediaQueries[breakpoint]}; }
         `)
       }
     }

@@ -4,7 +4,7 @@ export {
   assignOrdered,
   colorize,
   directionalScale,
-  getBreakPointOrder,
+  getBreakpointOrder,
   getHoverQuery,
   getMediaQuery,
   getTheme as mergeTheme,
@@ -13,7 +13,7 @@ export {
 } from './utils'
 
 export ThemeProvider, {
-  defaultBreakPoints,
+  defaultBreakpoints,
   defaultColors,
   defaultSpacingScale
 } from './ThemeProvider'
@@ -22,7 +22,7 @@ export ThemeConsumer from './ThemeConsumer'
 export createComponent, {renderNode, renderNodeFast} from './createComponent'
 export Avatar from './Avatar'
 export Box, {GridBox, BasicBox, FlexBox} from './Box'
-export BreakPoint from './BreakPoint'
+export Breakpoint from './Breakpoint'
 export Button from './Button'
 export Card from './Card'
 export Col from './Col'
@@ -40,10 +40,9 @@ export MediaQuery from './MediaQuery'
 export Modal, {ModalBox, ModalConsumer} from './Modal'
 export NavBar from './NavBar'
 export Overlay from './Overlay'
-export PopOver, {PopOverBox, PopOverConsumer} from './PopOver'
+export Popover, {PopoverBox, PopoverConsumer} from './Popover'
 export Row from './Row'
-export Slide from './Slide'
-export * as slideUtils from './Slide/utils'
+export Slide, {getDelay} from './Slide'
 export TextArea from './TextArea'
 export Transitionable from './Transitionable'
 export Type from './Type'

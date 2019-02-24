@@ -2,21 +2,21 @@ import propTypes from './propTypes'
 import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
 import createComponent from '../createComponent'
-import {getBreakPointOrder} from '../utils'
+import {getBreakpointOrder} from '../utils'
 
 
 export const plugins = [
   (props, themeProps) => {
     let found = false,
-      nextProps = {__gridBreakPoints: {}},
-      breakPointOrder = getBreakPointOrder(themeProps.theme.breakPoints),
+      nextProps = {__gridBreakpoints: {}},
+      breakpointOrder = getBreakpointOrder(themeProps.theme.breakpoints),
       i = 0
 
-    for (; i < breakPointOrder.length; i++) {
-      const bp = breakPointOrder[i]
+    for (; i < breakpointOrder.length; i++) {
+      const bp = breakpointOrder[i]
 
       if (props[bp] !== void 0) {
-        nextProps.__gridBreakPoints[bp] = props[bp]
+        nextProps.__gridBreakpoints[bp] = props[bp]
         found = true
       }
     }
@@ -30,7 +30,7 @@ export const plugins = [
     for (i = 0; i < propKeys.length; i++) {
       const key = propKeys[i]
 
-      if (nextProps.__gridBreakPoints[key] === void 0) {
+      if (nextProps.__gridBreakpoints[key] === void 0) {
         nextProps[key] = props[key]
       }
     }

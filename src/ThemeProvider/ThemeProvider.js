@@ -37,8 +37,7 @@ export default class ThemeProvider extends React.Component {
 
   componentDidUpdate ({theme}) {
     if (this.props.theme !== theme) {
-      const userTheme = createTheme(userTheme)
-      this.setState({userTheme, theme: Object.assign({}, userTheme)})
+      this.replaceTheme(this.props.theme)
     }
   }
 

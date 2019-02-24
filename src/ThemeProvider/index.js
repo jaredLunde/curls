@@ -2,7 +2,7 @@ export default, {CurlsContext} from './ThemeProvider'
 export createTheme, {
   mergeTheme,
   baseTheme,
-  defaultBreakPoints,
+  defaultBreakpoints,
   defaultColors,
   defaultSpacingScale
 } from './createTheme'

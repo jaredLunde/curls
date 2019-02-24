@@ -32,7 +32,7 @@ const getColumnWidth = (size, cols, theme, props) => {
   const width = `${(x / numColumns) * 100}%`
 
   return css`
-    @media ${theme.breakPoints[size]} {
+    @media ${theme.breakpoints[size]} {
       max-width: ${width};
       ${props.useFlex && `flex-basis: ${width}`};
     }

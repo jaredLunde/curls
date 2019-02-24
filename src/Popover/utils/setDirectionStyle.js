@@ -13,14 +13,23 @@ export default function (direction, container, popOverBox, viewportSize) {
     return null
   }
 
+  let state
+
   switch (direction) {
     case 'fromTop':
-      return centerFromTop(containerRect, boxRect, viewportSize)
+      state = centerFromTop(containerRect, boxRect, viewportSize)
+      break
     case 'fromRight':
-      return centerFromRight(containerRect, boxRect, viewportSize)
+      state = centerFromRight(containerRect, boxRect, viewportSize)
+      break
     case 'fromBottom':
-      return centerFromBottom(containerRect, boxRect, viewportSize)
+      state = centerFromBottom(containerRect, boxRect, viewportSize)
+      break
     case 'fromLeft':
-      return centerFromLeft(containerRect, boxRect, viewportSize)
+      state = centerFromLeft(containerRect, boxRect, viewportSize)
+      break
   }
+
+  state.hasRendered = true
+  return state
 }
