@@ -67,8 +67,7 @@ export default (
     }
 
     for (j = 0; j < direction.length; j++) {
-      const xyz = direction[i]
-      CSS.push(css`${prefix.replace('{XYZ}', xyz)}: ${toSize(size, unit)};`)
+      CSS.push(css`${prefix.replace('{XYZ}', direction[j])}: ${toSize(size, unit)};`)
     }
   }
 
