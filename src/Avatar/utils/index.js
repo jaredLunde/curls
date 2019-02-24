@@ -1,1 +1,0 @@
-export getAvatarSize from './getAvatarSize'

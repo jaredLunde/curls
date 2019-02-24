@@ -2,7 +2,7 @@ import {css} from '@emotion/core'
 import toSize from './toSize'
 
 
-export const directionalRe = /(?=\d+)/
+export const directionalRe = /(?=[\d]+|Auto)/
 const defaultDirections = {
   _: ['top', 'right', 'bottom', 'left'],
   t: ['top'],
@@ -17,36 +17,59 @@ export function isDirectional (value) {
   return typeof value === 'string' && value.length > 1
 }
 
-export default function directionalScale (
+export default (
   prefix,
   modScale,
   modValue,
-  theme,
-  directions = defaultDirections
-) {
-  let CSS = []
+  unit = 'px',
+  directions = defaultDirections,
+) => {
+  let CSS = [],
+      i = 0,
+      j,
+      modVals = String(modValue).split(' ')
 
-  String(modValue).split(' ').forEach(
-    function (val) {
-      let [abbr, value] = val.split(directionalRe)
-      if (!isNaN(parseInt(abbr))) {
-        value = abbr
-        abbr = '_'
-      }
+  for (; i < modVals.length; i++) {
+    const val = modVals[i]
+    let [abbr, ...value] = val.split(directionalRe)
+    value = value.join('')
 
-      const direction = directions[abbr]
-      if (direction === void 0) {
-        console.warn(`Direction '${abbr}' unrecognized in ${JSON.stringify(Object.keys(directions))}`)
-        return
-      }
-
-      direction.forEach(
-        function (xyz) {
-          CSS.push(css`${prefix.replace('{XYZ}', xyz)}: ${toSize(modScale[value])};`)
-        }
-      )
+    if (abbr.length === 0 || isNaN(parseInt(abbr)) === false) {
+      value = isNaN(parseInt(value)) ? abbr : val
+      abbr = '_'
     }
-  )
+
+    const direction = directions[abbr]
+
+    if (__DEV__) {
+      if (direction === void 0) {
+        throw (
+          `Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n`
+          + `Allowed values include: ${Object.keys(directions).join(', ')}`
+        )
+      }
+    }
+
+    let size = modScale[value]
+
+    if (size === void 0) {
+      if (lVal === 'Auto') {
+        size = 'auto'
+      }
+      else {
+        if (__DEV__) {
+          throw (
+            `Unrecognized scale value in ${prefix}: ${value}\n\n`
+            + `Allowed values include: ${Object.keys(modScale).join(', ')}`
+          )
+        }
+      }
+    }
+
+    for (j = 0; j < direction.length; j++) {
+      CSS.push(css`${prefix.replace('{XYZ}', direction[j])}: ${toSize(size, unit)};`)
+    }
+  }
 
   // return css`${CSS}`
   return CSS

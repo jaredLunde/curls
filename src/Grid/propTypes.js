@@ -1,14 +1,7 @@
-import {oneOfType, number, string} from 'prop-types'
+import {object, bool} from 'prop-types'
 
-
-const numOrStr = oneOfType([number, string])
 
 export default {
-  xxl: numOrStr,
-  xl: numOrStr,
-  lg: numOrStr,
-  md: numOrStr,
-  sm: numOrStr,
-  xs: numOrStr,
-  xxs: numOrStr,
+  useFlex: bool,
+  __gridBreakPoints: object
 }

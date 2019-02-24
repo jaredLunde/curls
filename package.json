@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "2.0.13",
+  "version": "3.0.3",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -11,12 +11,12 @@
   "private": false,
   "sideEffects": false,
   "devDependencies": {
-    "@emotion/babel-preset-css-prop": "^10.0.6",
-    "@stellar-apps/babel-preset-es": "^1.0.1",
+    "@emotion/babel-preset-css-prop": "^10.0.7",
+    "@stellar-apps/babel-preset-es": "^1.0.3",
     "@stellar-apps/babel-preset-react": "^1.0.0",
     "babel-plugin-polished": "^1.1.0",
-    "polished": "^2.3.3",
-    "prettier": "^1.10.2"
+    "polished": "^3.0.0",
+    "prettier": "^1.16.4"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.1",
@@ -25,20 +25,19 @@
     "@render-props/rect": "^0.1.21",
     "@render-props/toggle": "^0.1.29",
     "@render-props/utils": "^0.2.11",
-    "@render-props/viewport": "^0.2.16",
-    "cdll-memoize": "^0.1.8",
+    "@render-props/viewport": "^0.2.18",
+    "cdll-memoize": "^0.1.9",
     "empty": "^0.10.1",
     "is-mergeable-object": "^1.1.0",
     "json2mq": "^0.2.0",
     "memoize-two-args": "^1.0.7",
-    "object-without-props": "^0.1.2",
-    "react-portalize": "^1.0.4"
+    "react-portalize": "^1.0.5"
   },
   "scripts": {
     "build": "npm run build:es && npm run build:cjs",
     "build:es": "rm -rf dist/es && cross-env NODE_ENV=production BABEL_ENV=es babel src --out-dir dist/es && npm run prettier:es",
     "build:cjs": "rm -rf dist/cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs && npm run prettier:cjs",
-    "watch": "cross-env NODE_ENV=development BABEL_ENV=es babel ./src -w --out-dir dist/es",
+    "watch": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src -w --out-dir dist/es",
     "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/es/**/*.js\"",
     "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\"",
     "publish:dev": "yarn publish --tag dev",

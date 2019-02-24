@@ -1,41 +1,46 @@
+// Adapted from: https://github.com/TehShrike/deepmerge
+//
+// Copyright Nick Fisher
+// License MIT
 import isMergeableObject from 'is-mergeable-object'
 
 
-function mergeIfMergeable (value) {
+const mergeIfMergeable = value => {
 	return (
     isMergeableObject(value)
-		? deepMerge(Array.isArray(value) ? [] : {}, value)
-		: value
+      ? deepMerge(Array.isArray(value) ? [] : {}, value)
+      : value
   )
 }
 
-function arrayMergeReplace (target, source) {
+const arrayMergeReplace = (target, source) => {
   if (target === source) {
     return target
   }
 
   const output = []
+  let i = 0
 
-  for (let x = 0; x < source.length; x++) {
-    output.push(mergeIfMergeable(source[x]))
+  for (; i < source.length; i++) {
+    output.push(mergeIfMergeable(source[i]))
   }
 
   return output
 }
 
-
-function mergeObject (target, source) {
+const mergeObject = (target, source) => {
   if (target === source) {
     return target
   }
 
-	var destination = {...target}
+	const destination = Object.assign({}, target)
   const sourceKeys = Object.keys(source)
+  let i = 0
 
-  for (let x = 0; x < sourceKeys.length; x++) {
-    const key = sourceKeys[x]
+  for (; i < sourceKeys.length; i++) {
+    const key = sourceKeys[i]
 
-    if (!isMergeableObject(source[key]) || target[key] === void 0) {
+    if (isMergeableObject(source[key]) === false || target[key] === void 0) {
 			destination[key] = mergeIfMergeable(source[key])
 		}
     else {
@@ -46,20 +51,20 @@ function mergeObject (target, source) {
 	return destination
 }
 
+const deepMerge = (target, source) => {
+  const sourceIsArray = Array.isArray(source)
+  const targetIsArray = Array.isArray(target)
+  const sourceAndTargetTypesMatch = sourceIsArray === targetIsArray
 
-export default function deepMerge (target, source) {
-	const sourceIsArray = Array.isArray(source)
-	const targetIsArray = Array.isArray(target)
-	const sourceAndTargetTypesMatch = sourceIsArray === targetIsArray
-
-	if (!sourceAndTargetTypesMatch) {
-		return mergeIfMergeable(source)
-	}
+  if (!sourceAndTargetTypesMatch) {
+    return mergeIfMergeable(source)
+  }
   else if (sourceIsArray) {
-		const arrayMerge = arrayMergeReplace
-		return arrayMergeReplace(target, source)
-	}
+    return arrayMergeReplace(target, source)
+  }
   else {
-		return mergeObject(target, source)
-	}
+    return mergeObject(target, source)
+  }
 }
+
+export default deepMerge

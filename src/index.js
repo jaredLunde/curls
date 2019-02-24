@@ -1,30 +1,22 @@
-export {
-  browserResets,
-  MAX_Z_INDEX,
-  MAX_REM,
-  maxZIndex
-} from './browser'
+export {browserResets, MAX_Z_INDEX} from './browser'
 
 export {
   assignOrdered,
-  toSize,
   colorize,
   directionalScale,
+  getBreakPointOrder,
+  getHoverQuery,
+  getMediaQuery,
   getTheme as mergeTheme,
-  withHoverQuery
+  nullIfFalse,
+  toSize
 } from './utils'
 
-export {
-  // curlsTheme as theme,
-  injectRem,
-  // injectTheme,
-  // replaceTheme,
+export ThemeProvider, {
+  defaultBreakPoints,
   defaultColors,
-  // defaultHoverColors,
-  // defaultActiveColors,
-  defaultTypeFaces
-} from './theming'
-export ThemeProvider from './ThemeProvider'
+  defaultSpacingScale
+} from './ThemeProvider'
 export ThemeConsumer from './ThemeConsumer'
 
 export createComponent, {renderNode, renderNodeFast} from './createComponent'
@@ -34,7 +26,6 @@ export BreakPoint from './BreakPoint'
 export Button from './Button'
 export Card from './Card'
 export Col from './Col'
-export CheckBox from './CheckBox'
 export Divider from './Divider'
 export Drawer, {DrawerBox, DrawerConsumer} from './Drawer'
 export Drop from './Drop'

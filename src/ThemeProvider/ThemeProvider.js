@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import emptyObj from 'empty/object'
 import {ViewportProvider} from '@render-props/viewport'
-import {ThemeContext, Global} from '@emotion/core'
-import injectTheme, {replaceTheme, baseTheme} from '../theming/injectTheme'
+import {css, ThemeContext, Global} from '@emotion/core'
+import createTheme, {mergeTheme, baseTheme} from './createTheme'
+import {toSize} from '../utils'
 import ButtonGlobals from '../Button/global.css'
 import InputGlobals from '../Input/global.css'
 import LinkGlobals from '../Link/global.css'
@@ -16,17 +17,19 @@ const globalStyles = [TypeGlobals, ButtonGlobals, LinkGlobals, InputGlobals, Tex
 
 export default class ThemeProvider extends React.Component {
   static propTypes = {
-    theme: PropTypes.object
+    userTheme: PropTypes.object
   }
 
   static defaultProps = {
-    theme: emptyObj
+    userTheme: emptyObj
   }
 
   constructor (props) {
     super(props)
+    const userTheme = createTheme(props.theme)
     this.state = {
-      theme: injectTheme(baseTheme, props.theme),
+      userTheme,
+      theme: Object.assign({}, userTheme),
       setTheme: this.setTheme,
       replaceTheme: this.replaceTheme
     }
@@ -34,23 +37,34 @@ export default class ThemeProvider extends React.Component {
 
   componentDidUpdate ({theme}) {
     if (this.props.theme !== theme) {
-      this.setState({theme: injectTheme(baseTheme, this.props.theme)})
+      const userTheme = createTheme(userTheme)
+      this.setState({userTheme, theme: Object.assign({}, userTheme)})
     }
   }
 
-  setTheme = theme => this.setState(
-    prevState => ({theme: injectTheme(prevState.theme, theme)})
+  setTheme = userTheme => this.setState(
+    state => {
+      const userTheme = {userTheme: mergeTheme(state.userTheme, userTheme)}
+      return {userTheme, theme: Object.assign(state.theme, userTheme)}
+    }
   )
 
-  replaceTheme = theme => this.setState(
-    prevState => ({theme: replaceTheme(prevState.theme, theme)})
-  )
+  replaceTheme = userTheme => {
+    userTheme = createTheme(userTheme)
+    this.setState({userTheme, theme: Object.assign({}, userTheme)})
+  }
 
   render () {
+    const remCSS = css`
+      html {
+        font-size: ${toSize(this.state.userTheme.baseRem, '%')}
+      }
+    `
+
     return (
       <ViewportProvider>
         <CurlsContext.Provider value={this.state}>
-          <Global styles={globalStyles}/>
+          <Global styles={[...globalStyles, remCSS]}/>
           {this.props.children}
         </CurlsContext.Provider>
       </ViewportProvider>

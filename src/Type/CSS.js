@@ -1,6 +1,6 @@
 import {css} from '@emotion/core'
+import {fastMemoize, colorize, nullIfFalse} from '../utils'
 import {fontSize} from './utils'
-import {colorize} from '../utils'
 
 
 // Weights
@@ -13,57 +13,25 @@ export const semiBold = css`font-weight: 600;`
 export const bold = css`font-weight: 700;`
 export const heavy = css`font-weight: 800;`
 export const ultraHeavy = css`font-weight: 900;`
-
-
 // Sizes
-export function xxs (v, t) {
-  return v ? fontSize('xxs', t) : void 0
-}
-
-export function xs (v, t) {
-  return v ? fontSize('xs', t) : void 0
-}
-
-export function sm (v, t) {
-  return v ? fontSize('sm', t) : void 0
-}
-
-export function md (v, t) {
-  return v ? fontSize('md', t) : void 0
-}
-
-export function lg (v, t) {
-  return v ? fontSize('lg', t) : void 0
-}
-
-export function xl (v, t) {
-  return v ? fontSize('xl', t) : void 0
-}
-
-export function xxl (v, t) {
-  return v ? fontSize('xxl', t) : void 0
-}
-
-
+const createSizeShortcut = fastMemoize('typeSize', s => (v, t, p) => fontSize(s, t, p))
+// export const xxs = createSizeShortcut('xxs')
+// export const xs = createSizeShortcut('xs')
+// export const sm = createSizeShortcut('sm')
+// export const md = createSizeShortcut('md')
+// export const lg = createSizeShortcut('lg')
+// export const xl = createSizeShortcut('xl')
+// export const xxl = createSizeShortcut('xxl')
+export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
 // Face
-export function face (value, theme) {
-  return css`font-family: ${theme.typeFaces[value] || value};`
-}
-
-
+export const face = nullIfFalse((v, t) => css`font-family: ${t.faces[v] || v};`)
 // Color
-export function color (value, theme) {
-  return colorize('color', value, theme)
-}
-
-
+export const color = (v, t) => colorize('color', v, t) // colorize implements nullIfFalse
 // Alignment
 export const left = css`text-align: left;`
 export const center = css`text-align: center;`
 export const right = css`text-align: right;`
 export const justified = css`text-align: justify;`
-
-
 // Legibility
 export const optimizeFor = {
   speed: css`text-rendering: optimizeLegibility;`,
@@ -74,8 +42,6 @@ export const antialias = css`
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
 `
-
-
 // Other
 export const ellipsis = css`
   max-width: 100%;

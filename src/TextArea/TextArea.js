@@ -16,11 +16,10 @@ const SFC = createComponent({
 })
 
 function autoResize (e) {
-  if (!e.target.defaultValue) {
+  if (!e.target.value) {
     e.target.style.height = ''
   }
   else {
-    const nextHeight = e.target.scrollHeight
     e.target.style.height = 'auto'
     e.target.style.height = e.target.scrollHeight + 'px'
   }

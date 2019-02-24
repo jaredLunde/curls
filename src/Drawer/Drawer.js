@@ -1,8 +1,8 @@
 import React from 'react'
 import emptyObj from 'empty/object'
-import {css, ClassNames} from '@emotion/core'
+import {css} from '@emotion/core'
 import {portalize} from '../utils'
-import {maxZIndex} from '../browser'
+import {MAX_Z_INDEX} from '../browser'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
 import {getPosFromProps} from '../Slide/utils'
@@ -42,8 +42,8 @@ const as = 'div'
 const defaultCSS = css`
   ${d.block};
   ${pos.fixed};
-  ${maxZIndex};
   ${ov.autoY};
+  z-index: ${MAX_Z_INDEX};
 `
 const SFC = createComponent({
   name: 'Drawer',

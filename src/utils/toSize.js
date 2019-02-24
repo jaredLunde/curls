@@ -1,7 +1,1 @@
-export default function toSize (value) {
-  if (isNaN(value)) {
-    return value
-  } else {
-    return `${value}px`
-  }
-}
+export default (value, unit = 'px') => isNaN(value) === true ? value : `${value}${unit}`

@@ -1,27 +1,21 @@
 import {css} from '@emotion/core'
-import {withHoverQuery} from '../utils'
-// export colors from '../theming/defaultColors'
+import {getHoverQuery} from '../utils'
+
 
 export const scale = {
-  xxs: css`padding: 6px 12px;`,
-  xs: css`padding: 8px 16px;`,
-  sm: css`padding: 12px 24px;`,
-  md: css`padding: 16px 32px;`,
-  lg: css`padding: 20px 40px;`,
-  xl: css`padding: 24px 48px;`,
-  xxl: css`padding: 30px 60px;`,
+  sm: css`padding: 0.67rem 1.33rem;`,
+  md: css`padding: 1rem 2rem;`,
+  lg: css`padding: 1.5rem 3rem;`
 }
 
 export const defaultProps = {
   br: 5,
   bw: 1,
-  bg: 'white',
-  sm: true,
+  size: 'sm',
   role: 'button'
 }
 
-
-export function getHoverClass (props, theme) {
+export function getHoverClass (theme, props) {
   // adds css classes for hover and active states
   const hoverStyle = css`
     &:hover {
@@ -35,11 +29,10 @@ export function getHoverClass (props, theme) {
     }
   `
 
-  return css`${withHoverQuery(hoverStyle, noneStyle)}`
+  return css`${getHoverQuery(hoverStyle, noneStyle)}`
 }
 
-
-export function getActiveClass (props, theme) {
+export function getActiveClass (theme, props) {
   if (props.bg === void 0) {
     return
   }

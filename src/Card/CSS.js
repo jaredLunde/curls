@@ -3,7 +3,9 @@ import {br as boxBr} from '../Box/CSS'
 import {directionalRe} from '../utils/directionalScale'
 
 
-export function br (val, theme) {
+export function br (val, theme, props) {
+  if (val === false) return null
+
   let abbr, value
   let topRadius = 't0', bottomRadius = 'b0'
 
@@ -52,16 +54,16 @@ export function br (val, theme) {
   }
 
   return css`
-    ${boxBr(val, theme)}
+    ${boxBr(val, theme, props)}
 
     & > *:first-child {
-      ${boxBr(topRadius, theme)};
-      ${boxBr('b0', theme)};
+      ${boxBr(topRadius, theme, props)};
+      ${boxBr('b0', theme, props)};
     }
 
     & > *:last-child {
-      ${boxBr(bottomRadius, theme)};
-      ${boxBr('t0', theme)};
+      ${boxBr(bottomRadius, theme, props)};
+      ${boxBr('t0', theme, props)};
     }
   `
 }

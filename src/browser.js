@@ -6,10 +6,6 @@ export const browserResets = css`
     box-sizing: border-box;
   }
 
-  html {
-    font-size: 16px;
-  }
-
   html, body, div, span, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -90,5 +86,3 @@ export const browserResets = css`
 
 
 export const MAX_Z_INDEX = 2147483647
-export const MAX_REM = 10000000/16
-export const maxZIndex = css`z-index: ${MAX_Z_INDEX};`

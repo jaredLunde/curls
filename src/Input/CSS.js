@@ -4,8 +4,8 @@ import {placeholder} from './utils'
 
 export function __inputStyles (_, theme, props) {
   return css`
-    ${placeholder(theme.getPlaceholderClass(props, theme))};
-    ${theme.getHoverClass(props, theme)};
-    ${theme.getFocusClass(props, theme)};
+    ${placeholder(theme.getPlaceholderClass(theme, props))};
+    ${theme.getHoverClass(theme, props)};
+    ${theme.getFocusClass(theme, props)};
   `
 }

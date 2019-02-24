@@ -3,13 +3,14 @@ import {bool, string, oneOf} from 'prop-types'
 
 export default {
   // Sizes
-  xxs: bool,
-  xs: bool,
-  sm: bool,
-  md: bool,
-  lg: bool,
-  xl: bool,
-  xxl: bool,
+  // xxs: bool,
+  // xs: bool,
+  // sm: bool,
+  // md: bool,
+  // lg: bool,
+  // xl: bool,
+  // xxl: bool,
+  size: string,
   // Weights
   thin: bool,
   ultraLight: bool,
@@ -24,12 +25,14 @@ export default {
   left: bool,
   center: bool,
   right: bool,
-  ellipsis: bool,
+  justified: bool,
   // Legibility
   optimizeFor: oneOf(['legibility', 'speed']),
   antialias: bool,
   // Color
   color: string,
   // Typeface
-  face: string
+  face: string,
+  // cool
+  ellipsis: bool,
 }

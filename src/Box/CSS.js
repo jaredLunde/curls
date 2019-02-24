@@ -1,5 +1,5 @@
 import {css} from '@emotion/core'
-import {directionalScale, isDirectional, colorize, toSize} from '../utils'
+import {directionalScale, isDirectional, colorize, toSize, nullIfFalse} from '../utils'
 
 
 export const pos = {
@@ -33,8 +33,8 @@ export const overflow = {
   scrollY: css`overflow-y: scroll;`,
   touch: css`-webkit-overflow-scrolling: touch;`
 }
-export function ov (value) {
-  if (value === false) return null;
+
+export const ov = nullIfFalse(value => {
   const vals = value.split(' ')
 
   if (vals.length === 1) {
@@ -52,95 +52,44 @@ export function ov (value) {
   }
 
   return CSS
-}
+})
 
-export function z (value) {
-  if (value === false) return null;
-  return css`z-index: ${value};`
-}
-
-
-export function bg (value, theme) {
-  if (value === false) return null;
-  return colorize('background', value, theme)
-}
-
-
-export function sh (value, theme) {
-  if (value === false) return null;
-
-  return theme.getBoxShadow(value, theme)
-}
-
-
-export function bc (value, theme) {
-  if (value === false) return null;
-  return colorize('border-color', value, theme)
-}
-
-
-export function bw (value, theme) {
-  if (value === false) return null;
-  const {borderWidthScale} = theme
-
+export const z = nullIfFalse(value => css`z-index: ${value};`)
+// colorize already implements nullIfFalse
+export const bg = (value, theme) => colorize('background', value, theme)
+export const sh = nullIfFalse((value, theme) => theme.getBoxShadow(value, theme))
+// colorize already implements nullIfFalse
+export const bc = (value, theme) => colorize('border-color', value, theme)
+// we don't use rem for border-width because it doesn't have business being relative to the
+// size of the font or zoom of the screen
+export const bw = nullIfFalse((value, theme) => {
   if (isDirectional(value)) {
     return css`
       border-style: solid;
-      ${directionalScale('border-{XYZ}-width', borderWidthScale, value, theme)};
+      ${directionalScale(
+        'border-{XYZ}-width', 
+        theme.borderWidthScale, 
+        value,
+        theme.borderWidthUnit
+      )};
     `
   } else {
     return css`
       border-style: solid;
-      border-width: ${toSize(borderWidthScale[value])};
+      border-width: ${toSize(theme.borderWidthScale[value], theme.borderWidthUnit)};
     `
   }
-}
-
-export function w (value) {
-  if (value === false) return null;
-  return css`width: ${toSize(value)};`;
-}
-
-export function h (value) {
-  if (value === false) return null;
-  return css`height: ${toSize(value)};`;
-}
-
-export function t (value) {
-  if (value === false) return null;
-  return css`top: ${toSize(value)};`;
-}
-
-export function r (value) {
-  if (value === false) return null;
-  return css`right: ${toSize(value)};`;
-}
-
-export function b (value) {
-  if (value === false) return null;
-  return css`bottom: ${toSize(value)};`;
-}
-
-export function l (value) {
-  if (value === false) return null;
-  return css`left: ${toSize(value)};`;
-}
-
-export function minW (value) {
-  return css`min-width: ${toSize(value)};`;
-}
-
-export function minH (value) {
-  return css`min-height: ${toSize(value)};`;
-}
-
-export function maxW (value) {
-  return css`max-width: ${toSize(value)};`;
-}
-
-export function maxH (value) {
-  return css`max-height: ${toSize(value)};`;
-}
+})
+export const w = nullIfFalse((v, t) => css`width: ${toSize(v, t.sizeUnit)};`)
+export const h = nullIfFalse((v, t) => css`height: ${toSize(v, t.sizeUnit)};`)
+export const minW = nullIfFalse((v, t) => css`min-width: ${toSize(v, t.sizeUnit)};`)
+export const minH = nullIfFalse((v, t) => css`min-height: ${toSize(v, t.sizeUnit)};`)
+export const maxW = nullIfFalse((v, t) => css`max-width: ${toSize(v, t.sizeUnit)};`)
+export const maxH = nullIfFalse((v, t) => css`max-height: ${toSize(v, t.sizeUnit)};`)
+export const t = nullIfFalse((v, t) => css`top: ${toSize(v, t.posUnit)};`)
+export const r = nullIfFalse((v, t) => css`right: ${toSize(v, t.posUnit)};`)
+export const b = nullIfFalse((v, t) => css`bottom: ${toSize(v, t.posUnit)};`)
+export const l = nullIfFalse((v, t) => css`left: ${toSize(v, t.posUnit)};`)
 
 const borderRadiusDirections = {
   t: ['top-right', 'top-left'],
@@ -153,9 +102,7 @@ const borderRadiusDirections = {
   bl: ['bottom-left']
 }
 
-
-export function br (value, theme) {
-  if (value === false) return null;
+export const br = nullIfFalse((value, theme) => {
   const {borderRadiusScale} = theme
 
   if (isDirectional(value)) {
@@ -164,35 +111,39 @@ export function br (value, theme) {
         'border-{XYZ}-radius',
         borderRadiusScale,
         value,
-        theme,
-        borderRadiusDirections
+        theme.borderRadiusUnit,
+        borderRadiusDirections,
       )};
     `
   } else {
-    return css`border-radius: ${toSize(borderRadiusScale[value])};`
+    return css`border-radius: ${toSize(borderRadiusScale[value], theme.borderRadiusUnit)};`
   }
-}
+})
 
-
-export function m (value, theme) {
-  if (value === false) return null;
+export const m = nullIfFalse((value, theme) => {
   const {spacingScale} = theme
 
   if (isDirectional(value)) {
-    return directionalScale('margin-{XYZ}', spacingScale, value, theme)
+    return directionalScale(
+      'margin-{XYZ}',
+      spacingScale,
+      value,
+      theme.spacingUnit
+    )
   } else {
-    return css`margin: ${toSize(spacingScale[value])};`
+    return css`margin: ${toSize(spacingScale[value], theme.spacingUnit)};`
   }
-}
+})
 
-
-export function p (value, theme) {
-  if (value === false) return null;
-  const {spacingScale} = theme
-
+export const p = nullIfFalse((value, theme) => {
   if (isDirectional(value)) {
-    return directionalScale('padding-{XYZ}', spacingScale, value, theme)
+    return directionalScale(
+      'padding-{XYZ}',
+      theme.spacingScale,
+      value,
+      theme.spacingUnit
+    )
   } else {
-    return css`padding: ${toSize(spacingScale[value])};`
+    return css`padding: ${toSize(theme.spacingScale[value], theme.spacingUnit)};`
   }
-}
+})

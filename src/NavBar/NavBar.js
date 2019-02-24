@@ -1,7 +1,7 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
-import {GridBox} from '../Box'
+import {FlexBox} from '../Box'
 import {flex, row, wrap, align, justify} from '../Flex/CSS'
 
 
@@ -15,10 +15,10 @@ const defaultCSS = css`
 `
 const SFC = createComponent({name: 'NavBar', themePath: 'navBar'})
 
-
 export default React.forwardRef(
   function NavBar (props, innerRef) {
     return SFC({
+      as,
       innerRef,
       ...props,
       children: function (boxProps) {
@@ -28,7 +28,7 @@ export default React.forwardRef(
           return renderNode(nodeProps, defaultCSS)
         }
 
-        return GridBox(boxProps)
+        return FlexBox(boxProps)
       }
     })
   }

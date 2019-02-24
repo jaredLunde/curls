@@ -1,12 +1,28 @@
 import {css} from '@emotion/core'
+import {toSize} from '../../utils'
 import {optimizeFor, antialias} from '../CSS'
 
-const legibleText = ['xl', 'xxl']
 
-export default function fontSize (size, theme) {
-  const isLg = legibleText.indexOf(size) > -1
-  const textRendering = optimizeFor[isLg ? 'legibility' : 'speed']
+export default function fontSize (size, theme, props) {
+  if (size === false) {
+    return null
+  }
+
+  const isLeg = theme.legible.indexOf(size) > -1
+  const textRendering = optimizeFor[isLeg ? 'legibility' : 'speed']
+  let fontSize = theme.scale[size]
+  const typeOfFontSize = typeof fontSize
+
+  if (typeOfFontSize === 'function') {
+    fontSize = fontSize(theme, props)
+  }
+  else if (typeOfFontSize !== 'object') {
+    fontSize = css`font-size: ${toSize(fontSize, theme.sizeUnit)};`
+  }
+
   return css`
-    font-size: ${theme.scale[size]}rem; ${textRendering}; ${isLg && antialias};
+    ${fontSize};
+    ${textRendering}; 
+    ${isLeg && antialias};
   `
 }

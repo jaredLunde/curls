@@ -1,44 +1,22 @@
 import {css} from '@emotion/core'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
-import {toSize} from '../utils'
+import {toSize, nullIfFalse} from '../utils'
 
 
 export const isVisible_ = css`${baseIsVisible}; transform: translate3d(0, 0, 0);`
-
-export function isVisible (value, theme) {
-  return value === true ? isVisible_ : baseIsNotVisible
-}
-
-
-function whichVal (v, ov, props) {
-  if (props.isVisible === true) {
-    return 0
-  }
-
-  return v !== true && v !== false ? toSize(v) : `${ov}%`
-}
-
-function transform (...args) {
-  return css`transform: translate3d(${args.join(',')});`
-}
-
-export function fromTop(v, _, props) {
-  if (v === false) return;
-  return transform(0, `${whichVal(v, -100, props)}`, 0)
-}
-
-export function fromRight(v, _, props) {
-  if (v === false) return;
-  return transform(`${whichVal(v, 100, props)}`, 0, 0)
-}
-
-export function fromBottom(v, _, props) {
-  if (v === false) return;
-  return transform(0, `${whichVal(v, 100, props)}`, 0)
-}
-
-export function fromLeft(v, _, props) {
-  if (v === false) return;
-  return transform(`${whichVal(v, -100, props)}`, 0, 0)
-}
-
+export const isVisible = v => v === true ? isVisible_ : baseIsNotVisible
+const whichVal = (v, ov, t, p) =>
+  p.isVisible === true ? 0 : v === true ? `${ov}%` : toSize(v, t.distanceUnit)
+const transform = (...args) => css`transform: translate3d(${args.join(',')});`
+export const fromTop = nullIfFalse(
+  (v, t, p) => transform(0, `${whichVal(v, -100, t, p)}`, 0)
+)
+export const fromRight = nullIfFalse(
+  (v, t, p) => transform(`${whichVal(v, 100, t, p)}`, 0, 0)
+)
+export const fromBottom = nullIfFalse(
+  (v, t, p) => transform(0, `${whichVal(v, 100, t, p)}`, 0)
+)
+export const fromLeft = nullIfFalse(
+  (v, t, p) => transform(`${whichVal(v, -100, t, p)}`, 0, 0)
+)

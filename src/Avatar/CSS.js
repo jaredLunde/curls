@@ -1,36 +1,29 @@
 import {css} from '@emotion/core'
-import {getAvatarSize} from './utils'
+import {fastMemoize, nullIfFalse, toSize} from '../utils'
 
 
-export function xxs (v, t) {
-  return getAvatarSize('xxs', v, t)
+function getAvatarSize (size, val, theme, props) {
+  if (val === false) return null
+
+  let avatarSize = theme.scale[size]
+  const typeOfAvatarSize = typeof avatarSize
+
+  if (typeOfAvatarSize === 'object') {
+    return avatarSize
+  }
+  else if (typeOfAvatarSize === 'function') {
+    return avatarSize(theme, props)
+  }
+
+  return css`
+    width: ${toSize(avatarSize, theme.sizeUnit)};
+    height: ${toSize(avatarSize, theme.sizeUnit)};
+  `
 }
 
-export function xs (v, t) {
-  return getAvatarSize('xs', v, t)
-}
-
-export function sm (v, t) {
-  return getAvatarSize('sm', v, t)
-}
-
-export function md (v, t) {
-  return getAvatarSize('md', v, t)
-}
-
-export function lg (v, t) {
-  return getAvatarSize('lg', v, t)
-}
-
-export function xl (v, t) {
-  return getAvatarSize('xl', v, t)
-}
-
-export function xxl (v, t) {
-  return getAvatarSize('xxl', v, t)
-}
-
-export function orientation (v, t) {
+const createSizeShortcut = fastMemoize('avatarSize', s => (v, t, p) => getAvatarSize(s, v, t, p))
+export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
+export const orientation = nullIfFalse(v => {
   let height, width
 
   switch (v) {
@@ -54,4 +47,4 @@ export function orientation (v, t) {
       width: ${width};
     }
   `
-}
+})

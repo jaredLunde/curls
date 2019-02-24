@@ -1,31 +1,28 @@
 import {materialShadow} from './utils'
 
 
-export const spacingScale = [
-  0,
-  (1/4) * 16,
-  (1/2) * 16,
-  16,
-  2 * 16,
-  4 * 16,
-  8 * 16,
-  16 * 16,
-  32 * 16
-]
+export const borderRadiusUnit = 'rem'
+export const borderWidthUnit = 'px'
+export const sizeUnit = 'px'
+export const posUnit = 'px'
+
 export const borderWidthScale = [
   0,
+  0.5,
   1,
   2,
   4,
   6,
   10
 ]
+
 export const borderRadiusScale = [
   0,
-  (1/4) * 16,
-  (1/2) * 16,
-  16,
-  2 * 16,
-  1000 * 16
+  1/4,
+  1/2,
+  1,
+  2,
+  1000
 ]
+
 export const getBoxShadow = materialShadow

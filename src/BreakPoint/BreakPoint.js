@@ -7,12 +7,12 @@ import * as defaultTheme from '../Grid/defaultTheme'
 
 function getSizes (props, theme) {
   const sizes = []
-  const keys = Object.keys(theme.breakpoints)
+  const keys = Object.keys(theme.breakPoints)
 
-  for (let x = 0; x < keys.length; x++) {
-    const k = keys[x]
-    if (props[k] === true) {
-      sizes.push(k)
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    if (props[key] === true) {
+      sizes.push(key)
     }
   }
 
@@ -23,9 +23,9 @@ const memoizedFindBreakPoints = memoize(
   function (theme, ...sizes) {
     const breakPoints = []
 
-    for (let size in theme.breakpoints) {
+    for (let size in theme.breakPoints) {
       if (sizes.indexOf(size) > -1) {
-        breakPoints.push(theme.breakpoints[size])
+        breakPoints.push(theme.breakPoints[size])
       }
     }
 
@@ -43,13 +43,14 @@ function findBreakPoints (props, theme) {
 function getMatches_ (sizes, rawMatches) {
   const matches = {}
 
-  for (let x = 0; x < rawMatches.length; x++) {
-    const size = sizes[x]
-    matches[size] = rawMatches[x]
+  for (let i = 0; i < rawMatches.length; i++) {
+    const size = sizes[i]
+    matches[size] = rawMatches[i]
   }
 
   return matches
 }
+
 // This is about enforcing immutability, not micro-optimizing
 const getMatches = memoize(getMatches_)
 

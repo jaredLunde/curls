@@ -4,7 +4,7 @@ import {ViewportConsumer} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
 import emptyObj from 'empty/object'
-import {maxZIndex} from '../browser'
+import {MAX_Z_INDEX} from '../browser'
 import {FlexBox} from '../Box'
 import {pos} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
@@ -41,7 +41,7 @@ export const PopOverConsumer = Consumer
 const defaultCSS = css`
   ${flex};
   ${pos.fixed};
-  ${maxZIndex};
+  z-index: ${MAX_Z_INDEX};
 `
 const as = 'div'
 const SFC = createComponent({name: 'PopOver', defaultTheme, themePath: 'popOver'})
@@ -221,21 +221,29 @@ function ViewportPopOver (props) {
         props.scrollY = vpProps.scrollY
       }
 
+      if (props.innerRef) {
+        props.ref = props.innerRef
+        delete props.innerRef
+      }
+
       return React.createElement(PopOverContainer, props)
     }
   })
 }
 
 
-export default function PopOver ({...props}, innerRef) {
-  const popOverDirection = getPosFromProps(props) || 'fromBottom'
-  return (props.transition || Drop)({
-    [popOverDirection]: true,
-    ...props,
-    children: function (popOverProps) {
-      popOverProps.children = props.children
-      popOverProps.popOverDirection = popOverDirection
-      return ViewportPopOver(popOverProps)
-    }
-  })
-}
+export default React.forwardRef(
+  function PopOver ({...props}, innerRef) {
+    const popOverDirection = getPosFromProps(props) || 'fromBottom'
+    return (props.transition || Drop)({
+      [popOverDirection]: true,
+      ...props,
+      children: function (popOverProps) {
+        popOverProps.children = props.children
+        popOverProps.popOverDirection = popOverDirection
+        popOverProps.innerRef = innerRef
+        return ViewportPopOver(popOverProps)
+      }
+    })
+  }
+)

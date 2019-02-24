@@ -1,33 +1,36 @@
 import React from 'react'
 import memoize from 'memoize-two-args'
-import {CurlsContext} from '../ThemeProvider'
-import getTheme from '../utils/getTheme'
+import {CurlsContext, baseTheme} from '../ThemeProvider'
+import {getTheme} from '../utils'
 import emptyObj from 'empty/object'
 
 
 const mergeGlobals_ = memoize(
   // this is memoized for defaultTheme merging efficiency and sCU in children
-  function (curlsTheme, theme) {
-    const base = {
-      colors: curlsTheme.colors,
-      typeFaces: curlsTheme.typeFaces
+  (curlsTheme, userTheme) => {
+    const base = {}, baseKeys = Object.keys(baseTheme)
+
+    for (let i = 0; i < baseKeys.length; i++) {
+      const key = baseKeys[i]
+      base[key] = curlsTheme[key]
     }
 
-    return theme === emptyObj ? base : Object.assign(base, theme)
+    return userTheme === emptyObj ? base : Object.assign(base, userTheme)
   }
 )
 
-function mergeGlobals (curlsTheme, props) {
+const mergeGlobals = ({userTheme, theme}, props) => {
   if (props.path === void 0) {
-    return !curlsTheme ? props.defaultTheme : getTheme(props.defaultTheme, curlsTheme)
+    return theme
   }
   else {
-    const theme = getTheme(
+    const componentTheme = getTheme(
       props.defaultTheme,
-      mergeGlobals_(curlsTheme, curlsTheme[props.path] || emptyObj)
+      mergeGlobals_(userTheme, getTheme(props.defaultTheme, userTheme[props.path]))
     )
 
-    return theme
+    theme[props.path] = getTheme(props.defaultTheme, userTheme[props.path])
+    return componentTheme
   }
 }
 
@@ -35,7 +38,7 @@ export default function ThemeConsumer (props) {
   const consumerProps = {}
 
   function Consumer (consumerContext) {
-    consumerProps.theme = mergeGlobals(consumerContext.theme, props)
+    consumerProps.theme = mergeGlobals(consumerContext, props)
     consumerProps.setTheme = consumerContext.setTheme
     consumerProps.replaceTheme = consumerContext.replaceTheme
     return props.children(consumerProps)

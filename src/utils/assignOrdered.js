@@ -1,8 +1,9 @@
 export default function assignOrdered (objectA, objectB) {
-  const output = {}
-  const objectAKeys = Object.keys(objectA)
+  let objectAKeys = Object.keys(objectA),
+      output = {},
+      i = 0
 
-  for (let i = 0; i < objectAKeys.length; i++) {
+  for (; i < objectAKeys.length; i++) {
     const key = objectAKeys[i]
     if (objectB[key] === void 0) {
       output[key] = objectA[key]
@@ -11,7 +12,7 @@ export default function assignOrdered (objectA, objectB) {
 
   const objectBKeys = Object.keys(objectB)
 
-  for (let i = 0; i < objectBKeys.length; i++) {
+  for (i = 0; i < objectBKeys.length; i++) {
     const key = objectBKeys[i]
     output[key] = objectB[key]
   }
