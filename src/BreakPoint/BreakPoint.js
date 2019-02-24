@@ -9,10 +9,10 @@ function getSizes (props, theme) {
   const sizes = []
   const keys = Object.keys(theme.breakPoints)
 
-  for (let x = 0; x < keys.length; x++) {
-    const k = keys[x]
-    if (props[k] === true) {
-      sizes.push(k)
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    if (props[key] === true) {
+      sizes.push(key)
     }
   }
 
@@ -43,13 +43,14 @@ function findBreakPoints (props, theme) {
 function getMatches_ (sizes, rawMatches) {
   const matches = {}
 
-  for (let x = 0; x < rawMatches.length; x++) {
-    const size = sizes[x]
-    matches[size] = rawMatches[x]
+  for (let i = 0; i < rawMatches.length; i++) {
+    const size = sizes[i]
+    matches[size] = rawMatches[i]
   }
 
   return matches
 }
+
 // This is about enforcing immutability, not micro-optimizing
 const getMatches = memoize(getMatches_)
 

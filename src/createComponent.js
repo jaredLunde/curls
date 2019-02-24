@@ -1,6 +1,5 @@
 import {jsx} from '@emotion/core'
-import objectWithoutProps from 'object-without-props'
-import {getCSS, assignOrdered} from './utils'
+import {getCSS, assignOrdered, objectWithoutProps} from './utils'
 import ThemeConsumer from './ThemeConsumer'
 
 
@@ -29,12 +28,6 @@ export const renderNodeFast = nodeProps => {
   nodeProps.ref = nodeProps.innerRef
   delete nodeProps.as
   delete nodeProps.innerRef
-
-  // if (typeof as === 'string') {
-  //   nodeProps.ref = nodeProps.innerRef
-  //   delete nodeProps.innerRef
-  // }
-
   return jsx(as, nodeProps)
 }
 
@@ -84,6 +77,7 @@ export default ({
 
     return props.children(renderProps)
   }
+  
   const themeRenderer =
     plugins !== void 0 && plugins.length
       ? composeThemePlugins(renderer, ...plugins)

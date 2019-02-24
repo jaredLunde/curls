@@ -13,14 +13,14 @@ const getCSS = (fn, value, theme, props) => (
 )
 
 export default (props, theme, CSS) => {
-  let i,
-      css = [],
-      mediaQueries = {},
+  let i = 0,
       style,
+      mediaQueries,
+      css = [],
       propKeys = Object.keys(props)
 
-  for (let x = 0; x < propKeys.length; x++) {
-    const propName = propKeys[x],
+  for (; i < propKeys.length; i++) {
+    const propName = propKeys[i],
           getter = CSS[propName]
 
     if (getter === void 0) continue
@@ -34,11 +34,9 @@ export default (props, theme, CSS) => {
         }
       }
 
-      let result
-
       if (propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
         // these are just regular values, no media queries
-        result = getCSS(getter, propVal, theme, props)
+        const result = getCSS(getter, propVal, theme, props)
 
         if (result !== void 0 && result !== null) {
           if (Array.isArray(result) === true) {
@@ -54,17 +52,24 @@ export default (props, theme, CSS) => {
       }
       else {
         // this parses values with media queries
-        let values = propVal.split(' ')
+        let values = propVal.split(' '),
+            j = 0
 
-        for (i = 0; i < values.length; i++) {
-          if (values[i].length) {
+        for (; j < values.length; j++) {
+          if (values[j].length) {
             // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
-            const [value, breakPoint] = values[i].split('@')
+            const [value, breakPoint] = values[j].split('@')
             const cssValue = getCSS(getter, value, theme, props)
 
             if (cssValue !== null) {
               if (breakPoint !== void 0 && breakPoint.length > 0) {
-                mediaQueries[breakPoint] = mediaQueries[breakPoint] || []
+                if (__DEV__) {
+                  if (getBreakPointOrder(theme.breakPoints).indexOf(breakPoint) === -1) {
+                    throw `A break point for '${breakPoint}' was not found in '${bps.join(', ')}'`
+                  }
+                }
+
+                (mediaQueries = mediaQueries || {})[breakPoint] = mediaQueries[breakPoint] || []
 
                 if (Array.isArray(cssValue) === true) {
                   mediaQueries[breakPoint].push.apply(mediaQueries[breakPoint], cssValue)
@@ -83,14 +88,19 @@ export default (props, theme, CSS) => {
     }
   }
 
-  // ensures that breakpoints are always ordered in a descending fashion so that
-  // shorter max-widths don't get cascaded by longer ones
-  const bps = getBreakPointOrder(theme.breakPoints)
-  for (i = 0; i < bps.length; i++) {
-    const bp = bps[i]
+  if (mediaQueries !== void 0) {
+    // ensures that breakpoints are always ordered in a descending fashion so that
+    // shorter max-widths don't get cascaded by longer ones
+    const breakPoints = getBreakPointOrder(theme.breakPoints)
 
-    if (mediaQueries[bp] !== void 0) {
-      css.push(emotionCSS`@media ${theme.breakPoints[bp]} { ${mediaQueries[bp]}; }`)
+    for (i = 0; i < breakPoints.length; i++) {
+      const breakPoint = breakPoints[i]
+
+      if (mediaQueries[breakPoint] !== void 0) {
+        css.push(emotionCSS`
+          @media ${theme.breakPoints[breakPoint]} { ${mediaQueries[breakPoint]}; }
+        `)
+      }
     }
   }
 

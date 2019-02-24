@@ -1,10 +1,4 @@
-import memoize from 'cdll-memoize'
+import fastMemoize from './fastMemoize'
 
 
-export default memoize(
-  breakPoints => {
-    const breakPointOrder = Object.keys(breakPoints)
-    breakPointOrder.reverse()
-    return breakPointOrder
-  }
-)
+export default fastMemoize('breakPointOrder', breakPoints => Object.keys(breakPoints), WeakMap)

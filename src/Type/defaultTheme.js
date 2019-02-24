@@ -1,13 +1,12 @@
+import {css} from '@emotion/core'
 export const legible = ['lg', 'xl', 'xxl']
 
 export const scale = {
-  xxs: 0.675,
   xs: 0.75,
-  sm: 1,
-  md: 1.1875,
-  lg: 1.5,
-  xl: 2.25,
-  xxl: 3
+  sm: 1.125,
+  md: 1.5,
+  lg: 3,
+  xl: 6
 }
 
 export const sizeUnit = 'rem'

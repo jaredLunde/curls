@@ -1,9 +1,5 @@
 export const columns = {
-  xxs: 2,
-  xs: 4,
-  sm: 4,
-  md: 8,
-  lg: 12,
-  xl: 16,
-  xxl: 16
+  phone: 4,
+  tablet: 8,
+  desktop: 16,
 }

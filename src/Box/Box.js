@@ -31,7 +31,7 @@ export const GridBoxRenderProp = createComponent({
   name: 'GridBox',
   propTypes: Object.assign({}, gridPropTypes, flexPropTypes, propTypes),
   CSS: Object.assign({}, gridCSS, flexCSS, CSS),
-  themePath: 'box',
+  themePath: 'grid',
   defaultTheme: Object.assign({}, gridDefaultTheme, defaultTheme),
   plugins: gridPlugins
 })

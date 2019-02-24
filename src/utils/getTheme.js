@@ -6,7 +6,7 @@ import deepMerge from './deepMerge'
 const memoizer = memoize(deepMerge)
 
 export default (defaultTheme = emptyObj, userTheme) => {
-  if (userTheme === void 0 || userTheme === null) {
+  if (userTheme === void 0) {
     return defaultTheme
   }
   else if (defaultTheme === emptyObj) {

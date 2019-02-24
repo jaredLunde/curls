@@ -4,7 +4,7 @@ import emptyObj from 'empty/object'
 import {portalize} from '../utils'
 import Overlay from '../Overlay'
 import {FlexBox} from '../Box'
-import {maxZIndex} from '../browser'
+import {MAX_Z_INDEX} from '../browser'
 import createComponent, {renderNode} from '../createComponent'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
@@ -39,7 +39,7 @@ const defaultCSS = css`
   margin: auto;
   left: 0;
   right: 0;
-  ${maxZIndex};
+  z-index: ${MAX_Z_INDEX};
 `
 
 export const ModalConsumer = Consumer

@@ -1,8 +1,8 @@
 const cache = {}
 
-export default (cacheName, fn) => {
+export default (cacheName, fn, CacheMap = Map) => {
   if (cache[cacheName] === void 0) {
-    cache[cacheName] = new Map()
+    cache[cacheName] = new CacheMap()
   }
 
   return arg => {

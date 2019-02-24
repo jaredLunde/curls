@@ -1,5 +1,5 @@
 import {css} from '@emotion/core'
-import {withHoverQuery} from '../utils'
+import {getHoverQuery} from '../utils'
 
 
 export function getHoverClass (theme, props) {
@@ -17,7 +17,7 @@ export function getHoverClass (theme, props) {
     }
   `
 
-  return css`${withHoverQuery(hoverStyle, noneStyle)}`
+  return css`${getHoverQuery(hoverStyle, noneStyle)}`
 }
 
 export function getActiveClass (theme, props) {

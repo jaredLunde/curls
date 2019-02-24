@@ -4,7 +4,7 @@ import {ViewportConsumer} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
 import emptyObj from 'empty/object'
-import {maxZIndex} from '../browser'
+import {MAX_Z_INDEX} from '../browser'
 import {FlexBox} from '../Box'
 import {pos} from '../Box/CSS'
 import {flex} from '../Flex/CSS'
@@ -41,7 +41,7 @@ export const PopOverConsumer = Consumer
 const defaultCSS = css`
   ${flex};
   ${pos.fixed};
-  ${maxZIndex};
+  z-index: ${MAX_Z_INDEX};
 `
 const as = 'div'
 const SFC = createComponent({name: 'PopOver', defaultTheme, themePath: 'popOver'})

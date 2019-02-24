@@ -1,15 +1,11 @@
 import {css} from '@emotion/core'
-import {withHoverQuery} from '../utils'
+import {getHoverQuery} from '../utils'
 
 
 export const scale = {
-  xxs: css`padding: 0.375rem 0.75rem;`,
-  xs: css`padding: 0.5rem 1rem;`,
-  sm: css`padding: 0.75rem 1.5rem;`,
+  sm: css`padding: 0.67rem 1.33rem;`,
   md: css`padding: 1rem 2rem;`,
-  lg: css`padding: 1.25rem 2.5rem;`,
-  xl: css`padding: 1.5rem 3rem;`,
-  xxl: css`padding: 1.875rem 3.75rem;`,
+  lg: css`padding: 1.5rem 3rem;`
 }
 
 export const defaultProps = {
@@ -33,9 +29,8 @@ export function getHoverClass (theme, props) {
     }
   `
 
-  return css`${withHoverQuery(hoverStyle, noneStyle)}`
+  return css`${getHoverQuery(hoverStyle, noneStyle)}`
 }
-
 
 export function getActiveClass (theme, props) {
   if (props.bg === void 0) {

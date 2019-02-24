@@ -7,7 +7,7 @@ import {pos, w, h, ov} from '../Box/CSS'
 import {FlexBox} from '../Box'
 import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
-import {maxZIndex} from '../browser'
+import {MAX_Z_INDEX} from '../browser'
 import createComponent, {renderNode} from '../createComponent'
 
 /**
@@ -20,7 +20,6 @@ import createComponent, {renderNode} from '../createComponent'
 const as = 'div'
 const defaultCSS = css`
   ${baseIsNotVisible};
-  ${maxZIndex};
   ${flex};
   ${align.center};
   ${justify.center};
@@ -31,6 +30,7 @@ const defaultCSS = css`
   height: 100%;
   left: 0;
   top: 0;
+  z-index: ${MAX_Z_INDEX - 1};
 `
 const SFC = createComponent({name: 'Overlay', defaultTheme, themePath: 'overlay'})
 

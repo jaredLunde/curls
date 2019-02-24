@@ -8,12 +8,12 @@ import emptyObj from 'empty/object'
 const mergeGlobals_ = memoize(
   // this is memoized for defaultTheme merging efficiency and sCU in children
   (curlsTheme, userTheme) => {
-    const base = {}
+    const base = {}, baseKeys = Object.keys(baseTheme)
 
-    for (let key in baseTheme) {
+    for (let i = 0; i < baseKeys.length; i++) {
+      const key = baseKeys[i]
       base[key] = curlsTheme[key]
     }
-    base.locals = curlsTheme.locals
 
     return userTheme === emptyObj ? base : Object.assign(base, userTheme)
   }
@@ -28,8 +28,8 @@ const mergeGlobals = ({userTheme, theme}, props) => {
       props.defaultTheme,
       mergeGlobals_(userTheme, getTheme(props.defaultTheme, userTheme[props.path]))
     )
+
     theme[props.path] = getTheme(props.defaultTheme, userTheme[props.path])
-    console.log(props.path, componentTheme)
     return componentTheme
   }
 }

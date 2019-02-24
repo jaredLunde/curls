@@ -1,3 +1,7 @@
+// Adapted from: https://github.com/TehShrike/deepmerge
+//
+// Copyright Nick Fisher
+// License MIT
 import isMergeableObject from 'is-mergeable-object'
 
 
@@ -15,8 +19,9 @@ const arrayMergeReplace = (target, source) => {
   }
 
   const output = []
+  let i = 0
 
-  for (let i = 0; i < source.length; i++) {
+  for (; i < source.length; i++) {
     output.push(mergeIfMergeable(source[i]))
   }
 
@@ -29,10 +34,10 @@ const mergeObject = (target, source) => {
   }
 
 	const destination = Object.assign({}, target)
-  // const destination = target
   const sourceKeys = Object.keys(source)
+  let i = 0
 
-  for (let i = 0; i < sourceKeys.length; i++) {
+  for (; i < sourceKeys.length; i++) {
     const key = sourceKeys[i]
 
     if (isMergeableObject(source[key]) === false || target[key] === void 0) {

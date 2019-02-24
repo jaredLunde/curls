@@ -2,7 +2,7 @@ import {css} from '@emotion/core'
 import toSize from './toSize'
 
 
-export const directionalRe = /(?=([0-9A-Z]{1}[\w]*))/
+export const directionalRe = /(?=[\d]+|Auto)/
 const defaultDirections = {
   _: ['top', 'right', 'bottom', 'left'],
   t: ['top'],
@@ -24,35 +24,53 @@ export default (
   unit = 'px',
   directions = defaultDirections,
 ) => {
-  let CSS = []
+  let CSS = [],
+      i = 0,
+      j,
+      modVals = String(modValue).split(' ')
 
-  String(modValue).split(' ').forEach(
-    function (val) {
-      let [abbr, value] = val.split(directionalRe)
-      if (!isNaN(parseInt(abbr))) {
-        value = abbr
-        abbr = '_'
-      }
+  for (; i < modVals.length; i++) {
+    const val = modVals[i]
+    let [abbr, ...value] = val.split(directionalRe)
+    value = value.join('')
 
-      const direction = directions[abbr]
+    if (abbr.length === 0 || isNaN(parseInt(abbr)) === false) {
+      value = isNaN(parseInt(value)) ? abbr : val
+      abbr = '_'
+    }
+
+    const direction = directions[abbr]
+
+    if (__DEV__) {
       if (direction === void 0) {
-        console.warn(
-          `Direction '${abbr}' unrecognized in ${JSON.stringify(Object.keys(directions))}`
+        throw (
+          `Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n`
+          + `Allowed values include: ${Object.keys(directions).join(', ')}`
         )
-        return
       }
+    }
 
-      direction.forEach(
-        function (xyz) {
-          CSS.push(
-            css`${prefix.replace('{XYZ}', xyz)}: ${
-              toSize(modScale[value] || value.toLowerCase(), unit)
-            };`
+    let size = modScale[value]
+
+    if (size === void 0) {
+      if (lVal === 'Auto') {
+        size = 'auto'
+      }
+      else {
+        if (__DEV__) {
+          throw (
+            `Unrecognized scale value in ${prefix}: ${value}\n\n`
+            + `Allowed values include: ${Object.keys(modScale).join(', ')}`
           )
         }
-      )
+      }
     }
-  )
+
+    for (j = 0; j < direction.length; j++) {
+      const xyz = direction[i]
+      CSS.push(css`${prefix.replace('{XYZ}', xyz)}: ${toSize(size, unit)};`)
+    }
+  }
 
   // return css`${CSS}`
   return CSS
