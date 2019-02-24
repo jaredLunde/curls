@@ -1,4 +1,3 @@
-
 export default (initialProps, removedProps) => {
   let props = {},
       i = 0,
