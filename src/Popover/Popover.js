@@ -232,31 +232,111 @@ function ViewportPopover (props) {
 }
 
 const positions = ['fromTop', 'fromRight', 'fromBottom', 'fromLeft']
+const ws = /\s+/
 
 function getBreakpoints (props) {
-  const keys = Object.keys(props)
-  const breakpoints = []
+  let keys = Object.keys(props),
+      hasBreakpoints = false,
+      breakpoints = {},
+      i = 0,
+      j
 
-  for (let i = 0; i < keys.length; i++) {
+  for (; i < keys.length; i++) {
     const key = keys[i]
+
     if (positions.indexOf(key) > -1) {
-      if (props[key].indexOf('@') > -1) {
-        breakpoints.push()
+      if (typeof props[key] !== 'string') {
+        continue
       }
+
+      const valPairs = props[key].split(ws)
+
+      for (j = 0; j < valPairs.length; j++) {
+        const valPair = valPairs[j]
+        const indexOfSplit = valPair.indexOf('@')
+
+        if (indexOfSplit > -1) {
+          breakpoints[valPair.substring(indexOfSplit + 1)] = key
+          hasBreakpoints = true
+        }
+      }
+    }
+  }
+
+  return hasBreakpoints && breakpoints
+}
+
+function getDirection (props) {
+  let keys = Object.keys(props),
+      i = keys.length -1
+
+  for (; i > -1 ; i--) {
+    const key = keys[i]
+
+    if (positions.indexOf(key) > -1 && !!props[key]) {
+      return key
     }
   }
 }
 
+class BreakpointRenderer extends React.Component {
+  state = {mounted: false}
+
+  componentDidMount () {
+    this.setState({mounted: true})
+  }
+
+  render () {
+    let {popoverProps} = this.props
+    let breakpoints = {}, i
+    const keys =  Object.keys(this.props.breakpoints)
+
+    for (i = 0; i < keys.length; i++) {
+      breakpoints[keys[i]] = true
+    }
+
+    return (
+      <Breakpoint key={this.state.mounted} {...breakpoints}>
+        {({matches}) => {
+          popoverProps.popoverDirection = 'fromBottom'
+
+          for (i = keys.length - 1; i > -1; i--) {
+            const key = keys[i]
+
+            if (matches[key] === true) {
+              popoverProps.popoverDirection = this.props.breakpoints[key]
+              break
+            }
+          }
+
+          return ViewportPopover(popoverProps)
+        }}
+      </Breakpoint>
+    )
+  }
+}
+
 export default React.forwardRef(
-  function Popover ({...props}, innerRef) {
+  function Popover (props, innerRef) {
+    const breakpoints = getBreakpoints(props)
 
     return (props.transition || Drop)({
       ...props,
       children: function (popoverProps) {
         popoverProps.children = props.children
-        popoverProps.popoverDirection = 'fromBottom'
         popoverProps.innerRef = innerRef
-        return ViewportPopover(popoverProps)
+
+        if (breakpoints === false) {
+          popoverProps.popoverDirection = getDirection(props) || 'fromBottom'
+          return ViewportPopover(popoverProps)
+        }
+
+        // this is here because react hydration is a complete piece of shit
+        return <BreakpointRenderer
+          props={props}
+          popoverProps={popoverProps}
+          breakpoints={breakpoints}
+        />
       }
     })
   }

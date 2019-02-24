@@ -7,11 +7,11 @@ const getColumnWidth = (size, cols, theme, props) => {
   }
 
   const numColumns = isNaN(theme.columns) === true ? theme.columns[size] : theme.columns
-  let x
+  let x, indexOfSlash = cols.indexOf('/')
 
-  if (cols.indexOf('/') > -1) {
-    cols = cols.split('/')
-    x = parseInt(cols[0])
+  if (indexOfSlash > -1) {
+    x = parseInt(cols.substring(0, indexOfSlash))
+    cols = cols.substring(indexOfSlash + 1)
   }
   else {
     x = parseInt(cols)

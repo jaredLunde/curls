@@ -1,13 +1,14 @@
 import React from 'react'
+import memoize from 'cdll-memoize'
 import MediaQuery from '../MediaQuery'
 import ThemeConsumer from '../ThemeConsumer'
-import memoize from 'cdll-memoize'
+import {getBreakpointOrder} from '../utils'
 import * as defaultTheme from '../Grid/defaultTheme'
 
 
 function getSizes (props, theme) {
   const sizes = []
-  const keys = Object.keys(theme.breakPoints)
+  const keys = getBreakpointOrder(theme.breakpoints)
 
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i]
@@ -21,15 +22,15 @@ function getSizes (props, theme) {
 
 const memoizedFindBreakPoints = memoize(
   function (theme, ...sizes) {
-    const breakPoints = []
+    const breakpoints = []
 
-    for (let size in theme.breakPoints) {
+    for (let size in theme.breakpoints) {
       if (sizes.indexOf(size) > -1) {
-        breakPoints.push(theme.breakPoints[size])
+        breakpoints.push(theme.breakpoints[size])
       }
     }
 
-    return [sizes, breakPoints]
+    return [sizes, breakpoints]
   },
   {size: 36}
 )

@@ -2,6 +2,7 @@ import {css as emotionCSS} from '@emotion/core'
 import getBreakpointOrder from './getBreakpointOrder'
 
 
+const ws = /\s+/
 const getCSS = (fn, value, theme, props) => (
   typeof fn === 'object' && fn.styles !== void 0
     ? value === false
@@ -52,36 +53,38 @@ export default (props, theme, CSS) => {
       }
       else {
         // this parses values with media queries
-        let values = propVal.split(' '),
+        let values = propVal.split(ws),
             j = 0
 
         for (; j < values.length; j++) {
-          if (values[j].length > 0) {
-            // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
-            let [value, breakpoint] = values[j].split('@')
-            value = value.length === 0 ? true : value
-            let cssValue = getCSS(getter, value, theme, props)
+          // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
+          const indexOfSplit = values[j].indexOf('@')
+          let value = values[j].substring(0, indexOfSplit),
+              breakpoint = values[j].substring(indexOfSplit + 1)
+          // empty values are treated as bools
+          value = value.length === 0 ? true : value
+          let cssValue = getCSS(getter, value, theme, props)
 
-            if (cssValue !== null) {
-              if (breakpoint !== void 0 && breakpoint.length > 0) {
-                if (__DEV__) {
-                  if (getBreakpointOrder(theme.breakpoints).indexOf(breakpoint) === -1) {
-                    throw `A break point for '${breakpoint}' was not found in '${bps.join(', ')}'`
-                  }
+          if (cssValue !== null) {
+            if (breakpoint !== void 0 && breakpoint.length > 0) {
+              if (__DEV__) {
+                const bps = getBreakpointOrder(theme.breakpoints)
+                if (bps.indexOf(breakpoint) === -1) {
+                  throw `A break point for '${breakpoint}' was not found in '${bps.join(', ')}'`
                 }
+              }
 
-                (mediaQueries = mediaQueries || {})[breakpoint] = mediaQueries[breakpoint] || []
+              (mediaQueries = mediaQueries || {})[breakpoint] = mediaQueries[breakpoint] || []
 
-                if (Array.isArray(cssValue) === true) {
-                  mediaQueries[breakpoint].push.apply(mediaQueries[breakpoint], cssValue)
-                }
-                else {
-                  mediaQueries[breakpoint].push(cssValue)
-                }
+              if (Array.isArray(cssValue) === true) {
+                mediaQueries[breakpoint].push.apply(mediaQueries[breakpoint], cssValue)
               }
               else {
-                css.push(cssValue)
+                mediaQueries[breakpoint].push(cssValue)
               }
+            }
+            else {
+              css.push(cssValue)
             }
           }
         }

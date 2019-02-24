@@ -34,8 +34,9 @@ export const overflow = {
   touch: css`-webkit-overflow-scrolling: touch;`
 }
 
+const ws = /\s+/
 export const ov = nullIfFalse(value => {
-  const vals = value.split(' ')
+  const vals = value.split(ws)
 
   if (vals.length === 1) {
     return overflow[value]
