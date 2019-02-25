@@ -5,9 +5,9 @@ import centerFromLeft from './centerFromLeft'
 import centerFromRight from './centerFromRight'
 
 
-export default function (direction, container, popOverBox, viewportSize) {
+export default function (direction, container, popoverBox, viewportSize) {
   const containerRect = rect(container)
-  const boxRect = rect(popOverBox)
+  const boxRect = rect(popoverBox)
 
   if (!containerRect) {
     return null

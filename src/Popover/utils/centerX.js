@@ -1,4 +1,4 @@
-export default function (containerRect, boxRect, width) {
+export default (containerRect, boxRect, width) => {
   let right = 'auto'
   let left = containerRect.left + ((containerRect.width - boxRect.width) / 2)
   const boxWidth = ((boxRect.width - containerRect.width) / 2)

@@ -863,7 +863,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.11.1.tgz#8529b7412a6eb4b48bdf6e720cc1b8e6e1e17628"
   integrity sha512-8M3VN0hetwhsJ8dH8VkVy7xo5/1VoBsDOk/T4SJOeXwTO1c4uIqVNx2qyecLFnnUWD5vvUqHQ1gASSeUN6zcTg==
 
-"@render-props/events@^0.1.2":
+"@render-props/events@^0.1.12", "@render-props/events@^0.1.2":
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/@render-props/events/-/events-0.1.12.tgz#fc0a6babf2da6825fb4f7a17023d6a24ad25d607"
   integrity sha512-Y0PW4rd02ZgXjfw0PEADtSgwWfF7mCdoN5B4hmr132CJ6frrvAFY8u/ZeqM/rpFsh0ByoabJo9OxtjY35IH0Bw==
@@ -903,7 +903,7 @@
     "@render-props/events" "^0.1.2"
     "@render-props/throttle" "^0.1.5"
 
-"@render-props/scrollable@^0.1.11", "@render-props/scrollable@^0.1.8":
+"@render-props/scrollable@^0.1.11", "@render-props/scrollable@^0.1.19", "@render-props/scrollable@^0.1.8":
   version "0.1.19"
   resolved "https://registry.yarnpkg.com/@render-props/scrollable/-/scrollable-0.1.19.tgz#e99f214300dd1dcdf06287d217f8e5943d8d53a7"
   integrity sha512-WqFqaUXJ+VIX3JJD8knABIg5EEi53JShBiL2rMXaaDmuRokgCppoCHfjWcV8GH7JiJGO4hUSneNSfnqpL85VKg==
@@ -914,7 +914,7 @@
     "@render-props/throttle" "^0.1.5"
     "@render-props/utils" "^0.2.1"
 
-"@render-props/throttle@^0.1.5":
+"@render-props/throttle@^0.1.15", "@render-props/throttle@^0.1.5":
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/@render-props/throttle/-/throttle-0.1.15.tgz#d1caf5d6913501d6659d0a96339caa26a95f403a"
   integrity sha512-CIgHP/e+l3PEun06Z2pKMnRaN5AzwDMXsgjNplBjN6IKjj9znzoITtVLkv4rv/S/j8jPF1DAURIF5y4WDswc0g==
@@ -950,7 +950,7 @@
     "@babel/runtime-corejs2" "^7.3.1"
     "@render-props/utils" "^0.2.1"
 
-"@render-props/viewport@^0.2.18", "@render-props/viewport@^0.2.3":
+"@render-props/viewport@^0.2.3":
   version "0.2.18"
   resolved "https://registry.yarnpkg.com/@render-props/viewport/-/viewport-0.2.18.tgz#c3141ec42814fb4644fa559e9e1104d16d2c933c"
   integrity sha512-Zu0AeD0MRv/N9G8r3Co2iODoNyiQAmcirRbGLVtkN1gaYX3SFxB6538W1jaVJuWrTbbI7xhCzfLNcYLlpt6YgQ==
@@ -962,6 +962,19 @@
     "@render-props/scrollable" "^0.1.11"
     "@render-props/throttle" "^0.1.5"
     "@render-props/utils" "^0.2.1"
+
+"@render-props/viewport@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@render-props/viewport/-/viewport-0.3.0.tgz#2cebb0b971e7b1980fa9717753fbc52b75f7542b"
+  integrity sha512-uZ3OBRXJxM2Sj5kFYv7bn5jebqnJ3mOBseH3n/wLr5i0dXPI4THKVCvfDnJmB+EO1Fgxyrh4Lq+s1chIANeyAw==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "@babel/runtime-corejs2" "^7.3.1"
+    "@render-props/events" "^0.1.12"
+    "@render-props/rect" "^0.1.21"
+    "@render-props/scrollable" "^0.1.19"
+    "@render-props/throttle" "^0.1.15"
+    "@render-props/utils" "^0.2.11"
 
 "@stellar-apps/babel-preset-es@^1.0.3":
   version "1.0.3"

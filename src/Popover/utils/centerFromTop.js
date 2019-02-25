@@ -1,7 +1,7 @@
 import centerX from './centerX'
 
 
-export default function (containerRect, boxRect, {width, height}) {
+export default (containerRect, boxRect, {width, height}) => {
   let top = 'auto'
   let bottom = 'auto'
   let renderPosition = 'top'

@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {ViewportConsumer} from '@render-props/viewport'
+import {ViewportSize, Viewport} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
 import emptyObj from 'empty/object'
@@ -210,25 +210,24 @@ class PopoverContainer extends React.Component {
 
 
 function ViewportPopover (props) {
-  // props here can be safely mutated
-  return ViewportConsumer({
-    observe: props.repositionOnScroll ? void 0 : 'size',
-    children: vpProps => {
-      props.width = vpProps.width
-      props.height = vpProps.height
+  const children = vpProps => {
+    props.width = vpProps.width
+    props.height = vpProps.height
 
-      if (props.repositionOnScroll) {
-        props.scrollY = vpProps.scrollY
-      }
-
-      if (props.innerRef) {
-        props.ref = props.innerRef
-        delete props.innerRef
-      }
-
-      return React.createElement(PopoverContainer, props)
+    if (props.repositionOnScroll) {
+      props.scrollY = vpProps.scrollY
     }
-  })
+
+    if (props.innerRef) {
+      props.ref = props.innerRef
+      delete props.innerRef
+    }
+
+    return React.createElement(PopoverContainer, props)
+  }
+
+  // props here can be safely mutated
+  return (props.repositionOnScroll ? Viewport : ViewportSize)({children})
 }
 
 const positions = ['fromTop', 'fromRight', 'fromBottom', 'fromLeft']

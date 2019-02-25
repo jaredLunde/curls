@@ -1,4 +1,4 @@
-export default function (containerRect, boxRect, height) {
+export default (containerRect, boxRect, height) => {
   let bottom = 'auto'
   let top = containerRect.top + ((containerRect.height - boxRect.height) / 2)
   const boxHeight = ((boxRect.height - containerRect.height) / 2)

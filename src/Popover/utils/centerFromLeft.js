@@ -1,7 +1,7 @@
 import centerY from './centerY'
 
 
-export default function (containerRect, boxRect, {width, height}) {
+export default (containerRect, boxRect, {width, height}) => {
   let left = 'auto'
   let right = 'auto'
   let renderPosition = 'left'

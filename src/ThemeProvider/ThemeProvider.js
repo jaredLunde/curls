@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import emptyObj from 'empty/object'
-import {ViewportProvider} from '@render-props/viewport'
 import {css, ThemeContext, Global} from '@emotion/core'
 import createTheme, {mergeTheme, baseTheme} from './createTheme'
 import {toSize} from '../utils'
@@ -61,12 +60,10 @@ export default class ThemeProvider extends React.Component {
     `
 
     return (
-      <ViewportProvider>
-        <CurlsContext.Provider value={this.state}>
-          <Global styles={[...globalStyles, remCSS]}/>
-          {this.props.children}
-        </CurlsContext.Provider>
-      </ViewportProvider>
+      <CurlsContext.Provider value={this.state}>
+        <Global styles={[...globalStyles, remCSS]}/>
+        {this.props.children}
+      </CurlsContext.Provider>
     )
   }
 }
