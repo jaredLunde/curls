@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "3.0.8",
+  "version": "3.0.10",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/runtime": "^7.3.1",
     "@babel/runtime-corejs2": "^7.3.1",
+    "@emotion/core": "^10.0.7",
     "@render-props/image-props": "^0.1.15",
     "@render-props/rect": "^0.1.21",
     "@render-props/toggle": "^0.1.29",
@@ -44,7 +45,6 @@
     "publish:next": "yarn publish --tag next"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.6",
     "prop-types": ">= 15.6.0",
     "react": ">= 16.3.0",
     "react-dom": ">= 16.3.0"

@@ -39,7 +39,7 @@ const getColumnWidth = (size, cols, theme, props) => {
   `
 }
 
-export const __gridBreakPoints = (v, t, p) => {
+export const __gridBreakpoints = (v, t, p) => {
   const css = []
 
   for (let s in v) {
