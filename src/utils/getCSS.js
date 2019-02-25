@@ -59,8 +59,13 @@ export default (props, theme, CSS) => {
         for (; j < values.length; j++) {
           // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
           const indexOfSplit = values[j].indexOf('@')
-          let value = values[j].substring(0, indexOfSplit),
-              breakpoint = values[j].substring(indexOfSplit + 1)
+          let value = values[j], breakpoint
+
+          if (indexOfSplit > -1) {
+            value = values[j].substring(0, indexOfSplit)
+            breakpoint = values[j].substring(indexOfSplit + 1)
+          }
+
           // empty values are treated as bools
           value = value.length === 0 ? true : value
           let cssValue = getCSS(getter, value, theme, props)

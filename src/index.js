@@ -48,4 +48,4 @@ export Transitionable from './Transitionable'
 export Type from './Type'
 
 // emotion exports
-export {css, ClassNames, Global, jsx} from '@emotion/core'
+export {CacheProvider, css, ClassNames, Global, jsx} from '@emotion/core'
