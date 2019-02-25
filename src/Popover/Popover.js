@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {ViewportSize, Viewport} from '@render-props/viewport'
+import {ViewportSize, default as Viewport} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
 import {strictShallowEqual} from '@render-props/utils'
 import emptyObj from 'empty/object'
@@ -120,7 +120,8 @@ class PopoverContainer extends React.Component {
       && (
         width !== this.props.width
         || height !== this.props.height
-        || scrollY !== this.props.scrollY
+      ) || (
+        this.props.isVisible === true && scrollY !== this.props.scrollY
       )
     )
     ) {
@@ -137,9 +138,9 @@ class PopoverContainer extends React.Component {
   shouldComponentUpdate ({scrollY, width, height, ...nextProps}, nextState) {
     if (
       (this.props.isVisible === true || this.state.hasRendered === true) && (
-        width !== this.props.width
-        || height !== this.props.height
-        || scrollY !== this.props.scrollY
+        width !== this.props.width || height !== this.props.height
+      ) || (
+        this.props.isVisible && scrollY !== this.props.scrollY
       )
     ) {
       return true
