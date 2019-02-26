@@ -9,6 +9,8 @@ import * as styles from './styles'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
 import getImage from './getImage'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 /**
@@ -97,5 +99,5 @@ const Avatar = React.forwardRef(
   }
 )
 
-Avatar.propTypes /* remove-proptypes */ = propTypes
+Avatar.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 export default Avatar

@@ -1,4 +1,4 @@
-export default function assignOrdered (defaultProps, kinds, props) {
+export default (defaultProps, kinds, props) => {
   let output = {},
       i = 0,
       defaultPropsKeys = Object.keys(defaultProps)

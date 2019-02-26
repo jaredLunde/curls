@@ -5,6 +5,9 @@ import Type from '../Type'
 import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
+import typePropTypes from '../Type/propTypes'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const SFC = createComponent({name: 'link', styles, defaultTheme})
@@ -24,4 +27,5 @@ const A = React.forwardRef(
   }
 )
 
+A.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, typePropTypes, flexPropTypes)
 export default A

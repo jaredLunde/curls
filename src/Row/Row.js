@@ -4,6 +4,8 @@ import {pos} from '../Box/styles'
 import {flex, row, wrap} from '../Flex/styles'
 import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const as = 'div'
@@ -34,4 +36,5 @@ const Row = React.forwardRef(
   }
 )
 
+Row.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
 export default Row

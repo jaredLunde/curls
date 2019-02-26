@@ -7,6 +7,8 @@ import createComponent, {renderNode} from '../createComponent'
 import * as defaultTheme from './defaultTheme'
 import propTypes from './propTypes'
 import * as styles from './styles'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const defaultCSS = css`
@@ -72,5 +74,5 @@ const Card = React.forwardRef(
   }
 )
 
-Card.propTypes = propTypes
+Card.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 export default Card

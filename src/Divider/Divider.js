@@ -5,6 +5,8 @@ import {BasicBox} from '../Box'
 import {w, h, d, pos} from '../Box/styles'
 import * as defaultTheme from './defaultTheme'
 import emptyObj from 'empty/object'
+import propTypes from '../Type/propTypes'
+import boxPropTypes from '../Box/propTypes'
 
 
 const as = 'div'
@@ -34,4 +36,5 @@ const Divider = React.forwardRef(
   }
 )
 
+Divider.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes)
 export default Divider

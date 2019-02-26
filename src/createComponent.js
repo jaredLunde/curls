@@ -1,5 +1,4 @@
 import {jsx} from '@emotion/core'
-import PropTypes from 'prop-types'
 import {getStyles, assignOrdered, objectWithoutProps} from './utils'
 import ThemeConsumer from './ThemeConsumer'
 
@@ -33,7 +32,7 @@ export const renderNodeFast = nodeProps => {
 }
 
 const getKind = (kinds, kind) => kinds === void 0 || kind === void 0 ? void 0 : kinds[kind]
-const defaultPropTypes = {kind: PropTypes.string, children: PropTypes.any}
+const defaultWithout = {kind: true, children: true}
 
 export default ({
   name,
@@ -63,25 +62,24 @@ export default ({
     name = themePath
   }
 
+  if (name === void 0) {
+    throw new Error(`Curls components must be created with a 'name' option set.`)
+  }
 
   if (defaultTheme !== void 0) {
     defaultTheme = Object.assign({}, defaultTheme)
   }
 
-  if (name === void 0) {
-    throw new Error(`Curls components must be created with a 'name' option set.`)
-  }
+  const withoutProps = Object.assign({}, defaultWithout, styles)
 
-  const withoutProps = Object.assign({}, defaultPropTypes, styles)
-
-  function renderer (props, themeProps) {
+  function render (props, themeProps) {
     const theme = themeProps.theme
     props =
       theme.defaultProps === void 0
         ? props
         : assignOrdered(theme.defaultProps, getKind(theme.kinds, props.kind), props)
     const renderProps = objectWithoutProps(props, withoutProps)
-    const css = typeof styles === 'object' ? getStyles(props, theme, styles) : void 0
+    const css = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0
 
     if (css !== void 0) {
       if (css.css.length > 0) {
@@ -100,16 +98,16 @@ export default ({
     return props.children(renderProps)
   }
 
-  const themeRenderer =
+  const renderTheme =
     plugins !== void 0 && plugins.length > 0
-      ? composeThemePlugins(renderer, ...plugins)
-      : renderer
+      ? composeThemePlugins(render, ...plugins)
+      : render
 
   return function SFC (props) {
     return ThemeConsumer({
       name,
       defaultTheme,
-      children: themeProps => themeRenderer(props, themeProps)
+      children: themeProps => renderTheme(props, themeProps)
     })
   }
 }

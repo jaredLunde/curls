@@ -4,6 +4,9 @@ import createComponent from '../createComponent'
 import Type from '../Type'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
+import typePropTypes from '../Type/propTypes'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const as = 'input'
@@ -25,4 +28,5 @@ const Input = React.forwardRef(
 
 )
 
+Input.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes)
 export default Input

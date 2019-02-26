@@ -3,6 +3,8 @@ import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
 import {FlexBox} from '../Box'
 import {flex, row, wrap, align, justify} from '../Flex/styles'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const as = 'nav'
@@ -34,4 +36,5 @@ const NavBar = React.forwardRef(
   }
 )
 
+NavBar.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
 export default NavBar

@@ -6,6 +6,8 @@ import {flex, column, align, justify} from '../Flex/styles'
 import {w, pos, ov} from '../Box/styles'
 import createComponent, {renderNode} from '../createComponent'
 import {getStyle} from './utils'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 class HeroBS extends React.Component {
@@ -68,4 +70,5 @@ const Hero = React.forwardRef(
   }
 )
 
+Hero.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
 export default Hero

@@ -26,7 +26,7 @@ const maybeAddStyles = (css, style, maybeCss) => {
   }
 }
 
-export default (props, theme, CSS) => {
+export default (styles, theme, props) => {
   let i = 0,
       css = [],
       style = {},
@@ -35,15 +35,15 @@ export default (props, theme, CSS) => {
 
   for (; i < propKeys.length; i++) {
     const propName = propKeys[i],
-          getter = CSS[propName]
+          getter = styles[propName]
 
     if (getter === void 0) continue
     const propVal = props[propName]
 
-    if (propVal !== void 0/*&& propVal !== false*/) {
+    if (propVal !== void 0) {
       if (__DEV__) {
         if (typeof getter === 'string') {
-          throw 'CSS definitions can no longer contain strings. They must return '
+          throw 'CSS definitions can no longer contain class names. They must return '
             + '@emotion/core css objects.'
         }
       }

@@ -6,6 +6,8 @@ import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const as = 'button'
@@ -36,5 +38,5 @@ const Button = React.forwardRef(
   }
 )
 
-Button.propTypes /* remove-proptypes */ = propTypes
+Button.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 export default Button

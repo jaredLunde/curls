@@ -9,6 +9,9 @@ import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
 import {MAX_Z_INDEX} from '../browser'
 import createComponent, {renderNode} from '../createComponent'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
+
 
 /**
 <Overlay visible={isVisible}>
@@ -71,4 +74,5 @@ const Overlay = React.forwardRef(
   }
 )
 
+Overlay.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
 export default Overlay

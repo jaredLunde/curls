@@ -5,6 +5,9 @@ import Type from '../Type'
 import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
+import typePropTypes from '../Type/propTypes'
 
 
 const SFC = createComponent({name: 'textArea', styles, defaultTheme,})
@@ -42,5 +45,5 @@ const TextArea = React.forwardRef(
   }
 )
 
-TextArea.propTypes /* remove-proptypes */ = propTypes
+TextArea.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes, propTypes)
 export default TextArea
