@@ -3,17 +3,11 @@ import {callIfExists} from '@render-props/utils'
 import createComponent from '../createComponent'
 import Type from '../Type'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 
 
-const SFC = createComponent({
-  name: 'TextArea',
-  defaultTheme,
-  propTypes,
-  CSS,
-  themePath: 'textArea'
-})
+const SFC = createComponent({name: 'textArea', styles, defaultTheme,})
 
 function autoResize (e) {
   if (!e.target.value) {
@@ -25,7 +19,7 @@ function autoResize (e) {
   }
 }
 
-export default React.forwardRef(
+const TextArea = React.forwardRef(
   function TextArea (props, innerRef) {
     return SFC({
       __inputStyles: true,
@@ -47,3 +41,6 @@ export default React.forwardRef(
     })
   }
 )
+
+TextArea.propTypes /* remove-proptypes */ = propTypes
+export default TextArea

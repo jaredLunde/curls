@@ -2,15 +2,14 @@ import React from 'react'
 import {jsx} from '@emotion/core'
 import createComponent from '../createComponent'
 import Type from '../Type'
-import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 
 
 const as = 'input'
-const SFC = createComponent({name: 'Input', defaultTheme, propTypes, CSS, themePath: 'input'})
+const SFC = createComponent({name: 'input', defaultTheme, styles})
 
-export default React.forwardRef(
+const Input = React.forwardRef(
   function Input (props, innerRef) {
     return SFC({
       __inputStyles: true,
@@ -25,3 +24,5 @@ export default React.forwardRef(
   }
 
 )
+
+export default Input

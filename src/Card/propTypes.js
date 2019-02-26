@@ -1,6 +1,6 @@
-import {oneOf, string, number} from 'prop-types'
+import {implicitNum} from '../PropTypes'
 
 
 export default {
-  br: oneOf([string, number])
+  br: implicitNum
 }

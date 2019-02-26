@@ -1,12 +1,12 @@
 export {browserResets, MAX_Z_INDEX} from './browser'
 
 export {
-  assignOrdered,
   colorize,
   directionalScale,
   getBreakpointOrder,
   getHoverQuery,
   getMediaQuery,
+  getStyles,
   getTheme as mergeTheme,
   nullIfFalse,
   toSize

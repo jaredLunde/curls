@@ -5,9 +5,10 @@ import {portalize} from '../utils'
 import {MAX_Z_INDEX} from '../browser'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
+import slidePropTypes from '../Slide/propTypes'
 import createComponent, {renderNode} from '../createComponent'
-import {d, pos, ov, h} from '../Box/CSS'
-import * as CSS from './CSS'
+import {d, pos, ov} from '../Box/styles'
+import * as styles from './styles'
 
 
 /**
@@ -44,19 +45,12 @@ const defaultCSS = css`
   ${ov.autoY};
   z-index: ${MAX_Z_INDEX};
 `
-const SFC = createComponent({
-  name: 'Drawer',
-  CSS,
-  themePath: 'drawer'
-})
+const SFC = createComponent({name: 'drawer', styles})
 const {Consumer, Provider} = React.createContext(emptyObj)
 
 export const DrawerConsumer = Consumer
 export const DrawerBox = React.forwardRef(
-  function DrawerBox (
-    {children, portal, ...props},
-    innerRef
-  ) {
+  function DrawerBox ({children, portal, ...props}, innerRef) {
     return (
       <Consumer children={
         function ({css, ...transitionProps}) {
@@ -84,9 +78,13 @@ export const DrawerBox = React.forwardRef(
   }
 )
 
-export default function Drawer (props) {
+const Drawer = props => {
   return (props.transition || Slide)({
     ...props,
     children: dropProps => <Provider value={dropProps} children={props.children(dropProps)}/>
   })
 }
+
+Drawer.propTypes /* remove-proptypes */ = slidePropTypes
+
+export default Drawer

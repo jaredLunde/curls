@@ -9,6 +9,7 @@ import createComponent, {renderNode} from '../createComponent'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
 
+
 /**
 import {Modal, ModalBox, ModalConsumer, Overlay} from 'curls'
 
@@ -32,7 +33,7 @@ import {Modal, ModalBox, ModalConsumer, Overlay} from 'curls'
 **/
 
 const {Consumer, Provider} = React.createContext(emptyObj)
-const SFC = createComponent({name: 'Modal', defaultTheme, themePath: 'modal'})
+const SFC = createComponent({name: 'modal', defaultTheme})
 const as = 'div'
 const defaultCSS = css`
   position: absolute;
@@ -79,11 +80,11 @@ export const ModalBox = React.forwardRef(
   }
 )
 
-export default function Modal (props) {
-  return (props.transition || Drop)({
-    ...props,
-    children: dropProps => <Provider value={dropProps} children={
-      props.children(dropProps)
-    }/>
-  })
-}
+const Modal = props => (props.transition || Drop)({
+  ...props,
+  children: dropProps => <Provider value={dropProps} children={
+    props.children(dropProps)
+  }/>
+})
+
+export default Modal

@@ -1,12 +1,12 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import {FlexBox} from '../Box'
-import {pos, w} from '../Box/CSS'
-import {flex, column} from '../Flex/CSS'
+import {pos, w} from '../Box/styles'
+import {flex, column} from '../Flex/styles'
 import createComponent, {renderNode} from '../createComponent'
 import * as defaultTheme from './defaultTheme'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 
 
 const defaultCSS = css`
@@ -52,16 +52,9 @@ const defaultCSS = css`
 
 
 const as = 'div'
-const SFC = createComponent({
-  name: 'Card',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath: 'card'
-})
+const SFC = createComponent({name: 'card', styles, defaultTheme,})
 
-
-export default React.forwardRef(
+const Card = React.forwardRef(
   function Card (props, innerRef) {
     return SFC({
       innerRef,
@@ -78,3 +71,6 @@ export default React.forwardRef(
     })
   }
 )
+
+Card.propTypes = propTypes
+export default Card

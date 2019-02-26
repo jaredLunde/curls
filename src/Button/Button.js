@@ -1,10 +1,10 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import {FlexBox} from '../Box'
-import {flex, row, align, justify} from '../Flex/CSS'
+import {flex, row, align, justify} from '../Flex/styles'
 import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 
 
@@ -15,30 +15,19 @@ const defaultCSS = css`
   ${align.center};
   ${justify.center};
 `
-const SFC = createComponent({
-  name: 'Button',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath: 'button'
-})
+const SFC = createComponent({name: 'button', styles, defaultTheme})
 
-export default React.forwardRef(
-  function Button ({className, ...props}, innerRef) {
+const Button = React.forwardRef(
+  function Button (props, innerRef) {
     return SFC({
       __buttonStyles: true,
       innerRef,
       ...props,
       children: function (boxProps) {
-        // this is done so css in defaultTheme.sizes can be overridden
-        const sfcClassName = boxProps.className
-        // this is done so css in defaultTheme.sizes can be overridden
-        boxProps.className = className
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
-
-          return renderNode(nodeProps, [defaultCSS, sfcClassName])
+          return renderNode(nodeProps, defaultCSS)
         }
 
         return FlexBox(boxProps)
@@ -46,3 +35,6 @@ export default React.forwardRef(
     })
   }
 )
+
+Button.propTypes /* remove-proptypes */ = propTypes
+export default Button

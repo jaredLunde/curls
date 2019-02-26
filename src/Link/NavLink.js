@@ -2,7 +2,8 @@ import React from 'react'
 import {CurlsContext} from '../ThemeProvider'
 import A from './A'
 
-export default React.forwardRef(
+
+const NavLink =  React.forwardRef(
   function NavLink (props, innerRef) {
     return <CurlsContext.Consumer children={
       cxt => {
@@ -17,3 +18,5 @@ export default React.forwardRef(
     }/>
   }
 )
+
+export default NavLink

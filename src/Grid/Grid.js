@@ -1,5 +1,5 @@
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 import createComponent from '../createComponent'
 import {getBreakpointOrder} from '../utils'
@@ -39,11 +39,15 @@ export const plugins = [
   }
 ]
 
-export default createComponent({
-  name: 'Grid',
-  propTypes,
-  CSS,
+const Grid = createComponent({
+  name: 'grid',
+  styles,
   defaultTheme,
-  themePath: 'grid',
   plugins
 })
+
+if (__DEV__) {
+  Grid.propTypes = propTypes
+}
+
+export default Grid

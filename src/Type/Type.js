@@ -2,7 +2,7 @@ import React from 'react'
 import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 
 
@@ -12,13 +12,7 @@ import * as defaultTheme from './defaultTheme'
 </Type>
 */
 const as = 'span'
-const SFC = createComponent({
-  name: 'Type',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath: 'type'
-})
+const SFC = createComponent({name: 'type', styles, defaultTheme,})
 
 const Type = React.forwardRef(
   function Type (props, innerRef) {
@@ -38,4 +32,5 @@ const Type = React.forwardRef(
   }
 )
 
+Type.propTypes /* remove-proptypes */ = propTypes
 export default Type

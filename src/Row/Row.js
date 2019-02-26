@@ -1,7 +1,7 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {pos} from '../Box/CSS'
-import {flex, row, wrap} from '../Flex/CSS'
+import {pos} from '../Box/styles'
+import {flex, row, wrap} from '../Flex/styles'
 import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
 
@@ -14,10 +14,9 @@ const defaultCSS = css`
   ${row.row};
   ${wrap.wrap};
 `
-const SFC = createComponent({name: 'Row', themePath: 'row'})
+const SFC = createComponent({name: 'Row'})
 
-
-export default React.forwardRef(
+const Row = React.forwardRef(
   function Row (props, innerRef) {
     return SFC({
       innerRef,
@@ -34,3 +33,5 @@ export default React.forwardRef(
     })
   }
 )
+
+export default Row

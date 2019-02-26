@@ -13,11 +13,24 @@ const getCSS = (fn, value, theme, props) => (
       : fn[value]
 )
 
+const maybeAddStyles = (css, style, maybeCss) => {
+  if (maybeCss !== void 0 && maybeCss !== null) {
+    if (Array.isArray(maybeCss) === true || maybeCss.styles !== void 0) {
+      css.push(maybeCss)
+    }
+    else {
+      style.value = style.value === void 0
+        ? Object.assign({}, maybeCss)
+        : Object.assign(style.value, maybeCss)
+    }
+  }
+}
+
 export default (props, theme, CSS) => {
   let i = 0,
-      style,
-      mediaQueries,
       css = [],
+      style = {},
+      mediaQueries,
       propKeys = Object.keys(props)
 
   for (; i < propKeys.length; i++) {
@@ -37,19 +50,7 @@ export default (props, theme, CSS) => {
 
       if (propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
         // these are just regular values, no media queries
-        const result = getCSS(getter, propVal, theme, props)
-
-        if (result !== void 0 && result !== null) {
-          if (Array.isArray(result) === true) {
-            css.push.apply(css, result)
-          }
-          else if (typeof result === 'object' && result.styles !== void 0) {
-            css.push(result)
-          }
-          else {
-            style = style === void 0 ? Object.assign({}, result) : Object.assign(style, result)
-          }
-        }
+        maybeAddStyles(css, style, getCSS(getter, propVal, theme, props))
       }
       else {
         // this parses values with media queries
@@ -70,26 +71,22 @@ export default (props, theme, CSS) => {
           value = value.length === 0 ? true : value
           let cssValue = getCSS(getter, value, theme, props)
 
-          if (cssValue !== null) {
-            if (breakpoint !== void 0 && breakpoint.length > 0) {
+          if (cssValue !== null && cssValue !== void 0) {
+            if (breakpoint === void 0 || breakpoint.length === 0) {
+              maybeAddStyles(css, style, cssValue)
+            }
+            else {
               if (__DEV__) {
+                // verifies that this is a real breakpoint, but only in development
                 const bps = getBreakpointOrder(theme.breakpoints)
+
                 if (bps.indexOf(breakpoint) === -1) {
                   throw `A break point for '${breakpoint}' was not found in '${bps.join(', ')}'`
                 }
               }
 
               (mediaQueries = mediaQueries || {})[breakpoint] = mediaQueries[breakpoint] || []
-
-              if (Array.isArray(cssValue) === true) {
-                mediaQueries[breakpoint].push.apply(mediaQueries[breakpoint], cssValue)
-              }
-              else {
-                mediaQueries[breakpoint].push(cssValue)
-              }
-            }
-            else {
-              css.push(cssValue)
+              mediaQueries[breakpoint].push(cssValue)
             }
           }
         }
@@ -113,5 +110,5 @@ export default (props, theme, CSS) => {
     }
   }
 
-  return css.length > 0 || style !== void 0 ? {css, style} : void 0
+  return css.length > 0 || style.value !== void 0 ? {css, style: style.value} : void 0
 }

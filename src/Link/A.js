@@ -3,14 +3,13 @@ import {jsx} from '@emotion/core'
 import createComponent from '../createComponent'
 import Type from '../Type'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 
 
-const as = 'a'
-const SFC = createComponent({name: 'Link', defaultTheme, propTypes, CSS, themePath: 'link'})
+const SFC = createComponent({name: 'link', styles, defaultTheme})
 
-export default React.forwardRef(
+const A = React.forwardRef(
   function A (props, innerRef) {
     return SFC({
       __linkStyles: true,
@@ -24,3 +23,5 @@ export default React.forwardRef(
     })
   }
 )
+
+export default A

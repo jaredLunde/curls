@@ -25,9 +25,7 @@ function queriesDidChange (prevQueries, nextQueries) {
   }
 }
 
-export default class MediaQuery extends React.Component {
-  static propTypes = propTypes
-
+class MediaQuery extends React.Component {
   constructor (props) {
     super(props)
     this.setQueriesList(props)
@@ -124,3 +122,6 @@ export default class MediaQuery extends React.Component {
     })
   }
 }
+
+MediaQuery.propTypes /* remove-proptypes */ = propTypes
+export default MediaQuery

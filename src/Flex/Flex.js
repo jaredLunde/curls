@@ -1,7 +1,10 @@
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import createComponent from '../createComponent'
 import * as defaultTheme from './defaultTheme'
 
 
-export default createComponent({name: 'Flex', propTypes, CSS, defaultTheme, themePath: 'flex'})
+const Flex = createComponent({name: 'flex', styles, defaultTheme})
+Flex.propTypes = propTypes
+
+export default Flex

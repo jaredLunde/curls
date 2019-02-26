@@ -1,6 +1,6 @@
 import {css} from '@emotion/core'
 import {toSize} from '../../utils'
-import {optimizeFor, antialias} from '../CSS'
+import {optimizeFor, antialias} from '../styles'
 
 
 export default function fontSize (size, theme, props) {

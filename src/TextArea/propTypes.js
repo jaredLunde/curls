@@ -1,7 +1,7 @@
-import {bool} from 'prop-types'
+import {boolOrString} from '../PropTypes'
 import propTypes from '../Input/propTypes'
 
 export default {
   ...propTypes,
-  autoResize: bool
+  autoResize: boolOrString
 }

@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types'
-import positional from '../PropTypes/positional'
+import {positional, implicitNum} from '../PropTypes'
+import transitionable from '../Transitionable/propTypes'
 
 
 export default {
   ...positional,
-  enterDelay: PropTypes.number,
-  leaveDelay: PropTypes.number,
+  ...transitionable,
+  enterDelay: implicitNum,
+  leaveDelay: implicitNum,
 }

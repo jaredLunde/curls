@@ -2,8 +2,8 @@ import React from 'react'
 import {css} from '@emotion/core'
 import FillViewport from '../FillViewport'
 import {FlexBox} from '../Box'
-import {flex, column, align, justify} from '../Flex/CSS'
-import {w, pos, ov} from '../Box/CSS'
+import {flex, column, align, justify} from '../Flex/styles'
+import {w, pos, ov} from '../Box/styles'
 import createComponent, {renderNode} from '../createComponent'
 import {getStyle} from './utils'
 
@@ -40,9 +40,9 @@ const defaultCSS = css`
   ${ov.touch};
   width: 100%;
 `
-const SFC = createComponent({name: 'Hero', themePath: 'hero'})
 
-export default React.forwardRef(
+const SFC = createComponent({name: 'Hero'})
+const Hero = React.forwardRef(
   function Hero (props, innerRef) {
     return SFC({
       innerRef,
@@ -67,3 +67,5 @@ export default React.forwardRef(
     })
   }
 )
+
+export default Hero

@@ -1,5 +1,6 @@
 import {jsx} from '@emotion/core'
-import {getCSS, assignOrdered, objectWithoutProps} from './utils'
+import PropTypes from 'prop-types'
+import {getStyles, assignOrdered, objectWithoutProps} from './utils'
 import ThemeConsumer from './ThemeConsumer'
 
 
@@ -31,70 +32,84 @@ export const renderNodeFast = nodeProps => {
   return jsx(as, nodeProps)
 }
 
+const getKind = (kinds, kind) => kinds === void 0 || kind === void 0 ? void 0 : kinds[kind]
+const defaultPropTypes = {kind: PropTypes.string, children: PropTypes.any}
+
 export default ({
   name,
-  CSS,
-  propTypes,
+  styles,
   defaultTheme,
-  themePath,
-  plugins
+  plugins,
+  CSS,      //deprecated
+  themePath //deprecated
 }) => {
+  if (CSS !== void 0) {
+    if (__DEV__) {
+      console.warn(
+        `[${name || themePath}] The 'CSS' property in Curls.createComponent() is deprecated. Use 'styles' instead.`
+      )
+    }
+
+    styles = CSS
+  }
+
+  if (themePath !== void 0) {
+    if (__DEV__) {
+      console.warn(
+        `[${name || themePath}] The 'themePath' property in Curls.createComponent() is deprecated. Use 'name' instead.`
+      )
+    }
+
+    name = themePath
+  }
+
+
   if (defaultTheme !== void 0) {
-    // translates __esModule stuff to plain obj
     defaultTheme = Object.assign({}, defaultTheme)
   }
 
-  if (themePath === void 0) {
-    throw new Error(`[${name}] Curls components must be initialized with a 'themePath' option set.`)
+  if (name === void 0) {
+    throw new Error(`Curls components must be created with a 'name' option set.`)
   }
+
+  const withoutProps = Object.assign({}, defaultPropTypes, styles)
 
   function renderer (props, themeProps) {
     const theme = themeProps.theme
-    const defaults = theme.defaultProps
-    props = defaults === void 0 ? props : assignOrdered(defaults, props)
-    const renderProps = (
-      propTypes === void 0
-      ? Object.assign({}, props)
-      : objectWithoutProps(props, propTypes)
-    )
-    delete renderProps.children
+    props =
+      theme.defaultProps === void 0
+        ? props
+        : assignOrdered(theme.defaultProps, getKind(theme.kinds, props.kind), props)
+    const renderProps = objectWithoutProps(props, withoutProps)
+    const css = typeof styles === 'object' ? getStyles(props, theme, styles) : void 0
 
-    const styles = CSS && getCSS(props, theme, CSS)
-
-    if (styles !== void 0) {
-      if (styles.css.length) {
-        renderProps.css = [styles.css, renderProps.css]
+    if (css !== void 0) {
+      if (css.css.length > 0) {
+        renderProps.css =
+          typeof renderProps.css === 'object' ? [css.css, renderProps.css] : css.css
       }
 
-      if (styles.style !== void 0) {
-        renderProps.style = (
-          renderProps.style
-          ? Object.assign({}, renderProps.style, styles.style)
-          : styles.style
-        )
+      if (css.style !== void 0) {
+        renderProps.style =
+          typeof renderProps.style === 'object'
+            ? Object.assign({}, renderProps.style, css.style)
+            : css.style
       }
     }
 
     return props.children(renderProps)
   }
-  
+
   const themeRenderer =
-    plugins !== void 0 && plugins.length
+    plugins !== void 0 && plugins.length > 0
       ? composeThemePlugins(renderer, ...plugins)
       : renderer
 
-  function SFC (props) {
+  return function SFC (props) {
     return ThemeConsumer({
-      path: themePath,
+      name,
       defaultTheme,
       children: themeProps => themeRenderer(props, themeProps)
     })
   }
-
-  if (__DEV__) {
-    SFC.displayName = name
-    SFC.propTypes = propTypes
-  }
-
-  return SFC
 }

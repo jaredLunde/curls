@@ -2,7 +2,7 @@ import React from 'react'
 import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
 import {FlexBox} from '../Box'
-import {flex, row, wrap, align, justify} from '../Flex/CSS'
+import {flex, row, wrap, align, justify} from '../Flex/styles'
 
 
 const as = 'nav'
@@ -13,9 +13,9 @@ const defaultCSS = css`
   ${align.center};
   ${justify.start};
 `
-const SFC = createComponent({name: 'NavBar', themePath: 'navBar'})
+const SFC = createComponent({name: 'navBar'})
 
-export default React.forwardRef(
+const NavBar = React.forwardRef(
   function NavBar (props, innerRef) {
     return SFC({
       as,
@@ -33,3 +33,5 @@ export default React.forwardRef(
     })
   }
 )
+
+export default NavBar

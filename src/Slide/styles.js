@@ -1,5 +1,5 @@
 import {css} from '@emotion/core'
-import {baseIsNotVisible, baseIsVisible} from '../Fade/CSS'
+import {baseIsNotVisible, baseIsVisible} from '../Fade/styles'
 import {toSize, nullIfFalse} from '../utils'
 
 

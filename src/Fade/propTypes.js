@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
+import {implicitNum} from '../PropTypes'
 
 
 export default {
-  from: PropTypes.number,
-  to: PropTypes.number
+  from: implicitNum,
+  to: implicitNum
 }

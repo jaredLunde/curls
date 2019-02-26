@@ -2,7 +2,7 @@ import React from 'react'
 import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
 import {BasicBox} from '../Box'
-import {w, h, d, pos} from '../Box/CSS'
+import {w, h, d, pos} from '../Box/styles'
 import * as defaultTheme from './defaultTheme'
 import emptyObj from 'empty/object'
 
@@ -14,14 +14,9 @@ const defaultCSS = css`
   clear: both;
   ${pos.relative};
 `
-const SFC = createComponent({
-  name: 'Divider',
-  defaultTheme,
-  themePath: 'divider'
-})
+const SFC = createComponent({name: 'divider', defaultTheme})
 
-
-export default React.forwardRef(
+const Divider = React.forwardRef(
   function Divider (props = emptyObj, innerRef) {
     return SFC({
       innerRef,
@@ -37,5 +32,6 @@ export default React.forwardRef(
       }
     })
   }
-
 )
+
+export default Divider
