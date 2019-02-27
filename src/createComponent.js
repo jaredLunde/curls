@@ -3,6 +3,21 @@ import {getStyles, assignOrdered, objectWithoutProps} from './utils'
 import ThemeConsumer from './ThemeConsumer'
 
 
+export const renderNode = (nodeProps, defaultCSS) => {
+  if (defaultCSS !== void 0) {
+    nodeProps.css = nodeProps.css ? [defaultCSS, nodeProps.css] : defaultCSS
+  }
+
+  return renderNodeFast(nodeProps)
+}
+
+const withoutElementProps = {as: null, innerRef: null}
+
+export const renderNodeFast = nodeProps => {
+  nodeProps.ref = nodeProps.innerRef
+  return jsx(nodeProps.as, objectWithoutProps(nodeProps, withoutElementProps))
+}
+
 const composeThemePlugins = (...funcs) => {
   let i
 
@@ -15,22 +30,6 @@ const composeThemePlugins = (...funcs) => {
   }
 }
 
-export const renderNode = (nodeProps, defaultCSS) => {
-  if (defaultCSS !== void 0) {
-    nodeProps.css = nodeProps.css ? [defaultCSS, nodeProps.css] : defaultCSS
-  }
-
-  return renderNodeFast(nodeProps)
-}
-
-export const renderNodeFast = nodeProps => {
-  const as = nodeProps.as
-  nodeProps.ref = nodeProps.innerRef
-  delete nodeProps.as
-  delete nodeProps.innerRef
-  return jsx(as, nodeProps)
-}
-
 const getKind = (kinds, kind) => kinds === void 0 || kind === void 0 ? void 0 : kinds[kind]
 const defaultWithout = {kind: true, children: true}
 
@@ -39,8 +38,8 @@ export default ({
   styles,
   defaultTheme,
   plugins,
-  CSS,      //deprecated
-  themePath //deprecated
+  CSS,      // deprecated
+  themePath // deprecated
 }) => {
   if (CSS !== void 0) {
     if (__DEV__) {
@@ -108,6 +107,21 @@ export default ({
       name,
       defaultTheme,
       children: themeProps => renderTheme(props, themeProps)
+      /*
+      children: themeProps => {
+        const start = typeof window !== 'undefined' && performance.now()
+        const result = renderTheme(props, themeProps)
+        if (start) {
+          const run = performance.now() - start
+          elapsed += run
+          renders++
+          console.log('Elapsed:', elapsed, 'Renders', renders)
+          console.log('avg:', elapsed / renders)
+        }
+        return result
+      }
+      */
     })
   }
 }
+// let elapsed = 0, renders = 0

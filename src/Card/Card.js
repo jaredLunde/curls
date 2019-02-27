@@ -59,12 +59,12 @@ const SFC = createComponent({name: 'card', styles, defaultTheme,})
 const Card = React.forwardRef(
   function Card (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 

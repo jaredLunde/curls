@@ -1,23 +1,22 @@
-import {css} from '@emotion/core'
 import {getHoverQuery} from '../utils'
 
 
 export function getHoverClass (theme, props) {
   // adds css classes for hover and active states
   const color = props.color
-  const hoverStyle = css`
+  const hoverStyle = `
     &:hover {
       opacity: 0.8;
     }
   `
 
-  const noneStyle = css`
+  const noneStyle = `
     &:hover {
       opacity: 1.0;
     }
   `
 
-  return css`${getHoverQuery(hoverStyle, noneStyle)}`
+  return getHoverQuery(hoverStyle, noneStyle)
 }
 
 export function getActiveClass (theme, props) {

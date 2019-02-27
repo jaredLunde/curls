@@ -14,12 +14,12 @@ const SFC = createComponent({name: 'type', styles, defaultTheme})
 const Type = React.forwardRef(
   function Type (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps)
         }
 

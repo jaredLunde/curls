@@ -8,6 +8,8 @@ export {
   getMediaQuery,
   getStyles,
   getTheme as mergeTheme,
+  memoValue,
+  memoTheme as memoThemeValue,
   nullIfFalse,
   toSize
 } from './utils'

@@ -47,12 +47,12 @@ const SFC = createComponent({name: 'Hero'})
 const Hero = React.forwardRef(
   function Hero (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
       children: function (vpProps) {
         return FillViewport({
           children: function ({style}) {
             vpProps.children = function (nodeProps) {
+              nodeProps.innerRef = innerRef
               // must be here like this for hydration
               return <HeroBS
                 style={style}

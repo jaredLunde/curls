@@ -1,5 +1,16 @@
 import {css} from '@emotion/core'
+import memoize from 'trie-memoize'
 
+
+const getColumnCSS = memoize(
+  [{}, {}, WeakMap],
+  (width, useFlex, theme) => css`
+    @media ${theme.breakpoints[size]} {
+      max-width: ${width};
+      ${useFlex && `flex-basis: ${width}`};
+    }
+  `
+)
 
 const getColumnWidth = (size, cols, theme, props) => {
   if (cols === false) {
@@ -31,12 +42,7 @@ const getColumnWidth = (size, cols, theme, props) => {
 
   const width = `${(x / numColumns) * 100}%`
 
-  return css`
-    @media ${theme.breakpoints[size]} {
-      max-width: ${width};
-      ${props.useFlex && `flex-basis: ${width}`};
-    }
-  `
+  return getColumCSS(width, props.useFlex, theme)
 }
 
 export const __gridBreakpoints = (v, t, p) => {

@@ -16,11 +16,11 @@ const A = React.forwardRef(
   function A (props, innerRef) {
     return SFC({
       __linkStyles: true,
-      innerRef,
       ...props,
       children: function (typeProps) {
         typeProps.as = typeProps.as || 'a'
         typeProps.children = props.children
+        typeProps.ref = innerRef
         return jsx(Type, typeProps)
       }
     })

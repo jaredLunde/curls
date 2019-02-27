@@ -1,11 +1,12 @@
 import React from 'react'
-import memoize from 'memoize-two-args'
+import memoize from 'trie-memoize'
 import {CurlsContext, baseTheme} from '../ThemeProvider'
 import {getTheme} from '../utils'
 import emptyObj from 'empty/object'
 
 
 const mergeGlobals_ = memoize(
+  [WeakMap, WeakMap],
   // this is memoized for defaultTheme merging efficiency and sCU in children
   (curlsTheme, userTheme) => {
     const base = {}, baseKeys = Object.keys(baseTheme)

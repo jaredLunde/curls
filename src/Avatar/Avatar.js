@@ -26,7 +26,7 @@ const defaultCSS = css`
   ${d.inlineBlock};
   text-align: center;
   ${pos.relative}
-  ${ov('hidden')};
+  overflow: hidden;
 
   & > img {
     object-fit: cover;
@@ -58,22 +58,17 @@ const Avatar = React.forwardRef(
       ...props,
       children: function (boxProps) {
         // adds child prop for 'Box' and rendering the avatar node
-        boxProps.children = function (nodeProps) {
+        boxProps.children = function ({alt, imageRef, ...nodeProps}) {
           nodeProps.as = nodeProps.as || as
-          let innerRef
 
-          if (nodeProps.imageRef) {
+          if (imageRef) {
             innerRef = (...args) => {
-              nodeProps.imageRef(...args)
+              imageRef(...args)
               if (nodeProps.innerRef) {
                 nodeProps.innerRef(...args)
               }
             }
           }
-
-          delete nodeProps.imageRef
-          const alt = nodeProps.alt
-          delete nodeProps.alt
 
           const imgProps = {
             ...nodeProps,

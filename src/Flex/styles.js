@@ -1,18 +1,18 @@
 import {css} from '@emotion/core'
-import {toSize, nullIfFalse} from '../utils'
+import {toSize, memoValue, memoTheme} from '../utils'
+import {d} from '../Box/styles'
 
-export const flex = css`display: flex;`
+
+export const flex = d.flex
 export const fixed = css`flex: 0 0 auto;`
 export const fluid = css`
   flex: 1 1 auto;
   max-width: none;
 `
-export const grow = nullIfFalse(value => css`flex-grow: ${value === true ? 1 : value};`)
-export const shrink = nullIfFalse(value => css`flex-shrink: ${value === true ? 1 : value};`)
-export const basis = nullIfFalse(
-  (value, theme) => css`flex-basis: ${toSize(value, theme.basisUnit)};`
-)
-export const order = nullIfFalse(value => css`order: ${value};`)
+export const grow = memoValue(value => css`flex-grow: ${value === true ? 1 : value};`)
+export const shrink = memoValue(value => css`flex-shrink: ${value === true ? 1 : value};`)
+export const basis = memoTheme((value, theme) => css`flex-basis: ${toSize(value, theme.basisUnit)};`)
+export const order = memoValue(value => css`order: ${value};`)
 
 const rowCSS = css`flex-direction: row;`
 export const row = {

@@ -39,15 +39,6 @@ export const plugins = [
   }
 ]
 
-const Grid = createComponent({
-  name: 'grid',
-  styles,
-  defaultTheme,
-  plugins
-})
-
-if (__DEV__) {
-  Grid.propTypes = propTypes
-}
-
+const Grid = createComponent({name: 'grid', styles, defaultTheme, plugins})
+Grid.propTypes /* remove-proptypes */ = propTypes
 export default Grid

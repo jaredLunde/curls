@@ -6,5 +6,4 @@ import * as defaultTheme from './defaultTheme'
 
 const Flex = createComponent({name: 'flex', styles, defaultTheme})
 Flex.propTypes = propTypes
-
 export default Flex

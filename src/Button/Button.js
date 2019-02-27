@@ -23,12 +23,12 @@ const Button = React.forwardRef(
   function Button (props, innerRef) {
     return SFC({
       __buttonStyles: true,
-      innerRef,
       ...props,
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 

@@ -26,7 +26,6 @@ const TextArea = React.forwardRef(
   function TextArea (props, innerRef) {
     return SFC({
       __inputStyles: true,
-      innerRef,
       ...props,
       children: function (typeProps) {
         typeProps.as = 'textarea'
@@ -39,6 +38,7 @@ const TextArea = React.forwardRef(
         }
 
         typeProps.children = props.children
+        typeProps.ref = innerRef
         return React.createElement(Type, typeProps)
       }
     })

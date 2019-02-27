@@ -1,9 +1,10 @@
 import {css} from '@emotion/core'
 import {br as boxBr} from '../Box/styles'
+import {memoTheme} from '../utils'
 import {directionalRe} from '../utils/directionalScale'
 
 
-export function br (val, theme, props) {
+export const br = memoTheme((val, theme) => {
   if (val === false) return null
 
   let abbr, value
@@ -54,16 +55,16 @@ export function br (val, theme, props) {
   }
 
   return css`
-    ${boxBr(val, theme, props)}
+    ${boxBr(val, theme)}
 
     & > *:first-child {
-      ${boxBr(topRadius, theme, props)};
-      ${boxBr('b0', theme, props)};
+      ${boxBr(topRadius, theme)};
+      ${boxBr('b0', theme)};
     }
 
     & > *:last-child {
-      ${boxBr(bottomRadius, theme, props)};
-      ${boxBr('t0', theme, props)};
+      ${boxBr(bottomRadius, theme)};
+      ${boxBr('t0', theme)};
     }
   `
-}
+})

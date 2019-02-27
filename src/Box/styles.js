@@ -1,5 +1,6 @@
 import {css} from '@emotion/core'
-import {directionalScale, isDirectional, colorize, toSize, nullIfFalse} from '../utils'
+import memoize from 'trie-memoize'
+import {directionalScale, isDirectional, colorize, toSize, memoValue, memoTheme} from '../utils'
 
 
 export const pos = {
@@ -16,6 +17,7 @@ export const pos = {
 
 export const d = {
   block: css`display: block;`,
+  flex: css`display: flex;`,
   inlineBlock: css`display: inline-block;`,
   inline: css`display: inline;`,
   none: css`display: none;`
@@ -35,7 +37,7 @@ export const overflow = {
 }
 
 const ws = /\s+/
-export const ov = nullIfFalse(value => {
+export const ov = memoValue(value => {
   const vals = value.split(ws)
 
   if (vals.length === 1) {
@@ -55,42 +57,44 @@ export const ov = nullIfFalse(value => {
   return CSS
 })
 
-export const z = nullIfFalse(value => css`z-index: ${value};`)
-// colorize already implements nullIfFalse
+export const z = memoValue(value => css`z-index: ${value};`)
+// colorize already implements memoization
 export const bg = (value, theme) => colorize('background', value, theme)
-export const sh = nullIfFalse((value, theme) => theme.getBoxShadow(value, theme))
-// colorize already implements nullIfFalse
+export const sh = memoTheme((value, theme) => theme.getBoxShadow(value, theme))
+// colorize already implements memoization
 export const bc = (value, theme) => colorize('border-color', value, theme)
 // we don't use rem for border-width because it doesn't have business being relative to the
 // size of the font or zoom of the screen
-export const bw = nullIfFalse((value, theme) => {
-  if (isDirectional(value)) {
-    return css`
+export const bw = memoTheme(
+  (value, theme) => {
+    if (isDirectional(value)) {
+      return css`
       border-style: solid;
       ${directionalScale(
-        'border-{XYZ}-width', 
-        theme.borderWidthScale, 
+        'border-{XYZ}-width',
+        theme.borderWidthScale,
         value,
         theme.borderWidthUnit
       )};
     `
-  } else {
-    return css`
+    } else {
+      return css`
       border-style: solid;
       border-width: ${toSize(theme.borderWidthScale[value], theme.borderWidthUnit)};
     `
+    }
   }
-})
-export const w = nullIfFalse((v, t) => css`width: ${toSize(v, t.sizeUnit)};`)
-export const h = nullIfFalse((v, t) => css`height: ${toSize(v, t.sizeUnit)};`)
-export const minW = nullIfFalse((v, t) => css`min-width: ${toSize(v, t.sizeUnit)};`)
-export const minH = nullIfFalse((v, t) => css`min-height: ${toSize(v, t.sizeUnit)};`)
-export const maxW = nullIfFalse((v, t) => css`max-width: ${toSize(v, t.sizeUnit)};`)
-export const maxH = nullIfFalse((v, t) => css`max-height: ${toSize(v, t.sizeUnit)};`)
-export const t = nullIfFalse((v, t) => css`top: ${toSize(v, t.posUnit)};`)
-export const r = nullIfFalse((v, t) => css`right: ${toSize(v, t.posUnit)};`)
-export const b = nullIfFalse((v, t) => css`bottom: ${toSize(v, t.posUnit)};`)
-export const l = nullIfFalse((v, t) => css`left: ${toSize(v, t.posUnit)};`)
+)
+export const w = memoTheme((v, t) => css`width: ${toSize(v, t.sizeUnit)};`)
+export const h = memoTheme((v, t) => css`height: ${toSize(v, t.sizeUnit)};`)
+export const minW = memoTheme((v, t) => css`min-width: ${toSize(v, t.sizeUnit)};`)
+export const minH = memoTheme((v, t) => css`min-height: ${toSize(v, t.sizeUnit)};`)
+export const maxW = memoTheme((v, t) => css`max-width: ${toSize(v, t.sizeUnit)};`)
+export const maxH = memoTheme((v, t) => css`max-height: ${toSize(v, t.sizeUnit)};`)
+export const t = memoTheme((v, t) => css`top: ${toSize(v, t.posUnit)};`)
+export const r = memoTheme((v, t) => css`right: ${toSize(v, t.posUnit)};`)
+export const b = memoTheme((v, t) => css`bottom: ${toSize(v, t.posUnit)};`)
+export const l = memoTheme((v, t) => css`left: ${toSize(v, t.posUnit)};`)
 
 const borderRadiusDirections = {
   t: ['top-right', 'top-left'],
@@ -103,11 +107,12 @@ const borderRadiusDirections = {
   bl: ['bottom-left']
 }
 
-export const br = nullIfFalse((value, theme) => {
-  const {borderRadiusScale} = theme
+export const br = memoTheme(
+  (value, theme) => {
+    const {borderRadiusScale} = theme
 
-  if (isDirectional(value)) {
-    return css`
+    if (isDirectional(value)) {
+      return css`
       ${directionalScale(
         'border-{XYZ}-radius',
         borderRadiusScale,
@@ -116,35 +121,40 @@ export const br = nullIfFalse((value, theme) => {
         borderRadiusDirections,
       )};
     `
-  } else {
-    return css`border-radius: ${toSize(borderRadiusScale[value], theme.borderRadiusUnit)};`
+    } else {
+      return css`border-radius: ${toSize(borderRadiusScale[value], theme.borderRadiusUnit)};`
+    }
   }
-})
+)
 
-export const m = nullIfFalse((value, theme) => {
-  const {spacingScale} = theme
+export const m = memoTheme(
+  (value, theme) => {
+    const {spacingScale} = theme
 
-  if (isDirectional(value)) {
-    return directionalScale(
-      'margin-{XYZ}',
-      spacingScale,
-      value,
-      theme.spacingUnit
-    )
-  } else {
-    return css`margin: ${toSize(spacingScale[value], theme.spacingUnit)};`
+    if (isDirectional(value)) {
+      return directionalScale(
+        'margin-{XYZ}',
+        spacingScale,
+        value,
+        theme.spacingUnit
+      )
+    } else {
+      return css`margin: ${toSize(spacingScale[value], theme.spacingUnit)};`
+    }
   }
-})
+)
 
-export const p = nullIfFalse((value, theme) => {
-  if (isDirectional(value)) {
-    return directionalScale(
-      'padding-{XYZ}',
-      theme.spacingScale,
-      value,
-      theme.spacingUnit
-    )
-  } else {
-    return css`padding: ${toSize(theme.spacingScale[value], theme.spacingUnit)};`
+export const p = memoTheme(
+  (value, theme) => {
+    if (isDirectional(value)) {
+      return directionalScale(
+        'padding-{XYZ}',
+        theme.spacingScale,
+        value,
+        theme.spacingUnit
+      )
+    } else {
+      return css`padding: ${toSize(theme.spacingScale[value], theme.spacingUnit)};`
+    }
   }
-})
+)

@@ -7,7 +7,6 @@ import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
 
 
-const as = 'nav'
 const defaultCSS = css`
   ${flex};
   ${row.row};
@@ -20,13 +19,12 @@ const SFC = createComponent({name: 'navBar'})
 const NavBar = React.forwardRef(
   function NavBar (props, innerRef) {
     return SFC({
-      as,
-      innerRef,
       ...props,
       children: function (boxProps) {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
-          nodeProps.as = nodeProps.as || as
+          nodeProps.as = nodeProps.as || 'nav'
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 

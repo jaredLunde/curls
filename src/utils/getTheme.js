@@ -1,9 +1,9 @@
-import memoize from 'memoize-two-args'
+import memoize from 'trie-memoize'
 import emptyObj from 'empty/object'
 import deepMerge from './deepMerge'
 
 
-const memoizer = memoize(deepMerge)
+const merge = memoize([WeakMap, WeakMap], deepMerge)
 
 export default (defaultTheme = emptyObj, userTheme) => {
   if (userTheme === void 0) {
@@ -13,5 +13,5 @@ export default (defaultTheme = emptyObj, userTheme) => {
     return userTheme
   }
 
-  return memoizer(defaultTheme, userTheme)
+  return merge(defaultTheme, userTheme)
 }

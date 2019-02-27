@@ -1,8 +1,8 @@
 import {css} from '@emotion/core'
-import {fastMemoize, nullIfFalse, toSize} from '../utils'
+import {fastMemoize, memoValue, toSize} from '../utils'
 
 
-function getAvatarSize (size, val, theme, props) {
+const getAvatarSize = (size, val, theme, props) => {
   if (val === false) return null
 
   let avatarSize = theme.scale[size]
@@ -23,28 +23,30 @@ function getAvatarSize (size, val, theme, props) {
 
 const createSizeShortcut = fastMemoize('avatarSize', s => (v, t, p) => getAvatarSize(s, v, t, p))
 export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
-export const orientation = nullIfFalse(v => {
-  let height, width
+export const orientation = memoValue(
+  v => {
+    let height, width
 
-  switch (v) {
-    case 'square':
-      height = '100%'
-      width = '100%'
-      break;
-    case 'landscape':
-      height = '100%'
-      width = 'auto'
-      break;
-    case 'portrait':
-      height = 'auto'
-      width = '100%'
-      break;
-  }
+    switch (v) {
+      case 'square':
+        height = '100%'
+        width = '100%'
+        break;
+      case 'landscape':
+        height = '100%'
+        width = 'auto'
+        break;
+      case 'portrait':
+        height = 'auto'
+        width = '100%'
+        break;
+    }
 
-  return css`
+    return css`
     & > img {
       height: ${height};
       width: ${width};
     }
   `
-})
+  }
+)

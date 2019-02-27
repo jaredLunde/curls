@@ -11,7 +11,7 @@ import propTypes from '../Box/propTypes'
 
 const defaultCSS = css`
   min-width: 0;
-  ${grow(true)};
+  flex-grow: 1;
   ${pos.relative};
 `
 const as = 'div'

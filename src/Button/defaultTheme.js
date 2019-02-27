@@ -15,21 +15,21 @@ export const defaultProps = {
   role: 'button'
 }
 
-export function getHoverClass (theme, props) {
+export function getHoverClass (theme) {
   // adds css classes for hover and active states
-  const hoverStyle = css`
+  const hoverStyle = `
     &:hover {
       opacity: 0.8;
     }
   `
 
-  const noneStyle = css`
+  const noneStyle = `
     &:hover {
       opacity: 1.0;
     }
   `
 
-  return css`${getHoverQuery(hoverStyle, noneStyle)}`
+  return getHoverQuery(hoverStyle, noneStyle)
 }
 
 export function getActiveClass (theme, props) {
