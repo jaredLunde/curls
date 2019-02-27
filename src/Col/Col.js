@@ -20,13 +20,13 @@ const SFC = createComponent({name: 'col'})
 const Col = React.forwardRef(
   function Col (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
-      children: function (boxProps) {
+      children: boxProps => {
         boxProps.useFlex = true
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 

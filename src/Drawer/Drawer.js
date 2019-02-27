@@ -53,18 +53,18 @@ export const DrawerBox = React.forwardRef(
   function DrawerBox ({children, portal, ...props}, innerRef) {
     return (
       <Consumer children={
-        function ({css, ...transitionProps}) {
+        ({css, ...transitionProps}) => {
           const boxChild =
             typeof children === 'function' ? children(transitionProps) : children
 
           let Component = SFC({
             ...props,
-            css: [css, props.css],
             children: sfcProps => FlexBox({
               ...sfcProps,
               children: function (boxProps) {
                 boxProps.as = boxProps.as || as
                 boxProps.children = boxChild
+                boxProps.css = boxProps.css ? [css, boxProps.css] : css
                 boxProps.innerRef = innerRef
                 return renderNode(boxProps, defaultCSS)
               }
@@ -86,5 +86,4 @@ const Drawer = props => {
 }
 
 Drawer.propTypes /* remove-proptypes */ = slidePropTypes
-
 export default Drawer

@@ -20,8 +20,8 @@ const NavBar = React.forwardRef(
   function NavBar (props, innerRef) {
     return SFC({
       ...props,
-      children: function (boxProps) {
-        boxProps.children = function (nodeProps) {
+      children: boxProps => {
+        boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || 'nav'
           nodeProps.innerRef = innerRef

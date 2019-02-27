@@ -2996,10 +2996,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-trie-memoize@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/trie-memoize/-/trie-memoize-1.0.2.tgz#6ec8a5933e22f708a3a99417a2b8c63e593eb20e"
-  integrity sha512-TAwFC2HCEVuIkH6ukYvvHOznbqVSeBTjlAjfluWLg6XaKKKoe4jPvpWAN3h44Zicstn6KL+3t/hNntsDQAVutw==
+trie-memoize@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/trie-memoize/-/trie-memoize-1.0.3.tgz#0aefd975f39ee53ef56309466f4a666b48d00870"
+  integrity sha512-R3pm9Cuz6Uf7FK+wJQBQho6aYaBxzDYDL45VcVbC4PE+z3S84xPCay1g9Zxi59cndAKJUIJK+6QPRq9Sc59AIg==
   dependencies:
     is-plain-object "^2.0.4"
 

@@ -5,7 +5,7 @@ import {directionalRe} from '../utils/directionalScale'
 
 
 export const br = memoTheme((val, theme) => {
-  if (val === false) return null
+  if (val === false || val === null) return null
 
   let abbr, value
   let topRadius = 't0', bottomRadius = 'b0'

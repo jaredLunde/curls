@@ -16,7 +16,7 @@ const fontSizeFromTheme = memoize(
 )
 
 const fontSize = (size, theme, props) => {
-  if (size === false) {
+  if (size === false || size === null) {
     return null
   }
 

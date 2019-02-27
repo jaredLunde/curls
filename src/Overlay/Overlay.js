@@ -41,24 +41,22 @@ const Overlay = React.forwardRef(
   function Overlay ({transition = Fade, portal = false, ...props}, innerRef) {
     return transition({
       ...props,
-      children: function (sfcProps) {
+      children: sfcProps => {
         const Component = SFC({
           innerRef,
           ...sfcProps,
-          children: function (boxProps) {
-            return FlexBox({
-              ...boxProps,
-              children: function ({isVisible, show, hide, toggle, ...overlayBoxProps}) {
-                overlayBoxProps.as = overlayBoxProps.as || as
-                overlayBoxProps.children =
-                  typeof props.children === 'function'
-                    ? props.children({isVisible, show, hide, toggle})
-                    : props.children
+          children: boxProps =>FlexBox({
+            ...boxProps,
+            children: ({isVisible, show, hide, toggle, ...overlayBoxProps}) => {
+              overlayBoxProps.as = overlayBoxProps.as || as
+              overlayBoxProps.children =
+                typeof props.children === 'function'
+                  ? props.children({isVisible, show, hide, toggle})
+                  : props.children
 
-                return renderNode(overlayBoxProps, defaultCSS)
-              }
-            })
-          }
+              return renderNode(overlayBoxProps, defaultCSS)
+            }
+          })
         })
 
         return (

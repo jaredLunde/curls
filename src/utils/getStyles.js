@@ -5,7 +5,7 @@ import getBreakpointOrder from './getBreakpointOrder'
 const ws = /\s+/
 const getCSS = (fn, value, theme, props) =>
   typeof fn === 'object' && fn.styles !== void 0
-    ? value === false
+    ? value === false || value === null
       ? void 0
       : fn
     : typeof fn === 'function'
@@ -14,7 +14,10 @@ const getCSS = (fn, value, theme, props) =>
 
 const maybeAddStyles = (css, style, maybeCss) => {
   if (maybeCss !== void 0 && maybeCss !== null) {
-    if (Array.isArray(maybeCss) === true || maybeCss.styles !== void 0) {
+    if (Array.isArray(maybeCss) === true) {
+      css.push.apply(css, maybeCss)
+    }
+    else if (maybeCss.styles !== void 0) {
       css.push(maybeCss)
     }
     else {

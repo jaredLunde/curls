@@ -39,15 +39,9 @@ const SFC = createComponent({
   propTypes,
 })
 
-const SFCWithImageProps = function (props) {
-  return (
-    <ImageProps>
-      {function (imageContext) {
-        return SFC({...imageContext, ...props})
-      }}
-    </ImageProps>
-  )
-}
+const SFCWithImageProps = props => <ImageProps
+  children={(imageContext) => SFC({...imageContext, ...props})}
+/>
 
 const supportsObjectFit = supportsCSS('object-fit')
 
@@ -56,7 +50,7 @@ const Avatar = React.forwardRef(
     const sfcProps = {
       innerRef,
       ...props,
-      children: function (boxProps) {
+      children: boxProps => {
         // adds child prop for 'Box' and rendering the avatar node
         boxProps.children = function ({alt, imageRef, ...nodeProps}) {
           nodeProps.as = nodeProps.as || as

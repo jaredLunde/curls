@@ -17,7 +17,7 @@ const Input = React.forwardRef(
     return SFC({
       __inputStyles: true,
       ...props,
-      children: function (typeProps) {
+      children: typeProps => {
         typeProps.as = 'input'
         typeProps.type = typeProps.type || 'text'
         typeProps.ref = innerRef

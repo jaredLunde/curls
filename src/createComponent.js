@@ -1,4 +1,5 @@
 import {jsx} from '@emotion/core'
+import emptyObj from 'empty/object'
 import {getStyles, assignOrdered, objectWithoutProps} from './utils'
 import ThemeConsumer from './ThemeConsumer'
 
@@ -73,19 +74,27 @@ export default ({
 
   function render (props, themeProps) {
     const theme = themeProps.theme
+    const kind = getKind(theme.kinds, props.kind)
     props =
       theme.defaultProps === void 0
-        ? props
-        : assignOrdered(theme.defaultProps, getKind(theme.kinds, props.kind), props)
+        ? assignOrdered(emptyObj, kind, props)
+        : assignOrdered(theme.defaultProps, kind, props)
     const renderProps = objectWithoutProps(props, withoutProps)
     const css = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0
 
     if (css !== void 0) {
       if (css.css.length > 0) {
-        renderProps.css =
-          typeof renderProps.css === 'object' ? [css.css, renderProps.css] : css.css
+        if (Array.isArray(renderProps.css) === true) {
+          renderProps.css.push(css.css)
+        }
+        else {
+          renderProps.css =
+            typeof renderProps.css === 'object'
+              ? [...css.css, renderProps.css]
+              : css.css
+        }
       }
-
+      // console.log('CSS', renderProps.css)
       if (css.style !== void 0) {
         renderProps.style =
           typeof renderProps.style === 'object'

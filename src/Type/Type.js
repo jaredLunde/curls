@@ -15,8 +15,8 @@ const Type = React.forwardRef(
   function Type (props, innerRef) {
     return SFC({
       ...props,
-      children: function (boxProps) {
-        boxProps.children = function (nodeProps) {
+      children: boxProps => {
+        boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
           nodeProps.innerRef = innerRef

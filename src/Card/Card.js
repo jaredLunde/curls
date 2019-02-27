@@ -61,7 +61,7 @@ const Card = React.forwardRef(
     return SFC({
       ...props,
       children: function (boxProps) {
-        boxProps.children = function (nodeProps) {
+        boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
           nodeProps.innerRef = innerRef

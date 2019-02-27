@@ -2,7 +2,6 @@ import React from 'react'
 import {jsx} from '@emotion/core'
 import createComponent from '../createComponent'
 import Type from '../Type'
-import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 import typePropTypes from '../Type/propTypes'
@@ -17,7 +16,7 @@ const A = React.forwardRef(
     return SFC({
       __linkStyles: true,
       ...props,
-      children: function (typeProps) {
+      children: typeProps => {
         typeProps.as = typeProps.as || 'a'
         typeProps.children = props.children
         typeProps.ref = innerRef
@@ -27,5 +26,5 @@ const A = React.forwardRef(
   }
 )
 
-A.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, typePropTypes, flexPropTypes)
+A.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, typePropTypes, flexPropTypes)
 export default A

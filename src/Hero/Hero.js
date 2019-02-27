@@ -48,24 +48,22 @@ const Hero = React.forwardRef(
   function Hero (props, innerRef) {
     return SFC({
       ...props,
-      children: function (vpProps) {
-        return FillViewport({
-          children: function ({style}) {
-            vpProps.children = function (nodeProps) {
-              nodeProps.innerRef = innerRef
-              // must be here like this for hydration
-              return <HeroBS
-                style={style}
-                vpProps={vpProps}
-                nodeProps={nodeProps}
-                children={props.children}
-              />
-            }
-
-            return FlexBox(vpProps)
+      children: vpProps => FillViewport({
+        children: ({style}) => {
+          vpProps.children = nodeProps => {
+            nodeProps.innerRef = innerRef
+            // must be here like this for hydration
+            return <HeroBS
+              style={style}
+              vpProps={vpProps}
+              nodeProps={nodeProps}
+              children={props.children}
+            />
           }
-        })
-      }
+
+          return FlexBox(vpProps)
+        }
+      })
     })
   }
 )

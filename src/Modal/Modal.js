@@ -60,7 +60,7 @@ export const ModalBox = React.forwardRef(
             css: [css, props.className],
             children: sfcProps => FlexBox({
               ...sfcProps,
-              children: function (boxProps) {
+              children: boxProps => {
                 boxProps.as = boxProps.as || as
                 boxProps.children = boxChild
                 boxProps.innerRef = innerRef

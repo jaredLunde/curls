@@ -322,7 +322,7 @@ const Popover = React.forwardRef(
 
     return (props.transition || Drop)({
       ...props,
-      children: function (popoverProps) {
+      children: popoverProps => {
         popoverProps.children = props.children
         popoverProps.innerRef = innerRef
 

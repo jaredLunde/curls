@@ -21,12 +21,12 @@ const SFC = createComponent({name: 'divider', defaultTheme})
 const Divider = React.forwardRef(
   function Divider (props = emptyObj, innerRef) {
     return SFC({
-      innerRef,
       ...props,
-      children: function (boxProps) {
+      children: boxProps => {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 

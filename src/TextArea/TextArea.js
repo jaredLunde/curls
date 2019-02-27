@@ -27,7 +27,7 @@ const TextArea = React.forwardRef(
     return SFC({
       __inputStyles: true,
       ...props,
-      children: function (typeProps) {
+      children: typeProps => {
         typeProps.as = 'textarea'
 
         if (props.autoResize) {

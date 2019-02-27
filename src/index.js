@@ -10,7 +10,7 @@ export {
   getTheme as mergeTheme,
   memoValue,
   memoTheme as memoThemeValue,
-  nullIfFalse,
+  nullIfFalsey,
   toSize
 } from './utils'
 

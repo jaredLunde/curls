@@ -22,12 +22,13 @@ const Slide =({
       return SFC({
         isVisible: toggleContext.value,
         ...props,
-        children: function (transProps) {
+        children: transProps => {
           transProps.property = transitionProperties
           transProps.children = children
           transProps.show = toggleContext.on
           transProps.hide = toggleContext.off
           transProps.toggle = toggleContext.toggle
+          transProps.isVisible = toggleContext.value
           transProps.delay = getDelay(toggleContext.value, props)
           return Transitionable(transProps)
         }

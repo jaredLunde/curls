@@ -69,19 +69,19 @@ export const bw = memoTheme(
   (value, theme) => {
     if (isDirectional(value)) {
       return css`
-      border-style: solid;
-      ${directionalScale(
-        'border-{XYZ}-width',
-        theme.borderWidthScale,
-        value,
-        theme.borderWidthUnit
-      )};
-    `
+        border-style: solid;
+        ${directionalScale(
+          'border-{XYZ}-width',
+          theme.borderWidthScale,
+          value,
+          theme.borderWidthUnit
+        )};
+      `
     } else {
       return css`
-      border-style: solid;
-      border-width: ${toSize(theme.borderWidthScale[value], theme.borderWidthUnit)};
-    `
+        border-style: solid;
+        border-width: ${toSize(theme.borderWidthScale[value], theme.borderWidthUnit)};
+      `
     }
   }
 )
