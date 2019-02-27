@@ -2,10 +2,12 @@ import React from 'react'
 import {css} from '@emotion/core'
 import FillViewport from '../FillViewport'
 import {FlexBox} from '../Box'
-import {flex, column, align, justify} from '../Flex/CSS'
-import {w, pos, ov} from '../Box/CSS'
+import {flex, column, align, justify} from '../Flex/styles'
+import {w, pos, ov} from '../Box/styles'
 import createComponent, {renderNode} from '../createComponent'
 import {getStyle} from './utils'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 class HeroBS extends React.Component {
@@ -40,30 +42,31 @@ const defaultCSS = css`
   ${ov.touch};
   width: 100%;
 `
-const SFC = createComponent({name: 'Hero', themePath: 'hero'})
 
-export default React.forwardRef(
+const SFC = createComponent({name: 'Hero'})
+const Hero = React.forwardRef(
   function Hero (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
-      children: function (vpProps) {
-        return FillViewport({
-          children: function ({style}) {
-            vpProps.children = function (nodeProps) {
-              // must be here like this for hydration
-              return <HeroBS
-                style={style}
-                vpProps={vpProps}
-                nodeProps={nodeProps}
-                children={props.children}
-              />
-            }
-
-            return FlexBox(vpProps)
+      children: vpProps => FillViewport({
+        children: ({style}) => {
+          vpProps.children = nodeProps => {
+            nodeProps.innerRef = innerRef
+            // must be here like this for hydration
+            return <HeroBS
+              style={style}
+              vpProps={vpProps}
+              nodeProps={nodeProps}
+              children={props.children}
+            />
           }
-        })
-      }
+
+          return FlexBox(vpProps)
+        }
+      })
     })
   }
 )
+
+Hero.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
+export default Hero

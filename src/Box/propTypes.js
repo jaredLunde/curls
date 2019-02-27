@@ -1,49 +1,48 @@
-import {bool, string, number, oneOf, oneOfType} from 'prop-types'
+import {string} from 'prop-types'
+import {implicitNum} from '../PropTypes'
 
-
-const strOrNum = oneOfType([number, string])
 
 export default {
   // background-color
   bg: string,
   // border radius
-  br: strOrNum,
+  br: implicitNum,
   // border width
-  bw: strOrNum,
+  bw: implicitNum,
   // border color
   bc: string,
   // box-shadow
-  sh: strOrNum,
+  sh: implicitNum,
   // margin
-  m: strOrNum,
+  m: implicitNum,
   // padding
-  p: strOrNum,
+  p: implicitNum,
   // position
-  pos: oneOf(['relative', 'absolute', 'fixed', 'static', 'sticky']),
+  pos: string,
   // display
-  d: oneOf(['block', 'inline', 'inlineBlock', 'none']),
+  d: string,
   // overflow
   ov: string,
   // z-index
-  z: number,
+  z: implicitNum,
   // width: __
-  w: strOrNum,
+  w: implicitNum,
   // height: __
-  h: strOrNum,
+  h: implicitNum,
   // top
-  t: strOrNum,
+  t: implicitNum,
   // right
-  r: strOrNum,
+  r: implicitNum,
   // bottmo
-  b: strOrNum,
+  b: implicitNum,
   // left
-  l: strOrNum,
+  l: implicitNum,
   // min-width
-  minW: strOrNum,
+  minW: implicitNum,
   // min-height
-  minH: strOrNum,
+  minH: implicitNum,
   // max-width
-  maxW: strOrNum,
+  maxW: implicitNum,
   // max-height
-  maxH: strOrNum,
+  maxH: implicitNum,
 }

@@ -2,25 +2,29 @@ import React from 'react'
 import {jsx} from '@emotion/core'
 import createComponent from '../createComponent'
 import Type from '../Type'
-import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
+import typePropTypes from '../Type/propTypes'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
-const as = 'a'
-const SFC = createComponent({name: 'Link', defaultTheme, propTypes, CSS, themePath: 'link'})
+const SFC = createComponent({name: 'link', styles, defaultTheme})
 
-export default React.forwardRef(
+const A = React.forwardRef(
   function A (props, innerRef) {
     return SFC({
       __linkStyles: true,
-      innerRef,
       ...props,
-      children: function (typeProps) {
+      children: typeProps => {
         typeProps.as = typeProps.as || 'a'
         typeProps.children = props.children
+        typeProps.ref = innerRef
         return jsx(Type, typeProps)
       }
     })
   }
 )
+
+A.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, typePropTypes, flexPropTypes)
+export default A

@@ -1,8 +1,10 @@
 import {css} from '@emotion/core'
+import memoize from 'trie-memoize'
 
 
-export default (CSS, noneCSS) => {
-  return css`
+export default memoize(
+  [Map, Map],
+  (CSS, noneCSS) => css`
     ${CSS};
 
     @media (hover: hover) {
@@ -17,4 +19,4 @@ export default (CSS, noneCSS) => {
       ${noneCSS};
     }
   `
-}
+)

@@ -1,29 +1,32 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import {GridBoxRenderProp} from '../Box/Box'
-import {pos} from '../Box/CSS'
-import {grow} from '../Flex/CSS'
+import {pos} from '../Box/styles'
+import {grow} from '../Flex/styles'
 import createComponent, {renderNode} from '../createComponent'
+import gridPropTypes from '../Grid/propTypes'
+import flexPropTypes from '../Flex/propTypes'
+import propTypes from '../Box/propTypes'
 
 
 const defaultCSS = css`
   min-width: 0;
-  ${grow(true)};
+  flex-grow: 1;
   ${pos.relative};
 `
 const as = 'div'
-const SFC = createComponent({name: 'Col', themePath: 'col'})
+const SFC = createComponent({name: 'col'})
 
-export default React.forwardRef(
+const Col = React.forwardRef(
   function Col (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
-      children: function (boxProps) {
+      children: boxProps => {
         boxProps.useFlex = true
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 
@@ -31,5 +34,7 @@ export default React.forwardRef(
       }
     })
   }
-
 )
+
+Col.propTypes /* remove-proptypes */ = Object.assign({}, gridPropTypes, flexPropTypes, propTypes)
+export default Col

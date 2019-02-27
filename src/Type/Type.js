@@ -1,34 +1,25 @@
 import React from 'react'
 import {FlexBox} from '../Box'
 import createComponent, {renderNode} from '../createComponent'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 
 
-/**
-<Type bold xxl color='white' face='primary'>
-
-</Type>
-*/
 const as = 'span'
-const SFC = createComponent({
-  name: 'Type',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath: 'type'
-})
+const SFC = createComponent({name: 'type', styles, defaultTheme})
 
 const Type = React.forwardRef(
   function Type (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
-      children: function (boxProps) {
-        boxProps.children = function (nodeProps) {
+      children: boxProps => {
+        boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps)
         }
 
@@ -38,4 +29,5 @@ const Type = React.forwardRef(
   }
 )
 
+Type.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 export default Type

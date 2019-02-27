@@ -2,10 +2,11 @@ import React from 'react'
 import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
 import {FlexBox} from '../Box'
-import {flex, row, wrap, align, justify} from '../Flex/CSS'
+import {flex, row, wrap, align, justify} from '../Flex/styles'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
-const as = 'nav'
 const defaultCSS = css`
   ${flex};
   ${row.row};
@@ -13,18 +14,17 @@ const defaultCSS = css`
   ${align.center};
   ${justify.start};
 `
-const SFC = createComponent({name: 'NavBar', themePath: 'navBar'})
+const SFC = createComponent({name: 'navBar'})
 
-export default React.forwardRef(
+const NavBar = React.forwardRef(
   function NavBar (props, innerRef) {
     return SFC({
-      as,
-      innerRef,
       ...props,
-      children: function (boxProps) {
-        boxProps.children = function (nodeProps) {
+      children: boxProps => {
+        boxProps.children = nodeProps => {
           nodeProps.children = props.children
-          nodeProps.as = nodeProps.as || as
+          nodeProps.as = nodeProps.as || 'nav'
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 
@@ -33,3 +33,6 @@ export default React.forwardRef(
     })
   }
 )
+
+NavBar.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
+export default NavBar

@@ -1,4 +1,5 @@
-import {bool, string, oneOf} from 'prop-types'
+import {string} from 'prop-types'
+import {boolOrString} from '../PropTypes'
 
 
 export default {
@@ -12,27 +13,27 @@ export default {
   // xxl: bool,
   size: string,
   // Weights
-  thin: bool,
-  ultraLight: bool,
-  light: bool,
-  regular: bool,
-  medium: bool,
-  semiBold: bool,
-  bold: bool,
-  heavy: bool,
-  ultraHeavy: bool,
+  thin: boolOrString,
+  ultraLight: boolOrString,
+  light: boolOrString,
+  regular: boolOrString,
+  medium: boolOrString,
+  semiBold: boolOrString,
+  bold: boolOrString,
+  heavy: boolOrString,
+  ultraHeavy: boolOrString,
   // Alignment
-  left: bool,
-  center: bool,
-  right: bool,
-  justified: bool,
+  left: boolOrString,
+  center: boolOrString,
+  right: boolOrString,
+  justified: boolOrString,
   // Legibility
-  optimizeFor: oneOf(['legibility', 'speed']),
-  antialias: bool,
+  optimizeFor: string,
+  antialias: boolOrString,
   // Color
   color: string,
   // Typeface
   face: string,
   // cool
-  ellipsis: bool,
+  ellipsis: boolOrString,
 }

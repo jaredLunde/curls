@@ -1,50 +1,53 @@
 import React from 'react'
 import {plugins as gridPlugins} from '../Grid/Grid'
-import gridPropTypes from '../Grid/propTypes'
-import * as gridCSS from '../Grid/CSS'
+import * as styles from './styles'
+import * as gridStyles from '../Grid/styles'
+import * as flexStyles from '../Flex/styles'
 import * as gridDefaultTheme from '../Grid/defaultTheme'
-import flexPropTypes from '../Flex/propTypes'
-import * as flexCSS from '../Flex/CSS'
-import propTypes from './propTypes'
-import * as CSS from './CSS'
 import * as defaultTheme from './defaultTheme'
+import propTypes from './propTypes'
+import gridPropTypes from '../Grid/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 import createComponent, {renderNodeFast} from '../createComponent'
 
 
-export const BasicBox = createComponent({
-  name: 'BasicBox',
-  propTypes,
-  CSS,
-  themePath: 'box',
-  defaultTheme
-})
-
+export const BasicBox = createComponent({name: 'box', styles, defaultTheme})
 export const FlexBox = createComponent({
-  name: 'Box',
-  propTypes: Object.assign({}, flexPropTypes, propTypes),
-  CSS: Object.assign({}, flexCSS, CSS),
-  themePath: 'box',
+  name: 'box',
+  styles: Object.assign({}, flexStyles, styles),
   defaultTheme
 })
-
 export const GridBoxRenderProp = createComponent({
-  name: 'GridBox',
-  propTypes: Object.assign({}, gridPropTypes, flexPropTypes, propTypes),
-  CSS: Object.assign({}, gridCSS, flexCSS, CSS),
-  themePath: 'grid',
+  name: 'grid',
+  styles: Object.assign({}, gridStyles, flexStyles, styles),
   defaultTheme: Object.assign({}, gridDefaultTheme, defaultTheme),
   plugins: gridPlugins
 })
 
-const createBoxComponent = SFC => (props, innerRef) => SFC({
-  innerRef,
-  ...props,
-  children: function (boxProps) {
-    boxProps.as = boxProps.as || 'div'
-    boxProps.children = props.children
-    return renderNodeFast(boxProps)
-  }
-})
+const createBoxComponent = (name, SFC) => {
+  const Component = (props, innerRef) => SFC({
+    ...props,
+    children: boxProps => {
+      boxProps.as = boxProps.as || 'div'
+      boxProps.children = props.children
+      boxProps.innerRef = innerRef
+      return renderNodeFast(boxProps)
+    }
+  })
 
-export const GridBox = React.forwardRef(createBoxComponent(GridBoxRenderProp))
-export default React.forwardRef(createBoxComponent(FlexBox))
+  if (__DEV__) {
+    Component.displayName = name
+  }
+
+  return Component
+}
+
+export const GridBox = React.forwardRef(createBoxComponent('GridBox', GridBoxRenderProp))
+const Box = React.forwardRef(createBoxComponent('Box', FlexBox))
+
+BasicBox.propTypes /* remove-proptypes */ = propTypes
+GridBox.propTypes /* remove-proptypes */ = Object.assign({}, gridPropTypes, flexPropTypes, propTypes)
+Box.propTypes /* remove-proptypes */ = Object.assign({}, flexPropTypes, propTypes)
+FlexBox.propTypes /* remove-proptypes */ = Box.propTypes
+
+export default Box

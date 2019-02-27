@@ -1,14 +1,9 @@
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 import createComponent from '../createComponent'
 
 
-const themePath = 'transitionable'
-export default createComponent({
-  name: 'Transitionable',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath
-})
+const Transitionable = createComponent({name: 'transitionable', styles, defaultTheme})
+Transitionable.propTypes /* remove-proptypes */ = propTypes
+export default Transitionable

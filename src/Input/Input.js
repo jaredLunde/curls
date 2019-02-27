@@ -2,26 +2,31 @@ import React from 'react'
 import {jsx} from '@emotion/core'
 import createComponent from '../createComponent'
 import Type from '../Type'
-import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
+import typePropTypes from '../Type/propTypes'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const as = 'input'
-const SFC = createComponent({name: 'Input', defaultTheme, propTypes, CSS, themePath: 'input'})
+const SFC = createComponent({name: 'input', defaultTheme, styles})
 
-export default React.forwardRef(
+const Input = React.forwardRef(
   function Input (props, innerRef) {
     return SFC({
       __inputStyles: true,
-      innerRef,
       ...props,
-      children: function (typeProps) {
+      children: typeProps => {
         typeProps.as = 'input'
         typeProps.type = typeProps.type || 'text'
+        typeProps.ref = innerRef
         return jsx(Type, typeProps)
       }
     })
   }
 
 )
+
+Input.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes)
+export default Input

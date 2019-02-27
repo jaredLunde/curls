@@ -1,14 +1,17 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import Portalize from 'react-portalize'
-import {baseIsNotVisible} from '../Fade/CSS'
-import {flex, align, justify} from '../Flex/CSS'
-import {pos, w, h, ov} from '../Box/CSS'
+import {baseIsNotVisible} from '../Fade/styles'
+import {flex, align, justify} from '../Flex/styles'
+import {pos, ov} from '../Box/styles'
 import {FlexBox} from '../Box'
 import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
 import {MAX_Z_INDEX} from '../browser'
 import createComponent, {renderNode} from '../createComponent'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
+
 
 /**
 <Overlay visible={isVisible}>
@@ -32,31 +35,28 @@ const defaultCSS = css`
   top: 0;
   z-index: ${MAX_Z_INDEX - 1};
 `
-const SFC = createComponent({name: 'Overlay', defaultTheme, themePath: 'overlay'})
+const SFC = createComponent({name: 'overlay', defaultTheme})
 
-
-export default React.forwardRef(
+const Overlay = React.forwardRef(
   function Overlay ({transition = Fade, portal = false, ...props}, innerRef) {
     return transition({
       ...props,
-      children: function (sfcProps) {
+      children: sfcProps => {
         const Component = SFC({
           innerRef,
           ...sfcProps,
-          children: function (boxProps) {
-            return FlexBox({
-              ...boxProps,
-              children: function ({isVisible, show, hide, toggle, ...overlayBoxProps}) {
-                overlayBoxProps.as = overlayBoxProps.as || as
-                overlayBoxProps.children =
-                  typeof props.children === 'function'
-                    ? props.children({isVisible, show, hide, toggle})
-                    : props.children
+          children: boxProps =>FlexBox({
+            ...boxProps,
+            children: ({isVisible, show, hide, toggle, ...overlayBoxProps}) => {
+              overlayBoxProps.as = overlayBoxProps.as || as
+              overlayBoxProps.children =
+                typeof props.children === 'function'
+                  ? props.children({isVisible, show, hide, toggle})
+                  : props.children
 
-                return renderNode(overlayBoxProps, defaultCSS)
-              }
-            })
-          }
+              return renderNode(overlayBoxProps, defaultCSS)
+            }
+          })
         })
 
         return (
@@ -71,3 +71,6 @@ export default React.forwardRef(
     })
   }
 )
+
+Overlay.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
+export default Overlay

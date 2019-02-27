@@ -2,13 +2,15 @@ import React from 'react'
 import {css} from '@emotion/core'
 import ImageProps from '@render-props/image-props'
 import {BasicBox} from '../Box'
-import {pos, d, ov} from '../Box/CSS'
+import {pos, d, ov} from '../Box/styles'
 import createComponent, {renderNode} from '../createComponent'
 import {supportsCSS} from '../utils'
-import * as CSS from './CSS'
+import * as styles from './styles'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
 import getImage from './getImage'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 /**
@@ -19,60 +21,48 @@ import getImage from './getImage'
 </Avatar>
 */
 
-
 const as = 'span'
 const defaultCSS = css`
   ${d.inlineBlock};
   text-align: center;
   ${pos.relative}
-  ${ov('hidden')};
+  overflow: hidden;
 
   & > img {
     object-fit: cover;
   }
 `
 const SFC = createComponent({
-  name: 'Avatar',
-  propTypes,
+  name: 'avatar',
+  styles,
   defaultTheme,
-  CSS,
-  themePath: 'avatar'
+  propTypes,
 })
-const SFCWithImageProps = function (props) {
-  return (
-    <ImageProps>
-      {function (imageContext) {
-        return SFC({...imageContext, ...props})
-      }}
-    </ImageProps>
-  )
-}
+
+const SFCWithImageProps = props => <ImageProps
+  children={(imageContext) => SFC({...imageContext, ...props})}
+/>
+
 const supportsObjectFit = supportsCSS('object-fit')
 
-
-export default React.forwardRef(
+const Avatar = React.forwardRef(
   function Avatar (props, innerRef) {
     const sfcProps = {
       innerRef,
       ...props,
-      children: function (boxProps) {
+      children: boxProps => {
         // adds child prop for 'Box' and rendering the avatar node
-        boxProps.children = function (nodeProps) {
+        boxProps.children = function ({alt, imageRef, ...nodeProps}) {
           nodeProps.as = nodeProps.as || as
-          let innerRef
 
-          if (nodeProps.imageRef) {
+          if (imageRef) {
             innerRef = (...args) => {
-              nodeProps.imageRef(...args)
+              imageRef(...args)
               if (nodeProps.innerRef) {
                 nodeProps.innerRef(...args)
               }
             }
           }
-
-          delete nodeProps.imageRef
-          const alt = nodeProps.alt
-          delete nodeProps.alt
 
           const imgProps = {
             ...nodeProps,
@@ -97,3 +87,6 @@ export default React.forwardRef(
     return (supportsObjectFit ? SFC : SFCWithImageProps)(sfcProps)
   }
 )
+
+Avatar.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
+export default Avatar

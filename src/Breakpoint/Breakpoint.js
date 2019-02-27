@@ -6,7 +6,7 @@ import {getBreakpointOrder} from '../utils'
 import * as defaultTheme from '../Grid/defaultTheme'
 
 
-function getSizes (props, theme) {
+const getSizes = (props, theme) => {
   const sizes = []
   const keys = getBreakpointOrder(theme.breakpoints)
 
@@ -21,7 +21,7 @@ function getSizes (props, theme) {
 }
 
 const memoizedFindBreakPoints = memoize(
-  function (theme, ...sizes) {
+  (theme, ...sizes) => {
     const breakpoints = []
 
     for (let size in theme.breakpoints) {
@@ -36,10 +36,7 @@ const memoizedFindBreakPoints = memoize(
 )
 
 // This is about enforcing immutability, not micro-optimizing
-function findBreakPoints (props, theme) {
-  return memoizedFindBreakPoints(theme, ...getSizes(props, theme))
-}
-
+const findBreakPoints = (props, theme) => memoizedFindBreakPoints(theme, ...getSizes(props, theme))
 
 function getMatches_ (sizes, rawMatches) {
   const matches = {}
@@ -55,7 +52,7 @@ function getMatches_ (sizes, rawMatches) {
 // This is about enforcing immutability, not micro-optimizing
 const getMatches = memoize(getMatches_)
 
-function getDefaultMatches (theme, sizes, defaultMatches) {
+const getDefaultMatches = (theme, sizes, defaultMatches) => {
   if (defaultMatches === void 0) {
     return sizes.map(s => false)
   }
@@ -69,26 +66,19 @@ function getDefaultMatches (theme, sizes, defaultMatches) {
 }
 
 
-export default function Breakpoint (props) {
-  return ThemeConsumer({
-    path: 'grid',
-    defaultTheme,
-    children: function (themeProps) {
-      const [sizes, queries] = findBreakPoints(props, themeProps.theme)
-      const defaultMatches = getDefaultMatches(
-        themeProps.theme,
-        sizes,
-        props.defaultMatches
-      )
+const Breakpoint = props => ThemeConsumer({
+  name: 'grid',
+  defaultTheme,
+  children: themeProps => {
+    const [sizes, queries] = findBreakPoints(props, themeProps.theme)
+    const defaultMatches = getDefaultMatches(themeProps.theme, sizes, props.defaultMatches)
 
-      return (
-        <MediaQuery query={queries} defaultMatches={defaultMatches}>
-          {function (mqProps) {
-            mqProps.matches = getMatches(sizes, mqProps.matches)
-            return props.children(mqProps)
-          }}
-        </MediaQuery>
-      )
-    }
-  })
-}
+    return (
+      <MediaQuery query={queries} defaultMatches={defaultMatches}>
+        {mqProps => props.children({...mqProps, matches: getMatches(sizes, mqProps.matches)})}
+      </MediaQuery>
+    )
+  }
+})
+
+export default Breakpoint

@@ -1,5 +1,5 @@
 import {css} from '@emotion/core'
-export * from '../Input/CSS'
+export * from '../Input/styles'
 
 
 export const autoResize = css`

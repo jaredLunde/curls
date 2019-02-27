@@ -1,35 +1,34 @@
-import {bool, oneOf, oneOfType, number, string} from 'prop-types'
+import {string} from 'prop-types'
+import {implicitNum, boolOrNum, boolOrString} from '../PropTypes'
 
-const boolOrNum = oneOfType([bool, number])
-const strOrNum = oneOfType([string, number])
-const boolOrStr = oneOfType([bool, string])
+
 export default {
   // flex (display: flex)
-  flex: bool,
+  flex: boolOrString,
   // flex--fixed (flex(0, 0, auto))
-  fixed: bool,
+  fixed: boolOrString,
   // flex--fluid (flex(1, 1, auto))
-  fluid: bool,
+  fluid: boolOrString,
   // flex--grow
   grow: boolOrNum,
   // flex--shrink
   shrink: boolOrNum,
   // flex-basis
-  basis: strOrNum,
+  basis: implicitNum,
   // flex--x
-  row: boolOrStr,
+  row: boolOrString,
   // flex--y
-  column: boolOrStr,
+  column: boolOrString,
   // flex--wrap
-  wrap: boolOrStr,
+  wrap: boolOrString,
   // flex--x-{left|center|right|around|between}
-  justify: oneOf(['start', 'center', 'end', 'around', 'between']),
+  justify: string,
   // flex--y-{top|center|bottom|around|between|stretch}
-  align: oneOf(['start', 'center', 'end', 'around', 'stretch', 'baseline']),
+  align: string,
   // order: _
-  order: number,
+  order: implicitNum,
   // flex--content-{top|center|bottom|around}
-  alignContent: oneOf(['start', 'center', 'end', 'stretch', 'between', 'around']),
+  alignContent: string,
   // flex--self-{top|center|bottom|around}
-  alignSelf: oneOf(['start', 'center', 'end', 'stretch', 'baseline'])
+  alignSelf: string
 }

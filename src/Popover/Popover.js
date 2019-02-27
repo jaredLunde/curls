@@ -7,8 +7,8 @@ import emptyObj from 'empty/object'
 import Breakpoint from '../Breakpoint'
 import {MAX_Z_INDEX} from '../browser'
 import {FlexBox} from '../Box'
-import {pos} from '../Box/CSS'
-import {flex} from '../Flex/CSS'
+import {pos} from '../Box/styles'
+import {flex} from '../Flex/styles'
 import Drop from '../Drop'
 import {portalize} from '../utils'
 import * as defaultTheme from './defaultTheme'
@@ -44,7 +44,7 @@ const defaultCSS = css`
   z-index: ${MAX_Z_INDEX};
 `
 const as = 'div'
-const SFC = createComponent({name: 'Popover', defaultTheme, themePath: 'popover'})
+const SFC = createComponent({name: 'popover', defaultTheme})
 
 export const PopoverBox = React.forwardRef(
   function PopoverBox ({children, portal, ...props}, innerRef) {
@@ -316,13 +316,13 @@ class BreakpointRenderer extends React.Component {
   }
 }
 
-export default React.forwardRef(
+const Popover = React.forwardRef(
   function Popover (props, innerRef) {
     const breakpoints = getBreakpoints(props)
 
     return (props.transition || Drop)({
       ...props,
-      children: function (popoverProps) {
+      children: popoverProps => {
         popoverProps.children = props.children
         popoverProps.innerRef = innerRef
 
@@ -341,3 +341,5 @@ export default React.forwardRef(
     })
   }
 )
+
+export default Popover

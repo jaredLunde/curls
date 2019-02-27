@@ -1,12 +1,14 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import {FlexBox} from '../Box'
-import {pos, w} from '../Box/CSS'
-import {flex, column} from '../Flex/CSS'
+import {pos, w} from '../Box/styles'
+import {flex, column} from '../Flex/styles'
 import createComponent, {renderNode} from '../createComponent'
 import * as defaultTheme from './defaultTheme'
 import propTypes from './propTypes'
-import * as CSS from './CSS'
+import * as styles from './styles'
+import boxPropTypes from '../Box/propTypes'
+import flexPropTypes from '../Flex/propTypes'
 
 
 const defaultCSS = css`
@@ -52,24 +54,17 @@ const defaultCSS = css`
 
 
 const as = 'div'
-const SFC = createComponent({
-  name: 'Card',
-  propTypes,
-  CSS,
-  defaultTheme,
-  themePath: 'card'
-})
+const SFC = createComponent({name: 'card', styles, defaultTheme,})
 
-
-export default React.forwardRef(
+const Card = React.forwardRef(
   function Card (props, innerRef) {
     return SFC({
-      innerRef,
       ...props,
       children: function (boxProps) {
-        boxProps.children = function (nodeProps) {
+        boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
+          nodeProps.innerRef = innerRef
           return renderNode(nodeProps, defaultCSS)
         }
 
@@ -78,3 +73,6 @@ export default React.forwardRef(
     })
   }
 )
+
+Card.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
+export default Card

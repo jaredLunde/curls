@@ -2,8 +2,8 @@ import React from 'react'
 import {CurlsContext} from '../ThemeProvider'
 import A from './A'
 
-// TODO: get Link component from Theme
-export default React.forwardRef(
+
+const Link = React.forwardRef(
   function Link (props, innerRef) {
     return <CurlsContext.Consumer children={
       cxt => {
@@ -18,3 +18,5 @@ export default React.forwardRef(
     }/>
   }
 )
+
+export default Link

@@ -1,7 +1,6 @@
-import {object, bool} from 'prop-types'
+import {boolOrString} from '../PropTypes'
 
 
 export default {
-  useFlex: bool,
-  __gridBreakpoints: object
+  useFlex: boolOrString
 }
