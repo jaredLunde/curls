@@ -3,7 +3,7 @@ import memoize from 'trie-memoize'
 
 
 const getColumnWidth = memoize(
-  [Map, Map, Map, Map],
+  [WeakMap, Map, Map, Map],
   (theme, size, cols, useFlex) => {
     if (cols === false) {
       return null

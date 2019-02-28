@@ -52,7 +52,7 @@ const Avatar = React.forwardRef(
       ...props,
       children: boxProps => {
         // adds child prop for 'Box' and rendering the avatar node
-        boxProps.children = function ({alt, imageRef, ...nodeProps}) {
+        boxProps.children = ({alt, imageRef, ...nodeProps}) => {
           nodeProps.as = nodeProps.as || as
 
           if (imageRef) {
