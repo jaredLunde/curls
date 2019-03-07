@@ -180,26 +180,28 @@ class PopoverContainer extends React.Component {
   }
 
   render () {
+    const {renderPosition, ...style} = this.state
+
     if (
       this.props.isVisible !== this.popoverContext.isVisible
       || this.state.renderPosition !== this.popoverContext.renderPosition
       || this.props.css !== this.popoverBoxContext.css
     ) {
-      const {renderPosition, ...style} = this.state
       this.popoverContext = {
         ...this.popoverContext,
         renderPosition,
         isVisible: this.props.isVisible,
         popoverRef: this.setContainerRef
       }
-      this.popoverBoxContext = {
-        ...this.popoverContext,
-        style,
-        css: this.props.css,
-        popoverBoxRef: this.setPopoverBoxRef
-      }
-      delete this.popoverBoxContext.popoverRef
     }
+
+    this.popoverBoxContext = {
+      ...this.popoverContext,
+      style,
+      css: this.props.css,
+      popoverBoxRef: this.setPopoverBoxRef
+    }
+    delete this.popoverBoxContext.popoverRef
 
     return (
       <Provider value={this.popoverBoxContext}>
