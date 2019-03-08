@@ -116,15 +116,11 @@ class PopoverContainer extends React.Component {
       this.props.isVisible === true
       && this.props.isVisible !== isVisible
     ) || (
-      (this.props.isVisible === true || this.state.hasRendered === true)
-      && (
-        width !== this.props.width
-        || height !== this.props.height
-      ) || (
-        this.props.isVisible === true && scrollY !== this.props.scrollY
-      )
-    )
-    ) {
+      width !== this.props.width
+      || height !== this.props.height
+    ) || (
+      this.props.isVisible === true && scrollY !== this.props.scrollY
+    )) {
       this.reposition()
     }
   }
@@ -137,10 +133,9 @@ class PopoverContainer extends React.Component {
 
   shouldComponentUpdate ({scrollY, width, height, ...nextProps}, nextState) {
     if (
-      (this.props.isVisible === true || this.state.hasRendered === true) && (
+      this.props.isVisible === true/* || this.state.hasRendered === true*/ && (
         width !== this.props.width || height !== this.props.height
-      ) || (
-        this.props.isVisible && scrollY !== this.props.scrollY
+        || scrollY !== this.props.scrollY
       )
     ) {
       return true
