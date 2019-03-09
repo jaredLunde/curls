@@ -28,7 +28,7 @@ const defaultCSS = css`
   ${pos.relative}
   overflow: hidden;
 
-  & > img {
+  & img {
     object-fit: cover;
   }
 `

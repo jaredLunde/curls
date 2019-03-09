@@ -43,7 +43,7 @@ export const orientation = memoValue(
     }
 
     return css`
-    & > img {
+    & img, & picture {
       height: ${height};
       width: ${width};
     }
