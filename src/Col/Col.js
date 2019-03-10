@@ -23,7 +23,7 @@ const Col = React.forwardRef(
       ...props,
       children: boxProps => {
         boxProps.useFlex = true
-        boxProps.children = function (nodeProps) {
+        boxProps.children = function ({useFlex, ...nodeProps}) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
           nodeProps.innerRef = innerRef
