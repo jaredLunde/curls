@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "3.0.21",
+  "version": "3.0.23",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -42,7 +42,8 @@
     "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/es/**/*.js\"",
     "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\"",
     "publish:dev": "yarn publish --tag dev",
-    "publish:next": "yarn publish --tag next"
+    "publish:next": "yarn publish --tag next",
+    "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
     "prop-types": ">= 15.6.0",

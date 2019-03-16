@@ -1,1 +1,0 @@
-export placeholder from './placeholder'
