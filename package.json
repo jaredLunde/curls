@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "3.0.23",
+  "version": "3.0.24",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -19,19 +19,18 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.3.1",
-    "@babel/runtime-corejs2": "^7.3.1",
-    "@emotion/core": "^10.0.7",
+    "@babel/runtime": "^7.4.0",
+    "@emotion/core": "^10.0.9",
     "@render-props/image-props": "^0.1.15",
     "@render-props/rect": "^0.1.21",
     "@render-props/toggle": "^0.1.29",
     "@render-props/utils": "^0.2.11",
     "@render-props/viewport": "^0.3.0",
-    "cdll-memoize": "^0.1.9",
+    "cdll-memoize": "^0.1.10",
     "empty": "^0.10.1",
     "is-mergeable-object": "^1.1.0",
     "json2mq": "^0.2.0",
-    "react-portalize": "^1.0.5",
+    "react-portalize": "^1.0.6",
     "trie-memoize": "^1.0.3"
   },
   "scripts": {
