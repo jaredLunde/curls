@@ -17,9 +17,10 @@ export {
 export ThemeProvider, {
   defaultBreakpoints,
   defaultColors,
-  defaultSpacingScale
+  defaultSpacingScale,
+  useCurls
 } from './ThemeProvider'
-export ThemeConsumer from './ThemeConsumer'
+export ThemeConsumer, {useTheme} from './ThemeConsumer'
 
 export createComponent, {renderNode, renderNodeFast} from './createComponent'
 export Avatar from './Avatar'

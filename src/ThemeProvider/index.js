@@ -1,4 +1,4 @@
-export default, {CurlsContext} from './ThemeProvider'
+export default, {CurlsContext, useCurls} from './ThemeProvider'
 export createTheme, {
   mergeTheme,
   baseTheme,

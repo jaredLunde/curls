@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import memoize from 'trie-memoize'
 import {CurlsContext, baseTheme} from '../ThemeProvider'
 import {getTheme} from '../utils'
@@ -55,3 +55,5 @@ export default function ThemeConsumer (props) {
 
   return <CurlsContext.Consumer children={Consumer}/>
 }
+
+export const useTheme = () => useContext(CurlsContext).theme

@@ -1,1 +1,1 @@
-export default from './ThemeConsumer'
+export default, {useTheme} from './ThemeConsumer'
