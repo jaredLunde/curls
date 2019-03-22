@@ -97,6 +97,7 @@ export const b = memoTheme((v, t) => css`bottom: ${toSize(v, t.posUnit)};`)
 export const l = memoTheme((v, t) => css`left: ${toSize(v, t.posUnit)};`)
 
 const borderRadiusDirections = {
+  _: ['top-right', 'bottom-right', 'bottom-left', 'top-left'],
   t: ['top-right', 'top-left'],
   r: ['top-right', 'bottom-right'],
   b: ['bottom-right', 'bottom-left'],
@@ -112,15 +113,13 @@ export const br = memoTheme(
     const {borderRadiusScale} = theme
 
     if (isDirectional(value)) {
-      return css`
-      ${directionalScale(
+      return directionalScale(
         'border-{XYZ}-radius',
         borderRadiusScale,
         value,
         theme.borderRadiusUnit,
         borderRadiusDirections,
-      )};
-    `
+      )
     } else {
       return css`border-radius: ${toSize(borderRadiusScale[value], theme.borderRadiusUnit)};`
     }
