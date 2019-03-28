@@ -53,7 +53,7 @@ export default (
     let size = modScale[value]
 
     if (size === void 0) {
-      if (lVal === 'Auto') {
+      if (value === 'Auto') {
         size = 'auto'
       }
       else {
