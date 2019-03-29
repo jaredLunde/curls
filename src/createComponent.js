@@ -6,13 +6,13 @@ import ThemeConsumer from './ThemeConsumer'
 
 export const renderNode = (nodeProps, defaultCSS) => {
   if (defaultCSS !== void 0) {
-    nodeProps.css = nodeProps.css ? [defaultCSS, nodeProps.css] : defaultCSS
+    nodeProps.css = nodeProps.css !== void 0 ? [defaultCSS, nodeProps.css] : defaultCSS
   }
 
   return renderNodeFast(nodeProps)
 }
 
-const withoutElementProps = {as: null, innerRef: null}
+const withoutElementProps = {as: 0, innerRef: 0}
 
 export const renderNodeFast = nodeProps => {
   nodeProps.ref = nodeProps.innerRef
@@ -32,7 +32,8 @@ const composeThemePlugins = (...funcs) => {
 }
 
 const getKind = (kinds, kind) => kinds === void 0 || kind === void 0 ? void 0 : kinds[kind]
-const defaultWithout = {kind: true, children: true}
+const defaultWithout = {kind: 0, children: 0}
+const withoutCssProp = {css: 0}
 
 export default ({
   name,
@@ -74,13 +75,23 @@ export default ({
 
   function render (props, themeProps) {
     const theme = themeProps.theme
-    const kind = getKind(theme.kinds, props.kind)
+    let kind = getKind(theme.kinds, props.kind), kindCss
+
+    if (kind !== void 0 && kind.css !== void 0) {
+      kindCss = kind.css
+      kind = objectWithoutProps(kind, withoutCssProp)
+    }
+
     props =
       theme.defaultProps === void 0
         ? assignOrdered(emptyObj, kind, props)
         : assignOrdered(theme.defaultProps, kind, props)
-    const renderProps = objectWithoutProps(props, withoutProps)
-    const css = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0
+
+    const
+      renderProps = objectWithoutProps(props, withoutProps),
+      css = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0
+
+    renderProps.css = kindCss !== void 0 ? [renderProps.css, kindCss] : renderProps.css
 
     if (css !== void 0) {
       if (css.css.length > 0) {
@@ -90,11 +101,11 @@ export default ({
         else {
           renderProps.css =
             typeof renderProps.css === 'object'
-              ? [...css.css, renderProps.css]
+              ? [renderProps.css, css.css]
               : css.css
         }
       }
-      // console.log('CSS', renderProps.css)
+
       if (css.style !== void 0) {
         renderProps.style =
           typeof renderProps.style === 'object'
