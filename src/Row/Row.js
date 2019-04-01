@@ -16,7 +16,7 @@ const defaultCSS = css`
   ${row.row};
   ${wrap.wrap};
 `
-const SFC = createComponent({name: 'Row'})
+const SFC = createComponent({name: 'row'})
 
 const Row = React.forwardRef(
   function Row (props, innerRef) {
