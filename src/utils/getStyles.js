@@ -50,7 +50,7 @@ export default (styles, theme, props) => {
         }
       }
 
-      if (propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
+      if (propVal === null || propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
         // these are just regular values, no media queries
         maybeAddStyles(css, style, getCSS(getter, propVal, theme, props))
       }
