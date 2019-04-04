@@ -54,7 +54,7 @@ export const PopoverBox = React.forwardRef(
           const boxChild =
             typeof children === 'function' ? children(transitionProps) : children
 
-          innerRef = innerRef === null ? popoverBoxRef : function (...args) {
+          const innerRef_ = innerRef === null ? popoverBoxRef : function (...args) {
             innerRef(...args)
             popoverBoxRef(...args)
           }
@@ -67,7 +67,7 @@ export const PopoverBox = React.forwardRef(
               children: function (boxProps) {
                 boxProps.as = boxProps.as || as
                 boxProps.children = boxChild
-                boxProps.innerRef = innerRef
+                boxProps.innerRef = innerRef_
                 boxProps.style = {...style, ...boxProps.style}
                 return renderNode(boxProps, defaultCSS)
               }
