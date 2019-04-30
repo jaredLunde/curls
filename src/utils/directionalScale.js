@@ -31,6 +31,7 @@ export default (
 
   for (; i < modVals.length; i++) {
     const val = modVals[i]
+    if (!val) return
     let [abbr, ...value] = val.split(directionalRe)
     value = value.join('')
 
