@@ -1,8 +1,8 @@
 import React from 'react'
 import {css} from '@emotion/core'
+import {areEqualObjects} from '@essentials/are-equal'
 import {ViewportSize, default as Viewport} from '@render-props/viewport'
 import {loadImages} from '@render-props/image-props'
-import {strictShallowEqual} from '@render-props/utils'
 import emptyObj from 'empty/object'
 import Breakpoint from '../Breakpoint'
 import {MAX_Z_INDEX} from '../browser'
@@ -10,7 +10,7 @@ import {FlexBox} from '../Box'
 import {pos} from '../Box/styles'
 import {flex} from '../Flex/styles'
 import Drop from '../Drop'
-import {portalize} from '../utils'
+import {portalize, objectWithoutProps} from '../utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
 import createComponent, {renderNode} from '../createComponent'
@@ -81,6 +81,8 @@ export const PopoverBox = React.forwardRef(
   }
 )
 
+const withoutPrev = {width: 0, height: 0, scrollY: 0}
+
 class PopoverContainer extends React.Component {
   imageLoader = null
   container = null
@@ -106,9 +108,8 @@ class PopoverContainer extends React.Component {
   }
 
   componentDidMount () {
-    if (this.props.isVisible === true) {
+    if (this.props.isVisible === true)
       this.reposition()
-    }
   }
 
   componentDidUpdate ({width, height, scrollY, isVisible}) {
@@ -126,9 +127,8 @@ class PopoverContainer extends React.Component {
   }
 
   componentWillUnmount () {
-    if (this.imageLoader !== null) {
+    if (this.imageLoader !== null)
       this.imageLoader.cancel()
-    }
   }
 
   shouldComponentUpdate ({scrollY, width, height, ...nextProps}, nextState) {
@@ -141,14 +141,11 @@ class PopoverContainer extends React.Component {
       return true
     }
 
-    const prevProps = {...this.props}
-    delete prevProps.width
-    delete prevProps.height
-    delete prevProps.scrollY
+    const prevProps = objectWithoutProps(this.props, withoutPrev)
 
     return (
-      !strictShallowEqual(nextState, this.state)
-      || !strictShallowEqual(nextProps, prevProps)
+      areEqualObjects(nextState, this.state) === false
+      || areEqualObjects(nextProps, prevProps) === false
     )
   }
 
@@ -156,7 +153,7 @@ class PopoverContainer extends React.Component {
   setPopoverBoxRef = el => this.popoverBox = el
 
   setPositionState = () => {
-    let {popoverDirection, theme, width, height} = this.props
+    let {popoverDirection, width, height} = this.props
     this.setState(
       setDirectionStyle(popoverDirection, this.container, this.popoverBox, {width, height})
     )
@@ -212,9 +209,8 @@ function ViewportPopover (props) {
     props.width = vpProps.width
     props.height = vpProps.height
 
-    if (props.repositionOnScroll) {
+    if (props.repositionOnScroll)
       props.scrollY = vpProps.scrollY
-    }
 
     if (props.innerRef) {
       props.ref = props.innerRef
@@ -242,15 +238,13 @@ function getBreakpoints (props) {
     const key = keys[i]
 
     if (positions.indexOf(key) > -1) {
-      if (typeof props[key] !== 'string') {
-        continue
-      }
-
+      if (typeof props[key] !== 'string') continue
       const valPairs = props[key].split(ws)
 
       for (j = 0; j < valPairs.length; j++) {
-        const valPair = valPairs[j]
-        const indexOfSplit = valPair.indexOf('@')
+        const
+          valPair = valPairs[j],
+          indexOfSplit = valPair.indexOf('@')
 
         if (indexOfSplit > -1) {
           breakpoints[valPair.substring(indexOfSplit + 1)] = key
@@ -270,9 +264,8 @@ function getDirection (props) {
   for (; i > -1 ; i--) {
     const key = keys[i]
 
-    if (positions.indexOf(key) > -1 && !!props[key]) {
+    if (positions.indexOf(key) > -1 && !!props[key])
       return key
-    }
   }
 }
 

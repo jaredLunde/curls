@@ -1,4 +1,3 @@
-import {string} from 'prop-types'
 import {implicitNum, boolOrNum, boolOrString} from '../PropTypes'
 
 
@@ -22,13 +21,13 @@ export default {
   // flex--wrap
   wrap: boolOrString,
   // flex--x-{left|center|right|around|between}
-  justify: string,
+  justify: boolOrString,
   // flex--y-{top|center|bottom|around|between|stretch}
-  align: string,
+  align: boolOrString,
   // order: _
   order: implicitNum,
   // flex--content-{top|center|bottom|around}
-  alignContent: string,
+  alignContent: boolOrString,
   // flex--self-{top|center|bottom|around}
-  alignSelf: string
+  alignSelf: boolOrString
 }

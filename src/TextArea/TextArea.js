@@ -1,5 +1,4 @@
 import React from 'react'
-import {callIfExists} from '@render-props/utils'
 import createComponent from '../createComponent'
 import Type from '../Type'
 import propTypes from './propTypes'
@@ -32,7 +31,7 @@ const TextArea = React.forwardRef(
 
         if (props.autoResize) {
           typeProps.onChange = function (...args) {
-            callIfExists(props.onChange, ...args)
+            typeof props.onChange === 'function' && props.onChange(...args)
             autoResize(...args)
           }
         }

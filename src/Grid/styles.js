@@ -5,10 +5,7 @@ import memoize from 'trie-memoize'
 const getColumnWidth = memoize(
   [WeakMap, Map, Map, Map],
   (theme, size, cols, useFlex) => {
-    if (cols === false) {
-      return null
-    }
-
+    if (cols === false) return null
     const numColumns = isNaN(theme.columns) === true ? theme.columns[size] : theme.columns
     let x, indexOfSlash = cols.indexOf('/')
 
@@ -23,13 +20,11 @@ const getColumnWidth = memoize(
     if (__DEV__) {
       let numX = Array.isArray(cols) && cols[1]
 
-      if (numX && parseInt(numX) !== numColumns) {
+      if (numX && parseInt(numX) !== numColumns)
         console.warn(`Column count for size '${size}' is ${numColumns}, not ${numX}`)
-      }
 
-      if (x < 1 || x > numColumns) {
+      if (x < 1 || x > numColumns)
         console.warn(`Column count for size '${size}' must be between 1 and ${numColumns}`)
-      }
     }
 
     const width = `${(x / numColumns) * 100}%`
@@ -44,12 +39,10 @@ const getColumnWidth = memoize(
 )
 
 export const __gridBreakpoints = (v, t, p) => {
-  const css = []
-  const keys = Object.keys(v)
+  let css = [], keys = Object.keys(v), i = 0
 
-  for (let i = 0; i < keys.length; i++) {
-    const s = keys[i]
-    const cols = v[s]
+  for (; i < keys.length; i++) {
+    const s = keys[i], cols = v[s]
     if (cols === false) continue
     css.push(getColumnWidth(t, s, cols, p.useFlex || false))
   }

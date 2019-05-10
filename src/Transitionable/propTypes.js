@@ -1,14 +1,14 @@
-import {string, arrayOf, oneOfType} from 'prop-types'
-import {implicitNum} from '../PropTypes'
+import {bool, string, arrayOf, oneOfType} from 'prop-types'
+import {implicitNum, boolOrString} from '../PropTypes'
 
 
 export default {
   // transition-duration (in ms)
   duration: implicitNum,
   // transition-timing-functions
-  easing: string,
+  easing: boolOrString,
   // transition-delay (in ms)
   delay: implicitNum,
   // transition-property
-  property: oneOfType([string, arrayOf(string)])
+  property: oneOfType([bool, string, arrayOf(string)])
 }

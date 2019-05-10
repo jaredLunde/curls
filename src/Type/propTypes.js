@@ -1,4 +1,3 @@
-import {string} from 'prop-types'
 import {boolOrString} from '../PropTypes'
 
 
@@ -11,7 +10,7 @@ export default {
   // lg: bool,
   // xl: bool,
   // xxl: bool,
-  size: string,
+  size: boolOrString,
   // Weights
   thin: boolOrString,
   ultraLight: boolOrString,
@@ -28,12 +27,12 @@ export default {
   right: boolOrString,
   justified: boolOrString,
   // Legibility
-  optimizeFor: string,
+  optimizeFor: boolOrString,
   antialias: boolOrString,
   // Color
-  color: string,
+  color: boolOrString,
   // Typeface
-  face: string,
+  face: boolOrString,
   // cool
   ellipsis: boolOrString,
 }

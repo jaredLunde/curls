@@ -2,9 +2,7 @@ import centerX from './centerX'
 
 
 export default (containerRect, boxRect, {width, height}) => {
-  let top = 'auto'
-  let bottom = 'auto'
-  let renderPosition = 'bottom'
+  let top = 'auto', bottom = 'auto', renderPosition = 'bottom'
 
   if (containerRect.bottom + boxRect.height < height) {
     top = containerRect.bottom
@@ -15,6 +13,5 @@ export default (containerRect, boxRect, {width, height}) => {
     bottom = 0
   }
 
-  const X = centerX(containerRect, boxRect, width)
-  return {top, bottom, renderPosition, ...X}
+  return Object.assign({top, bottom, renderPosition}, centerX(containerRect, boxRect, width))
 }

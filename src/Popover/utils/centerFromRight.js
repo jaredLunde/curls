@@ -2,9 +2,7 @@ import centerY from './centerY'
 
 
 export default (containerRect, boxRect, {width, height}) => {
-  let left = 'auto'
-  let right = 'auto'
-  let renderPosition = 'right'
+  let left = 'auto', right = 'auto', renderPosition = 'right'
 
   if (containerRect.right + boxRect.width < width) {
     left = containerRect.right
@@ -15,6 +13,5 @@ export default (containerRect, boxRect, {width, height}) => {
     right = 0
   }
 
-  const Y = centerY(containerRect, boxRect, height)
-  return {left, right, renderPosition, ...Y}
+  return Object.assign({left, right, renderPosition}, centerY(containerRect, boxRect, height))
 }

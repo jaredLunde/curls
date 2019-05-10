@@ -1,5 +1,4 @@
 import {oneOfType, bool, number, string, func} from 'prop-types'
-
 export const boolNumOrString = oneOfType([bool, number, string])
 export const implicitNum = oneOfType([number, string, bool])
 

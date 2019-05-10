@@ -9,10 +9,7 @@ export default function (direction, container, popoverBox, viewportSize) {
   const containerRect = rect(container)
   const boxRect = rect(popoverBox)
 
-  if (!containerRect) {
-    return null
-  }
-
+  if (!containerRect) return null
   let state
 
   switch (direction) {

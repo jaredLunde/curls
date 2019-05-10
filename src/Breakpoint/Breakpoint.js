@@ -1,5 +1,5 @@
 import React from 'react'
-import memoize from 'cdll-memoize'
+import memoize from 'trie-memoize'
 import MediaQuery from '../MediaQuery'
 import ThemeConsumer from '../ThemeConsumer'
 import {getBreakpointOrder} from '../utils'
@@ -7,60 +7,68 @@ import * as defaultTheme from '../Grid/defaultTheme'
 
 
 const getSizes = (props, theme) => {
-  const sizes = []
-  const keys = getBreakpointOrder(theme.breakpoints)
+  let sizes = [], keys = getBreakpointOrder(theme.breakpoints), i = 0
 
-  for (let i = 0; i < keys.length; i++) {
+  for (; i < keys.length; i++) {
     const key = keys[i]
-    if (props[key] === true) {
-      sizes.push(key)
-    }
+    if (props[key] === true) sizes.push(key)
   }
 
   return sizes
 }
 
-const memoizedFindBreakPoints = memoize(
-  (theme, ...sizes) => {
-    const breakpoints = []
 
-    for (let size in theme.breakpoints) {
-      if (sizes.indexOf(size) > -1) {
-        breakpoints.push(theme.breakpoints[size])
-      }
-    }
-
-    return [sizes, breakpoints]
-  },
-  {size: 36}
-)
-
-// This is about enforcing immutability, not micro-optimizing
-const findBreakPoints = (props, theme) => memoizedFindBreakPoints(theme, ...getSizes(props, theme))
-
-function getMatches_ (sizes, rawMatches) {
-  const matches = {}
-
-  for (let i = 0; i < rawMatches.length; i++) {
-    const size = sizes[i]
-    matches[size] = rawMatches[i]
+const bpCache = new WeakMap()
+const memoizedFindBreakpoints = (breakpoints, sizes) => {
+  let pairs =
+    bpCache.get(breakpoints),
+    sizeKey = sizes.join(',')
+  if (pairs !== void 0) {
+    let pairKeys = Object.keys(pairs), i = 0
+    for (; i < pairKeys.length; i++)
+      if (sizeKey === pairKeys[i])
+        return pairs[pairKeys[i]]
+  }
+  else {
+    pairs = {}
+    bpCache.set(breakpoints, pairs)
   }
 
-  return matches
+  const bps = []
+
+  for (let size in breakpoints)
+    if (sizes.indexOf(size) > -1)
+      bps.push(breakpoints[size])
+
+  const value = [sizes, bps]
+  pairs[sizeKey] = value
+  return value
 }
 
 // This is about enforcing immutability, not micro-optimizing
-const getMatches = memoize(getMatches_)
+const findBreakpoints = (props, theme) =>
+  memoizedFindBreakpoints(theme.breakpoints, getSizes(props, theme))
+
+// This is about enforcing immutability, not micro-optimizing
+const getMatches = memoize(
+  [WeakMap, WeakMap],
+  (sizes, rawMatches) => {
+    let matches = {}, i = 0
+
+    for (; i < rawMatches.length; i++)
+      matches[sizes[i]] = rawMatches[i]
+
+    return matches
+  }
+)
 
 const getDefaultMatches = (theme, sizes, defaultMatches) => {
   if (defaultMatches === void 0) {
     return sizes.map(s => false)
   }
   else {
-    if (typeof defaultMatches === 'function') {
+    if (typeof defaultMatches === 'function')
       defaultMatches = defaultMatches(theme)
-    }
-
     return sizes.map(size => defaultMatches.indexOf(size) > -1)
   }
 }
@@ -70,8 +78,9 @@ const Breakpoint = props => ThemeConsumer({
   name: 'grid',
   defaultTheme,
   children: themeProps => {
-    const [sizes, queries] = findBreakPoints(props, themeProps.theme)
-    const defaultMatches = getDefaultMatches(themeProps.theme, sizes, props.defaultMatches)
+    const
+      [sizes, queries] = findBreakpoints(props, themeProps.theme),
+      defaultMatches = getDefaultMatches(themeProps.theme, sizes, props.defaultMatches)
 
     return (
       <MediaQuery query={queries} defaultMatches={defaultMatches}>

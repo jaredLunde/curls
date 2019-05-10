@@ -1,16 +1,15 @@
-import {string} from 'prop-types'
-import {implicitNum} from '../PropTypes'
+import {implicitNum, boolOrString} from '../PropTypes'
 
 
 export default {
   // background-color
-  bg: string,
+  bg: boolOrString,
   // border radius
   br: implicitNum,
   // border width
   bw: implicitNum,
   // border color
-  bc: string,
+  bc: boolOrString,
   // box-shadow
   sh: implicitNum,
   // margin
@@ -18,11 +17,11 @@ export default {
   // padding
   p: implicitNum,
   // position
-  pos: string,
+  pos: boolOrString,
   // display
-  d: string,
+  d: boolOrString,
   // overflow
-  ov: string,
+  ov: boolOrString,
   // z-index
   z: implicitNum,
   // width: __

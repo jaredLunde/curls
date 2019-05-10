@@ -770,10 +770,17 @@
     "@babel/plugin-transform-react-jsx-self" "^7.0.0"
     "@babel/plugin-transform-react-jsx-source" "^7.0.0"
 
-"@babel/runtime@^7.3.1", "@babel/runtime@^7.4.0":
+"@babel/runtime@^7.4.0":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.2.tgz#f5ab6897320f16decd855eed70b705908a313fe8"
   integrity sha512-7Bl2rALb7HpvXFL7TETNzKSAeBVCPHELzc0C//9FCxN8nsiueWSJBqaF+2oIJScyILStASR/Cx5WMkXGYTiJFA==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.4.4":
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.4.tgz#dc2e34982eb236803aa27a07fea6857af1b9171d"
+  integrity sha512-w0+uT71b6Yi7i5SE0co4NioIpSYS6lLiXvCzWzGSKvpK5vdQtCbICHMj+gbAKAOtxiV6HsVh/MBdaF9EQ6faSg==
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -817,7 +824,7 @@
   dependencies:
     "@babel/plugin-syntax-jsx" "^7.2.0"
 
-"@emotion/babel-preset-css-prop@^10.0.7":
+"@emotion/babel-preset-css-prop@^10.0.9":
   version "10.0.9"
   resolved "https://registry.yarnpkg.com/@emotion/babel-preset-css-prop/-/babel-preset-css-prop-10.0.9.tgz#70386bd88fe4d8896e1b9729364daf3a6051f726"
   integrity sha512-fETOWFEe734RlJZTuq6+NeHTzl+Kge4yRm3yrQC+Y2I+KxZjYiU5XUPdbylr0EATbkSzFXgVGKppciZfA5j1mw==
@@ -837,10 +844,10 @@
     "@emotion/utils" "0.11.1"
     "@emotion/weak-memoize" "0.2.2"
 
-"@emotion/core@^10.0.9":
-  version "10.0.9"
-  resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.9.tgz#f8afbccb0011100680f5dc94657b410c6aa1350e"
-  integrity sha512-v5a77dV+uWGoy9w6R3MXZG01lqHcXgoy/jGmJqPDGhPjmpWg26LWXAphYZxpZffFUwDUlDdYDiX5HtaKphvJnQ==
+"@emotion/core@^10.0.10":
+  version "10.0.10"
+  resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.10.tgz#8d3114e5a2f8b178a7067c603a2937516f180b08"
+  integrity sha512-U1aE2cOWUscjc8ZJ3Cx32udOzLeRoJwGxBH93xQD850oQFpwPKZARzdUtdc9SByUOwzSFYxhDhrpXnV34FJmWg==
   dependencies:
     "@emotion/cache" "^10.0.9"
     "@emotion/css" "^10.0.9"
@@ -903,6 +910,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.2.tgz#63985d3d8b02530e0869962f4da09142ee8e200e"
   integrity sha512-n/VQ4mbfr81aqkx/XmVicOLjviMuy02eenSdJY33SVA7S2J42EU0P1H0mOogfYedb3wXA0d/LVtBrgTSm04WEA==
 
+"@essentials/are-equal@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@essentials/are-equal/-/are-equal-1.0.1.tgz#7575b603d5c214fa81743d0e3fd1f037461c9218"
+  integrity sha512-3qzr3iVaUDw3sCe70A8MJfxA9BUrC6o5170oqhNckId40fPgUDRyPqbjPjcboZbPqCV3gUuQcCWR8+JP9Uissg==
+
 "@render-props/events@^0.1.12", "@render-props/events@^0.1.2":
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/@render-props/events/-/events-0.1.13.tgz#a0c4d9e4578fad8ba87118813256bb80cae43d52"
@@ -910,7 +922,7 @@
   dependencies:
     "@babel/runtime" "^7.4.0"
 
-"@render-props/image-props@^0.1.15":
+"@render-props/image-props@^0.1.18":
   version "0.1.18"
   resolved "https://registry.yarnpkg.com/@render-props/image-props/-/image-props-0.1.18.tgz#a645cc6eaaedbd2f8591e81ac0ee55dd60fe4dac"
   integrity sha512-dHXJhrNeSik7NXh8VKnc3uLGmhb32W2+JnzU2gBFooMusd0CF7kXhs5w12ILEcyou22wkbYNd52nLCsYd98gdw==
@@ -919,7 +931,7 @@
     "@render-props/viewport" "^0.3.0"
     cancelable-promise "^2.4.1"
 
-"@render-props/rect@^0.1.21":
+"@render-props/rect@^0.1.21", "@render-props/rect@^0.1.22":
   version "0.1.22"
   resolved "https://registry.yarnpkg.com/@render-props/rect/-/rect-0.1.22.tgz#f418b8e3bb3802e8181ca7deafa107baf619e1a0"
   integrity sha512-C+Ys49uLpAC80WhaiEQE4z18eiUook1mIz41RoLMcZdTZxeV8x0xtBdFHZ3n/yl+M28sEcNYy79F3QZSh611aQ==
@@ -946,7 +958,7 @@
     "@babel/runtime" "^7.4.0"
     "@render-props/utils" "^0.2.0"
 
-"@render-props/toggle@^0.1.29":
+"@render-props/toggle@^0.1.30":
   version "0.1.30"
   resolved "https://registry.yarnpkg.com/@render-props/toggle/-/toggle-0.1.30.tgz#1a34ef63d008c68e56f9fc5d5bb3be8641a5e129"
   integrity sha512-74TFWQALEUvKhuD8WlaDbQjWRXNzQO3RPz5i9UslOmnOgGJaVAYepPCaVpqG4F7ANBz8KwL2i10WYrBeV6JOEw==
@@ -970,7 +982,7 @@
     "@babel/runtime" "^7.4.0"
     "@render-props/utils" "^0.2.1"
 
-"@render-props/viewport@^0.3.0":
+"@render-props/viewport@^0.3.0", "@render-props/viewport@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@render-props/viewport/-/viewport-0.3.1.tgz#09d4690298315a26d9ee634e7c509caa8c545a79"
   integrity sha512-q3PTAvWWs2L/jQ9iyER8tc+0tpXnzjWTslDQCmL8eHrAcHAY+knX9qdVA0XIZYt7GA+meDJ9Hqvc+LlgMfDfnA==
@@ -982,7 +994,7 @@
     "@render-props/throttle" "^0.1.15"
     "@render-props/utils" "^0.2.11"
 
-"@stellar-apps/babel-preset-es@^1.0.3":
+"@stellar-apps/babel-preset-es@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@stellar-apps/babel-preset-es/-/babel-preset-es-1.0.4.tgz#e1e05c5e9cdbc4bce5315cd305c2b66ba7bef4fd"
   integrity sha512-WAv1E6iAnreDERbCmABsD00nAEXuLjE1hUUct17HTALcj37NKNEdmTsQfNaX/AnU5nRTOKi/0Ci41/JRxEpH+g==
@@ -1006,10 +1018,10 @@
     babel-plugin-macros "^2.5.0"
     cross-env "^5.2.0"
 
-"@stellar-apps/babel-preset-react@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@stellar-apps/babel-preset-react/-/babel-preset-react-1.0.1.tgz#52e2a423585448d1504e717672b97bf650dc08c1"
-  integrity sha512-22dze13r0dcl1kqPhc3RQpKxYqiRfk9NEUBPiYyCVKd/WVLJEpiZS+p5xDnhfOnxr0BHnWDRkrk6Pgmv0HoQMQ==
+"@stellar-apps/babel-preset-react@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@stellar-apps/babel-preset-react/-/babel-preset-react-1.0.3.tgz#f76946a8efb548242484866042444ab9e32d973c"
+  integrity sha512-5B4shlmXCxJ/dLYSZ/xIKhhCn+gDoIB8PliVtLh19UuHEKGW/n5dDQ+ctDjiklgSZ5bTVpsyDvrHl2vW8RU6yQ==
   dependencies:
     "@babel/plugin-transform-react-constant-elements" "^7.2.0"
     "@babel/preset-react" "^7.0.0"
@@ -1293,13 +1305,6 @@ caniuse-lite@^1.0.30000951:
   version "1.0.30000951"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000951.tgz#c7c2fd4d71080284c8677dd410368df8d83688fe"
   integrity sha512-eRhP+nQ6YUkIcNQ6hnvdhMkdc7n3zadog0KXNRxAZTT2kHjUb1yGn71OrPhSn8MOvlX97g5CR97kGVj8fMsXWg==
-
-cdll-memoize@^0.1.10:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/cdll-memoize/-/cdll-memoize-0.1.10.tgz#96c21bbdcaf13757521dafa4b713c9b849be6b20"
-  integrity sha512-WPlvmLIASvNqQ8t4xWpGEnzILpOZmK1y0SX8ROEi6emV2koKhL9/gKG+AFEeATP3TlWy/l5H0dYRT2sri+Vldw==
-  dependencies:
-    "@render-props/utils" "^0.2.11"
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -2499,22 +2504,22 @@ polished@^1.0.0:
   resolved "https://registry.yarnpkg.com/polished/-/polished-1.9.3.tgz#d61b8a0c4624efe31e2583ff24a358932b6b75e1"
   integrity sha512-4NmSD7fMFlM8roNxs7YXPv7UFRbYzb0gufR5zBxJLRzY54+zFsavxBo6zsQzP9ep6Hh3pC2pTyrpSTBEaB6IkQ==
 
-polished@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-3.0.3.tgz#b7d9604936f6dc40031306f3a1136585fc3471b5"
-  integrity sha512-WFgVHAWJubobUzk5B5dcqS2jGw8hB/I/H5hXitR4jd/bvEZBQV4vlw5UGDhLxkLQ1incf9NMFztI4XAryHvJDA==
+polished@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.3.0.tgz#59158368b29466e19f16f5ed38007397fb66f51d"
+  integrity sha512-R04iFBAViTVQ5vMZqhwCZPcG3Av4WyUP2kxTfsr+yNoO60CXai9u7YMlExZZh56/DRoCamXKbusaTbTsBX0vtw==
   dependencies:
-    "@babel/runtime" "^7.3.1"
+    "@babel/runtime" "^7.4.4"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-prettier@^1.16.4:
-  version "1.16.4"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.4.tgz#73e37e73e018ad2db9c76742e2647e21790c9717"
-  integrity sha512-ZzWuos7TI5CKUeQAtFd6Zhm2s6EpAD/ZLApIhsF9pRvRtM1RFo61dM/4MSRUA0SuLugA/zgrZD8m0BaY46Og7g==
+prettier@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.0.tgz#53b303676eed22cc14a9f0cec09b477b3026c008"
+  integrity sha512-sXe5lSt2WQlCbydGETgfm1YBShgOX4HxQkFPvbxkcwgDvGDeqVau8h+12+lmSVlP3rHPz0oavfddSZg/q+Szjw==
 
 private@^0.1.6, private@~0.1.5:
   version "0.1.8"
@@ -2548,7 +2553,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-portalize@^1.0.6:
+react-portalize@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/react-portalize/-/react-portalize-1.0.7.tgz#8e2c32ca134c37d6398175f2e7c5d729c15fc279"
   integrity sha512-y8EKRpRTuxvHvBxtmlnBjjygeldjPXpWoAYcpySSrKEpSFHRkHM3AzGMFBWFQa+8/I6CrVMkRb/BhB/bHHEXjw==
@@ -2964,10 +2969,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-trie-memoize@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/trie-memoize/-/trie-memoize-1.0.4.tgz#43d7f771d748dfb10a3ce0a50c774f983a1b3d24"
-  integrity sha512-s0BrFbwDvwT+0068rLZB6Ydg9rAWR+CIh0BWKBAcFRzRs0D3UrCoXBmGhFVcrVOjO7LpfINuO4BT5KE3gecygA==
+trie-memoize@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/trie-memoize/-/trie-memoize-1.0.7.tgz#c68dbeb92bb05ef08fe6140c1142314aeea0ed59"
+  integrity sha512-yiQ/FEU95d0163KXVz3J8gtsRUfVgxq44fwdy6N0WFwJPb5qulpefV4MHTHRZwf4gdMtqv1ADV7CEaf1Xl5j6w==
   dependencies:
     is-plain-object "^2.0.4"
 

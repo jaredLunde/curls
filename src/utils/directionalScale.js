@@ -13,9 +13,7 @@ const defaultDirections = {
   x: ['right', 'left']
 }
 
-export function isDirectional (value) {
-  return typeof value === 'string' && value.length > 1
-}
+export const isDirectional = value => typeof value === 'string' && value.length > 1
 
 export default (
   prefix,
@@ -24,19 +22,21 @@ export default (
   unit = 'px',
   directions = defaultDirections,
 ) => {
-  let CSS = [],
-      i = 0,
-      j,
-      modVals = String(modValue).split(' ')
+  let
+    CSS = [],
+    i = 0,
+    j,
+    modVals = String(modValue).split(' ')
 
   for (; i < modVals.length; i++) {
     const val = modVals[i]
     if (!val) return
     let [abbr, ...value] = val.split(directionalRe)
     value = value.join('')
+    const isAbbrValue = isNaN(parseInt(abbr)) === false || abbr === 'auto'
 
-    if (abbr.length === 0 || isNaN(parseInt(abbr)) === false) {
-      value = isNaN(parseInt(value)) ? abbr : val
+    if (abbr.length === 0 || isAbbrValue === true) {
+      value = isAbbrValue ? abbr : val
       abbr = '_'
     }
 
@@ -67,9 +67,8 @@ export default (
       }
     }
 
-    for (j = 0; j < direction.length; j++) {
+    for (j = 0; j < direction.length; j++)
       CSS.push(css`${prefix.replace('{XYZ}', direction[j])}: ${toSize(size, unit)};`)
-    }
   }
 
   // return css`${CSS}`
