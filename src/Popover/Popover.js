@@ -1,6 +1,5 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react'
 import {css} from '@emotion/core'
-import {areEqualObjects} from '@essentials/are-equal'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
 import {loadImages} from '@render-props/image-props'
