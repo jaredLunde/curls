@@ -1,5 +1,6 @@
 import React from 'react'
 import Toggle from '@render-props/toggle'
+import {withChildren} from '../utils'
 import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
@@ -18,11 +19,10 @@ const Slide =({
   ...props
 }) => (
   <Toggle value={visible} initialValue={initiallyVisible}>
-    {function (toggleContext) {
-      return SFC({
-        isVisible: toggleContext.value,
-        ...props,
-        children: transProps => {
+    {toggleContext => {
+      const sfcProps = withChildren(
+        props,
+        transProps => {
           transProps.property = transitionProperties
           transProps.children = children
           transProps.show = toggleContext.on
@@ -32,7 +32,9 @@ const Slide =({
           transProps.delay = getDelay(toggleContext.value, props)
           return Transitionable(transProps)
         }
-      })
+      )
+      sfcProps.isVisible = toggleContext.value
+      return SFC(sfcProps)
     }}
   </Toggle>
 )

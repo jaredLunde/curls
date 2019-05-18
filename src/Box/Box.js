@@ -1,6 +1,7 @@
 import React from 'react'
 import {plugins as gridPlugins} from '../Grid/Grid'
 import * as styles from './styles'
+import {withChildren} from '../utils'
 import * as gridStyles from '../Grid/styles'
 import * as flexStyles from '../Flex/styles'
 import * as gridDefaultTheme from '../Grid/defaultTheme'
@@ -25,20 +26,19 @@ export const GridBoxRenderProp = createComponent({
 })
 
 const createBoxComponent = (name, SFC) => {
-  const Component = (props, innerRef) => SFC({
-    ...props,
-    children: boxProps => {
-      boxProps.as = boxProps.as || 'div'
-      boxProps.children = props.children
-      boxProps.innerRef = innerRef
-      return renderNodeFast(boxProps)
-    }
-  })
+  const Component = (props, innerRef) => SFC(
+    withChildren(
+      props,
+      boxProps => {
+        boxProps.as = boxProps.as || 'div'
+        boxProps.children = props.children
+        boxProps.innerRef = innerRef
+        return renderNodeFast(boxProps)
+      }
+    )
+  )
 
-  if (__DEV__) {
-    Component.displayName = name
-  }
-
+  if (__DEV__) Component.displayName = name
   return Component
 }
 

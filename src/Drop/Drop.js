@@ -1,5 +1,6 @@
 import React from 'react'
 import Toggle from '@render-props/toggle'
+import {withChildren} from '../utils'
 import propTypes from '../Slide/propTypes'
 import * as styles from './styles'
 import * as defaultTheme from '../Slide/defaultTheme'
@@ -13,11 +14,10 @@ const transitionProperties = 'visibility, transform, opacity'
 
 const Drop = ({children, initiallyVisible = false, visible, ...props}) => (
   <Toggle value={visible} initialValue={initiallyVisible}>
-    {function (toggleContext) {
-      return SFC({
-        isVisible: toggleContext.value,
-        ...props,
-        children: transProps => {
+    {toggleContext => {
+      const sfcProps = withChildren(
+        props,
+        transProps => {
           transProps.property = transitionProperties
           transProps.children = children
           transProps.show = toggleContext.on
@@ -27,7 +27,9 @@ const Drop = ({children, initiallyVisible = false, visible, ...props}) => (
           transProps.delay = getDelay(toggleContext.value, props)
           return Transitionable(transProps)
         }
-      })
+      )
+      sfcProps.isVisible = toggleContext.value
+      return SFC(sfcProps)
     }}
   </Toggle>
 )

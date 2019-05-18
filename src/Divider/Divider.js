@@ -1,10 +1,10 @@
 import React from 'react'
 import {css} from '@emotion/core'
+import {withChildren} from '../utils'
 import createComponent, {renderNode} from '../createComponent'
 import {BasicBox} from '../Box'
 import {w, h, d, pos} from '../Box/styles'
 import * as defaultTheme from './defaultTheme'
-import emptyObj from 'empty/object'
 import propTypes from '../Type/propTypes'
 import boxPropTypes from '../Box/propTypes'
 
@@ -19,10 +19,10 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'divider', defaultTheme})
 
 const Divider = React.forwardRef(
-  function Divider (props = emptyObj, innerRef) {
-    return SFC({
-      ...props,
-      children: boxProps => {
+  (props, innerRef) => SFC(
+    withChildren(
+      props,
+      boxProps => {
         boxProps.children = function (nodeProps) {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
@@ -32,8 +32,8 @@ const Divider = React.forwardRef(
 
         return BasicBox(boxProps)
       }
-    })
-  }
+    )
+  )
 )
 
 Divider.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes)

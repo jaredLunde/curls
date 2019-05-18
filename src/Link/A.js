@@ -1,5 +1,6 @@
 import React from 'react'
 import {jsx} from '@emotion/core'
+import {withChildren} from '../utils'
 import createComponent from '../createComponent'
 import Type from '../Type'
 import * as styles from './styles'
@@ -10,19 +11,19 @@ import flexPropTypes from '../Flex/propTypes'
 
 
 const SFC = createComponent({name: 'link', styles, defaultTheme})
-
 const A = React.forwardRef(
-  function A (props, innerRef) {
-    return SFC({
-      __linkStyles: true,
-      ...props,
-      children: typeProps => {
+  (props, innerRef) => {
+    const sfcProps = withChildren(
+      Object.assign({__linkStyles: true}, props),
+      typeProps => {
         typeProps.as = typeProps.as || 'a'
         typeProps.children = props.children
         typeProps.ref = innerRef
         return jsx(Type, typeProps)
-      }
-    })
+      },
+      true
+    )
+    return SFC(sfcProps)
   }
 )
 

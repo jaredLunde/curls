@@ -1,5 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
+import {withChildren} from '../utils'
 import {FlexBox} from '../Box'
 import {pos, w} from '../Box/styles'
 import {flex, column} from '../Flex/styles'
@@ -54,13 +55,12 @@ const defaultCSS = css`
 
 
 const as = 'div'
-const SFC = createComponent({name: 'card', styles, defaultTheme,})
-
+const SFC = createComponent({name: 'card', styles, defaultTheme})
 const Card = React.forwardRef(
-  function Card (props, innerRef) {
-    return SFC({
-      ...props,
-      children: function (boxProps) {
+  (props, innerRef) => SFC(
+    withChildren(
+      props,
+      boxProps => {
         boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
@@ -69,10 +69,15 @@ const Card = React.forwardRef(
         }
 
         return FlexBox(boxProps)
-      }
-    })
-  }
+      },
+    ),
+  ),
 )
 
-Card.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
+Card.propTypes /* remove-proptypes */ = Object.assign(
+  {},
+  propTypes,
+  boxPropTypes,
+  flexPropTypes,
+)
 export default Card

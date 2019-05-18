@@ -7,13 +7,15 @@ const NavLink =  React.forwardRef(
   function NavLink (props, innerRef) {
     return <CurlsContext.Consumer children={
       cxt => {
-        if (__DEV__) {
-          if (!cxt.theme?.link?.navComponent) {
-            throw 'You must define a `navComponent` property in your `theme.link` to use the Link component'
-          }
-        }
+        if (__DEV__)
+          if (!cxt.theme?.link?.navComponent)
+            throw (
+              'You must define a `navComponent` property in your `theme.link` '
+              + 'to use the Link component'
+            )
 
-        return <A as={cxt.theme.link.navComponent} ref={innerRef} {...props}/>
+        props = Object.assign({as: cxt.theme.link.navComponent, ref: innerRef}, props)
+        return React.createElement(A, props)
       }
     }/>
   }

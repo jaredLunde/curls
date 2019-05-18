@@ -14,28 +14,22 @@ const mergeIfMergeable = value => {
 }
 
 const arrayMergeReplace = (target, source) => {
-  if (target === source) {
-    return target
-  }
+  if (target === source) return target
 
-  const output = []
-  let i = 0
-
-  for (; i < source.length; i++) {
+  let output = [], i = 0
+  for (; i < source.length; i++)
     output.push(mergeIfMergeable(source[i]))
-  }
 
   return output
 }
 
 const mergeObject = (target, source) => {
-  if (target === source) {
-    return target
-  }
+  if (target === source) return target
 
-	const destination = Object.assign({}, target)
-  const sourceKeys = Object.keys(source)
-  let i = 0
+	let
+    destination = Object.assign({}, target),
+    sourceKeys = Object.keys(source),
+    i = 0
 
   for (; i < sourceKeys.length; i++) {
     const key = sourceKeys[i]
@@ -52,19 +46,16 @@ const mergeObject = (target, source) => {
 }
 
 const deepMerge = (target, source) => {
-  const sourceIsArray = Array.isArray(source)
-  const targetIsArray = Array.isArray(target)
-  const sourceAndTargetTypesMatch = sourceIsArray === targetIsArray
+  const
+    sourceIsArray = Array.isArray(source),
+    targetIsArray = Array.isArray(target),
+    sourceAndTargetTypesMatch = sourceIsArray === targetIsArray
 
-  if (!sourceAndTargetTypesMatch) {
-    return mergeIfMergeable(source)
-  }
-  else if (sourceIsArray) {
-    return arrayMergeReplace(target, source)
-  }
-  else {
-    return mergeObject(target, source)
-  }
+  return sourceAndTargetTypesMatch === false
+    ? mergeIfMergeable(source)
+    : sourceIsArray === true
+      ? arrayMergeReplace(target, source)
+      : mergeObject(target, source)
 }
 
 export default deepMerge

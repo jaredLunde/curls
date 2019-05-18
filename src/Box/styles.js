@@ -1,5 +1,4 @@
 import {css} from '@emotion/core'
-import memoize from 'trie-memoize'
 import {directionalScale, isDirectional, colorize, toSize, memoValue, memoTheme} from '../utils'
 
 
@@ -39,20 +38,11 @@ export const overflow = {
 const ws = /\s+/
 export const ov = memoValue(value => {
   const vals = value.split(ws)
+  if (vals.length === 1) return overflow[value]
 
-  if (vals.length === 1) {
-    return overflow[value]
-  }
-
-  let CSS
-  for (let x = 0; x < vals.length; x++) {
-    const val = vals[x]
-    if (CSS) {
-      CSS = css`${CSS} ${overflow[val]};`
-    } else {
-      CSS = css`${overflow[val]};`
-    }
-  }
+  let CSS = [], i = 0
+  for (; i < vals.length; i++)
+    CSS.push(css`${overflow[vals[i]]};`)
 
   return CSS
 })
@@ -67,7 +57,7 @@ export const bc = (value, theme) => colorize('border-color', value, theme)
 // size of the font or zoom of the screen
 export const bw = memoTheme(
   (value, theme) => {
-    if (isDirectional(value)) {
+    if (isDirectional(value) === true) {
       return css`
         border-style: solid;
         ${directionalScale(
@@ -130,7 +120,7 @@ export const m = memoTheme(
   (value, theme) => {
     const {spacingScale} = theme
 
-    if (isDirectional(value)) {
+    if (isDirectional(value) === true) {
       return directionalScale(
         'margin-{XYZ}',
         spacingScale,
@@ -145,7 +135,7 @@ export const m = memoTheme(
 
 export const p = memoTheme(
   (value, theme) => {
-    if (isDirectional(value)) {
+    if (isDirectional(value) === true) {
       return directionalScale(
         'padding-{XYZ}',
         theme.spacingScale,

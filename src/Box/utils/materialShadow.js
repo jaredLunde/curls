@@ -2,9 +2,8 @@ import {css} from '@emotion/core'
 
 
 export default dp => {
-  if (dp === void 0 || dp === false || dp === null || dp == 0) {
+  if (dp === void 0 || dp === false || dp === null || dp == 0)
     return css`box-shadow: none;`
-  }
 
   dp = parseInt(dp)
   const ambientY = dp / 16

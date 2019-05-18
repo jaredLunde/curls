@@ -14,30 +14,29 @@ const getCSS = (fn, value, theme, props) =>
 
 const maybeAddStyles = (css, style, maybeCss) => {
   if (maybeCss !== void 0 && maybeCss !== null) {
-    if (Array.isArray(maybeCss) === true) {
+    if (Array.isArray(maybeCss) === true)
       css.push.apply(css, maybeCss)
-    }
-    else if (maybeCss.styles !== void 0) {
+    else if (maybeCss.styles !== void 0)
       css.push(maybeCss)
-    }
-    else {
+    else
       style.value = style.value === void 0
         ? Object.assign({}, maybeCss)
         : Object.assign(style.value, maybeCss)
-    }
   }
 }
 
 export default (styles, theme, props) => {
-  let i = 0,
-      css = [],
-      style = {},
-      mediaQueries,
-      propKeys = Object.keys(props)
+  let
+    i = 0,
+    css = [],
+    style = {},
+    mediaQueries,
+    propKeys = Object.keys(props)
 
   for (; i < propKeys.length; i++) {
-    const propName = propKeys[i],
-          getter = styles[propName]
+    const
+      propName = propKeys[i],
+      getter = styles[propName]
 
     if (getter === void 0) continue
     const propVal = props[propName]

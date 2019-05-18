@@ -27,6 +27,5 @@ export default function (direction, container, popoverBox, viewportSize) {
       break
   }
 
-  state.hasRendered = true
   return state
 }

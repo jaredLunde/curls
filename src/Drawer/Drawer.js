@@ -1,7 +1,7 @@
 import React from 'react'
 import emptyObj from 'empty/object'
 import {css} from '@emotion/core'
-import {portalize} from '../utils'
+import {portalize, withChildren} from '../utils'
 import {MAX_Z_INDEX} from '../browser'
 import {FlexBox} from '../Box'
 import Slide from '../Slide'
@@ -50,40 +50,38 @@ const {Consumer, Provider} = React.createContext(emptyObj)
 
 export const DrawerConsumer = Consumer
 export const DrawerBox = React.forwardRef(
-  function DrawerBox ({children, portal, ...props}, innerRef) {
-    return (
-      <Consumer children={
-        ({css, ...transitionProps}) => {
-          const boxChild =
-            typeof children === 'function' ? children(transitionProps) : children
+  ({children, portal, ...props}, innerRef) => (
+    <Consumer children={
+      ({css, ...transitionProps}) => {
+        const boxChild =
+          typeof children === 'function' ? children(transitionProps) : children
 
-          let Component = SFC({
-            ...props,
-            children: sfcProps => FlexBox({
-              ...sfcProps,
-              children: function (boxProps) {
-                boxProps.as = boxProps.as || as
-                boxProps.children = boxChild
-                boxProps.css = boxProps.css ? [css, boxProps.css] : css
-                boxProps.innerRef = innerRef
-                return renderNode(boxProps, defaultCSS)
-              }
-            })
+        let Component = SFC({
+          ...props,
+          children: sfcProps => FlexBox({
+            ...sfcProps,
+            children: function (boxProps) {
+              boxProps.as = boxProps.as || as
+              boxProps.children = boxChild
+              boxProps.css = boxProps.css ? [css, boxProps.css] : css
+              boxProps.innerRef = innerRef
+              return renderNode(boxProps, defaultCSS)
+            }
           })
+        })
 
-          return portalize(Component, portal)
-        }
-      }/>
-    )
-  }
+        return portalize(Component, portal)
+      }
+    }/>
+  )
 )
 
-const Drawer = props => {
-  return (props.transition || Slide)({
-    ...props,
-    children: dropProps => <Provider value={dropProps} children={props.children(dropProps)}/>
-  })
-}
+const Drawer = props => (props.transition || Slide)(
+  withChildren(
+    props,
+    dropProps => <Provider value={dropProps} children={props.children(dropProps)}/>
+  )
+)
 
 Drawer.propTypes /* remove-proptypes */ = slidePropTypes
 export default Drawer

@@ -1,6 +1,7 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import createComponent, {renderNode} from '../createComponent'
+import {withChildren} from '../utils'
 import {FlexBox} from '../Box'
 import {flex, row, wrap, align, justify} from '../Flex/styles'
 import boxPropTypes from '../Box/propTypes'
@@ -15,12 +16,11 @@ const defaultCSS = css`
   ${justify.start};
 `
 const SFC = createComponent({name: 'navBar'})
-
 const NavBar = React.forwardRef(
-  function NavBar (props, innerRef) {
-    return SFC({
-      ...props,
-      children: boxProps => {
+  (props, innerRef) => SFC(
+    withChildren(
+      props,
+      boxProps => {
         boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || 'nav'
@@ -30,8 +30,8 @@ const NavBar = React.forwardRef(
 
         return FlexBox(boxProps)
       }
-    })
-  }
+    )
+  )
 )
 
 NavBar.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)

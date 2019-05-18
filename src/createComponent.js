@@ -23,10 +23,8 @@ const composeThemePlugins = (...funcs) => {
   let i
 
   return (props, themeProps) => {
-    for (i = funcs.length - 1; i > -1; i--) {
+    for (i = funcs.length - 1; i > -1; i--)
       props = funcs[i].call(this, props, themeProps)
-    }
-
     return props
   }
 }
@@ -44,36 +42,30 @@ export default ({
   themePath // deprecated
 }) => {
   if (CSS !== void 0) {
-    if (__DEV__) {
+    if (__DEV__)
       console.warn(
         `[${name || themePath}] The 'CSS' property in Curls.createComponent() is deprecated. Use 'styles' instead.`
       )
-    }
 
     styles = CSS
   }
 
   if (themePath !== void 0) {
-    if (__DEV__) {
+    if (__DEV__)
       console.warn(
         `[${name || themePath}] The 'themePath' property in Curls.createComponent() is deprecated. Use 'name' instead.`
       )
-    }
-
     name = themePath
   }
 
-  if (name === void 0) {
+  if (name === void 0)
     throw new Error(`Curls components must be created with a 'name' option set.`)
-  }
 
-  if (defaultTheme !== void 0) {
+  if (defaultTheme !== void 0)
     defaultTheme = Object.assign({}, defaultTheme)
-  }
 
   const withoutProps = Object.assign({}, defaultWithout, styles)
-
-  function render (props, themeProps) {
+  const render = (props, themeProps) => {
     const theme = themeProps.theme
     let kind = getKind(theme.kinds, props.kind), kindCss
 
@@ -122,26 +114,24 @@ export default ({
       ? composeThemePlugins(render, ...plugins)
       : render
 
-  return function SFC (props) {
-    return ThemeConsumer({
-      name,
-      defaultTheme,
-      children: themeProps => renderTheme(props, themeProps)
-      /*
-      children: themeProps => {
-        const start = typeof window !== 'undefined' && performance.now()
-        const result = renderTheme(props, themeProps)
-        if (start) {
-          const run = performance.now() - start
-          elapsed += run
-          renders++
-          console.log('Elapsed:', elapsed, 'Renders', renders)
-          console.log('avg:', elapsed / renders)
-        }
-        return result
-      }
-      */
-    })
-  }
+  return props => ThemeConsumer({
+    name,
+    defaultTheme,
+    children: themeProps => renderTheme(props, themeProps)
+    /*
+     children: themeProps => {
+     const start = typeof window !== 'undefined' && performance.now()
+     const result = renderTheme(props, themeProps)
+     if (start) {
+     const run = performance.now() - start
+     elapsed += run
+     renders++
+     console.log('Elapsed:', elapsed, 'Renders', renders)
+     console.log('avg:', elapsed / renders)
+     }
+     return result
+     }
+     */
+  })
 }
 // let elapsed = 0, renders = 0

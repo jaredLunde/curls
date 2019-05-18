@@ -1,7 +1,7 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import emptyObj from 'empty/object'
-import {portalize} from '../utils'
+import {portalize, withChildren} from '../utils'
 import Overlay from '../Overlay'
 import {FlexBox} from '../Box'
 import {MAX_Z_INDEX} from '../browser'
@@ -51,7 +51,7 @@ export const ModalBox = React.forwardRef(
   ) {
     return (
       <Consumer children={
-        function ({css, ...transitionProps}) {
+        ({css, ...transitionProps}) => {
           const boxChild =
             typeof children === 'function' ? children(transitionProps) : children
 
@@ -69,9 +69,8 @@ export const ModalBox = React.forwardRef(
             })
           })
 
-          if (withOverlay === true) {
+          if (withOverlay === true)
             Component = <Overlay visible={transitionProps.isVisible} children={Component}/>
-          }
 
           return portalize(Component, portal)
         }
@@ -80,11 +79,11 @@ export const ModalBox = React.forwardRef(
   }
 )
 
-const Modal = props => (props.transition || Drop)({
-  ...props,
-  children: dropProps => <Provider value={dropProps} children={
-    props.children(dropProps)
-  }/>
-})
+const Modal = props => (props.transition || Drop)(
+  withChildren(
+    props,
+    dropProps => <Provider value={dropProps} children={props.children(dropProps)}/>
+  )
+)
 
 export default Modal

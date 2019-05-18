@@ -1,5 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
+import {withChildren} from '../utils'
 import {FlexBox} from '../Box'
 import {flex, row, align, justify} from '../Flex/styles'
 import createComponent, {renderNode} from '../createComponent'
@@ -20,11 +21,10 @@ const defaultCSS = css`
 const SFC = createComponent({name: 'button', styles, defaultTheme})
 
 const Button = React.forwardRef(
-  function Button (props, innerRef) {
-    return SFC({
-      __buttonStyles: true,
-      ...props,
-      children: boxProps => {
+  (props, innerRef) => {
+    const sfcProps = withChildren(
+      Object.assign({__buttonStyles: true}, props),
+      boxProps => {
         boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
@@ -33,8 +33,11 @@ const Button = React.forwardRef(
         }
 
         return FlexBox(boxProps)
-      }
-    })
+      },
+      true
+    )
+
+    return SFC(sfcProps)
   }
 )
 

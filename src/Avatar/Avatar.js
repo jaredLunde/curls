@@ -4,7 +4,7 @@ import ImageProps from '@render-props/image-props'
 import {BasicBox} from '../Box'
 import {pos, d, ov} from '../Box/styles'
 import createComponent, {renderNode} from '../createComponent'
-import {supportsCSS} from '../utils'
+import {supportsCSS, withChildren} from '../utils'
 import * as styles from './styles'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
@@ -40,17 +40,16 @@ const SFC = createComponent({
 })
 
 const SFCWithImageProps = props => <ImageProps
-  children={(imageContext) => SFC({...imageContext, ...props})}
+  children={(imageContext) => SFC(Object.assign({}, imageContext, props))}
 />
 
 const supportsObjectFit = supportsCSS('object-fit')
 
 const Avatar = React.forwardRef(
-  function Avatar (props, innerRef) {
-    const sfcProps = {
-      innerRef,
-      ...props,
-      children: boxProps => {
+  (props, innerRef) => {
+    const sfcProps = withChildren(
+      props,
+      boxProps => {
         // adds child prop for 'Box' and rendering the avatar node
         boxProps.children = ({alt, imageRef, ...nodeProps}) => {
           nodeProps.as = nodeProps.as || as
@@ -59,18 +58,23 @@ const Avatar = React.forwardRef(
             innerRef = (...args) => {
               imageRef(...args)
               if (nodeProps.innerRef) {
-                nodeProps.innerRef(...args)
+                if (typeof nodeProps.innerRef === 'function')
+                  nodeProps.innerRef(...args)
+                else if (
+                  typeof nodeProps.innerRef === 'object'
+                  && nodeProps.innerRef.current !== void 0
+                )
+                  nodeProps.innerRef.current = args[0]
               }
             }
           }
 
-          const imgProps = {
-            ...nodeProps,
+          const imgProps = Object.assign({}, nodeProps, {
             alt,
             src: props.src,
             defaultSrc: props.defaultSrc,
             innerRef
-          }
+          })
 
           nodeProps.children = (props.children || getImage)(imgProps)
           return renderNode(nodeProps, defaultCSS)
@@ -78,11 +82,10 @@ const Avatar = React.forwardRef(
 
         return BasicBox(boxProps)
       }
-    }
+    )
 
-    if (supportsObjectFit) {
-      sfcProps.orientation = 'square'
-    }
+    sfcProps.innerRef = innerRef
+    if (supportsObjectFit) sfcProps.orientation = 'square'
 
     return (supportsObjectFit ? SFC : SFCWithImageProps)(sfcProps)
   }

@@ -4,6 +4,7 @@ import Type from '../Type'
 import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
+import {withChildren} from '../utils'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
 import typePropTypes from '../Type/propTypes'
@@ -22,11 +23,10 @@ function autoResize (e) {
 }
 
 const TextArea = React.forwardRef(
-  function TextArea (props, innerRef) {
-    return SFC({
-      __inputStyles: true,
-      ...props,
-      children: typeProps => {
+  (props, innerRef) => {
+    const sfcProps = withChildren(
+      Object.assign({__inputStyles: true}, props),
+      typeProps => {
         typeProps.as = 'textarea'
 
         if (props.autoResize) {
@@ -39,8 +39,11 @@ const TextArea = React.forwardRef(
         typeProps.children = props.children
         typeProps.ref = innerRef
         return React.createElement(Type, typeProps)
-      }
-    })
+      },
+      true
+    )
+
+    return SFC(sfcProps)
   }
 )
 

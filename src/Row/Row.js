@@ -1,5 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
+import {withChildren} from '../utils'
 import {pos} from '../Box/styles'
 import {flex, row, wrap} from '../Flex/styles'
 import {FlexBox} from '../Box'
@@ -17,12 +18,11 @@ const defaultCSS = css`
   ${wrap.wrap};
 `
 const SFC = createComponent({name: 'row'})
-
 const Row = React.forwardRef(
-  function Row (props, innerRef) {
-    return SFC({
-      ...props,
-      children: boxProps => {
+  (props, innerRef) => SFC(
+    withChildren(
+      props,
+      boxProps => {
         boxProps.children = nodeProps => {
           nodeProps.children = props.children
           nodeProps.as = nodeProps.as || as
@@ -31,9 +31,9 @@ const Row = React.forwardRef(
         }
 
         return FlexBox(boxProps)
-      }
-    })
-  }
+      },
+    ),
+  ),
 )
 
 Row.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)

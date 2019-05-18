@@ -9,12 +9,10 @@ const mergeGlobals_ = memoize(
   [WeakMap, WeakMap],
   // this is memoized for defaultTheme merging efficiency and sCU in children
   (curlsTheme, userTheme) => {
-    const base = {}, baseKeys = Object.keys(baseTheme)
+    let base = {}, baseKeys = Object.keys(baseTheme), i =0
 
-    for (let i = 0; i < baseKeys.length; i++) {
-      const key = baseKeys[i]
-      base[key] = curlsTheme[key]
-    }
+    for (; i < baseKeys.length; i++)
+      base[baseKeys[i]] = curlsTheme[baseKeys[i]]
 
     return userTheme === emptyObj ? base : Object.assign(base, userTheme)
   }
@@ -23,9 +21,8 @@ const mergeGlobals_ = memoize(
 const mergeGlobals = ({userTheme, theme}, props) => {
   const name = props.name || props.path
 
-  if (name === void 0) {
+  if (name === void 0)
     return theme
-  }
   else {
     if (__DEV__) {
       if (props.path !== void 0) {
@@ -45,15 +42,14 @@ const mergeGlobals = ({userTheme, theme}, props) => {
 
 export default function ThemeConsumer (props) {
   const consumerProps = {}
-
-  function Consumer (consumerContext) {
+  const Consumer = consumerContext => {
     consumerProps.theme = mergeGlobals(consumerContext, props)
     consumerProps.setTheme = consumerContext.setTheme
     consumerProps.replaceTheme = consumerContext.replaceTheme
     return props.children(consumerProps)
   }
 
-  return <CurlsContext.Consumer children={Consumer}/>
+  return React.createElement(CurlsContext.Consumer, emptyObj, Consumer)
 }
 
 export const useTheme = () => useContext(CurlsContext).theme

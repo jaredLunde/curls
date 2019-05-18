@@ -1,15 +1,17 @@
-const cache = {}
+const cache = new Map()
 
 export default (cacheName, fn, CacheMap = Map) => {
-  if (cache[cacheName] === void 0)
-    cache[cacheName] = new CacheMap()
+  if (cache.get(cacheName) === void 0) {}
+    cache.set(cacheName, new CacheMap())
 
   return arg => {
-    let val = cache[cacheName].get(arg)
+    let
+      base = cache.get(cacheName),
+      val = base.get(arg)
 
     if (val === void 0) {
       val = fn(arg)
-      cache[cacheName].set(arg, val)
+      base.set(arg, val)
     }
 
     return val
