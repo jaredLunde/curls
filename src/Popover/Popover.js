@@ -165,18 +165,16 @@ const PopoverContainer = React.memo(
 
     return <Provider value={boxContext} children={props.children(childContext)}/>
   },
-  (prev, next) => {
-    if (
-      next.isVisible === true && (
-        prev.width !== next.width
-        || prev.height !== next.height
-        || prev.scrollY !== next.scrollY
-      )
+  (prev, next) => (
+    next.isVisible === false || (
+      prev.children === next.children
+      && prev.width === next.width
+      && prev.height === next.height
+      && prev.scrollY === next.scrollY
+      && prev.popoverDirection === next.popoverDirection
+      && prev.isVisible === next.isVisible
     )
-      return true
-
-    return areEqualObjects(prev, next)
-  }
+  )
 )
 
 const sizeOpt = {wait: 240}
@@ -269,11 +267,13 @@ class BreakpointRenderer extends React.Component {
   }
 
   render () {
-    let {popoverProps} = this.props
-    let breakpoints = {}, i
-    const keys =  Object.keys(this.props.breakpoints)
+    let
+      {popoverProps} = this.props,
+      breakpoints = {},
+      i = 0,
+      keys =  Object.keys(this.props.breakpoints)
 
-    for (i = 0; i < keys.length; i++)
+    for (; i < keys.length; i++)
       breakpoints[keys[i]] = true
 
     breakpoints.key = this.state.mounted
