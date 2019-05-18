@@ -46,7 +46,7 @@ const Hero = React.forwardRef(
   (props, innerRef) => SFC(
     withChildren(
       props,
-      vpProps => FillViewport({
+      vpProps => React.createElement(FillViewport, {
         children: ({style}) => {
           vpProps.children = nodeProps => {
             nodeProps.innerRef = innerRef

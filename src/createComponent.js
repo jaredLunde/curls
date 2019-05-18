@@ -5,10 +5,8 @@ import ThemeConsumer from './ThemeConsumer'
 
 
 export const renderNode = (nodeProps, defaultCSS) => {
-  if (defaultCSS !== void 0) {
+  if (defaultCSS !== void 0)
     nodeProps.css = nodeProps.css !== void 0 ? [defaultCSS, nodeProps.css] : defaultCSS
-  }
-
   return renderNodeFast(nodeProps)
 }
 
