@@ -1,4 +1,3 @@
-import {rect} from '@render-props/rect'
 import centerFromTop from './centerFromTop'
 import centerFromBottom from './centerFromBottom'
 import centerFromLeft from './centerFromLeft'
@@ -6,8 +5,9 @@ import centerFromRight from './centerFromRight'
 
 
 export default function (direction, container, popoverBox, viewportSize) {
-  const containerRect = rect(container)
-  const boxRect = rect(popoverBox)
+  const
+    containerRect = container && container.getBoundingClientRect(),
+    boxRect = popoverBox && popoverBox.getBoundingClientRect()
 
   if (!containerRect) return null
   let state

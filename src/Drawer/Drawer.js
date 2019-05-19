@@ -1,14 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import emptyObj from 'empty/object'
 import {css} from '@emotion/core'
 import {portalize, withChildren} from '../utils'
 import {MAX_Z_INDEX} from '../browser'
-import {FlexBox} from '../Box'
+import {useBox} from '../Box'
 import Slide from '../Slide'
 import slidePropTypes from '../Slide/propTypes'
-import createComponent, {renderNode} from '../createComponent'
+import {renderNode} from '../createComponent'
 import {d, pos, ov} from '../Box/styles'
 import * as styles from './styles'
+import useStyles from '../useStyles'
 
 
 /**
@@ -38,50 +39,42 @@ import * as styles from './styles'
   }}
 </Drawer>
 */
-const as = 'div'
-const defaultCSS = css`
-  ${d.block};
-  ${pos.fixed};
-  ${ov.autoY};
-  z-index: ${MAX_Z_INDEX};
-`
-const SFC = createComponent({name: 'drawer', styles})
-const {Consumer, Provider} = React.createContext(emptyObj)
+const
+  defaultCSS = css`
+    ${d.block};
+    ${pos.fixed};
+    ${ov.autoY};
+    z-index: ${MAX_Z_INDEX};
+  `,
+  options = {name: 'drawer', styles},
+  DrawerContext = React.createContext(emptyObj),
+  {Consumer, Provider} = DrawerContext
 
-export const DrawerConsumer = Consumer
+export const
+  DrawerConsumer = Consumer,
+  useDrawer = () => useContext(DrawerContext)
+
 export const DrawerBox = React.forwardRef(
-  ({children, portal, ...props}, innerRef) => (
-    <Consumer children={
-      ({css, ...transitionProps}) => {
-        const boxChild =
-          typeof children === 'function' ? children(transitionProps) : children
-
-        let Component = SFC({
-          ...props,
-          children: sfcProps => FlexBox({
-            ...sfcProps,
-            children: function (boxProps) {
-              boxProps.as = boxProps.as || as
-              boxProps.children = boxChild
-              boxProps.css = boxProps.css ? [css, boxProps.css] : css
-              boxProps.innerRef = innerRef
-              return renderNode(boxProps, defaultCSS)
-            }
-          })
-        })
-
-        return portalize(Component, portal)
-      }
-    }/>
-  )
+  ({children, portal, ...props}, ref) => {
+    props = useBox(useStyles(props, options))
+    const transition = useDrawer()
+    props.children = typeof children === 'function' ? children(transition) : children
+    props.css = props.css ? [transition.css, props.css] : transition.css
+    props.ref = ref
+    return portalize(renderNode(props, defaultCSS), portal)
+  }
 )
 
 const Drawer = props => (props.transition || Slide)(
   withChildren(
     props,
-    dropProps => <Provider value={dropProps} children={props.children(dropProps)}/>
+    transition => <Provider value={transition} children={props.children(transition)}/>
   )
 )
 
-Drawer.propTypes /* remove-proptypes */ = slidePropTypes
+if (__DEV__) {
+  Drawer.displayName = 'Drawer'
+  Drawer.propTypes = slidePropTypes
+}
+
 export default Drawer

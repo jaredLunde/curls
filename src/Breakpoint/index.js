@@ -1,1 +1,1 @@
-export default from './Breakpoint'
+export default, {useBreakpoint} from './Breakpoint'

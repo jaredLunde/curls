@@ -1,13 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {css} from '@emotion/core'
 import emptyObj from 'empty/object'
 import {portalize, withChildren} from '../utils'
 import Overlay from '../Overlay'
-import {FlexBox} from '../Box'
+import {useBox} from '../Box'
 import {MAX_Z_INDEX} from '../browser'
-import createComponent, {renderNode} from '../createComponent'
+import {renderNode} from '../createComponent'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
+import slidePropTypes from '../Slide/propTypes'
+import useStyles from '../useStyles'
 
 
 /**
@@ -31,59 +33,48 @@ import {Modal, ModalBox, ModalConsumer, Overlay} from 'curls'
   )}
 </Modal>
 **/
+const
+  defaultCSS = css`
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    z-index: ${MAX_Z_INDEX};
+  `,
+  options = {name: 'modal', defaultTheme},
+  ModalContext = React.createContext(emptyObj),
+  {Consumer, Provider} = ModalContext
 
-const {Consumer, Provider} = React.createContext(emptyObj)
-const SFC = createComponent({name: 'modal', defaultTheme})
-const as = 'div'
-const defaultCSS = css`
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  z-index: ${MAX_Z_INDEX};
-`
+export const
+  ModalConsumer = Consumer,
+  useModal = () => useContext(ModalContext)
 
-export const ModalConsumer = Consumer
 export const ModalBox = React.forwardRef(
-  function ModalBox (
-    {children, portal, withOverlay = false, ...props},
-    innerRef
-  ) {
-    return (
-      <Consumer children={
-        ({css, ...transitionProps}) => {
-          const boxChild =
-            typeof children === 'function' ? children(transitionProps) : children
-
-          let Component = SFC({
-            ...props,
-            css: [css, props.className],
-            children: sfcProps => FlexBox({
-              ...sfcProps,
-              children: boxProps => {
-                boxProps.as = boxProps.as || as
-                boxProps.children = boxChild
-                boxProps.innerRef = innerRef
-                return renderNode(boxProps, defaultCSS)
-              }
-            })
-          })
-
-          if (withOverlay === true)
-            Component = <Overlay visible={transitionProps.isVisible} children={Component}/>
-
-          return portalize(Component, portal)
-        }
-      }/>
-    )
+  ({children, portal, withOverlay = false, ...props}, ref) => {
+    props = useBox(useStyles(props, options))
+    const transition = useModal()
+    props.children = typeof children === 'function' ? children(transition) : children
+    props.css = props.css ? [transition.css, props.css] : transition.css
+    props.ref = ref
+    let Component = renderNode(props, defaultCSS)
+    if (withOverlay === true)
+      Component = <Overlay
+        visible={transition.isVisible}
+        children={Component}
+      />
+    return portalize(Component, portal)
   }
 )
 
 const Modal = props => (props.transition || Drop)(
   withChildren(
     props,
-    dropProps => <Provider value={dropProps} children={props.children(dropProps)}/>
+    transition => <Provider value={transition} children={props.children(transition)}/>
   )
 )
+if (__DEV__) {
+  Modal.displayName = 'Modal'
+  Modal.propTypes = slidePropTypes
+}
 
 export default Modal

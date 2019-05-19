@@ -5,15 +5,14 @@ import {fastMemoize, memoValue, toSize} from '../utils'
 const getAvatarSize = (size, val, theme, props) => {
   if (val === false) return null
 
-  let avatarSize = theme.scale[size]
-  const typeOfAvatarSize = typeof avatarSize
+  let
+    avatarSize = theme.scale[size],
+    typeOfAvatarSize = typeof avatarSize
 
-  if (typeOfAvatarSize === 'object') {
+  if (typeOfAvatarSize === 'object')
     return avatarSize
-  }
-  else if (typeOfAvatarSize === 'function') {
+  else if (typeOfAvatarSize === 'function')
     return avatarSize(theme, props)
-  }
 
   return css`
     width: ${toSize(avatarSize, theme.sizeUnit)};

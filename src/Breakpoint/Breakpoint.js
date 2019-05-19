@@ -1,7 +1,7 @@
 import React from 'react'
 import memoize from 'trie-memoize'
-import MediaQuery from '../MediaQuery'
-import ThemeConsumer from '../ThemeConsumer'
+import {useMediaQuery} from '../MediaQuery'
+import {useTheme} from '../ThemeConsumer'
 import {getBreakpointOrder} from '../utils'
 import * as defaultTheme from '../Grid/defaultTheme'
 
@@ -20,8 +20,8 @@ const getSizes = (props, theme) => {
 
 const bpCache = new WeakMap()
 const memoizedFindBreakpoints = (breakpoints, sizes) => {
-  let pairs =
-    bpCache.get(breakpoints),
+  let
+    pairs = bpCache.get(breakpoints),
     sizeKey = sizes.join(',')
   if (pairs !== void 0) {
     let pairKeys = Object.keys(pairs), i = 0
@@ -73,21 +73,22 @@ const getDefaultMatches = (theme, sizes, defaultMatches) => {
   }
 }
 
+const options = {name: 'grid', defaultTheme}
+export const useBreakpoint = props => {
+  const theme = useTheme(options)
+  const
+    [sizes, queries] = findBreakpoints(props, theme),
+    defaultMatches = getDefaultMatches(theme, sizes, props.defaultMatches),
+    state = useMediaQuery(queries, defaultMatches)
 
-const Breakpoint = props => ThemeConsumer({
-  name: 'grid',
-  defaultTheme,
-  children: themeProps => {
-    const
-      [sizes, queries] = findBreakpoints(props, themeProps.theme),
-      defaultMatches = getDefaultMatches(themeProps.theme, sizes, props.defaultMatches)
+  const out = Object.assign({}, state)
+  out.matches = getMatches(sizes, state.matches)
+  return out
+}
 
-    return (
-      <MediaQuery query={queries} defaultMatches={defaultMatches}>
-        {mqProps => props.children({...mqProps, matches: getMatches(sizes, mqProps.matches)})}
-      </MediaQuery>
-    )
-  }
-})
+const Breakpoint = props => props.children(useBreakpoint(props))
+
+if (__DEV__)
+  Breakpoint.displayName = 'Breakpoint'
 
 export default Breakpoint

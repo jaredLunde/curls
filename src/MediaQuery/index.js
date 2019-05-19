@@ -1,1 +1,1 @@
-export default from './MediaQuery'
+export {useMediaQuery} from './MediaQuery'

@@ -1,51 +1,47 @@
 import React from 'react'
-import createComponent from '../createComponent'
-import Type from '../Type'
+import {renderNode} from '../createComponent'
+import {useBox} from '../Box'
+import {useType} from '../Type'
 import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
-import {withChildren} from '../utils'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
 import typePropTypes from '../Type/propTypes'
+import useStyles from '../useStyles'
 
 
-const SFC = createComponent({name: 'textArea', styles, defaultTheme,})
+const
+  options = {name: 'textArea', styles, defaultTheme},
+  autoResize = e => {
+    if (!e.target.value)
+      e.target.style.height = ''
+    else {
+      e.target.style.height = 'auto'
+      e.target.style.height = e.target.scrollHeight + 'px'
+    }
+  },
+  TextArea = React.forwardRef(
+    (props, ref) => {
+      let nodeProps = Object.assign({__inputStyles: true}, props)
+      nodeProps = useBox(useType(useStyles(props, options)))
+      nodeProps.as = 'textarea'
+      nodeProps.ref = ref
 
-function autoResize (e) {
-  if (!e.target.value) {
-    e.target.style.height = ''
-  }
-  else {
-    e.target.style.height = 'auto'
-    e.target.style.height = e.target.scrollHeight + 'px'
-  }
+      if (props.autoResize) {
+        nodeProps.onChange = e => {
+          typeof props.onChange === 'function' && props.onChange(e)
+          autoResize(e)
+        }
+      }
+
+      return renderNode(nodeProps)
+    }
+  )
+
+if (__DEV__) {
+  TextArea.displayName = 'TextArea'
+  TextArea.propTypes = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes, propTypes)
 }
 
-const TextArea = React.forwardRef(
-  (props, innerRef) => {
-    const sfcProps = withChildren(
-      Object.assign({__inputStyles: true}, props),
-      typeProps => {
-        typeProps.as = 'textarea'
-
-        if (props.autoResize) {
-          typeProps.onChange = function (...args) {
-            typeof props.onChange === 'function' && props.onChange(...args)
-            autoResize(...args)
-          }
-        }
-
-        typeProps.children = props.children
-        typeProps.ref = innerRef
-        return React.createElement(Type, typeProps)
-      },
-      true
-    )
-
-    return SFC(sfcProps)
-  }
-)
-
-TextArea.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes, propTypes)
 export default TextArea
