@@ -1,23 +1,18 @@
 import {css} from '@emotion/core'
 
 const placeholder = p => {
-  if (!p) {
-    return null
-  }
+  if (!p) return null
 
   return css`
     ::-webkit-input-placeholder {
       ${p};
     }
-
     ::-moz-placeholder {
       ${p};
     }
-
     :-ms-input-placeholder {
       ${p};
     }
-
     ::placeholder {
       ${p};
     }

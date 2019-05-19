@@ -24,11 +24,9 @@ const mergeGlobals = ({userTheme, theme}, props) => {
   if (name === void 0)
     return theme
   else {
-    if (__DEV__) {
-      if (props.path !== void 0) {
+    if (__DEV__)
+      if (props.path !== void 0)
         console.warn(`The 'path' prop in ThemeConsumer is deprecated. Use 'name' instead.`)
-      }
-    }
 
     const componentTheme = getTheme(
       props.defaultTheme,
@@ -40,16 +38,19 @@ const mergeGlobals = ({userTheme, theme}, props) => {
   }
 }
 
-export default function ThemeConsumer (props) {
+export default props => {
   const consumerProps = {}
-  const Consumer = consumerContext => {
-    consumerProps.theme = mergeGlobals(consumerContext, props)
-    consumerProps.setTheme = consumerContext.setTheme
-    consumerProps.replaceTheme = consumerContext.replaceTheme
+  const Consumer = context => {
+    consumerProps.theme = mergeGlobals(context, props)
+    consumerProps.setTheme = context.setTheme
+    consumerProps.replaceTheme = context.replaceTheme
     return props.children(consumerProps)
   }
 
   return React.createElement(CurlsContext.Consumer, emptyObj, Consumer)
 }
 
-export const useTheme = () => useContext(CurlsContext).theme
+export const useTheme = (options = emptyObj) => {
+  const context = useContext(CurlsContext)
+  return mergeGlobals(context, options)
+}

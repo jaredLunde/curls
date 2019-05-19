@@ -1,1 +1,1 @@
-export default from './Transitionable'
+export default, {useTransitionable, useTransitionableToggle, getDelay} from './Transitionable'

@@ -5,13 +5,13 @@ import {withChildren} from '../utils'
 import {baseIsNotVisible} from '../Fade/styles'
 import {flex, align, justify} from '../Flex/styles'
 import {pos, ov} from '../Box/styles'
-import {FlexBox} from '../Box'
+import {useBox} from '../Box'
 import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
-import {MAX_Z_INDEX} from '../browser'
-import createComponent, {renderNode} from '../createComponent'
+import {renderNode} from '../createComponent'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
+import useStyles from '../useStyles'
 
 
 /**
@@ -21,59 +21,51 @@ import flexPropTypes from '../Flex/propTypes'
   }}
 </Overlay>
 **/
-const as = 'div'
-const defaultCSS = css`
-  ${baseIsNotVisible};
-  ${flex};
-  ${align.center};
-  ${justify.center};
-  ${pos.fixed};
-  ${ov.auto};
-  ${ov.touch};
+const defaultCSS = css([
+  baseIsNotVisible,
+  flex,
+  align.center,
+  justify.center,
+  pos.fixed,
+  ov.auto,
+  ov.touch,
+  `
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-  z-index: ${MAX_Z_INDEX - 1};
-`
-const SFC = createComponent({name: 'overlay', defaultTheme})
+  z-index: 1000;
+  `
+])
+
+const options = {name: 'overlay', defaultTheme}
 
 const Overlay = React.forwardRef(
-  ({transition = Fade, portal = false, ...props}, innerRef) => transition(
-    withChildren(
-      props,
-      sfcProps => {
-        sfcProps = withChildren(
-          sfcProps,
-          boxProps => FlexBox(
-            withChildren(
-              boxProps,
-              ({isVisible, show, hide, toggle, ...overlayBoxProps}) => {
-                overlayBoxProps.as = overlayBoxProps.as || as
-                overlayBoxProps.children =
-                  typeof props.children === 'function'
-                    ? props.children({isVisible, show, hide, toggle})
-                    : props.children
-
-                return renderNode(overlayBoxProps, defaultCSS)
-              }
-            )
-          )
-        )
-
-        sfcProps.innerRef = innerRef
-        const Component = SFC(sfcProps)
-
-        return portal === false
-          ? Component
-          : <Portalize
-              children={Component}
-              entry={typeof portal === 'function' ? portal : void 0}
-            />
-      }
+  ({transition = Fade, portal = false, children, ...props}, ref) => {
+    return React.createElement(
+      transition,
+      withChildren(
+        props,
+        ({isVisible, show, hide, toggle, ...other}) => {
+          other = useBox(useStyles(other, options))
+          other.ref = ref
+          other.children =
+            typeof children === 'function'
+              ? children({isVisible, show, hide, toggle})
+              : children
+          const Component = renderNode(other, defaultCSS)
+          return portal === false
+            ? Component
+            : <Portalize children={Component} entry={typeof portal === 'function' ? portal : void 0}/>
+        }
+      )
     )
-  )
+  }
 )
 
-Overlay.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
+if (__DEV__) {
+  Overlay.displayName = 'Overlay'
+  Overlay.propTypes = Object.assign({}, boxPropTypes, flexPropTypes)
+}
+
 export default Overlay

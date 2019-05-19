@@ -1,127 +1,86 @@
-// Credit: Michael Jackson
-// https://github.com/ReactTraining/react-media/blob/master/modules/Media.js
-//
-// License: MIT
-import React from 'react'
+import React, {useRef, useEffect, useReducer} from 'react'
 import json2mq from 'json2mq'
-import propTypes from './propTypes'
 
 
-function queriesDidChange (prevQueries, nextQueries) {
-  if (Array.isArray(prevQueries) && Array.isArray(nextQueries)) {
+const queriesDidChange = (prevQueries, nextQueries) => {
+  if (Array.isArray(prevQueries) === true && Array.isArray(nextQueries) === true) {
     if (prevQueries.length === nextQueries.length) {
-      for (let i = 0; i < nextQueries.length; i++) {
-        if (nextQueries[i] !== prevQueries[i]) {
+      for (let i = 0; i < nextQueries.length; i++)
+        if (nextQueries[i] !== prevQueries[i])
           return true
-        }
-      }
-
-      return false
-    } else {
+    } else
       return true
-    }
-  } else {
+  } else
     return prevQueries !== nextQueries
-  }
+
+  return false
 }
 
-class MediaQuery extends React.Component {
-  constructor (props) {
-    super(props)
-    this.setQueriesList(props)
+const init = ({queries, defaultMatches}) => {
+  queries = Array.isArray(queries) === true ? queries : [queries]
+  let mediaQueries = [], matches = [], i = 0
+  if (typeof window === 'undefined') return {mediaQueries: queries, matches: defaultMatches}
 
-    if (props.defaultMatches === void 0 || typeof window !== 'undefined') {
-      this.state = this.updateMatches()
-      // this.state = {matches: []}
-    }
-    else {
-      this.state = {matches: props.defaultMatches}
-    }
+  for (; i < queries.length; i++) {
+    const
+      mq = typeof queries[i] === 'string' ? queries[i] : json2mq(queries[i]),
+      mql = window.matchMedia(mq)
+    matches.push(mql.matches)
+    mediaQueries.push(mql)
   }
 
-  componentDidMount () {
-    // having this here helps some hydration issues
-    this.setState(this.updateMatches)
-  }
-
-  componentDidUpdate ({query}) {
-    if (queriesDidChange(query, this.props.query)) {
-      this.removeMediaQueries()
-      this.setQueriesList(this.props)
-      this.setState(this.updateMatches)
-    }
-  }
-
-  componentWillUnmount () {
-    this.removeMediaQueries()
-  }
-
-  updateMatches = prevState => {
-    let matches = this.mediaQueries.map(mql => mql[0].matches)
-
-    if (prevState === void 0 || prevState.matches.length !== matches.length) {
-      return {matches}
-    }
-    else {
-      for (let i = 0; i < prevState.matches.length; i++) {
-        if (prevState.matches[i] !== matches[i]) {
-          return {matches}
-        }
-      }
-
-      return null
-    }
-  }
-
-  updateSingleMatch = x => () => {
-    this.setState(
-      prevState => {
-        const doesMatch = this.mediaQueries[x][0].matches
-
-        if (doesMatch === prevState.matches[x]) {
-          return null
-        }
-
-        const matches = [...prevState.matches]
-        matches[x] = doesMatch
-        return {matches}
-      }
-    )
-  }
-
-  setQueriesList ({query}) {
-    this.mediaQueries = []
-
-    if (typeof window === 'undefined') {
-      return
-    }
-
-    for (let x = 0; x < query.length; x++) {
-      const mq = typeof query[x] === 'string' ? query[x] : json2mq(query[x])
-
-      const mql = window.matchMedia(mq)
-      const cb = this.updateSingleMatch(x)
-      mql.addListener(cb)
-      this.mediaQueries.push([mql, cb])
-    }
-  }
-
-  removeMediaQueries () {
-    for (let x = 0; x < this.mediaQueries.length; x++) {
-      const [mq, cb] = this.mediaQueries[x]
-      mq.removeListener(cb)
-    }
-  }
-
-  render () {
-    const {matches} = this.state
-    return this.props.children({
-      matches,
-      matchesAny: matches.some(Boolean),
-      matchesAll: matches.every(Boolean)
-    })
-  }
+  return {mediaQueries, matches}
 }
 
-MediaQuery.propTypes /* remove-proptypes */ = propTypes
-export default MediaQuery
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'updateMatch':
+      let matches = [], i = 0
+
+      for (; i < state.mediaQueries.length; i++)
+        matches.push(state.mediaQueries[i].matches)
+
+      return {matches, mediaQueries: state.mediaQueries}
+
+    case 'setQueries':
+      return init(action)
+  }
+
+  if (__DEV__) throw `Unrecognized action: ${action.type}`
+}
+
+export const useMediaQuery = (queries, defaultMatches) => {
+  const
+    prevQueries = useRef(queries),
+    [state, dispatch] = useReducer(reducer, {queries, defaultMatches}, init)
+
+  useEffect(
+    () => {
+      if (queriesDidChange(queries, prevQueries.current)) {
+        dispatch({type: 'setQueries', queries, defaultMatches})
+        prevQueries.current = queries
+      }
+    },
+    [queries]
+  )
+
+  useEffect(
+    () => {
+      const callbacks = []
+      for (let i = 0; i < state.mediaQueries.length; i++) {
+        const mq = state.mediaQueries[i]
+        callbacks.push(() => dispatch({type: 'updateMatch', mq}))
+        mq.addListener(callbacks[i])
+      }
+
+      return () => {
+        for (let i = 0; i < state.mediaQueries.length; i++)
+          state.mediaQueries[i].removeListener(callbacks[i])
+      }
+    },
+    [state.mediaQueries]
+  )
+
+  const {matches} = state
+  return {matches, matchesAny: matches.some(Boolean), matchesAll: matches.every(Boolean)}
+}

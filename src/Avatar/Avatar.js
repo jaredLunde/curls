@@ -1,95 +1,93 @@
-import React from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import {css} from '@emotion/core'
-import ImageProps from '@render-props/image-props'
-import {BasicBox} from '../Box'
-import {pos, d, ov} from '../Box/styles'
-import createComponent, {renderNode} from '../createComponent'
-import {supportsCSS, withChildren} from '../utils'
+import {useBasicBox} from '../Box'
+import {pos} from '../Box/styles'
+import {flex, justify, align} from '../Flex/styles'
+import {renderNode} from '../createComponent'
+import {supportsCSS, loadImage, objectWithoutProps} from '../utils'
 import * as styles from './styles'
 import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
 import getImage from './getImage'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
+import useStyles from '../useStyles'
 
 
-/**
-<Avatar md src='...'>
-  {({innerRef, ...props}) => (
-    <img {...props} ref={innerRef}/>
-  )}
-</Avatar>
-*/
+const getOrientation = (width, height) =>
+  width > height ? 'landscape' : width === height ? 'square' : 'portrait'
+const useImageOrientation = () => {
+  const
+    element = useRef(null),
+    [orientation, setOrientation] = useState('square')
 
-const as = 'span'
-const defaultCSS = css`
-  ${d.inlineBlock};
-  text-align: center;
-  ${pos.relative}
-  overflow: hidden;
-
-  & img {
-    object-fit: cover;
-  }
-`
-const SFC = createComponent({
-  name: 'avatar',
-  styles,
-  defaultTheme,
-  propTypes,
-})
-
-const SFCWithImageProps = props => <ImageProps
-  children={(imageContext) => SFC(Object.assign({}, imageContext, props))}
-/>
-
-const supportsObjectFit = supportsCSS('object-fit')
-
-const Avatar = React.forwardRef(
-  (props, innerRef) => {
-    const sfcProps = withChildren(
-      props,
-      boxProps => {
-        // adds child prop for 'Box' and rendering the avatar node
-        boxProps.children = ({alt, imageRef, ...nodeProps}) => {
-          nodeProps.as = nodeProps.as || as
-
-          if (imageRef) {
-            innerRef = (...args) => {
-              imageRef(...args)
-              if (nodeProps.innerRef) {
-                if (typeof nodeProps.innerRef === 'function')
-                  nodeProps.innerRef(...args)
-                else if (
-                  typeof nodeProps.innerRef === 'object'
-                  && nodeProps.innerRef.current !== void 0
-                )
-                  nodeProps.innerRef.current = args[0]
-              }
-            }
-          }
-
-          const imgProps = Object.assign({}, nodeProps, {
-            alt,
-            src: props.src,
-            defaultSrc: props.defaultSrc,
-            innerRef
-          })
-
-          nodeProps.children = (props.children || getImage)(imgProps)
-          return renderNode(nodeProps, defaultCSS)
-        }
-
-        return BasicBox(boxProps)
+  useEffect(
+    () => {
+      if (element.current !== null) {
+        const loader = loadImage(element.current)
+        loader.then(({target}) => setOrientation(
+          getOrientation(target.naturalWidth, target.naturalHeight)
+        ))
+        return loader.cancel.bind(loader)
       }
-    )
+    },
+    [element.current]
+  )
 
-    sfcProps.innerRef = innerRef
-    if (supportsObjectFit) sfcProps.orientation = 'square'
+  return [element, orientation]
+}
 
-    return (supportsObjectFit ? SFC : SFCWithImageProps)(sfcProps)
-  }
-)
+const
+  defaultCSS = css([
+    flex,
+    pos.relative,
+    justify.center,
+    align.center,
+    'overflow: hidden;',
+    '& img {object-fit: cover;}'
+  ]),
+  options = {name: 'avatar', styles, defaultTheme},
+  supportsObjectFit = supportsCSS('object-fit'),
+  withoutAlt = {alt: 0},
+  Avatar = React.forwardRef(
+    (props, ref) => {
+      let imageRef
+      props = Object.assign({}, props)
 
-Avatar.propTypes /* remove-proptypes */ = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
+      if (supportsObjectFit)
+        props.orientation = 'square'
+      else {
+        const o = useImageOrientation()
+        imageRef = o[0]
+        props.orientation = o[1]
+      }
+
+      props = useBasicBox(useStyles(props, options))
+      props.as = props.as || 'span'
+
+      const imgProps = Object.assign({}, props)
+      if (imgProps !== void 0) {
+        imgProps.innerRef = el => {
+          imageRef !== void 0 && (imageRef.current = el)
+
+          if (typeof ref === 'function')
+            ref(el)
+          else if (typeof ref === 'object' && ref !== null && ref.current !== void 0)
+            ref.current = el
+        }
+      }
+      else
+        imgProps.innerRef = ref
+
+      props = objectWithoutProps(props, withoutAlt)
+      props.children = (props.children || getImage)(imgProps)
+      return renderNode(props, defaultCSS)
+    }
+  )
+
+if (__DEV__) {
+  Avatar.displayName = 'Avatar'
+  Avatar.propTypes = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
+}
+
 export default Avatar

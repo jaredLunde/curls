@@ -1,46 +1,23 @@
 import React from 'react'
-import Toggle from '@render-props/toggle'
-import {withChildren} from '../utils'
 import propTypes from './propTypes'
 import * as styles from './styles'
-import Transitionable from '../Transitionable'
-import createComponent from '../createComponent'
-import {getDelay} from '../Slide/utils'
+import {useTransitionableToggle} from '../Transitionable'
 
 
-const SFC = createComponent({name: 'fade', styles})
-const transitionProperties = 'visibility, opacity'
+const
+  options = {name: 'fade', styles, transitionProperties: 'visibility, opacity'},
+  useFade = props => {
+    props = Object.assign({}, props)
+    props.from = props.from || 0
+    props.to = props.to === void 0 ? 1 : props.to
+    return useTransitionableToggle(options, props)
+  },
+  Fade = props => props.children(useFade(props))
 
-const Fade = ({
-  children,
-  from = 0,
-  to = 1,
-  initiallyVisible = false,
-  visible,
-  ...props
-}) => (
-  <Toggle value={visible} initialValue={initiallyVisible}>
-    {toggleContext => {
-      const sfcProps = withChildren(
-        props,
-        transProps => {
-          transProps.property = transitionProperties
-          transProps.children = children
-          transProps.show = toggleContext.on
-          transProps.hide = toggleContext.off
-          transProps.toggle = toggleContext.toggle
-          transProps.isVisible = toggleContext.value
-          transProps.delay = getDelay(toggleContext.value, props)
-          return Transitionable(transProps)
-        }
-      )
-      sfcProps.isVisible = toggleContext.value
-      sfcProps.from = from
-      sfcProps.to = to
-      return SFC(sfcProps)
-    }}
-  </Toggle>
-)
+if (__DEV__) {
+  Fade.displayName = 'Fade'
+  Fade.propTypes = propTypes
+}
 
-Fade.propTypes /* remove-proptypes */ = propTypes
+export {useFade}
 export default Fade

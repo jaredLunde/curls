@@ -1,1 +1,1 @@
-export default, {DrawerBox, DrawerConsumer} from './Drawer'
+export default, {DrawerBox, useDrawer, DrawerConsumer} from './Drawer'

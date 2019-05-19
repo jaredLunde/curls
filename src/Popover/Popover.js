@@ -1,20 +1,19 @@
-import React, {useRef, useState, useLayoutEffect, useEffect, useCallback, useMemo} from 'react'
+import React, {useRef, useContext, useState, useEffect, useLayoutEffect, useCallback, useMemo} from 'react'
 import {css} from '@emotion/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
-import {loadImages} from '@render-props/image-props'
 import emptyArr from 'empty/array'
 import emptyObj from 'empty/object'
-import Breakpoint from '../Breakpoint'
-import {MAX_Z_INDEX} from '../browser'
-import {FlexBox} from '../Box'
+import {useBreakpoint} from '../Breakpoint'
+import {useBox} from '../Box'
 import {pos} from '../Box/styles'
 import {flex} from '../Flex/styles'
 import Drop from '../Drop'
-import {portalize, objectWithoutProps, withChildren} from '../utils'
+import {portalize, objectWithoutProps, withChildren, loadImages} from '../utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
-import createComponent, {renderNode} from '../createComponent'
+import {renderNode} from '../createComponent'
+import useStyles from '../useStyles'
 
 
 /**
@@ -37,55 +36,37 @@ import createComponent, {renderNode} from '../createComponent'
   }}
  </Popover>
  */
-const {Consumer, Provider} = React.createContext(emptyObj)
-export const PopoverConsumer = Consumer
-const defaultCSS = css`
-  ${flex};
-  ${pos.fixed};
-  z-index: ${MAX_Z_INDEX};
-`
 const
-  as = 'div',
-  SFC = createComponent({name: 'popover', defaultTheme}),
+  PopoverContext = React.createContext(emptyObj),
+  {Consumer, Provider} = PopoverContext
+export const
+  PopoverConsumer = Consumer,
+  usePopover = () => useContext(PopoverContext)
+const
+  defaultCSS = css([flex, pos.fixed, `z-index: 1001;`]),
+  options = {name: 'popover', defaultTheme},
   withoutPortal = {portal: 0, children: 0},
-  withoutConsumer = {css: 0, popoverBoxRef: 0, style: 0}
+  withoutPop = {popoverBoxRef: 0, style: 0}
+
 export const PopoverBox = React.forwardRef(
-  (props, innerRef) => {
+  (props, ref) => {
     const {children, portal} = props
     props = objectWithoutProps(props, withoutPortal)
-
-    return <Consumer children={
-      transitionProps => {
-        const
-          {css: boxCss, popoverBoxRef, style} = transitionProps,
-          boxChild = typeof children === 'function'
-            ? children(objectWithoutProps(transitionProps, withoutConsumer))
-            : children
-
-        const innerRef_ = innerRef === null ? popoverBoxRef : el => {
-          if (typeof innerRef === 'function')
-            innerRef(el)
-          else if (typeof innerRef === 'object' && innerRef.current !== void 0)
-            innerRef.current = el
-
-          popoverBoxRef.current = el
-        }
-
-        props.children = sfcProps => {
-          sfcProps.children = boxProps => {
-            boxProps.as = boxProps.as || as
-            boxProps.children = boxChild
-            boxProps.innerRef = innerRef_
-            boxProps.style = Object.assign({}, style, boxProps.style)
-            return renderNode(boxProps, defaultCSS)
-          }
-
-          return FlexBox(sfcProps)
-        }
-        props.css = boxCss
-        return portalize(SFC(props), portal)
-      }
-    }/>
+    props = useBox(useStyles(props, options))
+    const pop = usePopover()
+    props.children = typeof children === 'function'
+      ? children(objectWithoutProps(pop, withoutPop))
+      : children
+    props.css = props.css ? [pop.css, props.css] : pop.css
+    props.style = Object.assign({}, pop.style, props.style)
+    props.ref = ref === null ? pop.popoverBoxRef : el => {
+      if (typeof innerRef === 'function')
+        innerRef(el)
+      else if (typeof innerRef === 'object' && innerRef.current !== void 0)
+        innerRef.current = el
+      pop.popoverBoxRef.current = el
+    }
+    return portalize(renderNode(props, defaultCSS), portal)
   }
 )
 
@@ -247,57 +228,42 @@ const getBreakpoints  = props => {
 }
 
 const getDirection = props => {
-  let
-    keys = Object.keys(props),
-    i = keys.length -1
-
+  let keys = Object.keys(props), i = keys.length -1
   for (; i > -1 ; i--) {
     const key = keys[i]
     if (positions.has(key) === true && !!props[key])
       return key
   }
+  return 'fromBottom'
 }
 
-class BreakpointRenderer extends React.Component {
-  state = {mounted: 'false'}
+const BreakpointRenderer = ({popoverProps, breakpoints}) => {
+  let
+    checkBreakpoints = {},
+    i = 0,
+    keys =  Object.keys(breakpoints)
 
-  componentDidMount () {
-    this.setState({mounted: 'true'})
-  }
+  for (; i < keys.length; i++)
+    checkBreakpoints[keys[i]] = true
 
-  render () {
-    let
-      {popoverProps} = this.props,
-      breakpoints = {},
-      i = 0,
-      keys =  Object.keys(this.props.breakpoints)
+  const {matches} = useBreakpoint(checkBreakpoints)
+  popoverProps.popoverDirection = 'fromBottom'
+  const matchKeys = Object.keys(matches)
 
-    for (; i < keys.length; i++)
-      breakpoints[keys[i]] = true
-
-    breakpoints.key = this.state.mounted
-    breakpoints.children = ({matches}) => {
-      popoverProps.popoverDirection = 'fromBottom'
-
-      for (i = keys.length - 1; i > -1; i--) {
-        const key = keys[i]
-        if (matches[key] === true) {
-          popoverProps.popoverDirection = this.props.breakpoints[key]
-          break
-        }
-      }
-
-      return ViewportPopover(popoverProps)
+  for (i = matchKeys.length - 1; i > -1; i--) {
+    const key = matchKeys[i]
+    if (matches[key] === true) {
+      popoverProps.popoverDirection = breakpoints[key]
+      break
     }
-
-    return React.createElement(Breakpoint, breakpoints)
   }
+
+  return ViewportPopover(popoverProps)
 }
 
 const Popover = React.forwardRef(
   (props, innerRef) => {
     const breakpoints = getBreakpoints(props)
-
     return (props.transition || Drop)(
       withChildren(
         props,
@@ -306,11 +272,10 @@ const Popover = React.forwardRef(
           popoverProps.innerRef = innerRef
 
           if (breakpoints === false) {
-            popoverProps.popoverDirection = getDirection(props) || 'fromBottom'
+            popoverProps.popoverDirection = getDirection(props)
             return ViewportPopover(popoverProps)
           }
 
-          // this is here because react hydration is a complete piece of shit
           return <BreakpointRenderer
             props={props}
             popoverProps={popoverProps}

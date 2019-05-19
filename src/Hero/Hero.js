@@ -1,70 +1,46 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {css} from '@emotion/core'
-import FillViewport from '../FillViewport'
-import {FlexBox} from '../Box'
+import {useWindowHeight} from '@react-hook/window-size'
+import emptyArr from 'empty/array'
+import {useBox} from '../Box'
 import {flex, column, align, justify} from '../Flex/styles'
-import {w, pos, ov} from '../Box/styles'
-import createComponent, {renderNode} from '../createComponent'
-import {withChildren} from '../utils'
+import {pos, ov} from '../Box/styles'
+import {renderNode} from '../createComponent'
 import {getStyle} from './utils'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
+import useStyles from '../useStyles'
 
 
-class HeroBS extends React.Component {
-  state = {mounted: 'false'}
+const defaultCSS = css([
+  flex,
+  column.column,
+  align.center,
+  justify.center,
+  pos.relative,
+  ov.touch,
+  'width: 100%;'
+])
 
-  componentDidMount () {
-    this.setState({mounted: 'true'})
-  }
+const
+  options = {name: 'hero', styles: {trimHeight: () => null}},
+  Hero = React.forwardRef(
+    (props, ref) => {
+      const
+        [mounted, setMounted] = useState('false'),
+        height = useWindowHeight(0)
+      useEffect(() => setMounted('true'), emptyArr)
+      const nodeProps = useBox(useStyles(props, options))
+      nodeProps.style = Object.assign({}, getStyle(height, props.trimHeight), props.style)
+      nodeProps.ref = ref
+      nodeProps.key = mounted
+      return renderNode(nodeProps, defaultCSS)
+    }
+  )
 
-  render () {
-    const {style, vpProps, nodeProps} = this.props
-    nodeProps.as = nodeProps.as || as
-    const heroStyle = getStyle(style, nodeProps.trimHeight)
-    nodeProps.style = Object.assign({}, heroStyle, vpProps.style)
-    nodeProps.children = this.props.children
-    nodeProps.key = this.state.mounted
-    delete nodeProps.trimHeight
-    return renderNode(nodeProps, defaultCSS)
-  }
+if (__DEV__) {
+  Hero.displayName = 'Hero'
+  Hero.propTypes = Object.assign({}, boxPropTypes, flexPropTypes)
 }
 
-const as = 'div'
-const defaultCSS = css`
-  ${flex};
-  ${column.column};
-  ${align.center};
-  ${justify.center};
-  ${pos.relative};
-  ${ov.touch};
-  width: 100%;
-`
-
-const SFC = createComponent({name: 'Hero'})
-const Hero = React.forwardRef(
-  (props, innerRef) => SFC(
-    withChildren(
-      props,
-      vpProps => React.createElement(FillViewport, {
-        children: ({style}) => {
-          vpProps.children = nodeProps => {
-            nodeProps.innerRef = innerRef
-            // must be here like this for hydration
-            return <HeroBS
-              style={style}
-              vpProps={vpProps}
-              nodeProps={nodeProps}
-              children={props.children}
-            />
-          }
-
-          return FlexBox(vpProps)
-        }
-      })
-    )
-  )
-)
-
-Hero.propTypes /* remove-proptypes */ = Object.assign({}, boxPropTypes, flexPropTypes)
 export default Hero

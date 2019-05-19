@@ -1,2 +1,1 @@
-export {getDelay} from './utils'
-export default from './Slide'
+export default, {useSlide} from './Slide'
