@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react'
+import React, {useRef, useState, useLayoutEffect, useEffect, useCallback, useMemo} from 'react'
 import {css} from '@emotion/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
@@ -117,7 +117,7 @@ const PopoverContainer = React.memo(
       [props.width, props.height, props.popoverDirection]
     )
     // repositions on mount if initially visible
-    useEffect(
+    useLayoutEffect(
       () => {
         props.isVisible === true && reposition()
         // cancels image loading on unmnount
@@ -126,9 +126,9 @@ const PopoverContainer = React.memo(
       emptyArr
     )
     // repositions when visibility changes
-    useEffect(() => {props.isVisible === true && reposition()}, [props.isVisible])
+    useLayoutEffect(() => {props.isVisible === true && reposition()}, [props.isVisible])
     // repositions when scrollY, width, or height changes
-    useEffect(
+    useLayoutEffect(
       () => {props.isVisible === true && reposition()},
       [props.width, props.height, props.scrollY]
     )

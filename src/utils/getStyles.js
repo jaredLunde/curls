@@ -80,10 +80,8 @@ export default (styles, theme, props) => {
               if (__DEV__) {
                 // verifies that this is a real breakpoint, but only in development
                 const bps = getBreakpointOrder(theme.breakpoints)
-
-                if (bps.indexOf(breakpoint) === -1) {
+                if (bps.indexOf(breakpoint) === -1)
                   throw `A break point for '${breakpoint}' was not found in '${bps.join(', ')}'`
-                }
               }
 
               (mediaQueries = mediaQueries || {})[breakpoint] = mediaQueries[breakpoint] || []
