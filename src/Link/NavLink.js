@@ -9,7 +9,7 @@ const NavLink = React.forwardRef(
     const theme = useTheme()
 
     if (__DEV__)
-      if (!theme?.navLink?.component)
+      if (!theme?.link?.navComponent)
         throw (
           'You must define a `component` property in your '
           + '`theme.navLink` to use the NavLink component'
@@ -17,7 +17,7 @@ const NavLink = React.forwardRef(
 
     props = useLink(props)
     props.ref = ref
-    return createElement(theme.navLink.component, props)
+    return createElement(theme.link.navComponent, props)
   }
 )
 
