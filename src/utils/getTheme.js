@@ -10,6 +10,5 @@ export default (defaultTheme = emptyObj, userTheme) => {
     return defaultTheme
   else if (defaultTheme === emptyObj)
     return userTheme
-
   return merge(defaultTheme, userTheme)
 }

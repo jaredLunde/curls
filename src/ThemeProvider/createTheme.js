@@ -58,7 +58,7 @@ const parseBreakpoints = fastMemoize(
   'parseBreakpoints',
   breakpoints => {
     const parsed = {}
-    for (let key in breakpoints)  parsed[key] = getMediaQuery(breakpoints[key])
+    for (let key in breakpoints) parsed[key] = getMediaQuery(breakpoints[key])
     return parsed
   },
   WeakMap
