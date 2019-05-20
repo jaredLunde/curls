@@ -146,7 +146,7 @@ const PopoverContainer = React.memo(
     return <Provider value={boxContext} children={props.children(childContext)}/>
   },
   (prev, next) => (
-    (next.isVisible === false && prev.isVisible === false) || (
+    (next.isVisible === false && prev.isVisible === false && prev.children === next.children) || (
       prev.children === next.children
       && prev.width === next.width
       && prev.height === next.height
