@@ -12,7 +12,7 @@ import Drop from '../Drop'
 import {portalize, objectWithoutProps, withChildren, loadImages} from '../utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import useStyles from '../useStyles'
 
 
@@ -66,7 +66,7 @@ export const PopoverBox = React.forwardRef(
         innerRef.current = el
       pop.popoverBoxRef.current = el
     }
-    return portalize(renderNode(props, defaultCSS), portal)
+    return portalize(createElement('div', props, defaultCSS), portal)
   }
 )
 

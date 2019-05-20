@@ -5,7 +5,7 @@ import {portalize, withChildren} from '../utils'
 import Overlay from '../Overlay'
 import {useBox} from '../Box'
 import {MAX_Z_INDEX} from '../browser'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
 import slidePropTypes from '../Slide/propTypes'
@@ -56,7 +56,7 @@ export const ModalBox = React.forwardRef(
     props.children = typeof children === 'function' ? children(transition) : children
     props.css = props.css ? [transition.css, props.css] : transition.css
     props.ref = ref
-    let Component = renderNode(props, defaultCSS)
+    let Component = createElement('div', props, defaultCSS)
     if (withOverlay === true)
       Component = <Overlay
         visible={transition.isVisible}

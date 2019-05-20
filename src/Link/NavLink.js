@@ -1,6 +1,7 @@
 import React from 'react'
+import {useLink} from './A'
 import {useTheme} from '../ThemeConsumer'
-import A from './A'
+import createElement from '../createElement'
 
 
 const NavLink = React.forwardRef(
@@ -8,13 +9,15 @@ const NavLink = React.forwardRef(
     const theme = useTheme()
 
     if (__DEV__)
-      if (!theme?.link?.navComponent)
+      if (!theme?.navLink?.component)
         throw (
           'You must define a `component` property in your '
-          + '`theme.link` to use the Link component'
+          + '`theme.navLink` to use the NavLink component'
         )
 
-    return React.createElement(A, Object.assign({as: theme.link.navComponent, ref}, props))
+    props = useLink(props)
+    props.ref = ref
+    return createElement(theme.navLink.component, props)
   }
 )
 

@@ -6,7 +6,7 @@ import useStyles from '../useStyles'
 
 
 const options = {name: 'grid', styles, defaultTheme}
-export const useGrid = props => {
+export default props => {
   let
     theme = useTheme(options),
     found = false,

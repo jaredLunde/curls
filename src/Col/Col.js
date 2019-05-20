@@ -2,7 +2,7 @@ import React from 'react'
 import {css} from '@emotion/core'
 import {useGridBox} from '../Box'
 import {pos} from '../Box/styles'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import flexPropTypes from '../Flex/propTypes'
 import propTypes from '../Box/propTypes'
 import useStyles from '../useStyles'
@@ -20,7 +20,7 @@ const defaultCSS = css([
       props.useFlex = true
       props = useGridBox(props)
       props.ref = ref
-      return renderNode(props, defaultCSS)
+      return createElement('div', props, defaultCSS)
     }
   )
 

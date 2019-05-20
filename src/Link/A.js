@@ -1,6 +1,6 @@
 import React from 'react'
 import {useType} from '../Type'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 import typePropTypes from '../Type/propTypes'
@@ -12,13 +12,13 @@ import useStyles from '../useStyles'
 
 const
   options = {name: 'link', styles, defaultTheme},
+  useLink = props =>
+    useBox(useType(useStyles(Object.assign({__linkStyles: true}, props), options))),
   A = React.forwardRef(
     (props, ref) => {
-      props = Object.assign({__linkStyles: true}, props)
-      props = useBox(useType(useStyles(props, options)))
-      props.as = props.as || 'a'
+      props = useLink(props)
       props.ref = ref
-      return renderNode(props)
+      return createElement('a', props)
     }
   )
 
@@ -27,4 +27,5 @@ if (__DEV__) {
   A.propTypes = Object.assign({}, boxPropTypes, typePropTypes, flexPropTypes)
 }
 
+export {useLink}
 export default A

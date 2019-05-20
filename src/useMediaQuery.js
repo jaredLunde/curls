@@ -49,7 +49,7 @@ const reducer = (state, action) => {
   if (__DEV__) throw `Unrecognized action: ${action.type}`
 }
 
-export const useMediaQuery = (queries, defaultMatches) => {
+export default (queries, defaultMatches) => {
   const
     prevQueries = useRef(queries),
     [state, dispatch] = useReducer(reducer, {queries, defaultMatches}, init)

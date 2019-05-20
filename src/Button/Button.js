@@ -2,7 +2,7 @@ import React from 'react'
 import {css} from '@emotion/core'
 import {useBox} from '../Box'
 import {flex, row, align, justify} from '../Flex/styles'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
@@ -23,9 +23,8 @@ const
     (props, ref) => {
       props = Object.assign({__buttonStyles: true}, props)
       props = useBox(useStyles(props, options))
-      props.as = props.as || 'button'
       props.ref = ref
-      return renderNode(props, defaultCSS)
+      return createElement('button', props, defaultCSS)
     }
   )
 

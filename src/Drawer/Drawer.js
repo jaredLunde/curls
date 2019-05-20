@@ -6,7 +6,7 @@ import {MAX_Z_INDEX} from '../browser'
 import {useBox} from '../Box'
 import Slide from '../Slide'
 import slidePropTypes from '../Slide/propTypes'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import {d, pos, ov} from '../Box/styles'
 import * as styles from './styles'
 import useStyles from '../useStyles'
@@ -61,7 +61,7 @@ export const DrawerBox = React.forwardRef(
     props.children = typeof children === 'function' ? children(transition) : children
     props.css = props.css ? [transition.css, props.css] : transition.css
     props.ref = ref
-    return portalize(renderNode(props, defaultCSS), portal)
+    return portalize(createElement('div', props, defaultCSS), portal)
   }
 )
 

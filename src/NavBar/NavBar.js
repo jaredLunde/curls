@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import {flex, row, wrap, align, justify} from '../Flex/styles'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
@@ -21,9 +21,8 @@ const
 const NavBar = React.forwardRef(
   (props, ref) => {
     props = useBox(useStyles(props, options))
-    props.as = props.as || 'nav'
     props.ref = ref
-    return renderNode(props, defaultCSS)
+    return createElement('nav', props, defaultCSS)
   }
 )
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import {useBasicBox} from '../Box'
 import {pos} from '../Box/styles'
 import * as defaultTheme from './defaultTheme'
@@ -21,7 +21,7 @@ const
     (props, ref) => {
       props = useBasicBox(useStyles(props, options))
       props.ref = ref
-      return renderNode(props, defaultCSS)
+      return createElement('div', props, defaultCSS)
     }
   )
 

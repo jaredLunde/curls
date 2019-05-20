@@ -1,5 +1,5 @@
 import React from 'react'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
 import propTypes from './propTypes'
@@ -13,10 +13,9 @@ const options = {name: 'type', styles, defaultTheme}
 export const useType = props => useStyles(props, options)
 const Type = React.forwardRef(
   (props, ref) => {
-    props = useBox(useType(props, options))
-    props.as = props.as || 'span'
+    props = useBox(useType(props))
     props.ref = ref
-    return renderNode(props)
+    return createElement('span', props)
   }
 )
 

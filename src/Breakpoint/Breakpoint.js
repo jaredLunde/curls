@@ -1,6 +1,6 @@
 import React from 'react'
 import memoize from 'trie-memoize'
-import {useMediaQuery} from '../MediaQuery'
+import useMediaQuery from '../useMediaQuery'
 import {useTheme} from '../ThemeConsumer'
 import {getBreakpointOrder} from '../utils'
 import * as defaultTheme from '../Grid/defaultTheme'

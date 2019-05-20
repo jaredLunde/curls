@@ -50,7 +50,4 @@ export default props => {
   return React.createElement(CurlsContext.Consumer, emptyObj, Consumer)
 }
 
-export const useTheme = (options = emptyObj) => {
-  const context = useContext(CurlsContext)
-  return mergeGlobals(context, options)
-}
+export const useTheme = (options = emptyObj) => mergeGlobals(useContext(CurlsContext), options)

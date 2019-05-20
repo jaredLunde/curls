@@ -42,28 +42,23 @@ export default (
 
     const direction = directions[abbr]
 
-    if (__DEV__) {
-      if (direction === void 0) {
+    if (__DEV__)
+      if (direction === void 0)
         throw (
           `Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n`
           + `Allowed values include: ${Object.keys(directions).join(', ')}`
         )
-      }
-    }
 
     let size = modScale[value]
-
     if (size === void 0) {
-      if (value === 'Auto') {
+      if (value === 'Auto')
         size = 'auto'
-      }
       else {
-        if (__DEV__) {
+        if (__DEV__)
           throw (
             `Unrecognized scale value in ${prefix}: ${value}\n\n`
             + `Allowed values include: ${Object.keys(modScale).join(', ')}`
           )
-        }
       }
     }
 

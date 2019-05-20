@@ -20,8 +20,8 @@ export const defaultColors = {
   darkestGrey: '#1c3d3f',
   black: polished.darken(0.08, '#1c3d3f'),
   white: '#fefeff',
-  translucentDark: polished.rgba(0, 0, 0, 0.7),
   translucent: polished.rgba(0, 0, 0, 0.4),
+  translucentDark: polished.rgba(0, 0, 0, 0.7),
   translucentLight: polished.rgba(0, 0, 0, 0.16),
   translucentWhite: polished.rgba(255, 255, 255, 0.6)
 }
@@ -49,22 +49,16 @@ export const baseTheme = {
 }
 
 const throwThemeError = theme => {
-  for (let key in baseTheme) {
-    if (theme[key] === void 0 || theme[key] === null || theme[key] === false) {
+  for (let key in baseTheme)
+    if (theme[key] === void 0 || theme[key] === null || theme[key] === false)
       throw new Error(`Curls themes must include a global '${key}' property.`)
-    }
-  }
 }
 
 const parseBreakpoints = fastMemoize(
   'parseBreakpoints',
   breakpoints => {
     const parsed = {}
-
-    for (let key in breakpoints) {
-      parsed[key] = getMediaQuery(breakpoints[key])
-    }
-
+    for (let key in breakpoints)  parsed[key] = getMediaQuery(breakpoints[key])
     return parsed
   },
   WeakMap
@@ -72,22 +66,14 @@ const parseBreakpoints = fastMemoize(
 
 export const mergeTheme = (prevTheme, theme) => {
   theme = getTheme(prevTheme, theme)
-
-  if (__DEV__) {
-    throwThemeError(theme)
-  }
-
+  if (__DEV__) throwThemeError(theme)
   theme.breakpoints = parseBreakpoints(theme.breakpoints)
   return theme
 }
 
 export default theme => {
   let nextTheme = Object.assign({}, baseTheme, theme)
-
-  if (__DEV__) {
-    throwThemeError(nextTheme)
-  }
-
+  if (__DEV__) throwThemeError(nextTheme)
   nextTheme.breakpoints = parseBreakpoints(nextTheme.breakpoints)
   return nextTheme
 }

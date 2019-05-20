@@ -3,7 +3,7 @@ import {css} from '@emotion/core'
 import {useBox} from '../Box'
 import {pos} from '../Box/styles'
 import {flex, column} from '../Flex/styles'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import * as defaultTheme from './defaultTheme'
 import propTypes from './propTypes'
 import * as styles from './styles'
@@ -61,7 +61,7 @@ const Card = React.forwardRef(
   (props, ref) => {
     props = useBox(useStyles(props, options))
     props.ref = ref
-    return renderNode(props, defaultCSS)
+    return createElement('div', props, defaultCSS)
   }
 )
 

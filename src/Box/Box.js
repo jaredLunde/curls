@@ -5,7 +5,8 @@ import * as flexStyles from '../Flex/styles'
 import * as defaultTheme from './defaultTheme'
 import propTypes from './propTypes'
 import flexPropTypes from '../Flex/propTypes'
-import createComponent, {renderNodeFast} from '../createComponent'
+import createElement from '../createElement'
+import createComponent from '../createComponent'
 import useStyles from '../useStyles'
 
 
@@ -21,15 +22,17 @@ export const
 
 export const useGridBox = props => useBox(useGrid(props))
 
-const createBoxComponent = (name, useHook) => (props, ref) => {
-  props = useHook(props)
-  props.ref = ref
-  return renderNodeFast(props)
-}
+const createBoxComponent = (name, useHook) => React.forwardRef(
+  (props, ref) => {
+    props = useHook(props)
+    props.ref = ref
+    return createElement('div', props)
+  }
+)
 
 export const
-  GridBox = React.forwardRef(createBoxComponent('GridBox', useGridBox)),
-  Box = React.forwardRef(createBoxComponent('Box', useBox))
+  GridBox = createBoxComponent('GridBox', useGridBox),
+  Box = createBoxComponent('Box', useBox)
 
 if (__DEV__) {
   Box.displayName = 'Box'

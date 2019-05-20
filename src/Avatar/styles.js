@@ -21,6 +21,7 @@ const getAvatarSize = (size, val, theme, props) => {
 }
 
 const createSizeShortcut = fastMemoize('avatarSize', s => (v, t, p) => getAvatarSize(s, v, t, p))
+export const src = () => null
 export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
 export const orientation = memoValue(
   v => {

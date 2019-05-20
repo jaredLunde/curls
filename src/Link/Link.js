@@ -1,6 +1,7 @@
 import React from 'react'
+import {useLink} from './A'
 import {useTheme} from '../ThemeConsumer'
-import A from './A'
+import createElement from '../createElement'
 
 
 const Link = React.forwardRef(
@@ -14,7 +15,9 @@ const Link = React.forwardRef(
           + '`theme.link` to use the Link component'
         )
 
-    return React.createElement(A, Object.assign({as: theme.link.component, ref}, props))
+    props = useLink(props)
+    props.ref = ref
+    return createElement(theme.link.component, props)
   }
 )
 

@@ -5,7 +5,7 @@ import emptyArr from 'empty/array'
 import {useBox} from '../Box'
 import {flex, column, align, justify} from '../Flex/styles'
 import {pos, ov} from '../Box/styles'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import {getStyle} from './utils'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
@@ -34,7 +34,7 @@ const
       nodeProps.style = Object.assign({}, getStyle(height, props.trimHeight), props.style)
       nodeProps.ref = ref
       nodeProps.key = mounted
-      return renderNode(nodeProps, defaultCSS)
+      return createElement('div', nodeProps, defaultCSS)
     }
   )
 

@@ -3,7 +3,7 @@ import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 import createComponent from '../createComponent'
 import useStyles from '../useStyles'
-import useToggleSwitch from '../useToggleSwitch'
+import useSwitch from '../useSwitch'
 
 
 const
@@ -20,7 +20,7 @@ export const
         : props.delay,
   useTransitionable = props => useStyles(props, options),
   useTransitionableToggle = (options, {initiallyVisible = false, visible, children, ...props}) => {
-    const toggler = useToggleSwitch({value: visible, initialValue: initiallyVisible})
+    const toggler = useSwitch({value: visible, initialValue: initiallyVisible})
     props.property = options.transitionProperties
     props.show = toggler.on
     props.hide = toggler.off

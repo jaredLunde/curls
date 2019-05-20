@@ -1,5 +1,5 @@
 import React from 'react'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import {useBox} from '../Box'
 import {useType} from '../Type'
 import propTypes from './propTypes'
@@ -25,7 +25,6 @@ const
     (props, ref) => {
       let nodeProps = Object.assign({__inputStyles: true}, props)
       nodeProps = useBox(useType(useStyles(props, options)))
-      nodeProps.as = 'textarea'
       nodeProps.ref = ref
 
       if (props.autoResize) {
@@ -35,7 +34,7 @@ const
         }
       }
 
-      return renderNode(nodeProps)
+      return createElement('textarea', nodeProps)
     }
   )
 

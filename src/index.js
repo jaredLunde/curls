@@ -8,9 +8,13 @@ export {
   getMediaQuery,
   getStyles,
   getTheme as mergeTheme,
+  loadImage,
+  loadImages,
   memoValue,
   memoTheme as memoThemeValue,
   nullIfFalsey,
+  portalize,
+  supportsCSS,
   toSize
 } from './utils'
 
@@ -22,7 +26,8 @@ export ThemeProvider, {
 } from './ThemeProvider'
 export ThemeConsumer, {useTheme} from './ThemeConsumer'
 
-export createComponent, {renderNode, renderNodeFast} from './createComponent'
+export createComponent from './createComponent'
+export createElement from './createElement'
 export Avatar from './Avatar'
 export {useBasicBox, useGridBox, useBox, Box, GridBox, BasicBox, FlexBox} from './Box'
 export Breakpoint, {useBreakpoint} from './Breakpoint'
@@ -37,8 +42,8 @@ export Fade, {useFade} from './Fade'
 export {useFlex} from './Flex'
 export Hero from './Hero'
 export Input from './Input'
-export Link, {NavLink, A} from './Link'
-export {useMediaQuery} from './MediaQuery'
+export Link, {NavLink, A, useLink} from './Link'
+export useMediaQuery from './useMediaQuery'
 export Modal, {ModalBox, useModal, ModalConsumer} from './Modal'
 export NavBar from './NavBar'
 export Overlay from './Overlay'
@@ -48,6 +53,7 @@ export Slide, {useSlide} from './Slide'
 export TextArea from './TextArea'
 export Transitionable, {useTransitionable, useTransitionableToggle, getDelay} from './Transitionable'
 export Type, {useType} from './Type'
+export useStyles from './useStyles'
 
 // emotion exports
-export {CacheProvider, css, ClassNames, Global, jsx} from '@emotion/core'
+export {CacheProvider, withEmotionCache, css, ClassNames, Global, keyframes, jsx} from '@emotion/core'

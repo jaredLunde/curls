@@ -1,5 +1,5 @@
 import React from 'react'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import {useBox} from '../Box'
 import {useType} from '../Type'
 import * as styles from './styles'
@@ -16,10 +16,9 @@ const
     (props, ref) => {
       props = Object.assign({__inputStyles: true}, props)
       props = useBox(useType(useStyles(props, options)))
-      props.as = 'input'
       props.type = props.type || 'text'
       props.ref = ref
-      return renderNode(props)
+      return createElement('input', props)
     }
   )
 

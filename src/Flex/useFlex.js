@@ -4,4 +4,4 @@ import useStyles from '../useStyles'
 
 
 const options = {name: 'flex', defaultTheme, styles}
-export const useFlex = props => useStyles(props, options)
+export default props => useStyles(props, options)

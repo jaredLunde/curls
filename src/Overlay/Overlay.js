@@ -8,7 +8,7 @@ import {pos, ov} from '../Box/styles'
 import {useBox} from '../Box'
 import Fade from '../Fade'
 import * as defaultTheme from './defaultTheme'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import boxPropTypes from '../Box/propTypes'
 import flexPropTypes from '../Flex/propTypes'
 import useStyles from '../useStyles'
@@ -53,7 +53,7 @@ const Overlay = React.forwardRef(
             typeof children === 'function'
               ? children({isVisible, show, hide, toggle})
               : children
-          const Component = renderNode(other, defaultCSS)
+          const Component = createElement('div', other, defaultCSS)
           return portal === false
             ? Component
             : <Portalize children={Component} entry={typeof portal === 'function' ? portal : void 0}/>

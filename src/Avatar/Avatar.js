@@ -3,7 +3,7 @@ import {css} from '@emotion/core'
 import {useBasicBox} from '../Box'
 import {pos} from '../Box/styles'
 import {flex, justify, align} from '../Flex/styles'
-import {renderNode} from '../createComponent'
+import createElement from '../createElement'
 import {supportsCSS, loadImage, objectWithoutProps} from '../utils'
 import * as styles from './styles'
 import propTypes from './propTypes'
@@ -62,10 +62,10 @@ const
         props.orientation = o[1]
       }
 
+      const imgProps = {src: props.src}
       props = useBasicBox(useStyles(props, options))
-      props.as = props.as || 'span'
+      Object.assign(imgProps, props)
 
-      const imgProps = Object.assign({}, props)
       if (imgProps !== void 0) {
         imgProps.innerRef = el => {
           imageRef !== void 0 && (imageRef.current = el)
@@ -81,7 +81,7 @@ const
 
       props = objectWithoutProps(props, withoutAlt)
       props.children = (props.children || getImage)(imgProps)
-      return renderNode(props, defaultCSS)
+      return createElement('span', props, defaultCSS)
     }
   )
 
