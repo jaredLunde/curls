@@ -17,10 +17,10 @@ const
       e.target.style.height = e.target.scrollHeight + 'px'
     }
   },
-  useTextArea = props => useBox(useType(useStyles(props, options))),
+  useTextArea = props => useStyles(Object.assign({__inputStyles: true}, props), options),
   TextArea = React.forwardRef(
     (props, ref) => {
-      let nodeProps = useTextArea(Object.assign({__inputStyles: true}, props))
+      let nodeProps = useBox(useType(useTextArea(props)))
       nodeProps.ref = ref
 
       if (props.autoResize) {

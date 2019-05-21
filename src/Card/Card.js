@@ -53,9 +53,10 @@ const
   `
   ]),
   options = {name: 'card', styles, defaultTheme},
+  useCard = props => useStyles(props, options),
   Card = React.forwardRef(
     (props, ref) => {
-      props = useBox(useStyles(props, options))
+      props = useBox(useCard(props))
       props.ref = ref
       return createElement('div', props, defaultCSS)
     }
@@ -75,4 +76,5 @@ if (__DEV__) {
   )
 }
 
+export {useCard}
 export default Card

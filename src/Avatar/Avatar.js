@@ -4,7 +4,7 @@ import {useBasicBox} from '../Box'
 import {pos} from '../Box/styles'
 import {flex, justify, align} from '../Flex/styles'
 import createElement from '../createElement'
-import {supportsCSS, loadImage, objectWithoutProps} from '../utils'
+import {supportsCSS, loadImage} from '../utils'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 import getImage from './getImage'
@@ -45,8 +45,7 @@ const
   ]),
   options = {name: 'avatar', styles, defaultTheme},
   supportsObjectFit = supportsCSS('object-fit'),
-  useAvatar = props => useBasicBox(useStyles(props, options)),
-  withoutAlt = {alt: 0},
+  useAvatar = props => useStyles(props, options),
   Avatar = React.forwardRef(
     (props, ref) => {
       let imageRef
@@ -61,7 +60,7 @@ const
       }
 
       const imgProps = {src: props.src}
-      props = useAvatar(props)
+      props = useBasicBox(useAvatar(props))
       Object.assign(imgProps, props)
 
       if (imgProps !== void 0) {
@@ -77,7 +76,7 @@ const
       else
         imgProps.innerRef = ref
 
-      props = objectWithoutProps(props, withoutAlt)
+      delete props.alt
       props.children = (props.children || getImage)(imgProps)
       return createElement('span', props, defaultCSS)
     }

@@ -9,11 +9,10 @@ import useStyles from '../useStyles'
 
 const
   options = {name: 'link', styles, defaultTheme},
-  useLink = props =>
-    useBox(useType(useStyles(Object.assign({__linkStyles: true}, props), options))),
+  useLink = props => useStyles(Object.assign({__linkStyles: true}, props), options),
   A = React.forwardRef(
     (props, ref) => {
-      props = useLink(props)
+      props = useBox(useType(useLink(props)))
       props.ref = ref
       return createElement('a', props)
     }

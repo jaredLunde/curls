@@ -16,10 +16,10 @@ const
     justify.center,
   ]),
   options = {name: 'button', styles, defaultTheme},
-  useButton = props => useBox(useStyles(props, options)),
+  useButton = props => useStyles(Object.assign({__buttonStyles: true}, props), options),
   Button = React.forwardRef(
     (props, ref) => {
-      props = useButton(Object.assign({__buttonStyles: true}, props))
+      props = useBox(useButton(props))
       props.ref = ref
       return createElement('button', props, defaultCSS)
     }

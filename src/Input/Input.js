@@ -9,10 +9,10 @@ import useStyles from '../useStyles'
 
 const
   options  = {name: 'input', defaultTheme, styles},
-  useInput = props => useBox(useType(useStyles(props, options))),
+  useInput = props => useStyles(Object.assign({__inputStyles: true}, props), options),
   Input = React.forwardRef(
     (props, ref) => {
-      props = useInput(Object.assign({__inputStyles: true}, props))
+      props = useBox(useType(useInput(props)))
       props.type = props.type || 'text'
       props.ref = ref
       return createElement('input', props)
