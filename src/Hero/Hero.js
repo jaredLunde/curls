@@ -29,7 +29,7 @@ const
         height = useWindowHeight(0)
       useEffect(() => setMounted('true'), emptyArr)
       const nodeProps = useBox(useStyles(props, options))
-      nodeProps.style = Object.assign({}, getStyle(height, props.trimHeight), props.style)
+      nodeProps.style = Object.assign(getStyle(height, props.trimHeight), props.style)
       nodeProps.ref = ref
       nodeProps.key = mounted
       return createElement('div', nodeProps, defaultCSS)

@@ -10,10 +10,9 @@ const
   withoutStyles = memoize([Map], styles => Object.assign({kind: 0}, styles))
 
 const assignOrdered = (defaultProps, kinds, props) => {
-  let i = 0, output
+  let i = 0, output = {}
 
   if (typeof defaultProps === 'object' && defaultProps !== null) {
-    output = {}
     const keys = Object.keys(defaultProps)
 
     for (; i < keys.length; i++) {
@@ -24,7 +23,6 @@ const assignOrdered = (defaultProps, kinds, props) => {
   }
 
   if (kinds !== void 0) {
-    output = output || {}
     const keys = Object.keys(kinds)
 
     for (i = 0; i < keys.length; i++)
@@ -32,7 +30,7 @@ const assignOrdered = (defaultProps, kinds, props) => {
         output[keys[i]] = kinds[keys[i]]
   }
 
-  return output === void 0 ? props : Object.assign(output, props)
+  return Object.assign(output, props)
 }
 
 export default (props, options = emptyObj) => {
@@ -53,11 +51,9 @@ export default (props, options = emptyObj) => {
     kind = objectWithoutPropsMemo(kind, withoutCssProp)
   }
 
-  props = assignOrdered(theme.defaultProps, kind, props)
-
   let
-    derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0,
-    nextProps = objectWithoutProps(props, withoutStyles(styles))
+    nextProps = assignOrdered(theme.defaultProps, kind, props),
+    derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, nextProps) : void 0
 
   if (kindCss !== void 0) {
     if (derivedStyles === void 0)
@@ -67,6 +63,8 @@ export default (props, options = emptyObj) => {
   }
 
   if (derivedStyles !== void 0 && derivedStyles.length > 0) {
+    nextProps = objectWithoutProps(nextProps, withoutStyles(styles))
+
     if (Array.isArray(nextProps.css) === true)
       nextProps.css.push(derivedStyles)
     else

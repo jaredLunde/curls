@@ -3,7 +3,7 @@ import getBreakpointOrder from './getBreakpointOrder'
 
 
 const ws = /\s+/
-const getCSS = (fn, value, theme, props) =>
+const getCss = (fn, value, theme, props) =>
   typeof fn === 'object' && fn.styles !== void 0
     ? value === false || value === null
       ? void 0
@@ -18,11 +18,13 @@ const maybeAddStyles = (css, maybeCss) => {
 }
 
 export default (styles, theme, props) => {
+  let propKeys = Object.keys(props)
+  if (propKeys.length === 0) return void 0
+
   let
-    i = 0,
     css = [],
     mediaQueries,
-    propKeys = Object.keys(props)
+    i = 0
 
   for (; i < propKeys.length; i++) {
     const
@@ -41,7 +43,7 @@ export default (styles, theme, props) => {
 
       if (propVal === null || propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
         // these are just regular values, no media queries
-        maybeAddStyles(css, getCSS(getter, propVal, theme, props))
+        maybeAddStyles(css, getCss(getter, propVal, theme, props))
       }
       else {
         // this parses values with media queries
@@ -61,7 +63,7 @@ export default (styles, theme, props) => {
 
           // empty values are treated as bools
           value = value.length === 0 ? true : value
-          let cssValue = getCSS(getter, value, theme, props)
+          let cssValue = getCss(getter, value, theme, props)
 
           if (cssValue !== null && cssValue !== void 0) {
             if (breakpoint === void 0 || breakpoint.length === 0)
