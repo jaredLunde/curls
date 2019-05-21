@@ -4,8 +4,6 @@ import createElement from '../createElement'
 import {useBasicBox} from '../Box'
 import {pos} from '../Box/styles'
 import * as defaultTheme from './defaultTheme'
-import propTypes from '../Type/propTypes'
-import boxPropTypes from '../Box/propTypes'
 import useStyles from '../useStyles'
 
 
@@ -26,8 +24,9 @@ const
   )
 
 if (__DEV__) {
+  const boxPropTypes = require('../Box/propTypes').default
   Divider.displayName = 'Divider'
-  Divider.propTypes  = Object.assign({}, propTypes, boxPropTypes)
+  Divider.propTypes  = boxPropTypes
 }
 
 export default Divider

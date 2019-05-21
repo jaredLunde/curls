@@ -1,5 +1,4 @@
 import React from 'react'
-import propTypes from './propTypes'
 import * as styles from './styles'
 import {useTransitionableToggle} from '../Transitionable'
 
@@ -15,6 +14,7 @@ const
   Fade = props => props.children(useFade(props))
 
 if (__DEV__) {
+  const propTypes = require('./propTypes').default
   Fade.displayName = 'Fade'
   Fade.propTypes = propTypes
 }

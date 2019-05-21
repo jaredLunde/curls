@@ -7,8 +7,6 @@ import {flex, column, align, justify} from '../Flex/styles'
 import {pos, ov} from '../Box/styles'
 import createElement from '../createElement'
 import {getStyle} from './utils'
-import boxPropTypes from '../Box/propTypes'
-import flexPropTypes from '../Flex/propTypes'
 import useStyles from '../useStyles'
 
 
@@ -39,6 +37,9 @@ const
   )
 
 if (__DEV__) {
+  const
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   Hero.displayName = 'Hero'
   Hero.propTypes = Object.assign({}, boxPropTypes, flexPropTypes)
 }

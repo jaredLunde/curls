@@ -3,8 +3,6 @@ import {css} from '@emotion/core'
 import {useGridBox} from '../Box'
 import {pos} from '../Box/styles'
 import createElement from '../createElement'
-import flexPropTypes from '../Flex/propTypes'
-import propTypes from '../Box/propTypes'
 import useStyles from '../useStyles'
 
 
@@ -25,8 +23,11 @@ const defaultCSS = css([
   )
 
 if (__DEV__) {
+  const
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   Col.displayName = 'Col'
-  Col.propTypes = Object.assign({}, flexPropTypes, propTypes)
+  Col.propTypes = Object.assign({}, flexPropTypes, boxPropTypes)
 }
 
 export default Col

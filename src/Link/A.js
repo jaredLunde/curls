@@ -3,9 +3,6 @@ import {useType} from '../Type'
 import createElement from '../createElement'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
-import typePropTypes from '../Type/propTypes'
-import boxPropTypes from '../Box/propTypes'
-import flexPropTypes from '../Flex/propTypes'
 import {useBox} from '../Box'
 import useStyles from '../useStyles'
 
@@ -23,6 +20,10 @@ const
   )
 
 if (__DEV__) {
+  const
+    typePropTypes = require('../Type/propTypes').default,
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   A.displayName = 'A'
   A.propTypes = Object.assign({}, boxPropTypes, typePropTypes, flexPropTypes)
 }

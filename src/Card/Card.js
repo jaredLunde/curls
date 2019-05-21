@@ -5,10 +5,7 @@ import {pos} from '../Box/styles'
 import {flex, column} from '../Flex/styles'
 import createElement from '../createElement'
 import * as defaultTheme from './defaultTheme'
-import propTypes from './propTypes'
 import * as styles from './styles'
-import boxPropTypes from '../Box/propTypes'
-import flexPropTypes from '../Flex/propTypes'
 import useStyles from '../useStyles'
 
 
@@ -55,17 +52,20 @@ const
     }
   `
   ]),
-  options = {name: 'card', styles, defaultTheme}
-
-const Card = React.forwardRef(
-  (props, ref) => {
-    props = useBox(useStyles(props, options))
-    props.ref = ref
-    return createElement('div', props, defaultCSS)
-  }
-)
+  options = {name: 'card', styles, defaultTheme},
+  Card = React.forwardRef(
+    (props, ref) => {
+      props = useBox(useStyles(props, options))
+      props.ref = ref
+      return createElement('div', props, defaultCSS)
+    }
+  )
 
 if (__DEV__) {
+  const
+    propTypes = require('./propTypes').default,
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   Card.displayName = 'Card'
   Card.propTypes = Object.assign(
     {},

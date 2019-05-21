@@ -2,12 +2,8 @@ import React from 'react'
 import createElement from '../createElement'
 import {useBox} from '../Box'
 import {useType} from '../Type'
-import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
-import boxPropTypes from '../Box/propTypes'
-import flexPropTypes from '../Flex/propTypes'
-import typePropTypes from '../Type/propTypes'
 import useStyles from '../useStyles'
 
 
@@ -39,6 +35,11 @@ const
   )
 
 if (__DEV__) {
+  const
+    propTypes = require('./propTypes').default,
+    typePropTypes = require('../Type/propTypes').default,
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   TextArea.displayName = 'TextArea'
   TextArea.propTypes = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes, propTypes)
 }

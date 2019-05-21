@@ -1,4 +1,3 @@
-import propTypes from './propTypes'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
 import createComponent from '../createComponent'
@@ -33,6 +32,7 @@ export const
   }
 
 if (__DEV__) {
+  const propTypes = require('./propTypes').default
   Transitionable.displayName = 'Transitionable'
   Transitionable.propTypes = propTypes
 }

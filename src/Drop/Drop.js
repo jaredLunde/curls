@@ -1,6 +1,5 @@
 import React from 'react'
 import * as styles from './styles'
-import propTypes from '../Slide/propTypes'
 import * as defaultTheme from '../Slide/defaultTheme'
 import {useTransitionableToggle} from '../Transitionable'
 
@@ -11,6 +10,7 @@ const
   Drop = props => props.children(useDrop(props))
 
 if (__DEV__) {
+  const propTypes = require('../Slide/propTypes').default
   Drop.displayName = 'Drop'
   Drop.propTypes = propTypes
 }

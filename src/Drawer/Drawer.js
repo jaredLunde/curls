@@ -5,7 +5,6 @@ import {portalize, withChildren} from '../utils'
 import {MAX_Z_INDEX} from '../browser'
 import {useBox} from '../Box'
 import Slide from '../Slide'
-import slidePropTypes from '../Slide/propTypes'
 import createElement from '../createElement'
 import {d, pos, ov} from '../Box/styles'
 import * as styles from './styles'
@@ -52,27 +51,26 @@ const
 
 export const
   DrawerConsumer = Consumer,
-  useDrawer = () => useContext(DrawerContext)
-
-export const DrawerBox = React.forwardRef(
-  ({children, portal, ...props}, ref) => {
-    props = useBox(useStyles(props, options))
-    const transition = useDrawer()
-    props.children = typeof children === 'function' ? children(transition) : children
-    props.css = props.css ? [transition.css, props.css] : transition.css
-    props.ref = ref
-    return portalize(createElement('div', props, defaultCSS), portal)
-  }
-)
-
-const Drawer = props => (props.transition || Slide)(
-  withChildren(
-    props,
-    transition => <Provider value={transition} children={props.children(transition)}/>
+  useDrawer = () => useContext(DrawerContext),
+  DrawerBox = React.forwardRef(
+    ({children, portal, ...props}, ref) => {
+      props = useBox(useStyles(props, options))
+      const transition = useDrawer()
+      props.children = typeof children === 'function' ? children(transition) : children
+      props.css = props.css ? [transition.css, props.css] : transition.css
+      props.ref = ref
+      return portalize(createElement('div', props, defaultCSS), portal)
+    }
+  ),
+  Drawer = props => (props.transition || Slide)(
+    withChildren(
+      props,
+      transition => <Provider value={transition} children={props.children(transition)}/>
+    )
   )
-)
 
 if (__DEV__) {
+  const slidePropTypes = require('../Slide/propTypes').default
   Drawer.displayName = 'Drawer'
   Drawer.propTypes = slidePropTypes
 }

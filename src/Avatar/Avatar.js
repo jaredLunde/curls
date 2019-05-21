@@ -6,11 +6,8 @@ import {flex, justify, align} from '../Flex/styles'
 import createElement from '../createElement'
 import {supportsCSS, loadImage, objectWithoutProps} from '../utils'
 import * as styles from './styles'
-import propTypes from './propTypes'
 import * as defaultTheme from './defaultTheme'
 import getImage from './getImage'
-import boxPropTypes from '../Box/propTypes'
-import flexPropTypes from '../Flex/propTypes'
 import useStyles from '../useStyles'
 
 
@@ -48,6 +45,7 @@ const
   ]),
   options = {name: 'avatar', styles, defaultTheme},
   supportsObjectFit = supportsCSS('object-fit'),
+  useAvatar = props => useBasicBox(useStyles(props, options)),
   withoutAlt = {alt: 0},
   Avatar = React.forwardRef(
     (props, ref) => {
@@ -63,7 +61,7 @@ const
       }
 
       const imgProps = {src: props.src}
-      props = useBasicBox(useStyles(props, options))
+      props = useAvatar(props)
       Object.assign(imgProps, props)
 
       if (imgProps !== void 0) {
@@ -86,8 +84,13 @@ const
   )
 
 if (__DEV__) {
+  const
+    propTypes = require('./propTypes').default,
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   Avatar.displayName = 'Avatar'
   Avatar.propTypes = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 }
 
+export {useAvatar}
 export default Avatar
