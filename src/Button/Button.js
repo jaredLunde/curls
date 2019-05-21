@@ -19,8 +19,7 @@ const
   useButton = props => useBox(useStyles(props, options)),
   Button = React.forwardRef(
     (props, ref) => {
-      props = Object.assign({__buttonStyles: true}, props)
-      props = useButton(props)
+      props = useButton(Object.assign({__buttonStyles: true}, props))
       props.ref = ref
       return createElement('button', props, defaultCSS)
     }

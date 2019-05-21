@@ -12,8 +12,7 @@ const
   useInput = props => useBox(useType(useStyles(props, options))),
   Input = React.forwardRef(
     (props, ref) => {
-      props = Object.assign({__inputStyles: true}, props)
-      props = useInput()
+      props = useInput(Object.assign({__inputStyles: true}, props))
       props.type = props.type || 'text'
       props.ref = ref
       return createElement('input', props)
