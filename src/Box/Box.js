@@ -44,7 +44,6 @@ if (__DEV__) {
   GridBox.propTypes = Object.assign({}, flexPropTypes, propTypes)
   Box.propTypes = Object.assign({}, flexPropTypes, propTypes)
   FlexBox.propTypes = Box.propTypes
-
 }
 
 export default Box

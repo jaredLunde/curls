@@ -18,10 +18,7 @@ const assignOrdered = (defaultProps, kinds, props) => {
 
     for (; i < keys.length; i++) {
       const key = keys[i]
-      if (
-        (kinds === void 0 || kinds[key] === void 0)
-        || (props === void 0 || props[key] === void 0)
-      )
+      if (props[key] === void 0 && (kinds === void 0 || kinds[key] === void 0))
         output[key] = defaultProps[key]
     }
   }
@@ -31,7 +28,7 @@ const assignOrdered = (defaultProps, kinds, props) => {
     const keys = Object.keys(kinds)
 
     for (i = 0; i < keys.length; i++)
-      if (props === void 0 || props[keys[i]] === void 0)
+      if (props[keys[i]] === void 0)
         output[keys[i]] = kinds[keys[i]]
   }
 
@@ -57,8 +54,8 @@ export default (props, options = emptyObj) => {
   props = assignOrdered(theme.defaultProps, kind, props)
 
   const
-    nextProps = objectWithoutProps(props, withoutStyles(styles)),
-    derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0
+    derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0,
+    nextProps = objectWithoutProps(props, withoutStyles(styles))
 
   if (kindCss !== void 0)
     nextProps.css =  [nextProps.css, kindCss]
