@@ -35,8 +35,10 @@ const assignOrdered = (defaultProps, kinds, props) => {
   return output === void 0 ? props : Object.assign(output, props)
 }
 
-const maybeCreateCssArray = (cssProp, css) =>
-  typeof cssProp === 'object' && cssProp !== null ? [cssProp, css] : css
+const maybeUnshiftCssArray = (cssProp, css) => {
+  if (typeof cssProp === 'object' && cssProp !== null) css.unshift(cssProp)
+  return css
+}
 
 const maybeAddCssProp = (props, nextProps, css) => {
   if (css !== void 0) {
@@ -46,7 +48,7 @@ const maybeAddCssProp = (props, nextProps, css) => {
       // If props/nextProps match, we want to make sure we're not mutating the input props.
       // useStyles() is meant to be immutable.
       if (nextProps === props) nextProps = Object.assign({}, props)
-      nextProps.css = maybeCreateCssArray(nextProps.css, css)
+      nextProps.css = maybeUnshiftCssArray(nextProps.css, css)
     }
   }
 
@@ -89,7 +91,7 @@ export default (props, options = emptyObj) => {
     if (Array.isArray(nextProps.css) === true)
       nextProps.css.push.apply(nextProps.css, derivedStyles)
     else
-      nextProps.css = maybeCreateCssArray(nextProps.css, derivedStyles)
+      nextProps.css = maybeUnshiftCssArray(nextProps.css, derivedStyles)
   }
 
   return nextProps === props ? Object.assign({}, props) : nextProps
