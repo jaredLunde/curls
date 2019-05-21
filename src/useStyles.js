@@ -42,13 +42,23 @@ const maybeUnshiftCssArray = (cssProp, css) => {
 
 const maybeAddCssProp = (props, nextProps, css) => {
   if (css !== void 0) {
-    if (Array.isArray(nextProps.css) === true)
-      nextProps.css.push(css)
+    // clones defaultStyles/kindCss if they are arrays to prevent runaway mutations
+    const isCssArray = Array.isArray(css)
+
+    if (Array.isArray(nextProps.css) === true) {
+      if (isCssArray === true)
+        nextProps.css.push.apply(nextProps.css, css)
+      else
+        nextProps.css.push(css)
+    }
     else {
       // If props/nextProps match, we want to make sure we're not mutating the input props.
       // useStyles() is meant to be immutable.
       if (nextProps === props) nextProps = Object.assign({}, props)
-      nextProps.css = maybeUnshiftCssArray(nextProps.css, css)
+      nextProps.css = maybeUnshiftCssArray(
+        nextProps.css,
+        isCssArray === true ? css.slice(0) : [css]
+      )
     }
   }
 
