@@ -10,9 +10,10 @@ const
   withoutStyles = memoize([Map], styles => Object.assign({kind: 0}, styles))
 
 const assignOrdered = (defaultProps, kinds, props) => {
-  let i = 0, output = {}
+  let i = 0, output
 
   if (typeof defaultProps === 'object' && defaultProps !== null) {
+    output = {}
     const keys = Object.keys(defaultProps)
 
     for (; i < keys.length; i++) {
@@ -23,6 +24,7 @@ const assignOrdered = (defaultProps, kinds, props) => {
   }
 
   if (kinds !== void 0) {
+    output = output || {}
     const keys = Object.keys(kinds)
 
     for (i = 0; i < keys.length; i++)
@@ -30,7 +32,7 @@ const assignOrdered = (defaultProps, kinds, props) => {
         output[keys[i]] = kinds[keys[i]]
   }
 
-  return Object.assign(output, props)
+  return output === void 0 ? props : Object.assign(output, props)
 }
 
 export default (props, options = emptyObj) => {
@@ -42,7 +44,7 @@ export default (props, options = emptyObj) => {
 
   let
     theme = useTheme(options),
-    styles = options.styles,
+    {styles, defaultStyles} = options,
     kind = getKind(theme.kinds, props.kind),
     kindCss
 
@@ -62,17 +64,22 @@ export default (props, options = emptyObj) => {
       derivedStyles.unshift(kindCss)
   }
 
+  if (defaultStyles !== void 0) {
+    if (derivedStyles === void 0)
+      derivedStyles = [defaultStyles]
+    else
+      derivedStyles.unshift(defaultStyles)
+  }
+
   if (derivedStyles !== void 0 && derivedStyles.length > 0) {
     nextProps = objectWithoutProps(nextProps, withoutStyles(styles))
 
     if (Array.isArray(nextProps.css) === true)
-      nextProps.css.push(derivedStyles)
+      nextProps.css.push.apply(nextProps.css, derivedStyles)
     else
       nextProps.css =
-        typeof nextProps.css === 'object'
-          ? [nextProps.css, derivedStyles]
-          : derivedStyles
+        typeof nextProps.css === 'object' ? [nextProps.css, derivedStyles] : derivedStyles
   }
 
-  return nextProps
+  return nextProps === props ? Object.assign({}, props) : nextProps
 }

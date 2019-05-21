@@ -8,19 +8,20 @@ import useStyles from '../useStyles'
 
 
 const
-  defaultCSS = css([
+  defaultStyles = css([
     'width: 100%;',
     pos.relative,
     flex,
     row.row,
     wrap.wrap
   ]),
-  options = {name: 'row'},
+  options = {name: 'row', defaultStyles},
+  useRow = props => useStyles(props, options),
   Row = React.forwardRef(
     (props, ref) => {
-      props = useBox(useStyles(props, options))
+      props = useBox(useRow(props))
       props.ref = ref
-      return createElement('div', props, defaultCSS)
+      return createElement('div', props)
     }
   )
 
@@ -32,4 +33,5 @@ if (__DEV__) {
   Row.propTypes = Object.assign({}, boxPropTypes, flexPropTypes)
 }
 
+export {useRow}
 export default Row

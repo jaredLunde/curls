@@ -1,9 +1,8 @@
 import {getHoverQuery} from '../utils'
 
 
-export function getHoverClass (theme, props) {
+export const getHoverClass = (theme, props) => {
   // adds css classes for hover and active states
-  const color = props.color
   const hoverStyle = `
     &:hover {
       opacity: 0.8;
@@ -19,9 +18,7 @@ export function getHoverClass (theme, props) {
   return getHoverQuery(hoverStyle, noneStyle)
 }
 
-export function getActiveClass (theme, props) {
-  return
-}
+export const getActiveClass = (theme, props) => {}
 
 export const defaultProps = {
   color: 'blue'

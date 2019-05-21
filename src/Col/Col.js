@@ -6,19 +6,20 @@ import createElement from '../createElement'
 import useStyles from '../useStyles'
 
 
-const defaultCSS = css([
+const defaultStyles = css([
     'min-width: 0;',
     'flex-grow: 1;',
     pos.relative
   ]),
-  options = {name: 'col'},
+  options = {name: 'col', defaultStyles},
+  useCol = props => useStyles(props, options),
   Col = React.forwardRef(
     (props, ref) => {
-      props = useStyles(props, options)
+      props = useCol(props)
       props.useFlex = true
       props = useGridBox(props)
       props.ref = ref
-      return createElement('div', props, defaultCSS)
+      return createElement('div', props)
     }
   )
 
@@ -30,4 +31,5 @@ if (__DEV__) {
   Col.propTypes = Object.assign({}, flexPropTypes, boxPropTypes)
 }
 
+export {useCol}
 export default Col

@@ -13,8 +13,12 @@ const getCss = (fn, value, theme, props) =>
       : fn[value]
 
 const maybeAddStyles = (css, maybeCss) => {
-  if (maybeCss !== void 0 && maybeCss !== null)
-    css.push(maybeCss)
+  if (maybeCss !== void 0 && maybeCss !== null) {
+    if (Array.isArray(maybeCss) === true)
+      css.push.apply(css, maybeCss)
+    else
+      css.push(maybeCss)
+  }
 }
 
 export default (styles, theme, props) => {

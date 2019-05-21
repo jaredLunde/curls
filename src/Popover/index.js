@@ -1,1 +1,1 @@
-export default, {PopoverBox, usePopoverContext, PopoverConsumer} from './Popover'
+export default, {usePopoverBox, PopoverBox, usePopoverContext, PopoverConsumer} from './Popover'

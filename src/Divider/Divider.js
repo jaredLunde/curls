@@ -8,18 +8,19 @@ import useStyles from '../useStyles'
 
 
 const
-  defaultCSS = css([
+  defaultStyles = css([
     'width: 100%;',
     'min-height: 1px;',
     'clear: both;',
     pos.relative
   ]),
-  options = {name: 'divider', defaultTheme},
+  options = {name: 'divider', defaultStyles, defaultTheme},
+  useDivider = props => useStyles(props, options),
   Divider = React.forwardRef(
     (props, ref) => {
-      props = useBasicBox(useStyles(props, options))
+      props = useBasicBox(useDivider(props))
       props.ref = ref
-      return createElement('div', props, defaultCSS)
+      return createElement('div', props)
     }
   )
 
@@ -29,4 +30,5 @@ if (__DEV__) {
   Divider.propTypes  = boxPropTypes
 }
 
+export {useDivider}
 export default Divider

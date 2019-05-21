@@ -1,1 +1,1 @@
-export default from './Col'
+export default, {useCol} from './Col'

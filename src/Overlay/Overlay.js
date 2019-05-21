@@ -20,7 +20,7 @@ import useStyles from '../useStyles'
 </Overlay>
 **/
 const
-  defaultCSS = css([
+  defaultStyles = css([
     baseIsNotVisible,
     flex,
     align.center,
@@ -36,7 +36,8 @@ const
     z-index: 1000;
     `
   ]),
-  options = {name: 'overlay', defaultTheme},
+  options = {name: 'overlay', defaultStyles, defaultTheme},
+  useOverlay = props => useStyles(props, options),
   Overlay = React.forwardRef(
     ({transition = Fade, portal = false, children, ...props}, ref) => {
       return React.createElement(
@@ -44,13 +45,13 @@ const
         withChildren(
           props,
           ({isVisible, show, hide, toggle, ...other}) => {
-            other = useBox(useStyles(other, options))
+            other = useBox(useOverlay(other))
             other.ref = ref
             other.children =
               typeof children === 'function'
                 ? children({isVisible, show, hide, toggle})
                 : children
-            const Component = createElement('div', other, defaultCSS)
+            const Component = createElement('div', other)
             return portal === false
               ? Component
               : <Portalize children={Component} entry={typeof portal === 'function' ? portal : void 0}/>
@@ -68,4 +69,5 @@ if (__DEV__) {
   Overlay.propTypes = Object.assign({}, boxPropTypes, flexPropTypes)
 }
 
+export {useOverlay}
 export default Overlay

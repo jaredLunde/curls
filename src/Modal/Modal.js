@@ -33,28 +33,29 @@ import {Modal, ModalBox, ModalConsumer, Overlay} from 'curls'
 </Modal>
 **/
 const
-  defaultCSS = css`
+  defaultStyles = css`
     position: absolute;
     margin: auto;
     left: 0;
     right: 0;
     z-index: ${MAX_Z_INDEX};
   `,
-  options = {name: 'modal', defaultTheme},
+  options = {name: 'modal', defaultStyles, defaultTheme},
   ModalContext = React.createContext(emptyObj),
   {Consumer, Provider} = ModalContext
 
 export const
   ModalConsumer = Consumer,
   useModalContext = () => useContext(ModalContext),
+  useModalBox = props => useStyles(props, options),
   ModalBox = React.forwardRef(
     ({children, portal, withOverlay = false, ...props}, ref) => {
-      props = useBox(useStyles(props, options))
+      props = useBox(useModalBox(props))
       const transition = useModalContext()
       props.children = typeof children === 'function' ? children(transition) : children
       props.css = props.css ? [transition.css, props.css] : transition.css
       props.ref = ref
-      let Component = createElement('div', props, defaultCSS)
+      let Component = createElement('div', props)
       if (withOverlay === true)
         Component = <Overlay
           visible={transition.isVisible}
@@ -73,6 +74,7 @@ export const
 if (__DEV__) {
   const slidePropTypes = require('../Slide/propTypes').default
   Modal.displayName = 'Modal'
+  ModalBox.displayName = 'ModalBox'
   Modal.propTypes = slidePropTypes
 }
 

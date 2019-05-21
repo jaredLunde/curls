@@ -8,7 +8,7 @@ import useStyles from '../useStyles'
 
 
 const
-  options  = {name: 'input', defaultTheme, styles},
+  options  = {name: 'input', styles, defaultTheme},
   useInput = props => useStyles(Object.assign({__inputStyles: true}, props), options),
   Input = React.forwardRef(
     (props, ref) => {

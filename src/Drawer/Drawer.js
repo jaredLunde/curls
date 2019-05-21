@@ -39,27 +39,28 @@ import useStyles from '../useStyles'
 </Drawer>
 */
 const
-  defaultCSS = css`
+  defaultStyles = css`
     ${d.block};
     ${pos.fixed};
     ${ov.autoY};
     z-index: ${MAX_Z_INDEX};
   `,
-  options = {name: 'drawer', styles},
+  options = {name: 'drawer', styles, defaultStyles},
   DrawerContext = React.createContext(emptyObj),
   {Consumer, Provider} = DrawerContext
 
 export const
   DrawerConsumer = Consumer,
   useDrawerContext = () => useContext(DrawerContext),
+  useDrawerBox = props => useStyles(props, options),
   DrawerBox = React.forwardRef(
     ({children, portal, ...props}, ref) => {
-      props = useBox(useStyles(props, options))
+      props = useBox(useDrawerBox(props))
       const transition = useDrawerContext()
       props.children = typeof children === 'function' ? children(transition) : children
       props.css = props.css ? [transition.css, props.css] : transition.css
       props.ref = ref
-      return portalize(createElement('div', props, defaultCSS), portal)
+      return portalize(createElement('div', props), portal)
     }
   ),
   Drawer = props => (props.transition || Slide)(
@@ -72,6 +73,7 @@ export const
 if (__DEV__) {
   const slidePropTypes = require('../Slide/propTypes').default
   Drawer.displayName = 'Drawer'
+  DrawerBox.displayName = 'DrawerBox'
   Drawer.propTypes = slidePropTypes
 }
 

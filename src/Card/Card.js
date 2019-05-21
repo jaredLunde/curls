@@ -10,7 +10,7 @@ import useStyles from '../useStyles'
 
 
 const
-  defaultCSS = css([
+  defaultStyles = css([
     flex,
     column.column,
     pos.relative,
@@ -52,13 +52,13 @@ const
     }
   `
   ]),
-  options = {name: 'card', styles, defaultTheme},
+  options = {name: 'card', styles, defaultStyles, defaultTheme},
   useCard = props => useStyles(props, options),
   Card = React.forwardRef(
     (props, ref) => {
       props = useBox(useCard(props))
       props.ref = ref
-      return createElement('div', props, defaultCSS)
+      return createElement('div', props)
     }
   )
 

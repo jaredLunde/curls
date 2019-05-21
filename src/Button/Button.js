@@ -9,19 +9,19 @@ import useStyles from '../useStyles'
 
 
 const
-  defaultCSS = css([
+  defaultStyles = css([
     flex,
     row.row,
     align.center,
     justify.center,
   ]),
-  options = {name: 'button', styles, defaultTheme},
+  options = {name: 'button', styles, defaultStyles, defaultTheme},
   useButton = props => useStyles(Object.assign({__buttonStyles: true}, props), options),
   Button = React.forwardRef(
     (props, ref) => {
       props = useBox(useButton(props))
       props.ref = ref
-      return createElement('button', props, defaultCSS)
+      return createElement('button', props)
     }
   )
 

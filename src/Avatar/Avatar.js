@@ -35,7 +35,7 @@ const useImageOrientation = () => {
 }
 
 const
-  defaultCSS = css([
+  defaultStyles = css([
     flex,
     pos.relative,
     justify.center,
@@ -43,7 +43,7 @@ const
     'overflow: hidden;',
     '& img {object-fit: cover;}'
   ]),
-  options = {name: 'avatar', styles, defaultTheme},
+  options = {name: 'avatar', styles, defaultStyles, defaultTheme},
   supportsObjectFit = supportsCSS('object-fit'),
   useAvatar = props => useStyles(props, options),
   Avatar = React.forwardRef(
@@ -78,7 +78,7 @@ const
 
       delete props.alt
       props.children = (props.children || getImage)(imgProps)
-      return createElement('span', props, defaultCSS)
+      return createElement('span', props)
     }
   )
 

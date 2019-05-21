@@ -1,1 +1,1 @@
-export default from './Hero'
+export default, {useHero} from './Hero'

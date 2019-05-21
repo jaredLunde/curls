@@ -1,1 +1,1 @@
-export default, {ModalBox, useModalContext, ModalConsumer} from './Modal'
+export default, {ModalBox, useModalBox, useModalContext, ModalConsumer} from './Modal'

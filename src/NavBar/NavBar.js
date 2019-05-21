@@ -7,19 +7,20 @@ import {useBox} from '../Box/Box'
 
 
 const
-  defaultCSS = css([
+  defaultStyles = css([
     flex,
     row.row,
     wrap.no,
     align.center,
     justify.start
   ]),
-  options = {name: 'navBar'},
+  options = {name: 'navBar', defaultStyles},
+  useNavBar = props => useStyles(props, options),
   NavBar = React.forwardRef(
     (props, ref) => {
-      props = useBox(useStyles(props, options))
+      props = useBox(useNavBar(props))
       props.ref = ref
-      return createElement('nav', props, defaultCSS)
+      return createElement('nav', props)
     }
   )
 
@@ -31,4 +32,5 @@ if (__DEV__) {
   NavBar.propTypes = Object.assign({}, boxPropTypes, flexPropTypes)
 }
 
+export {useNavBar}
 export default NavBar

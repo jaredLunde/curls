@@ -43,16 +43,17 @@ export const
   PopoverConsumer = Consumer,
   usePopoverContext = () => useContext(PopoverContext)
 const
-  defaultCSS = css([flex, pos.fixed, `z-index: 1001;`]),
-  options = {name: 'popover', defaultTheme},
-  withoutPortal = {portal: 0, children: 0},
+  defaultStyles = css([flex, pos.fixed, `z-index: 1001;`]),
+  options = {name: 'popover', defaultStyles, defaultTheme},
+  usePopoverBox = props => useStyles(props, options),
   withoutPop = {popoverBoxRef: 0, style: 0}
 
 export const PopoverBox = React.forwardRef(
   (props, ref) => {
     const {children, portal} = props
-    props = objectWithoutProps(props, withoutPortal)
-    props = useBox(useStyles(props, options))
+    props = useBox(usePopoverBox(props))
+    delete props.portal
+    delete props.children
     const pop = usePopoverContext()
     props.children = typeof children === 'function'
       ? children(objectWithoutProps(pop, withoutPop))
@@ -66,7 +67,7 @@ export const PopoverBox = React.forwardRef(
         innerRef.current = el
       pop.popoverBoxRef.current = el
     }
-    return portalize(createElement('div', props, defaultCSS), portal)
+    return portalize(createElement('div', props), portal)
   }
 )
 
@@ -287,4 +288,10 @@ const Popover = React.forwardRef(
   }
 )
 
+if (__DEV__) {
+  Popover.displayName = 'Popover'
+  PopoverBox.displayName = 'PopoverBox'
+}
+
+export {usePopoverBox}
 export default Popover
