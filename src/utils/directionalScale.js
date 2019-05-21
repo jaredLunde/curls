@@ -65,6 +65,6 @@ export default (
     for (j = 0; j < direction.length; j++)
       CSS.push(css`${prefix.replace('{XYZ}', direction[j])}: ${toSize(size, unit)};`)
   }
-  // return css`${CSS}`
+
   return CSS.length === 1 ? CSS[0] : CSS
 }

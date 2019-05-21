@@ -6,21 +6,14 @@ const getColumnWidth = memoize(
   [WeakMap, Map, Map, Map],
   (theme, size, cols, useFlex) => {
     if (cols === false) return null
-    const numColumns = isNaN(theme.columns) === true ? theme.columns[size] : theme.columns
-    let x, indexOfSlash = cols.indexOf('/')
-
-    if (indexOfSlash > -1) {
-      x = parseInt(cols.substring(0, indexOfSlash))
-      cols = cols.substring(indexOfSlash + 1)
-    }
-    else {
-      x = parseInt(cols)
-    }
+    const
+      numColumns = isNaN(theme.columns) === true ? theme.columns[size] : theme.columns,
+      indexOfSlash = cols.indexOf('/'),
+      x = parseInt(indexOfSlash > -1 ? cols.substring(0, indexOfSlash) : cols)
 
     if (__DEV__) {
-      let numX = Array.isArray(cols) && cols[1]
-
-      if (numX && parseInt(numX) !== numColumns)
+      const numX = indexOfSlash > -1 && cols.substring(indexOfSlash + 1)
+      if (numX !== false && parseInt(numX) !== numColumns)
         console.warn(`Column count for size '${size}' is ${numColumns}, not ${numX}`)
 
       if (x < 1 || x > numColumns)

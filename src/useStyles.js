@@ -35,6 +35,24 @@ const assignOrdered = (defaultProps, kinds, props) => {
   return output === void 0 ? props : Object.assign(output, props)
 }
 
+const maybeCreateCssArray = (cssProp, css) =>
+  typeof cssProp === 'object' && cssProp !== null ? [cssProp, css] : css
+
+const maybeAddCssProp = (props, nextProps, css) => {
+  if (css !== void 0) {
+    if (Array.isArray(nextProps.css) === true)
+      nextProps.css.push(css)
+    else {
+      // If props/nextProps match, we want to make sure we're not mutating the input props.
+      // useStyles() is meant to be immutable.
+      if (nextProps === props) nextProps = Object.assign({}, props)
+      nextProps.css = maybeCreateCssArray(nextProps.css, css)
+    }
+  }
+
+  return nextProps
+}
+
 export default (props, options = emptyObj) => {
   if (__DEV__)
     if (options.name === void 0)
@@ -57,28 +75,21 @@ export default (props, options = emptyObj) => {
     nextProps = assignOrdered(theme.defaultProps, kind, props),
     derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, nextProps) : void 0
 
-  if (kindCss !== void 0) {
-    if (derivedStyles === void 0)
-      derivedStyles = [kindCss]
-    else
-      derivedStyles.unshift(kindCss)
-  }
-
-  if (defaultStyles !== void 0) {
-    if (derivedStyles === void 0)
-      derivedStyles = [defaultStyles]
-    else
-      derivedStyles.unshift(defaultStyles)
-  }
-
-  if (derivedStyles !== void 0 && derivedStyles.length > 0) {
+  // This seems a little bit fucky having this derivedStyles check twice, but the intent is to
+  // do the least work possible. That means calling Object.assign as little as possible. Without
+  // this order, it's possible we could assign new props twice when we really only need to once.
+  if (derivedStyles !== void 0)
     nextProps = objectWithoutProps(nextProps, withoutStyles(styles))
+  nextProps = maybeAddCssProp(props, nextProps, defaultStyles)
+  nextProps = maybeAddCssProp(props, nextProps, kindCss)
 
+  if (derivedStyles !== void 0) {
+    // we want our CSS array to be as flat as possible since emotion interpolation will be slower
+    // the more nested the array is
     if (Array.isArray(nextProps.css) === true)
       nextProps.css.push.apply(nextProps.css, derivedStyles)
     else
-      nextProps.css =
-        typeof nextProps.css === 'object' ? [nextProps.css, derivedStyles] : derivedStyles
+      nextProps.css = maybeCreateCssArray(nextProps.css, derivedStyles)
   }
 
   return nextProps === props ? Object.assign({}, props) : nextProps

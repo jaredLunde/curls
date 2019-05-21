@@ -14,6 +14,8 @@ const getCss = (fn, value, theme, props) =>
 
 const maybeAddStyles = (css, maybeCss) => {
   if (maybeCss !== void 0 && maybeCss !== null) {
+    // we want our CSS array to be as flat as possible since emotion interpolation will be slower
+    // the more nested the array is
     if (Array.isArray(maybeCss) === true)
       css.push.apply(css, maybeCss)
     else
@@ -105,5 +107,5 @@ export default (styles, theme, props) => {
     }
   }
 
-  return css
+  return css.length > 0 ? css : void 0
 }
