@@ -38,7 +38,9 @@ const assignOrdered = (defaultProps, kinds, props) => {
 export default (props, options = emptyObj) => {
   if (__DEV__)
     if (options.name === void 0)
-      throw new Error(`useStyles() must be used with a 'name' option set`)
+      throw new Error(
+        `useStyles() must be used with a 'name' option set in order to access the proper theme`
+      )
 
   let
     theme = useTheme(options),
@@ -53,33 +55,25 @@ export default (props, options = emptyObj) => {
 
   props = assignOrdered(theme.defaultProps, kind, props)
 
-  const
+  let
     derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0,
     nextProps = objectWithoutProps(props, withoutStyles(styles))
 
   if (kindCss !== void 0) {
-    if (Array.isArray(derivedStyles.css) === true)
-      derivedStyles.css.unshift(kindCss)
+    if (derivedStyles === void 0)
+      derivedStyles = [kindCss]
     else
-      derivedStyles.css = kindCss
+      derivedStyles.unshift(kindCss)
   }
 
-  if (derivedStyles !== void 0) {
-    if (derivedStyles.css.length > 0) {
-      if (Array.isArray(nextProps.css) === true)
-        nextProps.css.push(derivedStyles.css)
-      else
-        nextProps.css =
-          typeof nextProps.css === 'object'
-            ? [nextProps.css, derivedStyles.css]
-            : derivedStyles.css
-    }
-
-    if (derivedStyles.style !== void 0)
-      nextProps.style =
-        typeof nextProps.style === 'object'
-          ? Object.assign({}, nextProps.style, derivedStyles.style)
-          : derivedStyles.style
+  if (derivedStyles !== void 0 && derivedStyles.length > 0) {
+    if (Array.isArray(nextProps.css) === true)
+      nextProps.css.push(derivedStyles)
+    else
+      nextProps.css =
+        typeof nextProps.css === 'object'
+          ? [nextProps.css, derivedStyles]
+          : derivedStyles
   }
 
   return nextProps

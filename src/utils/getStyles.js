@@ -12,24 +12,15 @@ const getCSS = (fn, value, theme, props) =>
       ? fn(value, theme, props)
       : fn[value]
 
-const maybeAddStyles = (css, style, maybeCss) => {
-  if (maybeCss !== void 0 && maybeCss !== null) {
-    if (Array.isArray(maybeCss) === true)
-      css.push.apply(css, maybeCss)
-    else if (maybeCss.styles !== void 0)
-      css.push(maybeCss)
-    else
-      style.value = style.value === void 0
-        ? Object.assign({}, maybeCss)
-        : Object.assign(style.value, maybeCss)
-  }
+const maybeAddStyles = (css, maybeCss) => {
+  if (maybeCss !== void 0 && maybeCss !== null)
+    css.push(maybeCss)
 }
 
 export default (styles, theme, props) => {
   let
     i = 0,
     css = [],
-    style = {},
     mediaQueries,
     propKeys = Object.keys(props)
 
@@ -43,20 +34,20 @@ export default (styles, theme, props) => {
 
     if (propVal !== void 0) {
       if (__DEV__) {
-        if (typeof getter === 'string') {
+        if (typeof getter === 'string')
           throw 'CSS definitions can no longer contain class names. They must return '
             + '@emotion/core css objects.'
-        }
       }
 
       if (propVal === null || propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
         // these are just regular values, no media queries
-        maybeAddStyles(css, style, getCSS(getter, propVal, theme, props))
+        maybeAddStyles(css, getCSS(getter, propVal, theme, props))
       }
       else {
         // this parses values with media queries
-        let values = propVal.split(ws),
-            j = 0
+        let
+          values = propVal.split(ws),
+          j = 0
 
         for (; j < values.length; j++) {
           // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
@@ -73,9 +64,8 @@ export default (styles, theme, props) => {
           let cssValue = getCSS(getter, value, theme, props)
 
           if (cssValue !== null && cssValue !== void 0) {
-            if (breakpoint === void 0 || breakpoint.length === 0) {
-              maybeAddStyles(css, style, cssValue)
-            }
+            if (breakpoint === void 0 || breakpoint.length === 0)
+              maybeAddStyles(css, cssValue)
             else {
               if (__DEV__) {
                 // verifies that this is a real breakpoint, but only in development
@@ -109,5 +99,5 @@ export default (styles, theme, props) => {
     }
   }
 
-  return css.length > 0 || style.value !== void 0 ? {css, style: style.value} : void 0
+  return css
 }
