@@ -2,7 +2,6 @@ import React from 'react'
 import {css} from '@emotion/core'
 import Portalize from 'react-portalize'
 import {withChildren} from '../utils'
-import {baseIsNotVisible} from '../Fade/styles'
 import {flex, align, justify} from '../Flex/styles'
 import {pos, ov} from '../Box/styles'
 import {useBox} from '../Box'
@@ -21,7 +20,6 @@ import useStyles from '../useStyles'
 **/
 const
   defaultStyles = css([
-    baseIsNotVisible,
     flex,
     align.center,
     justify.center,
