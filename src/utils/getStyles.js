@@ -19,7 +19,7 @@ const maybeAddStyles = (css, maybeCss) => {
 
 export default (styles, theme, props) => {
   let propKeys = Object.keys(props)
-  if (propKeys.length === 0) return void 0
+  if (propKeys.length === 0) return
 
   let
     css = [],
