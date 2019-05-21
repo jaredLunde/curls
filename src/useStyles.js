@@ -57,8 +57,12 @@ export default (props, options = emptyObj) => {
     derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, props) : void 0,
     nextProps = objectWithoutProps(props, withoutStyles(styles))
 
-  if (kindCss !== void 0)
-    nextProps.css =  [nextProps.css, kindCss]
+  if (kindCss !== void 0) {
+    if (Array.isArray(derivedStyles.css) === true)
+      derivedStyles.css.unshift(kindCss)
+    else
+      derivedStyles.css = kindCss
+  }
 
   if (derivedStyles !== void 0) {
     if (derivedStyles.css.length > 0) {

@@ -51,11 +51,11 @@ const
 
 export const
   DrawerConsumer = Consumer,
-  useDrawer = () => useContext(DrawerContext),
+  useDrawerContext = () => useContext(DrawerContext),
   DrawerBox = React.forwardRef(
     ({children, portal, ...props}, ref) => {
       props = useBox(useStyles(props, options))
-      const transition = useDrawer()
+      const transition = useDrawerContext()
       props.children = typeof children === 'function' ? children(transition) : children
       props.css = props.css ? [transition.css, props.css] : transition.css
       props.ref = ref

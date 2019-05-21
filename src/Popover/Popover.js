@@ -41,7 +41,7 @@ const
   {Consumer, Provider} = PopoverContext
 export const
   PopoverConsumer = Consumer,
-  usePopover = () => useContext(PopoverContext)
+  usePopoverContext = () => useContext(PopoverContext)
 const
   defaultCSS = css([flex, pos.fixed, `z-index: 1001;`]),
   options = {name: 'popover', defaultTheme},
@@ -53,7 +53,7 @@ export const PopoverBox = React.forwardRef(
     const {children, portal} = props
     props = objectWithoutProps(props, withoutPortal)
     props = useBox(useStyles(props, options))
-    const pop = usePopover()
+    const pop = usePopoverContext()
     props.children = typeof children === 'function'
       ? children(objectWithoutProps(pop, withoutPop))
       : children

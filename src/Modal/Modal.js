@@ -46,11 +46,11 @@ const
 
 export const
   ModalConsumer = Consumer,
-  useModal = () => useContext(ModalContext),
+  useModalContext = () => useContext(ModalContext),
   ModalBox = React.forwardRef(
     ({children, portal, withOverlay = false, ...props}, ref) => {
       props = useBox(useStyles(props, options))
-      const transition = useModal()
+      const transition = useModalContext()
       props.children = typeof children === 'function' ? children(transition) : children
       props.css = props.css ? [transition.css, props.css] : transition.css
       props.ref = ref
