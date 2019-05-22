@@ -46,6 +46,7 @@ const maybeAddCssProp = (props, nextProps, css) => {
     const isCssArray = Array.isArray(css)
 
     if (Array.isArray(nextProps.css) === true) {
+      // we're trying to keep our css prop a flat array for quicker interpolation in emotion
       if (isCssArray === true)
         nextProps.css.push.apply(nextProps.css, css)
       else
