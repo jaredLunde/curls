@@ -8,13 +8,8 @@ export function getPlaceholderClass (theme, props) {
   `
 }
 
-export function getHoverClass (theme, props) {
-  return
-}
-
-export function getFocusClass (theme, props) {
-  return
-}
+export const getHoverClass = (theme, props) => {}
+export const getFocusClass = (theme, props) => {}
 
 export const defaultProps = {
   size: 'sm',

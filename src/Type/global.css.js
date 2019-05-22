@@ -22,7 +22,6 @@ export default css`
   body {
     ${optimizeFor.speed};
     font-family: ${faces.system};
-    color: ${defaultColors.darkGrey};
     ${hiDPI} {
       ${optimizeFor.legibility};
       ${antialias};

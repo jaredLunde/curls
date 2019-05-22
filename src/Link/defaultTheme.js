@@ -19,7 +19,3 @@ export const getHoverClass = (theme, props) => {
 }
 
 export const getActiveClass = (theme, props) => {}
-
-export const defaultProps = {
-  color: 'blue'
-}

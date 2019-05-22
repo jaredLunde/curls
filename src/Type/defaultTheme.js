@@ -1,4 +1,3 @@
-import {css} from '@emotion/core'
 export const legible = ['lg', 'xl', 'xxl']
 
 export const scale = {
@@ -14,7 +13,3 @@ export const sizeUnit = 'rem'
 export const faces = {
   system: '-apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Helvetica", sans-serif'
 }
-
-// export const colors = defaultColors
-// export const typeFaces = defaultTypeFaces
-export const defaultProps = {}

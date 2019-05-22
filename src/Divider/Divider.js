@@ -3,7 +3,6 @@ import {css} from '@emotion/core'
 import createElement from '../createElement'
 import {useBasicBox} from '../Box'
 import {pos} from '../Box/styles'
-import * as defaultTheme from './defaultTheme'
 import useStyles from '../useStyles'
 
 
@@ -14,12 +13,13 @@ const
     'clear: both;',
     pos.relative
   ]),
-  options = {name: 'divider', defaultStyles, defaultTheme},
+  options = {name: 'divider', defaultStyles},
   useDivider = props => useStyles(props, options),
   Divider = React.forwardRef(
     (props, ref) => {
       props = useBasicBox(useDivider(props))
       props.ref = ref
+      props.role = props.role || 'separator'
       return createElement('div', props)
     }
   )

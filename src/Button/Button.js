@@ -21,6 +21,7 @@ const
     (props, ref) => {
       props = useBox(useButton(props))
       props.ref = ref
+      props.role = props.role || 'button'
       return createElement('button', props)
     }
   )
