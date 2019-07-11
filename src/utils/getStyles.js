@@ -2,7 +2,7 @@ import {css as emotionCSS} from '@emotion/core'
 import getBreakpointOrder from './getBreakpointOrder'
 
 
-const ws = /(?!\(.*)\s+(?![^(]*?\))/g
+const ws = /(?!\[.*)\s+(?![^[]*?\])/g
 const getCss = (fn, value, theme, props) =>
   typeof fn === 'object' && fn.styles !== void 0
     ? value === false || value === null

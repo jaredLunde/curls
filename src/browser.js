@@ -49,24 +49,12 @@ export const browserResets = css`
     border-spacing: 0;
   }
 
-  svg:not(:root) {
-    overflow: hidden;
-  }
-
   details,
   main,
   summary {
     display: block;
   }
   
-  body {
-    quotes: "“" "”";
-  }
-
-  svg:not(:root) {
-    display: inline-block;
-  }
-
   [data-strict=true] {
     contain: strict;
   }

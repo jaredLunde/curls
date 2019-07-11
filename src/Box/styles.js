@@ -42,6 +42,7 @@ export const
   d = {
     block: css`display: block;`,
     flex: css`display: flex;`,
+    inlineFlex: css`display: inline-flex;`,
     inlineBlock: css`display: inline-block;`,
     inline: css`display: inline;`,
     grid: css`display: grid;`,
