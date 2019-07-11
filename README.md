@@ -5,4 +5,7 @@ modular CSS-in-JS component framework for React backed
 by [Emotion](https://github.com/emotion-js/emotion).
 
 ## Installation
-`yarn add curls` or `npm i curls`
+`npm i curls` or `yarn add curls`
+
+## Documentaiton
+Go to [Curls Documentation](https://curls.jaredlunde.com)
