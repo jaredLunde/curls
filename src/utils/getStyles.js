@@ -65,7 +65,7 @@ export default (styles, theme, props) => {
           if (indexOfSplit > -1) {
             value = values[j].substring(0, indexOfSplit)
             // removes parentheses from value if there are any
-            if (value.indexOf('(') === 0 && value.indexOf(')') === value.length - 1)
+            if (value.indexOf('[') === 0 && value.indexOf(']') === value.length - 1)
               value = value.substring(1, value.length - 1)
             breakpoint = values[j].substring(indexOfSplit + 1)
           }
