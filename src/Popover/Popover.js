@@ -1,4 +1,4 @@
-import React, {useRef, useContext, useState, useEffect, useLayoutEffect, useCallback, useMemo} from 'react'
+import React, {useRef, useContext, useState, useLayoutEffect, useCallback, useMemo} from 'react'
 import {css} from '@emotion/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
@@ -19,8 +19,7 @@ import useStyles from '../useStyles'
 /**
  import {Popover, PopoverBox} from 'curls'
  <Popover fromRight enterDelay={600} leaveDelay={150}>
- {function ({popoverRef, renderPosition, show, hide, ...props}) {
-    return (
+    {({popoverRef, renderPosition, show, hide, ...props}) => (
       <div>
         <PopoverBox
           onMouseEnter={show}
@@ -32,8 +31,7 @@ import useStyles from '../useStyles'
           Hover me
         </Button>
       </div>
-    )
-  }}
+    )}
  </Popover>
  */
 const
