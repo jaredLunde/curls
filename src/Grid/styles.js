@@ -1,44 +1,31 @@
 import {css} from '@emotion/core'
-import memoize from 'trie-memoize'
+import {toSize, memoValue, memoTheme} from '../utils'
+import {d} from '../Box/styles'
 
 
-const getColumnWidth = memoize(
-  [WeakMap, Map, Map, Map],
-  (theme, size, cols, useFlex) => {
-    if (cols === false) return null
-    const
-      numColumns = isNaN(theme.columns) === true ? theme.columns[size] : theme.columns,
-      indexOfSlash = cols.indexOf('/'),
-      x = parseInt(indexOfSlash > -1 ? cols.substring(0, indexOfSlash) : cols)
+const
+  ws = /s+/,
+  getSizes = (v, unit) => {
+    let
+      vals = v.trim().split(ws),
+      i = 0,
+      output = []
 
-    if (__DEV__) {
-      const numX = indexOfSlash > -1 && cols.substring(indexOfSlash + 1)
-      if (numX !== false && parseInt(numX) !== numColumns)
-        console.warn(`Column count for size '${size}' is ${numColumns}, not ${numX}`)
+    for (; i < vals.length; i++)
+      output.push(toSize(vals[i], unit))
 
-      if (x < 1 || x > numColumns)
-        console.warn(`Column count for size '${size}' must be between 1 and ${numColumns}`)
-    }
-
-    const width = `${(x / numColumns) * 100}%`
-
-    return css`
-      @media ${theme.breakpoints[size]} {
-        max-width: ${width};
-        ${useFlex && `flex-basis: ${width}`};
-      }
-    `
-  }
-)
-export const useFlex = () => null
-export const __gridBreakpoints = (v, t, p) => {
-  let css = [], keys = Object.keys(v), i = 0
-
-  for (; i < keys.length; i++) {
-    const s = keys[i], cols = v[s]
-    if (cols === false) continue
-    css.push(getColumnWidth(t, s, cols, p.useFlex || false))
+    return output.join(' ')
   }
 
-  return css
-}
+export const
+  inline = d.inlineGrid,
+  rows = memoTheme((v, t) => css`grid-template-rows: ${getSizes(v, t.templateUnit)};`),
+  cols = memoTheme((v, t) => css`grid-template-columns: ${getSizes(v, t.templateUnit)};`),
+  autoRows = memoTheme((v, t) => css`grid-auto-rows: ${toSize(v, t.templateUnit)};`),
+  autoCols = memoTheme((v, t) => css`grid-auto-columns: ${toSize(v, t.templateUnit)};`),
+  gap = memoTheme((v, t) => css`grid-gap: ${getSizes(v, t.gapUnit)};`),
+  flow = {
+    row: css`grid-auto-flow: row;`,
+    column: css`grid-auto-flow: column;`
+  },
+  areas = memoValue(v => css`grid-template-areas: ${v};`)

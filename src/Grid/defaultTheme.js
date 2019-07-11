@@ -1,5 +1,2 @@
-export const columns = {
-  phone: 4,
-  tablet: 8,
-  desktop: 12,
-}
+export const templateUnit = 'px'
+export const gapUnit = 'rem'

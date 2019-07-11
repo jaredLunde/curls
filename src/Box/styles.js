@@ -44,6 +44,8 @@ export const
     flex: css`display: flex;`,
     inlineBlock: css`display: inline-block;`,
     inline: css`display: inline;`,
+    grid: css`display: grid;`,
+    inlineGrid: css`display: inline-grid;`,
     none: css`display: none;`
   },
   overflow = {

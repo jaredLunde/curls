@@ -1,6 +1,6 @@
 import React from 'react'
 import * as styles from './styles'
-import {useGrid} from '../Grid'
+import {useFlexGrid} from '../useFlexGrid'
 import * as flexStyles from '../Flex/styles'
 import * as defaultTheme from './defaultTheme'
 import createElement from '../createElement'
@@ -17,7 +17,7 @@ const flexBoxOptions = {name: 'box', styles: Object.assign({}, flexStyles, style
 export const
   useBox = props => useStyles(props, flexBoxOptions),
   FlexBox = createComponent(flexBoxOptions),
-  useGridBox = props => useBox(useGrid(props))
+  useGridBox = props => useBox(useFlexGrid(props))
 
 const createBoxComponent = (name, useHook) => React.forwardRef(
   (props, ref) => {
@@ -28,7 +28,8 @@ const createBoxComponent = (name, useHook) => React.forwardRef(
 )
 
 export const
-  GridBox = createBoxComponent('GridBox', useGridBox),
+  GridBox = createBoxComponent('GridBox', useGridBox), // deprecated
+  FlexGrid = GridBox,
   Box = createBoxComponent('Box', useBox)
 
 if (__DEV__) {
@@ -36,11 +37,13 @@ if (__DEV__) {
     propTypes = require('./propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   Box.displayName = 'Box'
-  GridBox.displayName = 'GridBox'
+  GridBox.displayName = 'FlexGrid'
+  FlexGrid.displayName = 'FlexGrid'
   FlexBox.displayName = 'FlexBox'
   BasicBox.displayName = 'BasicBox'
   BasicBox.propTypes = propTypes
   GridBox.propTypes = Object.assign({}, flexPropTypes, propTypes)
+  FlexGrid.propTypes = Object.assign({}, flexPropTypes, propTypes)
   Box.propTypes = Object.assign({}, flexPropTypes, propTypes)
   FlexBox.propTypes = Box.propTypes
 }

@@ -22,33 +22,42 @@ export const br = memoTheme((val, theme) => {
     case 'y':
       topRadius = `t${value}`
       bottomRadius = `b${value}`
-      break;
+      break
+
     case 't':
       topRadius = `t${value}`
-      break;
+      break
+
     case 'b':
       bottomRadius = `b${value}`
-      break;
+      break
+
     case 'tl':
       topRadius = `tl${value}`
-      break;
+      break
+
     case 'tr':
       topRadius = `tr${value}`
-      break;
+      break
+
     case 'bl':
-      bottomRadius = 'bl${value}'
-      break;
+      bottomRadius = `bl${value}`
+      break
+
     case 'br':
-      bottomRadius = 'bl${value}'
-      break;
+      bottomRadius = `br${value}`
+      break
+
     case 'l':
       topRadius = `tl${value}`
       bottomRadius = `bl${value}`
-      break;
+      break
+
     case 'r':
       topRadius = `tr${value}`
       bottomRadius = `br${value}`
-      break;
+      break
+
     default:
       topRadius = `t${value}`
       bottomRadius = `b${value}`

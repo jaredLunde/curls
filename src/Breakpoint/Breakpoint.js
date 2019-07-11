@@ -73,7 +73,7 @@ const getDefaultMatches = (theme, sizes, defaultMatches) => {
   }
 }
 
-const options = {name: 'grid', defaultTheme}
+const options = {name: 'flexGrid', defaultTheme}
 export const useBreakpoint = props => {
   const theme = useTheme(options)
   const

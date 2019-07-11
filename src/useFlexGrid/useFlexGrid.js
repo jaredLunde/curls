@@ -5,7 +5,7 @@ import {getBreakpointOrder} from '../utils'
 import useStyles from '../useStyles'
 
 
-const options = {name: 'grid', styles, defaultTheme}
+const options = {name: 'flexGrid', styles, defaultTheme}
 export default props => {
   let
     theme = useTheme(options),

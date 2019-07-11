@@ -1,1 +1,1 @@
-export useGrid from './useGrid'
+export default, {useGrid} from './Grid'

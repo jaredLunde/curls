@@ -2,7 +2,7 @@ import {css as emotionCSS} from '@emotion/core'
 import getBreakpointOrder from './getBreakpointOrder'
 
 
-const ws = /\s+/
+const ws = /(?!\(.*)\s+(?![^(]*?\))/g
 const getCss = (fn, value, theme, props) =>
   typeof fn === 'object' && fn.styles !== void 0
     ? value === false || value === null
@@ -58,12 +58,15 @@ export default (styles, theme, props) => {
           j = 0
 
         for (; j < values.length; j++) {
-          // <Box p='4@xl 5@xxl 2@sm' flex='@xxl' justify='center@xxl start@xl'>
+          // <Box p='4@xl 5@xxl 2@sm (x2 y3)@md' flex='@xxl' justify='center@xxl start@xl'>
           const indexOfSplit = values[j].indexOf('@')
           let value = values[j], breakpoint
 
           if (indexOfSplit > -1) {
             value = values[j].substring(0, indexOfSplit)
+            // removes parentheses from value if there are any
+            if (value.indexOf('(') === 0 && value.indexOf(')') === value.length - 1)
+              value = value.substring(1, value.length - 1)
             breakpoint = values[j].substring(indexOfSplit + 1)
           }
 
