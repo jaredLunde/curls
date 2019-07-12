@@ -1,4 +1,4 @@
-# curls
+# Curls
 
 An unopinionated, [lightweight](https://bundlephobia.com/result?p=curls), and
 modular CSS-in-JS component framework for React backed
