@@ -4,7 +4,7 @@ import getBreakpointOrder from './getBreakpointOrder'
 
 const
   splitWs = /(?!\[.*)\s+(?![^[]*?\])/g,
-  replaceWs = /^\s+|\s+$|\s\s+/g
+  replaceWs = /^\s+|\s+$|\s+(?=\s)/g
 const getCss = (fn, value, theme, props) =>
   typeof fn === 'object' && fn.styles !== void 0
     ? value === false || value === null
