@@ -9,6 +9,7 @@ import {useBox} from '../Box'
 import {pos} from '../Box/styles'
 import {flex} from '../Flex/styles'
 import Drop from '../Drop'
+import {useTheme} from '../ThemeConsumer'
 import {portalize, objectWithoutProps, withChildren, loadImages} from '../utils'
 import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
@@ -195,7 +196,7 @@ const ViewportPopover = props => React.createElement(
 const positions = new Set(['fromTop', 'fromRight', 'fromBottom', 'fromLeft'])
 const ws = /\s+/
 
-const getBreakpoints  = props => {
+const getBreakpoints  = (props, delim = '@') => {
   let
     keys = Object.keys(props),
     hasBreakpoints = false,
@@ -213,7 +214,7 @@ const getBreakpoints  = props => {
       for (j = 0; j < valPairs.length; j++) {
         const
           valPair = valPairs[j],
-          indexOfSplit = valPair.indexOf('@')
+          indexOfSplit = valPair.indexOf(delim)
 
         if (indexOfSplit > -1) {
           breakpoints[valPair.substring(indexOfSplit + 1)] = key
@@ -262,7 +263,9 @@ const BreakpointRenderer = ({popoverProps, breakpoints}) => {
 
 const Popover = React.forwardRef(
   (props, innerRef) => {
-    const breakpoints = getBreakpoints(props)
+    const
+      theme = useTheme(),
+      breakpoints = getBreakpoints(props, theme.breakpointsDelimiter)
     return (props.transition || Drop)(
       withChildren(
         props,

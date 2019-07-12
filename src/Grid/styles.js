@@ -4,10 +4,10 @@ import {d} from '../Box/styles'
 
 
 const
-  ws = /s+/,
+  ws = /\s+/g,
   getSizes = (v, unit) => {
     let
-      vals = v.trim().split(ws),
+      vals = v.split(ws),
       i = 0,
       output = []
 

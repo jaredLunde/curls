@@ -2,7 +2,9 @@ import {css as emotionCSS} from '@emotion/core'
 import getBreakpointOrder from './getBreakpointOrder'
 
 
-const ws = /(?!\[.*)\s+(?![^[]*?\])/g
+const
+  splitWs = /(?!\[.*)\s+(?![^[]*?\])/g,
+  replaceWs = /^\s+|\s+$|\s\s+/g
 const getCss = (fn, value, theme, props) =>
   typeof fn === 'object' && fn.styles !== void 0
     ? value === false || value === null
@@ -14,8 +16,8 @@ const getCss = (fn, value, theme, props) =>
 
 const maybeAddStyles = (css, maybeCss) => {
   if (maybeCss !== void 0 && maybeCss !== null) {
-    // we want our CSS array to be as flat as possible since emotion interpolation will be slower
-    // the more nested the array is
+    // we want our CSS array to be as flat as possible since emotion interpolation
+    // will be slower the more nested the array is
     if (Array.isArray(maybeCss) === true)
       css.push.apply(css, maybeCss)
     else
@@ -47,20 +49,25 @@ export default (styles, theme, props) => {
             + '@emotion/core css objects.'
       }
 
-      if (propVal === null || propVal.indexOf === void 0 || propVal.indexOf('@') === -1) {
+      if (
+        propVal === null
+        || propVal.indexOf === void 0
+        || propVal.indexOf(theme.breakpointsDelimiter) === -1
+      ) {
         // these are just regular values, no media queries
         maybeAddStyles(css, getCss(getter, propVal, theme, props))
       }
       else {
         // this parses values with media queries
         let
-          values = propVal.split(ws),
+          values = propVal.replace(replaceWs, '').split(splitWs),
           j = 0
 
         for (; j < values.length; j++) {
-          // <Box p='4@xl 5@xxl 2@sm (x2 y3)@md' flex='@xxl' justify='center@xxl start@xl'>
-          const indexOfSplit = values[j].indexOf('@')
-          let value = values[j], breakpoint
+          // <Box p='4@xl 5@xxl 2@sm [x2 y3]@md' flex='@xxl' justify='center@xxl start@xl'>
+          let
+            indexOfSplit = values[j].indexOf(theme.breakpointsDelimiter),
+            value = values[j], breakpoint
 
           if (indexOfSplit > -1) {
             value = values[j].substring(0, indexOfSplit)
@@ -93,7 +100,7 @@ export default (styles, theme, props) => {
       }
     }
   }
-
+``
   if (mediaQueries !== void 0) {
     // ensures that breakpoints are always ordered in a descending fashion so that
     // shorter max-widths don't get cascaded by longer ones

@@ -40,6 +40,7 @@ export const defaultSpacingScale = [
 export const baseTheme = {
   baseRem: 100,
   breakpoints: defaultBreakpoints,
+  breakpointsDelimiter: '@',
   colors: defaultColors,
   locals: {},
   mediaQueries: {},
