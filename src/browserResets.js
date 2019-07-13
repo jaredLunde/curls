@@ -1,7 +1,7 @@
 import {css} from '@emotion/core'
 
 
-export const browserResets = css`
+export default css`
   *, *:before, *:after {
     box-sizing: border-box;
   }
@@ -68,22 +68,7 @@ export const browserResets = css`
     display: block;
   }
   
-  [data-strict=true] {
-    contain: strict;
-  }
-
-  [data-autosize=true] {
-    contain: content;
-  }
-
-  [data-autopaint=true] {
-    contain: layout style;
-  }
-  
   [hidden] {
     display: none !important;
   }
 `
-
-
-export const MAX_Z_INDEX = 2147483647

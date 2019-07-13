@@ -8,7 +8,7 @@ import {toSize} from '../utils'
 
 export const CurlsContext = ThemeContext
 export const useCurls = () => useContext(CurlsContext)
-const ThemeProvider = ({theme, globals = emptyArr, children}) => {
+const ThemeProvider = ({theme, globalStyles = emptyArr, children}) => {
   const
     [userTheme, setUserTheme] = useState(() => createTheme(theme)),
     setTheme = useCallback(
@@ -35,10 +35,10 @@ const ThemeProvider = ({theme, globals = emptyArr, children}) => {
   const styles = useMemo(
     () => {
       const s = [css`html { font-size: ${toSize(userTheme.baseRem, '%')} }`]
-      s.push.apply(s, globals)
+      s.push.apply(s, globalStyles)
       return s
     },
-    [userTheme.baseRem, globals]
+    [userTheme.baseRem, globalStyles]
   )
 
   return (

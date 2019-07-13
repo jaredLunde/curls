@@ -1,4 +1,9 @@
-export {browserResets, MAX_Z_INDEX} from './browser'
+export browserResets from './browserResets'
+export containmentAttrs from './containmentAttrs'
+export const MAX_Z_INDEX = 2147483647
+
+export createComponent from './createComponent'
+export createElement from './createElement'
 
 export {
   colorize,
@@ -26,8 +31,6 @@ export ThemeProvider, {
 } from './ThemeProvider'
 export ThemeConsumer, {useTheme} from './ThemeConsumer'
 
-export createComponent from './createComponent'
-export createElement from './createElement'
 export Avatar, {useAvatar} from './Avatar'
 // GridBox is deprecated
 export {useBasicBox, useGridBox, useBox, Box, GridBox, BasicBox, FlexBox, FlexGrid} from './Box'
