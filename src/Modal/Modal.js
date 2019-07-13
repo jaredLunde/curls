@@ -4,7 +4,6 @@ import emptyObj from 'empty/object'
 import {portalize, withChildren} from '../utils'
 import Overlay from '../Overlay'
 import {useBox} from '../Box'
-import {MAX_Z_INDEX} from '../browser'
 import createElement from '../createElement'
 import Drop from '../Drop'
 import * as defaultTheme from './defaultTheme'
@@ -38,7 +37,7 @@ const
     margin: auto;
     left: 0;
     right: 0;
-    z-index: ${MAX_Z_INDEX};
+    z-index: 1000;
   `,
   options = {name: 'modal', defaultStyles, defaultTheme},
   ModalContext = React.createContext(emptyObj),

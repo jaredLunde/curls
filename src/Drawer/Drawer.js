@@ -2,7 +2,6 @@ import React, {useContext} from 'react'
 import emptyObj from 'empty/object'
 import {css} from '@emotion/core'
 import {portalize, withChildren} from '../utils'
-import {MAX_Z_INDEX} from '../browser'
 import {useBox} from '../Box'
 import Slide from '../Slide'
 import createElement from '../createElement'
@@ -43,7 +42,7 @@ const
     ${d.block};
     ${pos.fixed};
     ${ov.autoY};
-    z-index: ${MAX_Z_INDEX};
+    z-index: 1000;
   `,
   options = {name: 'drawer', styles, defaultStyles},
   DrawerContext = React.createContext(emptyObj),
