@@ -74,7 +74,7 @@ export default (props, options = emptyObj) => {
       )
 
   let
-    theme = useTheme(options),
+    theme = useTheme(options.name, options.defaultTheme),
     {styles, defaultStyles} = options,
     kind = getKind(theme.kinds, props.kind),
     kindCss

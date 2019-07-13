@@ -75,8 +75,8 @@ const getDefaultMatches = (theme, sizes, defaultMatches) => {
 
 const options = {name: 'flexGrid', defaultTheme}
 export const useBreakpoint = props => {
-  const theme = useTheme(options)
   const
+    theme = useTheme(options.name),
     [sizes, queries] = findBreakpoints(props, theme),
     defaultMatches = getDefaultMatches(theme, sizes, props.defaultMatches),
     state = useMediaQuery(queries, defaultMatches)

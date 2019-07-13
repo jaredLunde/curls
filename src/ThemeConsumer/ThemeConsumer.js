@@ -18,22 +18,16 @@ const mergeGlobals_ = memoize(
   }
 )
 
-const mergeGlobals = ({userTheme, theme}, props) => {
-  const name = props.name || props.path
-
+const mergeGlobals = (name, defaultTheme, {userTheme, theme}) => {
   if (name === void 0)
     return theme
   else {
-    if (__DEV__)
-      if (props.path !== void 0)
-        console.warn(`The 'path' prop in ThemeConsumer is deprecated. Use 'name' instead.`)
-
     const componentTheme = getTheme(
-      props.defaultTheme,
-      mergeGlobals_(userTheme, getTheme(props.defaultTheme, userTheme[name]))
+      defaultTheme,
+      mergeGlobals_(userTheme, getTheme(defaultTheme, userTheme[name]))
     )
 
-    theme[name] = getTheme(props.defaultTheme, userTheme[name])
+    theme[name] = getTheme(defaultTheme, userTheme[name])
     return componentTheme
   }
 }
@@ -41,7 +35,7 @@ const mergeGlobals = ({userTheme, theme}, props) => {
 export default props => {
   const consumerProps = {}
   const Consumer = context => {
-    consumerProps.theme = mergeGlobals(context, props)
+    consumerProps.theme = mergeGlobals(props.name, props.defaultTheme, context)
     consumerProps.setTheme = context.setTheme
     consumerProps.replaceTheme = context.replaceTheme
     return props.children(consumerProps)
@@ -50,4 +44,10 @@ export default props => {
   return React.createElement(CurlsContext.Consumer, emptyObj, Consumer)
 }
 
-export const useTheme = (options = emptyObj) => mergeGlobals(useContext(CurlsContext), options)
+export const useTheme = (name, defaultTheme) => {
+  if (typeof name === 'object')
+    name = options.name
+    defaultTheme = options.defaultTheme
+
+  return mergeGlobals(name, defaultTheme, useContext(CurlsContext))
+}

@@ -8,7 +8,7 @@ import useStyles from '../useStyles'
 const options = {name: 'flexGrid', styles, defaultTheme}
 export default props => {
   let
-    theme = useTheme(options),
+    theme = useTheme(options.name),
     found = false,
     nextProps = Object.assign({}, {__gridBreakpoints: {}}),
     breakpointOrder = getBreakpointOrder(theme.breakpoints),
