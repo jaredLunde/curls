@@ -1,6 +1,6 @@
 import {css} from '@emotion/core'
 import memoize from 'trie-memoize'
-import {fastMemoize, colorize, memoTheme, toSize} from '../utils'
+import {fastMemoize, colorize, memoTheme, memoValue, toSize} from '../utils'
 
 
 const fontSizeFromTheme = memoize(
@@ -60,6 +60,8 @@ const createSizeShortcut = fastMemoize('typeSize', s => (v, t, p) => fontSize(s,
 export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
 // Face
 export const face = memoTheme((v, t) => css`font-family: ${t.faces[v] || v};`)
+// Line height
+export const lh = memoValue(v => css`line-height: ${v};`)
 // Color
 export const color = (v, t) => colorize('color', v, t) // colorize implements nullIfFalse
 // Alignment

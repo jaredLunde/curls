@@ -4,17 +4,11 @@ import {css, ThemeContext, Global} from '@emotion/core'
 import emptyArr from 'empty/array'
 import createTheme, {mergeTheme} from './createTheme'
 import {toSize} from '../utils'
-import ButtonGlobals from '../Button/global.css'
-import InputGlobals from '../Input/global.css'
-import LinkGlobals from '../Link/global.css'
-import TextAreaGlobals from '../TextArea/global.css'
-import TypeGlobals from '../Type/global.css'
 
 
 export const CurlsContext = ThemeContext
-const globalStyles = [TypeGlobals, ButtonGlobals, LinkGlobals, InputGlobals, TextAreaGlobals]
 export const useCurls = () => useContext(CurlsContext)
-const ThemeProvider = ({theme, children}) => {
+const ThemeProvider = ({theme, globals = emptyArr, children}) => {
   const
     [userTheme, setUserTheme] = useState(() => createTheme(theme)),
     setTheme = useCallback(
@@ -39,8 +33,12 @@ const ThemeProvider = ({theme, children}) => {
   )
 
   const styles = useMemo(
-    () => [css`html { font-size: ${toSize(userTheme.baseRem, '%')} }`].concat(globalStyles),
-    [userTheme.baseRem]
+    () => {
+      const s = [css`html { font-size: ${toSize(userTheme.baseRem, '%')} }`]
+      s.push.apply(s, globals)
+      return s
+    },
+    [userTheme.baseRem, globals]
   )
 
   return (

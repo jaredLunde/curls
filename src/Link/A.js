@@ -1,4 +1,5 @@
 import React from 'react'
+import {css} from '@emotion/core'
 import {useType} from '../Type'
 import createElement from '../createElement'
 import * as styles from './styles'
@@ -8,7 +9,8 @@ import useStyles from '../useStyles'
 
 
 const
-  options = {name: 'link', styles, defaultTheme},
+  defaultStyles = css`text-decoration: none;`,
+  options = {name: 'link', styles, defaultStyles, defaultTheme},
   useLink = props => useStyles(Object.assign({__linkStyles: true}, props), options),
   A = React.forwardRef(
     (props, ref) => {

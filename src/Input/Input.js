@@ -1,4 +1,5 @@
 import React from 'react'
+import {css} from '@emotion/core'
 import createElement from '../createElement'
 import {useBox} from '../Box'
 import {useType} from '../Type'
@@ -8,7 +9,26 @@ import useStyles from '../useStyles'
 
 
 const
-  options  = {name: 'input', styles, defaultTheme},
+  defaultStyles = css`
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    &:focus {
+      outline: 0
+    }
+    
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+      height: auto;
+    }
+  
+    &[type='search'] {
+      -webkit-appearance: none;
+      outline-offset: -2px;
+    }
+  `,
+  options  = {name: 'input', styles, defaultStyles, defaultTheme},
   useInput = props => useStyles(Object.assign({__inputStyles: true}, props), options),
   Input = React.forwardRef(
     (props, ref) => {

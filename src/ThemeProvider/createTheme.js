@@ -1,5 +1,4 @@
 import {getMediaQuery, getTheme, fastMemoize} from '../utils'
-import * as polished from 'polished'
 
 
 export const defaultBreakpoints =  {
@@ -14,16 +13,16 @@ export const defaultColors = {
   red: '#e56873',
   yellow: '#fffbb8',
   lightestGrey: '#f4f4f5',
-  lightGrey: polished.darken(0.15, '#dbdbda'),
+  lightGrey: '#b5b5b3',
   grey: '#666a6f',
-  darkGrey: polished.darken(0.10, '#666a6f'),
-  darkestGrey: '#1c3d3f',
-  black: polished.darken(0.08, '#1c3d3f'),
+  darkGrey: '#4e5154',
+  darkestGrey: '#2c3b3f',
+  black: '#0f2223',
   white: '#fefeff',
-  translucent: polished.rgba(0, 0, 0, 0.4),
-  translucentDark: polished.rgba(0, 0, 0, 0.7),
-  translucentLight: polished.rgba(0, 0, 0, 0.16),
-  translucentWhite: polished.rgba(255, 255, 255, 0.6)
+  translucent: 'rgba(0,0,0,0.4)',
+  translucentDark: 'rgba(0,0,0,0.7)',
+  translucentLight: 'rgba(0,0,0,0.16)',
+  translucentWhite: 'rgba(255,255,255,0.6)',
 }
 
 export const defaultSpacingScale = [

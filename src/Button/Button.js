@@ -14,6 +14,30 @@ const
     row.row,
     align.center,
     justify.center,
+    css`
+      outline: 0;
+      background: none;
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      overflow: visible;
+      padding: 0;
+      margin: 0;
+      line-height: 1.0;
+      user-select: none;
+      text-align: inherit;
+    
+      &::-moz-focus-inner {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+      
+      &:focus {
+        outline: 0
+      }
+    `
   ]),
   options = {name: 'button', styles, defaultStyles, defaultTheme},
   useButton = props => useStyles(Object.assign({__buttonStyles: true}, props), options),

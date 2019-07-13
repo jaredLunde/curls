@@ -1,19 +1,33 @@
 import {css} from '@emotion/core'
 import {directionalScale, isDirectional, colorize, toSize, memoValue, memoTheme} from '../utils'
 
-const ws = /\s+/
-export const ov = memoValue(value => {
-  const vals = value.split(ws)
-  if (vals.length === 1) return overflow[value]
 
-  let CSS = [], i = 0
-  for (; i < vals.length; i++)
-    CSS.push(css`${overflow[vals[i]]};`)
-
-  return CSS
-})
+const
+  ws = /\s+/,
+  overflow = {
+    auto: css`overflow: auto;`,
+    autoX: css`overflow-x: auto;`,
+    autoY: css`overflow-y: auto;`,
+    hidden: css`overflow: hidden;`,
+    hiddenX: css`overflow-x: hidden;`,
+    hiddenY: css`overflow-y: hidden;`,
+    scroll: css`overflow: scroll;`,
+    scrollX: css`overflow-x: scroll;`,
+    scrollY: css`overflow-y: scroll;`,
+    touch: css`-webkit-overflow-scrolling: touch;`
+  }
 
 export const
+  ov = memoValue(value => {
+    const vals = value.split(ws)
+    if (vals.length === 1) return overflow[value]
+
+    let CSS = [], i = 0
+    for (; i < vals.length; i++)
+      CSS.push(css`${overflow[vals[i]]};`)
+
+    return CSS
+  }),
   z = memoValue(value => css`z-index: ${value};`),
   sh = memoTheme((value, theme) => theme.getBoxShadow(value, theme)),
   bg = (value, theme) => colorize('background', value, theme),  // colorize memoizes
@@ -55,18 +69,6 @@ export const
     contents: css`display: contents;`,
     listItem: css`display: list-item;`,
     none: css`display: none;`
-  },
-  overflow = {
-    auto: css`overflow: auto;`,
-    autoX: css`overflow-x: auto;`,
-    autoY: css`overflow-y: auto;`,
-    hidden: css`overflow: hidden;`,
-    hiddenX: css`overflow-x: hidden;`,
-    hiddenY: css`overflow-y: hidden;`,
-    scroll: css`overflow: scroll;`,
-    scrollX: css`overflow-x: scroll;`,
-    scrollY: css`overflow-y: scroll;`,
-    touch: css`-webkit-overflow-scrolling: touch;`
   }
 
 // we don't use rem for border-width because it doesn't have business being relative to the

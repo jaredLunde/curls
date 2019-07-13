@@ -54,7 +54,7 @@ export Row, {useRow} from './Row'
 export Slide, {useSlide} from './Slide'
 export TextArea, {useTextArea} from './TextArea'
 export Transitionable, {useTransitionable, useTransitionableToggle, getDelay} from './Transitionable'
-export Type, {useType} from './Type'
+export Type, {useType, prettyType} from './Type'
 export useMediaQuery from './useMediaQuery'
 export useStyles from './useStyles'
 

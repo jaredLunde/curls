@@ -1,4 +1,5 @@
 import React from 'react'
+import {css} from '@emotion/core'
 import createElement from '../createElement'
 import {useBox} from '../Box'
 import {useType} from '../Type'
@@ -8,7 +9,12 @@ import useStyles from '../useStyles'
 
 
 const
-  options = {name: 'textArea', styles, defaultTheme},
+  defaultStyles = css`
+    appearance: none;
+    outline: none;
+    margin: 0;
+  `,
+  options = {name: 'textArea', styles, defaultStyles, defaultTheme},
   autoResize = e => {
     if (!e.target.value)
       e.target.style.height = ''

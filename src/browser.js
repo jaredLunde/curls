@@ -5,7 +5,11 @@ export const browserResets = css`
   *, *:before, *:after {
     box-sizing: border-box;
   }
-
+  
+  html {
+    text-size-adjust: 100%;
+  }
+  
   html, body, div, span, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -24,7 +28,16 @@ export const browserResets = css`
     border: 0;
     vertical-align: baseline;
   }
-
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a:active,
+  a:hover {
+    outline-width: 0;
+  }
+    
   ol,
   ul,
   li {
