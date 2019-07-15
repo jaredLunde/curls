@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "3.1.1",
+  "version": "3.1.4",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -11,13 +11,22 @@
   "private": false,
   "sideEffects": false,
   "devDependencies": {
+    "@babel/register": "^7.4.4",
     "@essentials/benchmark": "^1.0.4",
     "@stellar-apps/babel-preset-es": "^1.0.4",
     "@stellar-apps/babel-preset-react": "^1.0.3",
+    "@testing-library/react-hooks": "^1.1.0",
+    "ava": "^2.2.0",
     "babel-plugin-emotion": "^10.0.14",
     "babel-plugin-polished": "^1.1.0",
+    "browser-env": "^3.2.6",
+    "jsdom": "^15.1.1",
     "polished": "^3.4.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.4",
@@ -34,19 +43,32 @@
     "trie-memoize": "^1.0.7"
   },
   "scripts": {
-    "build": "npm run build:es && npm run build:cjs",
-    "build:es": "rm -rf dist/es && cross-env NODE_ENV=production BABEL_ENV=es babel src --out-dir dist/es && npm run prettier:es",
-    "build:cjs": "rm -rf dist/cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs && npm run prettier:cjs",
+    "build": "yarn build:es && yarn build:cjs",
+    "build:es": "rm -rf dist/es && cross-env NODE_ENV=production BABEL_ENV=es babel src --out-dir dist/es",
+    "build:cjs": "rm -rf dist/cjs && cross-env NODE_ENV=production BABEL_ENV=cjs babel src --out-dir dist/cjs",
     "watch": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src -w --out-dir dist/es",
-    "prettier:es": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/es/**/*.js\"",
-    "prettier:cjs": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\"",
+    "prettier": "yarn prettier:cjs && yarn prettier:es",
+    "prettier:es": "prettier --single-quote --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/es/**/*.js\"",
+    "prettier:cjs": "prettier --single-quote --no-bracket-spacing --trailing-comma es5 --write --tab-width 2 \"dist/cjs/**/*.js\"",
     "publish:dev": "yarn publish --tag dev",
     "publish:next": "yarn publish --tag next",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn test && yarn build && yarn prettier",
+    "test": "yarn build:cjs && BABEL_ENV=cjs ava -v"
   },
   "peerDependencies": {
     "prop-types": ">= 15.6.0",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0"
+  },
+  "ava": {
+    "babel": false,
+    "compileEnhancements": false,
+    "files": [
+      "dist/cjs/**/*.test.js",
+      "dist/cjs/**/test.js"
+    ],
+    "require": [
+      "@babel/register"
+    ]
   }
 }

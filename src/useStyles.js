@@ -86,13 +86,14 @@ export default (props, options = emptyObj) => {
 
   let
     nextProps = assignOrdered(theme.defaultProps, kind, props),
-    derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, nextProps) : void 0
+    derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, nextProps) : void 0,
+    styleProps = withoutStyles(styles)
 
   // This seems a little bit fucky having this derivedStyles check twice, but the intent is to
   // do the least work possible. That means calling Object.assign as little as possible. Without
   // this order, it's possible we could assign new props twice when we really only need to once.
   if (derivedStyles !== void 0)
-    nextProps = objectWithoutProps(nextProps, withoutStyles(styles))
+    nextProps = objectWithoutProps(nextProps, styleProps)
   nextProps = maybeAddCssProp(props, nextProps, defaultStyles)
   nextProps = maybeAddCssProp(props, nextProps, kindCss)
 
@@ -105,5 +106,5 @@ export default (props, options = emptyObj) => {
       nextProps.css = maybeUnshiftCssArray(nextProps.css, derivedStyles)
   }
 
-  return nextProps === props ? Object.assign({}, props) : nextProps
+  return nextProps === props ? objectWithoutProps(nextProps, styleProps) : nextProps
 }

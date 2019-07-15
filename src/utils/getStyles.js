@@ -5,14 +5,28 @@ import getBreakpointOrder from './getBreakpointOrder'
 const
   splitWs = /(?!\[.*)\s+(?![^[]*?\])/g,
   replaceWs = /^\s+|\s+$|\s+(?=\s)/g
-const getCss = (fn, value, theme, props) =>
-  typeof fn === 'object' && fn.styles !== void 0
-    ? value === false || value === null
-      ? void 0
-      : fn
-    : typeof fn === 'function'
-      ? fn(value, theme, props)
-      : fn[value]
+const getCss = (name, fn, value, theme, props) => {
+  if (typeof fn === 'object' && (fn.styles !== void 0 || Array.isArray(fn)))
+    // boolean prop
+    return value === false || value === null ? void 0 : fn
+  else if (typeof fn === 'function')
+    // functional prop
+    return fn(value, theme, props)
+  else {
+    // enum prop
+    const result = fn[value]
+
+    if (__DEV__) {
+      // enum value not found
+      if (result === void 0 && value !== false && value !== null)
+        throw new ReferenceError(
+          `Error in enum prop '${name}'. Value '${value}' not found in: ${Object.keys(fn).join(', ')}.`
+        )
+    }
+
+    return result
+  }
+}
 
 const maybeAddStyles = (css, maybeCss) => {
   if (maybeCss !== void 0 && maybeCss !== null) {
@@ -55,7 +69,7 @@ export default (styles, theme, props) => {
         || propVal.indexOf(theme.breakpointsDelimiter) === -1
       ) {
         // these are just regular values, no media queries
-        maybeAddStyles(css, getCss(getter, propVal, theme, props))
+        maybeAddStyles(css, getCss(propName, getter, propVal, theme, props))
       }
       else {
         // this parses values with media queries
@@ -79,7 +93,7 @@ export default (styles, theme, props) => {
 
           // empty values are treated as bools
           value = value.length === 0 ? true : value
-          let cssValue = getCss(getter, value, theme, props)
+          let cssValue = getCss(propName, getter, value, theme, props)
 
           if (cssValue !== null && cssValue !== void 0) {
             if (breakpoint === void 0 || breakpoint.length === 0)

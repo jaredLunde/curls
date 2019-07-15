@@ -22,12 +22,10 @@ const mergeGlobals = (name, defaultTheme, {userTheme, theme}) => {
   if (name === void 0)
     return theme
   else {
-    const componentTheme = getTheme(
-      defaultTheme,
-      mergeGlobals_(userTheme, getTheme(defaultTheme, userTheme[name]))
-    )
-
-    theme[name] = getTheme(defaultTheme, userTheme[name])
+    const
+      nextTheme = getTheme(defaultTheme, userTheme[name]),
+      componentTheme = getTheme(defaultTheme, mergeGlobals_(userTheme, nextTheme))
+    theme[name] = nextTheme
     return componentTheme
   }
 }
@@ -45,9 +43,10 @@ export default props => {
 }
 
 export const useTheme = (name, defaultTheme) => {
-  if (typeof name === 'object')
-    name = options.name
-    defaultTheme = options.defaultTheme
+  if (typeof name === 'object') {
+    name = name.name
+    defaultTheme = name.defaultTheme
+  }
 
   return mergeGlobals(name, defaultTheme, useContext(CurlsContext))
 }
