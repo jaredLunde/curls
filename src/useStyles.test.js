@@ -60,6 +60,29 @@ test('boolean prop w/ multiple values', t => {
   t.is(result.block, void 0)
 })
 
+test('boolean prop w/ breakpoints', t => {
+  let
+    config = {
+      name: 'box',
+      styles: {
+        block: css`display: block;`,
+        hidden: css`display: none;`,
+      }
+    }
+
+  // empty props
+  let props = {block: '@desktop @tablet', hidden: '@phone'}
+  let result = renderUseStyles(props, config).result.current
+
+  t.is(result.css.length, 3)
+  // phone first
+  t.is(result.css[0].styles, '@media only screen and (min-width: 0em){display:none;;}')
+  // tablet next
+  t.is(result.css[1].styles, '@media only screen and (min-width: 35em){display:block;;}')
+  // then desktop
+  t.is(result.css[2].styles, '@media only screen and (min-width: 80em){display:block;;}')
+})
+
 test('enum prop', t => {
   const config = {
     name: 'box',
@@ -116,6 +139,31 @@ test('enum prop', t => {
   result = renderUseStyles({display: void 0}, config).result.current
   t.is(result.css, void 0)
   t.false(result.hasOwnProperty('display'))
+})
+
+test('enum prop w/ breakpoints', t => {
+  let
+    config = {
+      name: 'box',
+      styles: {
+        display: {
+          block: css`display: block;`,
+          none: css`display: none;`,
+        }
+      }
+    }
+
+  // empty props
+  let props = {display: 'block@tablet block@desktop none@phone'}
+  let result = renderUseStyles(props, config).result.current
+
+  t.is(result.css.length, 3)
+  // phone first
+  t.is(result.css[0].styles, '@media only screen and (min-width: 0em){display:none;;}')
+  // tablet next
+  t.is(result.css[1].styles, '@media only screen and (min-width: 35em){display:block;;}')
+  // then desktop
+  t.is(result.css[2].styles, '@media only screen and (min-width: 80em){display:block;;}')
 })
 
 test('functional prop', t => {
@@ -235,6 +283,28 @@ test('functional prop w/ default theme', t => {
   t.is(result.css.length, 1)
   t.is(result.css[0].styles, 'display:none;')
   t.false(result.hasOwnProperty('display'))
+})
+
+test('functional prop w/ breakpoints', t => {
+  let
+    config = {
+      name: 'box',
+      styles: {
+        display: value => css`display: ${value};`
+      }
+    }
+
+  // empty props
+  let props = {display: 'block@tablet none@phone block@desktop'}
+  let result = renderUseStyles(props, config).result.current
+
+  t.is(result.css.length, 3)
+  // phone first
+  t.is(result.css[0].styles, '@media only screen and (min-width: 0em){display:none;;}')
+  // tablet next
+  t.is(result.css[1].styles, '@media only screen and (min-width: 35em){display:block;;}')
+  // then desktop
+  t.is(result.css[2].styles, '@media only screen and (min-width: 80em){display:block;;}')
 })
 
 test('w/ default styles', t => {
@@ -411,4 +481,72 @@ test('immutable props', t => {
   props = {display: 'block'}
   result = renderUseStyles(props, config).result.current
   t.not(props, result)
+})
+
+test('grouped breakpoint props', t => {
+  let
+    config = {
+      name: 'box',
+      styles: {
+        padding: value => css`padding: ${value};`
+      }
+    }
+
+  // empty props
+  let props = {padding: '[10px 10px]@tablet [16px 12px 16px]@phone [20px 21px 22px 23px]@desktop'}
+  let result = renderUseStyles(props, config).result.current
+
+  t.is(result.css.length, 3)
+  // phone first
+  t.is(result.css[0].styles, '@media only screen and (min-width: 0em){padding:16px 12px 16px;;}')
+  // tablet next
+  t.is(result.css[1].styles, '@media only screen and (min-width: 35em){padding:10px 10px;;}')
+  // then desktop
+  t.is(result.css[2].styles, '@media only screen and (min-width: 80em){padding:20px 21px 22px 23px;;}')
+})
+
+test('grouped breakpoint props w/ functions', t => {
+  let
+    config = {
+      name: 'box',
+      styles: {
+        padding: value => css`padding: ${value};`
+      }
+    }
+
+  // empty props
+  let props = {padding: '[10px 10px]@tablet [calc(10vh + 36px) 21px 22px 23px]@desktop'}
+  let result = renderUseStyles(props, config).result.current
+
+  t.is(result.css.length, 2)
+  // tablet
+  t.is(result.css[0].styles, '@media only screen and (min-width: 35em){padding:10px 10px;;}')
+  // desktop
+  t.is(result.css[1].styles, '@media only screen and (min-width: 80em){padding:calc(10vh + 36px) 21px 22px 23px;;}')
+})
+
+test('grouped breakpoint props w/ funky multiline spacing', t => {
+  let
+    config = {
+      name: 'box',
+      styles: {
+        padding: value => css`padding: ${value};`
+      }
+    }
+
+  // empty props
+  let props = {
+    padding: `
+    
+      [10px 10px]@tablet    
+         [calc(10vh + 36px) 21px 22px 23px]@desktop
+    `
+  }
+  let result = renderUseStyles(props, config).result.current
+
+  t.is(result.css.length, 2)
+  // tablet
+  t.is(result.css[0].styles, '@media only screen and (min-width: 35em){padding:10px 10px;;}')
+  // desktop
+  t.is(result.css[1].styles, '@media only screen and (min-width: 80em){padding:calc(10vh + 36px) 21px 22px 23px;;}')
 })

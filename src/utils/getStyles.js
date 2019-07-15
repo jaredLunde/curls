@@ -5,6 +5,7 @@ import getBreakpointOrder from './getBreakpointOrder'
 const
   splitWs = /(?!\[.*)\s+(?![^[]*?\])/g,
   replaceWs = /^\s+|\s+$|\s+(?=\s)/g
+
 const getCss = (name, fn, value, theme, props) => {
   if (typeof fn === 'object' && (fn.styles !== void 0 || Array.isArray(fn)))
     // boolean prop

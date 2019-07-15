@@ -93,8 +93,8 @@ export default (props, options = emptyObj) => {
   nextProps = maybeAddCssProp(nextProps, kindCss)
 
   if (derivedStyles !== void 0) {
-    // we want our CSS array to be as flat as possible since emotion interpolation will be slower
-    // the more nested the array is
+    // We want our CSS array to be as flat as possible since emotion interpolation will be
+    // slower the more nested the array is. It also makes testing hooks easier.
     if (Array.isArray(nextProps.css) === true)
       nextProps.css.push.apply(nextProps.css, derivedStyles)
     else
