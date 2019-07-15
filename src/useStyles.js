@@ -40,7 +40,7 @@ const maybeUnshiftCssArray = (cssProp, css) => {
   return css
 }
 
-const maybeAddCssProp = (props, nextProps, css) => {
+const maybeAddCssProp = (nextProps, css) => {
   if (css !== void 0) {
     // clones defaultStyles/kindCss if they are arrays to prevent runaway mutations
     const isCssArray = Array.isArray(css)
@@ -55,7 +55,6 @@ const maybeAddCssProp = (props, nextProps, css) => {
     else {
       // If props/nextProps match, we want to make sure we're not mutating the input props.
       // useStyles() is meant to be immutable.
-      if (nextProps === props) nextProps = Object.assign({}, props)
       nextProps.css = maybeUnshiftCssArray(
         nextProps.css,
         isCssArray === true ? css.slice(0) : [css]
@@ -87,15 +86,11 @@ export default (props, options = emptyObj) => {
   let
     nextProps = assignOrdered(theme.defaultProps, kind, props),
     derivedStyles = typeof styles === 'object' ? getStyles(styles, theme, nextProps) : void 0,
-    styleProps = withoutStyles(styles)
+    styleProps = kind !== void 0 ? withoutStyles(styles) : styles
 
-  // This seems a little bit fucky having this derivedStyles check twice, but the intent is to
-  // do the least work possible. That means calling Object.assign as little as possible. Without
-  // this order, it's possible we could assign new props twice when we really only need to once.
-  if (derivedStyles !== void 0)
-    nextProps = objectWithoutProps(nextProps, styleProps)
-  nextProps = maybeAddCssProp(props, nextProps, defaultStyles)
-  nextProps = maybeAddCssProp(props, nextProps, kindCss)
+  nextProps = objectWithoutProps(nextProps, styleProps)
+  nextProps = maybeAddCssProp(nextProps, defaultStyles)
+  nextProps = maybeAddCssProp(nextProps, kindCss)
 
   if (derivedStyles !== void 0) {
     // we want our CSS array to be as flat as possible since emotion interpolation will be slower
@@ -106,5 +101,5 @@ export default (props, options = emptyObj) => {
       nextProps.css = maybeUnshiftCssArray(nextProps.css, derivedStyles)
   }
 
-  return nextProps === props ? objectWithoutProps(nextProps, styleProps) : nextProps
+  return nextProps
 }

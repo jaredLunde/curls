@@ -7,7 +7,7 @@ const withoutAs = props => {
   return props
 }
 
-export default (defaultAs, props) =>
+export default (defaultAs, props, children) =>
   props.as === void 0
-    ? jsx(defaultAs, props)
-    : jsx(props.as, withoutAs(props))
+    ? jsx(defaultAs, props, children)
+    : jsx(props.as, withoutAs(props), children)

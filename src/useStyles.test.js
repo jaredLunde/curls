@@ -303,12 +303,14 @@ test('kind prop', t => {
   t.is(result.css.length, 1)
   t.is(result.css[0].styles, 'display:block;')
   t.false(result.hasOwnProperty('display'))
+  t.false(result.hasOwnProperty('kind'))
 
   // singular
   result = renderUseStyles({kind: 'cssPropSingular'}, config, theme).result.current
   t.is(result.css.length, 1)
   t.is(result.css[0].styles, 'display:none;')
   t.false(result.hasOwnProperty('display'))
+  t.false(result.hasOwnProperty('kind'))
 
   // array
   result = renderUseStyles({kind: 'cssPropArray'}, config, theme).result.current
@@ -317,6 +319,7 @@ test('kind prop', t => {
   t.is(result.css[1].styles, 'display:inline;')
   t.is(result.css[2].styles, 'display:block;')
   t.false(result.hasOwnProperty('display'))
+  t.false(result.hasOwnProperty('kind'))
   // ensures we write a new array because we reallllly don't want kinds to be mutable
   t.not(result.css, theme.box.kinds.cssPropArray)
 
@@ -326,6 +329,12 @@ test('kind prop', t => {
   t.is(result.css[0].styles, 'display:none;')
   t.is(result.css[1].styles, 'display:block;')
   t.false(result.hasOwnProperty('display'))
+  t.false(result.hasOwnProperty('kind'))
+
+  // undefined kind
+  result = renderUseStyles({kind: 'undefined'}, config, theme).result.current
+  t.is(result.css, void 0)
+  t.true(result.hasOwnProperty('kind'))
 })
 
 test('default props', t => {
@@ -353,7 +362,7 @@ test('default props', t => {
   t.false(result.hasOwnProperty('display'))
 })
 
-test('appends css', t => {
+test('mutable css prop', t => {
   let
     config = {
       name: 'box',
@@ -382,7 +391,7 @@ test('appends css', t => {
   t.not(result.css, props.css)
 })
 
-test('immutability', t => {
+test('immutable props', t => {
   let
     config = {
       name: 'box',
