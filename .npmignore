@@ -5,3 +5,4 @@ examples
 .idea
 **/*.test.js
 **/test.js
+**/testUtils.js

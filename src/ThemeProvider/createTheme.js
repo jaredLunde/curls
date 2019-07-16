@@ -51,7 +51,7 @@ export const baseTheme = {
 const throwThemeError = theme => {
   for (let key in baseTheme)
     if (theme[key] === void 0 || theme[key] === null || theme[key] === false)
-      throw new Error(`Curls themes must include a global '${key}' property.`)
+      throw new ReferenceError(`Curls themes must include a global '${key}' property.`)
 }
 
 const parseBreakpoints = fastMemoize(

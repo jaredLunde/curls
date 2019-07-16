@@ -79,19 +79,18 @@ export default (styles, theme, props) => {
           j = 0
 
         for (; j < values.length; j++) {
-          // <Box p='4@xl 5@xxl 2@sm [x2 y3]@md' flex='@xxl' justify='center@xxl start@xl'>
+          // <Box p='4@xl 5@xxl [x2 y3]@md' flex='@xxl' justify='center@xxl start@xl'>
           let
             indexOfSplit = values[j].indexOf(theme.breakpointsDelimiter),
             value = values[j], breakpoint
-
+          // handles breakpoint splitting
           if (indexOfSplit > -1) {
             value = values[j].substring(0, indexOfSplit)
-            // removes parentheses from value if there are any
-            if (value.indexOf('[') === 0 && value.indexOf(']') === value.length - 1)
-              value = value.substring(1, value.length - 1)
             breakpoint = values[j].substring(indexOfSplit + 1)
           }
-
+          // removes brackets from value's grouped props if there are any
+          if (value.indexOf('[') === 0 && value.indexOf(']') === value.length - 1)
+            value = value.substring(1, value.length - 1)
           // empty values are treated as bools
           value = value.length === 0 ? true : value
           let cssValue = getCss(propName, getter, value, theme, props)

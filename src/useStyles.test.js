@@ -24,22 +24,20 @@ test('boolean prop', t => {
   t.is(result.css.length, 1)
   t.is(result.css[0].styles, 'display:block;')
   t.is(result.block, void 0)
-
   // false
   result = renderUseStyles({block: false}, config).result.current
   t.is(result.css, void 0)
   t.is(result.block, void 0)
-
   // undefined
   result = renderUseStyles({block: void 0}, config).result.current
   t.is(result.css, void 0)
   t.is(result.block, void 0)
-
   // null
   result = renderUseStyles({block: null}, config).result.current
   t.is(result.css, void 0)
   t.is(result.block, void 0)
 })
+
 
 test('boolean prop w/ multiple values', t => {
   const config = {
@@ -59,6 +57,7 @@ test('boolean prop w/ multiple values', t => {
   t.is(result.css[1].styles, 'display:block;')
   t.is(result.block, void 0)
 })
+
 
 test('boolean prop w/ breakpoints', t => {
   let
@@ -82,6 +81,7 @@ test('boolean prop w/ breakpoints', t => {
   // then desktop
   t.is(result.css[2].styles, '@media only screen and (min-width: 80em){display:block;;}')
 })
+
 
 test('enum prop', t => {
   const config = {
@@ -141,6 +141,7 @@ test('enum prop', t => {
   t.false(result.hasOwnProperty('display'))
 })
 
+
 test('enum prop w/ breakpoints', t => {
   let
     config = {
@@ -165,6 +166,7 @@ test('enum prop w/ breakpoints', t => {
   // then desktop
   t.is(result.css[2].styles, '@media only screen and (min-width: 80em){display:block;;}')
 })
+
 
 test('functional prop', t => {
   const config = {
@@ -191,6 +193,7 @@ test('functional prop', t => {
   t.false(result.hasOwnProperty('display'))
 })
 
+
 test('functional prop w/ multiple return values', t => {
   const config = {
     name: 'box',
@@ -205,6 +208,7 @@ test('functional prop w/ multiple return values', t => {
   t.is(result.css[1].styles, 'display:block;')
   t.false(result.hasOwnProperty('display'))
 })
+
 
 test('functional prop w/ theme', t => {
   let
@@ -235,6 +239,7 @@ test('functional prop w/ theme', t => {
   t.false(result.hasOwnProperty('display'))
 })
 
+
 test('functional prop w/ props', t => {
   let
     config = {
@@ -250,6 +255,7 @@ test('functional prop w/ props', t => {
   t.is(result.css[0].styles, 'display:nonsense;')
   t.false(result.hasOwnProperty('display'))
 })
+
 
 test('functional prop w/ default theme', t => {
   let
@@ -285,6 +291,7 @@ test('functional prop w/ default theme', t => {
   t.false(result.hasOwnProperty('display'))
 })
 
+
 test('functional prop w/ breakpoints', t => {
   let
     config = {
@@ -306,6 +313,7 @@ test('functional prop w/ breakpoints', t => {
   // then desktop
   t.is(result.css[2].styles, '@media only screen and (min-width: 80em){display:block;;}')
 })
+
 
 test('w/ default styles', t => {
   let
@@ -407,6 +415,7 @@ test('kind prop', t => {
   t.true(result.hasOwnProperty('kind'))
 })
 
+
 test('default props', t => {
   let
     config = {
@@ -431,6 +440,7 @@ test('default props', t => {
   t.is(result.css[0].styles, 'display:block;')
   t.false(result.hasOwnProperty('display'))
 })
+
 
 test('mutable css prop', t => {
   let
@@ -461,6 +471,7 @@ test('mutable css prop', t => {
   t.not(result.css, props.css)
 })
 
+
 test('immutable props', t => {
   let
     config = {
@@ -482,6 +493,47 @@ test('immutable props', t => {
   result = renderUseStyles(props, config).result.current
   t.not(props, result)
 })
+
+
+test('throws w/o name', t => {
+  const config = {
+    styles: {
+      block: css`display: block;`
+    }
+  }
+
+  const
+    fn = () => { throw renderUseStyles({block: true}, config).result.error },
+    error = t.throws(() => {fn()}, Error)
+
+  t.is(
+    error.message,
+    `useStyles() must be used with a 'name' option set in order to access the proper theme`
+  )
+})
+
+
+test('some breakpoint props, some normal props', t => {
+  let
+    config = {
+      name: 'box',
+      styles: {
+        padding: value => css`padding: ${value};`
+      }
+    }
+
+  // empty props
+  let props = {padding: '[10px 10px]@tablet 16px 18px [20px 20px]'}
+  let result = renderUseStyles(props, config).result.current
+
+  t.is(result.css.length, 4)
+  t.is(result.css[0].styles, 'padding:16px;')
+  t.is(result.css[1].styles, 'padding:18px;')
+  t.is(result.css[2].styles, 'padding:20px 20px;')
+  // tablet
+  t.is(result.css[3].styles, '@media only screen and (min-width: 35em){padding:10px 10px;;}')
+})
+
 
 test('grouped breakpoint props', t => {
   let
@@ -505,6 +557,7 @@ test('grouped breakpoint props', t => {
   t.is(result.css[2].styles, '@media only screen and (min-width: 80em){padding:20px 21px 22px 23px;;}')
 })
 
+
 test('grouped breakpoint props w/ functions', t => {
   let
     config = {
@@ -525,6 +578,7 @@ test('grouped breakpoint props w/ functions', t => {
   t.is(result.css[1].styles, '@media only screen and (min-width: 80em){padding:calc(10vh + 36px) 21px 22px 23px;;}')
 })
 
+
 test('grouped breakpoint props w/ funky multiline spacing', t => {
   let
     config = {
@@ -535,14 +589,15 @@ test('grouped breakpoint props w/ funky multiline spacing', t => {
     }
 
   // empty props
-  let props = {
+  let
+    props = {
     padding: `
-    
-      [10px 10px]@tablet    
-         [calc(10vh + 36px) 21px 22px 23px]@desktop
-    `
-  }
-  let result = renderUseStyles(props, config).result.current
+      
+        [10px 10px]@tablet    
+           [calc(10vh + 36px) 21px 22px 23px]@desktop
+      `
+    },
+    result = renderUseStyles(props, config).result.current
 
   t.is(result.css.length, 2)
   // tablet
