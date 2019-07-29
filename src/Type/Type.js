@@ -1,21 +1,15 @@
 import React from 'react'
-import createElement from '../createElement'
+import {useStyles} from '@style-hooks/core'
+import createComponent from '../createComponent'
+import {useBox} from '../Box/Box'
 import * as styles from './styles'
 import * as defaultTheme from './defaultTheme'
-import useStyles from '../useStyles'
-import {useBox} from '../Box/Box'
 
 
-const
+export const
   options = {name: 'type', styles, defaultTheme},
   useType = props => useStyles(props, options),
-  Type = React.forwardRef(
-    (props, ref) => {
-      props = useBox(useType(props))
-      props.ref = ref
-      return createElement('span', props)
-    }
-  )
+  Type = createComponent('span', props => useBox(useType(props)))
 
 if (__DEV__) {
   const
@@ -25,6 +19,3 @@ if (__DEV__) {
   Type.displayName = 'Type'
   Type.propTypes = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 }
-
-export {useType}
-export default Type

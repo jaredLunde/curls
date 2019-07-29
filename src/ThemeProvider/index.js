@@ -1,8 +1,8 @@
-export default, {CurlsContext, useCurls} from './ThemeProvider'
-export createTheme, {
-  mergeTheme,
-  baseTheme,
-  defaultBreakpoints,
+export {
+  ThemeProvider as default,
+  defaultTheme,
   defaultColors,
-  defaultSpacingScale
-} from './createTheme'
+  CurlsContext,
+  CurlsConsumer,
+  useCurls
+} from './ThemeProvider'

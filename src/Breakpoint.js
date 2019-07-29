@@ -1,9 +1,8 @@
 import React from 'react'
 import memoize from 'trie-memoize'
+import {useTheme} from '@style-hooks/core'
 import useMediaQuery from '../useMediaQuery'
-import {useTheme} from '../ThemeConsumer'
 import {getBreakpointOrder} from '../utils'
-import * as defaultTheme from '../Grid/defaultTheme'
 
 
 const getSizes = (props, theme) => {
@@ -73,22 +72,19 @@ const getDefaultMatches = (theme, sizes, defaultMatches) => {
   }
 }
 
-const options = {name: 'flexGrid', defaultTheme}
-export const useBreakpoint = props => {
-  const
-    theme = useTheme(options.name),
-    [sizes, queries] = findBreakpoints(props, theme),
-    defaultMatches = getDefaultMatches(theme, sizes, props.defaultMatches),
-    state = useMediaQuery(queries, defaultMatches)
+export const
+  useBreakpoint = props => {
+    const
+      theme = useTheme(),
+      [sizes, queries] = findBreakpoints(props, theme),
+      defaultMatches = getDefaultMatches(theme, sizes, props.defaultMatches),
+      state = useMediaQuery(queries, defaultMatches)
 
-  const out = Object.assign({}, state)
-  out.matches = getMatches(sizes, state.matches)
-  return out
-}
-
-const Breakpoint = props => props.children(useBreakpoint(props))
+    const out = Object.assign({}, state)
+    out.matches = getMatches(sizes, state.matches)
+    return out
+  },
+  Breakpoint = props => props.children(useBreakpoint(props))
 
 if (__DEV__)
   Breakpoint.displayName = 'Breakpoint'
-
-export default Breakpoint

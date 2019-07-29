@@ -1,5 +1,7 @@
 import {css} from '@emotion/core'
 import memoize from 'trie-memoize'
+import {get} from '../utils'
+import * as defaultTheme from './defaultTheme'
 
 
 const getColumnWidth = memoize(
@@ -7,7 +9,8 @@ const getColumnWidth = memoize(
   (theme, size, cols, useFlex) => {
     if (cols === false) return null
     const
-      numColumns = isNaN(theme.columns) === true ? theme.columns[size] : theme.columns,
+      columns = get(theme.flexGrid, 'columns', defaultTheme.columns),
+      numColumns = isNaN(columns) === true ? columns[size] : columns,
       indexOfSlash = cols.indexOf('/'),
       x = parseInt(indexOfSlash > -1 ? cols.substring(0, indexOfSlash) : cols)
 

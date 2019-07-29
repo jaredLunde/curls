@@ -2,7 +2,7 @@ import {useCallback} from 'react'
 import useToggle from '@react-hook/toggle'
 
 
-export default ({initialValue, value: controlledValue}) => {
+export default (initialValue, controlledValue) => {
   const
     [value, toggle] = useToggle(controlledValue === void 0 ? initialValue : controlledValue),
     on = useCallback(() => value === false && toggle(), [value, toggle]),

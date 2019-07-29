@@ -1,48 +1,7 @@
 import {css} from '@emotion/core'
-import memoize from 'trie-memoize'
-import {fastMemoize, colorize, memoTheme, memoValue, toSize} from '../utils'
+import {colorize, memoTheme, memoValue, unit, get} from '../utils'
+import * as dT from './defaultTheme'
 
-
-const fontSizeFromTheme = memoize(
-  [Map, WeakMap],
-  (v, t) => {
-    const isLeg = t.legible && t.legible.indexOf(v) > -1
-    return css`
-      font-size: ${toSize(v, t.sizeUnit)};
-      ${optimizeFor[isLeg ? 'legibility' : 'speed']}; 
-      ${isLeg && antialias};
-    `
-  }
-)
-
-const fontSize = (size, theme, props) => {
-  if (size === false || size === null) {
-    return null
-  }
-
-  let fontSize = theme.scale[size]
-  const typeOfFontSize = typeof fontSize
-
-  if (typeOfFontSize === 'function') {
-    const isLeg = theme.legible.indexOf(size) > -1
-    return css`
-      ${fontSize(theme, props)};
-      ${optimizeFor[isLeg ? 'legibility' : 'speed']}; 
-      ${isLeg && antialias};
-    `
-  }
-  else if (typeOfFontSize !== 'object') {
-    return fontSizeFromTheme(fontSize, theme)
-  }
-  else {
-    const isLeg = theme.legible.indexOf(size) > -1
-    return css`
-      ${fontSize};
-      ${optimizeFor[isLeg ? 'legibility' : 'speed']}; 
-      ${isLeg && antialias};
-    `
-  }
-}
 
 // Weights
 export const
@@ -56,10 +15,28 @@ export const
   heavy = css`font-weight: 800;`,
   ultraHeavy = css`font-weight: 900;`
 // Sizes
-const createSizeShortcut = fastMemoize('typeSize', s => (v, t, p) => fontSize(s, t, p))
-export const size = (s, t, p) => createSizeShortcut(s)(true, t, p)
+export const size = memoTheme((size, theme) => {
+  if (size === false || size === null) return null
+
+  let
+    scale = get(theme.type, 'scale', dT),
+    fontSize = scale[size],
+    typeOfFontSize = typeof fontSize
+
+  if (typeOfFontSize === 'function')
+    fontSize = fontSize(theme)
+  else if (typeOfFontSize !== 'object')
+    fontSize = css`font-size: ${unit(size, get(theme.type, 'sizeUnit', dT))};`
+
+  const isLeg = get(theme.type, 'legible', dT).indexOf(size) > -1
+  return css`
+      ${fontSize};
+      ${optimizeFor[isLeg ? 'legibility' : 'speed']}; 
+      ${isLeg && antialias};
+    `
+})
 // Face
-export const face = memoTheme((v, t) => css`font-family: ${t.faces[v] || v};`)
+export const face = memoTheme((v, t) => css`font-family: ${get(t.type, 'faces', dT)[v] || v};`)
 // Line height
 export const lh = memoValue(v => css`line-height: ${v};`)
 // Color

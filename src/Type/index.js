@@ -1,2 +1,2 @@
-export default, {useType} from './Type'
+export {Type, useType} from './Type'
 export prettyType from './prettyType'

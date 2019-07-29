@@ -1,11 +1,10 @@
-import useStyles from './useStyles'
-import {objectWithoutProps} from './utils'
+import {forwardRef} from 'react'
+import {createElement} from '@style-hooks/core'
 
 
-const withoutChildren = {children: 0}
-export default options => props => props.children(
-  objectWithoutProps(
-    useStyles(props, options),
-    withoutChildren
-  )
-)
+export default (element, useStyles, css) => forwardRef((props, ref) => {
+  if (css !== void 0) props = Object.assign({css}, props)
+  props = useStyles(props)
+  props.ref = ref
+  return createElement(element, props)
+})

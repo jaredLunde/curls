@@ -1,13 +1,41 @@
-import {fastMemoize, memoTheme} from '../utils'
+import {css} from '@emotion/core'
+import {memoTheme, get} from '../utils'
+import * as dT from './defaultTheme'
 
-
-const
-  getPlainScale = memoTheme((s, t) => t.scale[s]),
-  themeScale = fastMemoize(
-    'buttonSize',
-    s => (t, p) => typeof t.scale[s] === 'function' ? t.scale[s](t, p) : getPlainScale(s, t)
-  )
 
 export const
-  size = (s, t, p) => themeScale(s)(t, p),
-  __buttonStyles = (v, t, p) => [t.getHoverClass(t, p), t.getActiveClass(t, p)]
+  size = memoTheme((s, t) => {
+    const value = get(t.button, 'scale', dT)[s]
+    return typeof value === 'function' ? value(t) : value
+  }),
+  __buttonStyles = memoTheme((v, t, p) => [
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: 0;
+      background: none;
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      overflow: visible;
+      padding: 0;
+      margin: 0;
+      line-height: 1.0;
+      user-select: none;
+      text-align: inherit;
+    
+      &::-moz-focus-inner {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+      
+      &:focus {
+        outline: 0
+      }
+    `,
+    get(t.button, 'getHoverClass', dT)(t, p),
+    get(t.button, 'getActiveClass', dT)(t, p)
+  ])

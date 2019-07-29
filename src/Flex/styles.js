@@ -1,6 +1,7 @@
 import {css} from '@emotion/core'
-import {toSize, memoValue, memoTheme} from '../utils'
+import {unit, memoValue, memoTheme, get} from '../utils'
 import {d} from '../Box/styles'
+import * as dT from './defaultTheme'
 
 
 export const flex = d.flex
@@ -11,7 +12,9 @@ export const fluid = css`
 `
 export const grow = memoValue(value => css`flex-grow: ${value === true ? 1 : value};`)
 export const shrink = memoValue(value => css`flex-shrink: ${value === true ? 1 : value};`)
-export const basis = memoTheme((value, theme) => css`flex-basis: ${toSize(value, theme.basisUnit)};`)
+export const basis = memoTheme(
+  (value, theme) => css`flex-basis: ${unit(value, get(theme.flex, 'basisUnit', dT))};`
+)
 export const order = memoValue(value => css`order: ${value};`)
 
 const rowCSS = css`flex-direction: row;`

@@ -1,9 +1,8 @@
 export browserResets from './browserResets'
 export containmentAttrs from './containmentAttrs'
 export const MAX_Z_INDEX = 2147483647
-
 export createComponent from './createComponent'
-export createElement from './createElement'
+export createRenderProp from './createRenderProp'
 
 export {
   colorize,
@@ -11,8 +10,6 @@ export {
   getBreakpointOrder,
   getHoverQuery,
   getMediaQuery,
-  getStyles,
-  getTheme as mergeTheme,
   loadImage,
   loadImages,
   memoValue,
@@ -20,30 +17,31 @@ export {
   nullIfFalsey,
   portalize,
   supportsCSS,
-  toSize
+  toSize, // deprecated
+  unit
 } from './utils'
 
 export ThemeProvider, {
-  defaultBreakpoints,
+  defaultTheme,
   defaultColors,
-  defaultSpacingScale,
+  CurlsContext,
+  CurlsConsumer,
   useCurls
 } from './ThemeProvider'
-export ThemeConsumer, {useTheme} from './ThemeConsumer'
 
 export Avatar, {useAvatar} from './Avatar'
 // GridBox is deprecated
-export {useBasicBox, useGridBox, useBox, Box, GridBox, BasicBox, FlexBox, FlexGrid} from './Box'
-export Breakpoint, {useBreakpoint} from './Breakpoint'
-export Button, {useButton} from './Button'
+export {Box, useBox, useBasicBox, BasicBox} from './Box'
+export {Breakpoint, useBreakpoint} from './Breakpoint'
+export {Button, useButton} from './Button'
 export Card, {useCard} from './Card'
-export Col, {useCol} from './Col'
+export {Col} from './Col'
 export Divider, {useDivider} from './Divider'
 export Drawer, {DrawerBox, useDrawerBox, useDrawerContext, DrawerConsumer} from './Drawer'
 export Drop, {useDrop} from './Drop'
-export {useFlexGrid} from './useFlexGrid'
+export FlexGrid, {useFlexGrid} from './FlexGrid'
 export Fade, {useFade} from './Fade'
-export {useFlex} from './Flex'
+export {Flex, useFlex} from './Flex'
 export Grid, {useGrid} from './Grid'
 export GridItem, {useGridItem} from './GridItem'
 export Hero, {useHero} from './Hero'
@@ -53,13 +51,14 @@ export Modal, {ModalBox, useModalBox, useModalContext, ModalConsumer} from './Mo
 export NavBar, {useNavBar} from './NavBar'
 export Overlay, {useOverlay} from './Overlay'
 export Popover, {PopoverBox, usePopoverBox, usePopoverContext, PopoverConsumer} from './Popover'
-export Row, {useRow} from './Row'
+export {Row} from './Row'
 export Slide, {useSlide} from './Slide'
 export TextArea, {useTextArea} from './TextArea'
 export Transitionable, {useTransitionable, useTransitionableToggle, getDelay} from './Transitionable'
-export Type, {useType, prettyType} from './Type'
+export {Type, useType, prettyType} from './Type'
 export useMediaQuery from './useMediaQuery'
-export useStyles from './useStyles'
 
+// style-hooks exports
+export * from '@style-hooks/core'
 // emotion exports
-export {CacheProvider, withEmotionCache, css, ClassNames, Global, keyframes, jsx} from '@emotion/core'
+export {css, jsx, withEmotionCache, CacheProvider, Global, keyframes, ClassNames} from '@emotion/core'

@@ -1,1 +1,1 @@
-export default, {useButton} from './Button'
+export {Button, useButton} from './Button'
