@@ -3,7 +3,6 @@ import {css} from '@emotion/core'
 import {useStyles, createElement} from '@style-hooks/core'
 import emptyObj from 'empty/object'
 import {portalize, withChildren} from './utils'
-import {Overlay} from './Overlay'
 import {useBox} from './Box'
 import {Drop} from './Drop'
 
@@ -51,13 +50,7 @@ export const
       props = useBox(useModalBox(props))
       props.children = typeof children === 'function' ? children(transition) : children
       props.ref = ref
-      let Component = createElement('div', props)
-      if (withOverlay === true)
-        Component = <Overlay
-          visible={transition.isVisible}
-          children={Component}
-        />
-      return portalize(Component, portal)
+      return portalize(createElement('div', props), portal)
     }
   ),
   Modal = props => React.createElement(
@@ -69,9 +62,9 @@ export const
   )
 
 ModalBox.defaultProps = {
-  br: 1,
+  br: 3,
   bg: 'white',
-  sh: 16
+  sh: 12
 }
 
 if (__DEV__) {

@@ -15,7 +15,8 @@ export const
 Button.defaultProps = {
   role: 'button',
   size: 'sm',
-  br: 5
+  br: 5,
+  bw: 1
 }
 
 if (__DEV__) {
