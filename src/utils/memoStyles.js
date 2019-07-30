@@ -1,6 +1,6 @@
 import memoize from 'trie-memoize'
-import nullIfFalsey from './nullIfFalsey'
+import nullIfFalsy from './nullIfFalsy'
 
 
-export const memoValue = fn => nullIfFalsey(memoize([Map], fn))
-export const memoTheme = fn => nullIfFalsey(memoize([Map, WeakMap], fn))
+export const memoValue = fn => nullIfFalsy(memoize([Map], fn))
+export const memoTheme = fn => nullIfFalsy(memoize([Map, WeakMap], fn))

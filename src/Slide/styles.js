@@ -1,7 +1,7 @@
 import {css} from '@emotion/core'
 import memoize from 'trie-memoize'
 import {baseIsNotVisible, baseIsVisible} from '../Fade/styles'
-import {unit, nullIfFalsey, get} from '../utils'
+import {unit, nullIfFalsy, get} from '../utils'
 import * as dT from './defaultTheme'
 
 
@@ -14,7 +14,7 @@ export const
   isVisible = v => v === true ? isVisible_ : baseIsNotVisible,
   whichVal = (v, ov, t, isVisible) =>
     isVisible === true ? 0 : v === true ? `${ov}%` : unit(v, get(t.slide, 'distanceUnit', dT)),
-  fromTop = nullIfFalsey((v, t, p) => transform(0, `${whichVal(v, -100, t, p.isVisible)}`, 0)),
-  fromRight = nullIfFalsey((v, t, p) => transform(`${whichVal(v, 100, t, p.isVisible)}`, 0, 0)),
-  fromBottom = nullIfFalsey((v, t, p) => transform(0, `${whichVal(v, 100, t, p.isVisible)}`, 0)),
-  fromLeft = nullIfFalsey((v, t, p) => transform(`${whichVal(v, -100, t, p.isVisible)}`, 0, 0))
+  fromTop = nullIfFalsy((v, t, p) => transform(0, `${whichVal(v, -100, t, p.isVisible)}`, 0)),
+  fromRight = nullIfFalsy((v, t, p) => transform(`${whichVal(v, 100, t, p.isVisible)}`, 0, 0)),
+  fromBottom = nullIfFalsy((v, t, p) => transform(0, `${whichVal(v, 100, t, p.isVisible)}`, 0)),
+  fromLeft = nullIfFalsy((v, t, p) => transform(`${whichVal(v, -100, t, p.isVisible)}`, 0, 0))

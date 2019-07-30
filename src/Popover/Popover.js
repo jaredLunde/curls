@@ -284,7 +284,7 @@ export const Popover = React.forwardRef(
 )
 
 PopoverBox.defaultProps = {
-  br: 1,
+  br: 3,
   bg: 'white',
   sh: 12
 }

@@ -1,6 +1,7 @@
 export browserResets from './browserResets'
 export containmentAttrs from './containmentAttrs'
 export const MAX_Z_INDEX = 2147483647
+
 export createComponent from './createComponent'
 export createRenderProp from './createRenderProp'
 
@@ -13,7 +14,7 @@ export {
   loadImages,
   memoValue,
   memoTheme as memoThemeValue,
-  nullIfFalsey,
+  nullIfFalsy,
   portalize,
   supportsCSS,
   unit
@@ -44,7 +45,6 @@ export {GridItem, useGridItem} from './GridItem'
 export {Input, useInput} from './Input'
 export {Link, useLink, A, NavLink} from './Link'
 export {Modal, ModalBox, useModalBox, useModalContext, ModalContext, ModalConsumer} from './Modal'
-export {Overlay, useOverlay} from './Overlay'
 export {Popover, PopoverBox, usePopoverBox, usePopoverContext, PopoverContext, PopoverConsumer} from './Popover'
 export {Slide, useSlide} from './Slide'
 export {Text, useText, prettyText} from './Text'
