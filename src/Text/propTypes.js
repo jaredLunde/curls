@@ -31,8 +31,8 @@ export default {
   antialias: boolOrString,
   // Color
   color: boolOrString,
-  // Typeface
-  face: boolOrString,
+  // font-family
+  family: boolOrString,
   // cool
   ellipsis: boolOrString,
   // line-height

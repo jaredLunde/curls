@@ -10,6 +10,6 @@ export const scale = {
 
 export const sizeUnit = 'rem'
 
-export const faces = {
+export const families = {
   system: '-apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Helvetica", sans-serif'
 }

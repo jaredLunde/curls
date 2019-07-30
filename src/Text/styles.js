@@ -37,7 +37,7 @@ export const size = memoTheme((size, theme) => {
   `
 })
 // Face
-export const face = memoTheme((v, t) => css`font-family: ${get(t.text , 'faces', dT)[v] || v};`)
+export const family = memoTheme((v, t) => css`font-family: ${get(t.text , 'families', dT)[v] || v};`)
 // Line height
 export const lh = memoValue(v => css`line-height: ${v};`)
 // Color
