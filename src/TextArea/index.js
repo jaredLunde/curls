@@ -1,1 +1,1 @@
-export default, {useTextArea} from './TextArea'
+export {TextArea, useTextArea} from './TextArea'

@@ -1,7 +1,7 @@
 import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
-import * as styles from './styles'
 import createComponent from '../createComponent'
+import * as styles from './styles'
 
 
 const

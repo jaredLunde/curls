@@ -1,26 +1,9 @@
-import {css} from '@emotion/core'
+import {get, placeholder} from '../utils'
+import * as dT from './defaultTheme'
 
-const placeholder = p => {
-  if (!p) return null
 
-  return css`
-    ::-webkit-input-placeholder {
-      ${p};
-    }
-    ::-moz-placeholder {
-      ${p};
-    }
-    :-ms-input-placeholder {
-      ${p};
-    }
-    ::placeholder {
-      ${p};
-    }
-  `
-}
-
-export const __inputStyles = (_, theme, props) => [
-    placeholder(theme.getPlaceholderClass(theme, props)),
-    theme.getHoverClass(theme, props),
-    theme.getFocusClass(theme, props),
+export const __inputStyles = (_, t, p) => [
+    placeholder(get(t.input, 'getPlaceholderClass', dT)(t, p)),
+    get(t.input, 'getHoverClass', dT)(t, p),
+    get(t.input, 'getFocusClass', dT)(t, p)
  ]

@@ -1,19 +1,16 @@
-import React from 'react'
-import * as styles from './styles'
-import * as defaultTheme from './defaultTheme'
+import createRenderProp from '../createRenderProp'
 import {useTransitionableToggle} from '../Transitionable'
+import * as styles from './styles'
 
 
 const
-  options = {name: 'slide', styles, defaultTheme, transitionProperties: 'visibility, transform'},
+  options = {name: 'slide', styles, transitionProperties: 'visibility, transform'}
+export const
   useSlide = props => useTransitionableToggle(options, props),
-  Slide = props => props.children(useSlide(props))
+  Slide = createRenderProp(useSlide)
 
 if (__DEV__) {
   const propTypes = require('./propTypes').default
   Slide.displayName = 'Slide'
   Slide.propTypes = propTypes
 }
-
-export {useSlide}
-export default Slide

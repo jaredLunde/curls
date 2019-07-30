@@ -1,11 +1,10 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import createElement from '../createElement'
+import {useStyles} from '@style-hooks/core'
+import createComponent from '../createComponent'
 import {useBox} from '../Box'
-import {useType} from '../Type'
+import {useText} from '../Text'
 import * as styles from './styles'
-import * as defaultTheme from './defaultTheme'
-import useStyles from '../useStyles'
 
 
 const
@@ -28,16 +27,18 @@ const
       outline-offset: -2px;
     }
   `,
-  options  = {name: 'input', styles, defaultStyles, defaultTheme},
+  options  = {name: 'input', styles}
+
+export const
   useInput = props => useStyles(Object.assign({__inputStyles: true}, props), options),
-  Input = React.forwardRef(
-    (props, ref) => {
-      props = useBox(useType(useInput(props)))
-      props.type = props.type || 'text'
-      props.ref = ref
-      return createElement('input', props)
-    }
-  )
+  Input = createComponent('input', props => useBox(useText(useInput(props))), defaultStyles)
+
+Input.defaultProps = {
+  size: 'sm',
+  p: 'x3 y2',
+  bw: 1,
+  br: 5
+}
 
 if (__DEV__) {
   const
@@ -47,6 +48,3 @@ if (__DEV__) {
   Input.displayName = 'Input'
   Input.propTypes = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes)
 }
-
-export {useInput}
-export default Input

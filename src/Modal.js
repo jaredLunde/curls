@@ -1,13 +1,11 @@
 import React, {useContext} from 'react'
 import {css} from '@emotion/core'
+import {useStyles, createElement} from '@style-hooks/core'
 import emptyObj from 'empty/object'
-import {portalize, withChildren} from '../utils'
-import Overlay from '../Overlay'
-import {useBox} from '../Box'
-import createElement from '../createElement'
-import Drop from '../Drop'
-import * as defaultTheme from './defaultTheme'
-import useStyles from '../useStyles'
+import {portalize, withChildren} from './utils'
+import {Overlay} from './Overlay'
+import {useBox} from './Box'
+import {Drop} from './Drop'
 
 
 /**
@@ -39,20 +37,19 @@ const
     right: 0;
     z-index: 1000;
   `,
-  options = {name: 'modal', defaultStyles, defaultTheme},
-  ModalContext = React.createContext(emptyObj),
-  {Consumer, Provider} = ModalContext
+  options = {name: 'modal'}
 
 export const
-  ModalConsumer = Consumer,
+  ModalContext = React.createContext(emptyObj),
+  {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),
   useModalBox = props => useStyles(props, options),
   ModalBox = React.forwardRef(
     ({children, portal, withOverlay = false, ...props}, ref) => {
-      props = useBox(useModalBox(props))
       const transition = useModalContext()
+      props.css = [transition.css, defaultStyles]
+      props = useBox(useModalBox(props))
       props.children = typeof children === 'function' ? children(transition) : children
-      props.css = props.css ? [transition.css, props.css] : transition.css
       props.ref = ref
       let Component = createElement('div', props)
       if (withOverlay === true)
@@ -66,9 +63,15 @@ export const
   Modal = props => (props.transition || Drop)(
     withChildren(
       props,
-      transition => <Provider value={transition} children={props.children(transition)}/>
+      transition => <ModalContext.Provider value={transition} children={props.children(transition)}/>
     )
   )
+
+ModalBox.defaultProps = {
+  br: 1,
+  bg: 'white',
+  sh: 16
+}
 
 if (__DEV__) {
   const slidePropTypes = require('../Slide/propTypes').default
@@ -76,5 +79,3 @@ if (__DEV__) {
   ModalBox.displayName = 'ModalBox'
   Modal.propTypes = slidePropTypes
 }
-
-export default Modal

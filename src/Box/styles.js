@@ -51,7 +51,10 @@ export const
       position: sticky;
       top: 0;
     `,
-    static: css`position: static;`
+    static: css`position: static;`,
+    unset: css`position: unset;`,
+    initial: css`position: initial;`,
+    inherit: css`position: inherit;`,
   },
   d = {
     block: css`display: block;`,

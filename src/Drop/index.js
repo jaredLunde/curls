@@ -1,1 +1,1 @@
-export default, {useDrop} from './Drop'
+export {Drop, useDrop} from './Drop'

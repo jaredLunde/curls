@@ -1,11 +1,10 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import createElement from '../createElement'
+import {useStyles, createElement} from '@style-hooks/core'
+import {Input} from '../Input/Input'
 import {useBox} from '../Box'
-import {useType} from '../Type'
+import {useText} from '../Text'
 import * as styles from './styles'
-import * as defaultTheme from './defaultTheme'
-import useStyles from '../useStyles'
 
 
 const
@@ -14,7 +13,7 @@ const
     outline: none;
     margin: 0;
   `,
-  options = {name: 'textArea', styles, defaultStyles, defaultTheme},
+  options = {name: 'textArea', styles},
   autoResize = e => {
     if (!e.target.value)
       e.target.style.height = ''
@@ -22,11 +21,14 @@ const
       e.target.style.height = 'auto'
       e.target.style.height = e.target.scrollHeight + 'px'
     }
-  },
-  useTextArea = props => useStyles(Object.assign({__inputStyles: true}, props), options),
+  }
+
+export const
+  useTextArea = props => useStyles(Object.assign({__textAreaStyles: true}, props), options),
   TextArea = React.forwardRef(
     (props, ref) => {
-      let nodeProps = useBox(useType(useTextArea(props)))
+      props = Object.assign({css: [defaultStyles]}, props)
+      let nodeProps = useBox(useText(useTextArea(props)))
       nodeProps.ref = ref
 
       if (props.autoResize) {
@@ -40,6 +42,11 @@ const
     }
   )
 
+TextArea.defaultProps = Object.assign({}, Input.defaultProps, {
+  p: 3,
+  br: 3
+})
+
 if (__DEV__) {
   const
     propTypes = require('./propTypes').default,
@@ -49,6 +56,3 @@ if (__DEV__) {
   TextArea.displayName = 'TextArea'
   TextArea.propTypes = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes, propTypes)
 }
-
-export {useTextArea}
-export default TextArea

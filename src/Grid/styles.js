@@ -1,6 +1,7 @@
 import {css} from '@emotion/core'
-import {toSize, memoValue, memoTheme} from '../utils'
+import {toSize, memoValue, memoTheme, get} from '../utils'
 import {d} from '../Box/styles'
+import * as dT from './defaultTheme'
 
 
 const
@@ -19,11 +20,11 @@ const
 
 export const
   inline = d.inlineGrid,
-  rows = memoTheme((v, t) => css`grid-template-rows: ${getSizes(v, t.templateUnit)};`),
-  cols = memoTheme((v, t) => css`grid-template-columns: ${getSizes(v, t.templateUnit)};`),
-  autoRows = memoTheme((v, t) => css`grid-auto-rows: ${toSize(v, t.templateUnit)};`),
-  autoCols = memoTheme((v, t) => css`grid-auto-columns: ${toSize(v, t.templateUnit)};`),
-  gap = memoTheme((v, t) => css`grid-gap: ${getSizes(v, t.gapUnit)};`),
+  rows = memoTheme((v, t) => css`grid-template-rows: ${getSizes(v, get(t.grid, 'templateUnit', dT))};`),
+  cols = memoTheme((v, t) => css`grid-template-columns: ${getSizes(v, get(t.grid, 'templateUnit', dT))};`),
+  autoRows = memoTheme((v, t) => css`grid-auto-rows: ${toSize(v, get(t.grid, 'templateUnit', dT))};`),
+  autoCols = memoTheme((v, t) => css`grid-auto-columns: ${toSize(v, get(t.grid, 'templateUnit', dT))};`),
+  gap = memoTheme((v, t) => css`grid-gap: ${getSizes(v, get(t.grid, 'gapUnit', dT))};`),
   flow = {
     row: css`grid-auto-flow: row;`,
     column: css`grid-auto-flow: column;`

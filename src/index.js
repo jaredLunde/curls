@@ -9,7 +9,6 @@ export {
   directionalScale,
   getBreakpointOrder,
   getHoverQuery,
-  getMediaQuery,
   loadImage,
   loadImages,
   memoValue,
@@ -17,11 +16,11 @@ export {
   nullIfFalsey,
   portalize,
   supportsCSS,
-  toSize, // deprecated
   unit
 } from './utils'
 
-export ThemeProvider, {
+export {
+  ThemeProvider,
   defaultTheme,
   defaultColors,
   CurlsContext,
@@ -29,33 +28,28 @@ export ThemeProvider, {
   useCurls
 } from './ThemeProvider'
 
-export Avatar, {useAvatar} from './Avatar'
-// GridBox is deprecated
+export {Avatar, useAvatar} from './Avatar'
 export {Box, useBox, useBasicBox, BasicBox} from './Box'
 export {Breakpoint, useBreakpoint} from './Breakpoint'
 export {Button, useButton} from './Button'
-export Card, {useCard} from './Card'
-export {Col} from './Col'
-export Divider, {useDivider} from './Divider'
-export Drawer, {DrawerBox, useDrawerBox, useDrawerContext, DrawerConsumer} from './Drawer'
-export Drop, {useDrop} from './Drop'
-export FlexGrid, {useFlexGrid} from './FlexGrid'
-export Fade, {useFade} from './Fade'
+export {Card, useCard} from './Card'
+export {Divider, useDivider} from './Divider'
+export {Drawer, DrawerBox, useDrawerBox, useDrawerContext, DrawerContext, DrawerConsumer} from './Drawer'
+export {Drop, useDrop} from './Drop'
+export {Fade, useFade} from './Fade'
+export {FlexGrid, useFlexGrid} from './FlexGrid'
 export {Flex, useFlex} from './Flex'
-export Grid, {useGrid} from './Grid'
-export GridItem, {useGridItem} from './GridItem'
-export Hero, {useHero} from './Hero'
-export Input, {useInput} from './Input'
-export Link, {NavLink, A, useLink} from './Link'
-export Modal, {ModalBox, useModalBox, useModalContext, ModalConsumer} from './Modal'
-export NavBar, {useNavBar} from './NavBar'
-export Overlay, {useOverlay} from './Overlay'
-export Popover, {PopoverBox, usePopoverBox, usePopoverContext, PopoverConsumer} from './Popover'
-export {Row} from './Row'
-export Slide, {useSlide} from './Slide'
-export TextArea, {useTextArea} from './TextArea'
-export Transitionable, {useTransitionable, useTransitionableToggle, getDelay} from './Transitionable'
-export {Type, useType, prettyType} from './Type'
+export {Grid, useGrid} from './Grid'
+export {GridItem, useGridItem} from './GridItem'
+export {Input, useInput} from './Input'
+export {Link, useLink, A, NavLink} from './Link'
+export {Modal, ModalBox, useModalBox, useModalContext, ModalContext, ModalConsumer} from './Modal'
+export {Overlay, useOverlay} from './Overlay'
+export {Popover, PopoverBox, usePopoverBox, usePopoverContext, PopoverContext, PopoverConsumer} from './Popover'
+export {Slide, useSlide} from './Slide'
+export {Text, useText, prettyText} from './Text'
+export {TextArea, useTextArea} from './TextArea'
+export {Transitionable, useTransitionable, useTransitionableToggle, getDelay} from './Transitionable'
 export useMediaQuery from './useMediaQuery'
 
 // style-hooks exports

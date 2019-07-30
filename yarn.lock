@@ -1125,7 +1125,7 @@
     "@types/react" "^16.8.22"
     "@types/react-test-renderer" "^16.8.2"
 
-"@testing-library/react@^8.0.5":
+"@testing-library/react@^8.0.7":
   version "8.0.7"
   resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-8.0.7.tgz#b5992c9156e926850a0e3a7c882ae1aed83b1c77"
   integrity sha512-6XoeWSr3UCdxMswbkW0BmuXYw8a6w+stt+5gg4D4zAcljfhXETQ5o28bjJFwNab4OPg8gBNK8KIVot86L4Q8Vg==
@@ -5522,9 +5522,9 @@ tr46@^1.0.1:
     punycode "^2.1.0"
 
 trie-memoize@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/trie-memoize/-/trie-memoize-1.0.7.tgz#c68dbeb92bb05ef08fe6140c1142314aeea0ed59"
-  integrity sha512-yiQ/FEU95d0163KXVz3J8gtsRUfVgxq44fwdy6N0WFwJPb5qulpefV4MHTHRZwf4gdMtqv1ADV7CEaf1Xl5j6w==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/trie-memoize/-/trie-memoize-1.0.8.tgz#090ca1d5e26aea1173e29360c14155d738f46dc8"
+  integrity sha512-WCEQX3alm/JZw0Ok/q23e4WSY4OnJe1pORugCTs5lKZnNtQcTZLca4AjbHJ+siE9v51aGdJ61l7tWfVGD8AC8Q==
   dependencies:
     is-plain-object "^2.0.4"
 

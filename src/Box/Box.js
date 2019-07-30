@@ -1,8 +1,7 @@
-import React from 'react'
-import * as styles from './styles'
-import * as flexStyles from '../Flex/styles'
 import {useStyles} from '@style-hooks/core'
 import createComponent from '../createComponent'
+import * as flexStyles from '../Flex/styles'
+import * as styles from './styles'
 
 
 const

@@ -6,7 +6,7 @@ import * as defaultTheme from './defaultTheme'
 
 const getColumnWidth = memoize(
   [WeakMap, Map, Map, Map],
-  (theme, size, cols, useFlex) => {
+  (theme, size, cols, useBasis) => {
     if (cols === false) return null
     const
       columns = get(theme.flexGrid, 'columns', defaultTheme.columns),
@@ -27,20 +27,22 @@ const getColumnWidth = memoize(
 
     return css`
       @media ${theme.breakpoints[size]} {
+        min-width: 0;
+        flex-grow: 1;
         max-width: ${width};
-        ${useFlex && `flex-basis: ${width}`};
+        ${useBasis && `flex-basis: ${width}`};
       }
     `
   }
 )
-export const useFlex = () => null
+export const useBasis = () => null
 export const __gridBreakpoints = (v, t, p) => {
   let css = [], keys = Object.keys(v), i = 0
 
   for (; i < keys.length; i++) {
     const s = keys[i], cols = v[s]
     if (cols === false) continue
-    css.push(getColumnWidth(t, s, cols, p.useFlex || false))
+    css.push(getColumnWidth(t, s, cols, p.useBasis !== false))
   }
 
   return css

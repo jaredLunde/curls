@@ -1,7 +1,8 @@
-import {css} from '@emotion/core'
+import {get} from '../utils'
+import * as dT from './defaultTheme'
 
 
-export const __linkStyles = (_, theme, props) => ([
-  theme.getHoverClass(theme, props),
-  theme.getActiveClass(theme, props),
-])
+export const __linkStyles = (_, t, p) => [
+  get(t.link, 'getHoverClass', dT)(t, p),
+  get(t.link, 'getActiveClass', dT)(t, p)
+]

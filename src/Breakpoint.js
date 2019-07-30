@@ -1,8 +1,8 @@
-import React from 'react'
-import memoize from 'trie-memoize'
 import {useTheme} from '@style-hooks/core'
-import useMediaQuery from '../useMediaQuery'
-import {getBreakpointOrder} from '../utils'
+import memoize from 'trie-memoize'
+import createRenderProp from './createRenderProp'
+import useMediaQuery from './useMediaQuery'
+import {getBreakpointOrder} from './utils'
 
 
 const getSizes = (props, theme) => {
@@ -84,7 +84,7 @@ export const
     out.matches = getMatches(sizes, state.matches)
     return out
   },
-  Breakpoint = props => props.children(useBreakpoint(props))
+  Breakpoint = createRenderProp(useBreakpoint)
 
 if (__DEV__)
   Breakpoint.displayName = 'Breakpoint'

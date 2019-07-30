@@ -1,8 +1,8 @@
 import {useStyles, useTheme} from '@style-hooks/core'
-import * as styles from './styles'
-import {getBreakpointOrder} from '../utils'
-import {useBox} from '../Box/Box'
 import createComponent from '../createComponent'
+import {useBox} from '../Box/Box'
+import {getBreakpointOrder} from '../utils'
+import * as styles from './styles'
 
 
 const options = {name: 'flexGrid', styles}

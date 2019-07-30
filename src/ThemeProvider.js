@@ -2,21 +2,21 @@ import React, {useMemo, useContext} from 'react'
 import {css, Global} from '@emotion/core'
 import {ThemeProvider as ThemeProvider_, useStylesContext, fastMemoize} from '@style-hooks/core'
 import emptyArr from 'empty/array'
-import {toSize} from '../utils'
+import {unit} from '../utils'
 
 
 export const defaultColors = {
-  blue: '#4bb0de',
-  green: '#53c492',
-  red: '#e56873',
-  yellow: '#fffbb8',
-  lightestGrey: '#f4f4f5',
-  lightGrey: '#b5b5b3',
-  grey: '#666a6f',
-  darkGrey: '#4e5154',
-  darkestGrey: '#2c3b3f',
-  black: '#0f2223',
-  white: '#fefeff',
+  blue: '#22A2DC',
+  green: '#5ce585',
+  red: '#dc2247',
+  yellow: '#e3c651',
+  lightestGrey: '#eaedef',
+  lightGrey: '#bbc5ca',
+  grey: '#778c95',
+  darkGrey: '#364045',
+  darkestGrey: '#1e2427',
+  black: '#001617',
+  white: '#f8f9f9',
   translucent: 'rgba(0,0,0,0.4)',
   translucentDark: 'rgba(0,0,0,0.7)',
   translucentLight: 'rgba(0,0,0,0.16)',
@@ -64,7 +64,7 @@ const CurlsProvider = ({globalStyles = emptyArr, children}) => {
     {theme, mergeTheme, replaceTheme} = useStylesContext(),
     styles = useMemo(
       () => {
-        const s = [css`html { font-size: ${toSize(theme.baseRem, '%')} }`]
+        const s = [css`html { font-size: ${unit(theme.baseRem, '%')} }`]
         s.push.apply(s, globalStyles)
         return s
       },

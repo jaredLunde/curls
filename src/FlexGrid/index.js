@@ -1,1 +1,1 @@
-export {FlexGrid as default, useFlexGrid} from './FlexGrid'
+export {FlexGrid, useFlexGrid} from './FlexGrid'

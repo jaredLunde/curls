@@ -1,20 +1,15 @@
 import React, {useRef, useContext, useState, useLayoutEffect, useCallback, useMemo} from 'react'
 import {css} from '@emotion/core'
+import {useStyles, useTheme, createElement} from '@style-hooks/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
 import emptyArr from 'empty/array'
 import emptyObj from 'empty/object'
 import {useBreakpoint} from '../Breakpoint'
 import {useBox} from '../Box'
-import {pos} from '../Box/styles'
-import {flex} from '../Flex/styles'
-import Drop from '../Drop'
-import {useTheme} from '../ThemeConsumer'
+import {Drop} from '../Drop'
 import {portalize, objectWithoutProps, withChildren, loadImages} from '../utils'
-import * as defaultTheme from './defaultTheme'
 import {setDirectionStyle} from './utils'
-import createElement from '../createElement'
-import useStyles from '../useStyles'
 
 
 /**
@@ -35,20 +30,18 @@ import useStyles from '../useStyles'
     )}
  </Popover>
  */
-const
-  PopoverContext = React.createContext(emptyObj),
-  {Consumer, Provider} = PopoverContext
 export const
-  PopoverConsumer = Consumer,
+  PopoverContext = React.createContext(emptyObj),
+  {Consumer: PopoverConsumer} = PopoverContext,
   usePopoverContext = () => useContext(PopoverContext)
 const
-  defaultStyles = css([flex, pos.fixed, `z-index: 1001;`]),
-  options = {name: 'popover', defaultStyles, defaultTheme},
-  usePopoverBox = props => useStyles(props, options),
+  defaultStyles = css`display: flex; position: fixed; z-index: 1001;`,
+  options = {name: 'popover'},
   withoutPop = {popoverBoxRef: 0, style: 0}
 
-export const PopoverBox = React.forwardRef(
-  (props, ref) => {
+export const
+  usePopoverBox = props => useStyles(props, options),
+  PopoverBox = React.forwardRef((props, ref) => {
     const {children, portal} = props
     props = useBox(usePopoverBox(props))
     delete props.portal
@@ -57,7 +50,7 @@ export const PopoverBox = React.forwardRef(
     props.children = typeof children === 'function'
       ? children(objectWithoutProps(pop, withoutPop))
       : children
-    props.css = props.css ? [pop.css, props.css] : pop.css
+    props.css = props.css ? [defaultStyles, pop.css, ...props.css] : [defaultStyles, pop.css]
     props.style = Object.assign({}, pop.style, props.style)
     props.ref = ref === null ? pop.popoverBoxRef : el => {
       if (typeof innerRef === 'function')
@@ -67,8 +60,7 @@ export const PopoverBox = React.forwardRef(
       pop.popoverBoxRef.current = el
     }
     return portalize(createElement('div', props), portal)
-  }
-)
+  })
 
 const PopoverContainer = React.memo(
   props => {
@@ -143,7 +135,7 @@ const PopoverContainer = React.memo(
       [childContext, state.top, state.right, state.bottom, state.left]
     )
 
-    return <Provider value={boxContext} children={props.children(childContext)}/>
+    return <PopoverContext.Provider value={boxContext} children={props.children(childContext)}/>
   },
   (prev, next) => (
     (next.isVisible === false && prev.isVisible === false && prev.children === next.children) || (
@@ -261,11 +253,12 @@ const BreakpointRenderer = ({popoverProps, breakpoints}) => {
   return ViewportPopover(popoverProps)
 }
 
-const Popover = React.forwardRef(
+export const Popover = React.forwardRef(
   (props, innerRef) => {
     const
       theme = useTheme(),
       breakpoints = getBreakpoints(props, theme.breakpointsDelimiter)
+
     return (props.transition || Drop)(
       withChildren(
         props,
@@ -289,10 +282,13 @@ const Popover = React.forwardRef(
   }
 )
 
+PopoverBox.defaultProps = {
+  br: 1,
+  bg: 'white',
+  sh: 12
+}
+
 if (__DEV__) {
   Popover.displayName = 'Popover'
   PopoverBox.displayName = 'PopoverBox'
 }
-
-export {usePopoverBox}
-export default Popover

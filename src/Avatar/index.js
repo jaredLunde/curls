@@ -1,1 +1,1 @@
-export default, {useAvatar} from './Avatar'
+export {Avatar, useAvatar} from './Avatar'

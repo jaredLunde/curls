@@ -1,24 +1,19 @@
-import React from 'react'
+import {useStyles} from '@style-hooks/core'
 import {useBox} from '../Box'
-import useStyles from '../useStyles'
+import createComponent from '../createComponent'
 import * as styles from './styles'
-import createElement from '../createElement'
 
 
-const
-  options = {name: 'gridItem', styles},
+const options = {name: 'gridItem', styles}
+export const
   useGridItem = props => useStyles(props, options),
-  GridItem = React.forwardRef((props, ref) => {
-    props = useBox(useGridItem(props))
-    props.ref = ref
-    return createElement('div', props)
-  })
+  GridItem = createComponent('div', props => useBox(useGridItem(props)))
 
 if (__DEV__) {
-  const propTypes = require('./propTypes').default
+  const
+    propTypes = require('./propTypes').default,
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   GridItem.displayName = 'GridItem'
-  GridItem.propTypes = propTypes
+  GridItem.propTypes = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 }
-
-export {useGridItem}
-export default GridItem

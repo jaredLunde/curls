@@ -1,26 +1,20 @@
-import React from 'react'
-import {d} from '../Box/styles'
+import {css} from '@emotion/core'
+import {useStyles} from '@style-hooks/core'
 import {useBox} from '../Box'
-import useStyles from '../useStyles'
+import createComponent from '../createComponent'
 import * as styles from './styles'
-import * as defaultTheme from './defaultTheme'
-import createElement from '../createElement'
 
 
-const
-  options = {name: 'grid', defaultStyles: d.grid, styles, defaultTheme},
+const options = {name: 'grid', styles}
+export const
   useGrid = props => useStyles(props, options),
-  Grid = React.forwardRef((props, ref) => {
-    props = useBox(useGrid(props))
-    props.ref = ref
-    return createElement('div', props)
-  })
+  Grid = createComponent('div', props => useBox(useGrid(props)), css`display: grid`)
 
 if (__DEV__) {
-  const propTypes = require('./propTypes').default
+  const
+    propTypes = require('./propTypes').default,
+    boxPropTypes = require('../Box/propTypes').default,
+    flexPropTypes = require('../Flex/propTypes').default
   Grid.displayName = 'Grid'
-  Grid.propTypes = propTypes
+  Grid.propTypes = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 }
-
-export {useGrid}
-export default Grid

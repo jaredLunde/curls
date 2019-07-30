@@ -14,21 +14,22 @@ export const
   bold = css`font-weight: 700;`,
   heavy = css`font-weight: 800;`,
   ultraHeavy = css`font-weight: 900;`
+
 // Sizes
 export const size = memoTheme((size, theme) => {
   if (size === false || size === null) return null
 
   let
-    scale = get(theme.type, 'scale', dT),
+    scale = get(theme.text , 'scale', dT),
     fontSize = scale[size],
     typeOfFontSize = typeof fontSize
 
   if (typeOfFontSize === 'function')
     fontSize = fontSize(theme)
   else if (typeOfFontSize !== 'object')
-    fontSize = css`font-size: ${unit(size, get(theme.type, 'sizeUnit', dT))};`
+    fontSize = css`font-size: ${unit(size, get(theme.text , 'sizeUnit', dT))};`
 
-  const isLeg = get(theme.type, 'legible', dT).indexOf(size) > -1
+  const isLeg = get(theme.text , 'legible', dT).indexOf(size) > -1
   return css`
       ${fontSize};
       ${optimizeFor[isLeg ? 'legibility' : 'speed']}; 
@@ -36,7 +37,7 @@ export const size = memoTheme((size, theme) => {
     `
 })
 // Face
-export const face = memoTheme((v, t) => css`font-family: ${get(t.type, 'faces', dT)[v] || v};`)
+export const face = memoTheme((v, t) => css`font-family: ${get(t.text , 'faces', dT)[v] || v};`)
 // Line height
 export const lh = memoValue(v => css`line-height: ${v};`)
 // Color

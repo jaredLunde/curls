@@ -1,7 +1,7 @@
 import {useStyles} from '@style-hooks/core'
-import * as styles from './styles'
 import createRenderProp from '../createRenderProp'
 import useSwitch from '../useSwitch'
+import * as styles from './styles'
 
 
 const options = {name: 'transitionable', styles}
@@ -27,7 +27,7 @@ export const
     outProps.isVisible = toggler.value
     return outProps
   },
-  Transitionable = createRenderProp(options)
+  Transitionable = createRenderProp(useTransitionable)
 
 if (__DEV__) {
   const propTypes = require('./propTypes').default

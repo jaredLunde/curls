@@ -6,7 +6,7 @@ export const baseIsNotVisible = css`visibility: hidden;`
 export const baseIsVisible = css`visibility: visible;`
 export const isVisible_ = css`${baseIsVisible}; opacity: 1.0;`
 export const isNotVisible_ = css`${baseIsNotVisible}; opacity: 0;`
-export const isVisible = (value, theme, props) => (
+export const isVisible = (value, _, props) => (
   value === true
     ? props.to === 1
       ? isVisible_

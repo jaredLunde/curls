@@ -1,5 +1,5 @@
 export {
-  Transitionable as default,
+  Transitionable,
   useTransitionable,
   useTransitionableToggle,
   getDelay
