@@ -6,7 +6,7 @@ import * as styles from './styles'
 
 export const
   options = {name: 'text', styles},
-  useText = props => useStyles(props, options),
+  useText = props => useStyles(options, props),
   Text = createComponent('span', props => useBox(useText(props)))
 
 if (__DEV__) {

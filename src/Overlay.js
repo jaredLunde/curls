@@ -30,7 +30,7 @@ const
   options = {name: 'overlay'}
 
 export const
-  useOverlay = props => useStyles(props, options),
+  useOverlay = props => useStyles(options, props),
   Overlay = React.forwardRef(({transition = Fade, portal = false, children, ...props}, ref) =>
     React.createElement(
       transition,
@@ -56,8 +56,8 @@ Overlay.defaultProps = {
 
 if (__DEV__) {
   const
-    boxPropTypes = require('../Box/propTypes').default,
-    flexPropTypes = require('../Flex/propTypes').default
+    boxPropTypes = require('./Box/propTypes').default,
+    flexPropTypes = require('./Flex/propTypes').default
   Overlay.displayName = 'Overlay'
   Overlay.propTypes = Object.assign({}, boxPropTypes, flexPropTypes)
 }

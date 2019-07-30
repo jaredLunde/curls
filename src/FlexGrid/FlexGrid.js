@@ -9,7 +9,7 @@ const options = {name: 'flexGrid', styles}
 export const
   useFlexGrid = props => {
     let
-      theme = useTheme(options.name),
+      theme = useTheme(),
       found = false,
       nextProps = Object.assign({}, {__gridBreakpoints: {}}),
       breakpointOrder = getBreakpointOrder(theme.breakpoints),
@@ -32,7 +32,7 @@ export const
         nextProps[key] = props[key]
     }
 
-    return useStyles(nextProps, options)
+    return useStyles(options, nextProps)
   },
   FlexGrid = createComponent('div', props => useBox(useFlexGrid(props)))
 

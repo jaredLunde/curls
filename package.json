@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "4.0.0-dev",
+  "version": "4.0.0-dev.0",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",

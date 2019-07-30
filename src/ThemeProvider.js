@@ -2,7 +2,7 @@ import React, {useMemo, useContext} from 'react'
 import {css, Global} from '@emotion/core'
 import {ThemeProvider as ThemeProvider_, useStylesContext, fastMemoize} from '@style-hooks/core'
 import emptyArr from 'empty/array'
-import {unit} from '../utils'
+import {unit} from './utils'
 
 
 export const defaultColors = {
@@ -26,9 +26,9 @@ export const defaultColors = {
 export const defaultTheme = {
   baseRem: 100,
   breakpoints: {
-    phone: 0,    // only screen and (min-width: 0em)   // 0px
-    tablet: 35,  // only screen and (min-width: 35em)  // 560px
-    desktop: 80, // only screen and (min-width: 80em)  // 1280px
+    phone: 'only screen and (min-width: 0em)',    // 0px
+    tablet: 'only screen and (min-width: 35em)',  // 560px
+    desktop: 'only screen and (min-width: 80em)', // 1280px
   },
   breakpointsDelimiter: '@',
   colors: defaultColors,

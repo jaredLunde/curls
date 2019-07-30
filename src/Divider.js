@@ -14,15 +14,16 @@ const
   options = {name: 'divider'}
 
 export const
-  useDivider = props => useStyles(props, options),
+  useDivider = props => useStyles(options, props),
   Divider = createComponent('div', props => useBasicBox(useDivider(props)), defaultStyles)
 
 Divider.defaultProps = {
-  role: 'button'
+  role: 'separator',
+  bg: 'translucentLight'
 }
 
 if (__DEV__) {
-  const boxPropTypes = require('../Box/propTypes').default
+  const boxPropTypes = require('./Box/propTypes').default
   Divider.displayName = 'Divider'
   Divider.propTypes  = boxPropTypes
 }

@@ -27,14 +27,14 @@ export const size = memoTheme((size, theme) => {
   if (typeOfFontSize === 'function')
     fontSize = fontSize(theme)
   else if (typeOfFontSize !== 'object')
-    fontSize = css`font-size: ${unit(size, get(theme.text , 'sizeUnit', dT))};`
+    fontSize = css`font-size: ${unit(fontSize, get(theme.text , 'sizeUnit', dT))};`
 
   const isLeg = get(theme.text , 'legible', dT).indexOf(size) > -1
   return css`
-      ${fontSize};
-      ${optimizeFor[isLeg ? 'legibility' : 'speed']}; 
-      ${isLeg && antialias};
-    `
+    ${fontSize};
+    ${optimizeFor[isLeg ? 'legibility' : 'speed']}; 
+    ${isLeg && antialias};
+  `
 })
 // Face
 export const face = memoTheme((v, t) => css`font-family: ${get(t.text , 'faces', dT)[v] || v};`)

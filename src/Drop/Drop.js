@@ -9,6 +9,10 @@ export const
   useDrop = props => useTransitionableToggle(options, props),
   Drop = createRenderProp(useDrop)
 
+Drop.defaultProps = {
+  duration: 'normal'
+}
+
 if (__DEV__) {
   const propTypes = require('../Slide/propTypes').default
   Drop.displayName = 'Drop'

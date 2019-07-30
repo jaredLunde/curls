@@ -43,7 +43,7 @@ export const
   ModalContext = React.createContext(emptyObj),
   {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),
-  useModalBox = props => useStyles(props, options),
+  useModalBox = props => useStyles(options, props),
   ModalBox = React.forwardRef(
     ({children, portal, withOverlay = false, ...props}, ref) => {
       const transition = useModalContext()
@@ -60,7 +60,8 @@ export const
       return portalize(Component, portal)
     }
   ),
-  Modal = props => (props.transition || Drop)(
+  Modal = props => React.createElement(
+    props.transition || Drop,
     withChildren(
       props,
       transition => <ModalContext.Provider value={transition} children={props.children(transition)}/>
@@ -74,7 +75,7 @@ ModalBox.defaultProps = {
 }
 
 if (__DEV__) {
-  const slidePropTypes = require('../Slide/propTypes').default
+  const slidePropTypes = require('./Slide/propTypes').default
   Modal.displayName = 'Modal'
   ModalBox.displayName = 'ModalBox'
   Modal.propTypes = slidePropTypes

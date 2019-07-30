@@ -40,7 +40,7 @@ const
   withoutPop = {popoverBoxRef: 0, style: 0}
 
 export const
-  usePopoverBox = props => useStyles(props, options),
+  usePopoverBox = props => useStyles(options, props),
   PopoverBox = React.forwardRef((props, ref) => {
     const {children, portal} = props
     props = useBox(usePopoverBox(props))
@@ -259,7 +259,8 @@ export const Popover = React.forwardRef(
       theme = useTheme(),
       breakpoints = getBreakpoints(props, theme.breakpointsDelimiter)
 
-    return (props.transition || Drop)(
+    return React.createElement(
+      props.transition || Drop,
       withChildren(
         props,
         popoverProps => {

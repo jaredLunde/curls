@@ -9,8 +9,8 @@ const
   flexBoxOptions = {name: 'box', styles: Object.assign({}, flexStyles, styles)}
 
 export const
-  useBasicBox = props => useStyles(props, basicBoxOptions),
-  useBox = props => useStyles(props, flexBoxOptions)
+  useBasicBox = props => useStyles(basicBoxOptions, props),
+  useBox = props => useStyles(flexBoxOptions, props)
 
 export const
   BasicBox = createComponent('div', useBasicBox),

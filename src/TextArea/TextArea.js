@@ -24,7 +24,7 @@ const
   }
 
 export const
-  useTextArea = props => useStyles(Object.assign({__textAreaStyles: true}, props), options),
+  useTextArea = props => useStyles(options, Object.assign({__textAreaStyles: true}, props)),
   TextArea = React.forwardRef(
     (props, ref) => {
       props = Object.assign({css: [defaultStyles]}, props)
@@ -50,7 +50,7 @@ TextArea.defaultProps = Object.assign({}, Input.defaultProps, {
 if (__DEV__) {
   const
     propTypes = require('./propTypes').default,
-    typePropTypes = require('../Type/propTypes').default,
+    typePropTypes = require('../Text/propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   TextArea.displayName = 'TextArea'

@@ -46,9 +46,11 @@ const
   supportsObjectFit = supportsCSS('object-fit')
 
 export const
-  useAvatar = props => useStyles(props, options),
+  useAvatar = props => useStyles(options, props),
   Avatar = React.forwardRef((props, ref) => {
-    let imageRef
+    let
+      imageRef,
+      src = props.src
     props = Object.assign({css: [defaultStyles]}, props)
 
     if (supportsObjectFit)
@@ -62,7 +64,7 @@ export const
     props = useBasicBox(useAvatar(props))
     const imgProps = Object.assign(
       {
-        src: props.src,
+        src,
         ref: el => {
           imageRef !== void 0 && (imageRef.current = el)
 

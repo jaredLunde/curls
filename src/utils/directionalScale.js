@@ -1,5 +1,5 @@
 import {css} from '@emotion/core'
-import toSize from './toSize'
+import toUnit from './unit'
 
 
 export const directionalRe = /(?=[\d]+|Auto)/
@@ -63,7 +63,7 @@ export default (
     }
 
     for (j = 0; j < direction.length; j++)
-      CSS.push(css`${prefix.replace('{XYZ}', direction[j])}: ${toSize(size, unit)};`)
+      CSS.push(css`${prefix.replace('{XYZ}', direction[j])}: ${toUnit(size, unit)};`)
   }
 
   return CSS.length === 1 ? CSS[0] : CSS

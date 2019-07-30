@@ -30,7 +30,7 @@ const
   options  = {name: 'input', styles}
 
 export const
-  useInput = props => useStyles(Object.assign({__inputStyles: true}, props), options),
+  useInput = props => useStyles(options, Object.assign({__inputStyles: true}, props)),
   Input = createComponent('input', props => useBox(useText(useInput(props))), defaultStyles)
 
 Input.defaultProps = {
@@ -42,7 +42,7 @@ Input.defaultProps = {
 
 if (__DEV__) {
   const
-    typePropTypes = require('../Type/propTypes').default,
+    typePropTypes = require('../Text/propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   Input.displayName = 'Input'

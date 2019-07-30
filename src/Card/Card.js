@@ -49,7 +49,7 @@ const
   options = {name: 'card', styles}
 
 export const
-  useCard = props => useStyles(props, options),
+  useCard = props => useStyles(options, props),
   Card = createComponent('div', props => useBox(useCard(props)), defaultStyles)
 
 Card.defaultProps = {

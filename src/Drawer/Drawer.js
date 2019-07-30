@@ -48,7 +48,7 @@ export const
   DrawerContext = React.createContext(emptyObj),
   {Consumer: DrawerConsumer} = DrawerContext,
   useDrawerContext = () => useContext(DrawerContext),
-  useDrawerBox = props => useStyles(props, options),
+  useDrawerBox = props => useStyles(options, props),
   DrawerBox = React.forwardRef(
     ({children, portal, ...props}, ref) => {
       const transition = useDrawerContext()
@@ -59,7 +59,8 @@ export const
       return portalize(createElement('div', props), portal)
     }
   ),
-  Drawer = props => (props.transition || Slide)(
+  Drawer = props => React.createElement(
+    props.transition || Slide,
     withChildren(
       props,
       transition => <DrawerContext.Provider value={transition} children={props.children(transition)}/>

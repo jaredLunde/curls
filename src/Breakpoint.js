@@ -79,7 +79,7 @@ export const
       [sizes, queries] = findBreakpoints(props, theme),
       defaultMatches = getDefaultMatches(theme, sizes, props.defaultMatches),
       state = useMediaQuery(queries, defaultMatches)
-
+    console.log('Queries', queries)
     const out = Object.assign({}, state)
     out.matches = getMatches(sizes, state.matches)
     return out

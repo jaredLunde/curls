@@ -8,7 +8,7 @@ const
   defaultStyles = css`display: flex;`,
   options = {name: 'flex', styles}
 export const
-  useFlex = props => useStyles(props, options),
+  useFlex = props => useStyles(options, props),
   Flex = createComponent('div', useFlex, defaultStyles)
 
 if (__DEV__) {

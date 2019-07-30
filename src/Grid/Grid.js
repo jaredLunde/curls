@@ -7,7 +7,7 @@ import * as styles from './styles'
 
 const options = {name: 'grid', styles}
 export const
-  useGrid = props => useStyles(props, options),
+  useGrid = props => useStyles(options, props),
   Grid = createComponent('div', props => useBox(useGrid(props)), css`display: grid`)
 
 if (__DEV__) {

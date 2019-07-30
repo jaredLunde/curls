@@ -1,6 +1,7 @@
 import createRenderProp from '../createRenderProp'
 import {useTransitionableToggle} from '../Transitionable'
 import * as styles from './styles'
+import {Drop} from '../Drop'
 
 
 const
@@ -13,6 +14,10 @@ export const
     return useTransitionableToggle(options, props)
   },
   Fade = createRenderProp(useFade)
+
+Fade.defaultProps = {
+  duration: 'normal'
+}
 
 if (__DEV__) {
   const propTypes = require('./propTypes').default

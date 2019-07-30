@@ -14,7 +14,7 @@ export const
       : props.leaveDelay !== void 0
         ? props.leaveDelay
         : props.delay,
-  useTransitionable = props => useStyles(props, options),
+  useTransitionable = props => useStyles(options, props),
   useTransitionableToggle = (options, {initiallyVisible = false, visible, children, ...props}) => {
     const toggler = useSwitch(initiallyVisible, visible)
     props.property = options.transitionProperties
@@ -23,11 +23,15 @@ export const
     props.toggle = toggler.toggle
     props.isVisible = toggler.value
     props.delay = getDelay(toggler.value, props)
-    const outProps = useTransitionable(useStyles(props, options))
+    const outProps = useTransitionable(useStyles(options, props))
     outProps.isVisible = toggler.value
     return outProps
   },
   Transitionable = createRenderProp(useTransitionable)
+
+Transitionable.defaultProps = {
+  duration: 'normal'
+}
 
 if (__DEV__) {
   const propTypes = require('./propTypes').default
