@@ -8,12 +8,6 @@ export const scale = {
   lg: css`padding: 1.5rem 3rem;`
 }
 
-export const defaultProps = {
-  br: 5,
-  bw: 1,
-  size: 'sm'
-}
-
 export const getHoverClass = theme => {
   // adds css classes for hover and active states
   const hoverStyle = `

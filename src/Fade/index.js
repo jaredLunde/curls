@@ -1,1 +1,1 @@
-export default, {useFade} from './Fade'
+export {Fade, useFade} from './Fade'

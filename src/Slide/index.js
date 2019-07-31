@@ -1,1 +1,1 @@
-export default, {useSlide} from './Slide'
+export {Slide, useSlide} from './Slide'

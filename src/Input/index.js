@@ -1,1 +1,1 @@
-export default, {useInput} from './Input'
+export {Input, useInput} from './Input'

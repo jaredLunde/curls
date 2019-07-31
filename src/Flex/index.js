@@ -1,1 +1,1 @@
-export useFlex from './useFlex'
+export {Flex, useFlex} from './Flex'

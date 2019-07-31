@@ -1,32 +1,29 @@
 import {css} from '@emotion/core'
-import {fastMemoize, memoValue, toSize} from '../utils'
+import {memoValue, memoTheme, unit, get} from '../utils'
+import * as dT from './defaultTheme'
 
 
-const getAvatarSize = (size, val, theme, props) => {
-  if (val === false) return null
-
-  let
-    avatarSize = theme.scale[size],
-    typeOfAvatarSize = typeof avatarSize
-
-  if (typeOfAvatarSize === 'object')
-    return avatarSize
-  else if (typeOfAvatarSize === 'function')
-    return avatarSize(theme, props)
-
-  return css`
-    width: ${toSize(avatarSize, theme.sizeUnit)};
-    height: ${toSize(avatarSize, theme.sizeUnit)};
-  `
-}
-
-const createSizeShortcut = fastMemoize('avatarSize', s => (v, t, p) => getAvatarSize(s, v, t, p))
 export const
   src = () => null,
-  size = (s, t, p) => createSizeShortcut(s)(true, t, p)
+  size = memoTheme((val, theme) => {
+    if (val === false) return null
 
-export const orientation = memoValue(
-  v => {
+    let
+      avatarSize = get(theme.avatar, 'scale', dT)[val],
+      typeOfAvatarSize = typeof avatarSize
+
+    if (typeOfAvatarSize === 'object')
+      return avatarSize
+    else if (typeOfAvatarSize === 'function')
+      return avatarSize(theme)
+
+    const sizeUnit = get(theme.avatar, 'sizeUnit', dT)
+    return css`
+      width: ${unit(avatarSize, sizeUnit)};
+      height: ${unit(avatarSize, sizeUnit)};
+    `
+  }),
+  orientation = memoValue(v => {
     let height, width
 
     switch (v) {
@@ -50,5 +47,4 @@ export const orientation = memoValue(
       width: ${width};
     }
   `
-  }
-)
+  })

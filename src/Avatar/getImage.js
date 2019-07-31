@@ -1,11 +1,11 @@
 import React from 'react'
 
 
-export default function ({src, defaultSrc, innerRef, alt}) {
+export default ({src, defaultSrc, ref, alt}) => {
   return <img
     src={src || defaultSrc}
     alt={alt}
     onError={e => e.target.src = defaultSrc || ''}
-    ref={innerRef}
+    ref={ref}
   />
 }

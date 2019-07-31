@@ -1,13 +1,11 @@
 import React, {useContext} from 'react'
-import emptyObj from 'empty/object'
 import {css} from '@emotion/core'
+import {useStyles, createElement} from '@style-hooks/core'
+import emptyObj from 'empty/object'
 import {portalize, withChildren} from '../utils'
 import {useBox} from '../Box'
-import Slide from '../Slide'
-import createElement from '../createElement'
-import {d, pos, ov} from '../Box/styles'
+import {Slide} from '../Slide'
 import * as styles from './styles'
-import useStyles from '../useStyles'
 
 
 /**
@@ -39,33 +37,33 @@ import useStyles from '../useStyles'
 */
 const
   defaultStyles = css`
-    ${d.block};
-    ${pos.fixed};
-    ${ov.autoY};
+    display: block;
+    position: fixed;
+    overflow-y: auto;
     z-index: 1000;
   `,
-  options = {name: 'drawer', styles, defaultStyles},
-  DrawerContext = React.createContext(emptyObj),
-  {Consumer, Provider} = DrawerContext
+  options = {name: 'drawer', styles}
 
 export const
-  DrawerConsumer = Consumer,
+  DrawerContext = React.createContext(emptyObj),
+  {Consumer: DrawerConsumer} = DrawerContext,
   useDrawerContext = () => useContext(DrawerContext),
-  useDrawerBox = props => useStyles(props, options),
+  useDrawerBox = props => useStyles(options, props),
   DrawerBox = React.forwardRef(
     ({children, portal, ...props}, ref) => {
-      props = useBox(useDrawerBox(props))
       const transition = useDrawerContext()
+      props.css = [transition.css, defaultStyles]
+      props = useBox(useDrawerBox(props))
       props.children = typeof children === 'function' ? children(transition) : children
-      props.css = props.css ? [transition.css, props.css] : transition.css
       props.ref = ref
       return portalize(createElement('div', props), portal)
     }
   ),
-  Drawer = props => (props.transition || Slide)(
+  Drawer = props => React.createElement(
+    props.transition || Slide,
     withChildren(
       props,
-      transition => <Provider value={transition} children={props.children(transition)}/>
+      transition => <DrawerContext.Provider value={transition} children={props.children(transition)}/>
     )
   )
 
@@ -75,5 +73,3 @@ if (__DEV__) {
   DrawerBox.displayName = 'DrawerBox'
   Drawer.propTypes = slidePropTypes
 }
-
-export default Drawer

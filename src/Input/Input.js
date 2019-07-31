@@ -1,11 +1,9 @@
-import React from 'react'
 import {css} from '@emotion/core'
-import createElement from '../createElement'
+import {useStyles} from '@style-hooks/core'
+import createComponent from '../createComponent'
 import {useBox} from '../Box'
-import {useType} from '../Type'
+import {useText} from '../Text'
 import * as styles from './styles'
-import * as defaultTheme from './defaultTheme'
-import useStyles from '../useStyles'
 
 
 const
@@ -28,25 +26,24 @@ const
       outline-offset: -2px;
     }
   `,
-  options  = {name: 'input', styles, defaultStyles, defaultTheme},
-  useInput = props => useStyles(Object.assign({__inputStyles: true}, props), options),
-  Input = React.forwardRef(
-    (props, ref) => {
-      props = useBox(useType(useInput(props)))
-      props.type = props.type || 'text'
-      props.ref = ref
-      return createElement('input', props)
-    }
-  )
+  options  = {name: 'input', styles}
+
+export const
+  useInput = props => useStyles(options, Object.assign({__inputStyles: true}, props)),
+  Input = createComponent('input', props => useBox(useText(useInput(props))), defaultStyles)
+
+Input.defaultProps = {
+  size: 'sm',
+  p: 'x3 y2',
+  bw: 1,
+  br: 5
+}
 
 if (__DEV__) {
   const
-    typePropTypes = require('../Type/propTypes').default,
+    typePropTypes = require('../Text/propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   Input.displayName = 'Input'
   Input.propTypes = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes)
 }
-
-export {useInput}
-export default Input

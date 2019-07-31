@@ -1,8 +1,8 @@
 import React from 'react'
 import Portalize from 'react-portalize'
 import emptyObj from 'empty/object'
-import ThemeConsumer from '../ThemeConsumer'
-import ThemeProvider from '../ThemeProvider'
+import {ThemeConsumer} from '@style-hooks/core'
+import {ThemeProvider} from '../ThemeProvider'
 
 
 export default (Component, portal) => {

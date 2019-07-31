@@ -1,20 +1,15 @@
-import React from 'react'
 import {css} from '@emotion/core'
+import {useStyles} from '@style-hooks/core'
+import createComponent from '../createComponent'
 import {useBox} from '../Box'
-import {pos} from '../Box/styles'
-import {flex, column} from '../Flex/styles'
-import createElement from '../createElement'
-import * as defaultTheme from './defaultTheme'
 import * as styles from './styles'
-import useStyles from '../useStyles'
 
 
 const
-  defaultStyles = css([
-    flex,
-    column.column,
-    pos.relative,
-    `
+  defaultStyles = css`
+    display: flex;
+    flex-direction: column;
+    position: relative;
     min-width: 0;
   
     & > *:not(.button):not(button):not([role=button]):first-child {
@@ -50,17 +45,18 @@ const
       padding: 0;
       display: block;
     }
-  `
-  ]),
-  options = {name: 'card', styles, defaultStyles, defaultTheme},
-  useCard = props => useStyles(props, options),
-  Card = React.forwardRef(
-    (props, ref) => {
-      props = useBox(useCard(props))
-      props.ref = ref
-      return createElement('div', props)
-    }
-  )
+  `,
+  options = {name: 'card', styles}
+
+export const
+  useCard = props => useStyles(options, props),
+  Card = createComponent('div', props => useBox(useCard(props)), defaultStyles)
+
+Card.defaultProps = {
+  bg: 'white',
+  br: 2,
+  sh: 12
+}
 
 if (__DEV__) {
   const
@@ -75,6 +71,3 @@ if (__DEV__) {
     flexPropTypes,
   )
 }
-
-export {useCard}
-export default Card

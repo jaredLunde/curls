@@ -1,6 +1,6 @@
 import {css} from '@emotion/core'
 import {br as boxBr} from '../Box/styles'
-import {memoTheme} from '../utils'
+import {memoTheme, get} from '../utils'
 import {directionalRe} from '../utils/directionalScale'
 
 

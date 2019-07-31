@@ -1,13 +1,10 @@
-import * as styles from './styles'
-import * as defaultTheme from './defaultTheme'
-import createComponent from '../createComponent'
-import useStyles from '../useStyles'
+import {useStyles} from '@style-hooks/core'
+import createRenderProp from '../createRenderProp'
 import useSwitch from '../useSwitch'
+import * as styles from './styles'
 
 
-const
-  options = {name: 'transitionable', styles, defaultTheme},
-  Transitionable = createComponent(options)
+const options = {name: 'transitionable', styles}
 export const
   getDelay = (value, props) =>
     value === true
@@ -17,24 +14,27 @@ export const
       : props.leaveDelay !== void 0
         ? props.leaveDelay
         : props.delay,
-  useTransitionable = props => useStyles(props, options),
+  useTransitionable = props => useStyles(options, props),
   useTransitionableToggle = (options, {initiallyVisible = false, visible, children, ...props}) => {
-    const toggler = useSwitch({value: visible, initialValue: initiallyVisible})
+    const toggler = useSwitch(initiallyVisible, visible)
     props.property = options.transitionProperties
     props.show = toggler.on
     props.hide = toggler.off
     props.toggle = toggler.toggle
     props.isVisible = toggler.value
     props.delay = getDelay(toggler.value, props)
-    const outProps = useTransitionable(useStyles(props, options))
+    const outProps = useTransitionable(useStyles(options, props))
     outProps.isVisible = toggler.value
     return outProps
-  }
+  },
+  Transitionable = createRenderProp(useTransitionable)
+
+Transitionable.defaultProps = {
+  duration: 'normal'
+}
 
 if (__DEV__) {
   const propTypes = require('./propTypes').default
   Transitionable.displayName = 'Transitionable'
   Transitionable.propTypes = propTypes
 }
-
-export default Transitionable
