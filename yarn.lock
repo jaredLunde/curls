@@ -1088,10 +1088,10 @@
     babel-plugin-transform-react-pure-class-to-function "^1.0.1"
     babel-plugin-transform-react-remove-prop-types "^0.4.23"
 
-"@style-hooks/core@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@style-hooks/core/-/core-1.0.0.tgz#cbb3afa2b140416d1fa0b17545133a60b71a1234"
-  integrity sha512-upgJB9R3ZNmhX7B11yaodO/SzlUKboRoItBrM2XTdVnis+MEKy3E/0CdQxNfhhDr7S6xhndL8AGgRo0XZmm4oQ==
+"@style-hooks/core@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@style-hooks/core/-/core-1.0.2.tgz#928a16faf9aae127c9c77eb47271dc350e32dd3b"
+  integrity sha512-3gge5GCckln+sDf0keKnzFmNfJ2ufFZMQqT8RkiA3xbAnir6pDoQCIYoHykCsHjg8fqM08g94uvsMsNdM2ftUA==
   dependencies:
     empty "^0.10.1"
     is-mergeable-object "^1.1.1"

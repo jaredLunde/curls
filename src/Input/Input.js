@@ -1,4 +1,3 @@
-import React from 'react'
 import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
 import createComponent from '../createComponent'

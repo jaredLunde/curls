@@ -1,7 +1,6 @@
 import createRenderProp from '../createRenderProp'
 import {useTransitionableToggle} from '../Transitionable'
 import * as styles from './styles'
-import {Drop} from '../Drop'
 
 
 const
