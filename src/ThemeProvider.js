@@ -2,6 +2,7 @@ import React, {useMemo, useContext} from 'react'
 import {css, Global} from '@emotion/core'
 import {ThemeProvider as ThemeProvider_, useStylesContext, fastMemoize} from '@style-hooks/core'
 import emptyArr from 'empty/array'
+import emptyObj from 'empty/object'
 import {unit} from './utils'
 
 
@@ -87,7 +88,7 @@ const CurlsProvider = ({globalStyles = emptyArr, children}) => {
   )
 }
 
-export const ThemeProvider = ({theme, globalStyles, children}) => (
+export const ThemeProvider = ({theme = emptyObj, globalStyles, children}) => (
   <ThemeProvider_ theme={createTheme(theme)}>
     <CurlsProvider globalStyles={globalStyles} children={children}/>
   </ThemeProvider_>
