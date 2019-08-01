@@ -1,23 +1,44 @@
 import {useStyles} from '@style-hooks/core'
 import createComponent from '../createComponent'
 import {useBox} from '../Box'
+import {pushCss} from '../utils'
 import * as styles from './styles'
+import {css} from '@emotion/core'
 
 
 export const
+  defaultStyles = css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 0;
+    background: none;
+    border: 0;
+    color: currentColor;
+    cursor: pointer;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+    line-height: 1.0;
+    user-select: none;
+    text-align: inherit;
+    
+    &::-moz-focus-inner {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+      
+    &:focus {
+      outline: 0
+    }
+  `,
   options = {name: 'button', styles},
   useButton = props => useStyles(
     options,
-    Object.assign({__buttonStyles: true}, props),
+    pushCss(Object.assign({__buttonStyles: true, role: 'button'}, props), defaultStyles)
   ),
   Button = createComponent('button', props => useBox(useButton(props)))
-
-Button.defaultProps = {
-  role: 'button',
-  size: 'sm',
-  br: 5,
-  bw: 1
-}
 
 if (__DEV__) {
   const

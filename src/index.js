@@ -16,6 +16,7 @@ export {
   memoTheme as memoThemeValue,
   nullIfFalsy,
   portalize,
+  pushCss,
   supportsCSS,
   unit
 } from './utils'

@@ -2,6 +2,7 @@ import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
 import createComponent from '../createComponent'
 import {useBox} from '../Box'
+import {pushCss} from '../utils'
 import * as styles from './styles'
 
 
@@ -49,14 +50,8 @@ const
   options = {name: 'card', styles}
 
 export const
-  useCard = props => useStyles(options, props),
-  Card = createComponent('div', props => useBox(useCard(props)), defaultStyles)
-
-Card.defaultProps = {
-  bg: 'white',
-  br: 2,
-  sh: 12
-}
+  useCard = props => useStyles(options, pushCss(props, defaultStyles)),
+  Card = createComponent('div', props => useBox(useCard(props)))
 
 if (__DEV__) {
   const

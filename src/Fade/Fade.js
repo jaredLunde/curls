@@ -14,10 +14,6 @@ export const
   },
   Fade = createRenderProp(useFade)
 
-Fade.defaultProps = {
-  duration: 'normal'
-}
-
 if (__DEV__) {
   const propTypes = require('./propTypes').default
   Fade.displayName = 'Fade'

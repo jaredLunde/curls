@@ -1,7 +1,7 @@
 import React from 'react'
 import {css} from '@emotion/core'
 import {useStyles, createElement} from '@style-hooks/core'
-import {Input} from '../Input/Input'
+import {pushCss} from '../utils'
 import {useBox} from '../Box'
 import {useText} from '../Text'
 import * as styles from './styles'
@@ -24,9 +24,11 @@ const
   }
 
 export const
-  useTextArea = props => useStyles(options, Object.assign({__textAreaStyles: true}, props)),
+  useTextArea = props => useStyles(
+    options,
+    pushCss(Object.assign({__textAreaStyles: true}, props), defaultStyles)
+  ),
   TextArea = React.forwardRef((props, ref) => {
-    props = Object.assign({css: [defaultStyles]}, props)
     let nodeProps = useBox(useText(useTextArea(props)))
     nodeProps.ref = ref
 
@@ -39,11 +41,6 @@ export const
 
     return createElement('textarea', nodeProps)
   })
-
-TextArea.defaultProps = Object.assign({}, Input.defaultProps, {
-  p: 3,
-  br: 3
-})
 
 if (__DEV__) {
   const

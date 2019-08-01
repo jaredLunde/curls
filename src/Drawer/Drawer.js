@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import {css} from '@emotion/core'
 import {useStyles, createElement} from '@style-hooks/core'
 import emptyObj from 'empty/object'
-import {portalize, withChildren} from '../utils'
+import {portalize, withChildren, pushCss} from '../utils'
 import {useBox} from '../Box'
 import {Slide} from '../Slide'
 import * as styles from './styles'
@@ -48,11 +48,11 @@ export const
   DrawerContext = React.createContext(emptyObj),
   {Consumer: DrawerConsumer} = DrawerContext,
   useDrawerContext = () => useContext(DrawerContext),
-  useDrawerBox = props => useStyles(options, props),
+  useDrawerBox = props => useStyles(options, pushCss(props, defaultStyles)),
   DrawerBox = React.forwardRef(
     ({children, portal, ...props}, ref) => {
       const transition = useDrawerContext()
-      props.css = [transition.css, defaultStyles]
+      props.css = [transition.css]
       props = useBox(useDrawerBox(props))
       props.children = typeof children === 'function' ? children(transition) : children
       props.ref = ref

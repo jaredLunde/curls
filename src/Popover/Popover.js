@@ -283,12 +283,6 @@ export const Popover = React.forwardRef(
   }
 )
 
-PopoverBox.defaultProps = {
-  br: 3,
-  bg: 'white',
-  sh: 12
-}
-
 if (__DEV__) {
   Popover.displayName = 'Popover'
   PopoverBox.displayName = 'PopoverBox'

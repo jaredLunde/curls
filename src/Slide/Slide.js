@@ -9,10 +9,6 @@ export const
   useSlide = props => useTransitionableToggle(options, props),
   Slide = createRenderProp(useSlide)
 
-Slide.defaultProps = {
-  duration: 'normal'
-}
-
 if (__DEV__) {
   const propTypes = require('./propTypes').default
   Slide.displayName = 'Slide'

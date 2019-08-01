@@ -1,5 +1,6 @@
 import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
+import {pushCss} from '../utils'
 import {useText} from '../Text'
 import {useBox} from '../Box'
 import createComponent from '../createComponent'
@@ -10,8 +11,11 @@ const
   defaultStyles = css`text-decoration: none;`,
   options = {name: 'link', styles}
 export const
-  useLink = props => useStyles(options, Object.assign({__linkStyles: true}, props)),
-  A = createComponent('a', props => useBox(useText(useLink(props))), defaultStyles)
+  useLink = props => useStyles(
+    options,
+    pushCss(Object.assign({__linkStyles: true}, props), defaultStyles)
+  ),
+  A = createComponent('a', props => useBox(useText(useLink(props))))
 
 if (__DEV__) {
   const

@@ -3,6 +3,7 @@ import {useStyles} from '@style-hooks/core'
 import createComponent from '../createComponent'
 import {useBox} from '../Box'
 import {useText} from '../Text'
+import {pushCss} from '../utils'
 import * as styles from './styles'
 
 
@@ -29,15 +30,12 @@ const
   options  = {name: 'input', styles}
 
 export const
-  useInput = props => useStyles(options, Object.assign({__inputStyles: true}, props)),
-  Input = createComponent('input', props => useBox(useText(useInput(props))), defaultStyles)
+  useInput = props => useStyles(
+    options,
+    pushCss(Object.assign({__inputStyles: true}, props), defaultStyles)
+  ),
+  Input = createComponent('input', props => useBox(useText(useInput(props))))
 
-Input.defaultProps = {
-  size: 'sm',
-  p: 'x3 y2',
-  bw: 1,
-  br: 5
-}
 
 if (__DEV__) {
   const

@@ -2,7 +2,7 @@ import React, {useRef, useEffect, useState} from 'react'
 import {css} from '@emotion/core'
 import {createElement, useStyles} from '@style-hooks/core'
 import {useBasicBox} from '../Box'
-import {supportsCSS, loadImage} from '../utils'
+import {supportsCSS, loadImage, pushCss} from '../utils'
 import * as styles from './styles'
 import getImage from './getImage'
 
@@ -46,12 +46,11 @@ const
   supportsObjectFit = supportsCSS('object-fit')
 
 export const
-  useAvatar = props => useStyles(options, props),
+  useAvatar = props => useStyles(options, pushCss(props, defaultStyles)),
   Avatar = React.forwardRef((props, ref) => {
     let
       imageRef,
       src = props.src
-    props = Object.assign({css: [defaultStyles]}, props)
 
     if (supportsObjectFit)
       props.orientation = 'square'
@@ -81,11 +80,6 @@ export const
 
     return createElement('span', props)
   })
-
-Avatar.defaultProps = {
-  size: 'sm',
-  br: 5
-}
 
 if (__DEV__) {
   const
