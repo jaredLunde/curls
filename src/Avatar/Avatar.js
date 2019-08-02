@@ -47,7 +47,7 @@ const
 
 export const
   useAvatar = props => useStyles(options, pushCss(props, defaultStyles)),
-  Avatar = React.forwardRef((props, ref) => {
+  Avatar = React.forwardRef(({...props}, ref) => {
     let
       imageRef,
       src = props.src

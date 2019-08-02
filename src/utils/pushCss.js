@@ -7,12 +7,15 @@ export default (props, defaultStyles) => {
     else
       props.css.push(defaultStyles)
   } else if (typeof props.css === 'object' && props.css !== null) {
+    props = Object.assign({}, props)
+
     if (defaultStylesIsArray)
       props.css = [props.css].concat(defaultStyles)
     else
       props.css = [props.css, defaultStyles]
   }
   else {
+    props = Object.assign({}, props)
     props.css = defaultStylesIsArray ? defaultStyles.slice(0) : [defaultStyles]
   }
 
