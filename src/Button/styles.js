@@ -8,7 +8,7 @@ export const
     const value = get(t.button, 'scale', dT)[s]
     return typeof value === 'function' ? value(t) : value
   }),
-  __buttonStyles = memoTheme((v, t, p) => [
+  __buttonStyles = (v, t, p) => [
     get(t.button, 'getHoverClass', dT)(t, p),
     get(t.button, 'getActiveClass', dT)(t, p)
-  ])
+  ]
