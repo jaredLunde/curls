@@ -6,14 +6,14 @@ import * as dT from './defaultTheme'
 
 const
   ws = /\s+/g,
-  getSizes = (v, unit) => {
+  getSizes = (v, u) => {
     let
       vals = v.split(ws),
       i = 0,
       output = []
 
     for (; i < vals.length; i++)
-      output.push(unit(vals[i], unit))
+      output.push(unit(vals[i], u))
 
     return output.join(' ')
   }

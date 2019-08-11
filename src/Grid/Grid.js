@@ -3,12 +3,15 @@ import {useStyles} from '@style-hooks/core'
 import {useBox} from '../Box'
 import createComponent from '../createComponent'
 import * as styles from './styles'
+import {pushCss} from '../utils'
 
 
-const options = {name: 'grid', styles}
+const
+  defaultStyles = css`display: grid;`,
+  options = {name: 'grid', styles}
 export const
-  useGrid = props => useStyles(options, props),
-  Grid = createComponent('div', props => useBox(useGrid(props)), css`display: grid`)
+  useGrid = props => useStyles(options, pushCss(props, defaultStyles)),
+  Grid = createComponent('div', props => useBox(useGrid(props)))
 
 if (__DEV__) {
   const
