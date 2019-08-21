@@ -1,6 +1,6 @@
 import React, {useRef, useContext, useState, useLayoutEffect, useCallback, useMemo} from 'react'
 import {css} from '@emotion/core'
-import {useStyles, useTheme, createElement} from '@style-hooks/core'
+import {createStyleHook, useTheme, createElement} from '@style-hooks/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
 import emptyArr from 'empty/array'
@@ -36,11 +36,10 @@ export const
   usePopoverContext = () => useContext(PopoverContext)
 const
   defaultStyles = css`display: flex; position: fixed; z-index: 1001;`,
-  options = {name: 'popover'},
   withoutPop = {popoverBoxRef: 0, style: 0}
 
 export const
-  usePopoverBox = props => useStyles(options, props),
+  usePopoverBox = createStyleHook('popover', {}, props),
   PopoverBox = React.forwardRef((props, ref) => {
     const {children, portal} = props
     props = useBox(usePopoverBox(props))

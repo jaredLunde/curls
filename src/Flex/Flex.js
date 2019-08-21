@@ -1,14 +1,10 @@
-import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
 import createComponent from '../createComponent'
 import * as styles from './styles'
 
 
-const
-  defaultStyles = css`display: flex;`,
-  options = {name: 'flex', styles}
 export const
-  useFlex = props => useStyles(options, props),
+  useFlex = props => useStyles('flex', styles, props),
   Flex = createComponent('div', useFlex, defaultStyles)
 
 if (__DEV__) {

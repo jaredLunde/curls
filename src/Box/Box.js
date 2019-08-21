@@ -1,16 +1,12 @@
-import {useStyles} from '@style-hooks/core'
+import {createStyleHook} from '@style-hooks/core'
 import createComponent from '../createComponent'
 import * as flexStyles from '../Flex/styles'
 import * as styles from './styles'
 
 
-const
-  basicBoxOptions = {name: 'box', styles},
-  flexBoxOptions = {name: 'box', styles: Object.assign({}, flexStyles, styles)}
-
 export const
-  useBasicBox = props => useStyles(basicBoxOptions, props),
-  useBox = props => useStyles(flexBoxOptions, props)
+  useBasicBox = createStyleHook('box', styles),
+  useBox = createStyleHook('box', Object.assign({}, flexStyles, styles))
 
 export const
   BasicBox = createComponent('div', useBasicBox),

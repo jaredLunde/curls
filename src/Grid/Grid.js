@@ -6,11 +6,9 @@ import * as styles from './styles'
 import {pushCss} from '../utils'
 
 
-const
-  defaultStyles = css`display: grid;`,
-  options = {name: 'grid', styles}
+const defaultStyles = css`display: grid;`
 export const
-  useGrid = props => useStyles(options, pushCss(props, defaultStyles)),
+  useGrid = props => useStyles('grid', styles, pushCss(props, defaultStyles)),
   Grid = createComponent('div', props => useBox(useGrid(props)))
 
 if (__DEV__) {

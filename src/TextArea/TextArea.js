@@ -13,7 +13,6 @@ const
     outline: none;
     margin: 0;
   `,
-  options = {name: 'textArea', styles},
   autoResize = e => {
     if (!e.target.value)
       e.target.style.height = ''
@@ -25,7 +24,8 @@ const
 
 export const
   useTextArea = props => useStyles(
-    options,
+    'textArea',
+    styles,
     pushCss(Object.assign({__textAreaStyles: true}, props), defaultStyles)
   ),
   TextArea = React.forwardRef((props, ref) => {

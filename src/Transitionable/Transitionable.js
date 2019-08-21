@@ -4,7 +4,6 @@ import useSwitch from '../useSwitch'
 import * as styles from './styles'
 
 
-const options = {name: 'transitionable', styles}
 export const
   getDelay = (value, props) =>
     value === true
@@ -14,7 +13,7 @@ export const
       : props.leaveDelay !== void 0
         ? props.leaveDelay
         : props.delay,
-  useTransitionable = props => useStyles(options, Object.assign({duration: 'normal'}, props)),
+  useTransitionable = props => useStyles('transitionable', styles, Object.assign({duration: 'normal'}, props)),
   useTransitionableToggle = (options, {initiallyVisible = false, visible, children, ...props}) => {
     const toggler = useSwitch(initiallyVisible, visible)
     props.property = options.transitionProperties
@@ -23,7 +22,7 @@ export const
     props.toggle = toggler.toggle
     props.isVisible = toggler.value
     props.delay = getDelay(toggler.value, props)
-    const outProps = useTransitionable(useStyles(options, props))
+    const outProps = useTransitionable(useStyles(options.name, options.styles, props))
     outProps.isVisible = toggler.value
     return outProps
   },

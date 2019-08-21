@@ -1,12 +1,11 @@
-import {useStyles} from '@style-hooks/core'
+import {createStyleHook} from '@style-hooks/core'
 import createComponent from '../createComponent'
 import {useBox} from '../Box/Box'
 import * as styles from './styles'
 
 
 export const
-  options = {name: 'text', styles},
-  useText = props => useStyles(options, props),
+  useText = createStyleHook('text', styles),
   Text = createComponent('span', props => useBox(useText(props)))
 
 if (__DEV__) {

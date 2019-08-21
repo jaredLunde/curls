@@ -1,11 +1,15 @@
-# Curls
+[![bundlephobia](https://img.shields.io/bundlephobia/minzip/curls?style=plastic)](https://bundlephobia.com/result?p=curls)
+[![codecov](https://codecov.io/gh/jaredLunde/curls/branch/master/graph/badge.svg)](https://codecov.io/gh/jaredLunde/curls)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-An unopinionated, [lightweight](https://bundlephobia.com/result?p=curls), and
-modular CSS-in-JS component framework for React backed
-by [Emotion](https://github.com/emotion-js/emotion).
+---
 
-## [Documentation](https://curls.jaredlunde.com)
-[Click here to go to the documentation site](https://curls.jaredlunde.com)
+# curls
+Responsive, expressive  UI primitives for React written with [Style Hooks](https://style-hooks.jaredlunde.com) and [Emotion](https://github.com/emotion-js/emotion)
 
 ## Installation
-`npm i curls` or `yarn add curls`
+#### `npm i curls`
+#### `yarn add curls`
+
+## LICENSE
+MIT

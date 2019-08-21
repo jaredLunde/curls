@@ -26,12 +26,12 @@ const
       -webkit-appearance: none;
       outline-offset: -2px;
     }
-  `,
-  options  = {name: 'input', styles}
+  `
 
 export const
   useInput = props => useStyles(
-    options,
+    'input',
+    styles,
     pushCss(Object.assign({__inputStyles: true}, props), defaultStyles)
   ),
   Input = createComponent('input', props => useBox(useText(useInput(props))))

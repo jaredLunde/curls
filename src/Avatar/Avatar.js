@@ -42,11 +42,10 @@ const
     overflow: hidden;
     & img {object-fit: cover;}
   `,
-  options = {name: 'avatar', styles},
   supportsObjectFit = supportsCSS('object-fit')
 
 export const
-  useAvatar = props => useStyles(options, pushCss(props, defaultStyles)),
+  useAvatar = props => useStyles('avatar', styles, pushCss(props, defaultStyles)),
   Avatar = React.forwardRef(({...props}, ref) => {
     let
       imageRef,

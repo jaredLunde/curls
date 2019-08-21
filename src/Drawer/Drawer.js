@@ -41,14 +41,13 @@ const
     position: fixed;
     overflow-y: auto;
     z-index: 1000;
-  `,
-  options = {name: 'drawer', styles}
+  `
 
 export const
   DrawerContext = React.createContext(emptyObj),
   {Consumer: DrawerConsumer} = DrawerContext,
   useDrawerContext = () => useContext(DrawerContext),
-  useDrawerBox = props => useStyles(options, pushCss(props, defaultStyles)),
+  useDrawerBox = props => useStyles('drawer', styles, pushCss(props, defaultStyles)),
   DrawerBox = React.forwardRef(
     ({children, portal, ...props}, ref) => {
       const transition = useDrawerContext()

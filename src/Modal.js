@@ -35,14 +35,13 @@ const
     left: 0;
     right: 0;
     z-index: 1000;
-  `,
-  options = {name: 'modal'}
+  `
 
 export const
   ModalContext = React.createContext(emptyObj),
   {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),
-  useModalBox = props => useStyles(options, pushCss(props, defaultStyles)),
+  useModalBox = props => useStyles('modal', emptyObj, pushCss(props, defaultStyles)),
   ModalBox = React.forwardRef(
     ({children, portal, withOverlay = false, ...props}, ref) => {
       const transition = useModalContext()

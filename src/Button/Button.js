@@ -6,8 +6,7 @@ import * as styles from './styles'
 import {css} from '@emotion/core'
 
 
-export const
-  defaultStyles = css`
+const defaultStyles = css`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,10 +31,12 @@ export const
     &:focus {
       outline: 0
     }
-  `,
-  options = {name: 'button', styles},
+  `
+
+export const
   useButton = props => useStyles(
-    options,
+    'button',
+    styles,
     pushCss(Object.assign({__buttonStyles: true, role: 'button'}, props), defaultStyles)
   ),
   Button = createComponent('button', props => useBox(useButton(props)))

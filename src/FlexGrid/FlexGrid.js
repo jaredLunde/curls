@@ -5,7 +5,6 @@ import {getBreakpointOrder} from '../utils'
 import * as styles from './styles'
 
 
-const options = {name: 'flexGrid', styles}
 export const
   useFlexGrid = props => {
     let
@@ -32,7 +31,7 @@ export const
         nextProps[key] = props[key]
     }
 
-    return useStyles(options, nextProps)
+    return useStyles('flexGrid', styles, nextProps)
   },
   FlexGrid = createComponent('div', props => useBox(useFlexGrid(props)))
 

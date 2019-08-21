@@ -1,12 +1,11 @@
-import {useStyles} from '@style-hooks/core'
+import {createStyleHook} from '@style-hooks/core'
 import {useBox} from '../Box'
 import createComponent from '../createComponent'
 import * as styles from './styles'
 
 
-const options = {name: 'gridItem', styles}
 export const
-  useGridItem = props => useStyles(options, props),
+  useGridItem = createStyleHook('gridItem', styles),
   GridItem = createComponent('div', props => useBox(useGridItem(props)))
 
 if (__DEV__) {

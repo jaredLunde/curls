@@ -7,12 +7,11 @@ import createComponent from '../createComponent'
 import * as styles from './styles'
 
 
-const
-  defaultStyles = css`text-decoration: none;`,
-  options = {name: 'link', styles}
+const defaultStyles = css`text-decoration: none;`
 export const
   useLink = props => useStyles(
-    options,
+    'link',
+    styles,
     pushCss(Object.assign({__linkStyles: true}, props), defaultStyles)
   ),
   A = createComponent('a', props => useBox(useText(useLink(props))))
