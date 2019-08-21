@@ -1,6 +1,5 @@
 import {css} from '@emotion/core'
 
-
 const fromY = css`
   right: 0;
   left: 0;

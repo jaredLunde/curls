@@ -6,28 +6,25 @@ import {useBox} from '../Box'
 import {useText} from '../Text'
 import * as styles from './styles'
 
-
-const
-  defaultStyles = css`
+const defaultStyles = css`
     appearance: none;
     outline: none;
     margin: 0;
   `,
   autoResize = e => {
-    if (!e.target.value)
-      e.target.style.height = ''
+    if (!e.target.value) e.target.style.height = ''
     else {
       e.target.style.height = 'auto'
       e.target.style.height = e.target.scrollHeight + 'px'
     }
   }
 
-export const
-  useTextArea = props => useStyles(
-    'textArea',
-    styles,
-    pushCss(Object.assign({__textAreaStyles: true}, props), defaultStyles)
-  ),
+export const useTextArea = props =>
+    useStyles(
+      'textArea',
+      styles,
+      pushCss(Object.assign({__textAreaStyles: true}, props), defaultStyles)
+    ),
   TextArea = React.forwardRef((props, ref) => {
     let nodeProps = useBox(useText(useTextArea(props)))
     nodeProps.ref = ref
@@ -43,11 +40,16 @@ export const
   })
 
 if (__DEV__) {
-  const
-    propTypes = require('./propTypes').default,
+  const propTypes = require('./propTypes').default,
     typePropTypes = require('../Text/propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   TextArea.displayName = 'TextArea'
-  TextArea.propTypes = Object.assign({}, boxPropTypes, flexPropTypes, typePropTypes, propTypes)
+  TextArea.propTypes = Object.assign(
+    {},
+    boxPropTypes,
+    flexPropTypes,
+    typePropTypes,
+    propTypes
+  )
 }

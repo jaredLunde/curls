@@ -1,16 +1,15 @@
 import {css} from '@emotion/core'
 
-
 export default css`
-  [data-strict=true] {
+  [data-strict='true'] {
     contain: strict;
   }
 
-  [data-autosize=true] {
+  [data-autosize='true'] {
     contain: content;
   }
 
-  [data-autopaint=true] {
+  [data-autopaint='true'] {
     contain: layout style;
   }
 `

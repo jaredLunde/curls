@@ -6,7 +6,6 @@ import {portalize, pushCss, withChildren} from './utils'
 import {useBox} from './Box'
 import {Drop} from './Drop'
 
-
 /**
 import {Modal, ModalBox, ModalConsumer, Overlay} from 'curls'
 
@@ -28,37 +27,38 @@ import {Modal, ModalBox, ModalConsumer, Overlay} from 'curls'
   )}
 </Modal>
 **/
-const
-  defaultStyles = css`
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  `
+const defaultStyles = css`
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+`
 
-export const
-  ModalContext = React.createContext(emptyObj),
+export const ModalContext = React.createContext(emptyObj),
   {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),
-  useModalBox = props => useStyles('modal', emptyObj, pushCss(props, defaultStyles)),
-  ModalBox = React.forwardRef(
-    ({children, portal, withOverlay = false, ...props}, ref) => {
-      const transition = useModalContext()
-      props.css = [transition.css]
-      props = useBox(useModalBox(props))
-      props.children = typeof children === 'function' ? children(transition) : children
-      props.ref = ref
-      return portalize(createElement('div', props), portal)
-    }
-  ),
-  Modal = props => React.createElement(
-    props.transition || Drop,
-    withChildren(
-      props,
-      transition => <ModalContext.Provider value={transition} children={props.children(transition)}/>
+  useModalBox = props =>
+    useStyles('modal', emptyObj, pushCss(props, defaultStyles)),
+  ModalBox = React.forwardRef(({children, portal, ...props}, ref) => {
+    const transition = useModalContext()
+    props.css = [transition.css]
+    props = useBox(useModalBox(props))
+    props.children =
+      typeof children === 'function' ? children(transition) : children
+    props.ref = ref
+    return portalize(createElement('div', props), portal)
+  }),
+  Modal = props =>
+    React.createElement(
+      props.transition || Drop,
+      withChildren(props, transition => (
+        <ModalContext.Provider
+          value={transition}
+          children={props.children(transition)}
+        />
+      ))
     )
-  )
 
 if (__DEV__) {
   const slidePropTypes = require('./Slide/propTypes').default

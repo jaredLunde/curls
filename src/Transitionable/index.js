@@ -2,5 +2,5 @@ export {
   Transitionable,
   useTransitionable,
   useTransitionableToggle,
-  getDelay
+  getDelay,
 } from './Transitionable'

@@ -1,10 +1,13 @@
 import React, {useMemo, useContext} from 'react'
 import {css, Global} from '@emotion/core'
-import {ThemeProvider as ThemeProvider_, useStylesContext, fastMemoize} from '@style-hooks/core'
+import {
+  ThemeProvider as ThemeProvider_,
+  useStylesContext,
+  fastMemoize,
+} from '@style-hooks/core'
 import emptyArr from 'empty/array'
 import emptyObj from 'empty/object'
 import {unit} from './utils'
-
 
 export const defaultColors = {
   blue: '#22A2DC',
@@ -27,26 +30,17 @@ export const defaultColors = {
 export const defaultTheme = {
   baseRem: 100,
   breakpoints: {
-    phone: 'only screen and (min-width: 0em)',    // 0px
-    tablet: 'only screen and (min-width: 35em)',  // 560px
+    phone: 'only screen and (min-width: 0em)', // 0px
+    tablet: 'only screen and (min-width: 35em)', // 560px
     desktop: 'only screen and (min-width: 80em)', // 1280px
   },
   breakpointsDelimiter: '@',
   colors: defaultColors,
   locals: {},
   mediaQueries: {},
-  spacingScale: [
-    0,
-    1/4,
-    1/2,
-    1,
-    2,
-    4,
-    8,
-    16
-  ],
+  spacingScale: [0, 1 / 4, 1 / 2, 1, 2, 4, 8, 16],
   spacingUnit: 'rem',
-  sizeUnit: 'px'
+  sizeUnit: 'px',
 }
 
 const createTheme = fastMemoize(
@@ -55,22 +49,23 @@ const createTheme = fastMemoize(
   WeakMap
 )
 
-export const
-  CurlsContext = React.createContext({}),
+export const CurlsContext = React.createContext({}),
   CurlsConsumer = CurlsContext.Consumer,
   useCurls = () => useContext(CurlsContext)
 
 const CurlsProvider = ({globalStyles = emptyArr, children}) => {
-  const
-    {theme, mergeTheme, replaceTheme} = useStylesContext(),
-    styles = useMemo(
-      () => {
-        const s = [css`html { font-size: ${unit(theme.baseRem, '%')} }`]
-        s.push.apply(s, globalStyles)
-        return s
-      },
-      [theme.baseRem, globalStyles]
-    ),
+  const {theme, mergeTheme, replaceTheme} = useStylesContext(),
+    styles = useMemo(() => {
+      const s = [
+        css`
+          html {
+            font-size: ${unit(theme.baseRem, '%')};
+          }
+        `,
+      ]
+      s.push.apply(s, globalStyles)
+      return s
+    }, [theme.baseRem, globalStyles]),
     context = useMemo(
       () => ({
         theme,
@@ -82,7 +77,7 @@ const CurlsProvider = ({globalStyles = emptyArr, children}) => {
 
   return (
     <CurlsContext.Provider value={context}>
-      <Global styles={styles}/>
+      <Global styles={styles} />
       {children}
     </CurlsContext.Provider>
   )
@@ -90,7 +85,7 @@ const CurlsProvider = ({globalStyles = emptyArr, children}) => {
 
 export const ThemeProvider = ({theme = emptyObj, globalStyles, children}) => (
   <ThemeProvider_ theme={createTheme(theme)}>
-    <CurlsProvider globalStyles={globalStyles} children={children}/>
+    <CurlsProvider globalStyles={globalStyles} children={children} />
   </ThemeProvider_>
 )
 

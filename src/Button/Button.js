@@ -5,45 +5,46 @@ import {pushCss} from '../utils'
 import * as styles from './styles'
 import {css} from '@emotion/core'
 
-
 const defaultStyles = css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: 0;
-    background: none;
-    border: 0;
-    color: currentColor;
-    cursor: pointer;
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-    line-height: 1.0;
-    user-select: none;
-    text-align: inherit;
-    
-    &::-moz-focus-inner {
-      border: 0;
-      margin: 0;
-      padding: 0;
-    }
-      
-    &:focus {
-      outline: 0
-    }
-  `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  user-select: none;
+  text-align: inherit;
 
-export const
-  useButton = props => useStyles(
-    'button',
-    styles,
-    pushCss(Object.assign({__buttonStyles: true, role: 'button'}, props), defaultStyles)
-  ),
+  &::-moz-focus-inner {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+`
+
+export const useButton = props =>
+    useStyles(
+      'button',
+      styles,
+      pushCss(
+        Object.assign({__buttonStyles: true, role: 'button'}, props),
+        defaultStyles
+      )
+    ),
   Button = createComponent('button', props => useBox(useButton(props)))
 
 if (__DEV__) {
-  const
-    propTypes = require('./propTypes').default,
+  const propTypes = require('./propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   Button.displayName = 'Button'

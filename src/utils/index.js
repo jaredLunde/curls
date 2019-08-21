@@ -13,4 +13,8 @@ export supportsCSS from './supportsCSS'
 export unit from './unit'
 export withChildren from './withChildren'
 
-export {fastMemoize, objectWithoutProps, objectWithoutPropsMemo} from '@style-hooks/core'
+export {
+  fastMemoize,
+  objectWithoutProps,
+  objectWithoutPropsMemo,
+} from '@style-hooks/core'

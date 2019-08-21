@@ -1,16 +1,19 @@
 import {css} from '@emotion/core'
 import {br as boxBr} from '../Box/styles'
-import {memoTheme, get} from '../utils'
+import {memoTheme} from '../utils'
 import {directionalRe} from '../utils/directionalScale'
-
 
 export const br = memoTheme((val, theme) => {
   if (val === false || val === null) return null
 
   let abbr, value
-  let topRadius = 't0', bottomRadius = 'b0'
+  let topRadius = 't0',
+    bottomRadius = 'b0'
 
-  if (typeof val === 'number' || typeof val === 'string' && parseInt(val) > -1) {
+  if (
+    typeof val === 'number' ||
+    (typeof val === 'string' && parseInt(val) > -1)
+  ) {
     value = val
   } else {
     const av = String(val).split(directionalRe)

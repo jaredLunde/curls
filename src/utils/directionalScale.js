@@ -1,7 +1,6 @@
 import {css} from '@emotion/core'
 import toUnit from './unit'
 
-
 export const directionalRe = /(?=[\d]+|Auto)/
 const defaultDirections = {
   _: ['top', 'right', 'bottom', 'left'],
@@ -10,20 +9,20 @@ const defaultDirections = {
   b: ['bottom'],
   l: ['left'],
   y: ['top', 'bottom'],
-  x: ['right', 'left']
+  x: ['right', 'left'],
 }
 
-export const isDirectional = value => typeof value === 'string' && value.length > 1
+export const isDirectional = value =>
+  typeof value === 'string' && value.length > 1
 
 export default (
   prefix,
   modScale,
   modValue,
   unit = 'px',
-  directions = defaultDirections,
+  directions = defaultDirections
 ) => {
-  let
-    CSS = [],
+  let CSS = [],
     i = 0,
     j,
     modVals = String(modValue).split(' ')
@@ -44,26 +43,25 @@ export default (
 
     if (__DEV__)
       if (direction === void 0)
-        throw (
-          `Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n`
-          + `Allowed values include: ${Object.keys(directions).join(', ')}`
-        )
+        throw `Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n` +
+          `Allowed values include: ${Object.keys(directions).join(', ')}`
 
     let size = modScale[value]
     if (size === void 0) {
-      if (value === 'Auto')
-        size = 'auto'
+      if (value === 'Auto') size = 'auto'
       else {
         if (__DEV__)
-          throw (
-            `Unrecognized scale value in ${prefix}: ${value}\n\n`
-            + `Allowed values include: ${Object.keys(modScale).join(', ')}`
-          )
+          throw `Unrecognized scale value in ${prefix}: ${value}\n\n` +
+            `Allowed values include: ${Object.keys(modScale).join(', ')}`
       }
     }
 
     for (j = 0; j < direction.length; j++)
-      CSS.push(css`${prefix.replace('{XYZ}', direction[j])}: ${toUnit(size, unit)};`)
+      CSS.push(
+        css`
+          ${prefix.replace('{XYZ}', direction[j])}: ${toUnit(size, unit)};
+        `
+      )
   }
 
   return CSS.length === 1 ? CSS[0] : CSS

@@ -4,27 +4,20 @@ import emptyObj from 'empty/object'
 import {ThemeConsumer} from '@style-hooks/core'
 import {ThemeProvider} from '../ThemeProvider'
 
-
 export default (Component, portal) => {
-  if (portal === false || portal === void 0 || portal === null)
-    return Component
+  if (portal === false || portal === void 0 || portal === null) return Component
 
   const props = {children: Component}
 
-  if (typeof portal === 'string')
-    props.container = portal
-  else
-    Object.assign(props, portal)
+  if (typeof portal === 'string') props.container = portal
+  else Object.assign(props, portal)
 
-  return React.createElement(
-    ThemeConsumer,
-    emptyObj,
-    theme => {
-      const themeProvider = {provider: ThemeProvider, value: theme}
-      props.providers = props.providers === void 0
+  return React.createElement(ThemeConsumer, emptyObj, theme => {
+    const themeProvider = {provider: ThemeProvider, value: theme}
+    props.providers =
+      props.providers === void 0
         ? [themeProvider]
         : [themeProvider, ...props.providers]
-      return React.createElement(Portalize, props)
-    }
-  )
+    return React.createElement(Portalize, props)
+  })
 }

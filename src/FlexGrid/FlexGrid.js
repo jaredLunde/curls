@@ -4,11 +4,8 @@ import {useBox} from '../Box/Box'
 import {getBreakpointOrder} from '../utils'
 import * as styles from './styles'
 
-
-export const
-  useFlexGrid = props => {
-    let
-      theme = useTheme(),
+export const useFlexGrid = props => {
+    let theme = useTheme(),
       found = false,
       nextProps = Object.assign({}, {__gridBreakpoints: {}}),
       breakpointOrder = getBreakpointOrder(theme.breakpoints),
@@ -36,8 +33,7 @@ export const
   FlexGrid = createComponent('div', props => useBox(useFlexGrid(props)))
 
 if (__DEV__) {
-  const
-    propTypes = require('../Box/propTypes').default,
+  const propTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   FlexGrid.displayName = 'FlexGrid'
   FlexGrid.propTypes = Object.assign({}, flexPropTypes, propTypes)

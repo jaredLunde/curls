@@ -6,53 +6,49 @@ import {supportsCSS, loadImage, pushCss} from '../utils'
 import * as styles from './styles'
 import getImage from './getImage'
 
-
 const getOrientation = (width, height) =>
   width > height ? 'landscape' : width === height ? 'square' : 'portrait'
 
 const useImageOrientation = () => {
-  const
-    element = useRef(null),
+  const element = useRef(null),
     [orientation, setOrientation] = useState('square')
 
-  useEffect(
-    () => {
-      if (element.current !== null) {
-        const loader = loadImage(element.current)
+  useEffect(() => {
+    if (element.current !== null) {
+      const loader = loadImage(element.current)
 
-        loader.then(({target}) => setOrientation(
+      loader.then(({target}) =>
+        setOrientation(
           getOrientation(target.naturalWidth, target.naturalHeight)
-        ))
+        )
+      )
 
-        return loader.cancel.bind(loader)
-      }
-    },
-    [element.current]
-  )
+      return loader.cancel.bind(loader)
+    }
+  }, [element.current])
 
   return [element, orientation]
 }
 
-const
-  defaultStyles = css`
+const defaultStyles = css`
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    & img {object-fit: cover;}
+    & img {
+      object-fit: cover;
+    }
   `,
   supportsObjectFit = supportsCSS('object-fit')
 
-export const
-  useAvatar = props => useStyles('avatar', styles, pushCss(props, defaultStyles)),
+export const useAvatar = props =>
+    useStyles('avatar', styles, pushCss(props, defaultStyles)),
   Avatar = React.forwardRef(({...props}, ref) => {
-    let
-      imageRef,
+    let imageRef,
       src = props.src
 
-    if (supportsObjectFit)
-      props.orientation = 'square'
+    if (supportsObjectFit) props.orientation = 'square'
     else {
       const o = useImageOrientation()
       imageRef = o[0]
@@ -66,11 +62,14 @@ export const
         ref: el => {
           imageRef !== void 0 && (imageRef.current = el)
 
-          if (typeof ref === 'function')
-            ref(el)
-          else if (typeof ref === 'object' && ref !== null && ref.current !== void 0)
+          if (typeof ref === 'function') ref(el)
+          else if (
+            typeof ref === 'object' &&
+            ref !== null &&
+            ref.current !== void 0
+          )
             ref.current = el
-        }
+        },
       },
       props
     )
@@ -81,8 +80,7 @@ export const
   })
 
 if (__DEV__) {
-  const
-    propTypes = require('./propTypes').default,
+  const propTypes = require('./propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   Avatar.displayName = 'Avatar'

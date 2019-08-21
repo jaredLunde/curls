@@ -5,15 +5,15 @@ import createComponent from '../createComponent'
 import * as styles from './styles'
 import {pushCss} from '../utils'
 
-
-const defaultStyles = css`display: grid;`
-export const
-  useGrid = props => useStyles('grid', styles, pushCss(props, defaultStyles)),
+const defaultStyles = css`
+  display: grid;
+`
+export const useGrid = props =>
+    useStyles('grid', styles, pushCss(props, defaultStyles)),
   Grid = createComponent('div', props => useBox(useGrid(props)))
 
 if (__DEV__) {
-  const
-    propTypes = require('./propTypes').default,
+  const propTypes = require('./propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   Grid.displayName = 'Grid'

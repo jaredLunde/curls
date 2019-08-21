@@ -1,93 +1,217 @@
 import {css} from '@emotion/core'
-import {directionalScale, isDirectional, colorize, unit, memoValue, memoTheme, get} from '../utils'
+import {
+  directionalScale,
+  isDirectional,
+  colorize,
+  unit,
+  memoValue,
+  memoTheme,
+  get,
+} from '../utils'
 import * as dT from './defaultTheme'
 
-const
-  ws = /\s+/,
+const ws = /\s+/,
   overflow = {
-    auto: css`overflow: auto;`,
-    autoX: css`overflow-x: auto;`,
-    autoY: css`overflow-y: auto;`,
-    hidden: css`overflow: hidden;`,
-    hiddenX: css`overflow-x: hidden;`,
-    hiddenY: css`overflow-y: hidden;`,
-    scroll: css`overflow: scroll;`,
-    scrollX: css`overflow-x: scroll;`,
-    scrollY: css`overflow-y: scroll;`,
-    touch: css`-webkit-overflow-scrolling: touch;`
+    auto: css`
+      overflow: auto;
+    `,
+    autoX: css`
+      overflow-x: auto;
+    `,
+    autoY: css`
+      overflow-y: auto;
+    `,
+    hidden: css`
+      overflow: hidden;
+    `,
+    hiddenX: css`
+      overflow-x: hidden;
+    `,
+    hiddenY: css`
+      overflow-y: hidden;
+    `,
+    scroll: css`
+      overflow: scroll;
+    `,
+    scrollX: css`
+      overflow-x: scroll;
+    `,
+    scrollY: css`
+      overflow-y: scroll;
+    `,
+    touch: css`
+      -webkit-overflow-scrolling: touch;
+    `,
   }
 
-export const
-  ov = memoValue(value => {
+export const ov = memoValue(value => {
     const vals = value.split(ws)
     if (vals.length === 1) return overflow[value]
 
-    let CSS = [], i = 0
+    let CSS = [],
+      i = 0
     for (; i < vals.length; i++)
-      CSS.push(css`${overflow[vals[i]]};`)
+      CSS.push(
+        css`
+          ${overflow[vals[i]]};
+        `
+      )
 
     return CSS
   }),
-  z = memoValue(value => css`z-index: ${value};`),
+  z = memoValue(
+    value =>
+      css`
+        z-index: ${value};
+      `
+  ),
   sh = memoTheme((v, t) => get(t.box, 'getBoxShadow', dT)(v, t)),
-  bg = (value, theme) => colorize('background', value, theme),  // colorize memoizes
-  bc = (value, theme) => colorize('border-color', value, theme),  // colorize memoizes
-  w = memoTheme((v, t) => css`width: ${unit(v, t.sizeUnit)};`),
-  h = memoTheme((v, t) => css`height: ${unit(v, t.sizeUnit)};`),
-  minW = memoTheme((v, t) => css`min-width: ${unit(v, t.sizeUnit)};`),
-  minH = memoTheme((v, t) => css`min-height: ${unit(v, t.sizeUnit)};`),
-  maxW = memoTheme((v, t) => css`max-width: ${unit(v, t.sizeUnit)};`),
-  maxH = memoTheme((v, t) => css`max-height: ${unit(v, t.sizeUnit)};`),
-  t = memoTheme((v, t) => css`top: ${unit(v, get(t.box, 'posUnit', dT))};`),
-  r = memoTheme((v, t) => css`right: ${unit(v, get(t.box, 'posUnit', dT))};`),
-  b = memoTheme((v, t) => css`bottom: ${unit(v, get(t.box, 'posUnit', dT))};`),
-  l = memoTheme((v, t) => css`left: ${unit(v, get(t.box, 'posUnit', dT))};`),
+  bg = (value, theme) => colorize('background', value, theme), // colorize memoizes
+  bc = (value, theme) => colorize('border-color', value, theme), // colorize memoizes
+  w = memoTheme(
+    (v, t) =>
+      css`
+        width: ${unit(v, t.sizeUnit)};
+      `
+  ),
+  h = memoTheme(
+    (v, t) =>
+      css`
+        height: ${unit(v, t.sizeUnit)};
+      `
+  ),
+  minW = memoTheme(
+    (v, t) =>
+      css`
+        min-width: ${unit(v, t.sizeUnit)};
+      `
+  ),
+  minH = memoTheme(
+    (v, t) =>
+      css`
+        min-height: ${unit(v, t.sizeUnit)};
+      `
+  ),
+  maxW = memoTheme(
+    (v, t) =>
+      css`
+        max-width: ${unit(v, t.sizeUnit)};
+      `
+  ),
+  maxH = memoTheme(
+    (v, t) =>
+      css`
+        max-height: ${unit(v, t.sizeUnit)};
+      `
+  ),
+  t = memoTheme(
+    (v, t) =>
+      css`
+        top: ${unit(v, get(t.box, 'posUnit', dT))};
+      `
+  ),
+  r = memoTheme(
+    (v, t) =>
+      css`
+        right: ${unit(v, get(t.box, 'posUnit', dT))};
+      `
+  ),
+  b = memoTheme(
+    (v, t) =>
+      css`
+        bottom: ${unit(v, get(t.box, 'posUnit', dT))};
+      `
+  ),
+  l = memoTheme(
+    (v, t) =>
+      css`
+        left: ${unit(v, get(t.box, 'posUnit', dT))};
+      `
+  ),
   pos = {
-    relative: css`position: relative;`,
-    absolute: css`position: absolute;`,
-    fixed: css`position: fixed;`,
+    relative: css`
+      position: relative;
+    `,
+    absolute: css`
+      position: absolute;
+    `,
+    fixed: css`
+      position: fixed;
+    `,
     sticky: css`
       position: relative;
       position: sticky;
       top: 0;
     `,
-    static: css`position: static;`,
-    unset: css`position: unset;`,
-    initial: css`position: initial;`,
-    inherit: css`position: inherit;`,
+    static: css`
+      position: static;
+    `,
+    unset: css`
+      position: unset;
+    `,
+    initial: css`
+      position: initial;
+    `,
+    inherit: css`
+      position: inherit;
+    `,
   },
   d = {
-    block: css`display: block;`,
-    inlineBlock: css`display: inline-block;`,
-    flex: css`display: flex;`,
-    inlineFlex: css`display: inline-flex;`,
-    inline: css`display: inline;`,
-    grid: css`display: grid;`,
-    inlineGrid: css`display: inline-grid;`,
-    table: css`display: table;`,
-    inlineTable: css`display: inline-table;`,
-    tableCell: css`display: table-cell;`,
-    tableRow: css`display: table-row;`,
-    tableColumn: css`display: table-column;`,
-    contents: css`display: contents;`,
-    listItem: css`display: list-item;`,
-    none: css`display: none;`
+    block: css`
+      display: block;
+    `,
+    inlineBlock: css`
+      display: inline-block;
+    `,
+    flex: css`
+      display: flex;
+    `,
+    inlineFlex: css`
+      display: inline-flex;
+    `,
+    inline: css`
+      display: inline;
+    `,
+    grid: css`
+      display: grid;
+    `,
+    inlineGrid: css`
+      display: inline-grid;
+    `,
+    table: css`
+      display: table;
+    `,
+    inlineTable: css`
+      display: inline-table;
+    `,
+    tableCell: css`
+      display: table-cell;
+    `,
+    tableRow: css`
+      display: table-row;
+    `,
+    tableColumn: css`
+      display: table-column;
+    `,
+    contents: css`
+      display: contents;
+    `,
+    listItem: css`
+      display: list-item;
+    `,
+    none: css`
+      display: none;
+    `,
   }
 
 export const bw = memoTheme((value, theme) => {
-  const
-    bwScale = get(theme.box, 'borderWidthScale', dT),
-    bwUnit =  get(theme.box, 'borderWidthUnit', dT)
+  const bwScale = get(theme.box, 'borderWidthScale', dT),
+    bwUnit = get(theme.box, 'borderWidthUnit', dT)
 
   if (isDirectional(value) === true)
     return css`
       border-style: solid;
-      ${directionalScale(
-      'border-{XYZ}-width',
-        bwScale,
-        value,
-        bwUnit
-      )};
+      ${directionalScale('border-{XYZ}-width', bwScale, value, bwUnit)};
     `
   else
     return css`
@@ -105,18 +229,25 @@ const borderRadiusDirections = {
   tl: ['top-left'],
   tr: ['top-right'],
   br: ['bottom-right'],
-  bl: ['bottom-left']
+  bl: ['bottom-left'],
 }
 
 export const br = memoTheme((value, theme) => {
-  const
-    brScale = get(theme.box, 'borderRadiusScale', dT),
+  const brScale = get(theme.box, 'borderRadiusScale', dT),
     brUnit = get(theme.box, 'borderRadiusUnit', dT)
 
   if (isDirectional(value) === true) {
-    return directionalScale('border-{XYZ}-radius', brScale, value, brUnit, borderRadiusDirections)
+    return directionalScale(
+      'border-{XYZ}-radius',
+      brScale,
+      value,
+      brUnit,
+      borderRadiusDirections
+    )
   } else {
-    return css`border-radius: ${unit(brScale[value], brUnit)};`
+    return css`
+      border-radius: ${unit(brScale[value], brUnit)};
+    `
   }
 })
 
@@ -126,7 +257,11 @@ export const m = memoTheme((value, theme) => {
   if (isDirectional(value) === true)
     return directionalScale('margin-{XYZ}', spacingScale, value, spacingUnit)
   else
-    return css`margin: ${value === 'auto' ? 'auto' : unit(spacingScale[value], spacingUnit)};`
+    return css`
+      margin: ${value === 'auto'
+        ? 'auto'
+        : unit(spacingScale[value], spacingUnit)};
+    `
 })
 
 export const p = memoTheme((value, theme) => {
@@ -135,5 +270,7 @@ export const p = memoTheme((value, theme) => {
   if (isDirectional(value) === true)
     return directionalScale('padding-{XYZ}', spacingScale, value, spacingUnit)
   else
-    return css`padding: ${unit(spacingScale[value], spacingUnit)};`
+    return css`
+      padding: ${unit(spacingScale[value], spacingUnit)};
+    `
 })

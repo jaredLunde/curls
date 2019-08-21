@@ -1,6 +1,5 @@
 import {implicitNum, boolOrString} from '../PropTypes'
 
-
 export default {
   // background-color
   bg: boolOrString,

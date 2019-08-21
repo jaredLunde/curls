@@ -2,5 +2,5 @@ export const sizeUnit = 'rem'
 export const scale = {
   sm: 3,
   md: 6,
-  lg: 12
+  lg: 12,
 }

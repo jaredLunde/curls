@@ -1,6 +1,5 @@
 import {implicitNum, boolOrNum, boolOrString} from '../PropTypes'
 
-
 export default {
   // flex (display: flex)
   flex: boolOrString,
@@ -29,5 +28,5 @@ export default {
   // flex--content-{top|center|bottom|around}
   alignContent: boolOrString,
   // flex--self-{top|center|bottom|around}
-  alignSelf: boolOrString
+  alignSelf: boolOrString,
 }

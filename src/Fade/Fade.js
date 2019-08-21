@@ -2,11 +2,12 @@ import createRenderProp from '../createRenderProp'
 import {useTransitionableToggle} from '../Transitionable'
 import * as styles from './styles'
 
-
-const
-  options = {name: 'fade', styles, transitionProperties: 'visibility, opacity'}
-export const
-  useFade = props => {
+const options = {
+  name: 'fade',
+  styles,
+  transitionProperties: 'visibility, opacity',
+}
+export const useFade = props => {
     props = Object.assign({}, props)
     props.from = props.from || 0
     props.to = props.to === void 0 ? 1 : props.to

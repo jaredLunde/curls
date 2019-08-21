@@ -1,6 +1,5 @@
 import {boolOrString} from '../PropTypes'
 
-
 export default {
-  autoResize: boolOrString
+  autoResize: boolOrString,
 }

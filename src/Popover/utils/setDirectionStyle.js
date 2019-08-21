@@ -3,10 +3,8 @@ import centerFromBottom from './centerFromBottom'
 import centerFromLeft from './centerFromLeft'
 import centerFromRight from './centerFromRight'
 
-
-export default function (direction, container, popoverBox, viewportSize) {
-  const
-    containerRect = container && container.getBoundingClientRect(),
+export default function(direction, container, popoverBox, viewportSize) {
+  const containerRect = container && container.getBoundingClientRect(),
     boxRect = popoverBox && popoverBox.getBoundingClientRect()
 
   if (!containerRect) return null

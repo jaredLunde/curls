@@ -1,1 +1,5 @@
-export {getPlaceholderClass, getHoverClass, getFocusClass} from '../Input/defaultTheme'
+export {
+  getPlaceholderClass,
+  getHoverClass,
+  getFocusClass,
+} from '../Input/defaultTheme'

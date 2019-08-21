@@ -6,19 +6,19 @@ import {useBox} from '../Box'
 import createComponent from '../createComponent'
 import * as styles from './styles'
 
-
-const defaultStyles = css`text-decoration: none;`
-export const
-  useLink = props => useStyles(
-    'link',
-    styles,
-    pushCss(Object.assign({__linkStyles: true}, props), defaultStyles)
-  ),
+const defaultStyles = css`
+  text-decoration: none;
+`
+export const useLink = props =>
+    useStyles(
+      'link',
+      styles,
+      pushCss(Object.assign({__linkStyles: true}, props), defaultStyles)
+    ),
   A = createComponent('a', props => useBox(useText(useLink(props))))
 
 if (__DEV__) {
-  const
-    typePropTypes = require('../Text/propTypes').default,
+  const typePropTypes = require('../Text/propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   A.displayName = 'A'

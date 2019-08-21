@@ -18,7 +18,7 @@ export {
   portalize,
   pushCss,
   supportsCSS,
-  unit
+  unit,
 } from './utils'
 
 export {
@@ -27,7 +27,7 @@ export {
   defaultColors,
   CurlsContext,
   CurlsConsumer,
-  useCurls
+  useCurls,
 } from './ThemeProvider'
 
 export {Avatar, useAvatar} from './Avatar'
@@ -36,7 +36,14 @@ export {Breakpoint, useBreakpoint} from './Breakpoint'
 export {Button, useButton} from './Button'
 export {Card, useCard} from './Card'
 export {Divider, useDivider} from './Divider'
-export {Drawer, DrawerBox, useDrawerBox, useDrawerContext, DrawerContext, DrawerConsumer} from './Drawer'
+export {
+  Drawer,
+  DrawerBox,
+  useDrawerBox,
+  useDrawerContext,
+  DrawerContext,
+  DrawerConsumer,
+} from './Drawer'
 export {Drop, useDrop} from './Drop'
 export {Fade, useFade} from './Fade'
 export {FlexGrid, useFlexGrid} from './FlexGrid'
@@ -45,15 +52,42 @@ export {Grid, useGrid} from './Grid'
 export {GridItem, useGridItem} from './GridItem'
 export {Input, useInput} from './Input'
 export {Link, useLink, A, NavLink} from './Link'
-export {Modal, ModalBox, useModalBox, useModalContext, ModalContext, ModalConsumer} from './Modal'
-export {Popover, PopoverBox, usePopoverBox, usePopoverContext, PopoverContext, PopoverConsumer} from './Popover'
+export {
+  Modal,
+  ModalBox,
+  useModalBox,
+  useModalContext,
+  ModalContext,
+  ModalConsumer,
+} from './Modal'
+export {
+  Popover,
+  PopoverBox,
+  usePopoverBox,
+  usePopoverContext,
+  PopoverContext,
+  PopoverConsumer,
+} from './Popover'
 export {Slide, useSlide} from './Slide'
 export {Text, useText, prettyText} from './Text'
 export {TextArea, useTextArea} from './TextArea'
-export {Transitionable, useTransitionable, useTransitionableToggle, getDelay} from './Transitionable'
+export {
+  Transitionable,
+  useTransitionable,
+  useTransitionableToggle,
+  getDelay,
+} from './Transitionable'
 export useMediaQuery from './useMediaQuery'
 
 // style-hooks exports
 export * from '@style-hooks/core'
 // emotion exports
-export {css, jsx, withEmotionCache, CacheProvider, Global, keyframes, ClassNames} from '@emotion/core'
+export {
+  css,
+  jsx,
+  withEmotionCache,
+  CacheProvider,
+  Global,
+  keyframes,
+  ClassNames,
+} from '@emotion/core'

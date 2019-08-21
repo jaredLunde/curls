@@ -4,9 +4,10 @@ import createRenderProp from './createRenderProp'
 import useMediaQuery from './useMediaQuery'
 import {getBreakpointOrder} from './utils'
 
-
 const getSizes = (props, theme) => {
-  let sizes = [], keys = getBreakpointOrder(theme.breakpoints), i = 0
+  let sizes = [],
+    keys = getBreakpointOrder(theme.breakpoints),
+    i = 0
 
   for (; i < keys.length; i++) {
     const key = keys[i]
@@ -16,28 +17,24 @@ const getSizes = (props, theme) => {
   return sizes
 }
 
-
 const bpCache = new WeakMap()
 const memoizedFindBreakpoints = (breakpoints, sizes) => {
-  let
-    pairs = bpCache.get(breakpoints),
+  let pairs = bpCache.get(breakpoints),
     sizeKey = sizes.join(',')
   if (pairs !== void 0) {
-    let pairKeys = Object.keys(pairs), i = 0
+    let pairKeys = Object.keys(pairs),
+      i = 0
     for (; i < pairKeys.length; i++)
-      if (sizeKey === pairKeys[i])
-        return pairs[pairKeys[i]]
-  }
-  else {
+      if (sizeKey === pairKeys[i]) return pairs[pairKeys[i]]
+  } else {
     pairs = {}
     bpCache.set(breakpoints, pairs)
   }
 
   const bps = []
-
+  // eslint-disable-next-line no-unused-vars
   for (let size in breakpoints)
-    if (sizes.indexOf(size) > -1)
-      bps.push(breakpoints[size])
+    if (sizes.indexOf(size) > -1) bps.push(breakpoints[size])
 
   const value = [sizes, bps]
   pairs[sizeKey] = value
@@ -49,33 +46,27 @@ const findBreakpoints = (props, theme) =>
   memoizedFindBreakpoints(theme.breakpoints, getSizes(props, theme))
 
 // This is about enforcing immutability, not micro-optimizing
-const getMatches = memoize(
-  [WeakMap, WeakMap],
-  (sizes, rawMatches) => {
-    let matches = {}, i = 0
+const getMatches = memoize([WeakMap, WeakMap], (sizes, rawMatches) => {
+  let matches = {},
+    i = 0
 
-    for (; i < rawMatches.length; i++)
-      matches[sizes[i]] = rawMatches[i]
+  for (; i < rawMatches.length; i++) matches[sizes[i]] = rawMatches[i]
 
-    return matches
-  }
-)
+  return matches
+})
 
 const getDefaultMatches = (theme, sizes, defaultMatches) => {
   if (defaultMatches === void 0) {
-    return sizes.map(s => false)
-  }
-  else {
+    return sizes.map(() => false)
+  } else {
     if (typeof defaultMatches === 'function')
       defaultMatches = defaultMatches(theme)
     return sizes.map(size => defaultMatches.indexOf(size) > -1)
   }
 }
 
-export const
-  useBreakpoint = props => {
-    const
-      theme = useTheme(),
+export const useBreakpoint = props => {
+    const theme = useTheme(),
       [sizes, queries] = findBreakpoints(props, theme),
       defaultMatches = getDefaultMatches(theme, sizes, props.defaultMatches),
       state = useMediaQuery(queries, defaultMatches)
@@ -86,5 +77,4 @@ export const
   },
   Breakpoint = createRenderProp(useBreakpoint)
 
-if (__DEV__)
-  Breakpoint.displayName = 'Breakpoint'
+if (__DEV__) Breakpoint.displayName = 'Breakpoint'

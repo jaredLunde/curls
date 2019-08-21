@@ -2,7 +2,6 @@ import {css} from '@emotion/core'
 import * as polished from 'polished'
 import {antialias, optimizeFor} from './styles'
 
-
 const hiDPI = polished.hiDPI(1.5)
 export default css`
   html {
@@ -28,7 +27,7 @@ export default css`
   h3,
   h4,
   h5,
-  h6  {
+  h6 {
     ${optimizeFor.legibility};
   }
 `

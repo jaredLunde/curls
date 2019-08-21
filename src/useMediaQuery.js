@@ -1,29 +1,31 @@
-import React, {useRef, useEffect, useReducer} from 'react'
+import {useRef, useEffect, useReducer} from 'react'
 import json2mq from 'json2mq'
 
-
 const queriesDidChange = (prevQueries, nextQueries) => {
-  if (Array.isArray(prevQueries) === true && Array.isArray(nextQueries) === true) {
+  if (
+    Array.isArray(prevQueries) === true &&
+    Array.isArray(nextQueries) === true
+  ) {
     if (prevQueries.length === nextQueries.length) {
       for (let i = 0; i < nextQueries.length; i++)
-        if (nextQueries[i] !== prevQueries[i])
-          return true
-    } else
-      return true
-  } else
-    return prevQueries !== nextQueries
+        if (nextQueries[i] !== prevQueries[i]) return true
+    } else return true
+  } else return prevQueries !== nextQueries
 
   return false
 }
 
 const init = ({queries, defaultMatches}) => {
   queries = Array.isArray(queries) === true ? queries : [queries]
-  let mediaQueries = [], matches = [], i = 0
-  if (typeof window === 'undefined') return {mediaQueries: queries, matches: defaultMatches}
+  let mediaQueries = [],
+    matches = [],
+    i = 0
+  if (typeof window === 'undefined')
+    return {mediaQueries: queries, matches: defaultMatches}
 
   for (; i < queries.length; i++) {
-    const
-      mq = typeof queries[i] === 'string' ? queries[i] : json2mq(queries[i]),
+    const mq =
+        typeof queries[i] === 'string' ? queries[i] : json2mq(queries[i]),
       mql = window.matchMedia(mq)
     matches.push(mql.matches)
     mediaQueries.push(mql)
@@ -33,10 +35,11 @@ const init = ({queries, defaultMatches}) => {
 }
 
 const reducer = (state, action) => {
+  let matches = [],
+    i = 0
+
   switch (action.type) {
     case 'updateMatch':
-      let matches = [], i = 0
-
       for (; i < state.mediaQueries.length; i++)
         matches.push(state.mediaQueries[i].matches)
 
@@ -50,37 +53,34 @@ const reducer = (state, action) => {
 }
 
 export default (queries, defaultMatches) => {
-  const
-    prevQueries = useRef(queries),
+  const prevQueries = useRef(queries),
     [state, dispatch] = useReducer(reducer, {queries, defaultMatches}, init)
 
-  useEffect(
-    () => {
-      if (queriesDidChange(queries, prevQueries.current)) {
-        dispatch({type: 'setQueries', queries, defaultMatches})
-        prevQueries.current = queries
-      }
-    },
-    [queries]
-  )
+  useEffect(() => {
+    if (queriesDidChange(queries, prevQueries.current)) {
+      dispatch({type: 'setQueries', queries, defaultMatches})
+      prevQueries.current = queries
+    }
+  }, [queries])
 
-  useEffect(
-    () => {
-      const callbacks = []
-      for (let i = 0; i < state.mediaQueries.length; i++) {
-        const mq = state.mediaQueries[i]
-        callbacks.push(() => dispatch({type: 'updateMatch', mq}))
-        mq.addListener(callbacks[i])
-      }
+  useEffect(() => {
+    const callbacks = []
+    for (let i = 0; i < state.mediaQueries.length; i++) {
+      const mq = state.mediaQueries[i]
+      callbacks.push(() => dispatch({type: 'updateMatch', mq}))
+      mq.addListener(callbacks[i])
+    }
 
-      return () => {
-        for (let i = 0; i < state.mediaQueries.length; i++)
-          state.mediaQueries[i].removeListener(callbacks[i])
-      }
-    },
-    [state.mediaQueries]
-  )
+    return () => {
+      for (let i = 0; i < state.mediaQueries.length; i++)
+        state.mediaQueries[i].removeListener(callbacks[i])
+    }
+  }, [state.mediaQueries])
 
   const {matches} = state
-  return {matches, matchesAny: matches.some(Boolean), matchesAll: matches.every(Boolean)}
+  return {
+    matches,
+    matchesAny: matches.some(Boolean),
+    matchesAll: matches.every(Boolean),
+  }
 }

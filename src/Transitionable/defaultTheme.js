@@ -3,7 +3,7 @@ export const duration = {
   fast: 160,
   normal: 320,
   slow: 480,
-  verySlow: 960
+  verySlow: 960,
 }
 
 export const easing = {
@@ -17,5 +17,5 @@ export const easing = {
   swifterMove: [0.4, 0, 0, 1],
   heavyMove: [0.7, 0, 0.6, 1],
   swiftIn: [0.4, 0, 1, 1],
-  swiftOut: [0, 0, 0.58, 1]
+  swiftOut: [0, 0, 0.58, 1],
 }

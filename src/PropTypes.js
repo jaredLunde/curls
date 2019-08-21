@@ -13,7 +13,7 @@ export const toggleVisibility = {
   toggle: func,
   isVisible: bool,
   show: func,
-  hide: func
+  hide: func,
 }
 
 export const boolOrString = oneOfType([bool, string])

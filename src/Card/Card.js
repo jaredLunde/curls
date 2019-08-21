@@ -5,18 +5,17 @@ import {useBox} from '../Box'
 import {pushCss} from '../utils'
 import * as styles from './styles'
 
-
 const defaultStyles = css`
   display: flex;
   flex-direction: column;
   position: relative;
   min-width: 0;
 
-  & > *:not(.button):not(button):not([role=button]):first-child {
+  & > *:not(.button):not(button):not([role='button']):first-child {
     border-top: 0;
   }
 
-  & > *:not(.button):not(button):not([role=button]):last-child {
+  & > *:not(.button):not(button):not([role='button']):last-child {
     border-bottom: 0;
   }
 
@@ -47,20 +46,14 @@ const defaultStyles = css`
   }
 `
 
-export const
-  useCard = props => useStyles('card', styles, pushCss(props, defaultStyles)),
+export const useCard = props =>
+    useStyles('card', styles, pushCss(props, defaultStyles)),
   Card = createComponent('div', props => useBox(useCard(props)))
 
 if (__DEV__) {
-  const
-    propTypes = require('./propTypes').default,
+  const propTypes = require('./propTypes').default,
     boxPropTypes = require('../Box/propTypes').default,
     flexPropTypes = require('../Flex/propTypes').default
   Card.displayName = 'Card'
-  Card.propTypes = Object.assign(
-    {},
-    propTypes,
-    boxPropTypes,
-    flexPropTypes,
-  )
+  Card.propTypes = Object.assign({}, propTypes, boxPropTypes, flexPropTypes)
 }

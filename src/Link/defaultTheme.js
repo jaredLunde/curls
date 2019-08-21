@@ -1,7 +1,6 @@
 import {getHoverQuery} from '../utils'
 
-
-export const getHoverClass = (theme, props) => {
+export const getHoverClass = () => {
   // adds css classes for hover and active states
   const hoverStyle = `
     &:hover {
@@ -18,4 +17,4 @@ export const getHoverClass = (theme, props) => {
   return getHoverQuery(hoverStyle, noneStyle)
 }
 
-export const getActiveClass = (theme, props) => {}
+export const getActiveClass = () => {}
