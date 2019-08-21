@@ -15,7 +15,9 @@ const defaultDirections = {
 
 const isDirectionalRe = /[a-z]/i
 export const isDirectional = value =>
-  typeof value === 'string' && value.trim() !== 'auto' && isDirectionalRe.test(value)
+  typeof value === 'string' &&
+  value.trim() !== 'auto' &&
+  isDirectionalRe.test(value)
 
 export default (
   prefix,
@@ -45,16 +47,20 @@ export default (
 
     if (__DEV__)
       if (direction === void 0)
-        throw new Error(`Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n` +
-          `Allowed values include: ${Object.keys(directions).join(', ')}`)
+        throw new Error(
+          `Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n` +
+            `Allowed values include: ${Object.keys(directions).join(', ')}`
+        )
 
     let size = modScale[value]
     if (size === void 0) {
       if (value === 'Auto') size = 'auto'
       else {
         if (__DEV__)
-          throw new Error(`Unrecognized scale value in ${prefix}: ${value}\n\n` +
-            `Allowed values include: ${Object.keys(modScale).join(', ')}`)
+          throw new Error(
+            `Unrecognized scale value in ${prefix}: ${value}\n\n` +
+              `Allowed values include: ${Object.keys(modScale).join(', ')}`
+          )
       }
     }
 

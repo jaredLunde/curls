@@ -1,0 +1,660 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Text> -> alignment: center 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  text-align: center;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> alignment: justified 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  text-align: justify;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> alignment: left 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  text-align: left;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> alignment: right 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  text-align: right;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> antialias: antialias 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> as prop 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> box properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: block;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> color: #000 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  color: #000;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> color: theme blue 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  color: #22A2DC;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> ellipsis: ellipsis 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> family: Helvetica 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-family: Helvetica;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> family: custom 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-family: Helvetica;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> family: default 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Helvetica",sans-serif;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> lh: 1.0 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  line-height: 1.0;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> lh: 1em 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  line-height: 1em;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> lh: 1px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  line-height: 1px;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> lh: 1rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  line-height: 1rem;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: css.lg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 2rem;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: css.md 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: css.sm 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 0.5rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: fn.lg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 2rem;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: fn.md 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: fn.sm 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 0.5rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: number.lg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 2rem;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: number.md 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> scale: number.sm 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 0.5rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: false 1`] = `
+<DocumentFragment>
+  <span />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: lg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 3rem;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: lg legibility 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 3rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: lg px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 3px;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: md 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1.5rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: md legibility 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1.5rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: md px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1.5px;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: null 1`] = `
+<DocumentFragment>
+  <span />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: sm 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1.125rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: sm legibility 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1.125rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: sm px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1.125px;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: xl 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 6rem;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: xl legibility 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 6rem;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: xl px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 6px;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: xs 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 0.75rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: xs legibility 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 0.75rem;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> size: xs px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 0.75px;
+  text-rendering: speed;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: bold 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 700;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: heavy 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 800;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: light 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 300;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: medium 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 500;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: regular 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 400;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: semiBold 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 600;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: thin 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 100;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: ultraHeavy 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 900;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: ultraLight 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 200;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;

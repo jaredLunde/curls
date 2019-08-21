@@ -1,0 +1,623 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Flex> -> align: baseline 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> align: center 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> align: end 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> align: start 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> align: stretch 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> align: throw foo 1`] = `"Error in enum prop 'align'. Value 'foo' not found in: start, end, center, stretch, baseline."`;
+
+exports[`<Flex> -> alignContent: around 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-content: space-around;
+  -ms-flex-line-pack: space-around;
+  align-content: space-around;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignContent: between 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-content: space-between;
+  -ms-flex-line-pack: space-between;
+  align-content: space-between;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignContent: center 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignContent: end 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-content: flex-end;
+  -ms-flex-line-pack: end;
+  align-content: flex-end;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignContent: start 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-content: flex-start;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignContent: stretch 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignContent: throw foo 1`] = `"Error in enum prop 'alignContent'. Value 'foo' not found in: start, end, center, stretch, between, around."`;
+
+exports[`<Flex> -> alignSelf: baseline 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-self: baseline;
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignSelf: center 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignSelf: end 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignSelf: start 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignSelf: stretch 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> alignSelf: throw foo 1`] = `"Error in enum prop 'alignSelf'. Value 'foo' not found in: start, end, center, stretch, baseline."`;
+
+exports[`<Flex> -> as prop 1`] = `
+<DocumentFragment>
+  <span />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> basis: 100% 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> basis: 100px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-basis: 100px;
+  -ms-flex-preferred-size: 100px;
+  flex-basis: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> basis: 100rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-basis: 100rem;
+  -ms-flex-preferred-size: 100rem;
+  flex-basis: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> column: bool 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> column: column 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> column: reverse 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> column: throw foo 1`] = `"Error in enum prop 'column'. Value 'foo' not found in: true, column, reverse."`;
+
+exports[`<Flex> -> fixed 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> flex 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> fluid 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  max-width: none;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> grow: 2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> grow: bool 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> justify: around 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> justify: between 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> justify: center 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> justify: end 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> justify: start 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> justify: throw foo 1`] = `"Error in enum prop 'justify'. Value 'foo' not found in: start, end, center, around, between."`;
+
+exports[`<Flex> -> order: 1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> row: bool 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> row: reverse 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> row: row 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> row: throw foo 1`] = `"Error in enum prop 'row'. Value 'foo' not found in: true, row, reverse."`;
+
+exports[`<Flex> -> shrink: 2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-shrink: 2;
+  -ms-flex-negative: 2;
+  flex-shrink: 2;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> shrink: bool 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> wrap: bool 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> wrap: nowrap 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> wrap: reverse 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Flex> -> wrap: throw foo 1`] = `"Error in enum prop 'wrap'. Value 'foo' not found in: true, wrap, no, reverse."`;
+
+exports[`<Flex> -> wrap: wrap 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;

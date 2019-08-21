@@ -84,7 +84,7 @@ export const left = css`
 // Legibility
 export const optimizeFor = {
     speed: css`
-      text-rendering: optimizeLegibility;
+      text-rendering: speed;
     `,
     legibility: css`
       text-rendering: optimizeLegibility;

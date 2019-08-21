@@ -718,6 +718,20 @@ exports[`<Box> -> h 4`] = `
 </DocumentFragment>
 `;
 
+exports[`<Box> -> has flex properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
 exports[`<Box> -> l 1`] = `
 <DocumentFragment>
   .emotion-0 {

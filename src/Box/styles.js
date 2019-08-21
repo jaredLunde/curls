@@ -204,7 +204,6 @@ export const ov = memoValue(value => {
     `,
   }
 
-
 const getDefaultScale = (property, scale, value, scaleUnit) => {
   const scaleValue = scale[value]
 
@@ -257,9 +256,7 @@ export const br = memoTheme((value, theme) => {
       brUnit,
       borderRadiusDirections
     )
-  }
-  else
-    return getDefaultScale('border-radius', brScale, value, brUnit)
+  } else return getDefaultScale('border-radius', brScale, value, brUnit)
 })
 
 export const m = memoTheme((value, theme) => {
@@ -268,7 +265,11 @@ export const m = memoTheme((value, theme) => {
   if (isDirectional(value))
     return directionalScale('margin-{XYZ}', spacingScale, value, spacingUnit)
   else
-    return value.trim() === 'auto' ? css`margin: auto;` : getDefaultScale('margin', spacingScale, value, spacingUnit)
+    return value.trim() === 'auto'
+      ? css`
+          margin: auto;
+        `
+      : getDefaultScale('margin', spacingScale, value, spacingUnit)
 })
 
 export const p = memoTheme((value, theme) => {
@@ -276,6 +277,5 @@ export const p = memoTheme((value, theme) => {
 
   if (isDirectional(value))
     return directionalScale('padding-{XYZ}', spacingScale, value, spacingUnit)
-  else
-    return getDefaultScale('padding', spacingScale, value, spacingUnit)
+  else return getDefaultScale('padding', spacingScale, value, spacingUnit)
 })
