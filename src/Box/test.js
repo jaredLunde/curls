@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {renderFragment} from 'test-utils'
+import {renderFragment, renderErrorFragment} from 'test-utils'
 import {Box, BasicBox} from './Box'
 
 test('<Box> -> as prop', () => {
@@ -203,8 +203,7 @@ test('<Box> -> pos', () => {
   for (let pos of positions)
     expect(renderFragment(<Box pos={pos} />)).toMatchSnapshot(pos)
 
-  expect(() =>
-    renderFragment(<Box pos="throw" />)
+  expect(renderErrorFragment(<Box pos="throw" />)
   ).toThrowErrorMatchingSnapshot()
 })
 
@@ -230,7 +229,7 @@ test('<Box> -> d', () => {
   for (let d of displays)
     expect(renderFragment(<Box d={d} />)).toMatchSnapshot(d)
 
-  expect(() => renderFragment(<Box d="throw" />)).toThrowErrorMatchingSnapshot()
+  expect(renderErrorFragment(<Box d="throw" />)).toThrowErrorMatchingSnapshot()
 })
 
 test('<Box> -> bw', () => {
@@ -242,13 +241,13 @@ test('<Box> -> bw', () => {
   expect(renderFragment(<Box bw={`b1 t1`} />)).toMatchSnapshot('b1 t1')
   expect(renderFragment(<Box bw={`b1   t1`} />)).toMatchSnapshot('b1   t1')
   expect(renderFragment(<Box bw={`1 t2`} />)).toMatchSnapshot('1 t2')
-  expect(() => renderFragment(<Box bw="p1" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box bw="p1" />)).toThrowErrorMatchingSnapshot(
     'throws direction'
   )
-  expect(() => renderFragment(<Box bw="t100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box bw="t100" />)).toThrowErrorMatchingSnapshot(
     'throws scale direction'
   )
-  expect(() => renderFragment(<Box bw="100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box bw="100" />)).toThrowErrorMatchingSnapshot(
     'throws scale'
   )
 
@@ -271,13 +270,13 @@ test('<Box> -> br', () => {
   expect(renderFragment(<Box br="b1 t1" />)).toMatchSnapshot('b1 t1')
   expect(renderFragment(<Box br="b1   t1" />)).toMatchSnapshot('b1   t1')
   expect(renderFragment(<Box br="1 t2" />)).toMatchSnapshot('1 t2')
-  expect(() => renderFragment(<Box br="p1" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box br="p1" />)).toThrowErrorMatchingSnapshot(
     'throws direction'
   )
-  expect(() => renderFragment(<Box br="t100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box br="t100" />)).toThrowErrorMatchingSnapshot(
     'throws scale direction'
   )
-  expect(() => renderFragment(<Box br="100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box br="100" />)).toThrowErrorMatchingSnapshot(
     'throws scale'
   )
 
@@ -303,13 +302,13 @@ test('<Box> -> m', () => {
   expect(renderFragment(<Box m="auto" />)).toMatchSnapshot('auto')
   expect(renderFragment(<Box m="xAuto" />)).toMatchSnapshot('xAuto')
   expect(renderFragment(<Box m="yAuto" />)).toMatchSnapshot('yAuto')
-  expect(() => renderFragment(<Box m="p1" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box m="p1" />)).toThrowErrorMatchingSnapshot(
     'throws direction'
   )
-  expect(() => renderFragment(<Box m="t100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box m="t100" />)).toThrowErrorMatchingSnapshot(
     'throws scale direction'
   )
-  expect(() => renderFragment(<Box m="100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box m="100" />)).toThrowErrorMatchingSnapshot(
     'throws scale'
   )
 
@@ -330,13 +329,13 @@ test('<Box> -> p', () => {
   expect(renderFragment(<Box p={`b1 t1`} />)).toMatchSnapshot('b1 t1')
   expect(renderFragment(<Box p={`b1   t1`} />)).toMatchSnapshot('b1   t1')
   expect(renderFragment(<Box p={`1 t2`} />)).toMatchSnapshot('1 t2')
-  expect(() => renderFragment(<Box p="p1" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box p="p1" />)).toThrowErrorMatchingSnapshot(
     'throws direction'
   )
-  expect(() => renderFragment(<Box p="t100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box p="t100" />)).toThrowErrorMatchingSnapshot(
     'throws scale direction'
   )
-  expect(() => renderFragment(<Box p="100" />)).toThrowErrorMatchingSnapshot(
+  expect(renderErrorFragment(<Box p="100" />)).toThrowErrorMatchingSnapshot(
     'throws scale'
   )
 

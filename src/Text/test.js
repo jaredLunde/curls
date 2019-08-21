@@ -92,15 +92,15 @@ test('<Text> -> scale', () => {
   theme = {
     text: {
       scale: {
-        sm: (theme, props) =>
+        sm: () =>
           css`
             font-size: 0.5rem;
           `,
-        md: (theme, props) =>
+        md: () =>
           css`
             font-size: 1rem;
           `,
-        lg: (theme, props) =>
+        lg: () =>
           css`
             font-size: 2rem;
           `,

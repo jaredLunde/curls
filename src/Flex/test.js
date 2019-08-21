@@ -1,4 +1,4 @@
-import {renderFragment} from 'test-utils'
+import {renderFragment, renderErrorFragment} from 'test-utils'
 import {Flex} from './Flex'
 import React from 'react'
 
@@ -43,14 +43,14 @@ test('<Flex> -> row', () => {
   expect(renderFragment(<Flex row/>)).toMatchSnapshot('bool')
   expect(renderFragment(<Flex row='reverse'/>)).toMatchSnapshot('reverse')
   expect(renderFragment(<Flex row='row'/>)).toMatchSnapshot('row')
-  expect(() => renderFragment(<Flex row='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
+  expect(renderErrorFragment(<Flex row='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
 })
 
 test('<Flex> -> column', () => {
   expect(renderFragment(<Flex column/>)).toMatchSnapshot('bool')
   expect(renderFragment(<Flex column='reverse'/>)).toMatchSnapshot('reverse')
   expect(renderFragment(<Flex column='column'/>)).toMatchSnapshot('column')
-  expect(() => renderFragment(<Flex column='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
+  expect(renderErrorFragment(<Flex column='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
 })
 
 test('<Flex> -> wrap', () => {
@@ -58,7 +58,7 @@ test('<Flex> -> wrap', () => {
   expect(renderFragment(<Flex wrap='no'/>)).toMatchSnapshot('nowrap')
   expect(renderFragment(<Flex wrap='reverse'/>)).toMatchSnapshot('reverse')
   expect(renderFragment(<Flex wrap='wrap'/>)).toMatchSnapshot('wrap')
-  expect(() => renderFragment(<Flex wrap='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
+  expect(renderErrorFragment(<Flex wrap='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
 })
 
 test('<Flex> -> justify', () => {
@@ -73,7 +73,7 @@ test('<Flex> -> justify', () => {
   for (let justify of justifies)
     expect(renderFragment(<Flex justify={justify}/>)).toMatchSnapshot(justify)
 
-  expect(() => renderFragment(<Flex justify='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
+  expect(renderErrorFragment(<Flex justify='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
 })
 
 test('<Flex> -> align', () => {
@@ -88,7 +88,7 @@ test('<Flex> -> align', () => {
   for (let align of aligns)
     expect(renderFragment(<Flex align={align}/>)).toMatchSnapshot(align)
 
-  expect(() => renderFragment(<Flex align='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
+  expect(renderErrorFragment(<Flex align='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
 })
 
 test('<Flex> -> alignContent', () => {
@@ -104,7 +104,7 @@ test('<Flex> -> alignContent', () => {
   for (let align of aligns)
     expect(renderFragment(<Flex alignContent={align}/>)).toMatchSnapshot(align)
 
-  expect(() => renderFragment(<Flex alignContent='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
+  expect(renderErrorFragment(<Flex alignContent='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
 })
 
 test('<Flex> -> alignSelf', () => {
@@ -119,5 +119,5 @@ test('<Flex> -> alignSelf', () => {
   for (let align of aligns)
     expect(renderFragment(<Flex alignSelf={align}/>)).toMatchSnapshot(align)
 
-  expect(() => renderFragment(<Flex alignSelf='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
+  expect(renderErrorFragment(<Flex alignSelf='foo'/>)).toThrowErrorMatchingSnapshot('throw foo')
 })

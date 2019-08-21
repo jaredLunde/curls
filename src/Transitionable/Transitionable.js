@@ -17,9 +17,9 @@ export const getDelay = (value, props) =>
       styles,
       Object.assign({duration: 'normal'}, props)
     ),
-  // eslint-disable-next-line no-unused-vars
   useTransitionableToggle = (
     options,
+    // eslint-disable-next-line no-unused-vars
     {initiallyVisible = false, visible, children, ...props}
   ) => {
     const toggler = useSwitch(initiallyVisible, visible)
