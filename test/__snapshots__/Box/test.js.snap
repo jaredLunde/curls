@@ -1,0 +1,1757 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BasicBox> -> as prop 1`] = `
+<DocumentFragment>
+  <span />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> as prop 1`] = `
+<DocumentFragment>
+  <span />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> b 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  bottom: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> b 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  bottom: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> b 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  bottom: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> b 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  bottom: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bc 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-color: #22A2DC;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bc 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-color: #1ac;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bc 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-color: #ccc;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  background: #22A2DC;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bg 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  background: #1ac;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bg 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  background: #ccc;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: 0.5px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-radius: 0.5px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: 1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: 1 t2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: b1   t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: b1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: b1 t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: bl1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-bottom-left-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: br1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-bottom-right-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: l1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: r1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: throws direction 1`] = `
+"Unrecognized direction 'p' in border-{XYZ}-radius: p
+
+Allowed values include: _, t, r, b, l, tl, tr, br, bl"
+`;
+
+exports[`<Box> -> br: throws scale 1`] = `"Unrecognized scale value for 'border-radius': 100"`;
+
+exports[`<Box> -> br: throws scale direction 1`] = `
+"Unrecognized scale value in border-{XYZ}-radius: 100
+
+Allowed values include: 0, 1, 2, 3, 4, 5"
+`;
+
+exports[`<Box> -> br: tl1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-top-left-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> br: tr1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-top-right-radius: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: 0.5rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-width: 0.5rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: 1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: 1 t2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-top-width: 2px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: b1   t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: b1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-bottom-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: b1 t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: l1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-left-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: r1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-right-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-top-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: throws direction 1`] = `
+"Unrecognized direction 'p' in border-{XYZ}-width: p
+
+Allowed values include: _, t, r, b, l, y, x"
+`;
+
+exports[`<Box> -> bw: throws scale 1`] = `"Unrecognized scale value for 'border-width': 100"`;
+
+exports[`<Box> -> bw: throws scale direction 1`] = `
+"Unrecognized scale value in border-{XYZ}-width: 100
+
+Allowed values include: 0, 1, 2, 3, 4, 5"
+`;
+
+exports[`<Box> -> bw: x1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-right-width: 1px;
+  border-left-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> bw: y1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  border-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d 1`] = `"Error in enum prop 'd'. Value 'throw' not found in: block, inlineBlock, flex, inlineFlex, inline, grid, inlineGrid, table, inlineTable, tableCell, tableRow, tableColumn, contents, listItem, none."`;
+
+exports[`<Box> -> d: block 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: block;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: contents 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: contents;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: flex 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: grid 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: inline 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: inline;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: inlineBlock 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: inline-block;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: inlineFlex 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: inlineGrid 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: inline-grid;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: inlineTable 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: inline-table;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: listItem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: list-item;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: none 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: none;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: table 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: table;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: tableCell 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: table-cell;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: tableColumn 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: table-column;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> d: tableRow 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: table-row;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> h 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  height: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> h 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  height: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> h 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  height: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> h 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  height: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> l 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  left: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> l 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  left: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> l 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  left: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> l 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  left: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: 1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: 1 t2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-top: 0.25rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-left: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: 3px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin: 3px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: auto 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin: auto;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: b1   t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: b1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-bottom: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: b1 t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: l1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-left: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: r1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-right: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-top: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: throws direction 1`] = `
+"Unrecognized direction 'p' in margin-{XYZ}: p
+
+Allowed values include: _, t, r, b, l, y, x"
+`;
+
+exports[`<Box> -> m: throws scale 1`] = `"Unrecognized scale value for 'margin': 100"`;
+
+exports[`<Box> -> m: throws scale direction 1`] = `
+"Unrecognized scale value in margin-{XYZ}: 100
+
+Allowed values include: 0, 1, 2, 3, 4, 5, 6, 7"
+`;
+
+exports[`<Box> -> m: x1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: xAuto 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: y1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> m: yAuto 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxH 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-height: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxH 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-height: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxH 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-height: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxH 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-height: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxW 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-width: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxW 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-width: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxW 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-width: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> maxW 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  max-width: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minH 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minH 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minH 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minH 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-height: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minW 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-width: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minW 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-width: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minW 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-width: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> minW 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  min-width: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: auto 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow: auto;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: autoX 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-x: auto;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: autoY    hiddenX 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: autoY 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-y: auto;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: autoY hiddenX touch 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: hidden 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow: hidden;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: hiddenX 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-x: hidden;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: hiddenY 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-y: hidden;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: scroll 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow: scroll;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: scrollX 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-x: scroll;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: scrollY 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  overflow-y: scroll;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> ov: touch 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-overflow-scrolling: touch;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: 1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: 1 t2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-top: 0.25rem;
+  padding-right: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: 3px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding: 3px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: b1   t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: b1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-bottom: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: b1 t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: l1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-left: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: r1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-right: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-top: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: throws direction 1`] = `
+"Unrecognized direction 'p' in padding-{XYZ}: p
+
+Allowed values include: _, t, r, b, l, y, x"
+`;
+
+exports[`<Box> -> p: throws scale 1`] = `"Unrecognized scale value for 'padding': 100"`;
+
+exports[`<Box> -> p: throws scale direction 1`] = `
+"Unrecognized scale value in padding-{XYZ}: 100
+
+Allowed values include: 0, 1, 2, 3, 4, 5, 6, 7"
+`;
+
+exports[`<Box> -> p: x1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> p: y1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos 1`] = `"Error in enum prop 'pos'. Value 'throw' not found in: relative, absolute, fixed, sticky, static, unset, initial, inherit."`;
+
+exports[`<Box> -> pos: absolute 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: absolute;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos: fixed 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: fixed;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos: inherit 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: inherit;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos: initial 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: initial;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos: relative 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: relative;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos: static 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: static;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos: sticky 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> pos: unset 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: unset;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> r 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  right: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> r 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  right: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> r 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  right: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> r 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  right: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> sh 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  box-shadow: none;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> sh 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  box-shadow: none;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> sh 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  box-shadow: 0 0.25rem 0.4045rem rgba(0,0,0,0.12), 0 0.08333333333333333rem 0.4045rem rgba(0,0,0,0.12);
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> sh 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  box-shadow: 0 4rem rgba(0,0,0,0.12);
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> t 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  top: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> t 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  top: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> t 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  top: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> t 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  top: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> w 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  width: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> w 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  width: 100px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> w 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  width: 100%;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> w 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  width: 100rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Box> -> z 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  z-index: 1000;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;

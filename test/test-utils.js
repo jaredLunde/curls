@@ -1,6 +1,6 @@
 import React from 'react'
 import {renderHook} from '@testing-library/react-hooks'
-import {render} from '@testing-library/react'
+import {render as renderComponent} from '@testing-library/react'
 import {CurlsContext, ThemeProvider, createTheme} from 'ThemeProvider'
 
 export const renderHookWithTheme = (children, userTheme = {}) => {
@@ -19,10 +19,18 @@ export const renderHookWithThemeProvider = (children, theme = {}) =>
     ),
   })
 
-export const renderWithTheme = (children, theme = {}, options = {}) =>
-  render(children, {
+export const render = (children, theme = {}, options = {}) =>
+  renderComponent(children, {
     wrapper: ({children}) => (
       <ThemeProvider theme={theme} children={children} />
     ),
     ...options,
   })
+
+export const renderFragment = (children, theme = {}, options = {}) =>
+  renderComponent(children, {
+    wrapper: ({children}) => (
+      <ThemeProvider theme={theme} children={children} />
+    ),
+    ...options,
+  }).asFragment()

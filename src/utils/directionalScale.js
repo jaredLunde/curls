@@ -1,6 +1,7 @@
 import {css} from '@emotion/core'
 import toUnit from './unit'
 
+const ws = /\s+/
 export const directionalRe = /(?=[\d]+|Auto)/
 const defaultDirections = {
   _: ['top', 'right', 'bottom', 'left'],
@@ -12,8 +13,9 @@ const defaultDirections = {
   x: ['right', 'left'],
 }
 
+const isDirectionalRe = /[a-z]/i
 export const isDirectional = value =>
-  typeof value === 'string' && value.length > 1
+  typeof value === 'string' && value.trim() !== 'auto' && isDirectionalRe.test(value)
 
 export default (
   prefix,
@@ -25,11 +27,11 @@ export default (
   let CSS = [],
     i = 0,
     j,
-    modVals = String(modValue).split(' ')
+    modVals = String(modValue).split(ws)
 
   for (; i < modVals.length; i++) {
     const val = modVals[i]
-    if (!val) return
+    if (!val) continue
     let [abbr, ...value] = val.split(directionalRe)
     value = value.join('')
     const isAbbrValue = isNaN(parseInt(abbr)) === false || abbr === 'auto'
@@ -43,16 +45,16 @@ export default (
 
     if (__DEV__)
       if (direction === void 0)
-        throw `Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n` +
-          `Allowed values include: ${Object.keys(directions).join(', ')}`
+        throw new Error(`Unrecognized direction '${abbr}' in ${prefix}: ${abbr}\n\n` +
+          `Allowed values include: ${Object.keys(directions).join(', ')}`)
 
     let size = modScale[value]
     if (size === void 0) {
       if (value === 'Auto') size = 'auto'
       else {
         if (__DEV__)
-          throw `Unrecognized scale value in ${prefix}: ${value}\n\n` +
-            `Allowed values include: ${Object.keys(modScale).join(', ')}`
+          throw new Error(`Unrecognized scale value in ${prefix}: ${value}\n\n` +
+            `Allowed values include: ${Object.keys(modScale).join(', ')}`)
       }
     }
 

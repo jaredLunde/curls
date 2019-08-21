@@ -204,11 +204,24 @@ export const ov = memoValue(value => {
     `,
   }
 
+
+const getDefaultScale = (property, scale, value, scaleUnit) => {
+  const scaleValue = scale[value]
+
+  if (__DEV__)
+    if (scaleValue === void 0)
+      throw new Error(`Unrecognized scale value for '${property}': ${value}`)
+
+  return css`
+    ${property}: ${unit(scaleValue, scaleUnit)};
+  `
+}
+
 export const bw = memoTheme((value, theme) => {
   const bwScale = get(theme.box, 'borderWidthScale', dT),
     bwUnit = get(theme.box, 'borderWidthUnit', dT)
 
-  if (isDirectional(value) === true)
+  if (isDirectional(value))
     return css`
       border-style: solid;
       ${directionalScale('border-{XYZ}-width', bwScale, value, bwUnit)};
@@ -216,7 +229,7 @@ export const bw = memoTheme((value, theme) => {
   else
     return css`
       border-style: solid;
-      border-width: ${unit(bwScale[value], bwUnit)};
+      ${getDefaultScale('border-width', bwScale, value, bwUnit)}
     `
 })
 
@@ -236,7 +249,7 @@ export const br = memoTheme((value, theme) => {
   const brScale = get(theme.box, 'borderRadiusScale', dT),
     brUnit = get(theme.box, 'borderRadiusUnit', dT)
 
-  if (isDirectional(value) === true) {
+  if (isDirectional(value)) {
     return directionalScale(
       'border-{XYZ}-radius',
       brScale,
@@ -244,33 +257,25 @@ export const br = memoTheme((value, theme) => {
       brUnit,
       borderRadiusDirections
     )
-  } else {
-    return css`
-      border-radius: ${unit(brScale[value], brUnit)};
-    `
   }
+  else
+    return getDefaultScale('border-radius', brScale, value, brUnit)
 })
 
 export const m = memoTheme((value, theme) => {
   const {spacingScale, spacingUnit} = theme
 
-  if (isDirectional(value) === true)
+  if (isDirectional(value))
     return directionalScale('margin-{XYZ}', spacingScale, value, spacingUnit)
   else
-    return css`
-      margin: ${value === 'auto'
-        ? 'auto'
-        : unit(spacingScale[value], spacingUnit)};
-    `
+    return value.trim() === 'auto' ? css`margin: auto;` : getDefaultScale('margin', spacingScale, value, spacingUnit)
 })
 
 export const p = memoTheme((value, theme) => {
   const {spacingScale, spacingUnit} = theme
 
-  if (isDirectional(value) === true)
+  if (isDirectional(value))
     return directionalScale('padding-{XYZ}', spacingScale, value, spacingUnit)
   else
-    return css`
-      padding: ${unit(spacingScale[value], spacingUnit)};
-    `
+    return getDefaultScale('padding', spacingScale, value, spacingUnit)
 })
