@@ -1,6 +1,793 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Avatar> -> alt: me 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img
+      alt="me"
+    />
+  </span>
+</DocumentFragment>
+`;
+
 exports[`<Avatar> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<div
+    class="emotion-0"
+  >
+    <img />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> box props 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> custom renderer: foo.jpg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img
+      src="foo.jpg"
+    />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> defaultSrc: foo.jpg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img
+      src="foo.jpg"
+    />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> explicit orientation: 100% 100% 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> explicit orientation: 100% auto 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: auto;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> explicit orientation: auto 100% 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: auto;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: css.32px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: css.64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: css.128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 128px;
+  height: 128px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: fn.32px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: fn.64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: fn.128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 128px;
+  height: 128px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: int.32px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: int.64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size [themed]: int.128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 128px;
+  height: 128px;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size: 3 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size: 6 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 6rem;
+  height: 6rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size: 12 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 12rem;
+  height: 12rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> size: null 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: -webkit-box;
@@ -25,14 +812,55 @@ exports[`<Avatar> -> as prop 1`] = `
 
 .emotion-0 img,
 .emotion-0 picture {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
-<div
+<span
     class="emotion-0"
   >
     <img />
-  </div>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`<Avatar> -> src: foo.jpg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  width: 100%;
+  height: 100%;
+}
+
+<span
+    class="emotion-0"
+  >
+    <img
+      src="foo.jpg"
+    />
+  </span>
 </DocumentFragment>
 `;

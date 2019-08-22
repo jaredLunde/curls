@@ -43,16 +43,16 @@ const defaultStyles = css`
   supportsObjectFit = supportsCSS('object-fit')
 
 export const useAvatar = props =>
-    useStyles('avatar', styles, pushCss(props, defaultStyles)),
+    useStyles('avatar', styles, pushCss(Object.assign({size: 'sm'}, props), defaultStyles)),
   Avatar = React.forwardRef(({...props}, ref) => {
     let imageRef,
       src = props.src
 
-    if (supportsObjectFit) props.orientation = 'square'
+    if (supportsObjectFit) props.orientation = props.orientation || 'square'
     else {
       const o = useImageOrientation()
       imageRef = o[0]
-      props.orientation = o[1]
+      props.orientation = props.orientation || o[1]
     }
 
     props = useBasicBox(useAvatar(props))
@@ -74,6 +74,7 @@ export const useAvatar = props =>
       props
     )
     delete props.alt
+    delete props.defaultSrc
     props.children = (props.children || getImage)(imgProps)
 
     return createElement('span', props)

@@ -4,8 +4,6 @@ import * as dT from './defaultTheme'
 
 export const src = () => null,
   size = memoTheme((val, theme) => {
-    if (val === false) return null
-
     let avatarSize = get(theme.avatar, 'scale', dT)[val],
       typeOfAvatarSize = typeof avatarSize
 
@@ -23,24 +21,26 @@ export const src = () => null,
 
     switch (v) {
       case 'square':
-        height = '100%'
         width = '100%'
+        height = '100%'
         break
+
       case 'landscape':
-        height = '100%'
         width = 'auto'
+        height = '100%'
         break
+
       case 'portrait':
-        height = 'auto'
         width = '100%'
+        height = 'auto'
         break
     }
 
     return css`
       & img,
       & picture {
-        height: ${height};
         width: ${width};
+        height: ${height};
       }
     `
   })
