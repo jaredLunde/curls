@@ -5,27 +5,21 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "4y3w39",
+      "name": "1nywrpr",
       "next": undefined,
-      "styles": "
-        transition-duration: 320ms;
-      ",
+      "styles": "transition-duration:320ms;",
     },
     Object {
       "map": undefined,
-      "name": "18ctvvw",
+      "name": "opk20j",
       "next": undefined,
-      "styles": "
-      transition-timing-function: linear;
-    ",
+      "styles": "transition-timing-function:linear;",
     },
     Object {
       "map": undefined,
-      "name": "1jzh3yq",
+      "name": "154hx1q",
       "next": undefined,
-      "styles": "
-        transition-delay: 3000ms;
-      ",
+      "styles": "transition-delay:3000ms;",
     },
   ],
 }
@@ -36,19 +30,15 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "aq9a5g",
+      "name": "1weazrk",
       "next": undefined,
-      "styles": "
-        transition-duration: 160ms;
-      ",
+      "styles": "transition-duration:160ms;",
     },
     Object {
       "map": undefined,
-      "name": "18ctvvw",
+      "name": "opk20j",
       "next": undefined,
-      "styles": "
-      transition-timing-function: linear;
-    ",
+      "styles": "transition-timing-function:linear;",
     },
   ],
 }
@@ -59,19 +49,15 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "18ywuy9",
+      "name": "1txkz0k",
       "next": undefined,
-      "styles": "
-        transition-duration: 3000ms;
-      ",
+      "styles": "transition-duration:3000ms;",
     },
     Object {
       "map": undefined,
-      "name": "18ctvvw",
+      "name": "opk20j",
       "next": undefined,
-      "styles": "
-      transition-timing-function: linear;
-    ",
+      "styles": "transition-timing-function:linear;",
     },
   ],
 }
@@ -82,19 +68,15 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "4y3w39",
+      "name": "1nywrpr",
       "next": undefined,
-      "styles": "
-        transition-duration: 320ms;
-      ",
+      "styles": "transition-duration:320ms;",
     },
     Object {
       "map": undefined,
-      "name": "1x1hcl8",
+      "name": "1am287t",
       "next": undefined,
-      "styles": "
-      transition-timing-function: cubic-bezier(0.4,0,0.2,1);
-    ",
+      "styles": "transition-timing-function:cubic-bezier(0.4,0,0.2,1);",
     },
   ],
 }
@@ -105,19 +87,15 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "4y3w39",
+      "name": "1nywrpr",
       "next": undefined,
-      "styles": "
-        transition-duration: 320ms;
-      ",
+      "styles": "transition-duration:320ms;",
     },
     Object {
       "map": undefined,
-      "name": "1ifsr4s",
+      "name": "qqkl1e",
       "next": undefined,
-      "styles": "
-      transition-timing-function: cubic-bezier(0.4,0,1,1);
-    ",
+      "styles": "transition-timing-function:cubic-bezier(0.4,0,1,1);",
     },
   ],
 }
@@ -128,27 +106,21 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "4y3w39",
+      "name": "1nywrpr",
       "next": undefined,
-      "styles": "
-        transition-duration: 320ms;
-      ",
+      "styles": "transition-duration:320ms;",
     },
     Object {
       "map": undefined,
-      "name": "18ctvvw",
+      "name": "opk20j",
       "next": undefined,
-      "styles": "
-      transition-timing-function: linear;
-    ",
+      "styles": "transition-timing-function:linear;",
     },
     Object {
       "map": undefined,
-      "name": "c5iz2f",
+      "name": "19ltksi",
       "next": undefined,
-      "styles": "
-        transition-property: transform,width;
-      ",
+      "styles": "transition-property:transform,width;",
     },
   ],
 }
@@ -159,27 +131,21 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "4y3w39",
+      "name": "1nywrpr",
       "next": undefined,
-      "styles": "
-        transition-duration: 320ms;
-      ",
+      "styles": "transition-duration:320ms;",
     },
     Object {
       "map": undefined,
-      "name": "18ctvvw",
+      "name": "opk20j",
       "next": undefined,
-      "styles": "
-      transition-timing-function: linear;
-    ",
+      "styles": "transition-timing-function:linear;",
     },
     Object {
       "map": undefined,
-      "name": "1kqvi55",
+      "name": "11sj84r",
       "next": undefined,
-      "styles": "
-        transition-property: transform;
-      ",
+      "styles": "transition-property:transform;",
     },
   ],
 }

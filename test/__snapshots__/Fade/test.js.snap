@@ -4,46 +4,33 @@ exports[`<Fade> -> delay] 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "6rht7r",
+    "name": "zce4wa",
     "next": undefined,
-    "styles": "
-  
-  visibility: visible;
-;
-  opacity: 1;
-",
+    "styles": "visibility:visible;;opacity:1;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
   Object {
     "map": undefined,
-    "name": "1jzh3yq",
+    "name": "154hx1q",
     "next": undefined,
-    "styles": "
-        transition-delay: 3000ms;
-      ",
+    "styles": "transition-delay:3000ms;",
   },
 ]
 `;
@@ -52,38 +39,27 @@ exports[`<Fade> -> from, to]: 0.2 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "16tos9v",
+    "name": "kd7g2q",
     "next": undefined,
-    "styles": "
-        
-  visibility: hidden;
-;
-        opacity: 0.2;
-      ",
+    "styles": "visibility:hidden;;opacity:0.2;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -92,38 +68,27 @@ exports[`<Fade> -> from, to]: 0.8 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "111t6w6",
+    "name": "8gwbhv",
     "next": undefined,
-    "styles": "
-          
-  visibility: visible;
-;
-          opacity: 0.8;
-        ",
+    "styles": "visibility:visible;;opacity:0.8;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -132,38 +97,27 @@ exports[`<Fade> -> hide [controlled] 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "6rht7r",
+    "name": "zce4wa",
     "next": undefined,
-    "styles": "
-  
-  visibility: visible;
-;
-  opacity: 1;
-",
+    "styles": "visibility:visible;;opacity:1;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -172,38 +126,27 @@ exports[`<Fade> -> hide: hidden 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -212,38 +155,27 @@ exports[`<Fade> -> hide: visible 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "6rht7r",
+    "name": "zce4wa",
     "next": undefined,
-    "styles": "
-  
-  visibility: visible;
-;
-  opacity: 1;
-",
+    "styles": "visibility:visible;;opacity:1;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -252,38 +184,27 @@ exports[`<Fade> -> show [controlled] 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -292,38 +213,27 @@ exports[`<Fade> -> show 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "6rht7r",
+    "name": "zce4wa",
     "next": undefined,
-    "styles": "
-  
-  visibility: visible;
-;
-  opacity: 1;
-",
+    "styles": "visibility:visible;;opacity:1;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -332,38 +242,27 @@ exports[`<Fade> -> toggle [controlled] 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "6rht7r",
+    "name": "zce4wa",
     "next": undefined,
-    "styles": "
-  
-  visibility: visible;
-;
-  opacity: 1;
-",
+    "styles": "visibility:visible;;opacity:1;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -372,38 +271,27 @@ exports[`<Fade> -> toggle: hidden [2] 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -412,38 +300,27 @@ exports[`<Fade> -> toggle: hidden 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;
@@ -452,38 +329,27 @@ exports[`<Fade> -> toggle: visible 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "6rht7r",
+    "name": "zce4wa",
     "next": undefined,
-    "styles": "
-  
-  visibility: visible;
-;
-  opacity: 1;
-",
+    "styles": "visibility:visible;;opacity:1;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "l441m1",
+    "name": "m616m3",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, opacity;
-      ",
+    "styles": "transition-property:visibility, opacity;",
   },
 ]
 `;

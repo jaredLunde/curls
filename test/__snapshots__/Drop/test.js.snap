@@ -4,54 +4,33 @@ exports[`<Drop> -> delay]: 3000 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
   Object {
     "map": undefined,
-    "name": "1jzh3yq",
+    "name": "154hx1q",
     "next": undefined,
-    "styles": "
-        transition-delay: 3000ms;
-      ",
+    "styles": "transition-delay:3000ms;",
   },
 ]
 `;
@@ -60,54 +39,33 @@ exports[`<Drop> -> directions]: fromBottom (0 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "bexjm3",
+    "name": "1ni6ja3",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 0, 0);
-    ",
+    "styles": "transform:translate3d(0,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -116,46 +74,33 @@ exports[`<Drop> -> directions]: fromBottom (36 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "usic0a",
+    "name": "isw8fq",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 36px, 0);
-    ",
+    "styles": "transform:translate3d(0,36px,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -164,46 +109,33 @@ exports[`<Drop> -> directions]: fromBottom (36 string) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "usic0a",
+    "name": "isw8fq",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 36px, 0);
-    ",
+    "styles": "transform:translate3d(0,36px,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -212,46 +144,33 @@ exports[`<Drop> -> directions]: fromBottom (true) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1cj4j9q",
+    "name": "1rlvajz",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 100%, 0);
-    ",
+    "styles": "transform:translate3d(0,100%,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -260,54 +179,33 @@ exports[`<Drop> -> directions]: fromLeft (0 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "bexjm3",
+    "name": "1ni6ja3",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 0, 0);
-    ",
+    "styles": "transform:translate3d(0,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -316,46 +214,33 @@ exports[`<Drop> -> directions]: fromLeft (36 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1bydn18",
+    "name": "12diew7",
     "next": undefined,
-    "styles": "
-      transform: translate3d(-36px, 0, 0);
-    ",
+    "styles": "transform:translate3d(-36px,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -364,46 +249,33 @@ exports[`<Drop> -> directions]: fromLeft (36 string) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1bydn18",
+    "name": "12diew7",
     "next": undefined,
-    "styles": "
-      transform: translate3d(-36px, 0, 0);
-    ",
+    "styles": "transform:translate3d(-36px,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -412,46 +284,33 @@ exports[`<Drop> -> directions]: fromLeft (true) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1t9k0ok",
+    "name": "byivbi",
     "next": undefined,
-    "styles": "
-      transform: translate3d(-100%, 0, 0);
-    ",
+    "styles": "transform:translate3d(-100%,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -460,54 +319,33 @@ exports[`<Drop> -> directions]: fromRight (0 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "bexjm3",
+    "name": "1ni6ja3",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 0, 0);
-    ",
+    "styles": "transform:translate3d(0,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -516,46 +354,33 @@ exports[`<Drop> -> directions]: fromRight (36 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "12vvibl",
+    "name": "1ridttw",
     "next": undefined,
-    "styles": "
-      transform: translate3d(36px, 0, 0);
-    ",
+    "styles": "transform:translate3d(36px,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -564,46 +389,33 @@ exports[`<Drop> -> directions]: fromRight (36 string) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "12vvibl",
+    "name": "1ridttw",
     "next": undefined,
-    "styles": "
-      transform: translate3d(36px, 0, 0);
-    ",
+    "styles": "transform:translate3d(36px,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -612,46 +424,33 @@ exports[`<Drop> -> directions]: fromRight (true) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "i08nvz",
+    "name": "10pt53e",
     "next": undefined,
-    "styles": "
-      transform: translate3d(100%, 0, 0);
-    ",
+    "styles": "transform:translate3d(100%,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -660,54 +459,33 @@ exports[`<Drop> -> directions]: fromTop (0 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "bexjm3",
+    "name": "1ni6ja3",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 0, 0);
-    ",
+    "styles": "transform:translate3d(0,0,0);",
   },
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -716,46 +494,33 @@ exports[`<Drop> -> directions]: fromTop (36 int) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1qvyutn",
+    "name": "i15ueq",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, -36px, 0);
-    ",
+    "styles": "transform:translate3d(0,-36px,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -764,46 +529,33 @@ exports[`<Drop> -> directions]: fromTop (36 string) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1qvyutn",
+    "name": "i15ueq",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, -36px, 0);
-    ",
+    "styles": "transform:translate3d(0,-36px,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -812,46 +564,33 @@ exports[`<Drop> -> directions]: fromTop (true) 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "4zqdua",
+    "name": "lupkji",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, -100%, 0);
-    ",
+    "styles": "transform:translate3d(0,-100%,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -860,46 +599,33 @@ exports[`<Drop> -> distanceUnit]: px 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "usic0a",
+    "name": "isw8fq",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 36px, 0);
-    ",
+    "styles": "transform:translate3d(0,36px,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -908,46 +634,33 @@ exports[`<Drop> -> distanceUnit]: rem 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "433tel",
+    "name": "rftkpn",
     "next": undefined,
-    "styles": "
-      transform: translate3d(0, 36rem, 0);
-    ",
+    "styles": "transform:translate3d(0,36rem,0);",
   },
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -956,46 +669,27 @@ exports[`<Drop> -> hide [controlled]: visible 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1004,38 +698,27 @@ exports[`<Drop> -> hide: hidden 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1044,46 +727,27 @@ exports[`<Drop> -> hide: visible 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1092,38 +756,27 @@ exports[`<Drop> -> show [controlled]: hidden 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1132,46 +785,27 @@ exports[`<Drop> -> show: visible 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1180,46 +814,27 @@ exports[`<Drop> -> toggle [controlled]: visible 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1228,38 +843,27 @@ exports[`<Drop> -> toggle: hidden [2] 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1268,38 +872,27 @@ exports[`<Drop> -> toggle: hidden 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "1mbcvou",
+    "name": "8u2raa",
     "next": undefined,
-    "styles": "
-  
-  visibility: hidden;
-;
-  opacity: 0;
-",
+    "styles": "visibility:hidden;;opacity:0;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;
@@ -1308,46 +901,27 @@ exports[`<Drop> -> toggle: visible 1`] = `
 Array [
   Object {
     "map": undefined,
-    "name": "fu7ksm",
+    "name": "1tu8joi",
     "next": undefined,
-    "styles": "
-  
-    
-  visibility: visible;
-;
-    transform: translate3d(0, 0, 0);
-  ;
-  
-  
-  visibility: visible;
-;
-  opacity: 1;
-;
-",
+    "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
   },
   Object {
     "map": undefined,
-    "name": "4y3w39",
+    "name": "1nywrpr",
     "next": undefined,
-    "styles": "
-        transition-duration: 320ms;
-      ",
+    "styles": "transition-duration:320ms;",
   },
   Object {
     "map": undefined,
-    "name": "18ctvvw",
+    "name": "opk20j",
     "next": undefined,
-    "styles": "
-      transition-timing-function: linear;
-    ",
+    "styles": "transition-timing-function:linear;",
   },
   Object {
     "map": undefined,
-    "name": "y62vxz",
+    "name": "1opxxdc",
     "next": undefined,
-    "styles": "
-        transition-property: visibility, transform, opacity;
-      ",
+    "styles": "transition-property:visibility, transform, opacity;",
   },
 ]
 `;

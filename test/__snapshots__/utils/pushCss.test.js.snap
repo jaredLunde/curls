@@ -4,12 +4,8 @@ exports[`pushCss -> ([], []) 1`] = `
 Object {
   "css": Array [
     Object {
-      "map": undefined,
-      "name": "1drfwac",
-      "next": undefined,
-      "styles": "
-      display: block;
-    ",
+      "name": "13o7eu2",
+      "styles": "display:block;",
     },
   ],
 }
@@ -19,12 +15,8 @@ exports[`pushCss -> ([], {}) 1`] = `
 Object {
   "css": Array [
     Object {
-      "map": undefined,
-      "name": "1drfwac",
-      "next": undefined,
-      "styles": "
-      display: block;
-    ",
+      "name": "13o7eu2",
+      "styles": "display:block;",
     },
   ],
 }
@@ -34,20 +26,12 @@ exports[`pushCss -> ({}, []) 1`] = `
 Object {
   "css": Array [
     Object {
-      "map": undefined,
-      "name": "1drfwac",
-      "next": undefined,
-      "styles": "
-      display: block;
-    ",
+      "name": "13o7eu2",
+      "styles": "display:block;",
     },
     Object {
-      "map": undefined,
-      "name": "1sw1qe1",
-      "next": undefined,
-      "styles": "
-      display: inline;
-    ",
+      "name": "6n7j50",
+      "styles": "display:inline;",
     },
   ],
 }
@@ -57,20 +41,12 @@ exports[`pushCss -> ({}, {}) 1`] = `
 Object {
   "css": Array [
     Object {
-      "map": undefined,
-      "name": "1drfwac",
-      "next": undefined,
-      "styles": "
-      display: block;
-    ",
+      "name": "13o7eu2",
+      "styles": "display:block;",
     },
     Object {
-      "map": undefined,
-      "name": "1sw1qe1",
-      "next": undefined,
-      "styles": "
-      display: inline;
-    ",
+      "name": "6n7j50",
+      "styles": "display:inline;",
     },
   ],
 }
@@ -80,12 +56,8 @@ exports[`pushCss -> (null, []) 1`] = `
 Object {
   "css": Array [
     Object {
-      "map": undefined,
-      "name": "1sw1qe1",
-      "next": undefined,
-      "styles": "
-      display: inline;
-    ",
+      "name": "6n7j50",
+      "styles": "display:inline;",
     },
   ],
 }
@@ -95,12 +67,8 @@ exports[`pushCss -> (null, {}) 1`] = `
 Object {
   "css": Array [
     Object {
-      "map": undefined,
-      "name": "1drfwac",
-      "next": undefined,
-      "styles": "
-      display: block;
-    ",
+      "name": "13o7eu2",
+      "styles": "display:block;",
     },
   ],
 }
