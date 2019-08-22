@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextArea> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 0;
+}
+
+.emotion-0::-webkit-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::-moz-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0:-ms-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::placeholder {
+  opacity: 0.8;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<TextArea> -> autoResize 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 0;
+  display: block !important;
+  overflow: hidden !important;
+  resize: none !important;
+}
+
+.emotion-0::-webkit-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::-moz-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0:-ms-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::placeholder {
+  opacity: 0.8;
+}
+
+<textarea
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<TextArea> -> box properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 0;
+  display: block;
+}
+
+.emotion-0::-webkit-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::-moz-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0:-ms-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::placeholder {
+  opacity: 0.8;
+}
+
+<textarea
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<TextArea> -> flex properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 0;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-0::-webkit-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::-moz-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0:-ms-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::placeholder {
+  opacity: 0.8;
+}
+
+<textarea
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<TextArea> -> placeholder/hover/focus 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 0;
+}
+
+.emotion-0::-webkit-input-placeholder {
+  color: black;
+}
+
+.emotion-0::-moz-placeholder {
+  color: black;
+}
+
+.emotion-0:-ms-input-placeholder {
+  color: black;
+}
+
+.emotion-0::placeholder {
+  color: black;
+}
+
+.emotion-0:hover {
+  background: red;
+}
+
+.emotion-0:focus {
+  background: blue;
+}
+
+<textarea
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<TextArea> -> text properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 0;
+  font-weight: 700;
+}
+
+.emotion-0::-webkit-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::-moz-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0:-ms-input-placeholder {
+  opacity: 0.8;
+}
+
+.emotion-0::placeholder {
+  opacity: 0.8;
+}
+
+<textarea
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
