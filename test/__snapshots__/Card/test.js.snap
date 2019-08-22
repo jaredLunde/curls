@@ -1,0 +1,887 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> box props 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  margin-bottom: 1rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: b1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: bl1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: br1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: l1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: l1 r2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: r1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: t1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: t1 b2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: tl1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-top-left-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> br: tr1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  border-top-right-radius: 0.25rem;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+.emotion-0 > *:first-child {
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-top-left-radius: 0rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Card> -> flex props 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
+  border-top: 0;
+}
+
+.emotion-0 > *:not(.button):not(button):not([role='button']):last-child {
+  border-bottom: 0;
+}
+
+.emotion-0 > *:first-child {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > *:last-child {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.emotion-0 > * {
+  width: 100%;
+}
+
+.emotion-0 > img,
+.emotion-0 > figure,
+.emotion-0 > video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
