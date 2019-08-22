@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pushCss -> ([], []) 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "avwy6",
+      "next": undefined,
+      "styles": "display: block;",
+    },
+  ],
+}
+`;
+
+exports[`pushCss -> ([], {}) 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "avwy6",
+      "next": undefined,
+      "styles": "display: block;",
+    },
+  ],
+}
+`;
+
+exports[`pushCss -> ({}, []) 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "avwy6",
+      "next": undefined,
+      "styles": "display: block;",
+    },
+    Object {
+      "map": undefined,
+      "name": "1qc4l4w",
+      "next": undefined,
+      "styles": "display: inline;",
+    },
+  ],
+}
+`;
+
+exports[`pushCss -> ({}, {}) 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "avwy6",
+      "next": undefined,
+      "styles": "display: block;",
+    },
+    Object {
+      "map": undefined,
+      "name": "1qc4l4w",
+      "next": undefined,
+      "styles": "display: inline;",
+    },
+  ],
+}
+`;
+
+exports[`pushCss -> (null, []) 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1qc4l4w",
+      "next": undefined,
+      "styles": "display: inline;",
+    },
+  ],
+}
+`;
+
+exports[`pushCss -> (null, {}) 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "avwy6",
+      "next": undefined,
+      "styles": "display: block;",
+    },
+  ],
+}
+`;
