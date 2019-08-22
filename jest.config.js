@@ -11,7 +11,7 @@ module.exports = {
   setupFilesAfterEnv: [require.resolve('./test/setup.js')],
   snapshotResolver: require.resolve('./test/resolve-snapshot.js'),
   collectCoverageFrom: [
-    'src/**/{!(propTypes|index|loadImages|browserResets|containmentAttrs|prettyText|portalize|Popover),}.{js,jsx}',
+    'src/{!(Popover),}/{!(propTypes|index|loadImages|browserResets|containmentAttrs|prettyText|portalize),}.{js,jsx}',
   ],
   // coverageThreshold: {
   //   global: {
