@@ -33,8 +33,6 @@ export const thin = css`
 
 // Sizes
 export const size = memoTheme((size, theme) => {
-  if (size === false || size === null) return null
-
   let scale = get(theme.text, 'scale', dT),
     fontSize = scale[size],
     typeOfFontSize = typeof fontSize

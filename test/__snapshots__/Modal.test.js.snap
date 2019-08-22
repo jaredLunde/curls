@@ -1,0 +1,587 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal> -> custom transition: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1cj4j9q",
+      "next": undefined,
+      "styles": "
+      transform: translate3d(0, 100%, 0);
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "1wk92h",
+      "next": undefined,
+      "styles": "
+  visibility: hidden;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> custom transition: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "bexjm3",
+      "next": undefined,
+      "styles": "
+      transform: translate3d(0, 0, 0);
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "u77c24",
+      "next": undefined,
+      "styles": "
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> hide: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1mbcvou",
+      "next": undefined,
+      "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "y62vxz",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> hide: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "fu7ksm",
+      "next": undefined,
+      "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "y62vxz",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> show: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1mbcvou",
+      "next": undefined,
+      "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "y62vxz",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> show: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "fu7ksm",
+      "next": undefined,
+      "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "y62vxz",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> toggle: hidden [2] 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1mbcvou",
+      "next": undefined,
+      "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "y62vxz",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> toggle: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1mbcvou",
+      "next": undefined,
+      "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "y62vxz",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> toggle: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "fu7ksm",
+      "next": undefined,
+      "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "y62vxz",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<ModalBox> -> as prop 1`] = `
+.emotion-0 {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform,opacity;
+  -webkit-transition-property: visibility,transform,opacity;
+  transition-property: visibility,transform,opacity;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+<span
+  class="emotion-0"
+  data-testid="modal-box"
+/>
+`;
+
+exports[`<ModalBox> -> box properties 1`] = `
+.emotion-0 {
+  visibility: visible;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform,opacity;
+  -webkit-transition-property: visibility,transform,opacity;
+  transition-property: visibility,transform,opacity;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-bottom: 1rem;
+}
+
+<div
+  class="emotion-0"
+  data-testid="modal-box"
+/>
+`;
+
+exports[`<ModalBox> -> element child 1`] = `
+.emotion-0 {
+  visibility: visible;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform,opacity;
+  -webkit-transition-property: visibility,transform,opacity;
+  transition-property: visibility,transform,opacity;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+<div
+  class="emotion-0"
+  data-testid="modal-box"
+>
+  <div />
+</div>
+`;
+
+exports[`<ModalBox> -> hidden 1`] = `
+.emotion-0 {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform,opacity;
+  -webkit-transition-property: visibility,transform,opacity;
+  transition-property: visibility,transform,opacity;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+<div
+  class="emotion-0"
+  data-testid="modal-box"
+/>
+`;
+
+exports[`<ModalBox> -> visible 1`] = `
+.emotion-0 {
+  visibility: visible;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform,opacity;
+  -webkit-transition-property: visibility,transform,opacity;
+  transition-property: visibility,transform,opacity;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+<div
+  class="emotion-0"
+  data-testid="modal-box"
+/>
+`;

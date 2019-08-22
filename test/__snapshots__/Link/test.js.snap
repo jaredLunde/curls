@@ -166,6 +166,8 @@ exports[`<Link> -> component: /home 1`] = `
 </DocumentFragment>
 `;
 
+exports[`<Link> -> throws component undefined: throws component undefined 1`] = `"You must define a \`component\` property in your 'theme.link' to use the Link component"`;
+
 exports[`<NavLink> -> component: /home 1`] = `
 <DocumentFragment>
   .emotion-0 {

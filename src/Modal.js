@@ -42,10 +42,13 @@ export const ModalContext = React.createContext(emptyObj),
     useStyles('modal', emptyObj, pushCss(props, defaultStyles)),
   ModalBox = React.forwardRef(({children, portal, ...props}, ref) => {
     const transition = useModalContext()
-    props.css = [transition.css]
+    props.css = Array.isArray(transition.css)
+      ? [...transition.css]
+      : [transition.css]
     props = useBox(useModalBox(props))
-    props.children =
-      typeof children === 'function' ? children(transition) : children
+    props.children = React.isValidElement(children)
+      ? children
+      : children(transition)
     props.ref = ref
     return portalize(createElement('div', props), portal)
   }),

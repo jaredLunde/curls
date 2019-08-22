@@ -54,7 +54,7 @@ export const CurlsContext = React.createContext({}),
   useCurls = () => useContext(CurlsContext)
 
 const CurlsProvider = ({globalStyles = emptyArr, children}) => {
-  const {theme, mergeTheme, replaceTheme} = useStylesContext(),
+  const {theme, setTheme, replaceTheme} = useStylesContext(),
     styles = useMemo(() => {
       const s = [
         css`
@@ -69,10 +69,10 @@ const CurlsProvider = ({globalStyles = emptyArr, children}) => {
     context = useMemo(
       () => ({
         theme,
-        mergeTheme,
+        setTheme,
         replaceTheme: theme => replaceTheme(createTheme(theme)),
       }),
-      [theme, mergeTheme, replaceTheme]
+      [theme, setTheme, replaceTheme]
     )
 
   return (

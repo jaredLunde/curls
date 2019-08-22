@@ -48,10 +48,13 @@ export const DrawerContext = React.createContext(emptyObj),
     useStyles('drawer', styles, pushCss(props, defaultStyles)),
   DrawerBox = React.forwardRef(({children, portal, ...props}, ref) => {
     const transition = useDrawerContext()
-    props.css = [transition.css]
+    props.css = Array.isArray(transition.css)
+      ? [...transition.css]
+      : [transition.css]
     props = useBox(useDrawerBox(props))
-    props.children =
-      typeof children === 'function' ? children(transition) : children
+    props.children = React.isValidElement(children)
+      ? children
+      : children(transition)
     props.ref = ref
     return portalize(createElement('div', props), portal)
   }),

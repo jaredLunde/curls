@@ -1,4 +1,3 @@
-import React from 'react'
 import {renderProps} from 'test-utils'
 import {Transitionable} from './Transitionable'
 

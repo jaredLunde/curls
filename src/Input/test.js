@@ -43,3 +43,13 @@ test('<Input> -> placeholder/hover/focus', () => {
 
   expect(renderFragment(<Input />, theme)).toMatchSnapshot()
 })
+
+test('<Input> -> placeholder is null', () => {
+  const theme = {
+    input: {
+      getPlaceholderClass: () => null,
+    },
+  }
+
+  expect(renderFragment(<Input />, theme)).toMatchSnapshot()
+})

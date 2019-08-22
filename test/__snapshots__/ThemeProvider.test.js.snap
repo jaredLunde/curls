@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurlsConsumer -> replaceTheme 1`] = `
+Object {
+  "baseRem": 100,
+  "box": Object {
+    "bar": "baz",
+  },
+  "breakpoints": Object {
+    "desktop": "only screen and (min-width: 80em)",
+    "phone": "only screen and (min-width: 0em)",
+    "tablet": "only screen and (min-width: 35em)",
+  },
+  "breakpointsDelimiter": "@",
+  "colors": Object {
+    "black": "#001617",
+    "blue": "#22A2DC",
+    "darkGrey": "#364045",
+    "darkestGrey": "#1e2427",
+    "green": "#5ce585",
+    "grey": "#778c95",
+    "lightGrey": "#bbc5ca",
+    "lightestGrey": "#eaedef",
+    "red": "#dc2247",
+    "translucent": "rgba(0,0,0,0.4)",
+    "translucentDark": "rgba(0,0,0,0.7)",
+    "translucentLight": "rgba(0,0,0,0.16)",
+    "translucentWhite": "rgba(255,255,255,0.6)",
+    "white": "#f8f9f9",
+    "yellow": "#e3c651",
+  },
+  "locals": Object {},
+  "mediaQueries": Object {},
+  "sizeUnit": "px",
+  "spacingScale": Array [
+    0,
+    0.25,
+    0.5,
+    1,
+    2,
+    4,
+    8,
+    16,
+  ],
+  "spacingUnit": "rem",
+}
+`;
+
+exports[`CurlsConsumer -> setTheme 1`] = `
+Object {
+  "baseRem": 100,
+  "box": Object {
+    "bar": "baz",
+    "foo": "bar",
+  },
+  "breakpoints": Object {
+    "desktop": "only screen and (min-width: 80em)",
+    "phone": "only screen and (min-width: 0em)",
+    "tablet": "only screen and (min-width: 35em)",
+  },
+  "breakpointsDelimiter": "@",
+  "colors": Object {
+    "black": "#001617",
+    "blue": "#22A2DC",
+    "darkGrey": "#364045",
+    "darkestGrey": "#1e2427",
+    "green": "#5ce585",
+    "grey": "#778c95",
+    "lightGrey": "#bbc5ca",
+    "lightestGrey": "#eaedef",
+    "red": "#dc2247",
+    "translucent": "rgba(0,0,0,0.4)",
+    "translucentDark": "rgba(0,0,0,0.7)",
+    "translucentLight": "rgba(0,0,0,0.16)",
+    "translucentWhite": "rgba(255,255,255,0.6)",
+    "white": "#f8f9f9",
+    "yellow": "#e3c651",
+  },
+  "locals": Object {},
+  "mediaQueries": Object {},
+  "sizeUnit": "px",
+  "spacingScale": Array [
+    0,
+    0.25,
+    0.5,
+    1,
+    2,
+    4,
+    8,
+    16,
+  ],
+  "spacingUnit": "rem",
+}
+`;
+
+exports[`CurlsConsumer 1`] = `
+Object {
+  "replaceTheme": [Function],
+  "setTheme": [Function],
+  "theme": Object {
+    "baseRem": 100,
+    "breakpoints": Object {
+      "desktop": "only screen and (min-width: 80em)",
+      "phone": "only screen and (min-width: 0em)",
+      "tablet": "only screen and (min-width: 35em)",
+    },
+    "breakpointsDelimiter": "@",
+    "colors": Object {
+      "black": "#001617",
+      "blue": "#22A2DC",
+      "darkGrey": "#364045",
+      "darkestGrey": "#1e2427",
+      "green": "#5ce585",
+      "grey": "#778c95",
+      "lightGrey": "#bbc5ca",
+      "lightestGrey": "#eaedef",
+      "red": "#dc2247",
+      "translucent": "rgba(0,0,0,0.4)",
+      "translucentDark": "rgba(0,0,0,0.7)",
+      "translucentLight": "rgba(0,0,0,0.16)",
+      "translucentWhite": "rgba(255,255,255,0.6)",
+      "white": "#f8f9f9",
+      "yellow": "#e3c651",
+    },
+    "locals": Object {},
+    "mediaQueries": Object {},
+    "sizeUnit": "px",
+    "spacingScale": Array [
+      0,
+      0.25,
+      0.5,
+      1,
+      2,
+      4,
+      8,
+      16,
+    ],
+    "spacingUnit": "rem",
+  },
+}
+`;

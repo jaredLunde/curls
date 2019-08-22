@@ -59,5 +59,5 @@ test('<TextArea> -> onChange', () => {
       value: 'hello',
     },
   })
-  expect(mockChange).toBeCalled()
+  expect(mockChange).toHaveBeenCalled()
 })

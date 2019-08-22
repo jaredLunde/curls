@@ -71,12 +71,8 @@ export {
 export {Slide, useSlide} from './Slide'
 export {Text, useText, prettyText} from './Text'
 export {TextArea, useTextArea} from './TextArea'
-export {
-  Transitionable,
-  useTransitionable,
-  useTransitionableToggle,
-  getDelay,
-} from './Transitionable'
+export {Transitionable, useTransitionable, getDelay} from './Transitionable'
+export useToggleVisibility from './useToggleVisibility'
 export useMediaQuery from './useMediaQuery'
 
 // style-hooks exports

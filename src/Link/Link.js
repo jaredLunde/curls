@@ -10,9 +10,12 @@ export const createLink = themeName =>
 
     if (__DEV__)
       if (!theme?.[themeName]?.component)
-        throw 'You must define a `component` property in your ' +
-          `'theme.${themeName}' to use the ${themeName.charAt(0).toUpperCase() +
-            themeName.slice(1)} component`
+        throw new Error(
+          'You must define a `component` property in your ' +
+            `'theme.${themeName}' to use the ${themeName
+              .charAt(0)
+              .toUpperCase() + themeName.slice(1)} component`
+        )
 
     props = useBox(useText(useLink(props)))
     props.ref = ref

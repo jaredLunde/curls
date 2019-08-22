@@ -5,9 +5,11 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "avwy6",
+      "name": "1drfwac",
       "next": undefined,
-      "styles": "display: block;",
+      "styles": "
+      display: block;
+    ",
     },
   ],
 }
@@ -18,9 +20,11 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "avwy6",
+      "name": "1drfwac",
       "next": undefined,
-      "styles": "display: block;",
+      "styles": "
+      display: block;
+    ",
     },
   ],
 }
@@ -31,15 +35,19 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "avwy6",
+      "name": "1drfwac",
       "next": undefined,
-      "styles": "display: block;",
+      "styles": "
+      display: block;
+    ",
     },
     Object {
       "map": undefined,
-      "name": "1qc4l4w",
+      "name": "1sw1qe1",
       "next": undefined,
-      "styles": "display: inline;",
+      "styles": "
+      display: inline;
+    ",
     },
   ],
 }
@@ -50,15 +58,19 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "avwy6",
+      "name": "1drfwac",
       "next": undefined,
-      "styles": "display: block;",
+      "styles": "
+      display: block;
+    ",
     },
     Object {
       "map": undefined,
-      "name": "1qc4l4w",
+      "name": "1sw1qe1",
       "next": undefined,
-      "styles": "display: inline;",
+      "styles": "
+      display: inline;
+    ",
     },
   ],
 }
@@ -69,9 +81,11 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "1qc4l4w",
+      "name": "1sw1qe1",
       "next": undefined,
-      "styles": "display: inline;",
+      "styles": "
+      display: inline;
+    ",
     },
   ],
 }
@@ -82,9 +96,11 @@ Object {
   "css": Array [
     Object {
       "map": undefined,
-      "name": "avwy6",
+      "name": "1drfwac",
       "next": undefined,
-      "styles": "display: block;",
+      "styles": "
+      display: block;
+    ",
     },
   ],
 }

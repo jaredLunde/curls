@@ -1,6 +1,5 @@
 import {useStyles} from '@style-hooks/core'
 import createRenderProp from '../createRenderProp'
-import useSwitch from '../useSwitch'
 import * as styles from './styles'
 
 export const getDelay = (value, props) =>

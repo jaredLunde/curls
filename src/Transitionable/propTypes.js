@@ -1,4 +1,4 @@
-import {bool, string, arrayOf, oneOfType} from 'prop-types'
+import {string, arrayOf, oneOfType} from 'prop-types'
 import {implicitNum, boolOrString} from '../PropTypes'
 
 export default {

@@ -1,4 +1,3 @@
-import React from 'react'
 import {act} from 'react-dom/test-utils'
 import {renderProps} from 'test-utils'
 import {Drop} from './Drop'

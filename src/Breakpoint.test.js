@@ -1,4 +1,3 @@
-import React from 'react'
 import {renderProps} from 'test-utils'
 import {act} from 'react-dom/test-utils'
 import {Breakpoint} from './Breakpoint'
@@ -133,5 +132,5 @@ test('<Breakpoint> -> defaultMatches', () => {
   expect(state.matches.phone).toBe(true)
   const mock = jest.fn(() => ['phone'])
   renderBreakpoint({phone: true, defaultMatches: mock})
-  expect(mock).toBeCalled()
+  expect(mock).toHaveBeenCalled()
 })

@@ -2,7 +2,7 @@ import React from 'react'
 import {css} from '@emotion/core'
 import {createMemoryHistory} from 'history'
 import {Router, Link as RLink, NavLink as RNavLink} from 'react-router-dom'
-import {renderFragment} from 'test-utils'
+import {renderFragment, renderErrorFragment} from 'test-utils'
 import {A} from './A'
 import {Link} from './Link'
 import {NavLink} from './NavLink'
@@ -72,4 +72,14 @@ test('<NavLink> -> component', () => {
       theme
     )
   ).toMatchSnapshot('/home')
+})
+
+test('<Link> -> throws component undefined', () => {
+  expect(
+    renderErrorFragment(
+      <Router history={createMemoryHistory()}>
+        <Link to="/home" />
+      </Router>
+    )
+  ).toThrowErrorMatchingSnapshot('throws component undefined')
 })

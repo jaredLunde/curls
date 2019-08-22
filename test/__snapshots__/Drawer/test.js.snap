@@ -1,0 +1,525 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Drawer> -> custom transition: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1mbcvou",
+      "next": undefined,
+      "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "l441m1",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> custom transition: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "6rht7r",
+      "next": undefined,
+      "styles": "
+  
+  visibility: visible;
+;
+  opacity: 1;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "l441m1",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, opacity;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> hide: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1wk92h",
+      "next": undefined,
+      "styles": "
+  visibility: hidden;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> hide: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "u77c24",
+      "next": undefined,
+      "styles": "
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> show: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1wk92h",
+      "next": undefined,
+      "styles": "
+  visibility: hidden;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> show: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "u77c24",
+      "next": undefined,
+      "styles": "
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> toggle: hidden [2] 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1wk92h",
+      "next": undefined,
+      "styles": "
+  visibility: hidden;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> toggle: hidden 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "1wk92h",
+      "next": undefined,
+      "styles": "
+  visibility: hidden;
+",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": false,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> toggle: visible 1`] = `
+Object {
+  "css": Array [
+    Object {
+      "map": undefined,
+      "name": "u77c24",
+      "next": undefined,
+      "styles": "
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ",
+    },
+    Object {
+      "map": undefined,
+      "name": "4y3w39",
+      "next": undefined,
+      "styles": "
+        transition-duration: 320ms;
+      ",
+    },
+    Object {
+      "map": undefined,
+      "name": "18ctvvw",
+      "next": undefined,
+      "styles": "
+      transition-timing-function: linear;
+    ",
+    },
+    Object {
+      "map": undefined,
+      "name": "c3vzk2",
+      "next": undefined,
+      "styles": "
+        transition-property: visibility, transform;
+      ",
+    },
+  ],
+  "hide": [Function],
+  "isVisible": true,
+  "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<DrawerBox> -> as prop 1`] = `
+.emotion-0 {
+  visibility: hidden;
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform;
+  -webkit-transition-property: visibility,transform;
+  transition-property: visibility,transform;
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+<span
+  class="emotion-0"
+  data-testid="drawer-box"
+/>
+`;
+
+exports[`<DrawerBox> -> box properties 1`] = `
+.emotion-0 {
+  visibility: visible;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform;
+  -webkit-transition-property: visibility,transform;
+  transition-property: visibility,transform;
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-bottom: 1rem;
+}
+
+<div
+  class="emotion-0"
+  data-testid="drawer-box"
+/>
+`;
+
+exports[`<DrawerBox> -> element child 1`] = `
+.emotion-0 {
+  visibility: visible;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform;
+  -webkit-transition-property: visibility,transform;
+  transition-property: visibility,transform;
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+<div
+  class="emotion-0"
+  data-testid="drawer-box"
+>
+  <div />
+</div>
+`;
+
+exports[`<DrawerBox> -> hidden 1`] = `
+.emotion-0 {
+  visibility: hidden;
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform;
+  -webkit-transition-property: visibility,transform;
+  transition-property: visibility,transform;
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+<div
+  class="emotion-0"
+  data-testid="drawer-box"
+/>
+`;
+
+exports[`<DrawerBox> -> visible 1`] = `
+.emotion-0 {
+  visibility: visible;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform;
+  -webkit-transition-property: visibility,transform;
+  transition-property: visibility,transform;
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+<div
+  class="emotion-0"
+  data-testid="drawer-box"
+/>
+`;
