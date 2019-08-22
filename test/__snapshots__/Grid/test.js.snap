@@ -1,0 +1,381 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid> -> areas: sidebar content 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-areas: sidebar content;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoCols: 1fr 2fr 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-columns: 1fr 2fr;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoCols: 1rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-columns: 1rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoCols: 1rem 2rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-columns: 1 2;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoCols: 64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-columns: 64px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoCols: 64px 128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-columns: 64 128;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoRows: 1rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-rows: 1rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoRows: 1rem 2rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-rows: 1 2;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoRows: 64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-rows: 64px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> autoRows: 64px 128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-rows: 64 128;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> cols: 1fr 2fr 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> cols: 1rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-columns: 1rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> cols: 1rem 2rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-columns: 1rem 2rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> cols: 64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-columns: 64px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> cols: 64px 128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-columns: 64px 128px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> flow: column 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> flow: row 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-auto-flow: row;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> flow: throws col 1`] = `"Error in enum prop 'flow'. Value 'col' not found in: row, column."`;
+
+exports[`<Grid> -> gap: 1rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> gap: 1rem 2rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-gap: 1rem 2rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> gap: 64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-gap: 64px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> gap: 64px 128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-gap: 64px 128px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> has box properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  margin-bottom: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> has flex properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> inline 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  display: inline-grid;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> rows: 1rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-rows: 1rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> rows: 1rem 2rem 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-rows: 1rem 2rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> rows: 64px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-rows: 64px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Grid> -> rows: 64px 128px 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: grid;
+  grid-template-rows: 64px 128px;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;

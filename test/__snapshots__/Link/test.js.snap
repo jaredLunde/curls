@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<A> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<A> -> box props 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<a
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<A> -> flex props 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<a
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<A> -> hover/active class 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0:hover {
+  background-color: red;
+}
+
+.emotion-0:active {
+  background-color: blue;
+}
+
+<a
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Link> -> component: /home 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<a
+    class="emotion-0"
+    href="/home"
+  />
+</DocumentFragment>
+`;
+
+exports[`<NavLink> -> component: /home 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<a
+    class="emotion-0"
+    href="/home"
+  />
+</DocumentFragment>
+`;

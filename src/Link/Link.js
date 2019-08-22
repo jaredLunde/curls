@@ -19,8 +19,7 @@ export const createLink = themeName =>
     return createElement(theme[themeName].component, props)
   })
 
-const Link = createLink('link')
-export default Link
+export const Link = createLink('link')
 
 if (__DEV__) {
   const typePropTypes = require('../Text/propTypes').default,

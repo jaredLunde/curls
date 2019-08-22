@@ -43,7 +43,11 @@ const defaultStyles = css`
   supportsObjectFit = supportsCSS('object-fit')
 
 export const useAvatar = props =>
-    useStyles('avatar', styles, pushCss(Object.assign({size: 'sm'}, props), defaultStyles)),
+    useStyles(
+      'avatar',
+      styles,
+      pushCss(Object.assign({size: 'sm'}, props), defaultStyles)
+    ),
   Avatar = React.forwardRef(({...props}, ref) => {
     let imageRef,
       src = props.src

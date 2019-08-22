@@ -1,6 +1,5 @@
 import {createLink} from './Link'
-const NavLink = createLink('navLink')
-export default NavLink
+export const NavLink = createLink('navLink')
 
 if (__DEV__) {
   const typePropTypes = require('../Text/propTypes').default,

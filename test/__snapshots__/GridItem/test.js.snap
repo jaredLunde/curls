@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GridItem> -> area 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  grid-area: sidebar;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<GridItem> -> as prop 1`] = `
+<DocumentFragment>
+  <span />
+</DocumentFragment>
+`;
+
+exports[`<GridItem> -> col 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  grid-column: 1;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<GridItem> -> has box properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin-bottom: 0.25rem;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<GridItem> -> has flex properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<GridItem> -> row 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  grid-row: 1;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
