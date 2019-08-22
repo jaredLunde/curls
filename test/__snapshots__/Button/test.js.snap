@@ -1,0 +1,914 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button> -> active/hover class: 2.0@hover, 1.0@active 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  -webkit-transform: scale(2.0);
+  -ms-transform: scale(2.0);
+  transform: scale(2.0);
+}
+
+.emotion-0:active {
+  -webkit-transform: scale(1.0);
+  -ms-transform: scale(1.0);
+  transform: scale(1.0);
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<div
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> box properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  display: block;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> default scale: lg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 1.5rem 3rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> default scale: md 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 1rem 2rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> default scale: sm 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 0.67rem 1.33rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> flex properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> themed scale: css.lg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 3rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> themed scale: css.md 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 2rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> themed scale: css.sm 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 1rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> themed scale: fn.lg 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 3rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> themed scale: fn.md 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 2rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Button> -> themed scale: fn.sm 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: 0;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: inherit;
+  padding: 1rem;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-0:focus {
+  outline: 0;
+}
+
+.emotion-0:hover {
+  opacity: 0.8;
+}
+
+@media (hover:hover) {
+  .emotion-0:hover {
+    opacity: 0.8;
+  }
+}
+
+@media (hover:on-demand) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+@media (hover:none) {
+  .emotion-0:hover {
+    opacity: 1.0;
+  }
+}
+
+<button
+    class="emotion-0"
+    role="button"
+  />
+</DocumentFragment>
+`;

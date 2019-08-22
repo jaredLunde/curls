@@ -1,13 +1,12 @@
+import {useStyles} from '@style-hooks/core'
 import createRenderProp from '../createRenderProp'
-import {useTransitionableToggle} from '../Transitionable'
+import useToggleVisibility from '../useToggleVisibility'
 import * as styles from './styles'
 
-const options = {
-  name: 'drop',
-  styles,
-  transitionProperties: 'visibility, transform, opacity',
-}
-export const useDrop = props => useTransitionableToggle(options, props),
+export const useDrop = props => useToggleVisibility(
+    props => useStyles('drop', styles, props),
+    Object.assign({property: 'visibility, transform, opacity'}, props)
+  ),
   Drop = createRenderProp(useDrop)
 
 if (__DEV__) {

@@ -15,26 +15,8 @@ export const getDelay = (value, props) =>
     useStyles(
       'transitionable',
       styles,
-      Object.assign({duration: 'normal'}, props)
+      Object.assign({duration: 'normal', easing: 'linear'}, props)
     ),
-  useTransitionableToggle = (
-    options,
-    // eslint-disable-next-line no-unused-vars
-    {initiallyVisible = false, visible, children, ...props}
-  ) => {
-    const toggler = useSwitch(initiallyVisible, visible)
-    props.property = options.transitionProperties
-    props.show = toggler.on
-    props.hide = toggler.off
-    props.toggle = toggler.toggle
-    props.isVisible = toggler.value
-    props.delay = getDelay(toggler.value, props)
-    const outProps = useTransitionable(
-      useStyles(options.name, options.styles, props)
-    )
-    outProps.isVisible = toggler.value
-    return outProps
-  },
   Transitionable = createRenderProp(useTransitionable)
 
 if (__DEV__) {

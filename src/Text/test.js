@@ -11,6 +11,10 @@ test('<Text> -> box properties', () => {
   expect(renderFragment(<Text d="block" />)).toMatchSnapshot()
 })
 
+test('<Text> -> flex properties', () => {
+  expect(renderFragment(<Text row />)).toMatchSnapshot()
+})
+
 test('<Text> -> weight', () => {
   const weights = [
     'thin',

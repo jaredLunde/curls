@@ -2,7 +2,7 @@ import {css} from '@emotion/core'
 import * as polished from 'polished'
 import {antialias, optimizeFor} from './styles'
 
-const hiDPI = polished.hiDPI(1.5)
+const hiDPI = polished.hiDPI(2)
 export default css`
   html {
     word-wrap: break-word;

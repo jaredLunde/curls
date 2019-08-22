@@ -155,6 +155,20 @@ exports[`<Text> -> family: default 1`] = `
 </DocumentFragment>
 `;
 
+exports[`<Text> -> flex properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
 exports[`<Text> -> lh: 1.0 1`] = `
 <DocumentFragment>
   .emotion-0 {

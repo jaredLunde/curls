@@ -1,17 +1,16 @@
+import {useStyles} from '@style-hooks/core'
 import createRenderProp from '../createRenderProp'
-import {useTransitionableToggle} from '../Transitionable'
+import useToggleVisibility from '../useToggleVisibility'
 import * as styles from './styles'
 
-const options = {
-  name: 'fade',
-  styles,
-  transitionProperties: 'visibility, opacity',
-}
 export const useFade = props => {
     props = Object.assign({}, props)
     props.from = props.from || 0
     props.to = props.to === void 0 ? 1 : props.to
-    return useTransitionableToggle(options, props)
+    return useToggleVisibility(
+      props => useStyles('fade', styles, props),
+      Object.assign({property: 'visibility, opacity'}, props)
+    )
   },
   Fade = createRenderProp(useFade)
 

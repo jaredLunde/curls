@@ -23,7 +23,7 @@ export const isVisible_ = css`
       ? `${ov}%`
       : unit(v, get(t.slide, 'distanceUnit', dT)),
   fromTop = nullIfFalsy((v, t, p) =>
-    transform(0, `${whichVal(v, -100, t, p.isVisible)}`, 0)
+    transform(0, `${whichVal(isNaN(v) || typeof v === 'boolean' ? v : Number(v) * -1, -100, t, p.isVisible)}`, 0)
   ),
   fromRight = nullIfFalsy((v, t, p) =>
     transform(`${whichVal(v, 100, t, p.isVisible)}`, 0, 0)
@@ -32,5 +32,5 @@ export const isVisible_ = css`
     transform(0, `${whichVal(v, 100, t, p.isVisible)}`, 0)
   ),
   fromLeft = nullIfFalsy((v, t, p) =>
-    transform(`${whichVal(v, -100, t, p.isVisible)}`, 0, 0)
+    transform(`${whichVal(isNaN(v) || typeof v === 'boolean' ? v : Number(v) * -1, -100, t, p.isVisible)}`, 0, 0)
   )

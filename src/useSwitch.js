@@ -1,12 +1,12 @@
-import {useCallback} from 'react'
-import useToggle from '@react-hook/toggle'
+import {useState, useCallback} from 'react'
 
 export default (initialValue, controlledValue) => {
-  const [value, toggle] = useToggle(
+  const [value, setValue] = useState(
       controlledValue === void 0 ? initialValue : controlledValue
     ),
-    on = useCallback(() => value === false && toggle(), [value, toggle]),
-    off = useCallback(() => value === true && toggle(), [value, toggle])
+    on = useCallback(() => setValue(true), []),
+    off = useCallback(() => setValue(false), []),
+    toggle = useCallback(() => setValue(value === false), [value])
   return {
     value: controlledValue === void 0 ? value : controlledValue,
     on,

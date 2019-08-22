@@ -1,9 +1,9 @@
+import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
 import createComponent from '../createComponent'
 import {useBox} from '../Box'
 import {pushCss} from '../utils'
 import * as styles from './styles'
-import {css} from '@emotion/core'
 
 const defaultStyles = css`
   display: flex;

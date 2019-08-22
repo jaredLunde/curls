@@ -1,0 +1,447 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FlexGrid> -> as prop 1`] = `
+<DocumentFragment>
+  <span />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> box properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: block;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> breakpoints: falsy 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> breakpoints: fraction 1 / [cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> breakpoints: fraction 1/[cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> breakpoints: number 1/[cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> breakpoints: string 1/[cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> breakpoints: throws over col count 1`] = `"Column count for size 'phone' must be between 1 and 4"`;
+
+exports[`<FlexGrid> -> breakpoints: throws wrong col number 1`] = `"Column count for size 'phone' is 4, not 5"`;
+
+exports[`<FlexGrid> -> custom breakpoints: fraction 1 / [cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> custom breakpoints: fraction 1/[cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> custom breakpoints: number 1/[cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> custom breakpoints: string 1/[cols] 1`] = `
+<DocumentFragment>
+  @media only screen and (min-width:0em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 25%;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media only screen and (min-width:35em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 12.5%;
+    -webkit-flex-basis: 12.5%;
+    -ms-flex-preferred-size: 12.5%;
+    flex-basis: 12.5%;
+  }
+}
+
+@media only screen and (min-width:80em) {
+  .emotion-0 {
+    min-width: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 8.333333333333332%;
+    -webkit-flex-basis: 8.333333333333332%;
+    -ms-flex-preferred-size: 8.333333333333332%;
+    flex-basis: 8.333333333333332%;
+  }
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<FlexGrid> -> custom breakpoints: throws over col count 1`] = `"Column count for size 'mobile' must be between 1 and 4"`;
+
+exports[`<FlexGrid> -> custom breakpoints: throws wrong col number 1`] = `"Column count for size 'mobile' is 4, not 5"`;
+
+exports[`<FlexGrid> -> flex properties 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;

@@ -10,17 +10,17 @@ const getColumnWidth = memoize(
     const columns = get(theme.flexGrid, 'columns', dT),
       numColumns = isNaN(columns) === true ? columns[size] : columns,
       indexOfSlash = cols.indexOf('/'),
-      x = parseInt(indexOfSlash > -1 ? cols.substring(0, indexOfSlash) : cols)
+      x = parseInt(indexOfSlash > -1 ? cols.substring(0, indexOfSlash).trim() : cols)
 
     if (__DEV__) {
-      const numX = indexOfSlash > -1 && cols.substring(indexOfSlash + 1)
+      const numX = indexOfSlash > -1 && cols.substring(indexOfSlash + 1).trim()
       if (numX !== false && parseInt(numX) !== numColumns)
-        console.warn(
+        throw new Error(
           `Column count for size '${size}' is ${numColumns}, not ${numX}`
         )
 
       if (x < 1 || x > numColumns)
-        console.warn(
+        throw new Error(
           `Column count for size '${size}' must be between 1 and ${numColumns}`
         )
     }
@@ -45,7 +45,7 @@ export const __gridBreakpoints = (v, t, p) => {
 
   for (; i < keys.length; i++) {
     const s = keys[i],
-      cols = v[s]
+      cols = v[s] !== false ? String(v[s]) : v[s]
     if (cols === false) continue
     css.push(getColumnWidth(t, s, cols, p.useBasis !== false))
   }

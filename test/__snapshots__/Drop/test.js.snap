@@ -1,0 +1,1353 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Drop> -> delay]: 3000 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1jzh3yq",
+    "next": undefined,
+    "styles": "
+        transition-delay: 3000ms;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromBottom (0 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "bexjm3",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromBottom (36 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "usic0a",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 36px, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromBottom (36 string) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "usic0a",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 36px, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromBottom (true) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1cj4j9q",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 100%, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromLeft (0 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "bexjm3",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromLeft (36 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1bydn18",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(-36px, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromLeft (36 string) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1bydn18",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(-36px, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromLeft (true) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1t9k0ok",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(-100%, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromRight (0 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "bexjm3",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromRight (36 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "12vvibl",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(36px, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromRight (36 string) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "12vvibl",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(36px, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromRight (true) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "i08nvz",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(100%, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromTop (0 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "bexjm3",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 0, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromTop (36 int) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1qvyutn",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, -36px, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromTop (36 string) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1qvyutn",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, -36px, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> directions]: fromTop (true) 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "4zqdua",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, -100%, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> distanceUnit]: px 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "usic0a",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 36px, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> distanceUnit]: rem 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "433tel",
+    "next": undefined,
+    "styles": "
+      transform: translate3d(0, 36rem, 0);
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> hide [controlled]: visible 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> hide: hidden 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> hide: visible 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> show [controlled]: hidden 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> show: visible 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> toggle [controlled]: visible 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> toggle: hidden [2] 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> toggle: hidden 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "1mbcvou",
+    "next": undefined,
+    "styles": "
+  
+  visibility: hidden;
+;
+  opacity: 0;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;
+
+exports[`<Drop> -> toggle: visible 1`] = `
+Array [
+  Object {
+    "map": undefined,
+    "name": "fu7ksm",
+    "next": undefined,
+    "styles": "
+  
+    
+  visibility: visible;
+;
+    transform: translate3d(0, 0, 0);
+  ;
+  
+  
+  visibility: visible;
+;
+  opacity: 1;
+;
+",
+  },
+  Object {
+    "map": undefined,
+    "name": "4y3w39",
+    "next": undefined,
+    "styles": "
+        transition-duration: 320ms;
+      ",
+  },
+  Object {
+    "map": undefined,
+    "name": "18ctvvw",
+    "next": undefined,
+    "styles": "
+      transition-timing-function: linear;
+    ",
+  },
+  Object {
+    "map": undefined,
+    "name": "y62vxz",
+    "next": undefined,
+    "styles": "
+        transition-property: visibility, transform, opacity;
+      ",
+  },
+]
+`;

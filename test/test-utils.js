@@ -2,6 +2,7 @@ import React from 'react'
 import {renderHook} from '@testing-library/react-hooks'
 import {render as renderComponent} from '@testing-library/react'
 import {CurlsContext, ThemeProvider, createTheme} from 'ThemeProvider'
+import {Slide} from '../src/Slide'
 
 
 export const renderHookWithTheme = (children, userTheme = {}) => {
@@ -44,3 +45,19 @@ export const renderErrorFragment = (children, theme = {}, options = {}) =>
     console.error = originalError
     return result
   }
+
+export const renderProps = Component => (props, theme) => {
+  let val = {}
+
+  render(
+    <Component {...props}>
+      {state => {
+        val = Object.assign(val, state)
+        return null
+      }}
+    </Component>,
+    theme
+  )
+
+  return val
+}
