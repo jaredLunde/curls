@@ -9,5 +9,5 @@ export default {
   // transition-delay (in ms)
   delay: implicitNum,
   // transition-property
-  property: oneOfType([bool, string, arrayOf(string)]).isRequired,
+  property: oneOfType([string, arrayOf(string)]).isRequired,
 }

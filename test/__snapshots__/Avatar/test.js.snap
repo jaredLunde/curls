@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.emotion-0 img {
+  object-fit: cover;
+}
+
+.emotion-0 img,
+.emotion-0 picture {
+  height: 100%;
+  width: 100%;
+}
+
+<div
+    class="emotion-0"
+  >
+    <img />
+  </div>
+</DocumentFragment>
+`;

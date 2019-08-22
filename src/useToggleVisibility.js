@@ -1,7 +1,6 @@
 import useSwitch from './useSwitch'
 import {getDelay, useTransitionable} from './Transitionable'
 
-
 export default (
   useTransition,
   // eslint-disable-next-line no-unused-vars
@@ -15,6 +14,6 @@ export default (
     hide: toggler.off,
     toggle: toggler.toggle,
     isVisible: toggler.value,
-    css: useTransitionable(useTransition(props)).css
+    css: useTransitionable(useTransition(props)).css,
   }
 }

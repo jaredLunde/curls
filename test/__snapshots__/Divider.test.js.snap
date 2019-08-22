@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Divider> -> as prop 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  width: 100%;
+  min-height: 1px;
+  clear: both;
+  position: relative;
+  background: rgba(0,0,0,0.16);
+}
+
+<span
+    class="emotion-0"
+    role="separator"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Divider> -> box props 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  width: 100%;
+  min-height: 1px;
+  clear: both;
+  position: relative;
+  background: rgba(0,0,0,0.16);
+  margin-bottom: 0.5rem;
+}
+
+<div
+    class="emotion-0"
+    role="separator"
+  />
+</DocumentFragment>
+`;

@@ -10,7 +10,9 @@ const getColumnWidth = memoize(
     const columns = get(theme.flexGrid, 'columns', dT),
       numColumns = isNaN(columns) === true ? columns[size] : columns,
       indexOfSlash = cols.indexOf('/'),
-      x = parseInt(indexOfSlash > -1 ? cols.substring(0, indexOfSlash).trim() : cols)
+      x = parseInt(
+        indexOfSlash > -1 ? cols.substring(0, indexOfSlash).trim() : cols
+      )
 
     if (__DEV__) {
       const numX = indexOfSlash > -1 && cols.substring(indexOfSlash + 1).trim()

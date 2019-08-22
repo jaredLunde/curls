@@ -203,7 +203,8 @@ test('<Box> -> pos', () => {
   for (let pos of positions)
     expect(renderFragment(<Box pos={pos} />)).toMatchSnapshot(pos)
 
-  expect(renderErrorFragment(<Box pos="throw" />)
+  expect(
+    renderErrorFragment(<Box pos="throw" />)
   ).toThrowErrorMatchingSnapshot()
 })
 

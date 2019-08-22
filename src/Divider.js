@@ -13,13 +13,15 @@ const defaultStyles = css`
 `
 
 export const useDivider = props =>
-    useStyles('divider', emptyObj, pushCss(props, defaultStyles)),
+    useStyles(
+      'divider',
+      emptyObj,
+      pushCss(
+        Object.assign({role: 'separator', bg: 'translucentLight'}, props),
+        defaultStyles
+      )
+    ),
   Divider = createComponent('div', props => useBasicBox(useDivider(props)))
-
-Divider.defaultProps = {
-  role: 'separator',
-  bg: 'translucentLight',
-}
 
 if (__DEV__) {
   const boxPropTypes = require('./Box/propTypes').default

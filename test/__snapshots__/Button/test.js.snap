@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button> -> active/hover class: 2.0@hover, 1.0@active 1`] = `
+exports[`<Button> -> active/hover class: 2@hover, 1@active 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: -webkit-box;
@@ -42,15 +42,15 @@ exports[`<Button> -> active/hover class: 2.0@hover, 1.0@active 1`] = `
 }
 
 .emotion-0:hover {
-  -webkit-transform: scale(2.0);
-  -ms-transform: scale(2.0);
-  transform: scale(2.0);
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
+  transform: scale(2);
 }
 
 .emotion-0:active {
-  -webkit-transform: scale(1.0);
-  -ms-transform: scale(1.0);
-  transform: scale(1.0);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 
 <button

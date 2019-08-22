@@ -20,6 +20,7 @@ const init = ({queries, defaultMatches}) => {
   let mediaQueries = [],
     matches = [],
     i = 0
+
   if (typeof window === 'undefined')
     return {mediaQueries: queries, matches: defaultMatches}
 
@@ -81,6 +82,6 @@ export default (queries, defaultMatches) => {
   return {
     matches,
     matchesAny: matches.some(Boolean),
-    matchesAll: matches.every(Boolean),
+    matchesAll: matches.length > 0 && matches.every(Boolean),
   }
 }
