@@ -4,13 +4,10 @@ import useToggleVisibility from '../useToggleVisibility'
 import * as styles from './styles'
 
 export const useFade = props => {
-    props = Object.assign({}, props)
+    props = Object.assign({property: 'visibility, opacity'}, props)
     props.from = props.from || 0
     props.to = props.to === void 0 ? 1 : props.to
-    return useToggleVisibility(
-      props => useStyles('fade', styles, props),
-      Object.assign({property: 'visibility, opacity'}, props)
-    )
+    return useToggleVisibility(props => useStyles('fade', styles, props), props)
   },
   Fade = createRenderProp(useFade)
 
