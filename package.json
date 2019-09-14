@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "4.1.2",
+  "version": "4.1.5",
   "author": "Jared Lunde <jared@BeStellar.co> (https://jaredLunde.com)",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -76,10 +76,7 @@
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "babel src -d dist/cjs -x .js --ignore \"**/*.test.js\",\"**/test.js\" --delete-dir-on-start",
     "build:es": "cross-env BABEL_ENV=es babel src -d dist/es -x .js  --ignore \"**/*.test.js\",\"**/test.js\" --delete-dir-on-start",
-    "format": "npm run format:cjs && npm run format:es && npm run format:src",
-    "format:cjs": "prettier --write \"dist/cjs/**/*.js\"",
-    "format:es": "prettier --write \"dist/es/**/*.js\"",
-    "format:src": "prettier --write \"src/**/*.js\"",
+    "format": "prettier --write \"**/*.{js,md,yml}\"",
     "lint": "eslint src",
     "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
     "test": "jest",
@@ -91,8 +88,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*.js": [
+    "**/*.js": [
       "eslint",
+      "pretty-quick --staged"
+    ],
+    "**/*.{md,yml}": [
       "pretty-quick --staged"
     ]
   },

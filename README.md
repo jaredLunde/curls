@@ -6,11 +6,15 @@
 ---
 
 # curls
-Responsive, expressive  UI primitives for React written with [Style Hooks](https://style-hooks.jaredlunde.com) and [Emotion](https://github.com/emotion-js/emotion)
+
+Responsive, expressive UI primitives for React written with [Style Hooks](https://style-hooks.jaredlunde.com) and [Emotion](https://github.com/emotion-js/emotion)
 
 ## Installation
+
 #### `npm i curls`
+
 #### `yarn add curls`
 
 ## LICENSE
+
 MIT

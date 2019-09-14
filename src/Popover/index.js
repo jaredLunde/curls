@@ -1,7 +1,8 @@
 export {
   Popover,
-  usePopoverBox,
+  PopoverMe,
   PopoverBox,
+  usePopoverBox,
   usePopoverContext,
   PopoverContext,
   PopoverConsumer,

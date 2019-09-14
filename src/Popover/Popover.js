@@ -21,7 +21,7 @@ import {setDirectionStyle} from './utils'
 /**
  import {Popover, PopoverBox} from 'curls'
  <Popover fromRight enterDelay={600} leaveDelay={150}>
-    {({popoverRef, renderPosition, show, hide, ...props}) => (
+    {({renderPosition, show, hide, ...props}) => (
       <div>
         <PopoverBox
           onMouseEnter={show}
@@ -29,9 +29,11 @@ import {setDirectionStyle} from './utils'
         >
           <Type bold color='black'>Hello</Type>
         </PopoverBox>
-        <Button ref={popoverRef} onMouseEnter={show} onMouseLeave={hide}>
-          Hover me
-        </Button>
+        <PopoverMe>
+          <Button onMouseEnter={show} onMouseLeave={hide}>
+            Hover me
+          </Button>
+        </PopoverMe>
       </div>
     )}
  </Popover>
@@ -39,6 +41,7 @@ import {setDirectionStyle} from './utils'
 export const PopoverContext = React.createContext(emptyObj),
   {Consumer: PopoverConsumer} = PopoverContext,
   usePopoverContext = () => useContext(PopoverContext)
+
 const defaultStyles = css`
     display: flex;
     position: fixed;
@@ -78,7 +81,7 @@ const PopoverContainer = React.memo(
     const imageLoader = useRef(null),
       container = useRef(null),
       popoverBox = useRef(null),
-      [state, setState] = useState({})
+      [state, setState] = useState(null)
 
     const reposition = useCallback(() => {
       const setPositionState = () => {
@@ -117,30 +120,34 @@ const PopoverContainer = React.memo(
         show: props.show,
         hide: props.hide,
         toggle: props.toggle,
-        renderPosition: state.renderPosition,
+        renderPosition: state?.renderPosition,
         popoverRef: container,
         reposition,
       }),
-      [props.isVisible, state.renderPosition, reposition]
+      [props.isVisible, state?.renderPosition, reposition]
     )
 
     const boxContext = useMemo(() => {
-      const cxt = objectWithoutProps(childContext, {popoverRef: 0})
+      const cxt = Object.assign({}, childContext)
       cxt.css = props.css
       cxt.popoverBoxRef = popoverBox
       cxt.style = {
-        top: state.top,
-        right: state.right,
-        bottom: state.bottom,
-        left: state.left,
+        top: state?.top,
+        right: state?.right,
+        bottom: state?.bottom,
+        left: state?.left,
       }
       return cxt
-    }, [childContext, state.top, state.right, state.bottom, state.left])
+    }, [childContext, state?.top, state?.right, state?.bottom, state?.left])
 
     return (
       <PopoverContext.Provider
         value={boxContext}
-        children={props.children(childContext)}
+        children={
+          typeof props.children === 'function'
+            ? props.children(childContext)
+            : props.children
+        }
       />
     )
   },
@@ -155,6 +162,9 @@ const PopoverContainer = React.memo(
       prev.popoverDirection === next.popoverDirection &&
       prev.isVisible === next.isVisible)
 )
+
+export const PopoverMe = ({children}) =>
+  React.cloneElement(children, {ref: usePopoverContext().popoverRef})
 
 const sizeOpt = {wait: 240}
 const ScrollPositioner = props => {

@@ -62,6 +62,7 @@ export {
 } from './Modal'
 export {
   Popover,
+  PopoverMe,
   PopoverBox,
   usePopoverBox,
   usePopoverContext,
