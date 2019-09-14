@@ -4,7 +4,7 @@ export const borderRadiusUnit = 'rem',
   borderWidthUnit = 'px',
   posUnit = 'px',
   borderWidthScale = [0, 1, 2, 4, 6, 10],
-  borderRadiusScale = [0, 1 / 4, 1 / 2, 1, 2, 1000],
+  borderRadiusScale = [0, 1 / 8, 1 / 4, 1 / 2, 1, 2, 1000],
   getBoxShadow = dp => {
     if (dp === void 0 || dp === false || dp === null || dp == 0)
       return css`

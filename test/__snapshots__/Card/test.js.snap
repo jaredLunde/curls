@@ -121,8 +121,8 @@ exports[`<Card> -> br: b1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -169,8 +169,8 @@ exports[`<Card> -> br: b1 1`] = `
 .emotion-0 > *:last-child {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -193,7 +193,7 @@ exports[`<Card> -> br: bl1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -240,7 +240,7 @@ exports[`<Card> -> br: bl1 1`] = `
 .emotion-0 > *:last-child {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.125rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -263,7 +263,7 @@ exports[`<Card> -> br: br1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-bottom-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -310,7 +310,7 @@ exports[`<Card> -> br: br1 1`] = `
 .emotion-0 > *:last-child {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  border-bottom-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -333,7 +333,7 @@ exports[`<Card> -> br: int.2 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -371,15 +371,15 @@ exports[`<Card> -> br: int.2 1`] = `
 }
 
 .emotion-0 > *:first-child {
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
 
 .emotion-0 > *:last-child {
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -402,8 +402,8 @@ exports[`<Card> -> br: l1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -443,7 +443,7 @@ exports[`<Card> -> br: l1 1`] = `
 .emotion-0 > *:first-child {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
-  border-top-left-radius: 0.25rem;
+  border-top-left-radius: 0.125rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
@@ -451,7 +451,7 @@ exports[`<Card> -> br: l1 1`] = `
 .emotion-0 > *:last-child {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.125rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -474,10 +474,10 @@ exports[`<Card> -> br: l1 r2 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  border-top-left-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -517,8 +517,8 @@ exports[`<Card> -> br: l1 r2 1`] = `
 .emotion-0 > *:first-child {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.125rem;
+  border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
@@ -526,8 +526,8 @@ exports[`<Card> -> br: l1 r2 1`] = `
 .emotion-0 > *:last-child {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  border-bottom-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.125rem;
+  border-bottom-right-radius: 0.25rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -550,8 +550,8 @@ exports[`<Card> -> br: r1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
+  border-bottom-right-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -591,7 +591,7 @@ exports[`<Card> -> br: r1 1`] = `
 .emotion-0 > *:first-child {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
-  border-top-right-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
@@ -599,7 +599,7 @@ exports[`<Card> -> br: r1 1`] = `
 .emotion-0 > *:last-child {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  border-bottom-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -622,7 +622,7 @@ exports[`<Card> -> br: string.2 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -660,15 +660,15 @@ exports[`<Card> -> br: string.2 1`] = `
 }
 
 .emotion-0 > *:first-child {
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
 
 .emotion-0 > *:last-child {
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -691,8 +691,8 @@ exports[`<Card> -> br: t1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -732,8 +732,8 @@ exports[`<Card> -> br: t1 1`] = `
 .emotion-0 > *:first-child {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
@@ -763,10 +763,10 @@ exports[`<Card> -> br: t1 b2 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-top-right-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -806,8 +806,8 @@ exports[`<Card> -> br: t1 b2 1`] = `
 .emotion-0 > *:first-child {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
@@ -815,8 +815,8 @@ exports[`<Card> -> br: t1 b2 1`] = `
 .emotion-0 > *:last-child {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
@@ -839,7 +839,7 @@ exports[`<Card> -> br: tl1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-top-left-radius: 0.25rem;
+  border-top-left-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -879,7 +879,7 @@ exports[`<Card> -> br: tl1 1`] = `
 .emotion-0 > *:first-child {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
-  border-top-left-radius: 0.25rem;
+  border-top-left-radius: 0.125rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
@@ -909,7 +909,7 @@ exports[`<Card> -> br: tr1 1`] = `
   flex-direction: column;
   position: relative;
   min-width: 0;
-  border-top-right-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
 }
 
 .emotion-0 > *:not(.button):not(button):not([role='button']):first-child {
@@ -949,7 +949,7 @@ exports[`<Card> -> br: tr1 1`] = `
 .emotion-0 > *:first-child {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
-  border-top-right-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }

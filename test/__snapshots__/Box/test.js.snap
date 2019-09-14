@@ -147,7 +147,7 @@ exports[`<Box> -> br: 0.5px 1`] = `
 exports[`<Box> -> br: 1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-radius: 0.25rem;
+  border-radius: 0.125rem;
 }
 
 <div
@@ -159,12 +159,12 @@ exports[`<Box> -> br: 1 1`] = `
 exports[`<Box> -> br: 1 t2 1`] = `
 <DocumentFragment>
   .emotion-0 {
+  border-top-right-radius: 0.125rem;
+  border-bottom-right-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
   border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
   border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
 }
 
 <div
@@ -176,10 +176,10 @@ exports[`<Box> -> br: 1 t2 1`] = `
 exports[`<Box> -> br: b1   t1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
+  border-top-right-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
 }
 
 <div
@@ -191,8 +191,8 @@ exports[`<Box> -> br: b1   t1 1`] = `
 exports[`<Box> -> br: b1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
 }
 
 <div
@@ -204,10 +204,10 @@ exports[`<Box> -> br: b1 1`] = `
 exports[`<Box> -> br: b1 t1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
+  border-top-right-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
 }
 
 <div
@@ -219,7 +219,7 @@ exports[`<Box> -> br: b1 t1 1`] = `
 exports[`<Box> -> br: bl1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.125rem;
 }
 
 <div
@@ -231,7 +231,7 @@ exports[`<Box> -> br: bl1 1`] = `
 exports[`<Box> -> br: br1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-bottom-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.125rem;
 }
 
 <div
@@ -243,8 +243,8 @@ exports[`<Box> -> br: br1 1`] = `
 exports[`<Box> -> br: l1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
 }
 
 <div
@@ -256,8 +256,8 @@ exports[`<Box> -> br: l1 1`] = `
 exports[`<Box> -> br: r1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
+  border-bottom-right-radius: 0.125rem;
 }
 
 <div
@@ -269,8 +269,8 @@ exports[`<Box> -> br: r1 1`] = `
 exports[`<Box> -> br: t1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
 }
 
 <div
@@ -290,13 +290,13 @@ exports[`<Box> -> br: throws scale 1`] = `"Unrecognized scale value for 'border-
 exports[`<Box> -> br: throws scale direction 1`] = `
 "Unrecognized scale value in border-{XYZ}-radius: 100
 
-Allowed values include: 0, 1, 2, 3, 4, 5"
+Allowed values include: 0, 1, 2, 3, 4, 5, 6"
 `;
 
 exports[`<Box> -> br: tl1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-top-left-radius: 0.25rem;
+  border-top-left-radius: 0.125rem;
 }
 
 <div
@@ -308,7 +308,7 @@ exports[`<Box> -> br: tl1 1`] = `
 exports[`<Box> -> br: tr1 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border-top-right-radius: 0.25rem;
+  border-top-right-radius: 0.125rem;
 }
 
 <div
