@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "4.2.0",
+  "version": "4.2.2",
   "author": "Jared Lunde <jared@BeStellar.co> (https://jaredLunde.com)",
   "license": "MIT",
   "main": "dist/cjs/index.js",
