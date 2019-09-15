@@ -16,7 +16,7 @@ test('<Input> -> flex properties', () => {
 })
 
 test('<Input> -> text properties', () => {
-  expect(renderFragment(<Input bold />)).toMatchSnapshot()
+  expect(renderFragment(<Input weight="700" />)).toMatchSnapshot()
 })
 
 test('<Input> -> placeholder/hover/focus', () => {

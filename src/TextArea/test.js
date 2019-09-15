@@ -17,7 +17,7 @@ test('<TextArea> -> flex properties', () => {
 })
 
 test('<TextArea> -> text properties', () => {
-  expect(renderFragment(<TextArea bold />)).toMatchSnapshot()
+  expect(renderFragment(<TextArea weight="700" />)).toMatchSnapshot()
 })
 
 test('<TextArea> -> placeholder/hover/focus', () => {

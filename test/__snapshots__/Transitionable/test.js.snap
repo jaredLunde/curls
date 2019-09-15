@@ -1,152 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Transitionable> -> delay: 3000 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "154hx1q",
-      "next": undefined,
-      "styles": "transition-delay:3000ms;",
-    },
-  ],
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-delay: 3000ms;
+  transition-delay: 3000ms;
 }
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;
 
 exports[`<Transitionable> -> duration: fast 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1weazrk",
-      "next": undefined,
-      "styles": "transition-duration:160ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-  ],
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
 }
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;
 
 exports[`<Transitionable> -> duration: themed 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1txkz0k",
-      "next": undefined,
-      "styles": "transition-duration:3000ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-  ],
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-transition-duration: 3000ms;
+  transition-duration: 3000ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
 }
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;
 
 exports[`<Transitionable> -> easing: swiftMove 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1am287t",
-      "next": undefined,
-      "styles": "transition-timing-function:cubic-bezier(0.4,0,0.2,1);",
-    },
-  ],
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: cubic-bezier(0.4,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.4,0,0.2,1);
 }
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;
 
 exports[`<Transitionable> -> easing: themed 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "qqkl1e",
-      "next": undefined,
-      "styles": "transition-timing-function:cubic-bezier(0.4,0,1,1);",
-    },
-  ],
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: cubic-bezier(0.4,0,1,1);
+  transition-timing-function: cubic-bezier(0.4,0,1,1);
 }
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;
 
 exports[`<Transitionable> -> property: array property 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "19ltksi",
-      "next": undefined,
-      "styles": "transition-property:transform,width;",
-    },
-  ],
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: -webkit-transform,width;
+  -webkit-transition-property: transform,width;
+  transition-property: transform,width;
 }
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;
 
 exports[`<Transitionable> -> property: string property 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "11sj84r",
-      "next": undefined,
-      "styles": "transition-property:transform;",
-    },
-  ],
+<DocumentFragment>
+  .emotion-0 {
+  -webkit-transition-duration: 320ms;
+  transition-duration: 320ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
 }
+
+<div
+    class="emotion-0"
+  />
+</DocumentFragment>
 `;

@@ -2,6 +2,7 @@ export browserResets from './browserResets'
 export containmentAttrs from './containmentAttrs'
 export const MAX_Z_INDEX = 2147483647
 
+export cloneElement from './cloneElement'
 export createComponent from './createComponent'
 export createRenderProp from './createRenderProp'
 
@@ -39,6 +40,7 @@ export {Divider, useDivider} from './Divider'
 export {
   Drawer,
   DrawerBox,
+  DrawerToggle,
   useDrawerBox,
   useDrawerContext,
   DrawerContext,
@@ -55,6 +57,7 @@ export {Link, useLink, A, NavLink} from './Link'
 export {
   Modal,
   ModalBox,
+  ModalToggle,
   useModalBox,
   useModalContext,
   ModalContext,

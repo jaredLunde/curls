@@ -14,8 +14,8 @@ import emptyArr from 'empty/array'
 import emptyObj from 'empty/object'
 import {useBreakpoint} from '../Breakpoint'
 import {useBox} from '../Box'
-import {Drop} from '../Drop'
-import {portalize, objectWithoutProps, withChildren, loadImages} from '../utils'
+import {useDrop} from '../Drop'
+import {portalize, objectWithoutProps, loadImages} from '../utils'
 import {setDirectionStyle} from './utils'
 
 /**
@@ -27,7 +27,7 @@ import {setDirectionStyle} from './utils'
           onMouseEnter={show}
           onMouseLeave={hide}
         >
-          <Type bold color='black'>Hello</Type>
+          <Text bold color='black'>Hello</Text>
         </PopoverBox>
         <PopoverMe>
           <Button onMouseEnter={show} onMouseLeave={hide}>
@@ -202,7 +202,20 @@ const ViewportPopover = props =>
     props
   )
 
-const positions = new Set(['fromTop', 'fromRight', 'fromBottom', 'fromLeft'])
+const positions = new Set([
+  'fromTop',
+  'fromRight',
+  'fromBottom',
+  'fromLeft',
+  'fromTopLeft',
+  'fromTopRight',
+  'fromRightTop',
+  'fromRightBottom',
+  'fromBottomLeft',
+  'fromBottomRight',
+  'fromLeftTop',
+  'fromLeftBottom',
+])
 const ws = /\s+/
 
 const getBreakpoints = (props, delim = '@') => {
@@ -250,7 +263,6 @@ const BreakpointRenderer = ({popoverProps, breakpoints}) => {
     keys = Object.keys(breakpoints)
 
   for (; i < keys.length; i++) checkBreakpoints[keys[i]] = true
-
   const {matches} = useBreakpoint(checkBreakpoints)
   popoverProps.popoverDirection = 'fromBottom'
   const matchKeys = Object.keys(matches)
@@ -269,26 +281,21 @@ const BreakpointRenderer = ({popoverProps, breakpoints}) => {
 export const Popover = React.forwardRef((props, innerRef) => {
   const theme = useTheme(),
     breakpoints = getBreakpoints(props, theme.breakpointsDelimiter)
+  const popoverProps = (props.transition || useDrop)(props)
+  popoverProps.children = props.children
+  popoverProps.innerRef = innerRef
 
-  return React.createElement(
-    props.transition || Drop,
-    withChildren(props, popoverProps => {
-      popoverProps.children = props.children
-      popoverProps.innerRef = innerRef
+  if (breakpoints === false) {
+    popoverProps.popoverDirection = getDirection(props)
+    return ViewportPopover(popoverProps)
+  }
 
-      if (breakpoints === false) {
-        popoverProps.popoverDirection = getDirection(props)
-        return ViewportPopover(popoverProps)
-      }
-
-      return (
-        <BreakpointRenderer
-          props={props}
-          popoverProps={popoverProps}
-          breakpoints={breakpoints}
-        />
-      )
-    })
+  return (
+    <BreakpointRenderer
+      props={props}
+      popoverProps={popoverProps}
+      breakpoints={breakpoints}
+    />
   )
 })
 

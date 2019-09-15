@@ -1,30 +1,14 @@
-import {boolOrString} from '../PropTypes'
+import {boolOrString, implicitNum} from '../PropTypes'
 
 export default {
   // Sizes
-  // xxs: bool,
-  // xs: bool,
-  // sm: bool,
-  // md: bool,
-  // lg: bool,
-  // xl: bool,
-  // xxl: bool,
   size: boolOrString,
   // Weights
-  thin: boolOrString,
-  ultraLight: boolOrString,
-  light: boolOrString,
-  regular: boolOrString,
-  medium: boolOrString,
-  semiBold: boolOrString,
-  bold: boolOrString,
-  heavy: boolOrString,
-  ultraHeavy: boolOrString,
+  weight: implicitNum,
   // Alignment
-  left: boolOrString,
-  center: boolOrString,
-  right: boolOrString,
-  justified: boolOrString,
+  aligned: boolOrString,
+  // line-height
+  line: boolOrString,
   // Legibility
   optimizeFor: boolOrString,
   antialias: boolOrString,
@@ -34,6 +18,4 @@ export default {
   family: boolOrString,
   // cool
   ellipsis: boolOrString,
-  // line-height
-  lh: boolOrString,
 }

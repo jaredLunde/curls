@@ -2,10 +2,12 @@ import React, {useContext} from 'react'
 import {css} from '@emotion/core'
 import {useStyles, createElement} from '@style-hooks/core'
 import emptyObj from 'empty/object'
-import {portalize, withChildren, pushCss} from '../utils'
+import {Button} from '../Button'
+import {portalize, pushCss} from '../utils'
 import {useBox} from '../Box'
-import {Slide} from '../Slide'
+import {useSlide} from '../Slide'
 import * as styles from './styles'
+import {useModalContext} from '../Modal'
 
 /**
 <Drawer fromBottom>
@@ -46,6 +48,12 @@ export const DrawerContext = React.createContext(emptyObj),
   useDrawerContext = () => useContext(DrawerContext),
   useDrawerBox = props =>
     useStyles('drawer', styles, pushCss(props, defaultStyles)),
+  DrawerToggle = React.forwardRef((props, ref) => {
+    const context = useModalContext()
+    props = Object.assign({ref}, props)
+    props.onClick = context.toggle
+    return createElement(Button, props)
+  }),
   DrawerBox = React.forwardRef(({children, portal, ...props}, ref) => {
     const transition = useDrawerContext()
     props.css = Array.isArray(transition.css)
@@ -58,16 +66,19 @@ export const DrawerContext = React.createContext(emptyObj),
     props.ref = ref
     return portalize(createElement('div', props), portal)
   }),
-  Drawer = props =>
-    React.createElement(
-      props.transition || Slide,
-      withChildren(props, transition => (
-        <DrawerContext.Provider
-          value={transition}
-          children={props.children(transition)}
-        />
-      ))
+  Drawer = props => {
+    const context = (props.transition || useSlide)(props)
+    return (
+      <DrawerContext.Provider
+        value={context}
+        children={
+          typeof props.children === 'function'
+            ? props.children(context)
+            : props.children
+        }
+      />
     )
+  }
 
 if (__DEV__) {
   const slidePropTypes = require('../Slide/propTypes').default

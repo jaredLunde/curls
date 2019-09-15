@@ -1,7 +1,14 @@
-import {renderProps} from 'test-utils'
+import React from 'react'
+import {renderFragment} from 'test-utils'
 import {Transitionable} from './Transitionable'
 
-const renderTransitionable = renderProps(Transitionable)
+const renderTransitionable = (props, theme = {}) =>
+  renderFragment(
+    <Transitionable {...props}>
+      <div />
+    </Transitionable>,
+    theme
+  )
 
 test('<Transitionable> -> property', () => {
   expect(renderTransitionable({property: 'transform'})).toMatchSnapshot(

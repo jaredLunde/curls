@@ -16,20 +16,14 @@ test('<Text> -> flex properties', () => {
 })
 
 test('<Text> -> weight', () => {
-  const weights = [
-    'thin',
-    'ultraLight',
-    'light',
-    'regular',
-    'medium',
-    'semiBold',
-    'bold',
-    'heavy',
-    'ultraHeavy',
-  ]
+  const weights = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 
-  for (let w of weights)
-    expect(renderFragment(<Text {...{[w]: true}} />)).toMatchSnapshot(w)
+  for (let w of weights) {
+    expect(renderFragment(<Text weight={w} />)).toMatchSnapshot(w)
+    expect(renderFragment(<Text weight={String(w)} />)).toMatchSnapshot(
+      `String ${w}`
+    )
+  }
 })
 
 test('<Text> -> size', () => {
@@ -134,7 +128,7 @@ test('<Text> -> alignment', () => {
   const alignments = ['left', 'center', 'right', 'justified']
 
   for (let a of alignments)
-    expect(renderFragment(<Text {...{[a]: true}} />)).toMatchSnapshot(a)
+    expect(renderFragment(<Text aligned={a} />)).toMatchSnapshot(a)
 })
 
 test('<Text> -> antialias', () => {
@@ -145,11 +139,11 @@ test('<Text> -> ellipsis', () => {
   expect(renderFragment(<Text ellipsis />)).toMatchSnapshot('ellipsis')
 })
 
-test('<Text> -> lh', () => {
-  expect(renderFragment(<Text lh="1.0" />)).toMatchSnapshot('1.0')
-  expect(renderFragment(<Text lh="1px" />)).toMatchSnapshot('1px')
-  expect(renderFragment(<Text lh="1em" />)).toMatchSnapshot('1em')
-  expect(renderFragment(<Text lh="1rem" />)).toMatchSnapshot('1rem')
+test('<Text> -> lineHeight', () => {
+  expect(renderFragment(<Text lineHeight="1.0" />)).toMatchSnapshot('1.0')
+  expect(renderFragment(<Text lineHeight="1px" />)).toMatchSnapshot('1px')
+  expect(renderFragment(<Text lineHeight="1em" />)).toMatchSnapshot('1em')
+  expect(renderFragment(<Text lineHeight="1rem" />)).toMatchSnapshot('1rem')
 })
 
 test('<Text> -> color', () => {

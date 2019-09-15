@@ -2,36 +2,36 @@ import {css} from '@emotion/core'
 import {colorize, memoTheme, memoValue, unit, get} from '../utils'
 import * as dT from './defaultTheme'
 
-// Weights
-export const thin = css`
+export const weight = {
+  '100': css`
     font-weight: 100;
   `,
-  ultraLight = css`
+  '200': css`
     font-weight: 200;
   `,
-  light = css`
+  '300': css`
     font-weight: 300;
   `,
-  regular = css`
+  '400': css`
     font-weight: 400;
   `,
-  medium = css`
+  '500': css`
     font-weight: 500;
   `,
-  semiBold = css`
+  '600': css`
     font-weight: 600;
   `,
-  bold = css`
+  '700': css`
     font-weight: 700;
   `,
-  heavy = css`
+  '800': css`
     font-weight: 800;
   `,
-  ultraHeavy = css`
+  '900': css`
     font-weight: 900;
-  `
+  `,
+}
 
-// Sizes
 export const size = memoTheme((size, theme) => {
   let scale = get(theme.text, 'scale', dT),
     fontSize = scale[size],
@@ -50,36 +50,41 @@ export const size = memoTheme((size, theme) => {
     ${isLeg && antialias};
   `
 })
-// Face
+
 export const family = memoTheme(
   (v, t) =>
     css`
       font-family: ${get(t.text, 'families', dT)[v] || v};
     `
 )
-// Line height
-export const lh = memoValue(
+
+export const lineHeight = memoValue(
   v =>
     css`
       line-height: ${v};
     `
 )
-// Color
+
 export const color = (v, t) => colorize('color', v, t) // colorize implements nullIfFalse
-// Alignment
-export const left = css`
+
+export const aligned = {
+  left: css`
     text-align: left;
   `,
-  center = css`
+  center: css`
     text-align: center;
   `,
-  right = css`
+  right: css`
     text-align: right;
   `,
-  justified = css`
+  justified: css`
     text-align: justify;
-  `
-// Legibility
+  `,
+  inherit: css`
+    text-align: inherit;
+  `,
+}
+
 export const optimizeFor = {
     speed: css`
       text-rendering: speed;

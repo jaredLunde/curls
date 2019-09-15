@@ -2,7 +2,7 @@ import React from 'react'
 import {act} from 'react-dom/test-utils'
 import {render, renderProps} from 'test-utils'
 import {Drawer, DrawerBox} from './Drawer'
-import {Fade} from '../Fade'
+import {useFade} from '../Fade'
 
 const renderDrawer = renderProps(Drawer)
 
@@ -30,7 +30,7 @@ test('<Drawer> -> toggle', () => {
 })
 
 test('<Drawer> -> custom transition', () => {
-  const state = renderDrawer({transition: Fade, fromBottom: true})
+  const state = renderDrawer({transition: useFade, fromBottom: true})
   expect(state).toMatchSnapshot('hidden')
   act(state.show)
   expect(state).toMatchSnapshot('visible')

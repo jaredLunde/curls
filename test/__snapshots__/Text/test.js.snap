@@ -169,7 +169,7 @@ exports[`<Text> -> flex properties 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Text> -> lh: 1.0 1`] = `
+exports[`<Text> -> lineHeight: 1.0 1`] = `
 <DocumentFragment>
   .emotion-0 {
   line-height: 1.0;
@@ -181,7 +181,7 @@ exports[`<Text> -> lh: 1.0 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Text> -> lh: 1em 1`] = `
+exports[`<Text> -> lineHeight: 1em 1`] = `
 <DocumentFragment>
   .emotion-0 {
   line-height: 1em;
@@ -193,7 +193,7 @@ exports[`<Text> -> lh: 1em 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Text> -> lh: 1px 1`] = `
+exports[`<Text> -> lineHeight: 1px 1`] = `
 <DocumentFragment>
   .emotion-0 {
   line-height: 1px;
@@ -205,7 +205,7 @@ exports[`<Text> -> lh: 1px 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Text> -> lh: 1rem 1`] = `
+exports[`<Text> -> lineHeight: 1rem 1`] = `
 <DocumentFragment>
   .emotion-0 {
   line-height: 1rem;
@@ -565,79 +565,7 @@ exports[`<Text> -> size: xs px 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Text> -> weight: bold 1`] = `
-<DocumentFragment>
-  .emotion-0 {
-  font-weight: 700;
-}
-
-<span
-    class="emotion-0"
-  />
-</DocumentFragment>
-`;
-
-exports[`<Text> -> weight: heavy 1`] = `
-<DocumentFragment>
-  .emotion-0 {
-  font-weight: 800;
-}
-
-<span
-    class="emotion-0"
-  />
-</DocumentFragment>
-`;
-
-exports[`<Text> -> weight: light 1`] = `
-<DocumentFragment>
-  .emotion-0 {
-  font-weight: 300;
-}
-
-<span
-    class="emotion-0"
-  />
-</DocumentFragment>
-`;
-
-exports[`<Text> -> weight: medium 1`] = `
-<DocumentFragment>
-  .emotion-0 {
-  font-weight: 500;
-}
-
-<span
-    class="emotion-0"
-  />
-</DocumentFragment>
-`;
-
-exports[`<Text> -> weight: regular 1`] = `
-<DocumentFragment>
-  .emotion-0 {
-  font-weight: 400;
-}
-
-<span
-    class="emotion-0"
-  />
-</DocumentFragment>
-`;
-
-exports[`<Text> -> weight: semiBold 1`] = `
-<DocumentFragment>
-  .emotion-0 {
-  font-weight: 600;
-}
-
-<span
-    class="emotion-0"
-  />
-</DocumentFragment>
-`;
-
-exports[`<Text> -> weight: thin 1`] = `
+exports[`<Text> -> weight 1`] = `
 <DocumentFragment>
   .emotion-0 {
   font-weight: 100;
@@ -649,7 +577,91 @@ exports[`<Text> -> weight: thin 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Text> -> weight: ultraHeavy 1`] = `
+exports[`<Text> -> weight 2`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 200;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight 3`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 300;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight 4`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 400;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight 5`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 500;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight 6`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 600;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight 7`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 700;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight 8`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 800;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight 9`] = `
 <DocumentFragment>
   .emotion-0 {
   font-weight: 900;
@@ -661,10 +673,106 @@ exports[`<Text> -> weight: ultraHeavy 1`] = `
 </DocumentFragment>
 `;
 
-exports[`<Text> -> weight: ultraLight 1`] = `
+exports[`<Text> -> weight: String 100 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 100;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 200 1`] = `
 <DocumentFragment>
   .emotion-0 {
   font-weight: 200;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 300 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 300;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 400 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 400;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 500 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 500;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 600 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 600;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 700 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 700;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 800 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 800;
+}
+
+<span
+    class="emotion-0"
+  />
+</DocumentFragment>
+`;
+
+exports[`<Text> -> weight: String 900 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-weight: 900;
 }
 
 <span

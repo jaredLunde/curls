@@ -11,7 +11,6 @@ export portalize from './portalize'
 export pushCss from './pushCss'
 export supportsCSS from './supportsCSS'
 export unit from './unit'
-export withChildren from './withChildren'
 
 export {
   fastMemoize,

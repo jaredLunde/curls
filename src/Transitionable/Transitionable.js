@@ -1,7 +1,12 @@
 import {useStyles} from '@style-hooks/core'
-import createRenderProp from '../createRenderProp'
+import createWithCssProp from '../createWithCssProp'
 import * as styles from './styles'
 
+/**
+ * <Transitionable duration='fast' easing='swiftMove' property='opacity'>
+ *   <SomeComponent o='1.0'/>
+ * </Transitionable>
+ */
 export const getDelay = (value, props) =>
     value === true
       ? props.enterDelay !== void 0
@@ -16,7 +21,7 @@ export const getDelay = (value, props) =>
       styles,
       Object.assign({duration: 'normal', easing: 'linear'}, props)
     ),
-  Transitionable = createRenderProp(useTransitionable)
+  Transitionable = createWithCssProp(useTransitionable)
 
 if (__DEV__) {
   const propTypes = require('./propTypes').default
