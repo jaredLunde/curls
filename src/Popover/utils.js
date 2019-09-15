@@ -141,49 +141,57 @@ const directionFn = {
   fromTopLeft(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromTop(containerRect, boxRect, dims),
-      startX(containerRect)
+      startX(containerRect),
+      {renderPosition: 'topLeft'}
     )
   },
   fromTopRight(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromTop(containerRect, boxRect, dims),
-      endX(containerRect, boxRect)
+      endX(containerRect, boxRect),
+      {renderPosition: 'topRight'}
     )
   },
   fromRightTop(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromRight(containerRect, boxRect, dims),
-      startY(containerRect, boxRect)
+      startY(containerRect, boxRect),
+      {renderPosition: 'rightTop'}
     )
   },
   fromRightBottom(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromRight(containerRect, boxRect, dims),
-      endY(containerRect, boxRect)
+      endY(containerRect, boxRect),
+      {renderPosition: 'rightBottom'}
     )
   },
   fromBottomLeft(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromBottom(containerRect, boxRect, dims),
-      startX(containerRect)
+      startX(containerRect),
+      {renderPosition: 'bottomLeft'}
     )
   },
   fromBottomRight(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromBottom(containerRect, boxRect, dims),
-      endX(containerRect, boxRect)
+      endX(containerRect, boxRect),
+      {renderPosition: 'bottomRight'}
     )
   },
   fromLeftTop(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromLeft(containerRect, boxRect, dims),
-      startY(containerRect)
+      startY(containerRect),
+      {renderPosition: 'leftTop'}
     )
   },
   fromLeftBottom(containerRect, boxRect, dims) {
     return Object.assign(
       this.fromLeft(containerRect, boxRect, dims),
-      endY(containerRect, boxRect)
+      endY(containerRect, boxRect),
+      {renderPosition: 'leftBottom'}
     )
   },
 }
