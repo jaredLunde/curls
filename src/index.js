@@ -9,6 +9,7 @@ export createRenderProp from './createRenderProp'
 export {
   colorize,
   directionalScale,
+  get as getDefault,
   getBreakpointOrder,
   getHoverQuery,
   loadImage,
