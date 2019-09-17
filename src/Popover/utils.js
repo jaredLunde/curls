@@ -39,17 +39,24 @@ const centerY = (containerRect, boxRect, height) => {
 }
 
 const startX = containerRect => ({left: containerRect.left, right: 'auto'})
-const endX = (containerRect, boxRect) => ({
-  left: containerRect.left + containerRect.width - boxRect.width,
-  right: 'auto',
+const endX = containerRect => ({
+  left: 'auto',
+  right: document.documentElement.clientWidth - containerRect.right,
 })
 const startY = containerRect => ({top: containerRect.top, bottom: 'auto'})
-const endY = (containerRect, boxRect) => ({
-  top: containerRect.top + containerRect.height - boxRect.height,
-  bottom: 'auto',
+const endY = containerRect => ({
+  top: 'auto',
+  bottom: document.documentElement.clientHeight - containerRect.bottom,
 })
 
 const directionFn = {
+  fromCenter(containerRect, boxRect, {width, height}) {
+    return Object.assign(
+      {renderPosition: 'center'},
+      centerX(containerRect, boxRect, width),
+      centerY(containerRect, boxRect, height)
+    )
+  },
   fromTop(containerRect, boxRect, {width, height}) {
     let top = 'auto',
       bottom = 'auto',
@@ -202,10 +209,22 @@ export const setDirectionStyle = (
   popoverBox,
   viewportSize
 ) => {
-  const containerRect = container && container.getBoundingClientRect(),
-    boxRect = popoverBox && popoverBox.getBoundingClientRect()
+  if (!container) return null
+  let containerRect = container.getBoundingClientRect()
+  let boxRect = false
 
-  if (!containerRect) return null
+  if (popoverBox) {
+    boxRect = container.getBoundingClientRect()
+    boxRect = {
+      top: boxRect.top,
+      right: boxRect.right,
+      bottom: boxRect.bottom,
+      left: boxRect.left,
+      width: popoverBox.offsetWidth,
+      height: popoverBox.offsetHeight,
+    }
+  }
+
   return !containerRect
     ? null
     : directionFn[direction](containerRect, boxRect, viewportSize)

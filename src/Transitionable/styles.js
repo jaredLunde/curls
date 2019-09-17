@@ -5,9 +5,10 @@ import * as dT from './defaultTheme'
 export const duration = memoTheme(
     (value, theme) =>
       css`
-        transition-duration: ${get(theme.transitionable, 'duration', dT)[
-          value
-        ] || value}ms;
+        transition-duration: ${unit(
+          get(theme.transitionable, 'duration', dT)[value] || value,
+          'ms'
+        )};
       `
   ),
   easing = memoTheme((value, theme) => {

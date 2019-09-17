@@ -14,7 +14,7 @@ import emptyArr from 'empty/array'
 import emptyObj from 'empty/object'
 import {useBreakpoint} from '../Breakpoint'
 import {useBox} from '../Box'
-import {useDrop} from '../Drop'
+import {useFade} from '../Fade'
 import {portalize, objectWithoutProps, loadImages} from '../utils'
 import {setDirectionStyle} from './utils'
 
@@ -196,13 +196,8 @@ const SizePositioner = props => {
   return React.createElement(PopoverContainer, props)
 }
 
-const ViewportPopover = props =>
-  React.createElement(
-    props.repositionOnScroll ? ScrollPositioner : SizePositioner,
-    props
-  )
-
 const positions = new Set([
+  'fromCenter',
   'fromTop',
   'fromRight',
   'fromBottom',
@@ -250,52 +245,69 @@ const getBreakpoints = (props, delim = '@') => {
 const getDirection = props => {
   let keys = Object.keys(props),
     i = keys.length - 1
+
   for (; i > -1; i--) {
     const key = keys[i]
-    if (positions.has(key) === true && !!props[key]) return key
+    if (positions.has(key) && !!props[key]) return key
   }
+
   return 'fromBottom'
 }
 
-const BreakpointRenderer = ({popoverProps, breakpoints}) => {
-  let checkBreakpoints = {},
+export const Popover = React.forwardRef((props, innerRef) => {
+  let theme = useTheme(),
+    breakpoints = getBreakpoints(props, theme.breakpointsDelimiter),
+    keys = Object.keys(props),
     i = 0,
-    keys = Object.keys(breakpoints)
+    key,
+    nextProps = {}
 
-  for (; i < keys.length; i++) checkBreakpoints[keys[i]] = true
+  for (; i < keys.length; i++) {
+    key = keys[i]
+    key = key.startsWith('fromTop')
+      ? 'fromTop'
+      : key.startsWith('fromRight')
+      ? 'fromRight'
+      : key.startsWith('fromLeft')
+      ? 'fromLeft'
+      : key.startsWith('fromBottom') || key === 'fromCenter'
+      ? 'fromBottom'
+      : key
+
+    nextProps[key] = props[keys[i]]
+  }
+
+  const context = (props.transition || useFade)(nextProps)
+  nextProps.innerRef = innerRef
+
+  if (breakpoints === false) {
+    nextProps.popoverDirection = getDirection(props)
+
+    return React.createElement(
+      nextProps.repositionOnScroll ? ScrollPositioner : SizePositioner,
+      Object.assign(nextProps, context)
+    )
+  }
+
+  let checkBreakpoints = {}
+  keys = Object.keys(breakpoints)
+
+  for (i = 0; i < keys.length; i++) checkBreakpoints[keys[i]] = true
   const {matches} = useBreakpoint(checkBreakpoints)
-  popoverProps.popoverDirection = 'fromBottom'
+  nextProps.popoverDirection = 'fromBottom'
   const matchKeys = Object.keys(matches)
 
   for (i = matchKeys.length - 1; i > -1; i--) {
     const key = matchKeys[i]
     if (matches[key] === true) {
-      popoverProps.popoverDirection = breakpoints[key]
+      nextProps.popoverDirection = breakpoints[key]
       break
     }
   }
 
-  return ViewportPopover(popoverProps)
-}
-
-export const Popover = React.forwardRef((props, innerRef) => {
-  const theme = useTheme(),
-    breakpoints = getBreakpoints(props, theme.breakpointsDelimiter)
-  const popoverProps = (props.transition || useDrop)(props)
-  popoverProps.children = props.children
-  popoverProps.innerRef = innerRef
-
-  if (breakpoints === false) {
-    popoverProps.popoverDirection = getDirection(props)
-    return ViewportPopover(popoverProps)
-  }
-
-  return (
-    <BreakpointRenderer
-      props={props}
-      popoverProps={popoverProps}
-      breakpoints={breakpoints}
-    />
+  return React.createElement(
+    nextProps.repositionOnScroll ? ScrollPositioner : SizePositioner,
+    Object.assign(nextProps, context)
   )
 })
 

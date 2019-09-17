@@ -7,7 +7,7 @@ export const duration = {
 }
 
 export const easing = {
-  boomerang: [0.41, 1.19, 0.54, 1.44],
+  boomerang: [0.3, 1, 0.54, 1.618],
   bounce: [0.93, 0.13, 0.382, 1.618],
   easeOut: 'ease-out',
   easeIn: 'ease-in',
