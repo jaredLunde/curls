@@ -38,7 +38,7 @@ export const defaultTheme = {
   colors: defaultColors,
   locals: {},
   mediaQueries: {},
-  spacingScale: [0, 1 / 4, 1 / 2, 1, 2, 4, 8, 16],
+  spacingScale: [0, 1 / 4, 1 / 2, 1, 2, 3, 4, 8, 16],
   spacingUnit: 'rem',
   sizeUnit: 'px',
 }
