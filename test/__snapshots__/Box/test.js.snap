@@ -917,7 +917,7 @@ exports[`<Box> -> m: throws scale 1`] = `"Unrecognized scale value for 'margin':
 exports[`<Box> -> m: throws scale direction 1`] = `
 "Unrecognized scale value in margin-{XYZ}: 100
 
-Allowed values include: 0, 1, 2, 3, 4, 5, 6, 7"
+Allowed values include: 0, 1, 2, 3, 4, 5, 6, 7, 8"
 `;
 
 exports[`<Box> -> m: x1 1`] = `
@@ -1436,7 +1436,7 @@ exports[`<Box> -> p: throws scale 1`] = `"Unrecognized scale value for 'padding'
 exports[`<Box> -> p: throws scale direction 1`] = `
 "Unrecognized scale value in padding-{XYZ}: 100
 
-Allowed values include: 0, 1, 2, 3, 4, 5, 6, 7"
+Allowed values include: 0, 1, 2, 3, 4, 5, 6, 7, 8"
 `;
 
 exports[`<Box> -> p: x1 1`] = `

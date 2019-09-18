@@ -38,177 +38,171 @@ const centerY = (containerRect, boxRect, height) => {
   return {top, bottom}
 }
 
-const startX = containerRect => ({left: containerRect.left, right: 'auto'})
-const endX = containerRect => ({
+const startXinnerEdge = containerRect => ({
+  left: containerRect.left,
+  right: 'auto',
+})
+const startXouterEdge = containerRect => ({
+  left: 'auto',
+  right: document.documentElement.clientWidth - containerRect.left,
+})
+const endXouterEdge = containerRect => ({
+  left: containerRect.right,
+  right: 'auto',
+})
+const endXinnerEdge = containerRect => ({
   left: 'auto',
   right: document.documentElement.clientWidth - containerRect.right,
 })
-const startY = containerRect => ({top: containerRect.top, bottom: 'auto'})
-const endY = containerRect => ({
+const startYinnerEdge = containerRect => ({
+  top: containerRect.top,
+  bottom: 'auto',
+})
+const startYouterEdge = containerRect => ({
+  top: 'auto',
+  bottom: document.documentElement.clientHeight - containerRect.top,
+})
+const endYinnerEdge = containerRect => ({
   top: 'auto',
   bottom: document.documentElement.clientHeight - containerRect.bottom,
 })
+const endYouterEdge = containerRect => ({
+  top: containerRect.bottom,
+  bottom: 'auto',
+})
 
-const directionFn = {
-  fromCenter(containerRect, boxRect, {width, height}) {
-    return Object.assign(
-      {renderPosition: 'center'},
-      centerX(containerRect, boxRect, width),
-      centerY(containerRect, boxRect, height)
-    )
-  },
-  fromTop(containerRect, boxRect, {width, height}) {
-    let top = 'auto',
-      bottom = 'auto',
-      renderPosition = 'top'
-
-    if (containerRect.top - boxRect.height > -1) {
-      top = containerRect.top - boxRect.height
-    } else if (
-      containerRect.bottom + (boxRect.height - containerRect.height) / 2 <
-      height
-    ) {
-      top = containerRect.bottom
-      renderPosition = 'bottom'
-    } else {
-      top = 0
+const placementCallback = {
+  center: (containerRect, boxRect, windowSize) => {
+    return {
+      placement: 'center',
+      style: Object.assign(
+        centerX(containerRect, boxRect, windowSize.width),
+        centerY(containerRect, boxRect, windowSize.height)
+      ),
     }
-
-    return Object.assign(
-      {top, bottom, renderPosition},
-      centerX(containerRect, boxRect, width)
-    )
   },
+  top: (containerRect, boxRect, windowSize) => {
+    return {
+      placement: 'top',
+      style: Object.assign(
+        startYouterEdge(containerRect, boxRect),
+        centerX(containerRect, boxRect, windowSize.width)
+      ),
+    }
+  },
+  topleft: (containerRect, boxRect, windowSize) => {
+    return {
+      placement: 'topLeft',
+      style: Object.assign(
+        startXinnerEdge(containerRect, boxRect),
+        startYinnerEdge(containerRect, boxRect)
+      ),
+    }
+  },
+  topright: (containerRect, boxRect, windowSize) => {},
+  right: (containerRect, boxRect, windowSize) => {},
+  righttop: (containerRect, boxRect, windowSize) => {},
+  rightbottom: (containerRect, boxRect, windowSize) => {},
+  bottom: (containerRect, boxRect, windowSize) => {},
+  bottomleft: (containerRect, boxRect, windowSize) => {},
+  bottomright: (containerRect, boxRect, windowSize) => {},
+  left: (containerRect, boxRect, windowSize) => {},
+  lefttop: (containerRect, boxRect, windowSize) => {
+    return {
+      placement: 'leftTop',
+      style: Object.assign(
+        startXouterEdge(containerRect, boxRect),
+        startYinnerEdge(containerRect, boxRect)
+      ),
+    }
+  },
+  leftbottom: (containerRect, boxRect, windowSize) => {
+    return {
+      placement: 'leftBottom',
+      style: Object.assign(
+        startXouterEdge(containerRect, boxRect),
+        endYinnerEdge(containerRect, boxRect)
+      ),
+    }
+  },
+}
+
+const directionCallback = {
   fromRight(containerRect, boxRect, {width, height}) {
-    let left = 'auto',
-      right = 'auto',
-      renderPosition = 'right'
-
-    if (containerRect.right + boxRect.width < width) {
-      left = containerRect.right
-    } else if (
-      containerRect.left - (boxRect.width - containerRect.width) / 2 >
-      -1
-    ) {
-      left = containerRect.left - boxRect.width
-      renderPosition = 'left'
-    } else {
-      right = 0
-    }
-
     return Object.assign(
-      {left, right, renderPosition},
+      {placement: 'right'},
+      endXouterEdge(containerRect, boxRect),
       centerY(containerRect, boxRect, height)
     )
   },
   fromBottom(containerRect, boxRect, {width, height}) {
-    let top = 'auto',
-      bottom = 'auto',
-      renderPosition = 'bottom'
-
-    if (containerRect.bottom + boxRect.height < height) {
-      top = containerRect.bottom
-    } else if (
-      containerRect.top - (boxRect.height - containerRect.height) / 2 >
-      -1
-    ) {
-      top = containerRect.top - boxRect.height
-      renderPosition = 'top'
-    } else {
-      bottom = 0
-    }
-
     return Object.assign(
-      {top, bottom, renderPosition},
+      {placement: 'bottom'},
+      endYouterEdge(containerRect, boxRect),
       centerX(containerRect, boxRect, width)
     )
   },
   fromLeft(containerRect, boxRect, {width, height}) {
-    let left = 'auto',
-      right = 'auto',
-      renderPosition = 'left'
-
-    if (containerRect.left - boxRect.width > -1) {
-      left = containerRect.left - boxRect.width
-    } else if (
-      containerRect.right + (boxRect.width - containerRect.width) / 2 <
-      width
-    ) {
-      left = containerRect.right
-      renderPosition = 'right'
-    } else {
-      left = 0
-    }
-
     return Object.assign(
-      {left, right, renderPosition},
+      {placement: 'left'},
+      startXinnerEdge(containerRect, boxRect),
       centerY(containerRect, boxRect, height)
     )
   },
   fromTopLeft(containerRect, boxRect, dims) {
     return Object.assign(
-      this.fromTop(containerRect, boxRect, dims),
-      startX(containerRect),
-      {renderPosition: 'topLeft'}
+      {placement: 'topLeft'},
+      startYouterEdge(containerRect, boxRect),
+      startXouterEdge(containerRect, boxRect)
     )
   },
   fromTopRight(containerRect, boxRect, dims) {
     return Object.assign(
-      this.fromTop(containerRect, boxRect, dims),
-      endX(containerRect, boxRect),
-      {renderPosition: 'topRight'}
+      {placement: 'topRight'},
+      startYouterEdge(containerRect, boxRect),
+      endXinnerEdge(containerRect, boxRect)
     )
   },
   fromRightTop(containerRect, boxRect, dims) {
     return Object.assign(
-      this.fromRight(containerRect, boxRect, dims),
-      startY(containerRect, boxRect),
-      {renderPosition: 'rightTop'}
+      {placement: 'rightTop'},
+      endXouterEdge(containerRect, boxRect, dims),
+      startYinnerEdge(containerRect, boxRect)
     )
   },
-  fromRightBottom(containerRect, boxRect, dims) {
+  fromRightBottom(containerRect, boxRect) {
     return Object.assign(
-      this.fromRight(containerRect, boxRect, dims),
-      endY(containerRect, boxRect),
-      {renderPosition: 'rightBottom'}
+      {placement: 'rightBottom'},
+      endXouterEdge(containerRect, boxRect),
+      endYouterEdge(containerRect, boxRect)
     )
   },
-  fromBottomLeft(containerRect, boxRect, dims) {
+  fromBottomLeft(containerRect, boxRect) {
     return Object.assign(
-      this.fromBottom(containerRect, boxRect, dims),
-      startX(containerRect),
-      {renderPosition: 'bottomLeft'}
+      {placement: 'bottomLeft'},
+      endYouterEdge(containerRect, boxRect),
+      startXouterEdge(containerRect, boxRect)
     )
   },
-  fromBottomRight(containerRect, boxRect, dims) {
+  fromBottomRight(containerRect, boxRect) {
     return Object.assign(
-      this.fromBottom(containerRect, boxRect, dims),
-      endX(containerRect, boxRect),
-      {renderPosition: 'bottomRight'}
-    )
-  },
-  fromLeftTop(containerRect, boxRect, dims) {
-    return Object.assign(
-      this.fromLeft(containerRect, boxRect, dims),
-      startY(containerRect),
-      {renderPosition: 'leftTop'}
+      {placement: 'bottomRight'},
+      endYouterEdge(containerRect, boxRect),
+      endXinnerEdge(containerRect, boxRect)
     )
   },
   fromLeftBottom(containerRect, boxRect, dims) {
     return Object.assign(
-      this.fromLeft(containerRect, boxRect, dims),
-      endY(containerRect, boxRect),
-      {renderPosition: 'leftBottom'}
+      {placement: 'leftBottom'},
+      startXinnerEdge(containerRect, boxRect),
+      endYinnerEdge(containerRect, boxRect)
     )
   },
 }
 
-export const setDirectionStyle = (
-  direction,
-  container,
-  popoverBox,
-  viewportSize
-) => {
+const defaultPlacements = /outer|inner/
+
+export const setPlacementStyle = (placement, container, popoverBox) => {
   if (!container) return null
   let containerRect = container.getBoundingClientRect()
   let boxRect = false
@@ -227,5 +221,12 @@ export const setDirectionStyle = (
 
   return !containerRect
     ? null
-    : directionFn[direction](containerRect, boxRect, viewportSize)
+    : placementCallback[placement.toLowerCase().replace(defaultPlacements, '')](
+        containerRect,
+        boxRect,
+        {
+          width: document.documentElement.width,
+          height: document.documentElement.height,
+        }
+      )
 }

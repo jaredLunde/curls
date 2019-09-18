@@ -7,15 +7,7 @@ import * as styles from './styles'
  *   <SomeComponent o='1.0'/>
  * </Transitionable>
  */
-export const getDelay = (value, props) =>
-    value === true
-      ? props.enterDelay !== void 0
-        ? props.enterDelay
-        : props.delay
-      : props.leaveDelay !== void 0
-      ? props.leaveDelay
-      : props.delay,
-  useTransitionable = props =>
+export const useTransitionable = props =>
     useStyles(
       'transitionable',
       styles,

@@ -6,7 +6,7 @@ export default (initialValue, controlledValue) => {
     ),
     on = useCallback(() => setValue(true), []),
     off = useCallback(() => setValue(false), []),
-    toggle = useCallback(() => setValue(value === false), [value])
+    toggle = useCallback(() => setValue(value => value === false), [value])
   return {
     value: controlledValue === void 0 ? value : controlledValue,
     on,
