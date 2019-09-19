@@ -27,7 +27,7 @@ const defaultStyles = css`
     position: fixed;
     z-index: 1001;
   `,
-  withoutPop = {ref: 0, containerRef: 0, style: 0}
+  withoutPop = {ref: 0, triggerRef: 0, style: 0}
 
 export const usePopoverBox = createStyleHook('popover', {}),
   PopoverBox = React.forwardRef((props_, ref) => {
@@ -69,18 +69,19 @@ export const usePopoverBox = createStyleHook('popover', {}),
 
 const PopoverContainer = React.memo(
   ({show, hide, toggle, isVisible, windowSize, scrollY, children}) => {
-    const containerRef = useRef(null),
+    const triggerRef = useRef(null),
       popoverRef = useRef(null),
       [{style, requestedPlacement, placement}, setState] = useState({
         style: {},
         placement: null,
+        requestedPlacement: null,
       }),
       reposition = useCallback(
         (placement = requestedPlacement) => {
           setState(
             setPlacementStyle(
               placement,
-              containerRef.current,
+              triggerRef.current,
               popoverRef.current,
               windowSize
             )
@@ -98,7 +99,7 @@ const PopoverContainer = React.memo(
           ref: popoverRef,
           placement,
           reposition,
-          containerRef,
+          triggerRef,
         }),
         [isVisible, show, hide, toggle, placement, reposition, style]
       )
@@ -131,7 +132,7 @@ export const PopoverMe = ({children, on}) => {
   const matches = useParseBreakpoints(on),
     {show, hide, toggle} = usePopoverContext(),
     elementRef = useRef(null),
-    ref = useMergedRef(usePopoverContext().containerRef, elementRef)
+    ref = useMergedRef(usePopoverContext().triggerRef, elementRef)
 
   useLayoutEffect(() => {
     if (elementRef.current) {
