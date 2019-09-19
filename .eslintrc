@@ -20,8 +20,8 @@
   ],
   "rules": {
     "no-console": "off",
-    "no-prototype-builtins": "off",
     "no-unused-vars": "warn",
+    "no-prototype-builtins": "off",
     "react/no-children-prop": "off",
     "react/display-name": "off",
     "react/prop-types": "off"

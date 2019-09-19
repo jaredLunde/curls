@@ -1,10 +1,10 @@
-const centerX = (containerRect, boxRect, width) => {
+const centerX = (containerRect, popoverRect, windowSize) => {
   let right = 'auto',
-    left = containerRect.left + (containerRect.width - boxRect.width) / 2
-  const boxWidth = (boxRect.width - containerRect.width) / 2,
+    left = containerRect.left + (containerRect.width - popoverRect.width) / 2
+  const boxWidth = (popoverRect.width - containerRect.width) / 2,
     doesNotFitLeft =
       left < containerRect.left && containerRect.left - boxWidth < 0,
-    doesNotFitRight = containerRect.right + boxWidth > width
+    doesNotFitRight = containerRect.right + boxWidth > windowSize[0]
 
   if (doesNotFitLeft && !doesNotFitRight) {
     left = containerRect.left
@@ -12,19 +12,19 @@ const centerX = (containerRect, boxRect, width) => {
     left = 'auto'
     right = 0
   } else if (doesNotFitRight && doesNotFitLeft) {
-    left = (width - boxRect.width) / 2
+    left = (windowSize[0] - popoverRect.width) / 2
   }
 
   return {left, right}
 }
 
-const centerY = (containerRect, boxRect, height) => {
+const centerY = (containerRect, popoverRect, windowSize) => {
   let bottom = 'auto',
-    top = containerRect.top + (containerRect.height - boxRect.height) / 2
-  const boxHeight = (boxRect.height - containerRect.height) / 2,
+    top = containerRect.top + (containerRect.height - popoverRect.height) / 2
+  const boxHeight = (popoverRect.height - containerRect.height) / 2,
     doesNotFitTop =
       top < containerRect.top && containerRect.top - boxHeight < 0,
-    doesNotFitBottom = containerRect.bottom + boxHeight > height
+    doesNotFitBottom = containerRect.bottom + boxHeight > windowSize[1]
 
   if (doesNotFitTop && !doesNotFitBottom) {
     top = 0
@@ -32,201 +32,278 @@ const centerY = (containerRect, boxRect, height) => {
     top = 'auto'
     bottom = 0
   } else if (doesNotFitBottom && doesNotFitTop) {
-    top = (height - boxRect.height) / 2
+    top = (windowSize[1] - popoverRect.height) / 2
   }
 
   return {top, bottom}
 }
 
-const startXinnerEdge = containerRect => ({
+const startXinnerEdge = (containerRect, boxSize, windowSize) => ({
   left: containerRect.left,
   right: 'auto',
 })
-const startXouterEdge = containerRect => ({
+
+const startXouterEdge = (containerRect, boxSize, windowSize) => ({
   left: 'auto',
-  right: document.documentElement.clientWidth - containerRect.left,
+  right: windowSize[0] - containerRect.left,
 })
-const endXouterEdge = containerRect => ({
+
+const endXouterEdge = (containerRect, boxSize, windowSize) => ({
   left: containerRect.right,
   right: 'auto',
 })
-const endXinnerEdge = containerRect => ({
-  left: 'auto',
-  right: document.documentElement.clientWidth - containerRect.right,
-})
-const startYinnerEdge = containerRect => ({
+
+const endXinnerEdge = (containerRect, boxSize, windowSize) => {
+  return {
+    left: 'auto',
+    right: windowSize[0] - containerRect.right,
+  }
+}
+
+const startYinnerEdge = (containerRect, boxSize, windowSize) => ({
   top: containerRect.top,
   bottom: 'auto',
 })
-const startYouterEdge = containerRect => ({
+
+const startYouterEdge = (containerRect, boxSize, windowSize) => ({
   top: 'auto',
-  bottom: document.documentElement.clientHeight - containerRect.top,
+  bottom: windowSize[1] - containerRect.top,
 })
-const endYinnerEdge = containerRect => ({
+
+const endYinnerEdge = (containerRect, boxSize, windowSize) => ({
   top: 'auto',
-  bottom: document.documentElement.clientHeight - containerRect.bottom,
+  bottom: windowSize[1] - containerRect.bottom,
 })
-const endYouterEdge = containerRect => ({
+
+const endYouterEdge = (containerRect, boxSize, windowSize) => ({
   top: containerRect.bottom,
   bottom: 'auto',
 })
 
 const placementCallback = {
-  center: (containerRect, boxRect, windowSize) => {
+  '': (containerRect, popoverRect, windowSize) => {
     return {
       placement: 'center',
       style: Object.assign(
-        centerX(containerRect, boxRect, windowSize.width),
-        centerY(containerRect, boxRect, windowSize.height)
+        centerX(containerRect, popoverRect, windowSize),
+        centerY(containerRect, popoverRect, windowSize)
       ),
     }
   },
-  top: (containerRect, boxRect, windowSize) => {
+  top: (containerRect, popoverRect, windowSize) => {
     return {
       placement: 'top',
       style: Object.assign(
-        startYouterEdge(containerRect, boxRect),
-        centerX(containerRect, boxRect, windowSize.width)
+        centerX(containerRect, popoverRect, windowSize),
+        startYouterEdge(containerRect, popoverRect, windowSize)
       ),
     }
   },
-  topleft: (containerRect, boxRect, windowSize) => {
+  topleft: (containerRect, popoverRect, windowSize) => {
     return {
       placement: 'topLeft',
       style: Object.assign(
-        startXinnerEdge(containerRect, boxRect),
-        startYinnerEdge(containerRect, boxRect)
+        startYouterEdge(containerRect, popoverRect, windowSize),
+        startXinnerEdge(containerRect, popoverRect, windowSize)
       ),
     }
   },
-  topright: (containerRect, boxRect, windowSize) => {},
-  right: (containerRect, boxRect, windowSize) => {},
-  righttop: (containerRect, boxRect, windowSize) => {},
-  rightbottom: (containerRect, boxRect, windowSize) => {},
-  bottom: (containerRect, boxRect, windowSize) => {},
-  bottomleft: (containerRect, boxRect, windowSize) => {},
-  bottomright: (containerRect, boxRect, windowSize) => {},
-  left: (containerRect, boxRect, windowSize) => {},
-  lefttop: (containerRect, boxRect, windowSize) => {
+  topright: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'topRight',
+      style: Object.assign(
+        startYouterEdge(containerRect, popoverRect, windowSize),
+        endXinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innertop: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerTop',
+      style: Object.assign(
+        centerX(containerRect, popoverRect, windowSize),
+        startYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innertopleft: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerTopLeft',
+      style: Object.assign(
+        startXinnerEdge(containerRect, popoverRect, windowSize),
+        startYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innertopright: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerTopRight',
+      style: Object.assign(
+        endXinnerEdge(containerRect, popoverRect, windowSize),
+        startYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  right: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'right',
+      style: Object.assign(
+        endXouterEdge(containerRect, popoverRect, windowSize),
+        centerY(containerRect, popoverRect, windowSize[1])
+      ),
+    }
+  },
+  righttop: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'rightTop',
+      style: Object.assign(
+        endXouterEdge(containerRect, popoverRect, windowSize),
+        startYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innerright: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerRight',
+      style: Object.assign(
+        endXinnerEdge(containerRect, popoverRect, windowSize),
+        centerY(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  bottom: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'bottom',
+      style: Object.assign(
+        centerX(containerRect, popoverRect, windowSize),
+        endYouterEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  bottomleft: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'bottomLeft',
+      style: Object.assign(
+        startXinnerEdge(containerRect, popoverRect, windowSize),
+        endYouterEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  bottomright: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'bottomRight',
+      style: Object.assign(
+        endXinnerEdge(containerRect, popoverRect, windowSize),
+        endYouterEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innerbottom: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerBottom',
+      style: Object.assign(
+        centerX(containerRect, popoverRect, windowSize),
+        endYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innerbottomright: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerBottomRight',
+      style: Object.assign(
+        endXinnerEdge(containerRect, popoverRect, windowSize),
+        endYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innerbottomleft: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerBottomLeft',
+      style: Object.assign(
+        startXinnerEdge(containerRect, popoverRect, windowSize),
+        endYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  left: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'left',
+      style: Object.assign(
+        startXouterEdge(containerRect, popoverRect, windowSize),
+        centerY(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  lefttop: (containerRect, popoverRect, windowSize) => {
     return {
       placement: 'leftTop',
       style: Object.assign(
-        startXouterEdge(containerRect, boxRect),
-        startYinnerEdge(containerRect, boxRect)
+        startXouterEdge(containerRect, popoverRect, windowSize),
+        startYinnerEdge(containerRect, popoverRect, windowSize)
       ),
     }
   },
-  leftbottom: (containerRect, boxRect, windowSize) => {
+  leftbottom: (containerRect, popoverRect, windowSize) => {
     return {
       placement: 'leftBottom',
       style: Object.assign(
-        startXouterEdge(containerRect, boxRect),
-        endYinnerEdge(containerRect, boxRect)
+        startXouterEdge(containerRect, popoverRect, windowSize),
+        endYinnerEdge(containerRect, popoverRect, windowSize)
+      ),
+    }
+  },
+  innerleft: (containerRect, popoverRect, windowSize) => {
+    return {
+      placement: 'innerLeft',
+      style: Object.assign(
+        startXinnerEdge(containerRect, popoverRect, windowSize),
+        centerY(containerRect, popoverRect, windowSize)
       ),
     }
   },
 }
 
-const directionCallback = {
-  fromRight(containerRect, boxRect, {width, height}) {
-    return Object.assign(
-      {placement: 'right'},
-      endXouterEdge(containerRect, boxRect),
-      centerY(containerRect, boxRect, height)
-    )
-  },
-  fromBottom(containerRect, boxRect, {width, height}) {
-    return Object.assign(
-      {placement: 'bottom'},
-      endYouterEdge(containerRect, boxRect),
-      centerX(containerRect, boxRect, width)
-    )
-  },
-  fromLeft(containerRect, boxRect, {width, height}) {
-    return Object.assign(
-      {placement: 'left'},
-      startXinnerEdge(containerRect, boxRect),
-      centerY(containerRect, boxRect, height)
-    )
-  },
-  fromTopLeft(containerRect, boxRect, dims) {
-    return Object.assign(
-      {placement: 'topLeft'},
-      startYouterEdge(containerRect, boxRect),
-      startXouterEdge(containerRect, boxRect)
-    )
-  },
-  fromTopRight(containerRect, boxRect, dims) {
-    return Object.assign(
-      {placement: 'topRight'},
-      startYouterEdge(containerRect, boxRect),
-      endXinnerEdge(containerRect, boxRect)
-    )
-  },
-  fromRightTop(containerRect, boxRect, dims) {
-    return Object.assign(
-      {placement: 'rightTop'},
-      endXouterEdge(containerRect, boxRect, dims),
-      startYinnerEdge(containerRect, boxRect)
-    )
-  },
-  fromRightBottom(containerRect, boxRect) {
-    return Object.assign(
-      {placement: 'rightBottom'},
-      endXouterEdge(containerRect, boxRect),
-      endYouterEdge(containerRect, boxRect)
-    )
-  },
-  fromBottomLeft(containerRect, boxRect) {
-    return Object.assign(
-      {placement: 'bottomLeft'},
-      endYouterEdge(containerRect, boxRect),
-      startXouterEdge(containerRect, boxRect)
-    )
-  },
-  fromBottomRight(containerRect, boxRect) {
-    return Object.assign(
-      {placement: 'bottomRight'},
-      endYouterEdge(containerRect, boxRect),
-      endXinnerEdge(containerRect, boxRect)
-    )
-  },
-  fromLeftBottom(containerRect, boxRect, dims) {
-    return Object.assign(
-      {placement: 'leftBottom'},
-      startXinnerEdge(containerRect, boxRect),
-      endYinnerEdge(containerRect, boxRect)
-    )
-  },
-}
+const defaultPlacements = /outer|center/g
 
-const defaultPlacements = /outer|inner/
+export const setPlacementStyle = (
+  requestedPlacement,
+  container,
+  popover,
+  windowSize
+) => {
+  let result,
+    placement = requestedPlacement
+  const containerRect = container.getBoundingClientRect(),
+    popoverRect = popover.getBoundingClientRect()
+  popoverRect.width = popover.offsetWidth
+  popoverRect.height = popover.offsetHeight
 
-export const setPlacementStyle = (placement, container, popoverBox) => {
-  if (!container) return null
-  let containerRect = container.getBoundingClientRect()
-  let boxRect = false
+  if (typeof placement === 'function') {
+    result = requestedPlacement(containerRect, popoverRect, {
+      width: windowSize[0],
+      height: windowSize[1],
+    })
 
-  if (popoverBox) {
-    boxRect = container.getBoundingClientRect()
-    boxRect = {
-      top: boxRect.top,
-      right: boxRect.right,
-      bottom: boxRect.bottom,
-      left: boxRect.left,
-      width: popoverBox.offsetWidth,
-      height: popoverBox.offsetHeight,
+    if (typeof result === 'string') {
+      placement = result
+    } else {
+      if (__DEV__) {
+        if (result.placement === void 0) {
+          throw new Error(
+            `[Popover] Placement functions must return an object of type:\n` +
+              `\n{\n  placement: string,\n  style: {}\n}\n`
+          )
+        }
+      }
     }
   }
 
-  return !containerRect
-    ? null
-    : placementCallback[placement.toLowerCase().replace(defaultPlacements, '')](
-        containerRect,
-        boxRect,
-        {
-          width: document.documentElement.width,
-          height: document.documentElement.height,
-        }
-      )
+  if (typeof placement === 'string') {
+    result = placementCallback[
+      placement.toLowerCase().replace(defaultPlacements, '')
+    ](containerRect, popoverRect, windowSize)
+  }
+
+  result.requestedPlacement = requestedPlacement
+  return result
 }

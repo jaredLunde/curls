@@ -1,40 +1,43 @@
 import {useMemo} from 'react'
-import {useBreakpoint} from './Breakpoint'
 import {useTheme} from '@style-hooks/core'
+import {useBreakpoint} from './Breakpoint'
 
 const splitWs = /(?!\[.*)\s+(?![^[]*?\])/g,
   replaceWs = /^\s+|\s+$|\s+(?=\s)/g
 
-const useParseBreakpoints = prop => {
+const useParseBreakpoints = propValue => {
+  if (typeof propValue !== 'string') return null
+
   const theme = useTheme(),
-    props = useMemo(() => {
-      let all = [],
-        pairs = prop.replace(replaceWs, '').split(splitWs),
+    breakpoints = useMemo(() => {
+      let nextBreakpoints = [],
+        values = propValue.replace(replaceWs, '').split(splitWs),
         i = 0
 
-      for (; i < pairs.length; i++) {
-        const pair = pairs[i],
-          index = pair.indexOf(theme.breakpointsDelimiter)
+      for (; i < values.length; i++) {
+        const value = values[i],
+          index = value.indexOf(theme.breakpointsDelimiter)
 
         if (index > -1) {
-          const bp = pair.substring(index + 1)
-          all.push({
+          const bp = value.substring(index + 1)
+          nextBreakpoints.push({
             breakpoint: bp,
-            value: pair.substring(0, index),
+            value: value.substring(0, index),
           })
         } else {
-          all.push({breakpoint: null, value: pair, matches: true})
+          nextBreakpoints.push({breakpoint: null, value, matches: true})
         }
       }
 
-      return all
-    }, [prop]),
+      return nextBreakpoints
+    }, [propValue]),
     {matches} = useBreakpoint(
-      props.reduce((a, c) => {
-        if (c.breakpoint !== null) {
-          a[c.breakpoint] = true
+      breakpoints.reduce((acc, next) => {
+        if (next.breakpoint !== null) {
+          acc[next.breakpoint] = true
         }
-        return a
+
+        return acc
       }, {})
     )
 
@@ -42,18 +45,18 @@ const useParseBreakpoints = prop => {
     let nextMatches = [],
       i = 0
 
-    for (; i < props.length; i++) {
-      if (props[i].breakpoint === null) {
-        props[i].matches = true
-        nextMatches.push(props[i])
+    for (; i < breakpoints.length; i++) {
+      if (breakpoints[i].breakpoint === null) {
+        breakpoints[i].matches = true
+        nextMatches.push(breakpoints[i])
       } else {
-        props[i].matches = matches[props[i].breakpoint]
-        nextMatches.push(props[i])
+        breakpoints[i].matches = matches[breakpoints[i].breakpoint]
+        nextMatches.push(breakpoints[i])
       }
     }
 
     return nextMatches
-  }, [matches, props])
+  }, [matches, breakpoints])
 }
 
 export default useParseBreakpoints

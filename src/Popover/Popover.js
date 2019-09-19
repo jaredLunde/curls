@@ -13,7 +13,7 @@ import useWindowScroll from '@react-hook/window-scroll'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 import useMergedRef from '@react-hook/merged-ref'
 import {useBox} from '../Box'
-import {portalize, objectWithoutProps, loadImages} from '../utils'
+import {portalize, objectWithoutProps} from '../utils'
 import {setPlacementStyle} from './utils'
 import useSwitch from '../useSwitch'
 import useParseBreakpoints from '../useParseBreakpoints'
@@ -31,14 +31,23 @@ const defaultStyles = css`
 
 export const usePopoverBox = createStyleHook('popover', {}),
   PopoverBox = React.forwardRef((props_, ref) => {
-    const {transition, placement, portal, style, children, ...props} = useBox(
-      usePopoverBox(props_)
-    )
+    const {
+      placement = 'bottom',
+      transition,
+      portal,
+      style,
+      children,
+      ...props
+    } = useBox(usePopoverBox(props_))
     const matches = useParseBreakpoints(placement)
     const popover = usePopoverContext()
     useEffect(() => {
-      popover.reposition(placement)
-    }, [placement])
+      if (typeof placement === 'function') {
+        popover.reposition(placement)
+      } else if (matches) {
+        popover.reposition(matches.filter(match => match.matches).pop().value)
+      }
+    }, [matches, popover.reposition])
     const {css} = transition({
       isVisible: popover.isVisible,
       placement: popover.placement,
@@ -62,19 +71,22 @@ const PopoverContainer = React.memo(
   ({show, hide, toggle, isVisible, windowSize, scrollY, children}) => {
     const containerRef = useRef(null),
       popoverRef = useRef(null),
-      [{style, placement}, setState] = useState({style: {}, placement: null}),
+      [{style, requestedPlacement, placement}, setState] = useState({
+        style: {},
+        placement: null,
+      }),
       reposition = useCallback(
-        (nextPlacement = placement) => {
+        (placement = requestedPlacement) => {
           setState(
             setPlacementStyle(
-              nextPlacement || 'center',
+              placement,
               containerRef.current,
               popoverRef.current,
               windowSize
             )
           )
         },
-        [placement]
+        [requestedPlacement, windowSize]
       ),
       childContext = useMemo(
         () => ({
@@ -92,8 +104,8 @@ const PopoverContainer = React.memo(
       )
 
     useLayoutEffect(() => {
-      isVisible && reposition(placement)
-    }, [placement, windowSize[0], windowSize[1], scrollY])
+      isVisible && reposition()
+    }, [reposition, windowSize[0], windowSize[1], scrollY])
 
     return (
       <PopoverContext.Provider

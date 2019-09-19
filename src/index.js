@@ -13,7 +13,6 @@ export {
   getBreakpointOrder,
   getHoverQuery,
   loadImage,
-  loadImages,
   memoValue,
   memoTheme as memoThemeValue,
   nullIfFalsy,
