@@ -15,6 +15,7 @@ import useMergedRef from '@react-hook/merged-ref'
 import {useBox} from '../Box'
 import {portalize, objectWithoutProps} from '../utils'
 import {setPlacementStyle} from './utils'
+import {useFade} from '../Fade'
 import useSwitch from '../useSwitch'
 import useParseBreakpoints from '../useParseBreakpoints'
 
@@ -33,7 +34,12 @@ export const usePopoverBox = createStyleHook('popover', {}),
   PopoverBox = React.forwardRef((props_, ref) => {
     const {
       placement = 'bottom',
-      transition,
+      transition = ({isVisible, placement}) =>
+        useFade({
+          visible: isVisible,
+          from: 0,
+          to: 1,
+        }),
       portal,
       style,
       children,
@@ -135,7 +141,7 @@ export const PopoverMe = ({children, on}) => {
     ref = useMergedRef(usePopoverContext().triggerRef, elementRef)
 
   useLayoutEffect(() => {
-    if (elementRef.current) {
+    if (elementRef.current && Array.isArray(matches)) {
       const listeners = []
       const addListener = (...args) => {
         listeners.push(args)
@@ -156,7 +162,10 @@ export const PopoverMe = ({children, on}) => {
               break
 
             case 'click':
-              addListener('click', toggle)
+              addListener('click', e => {
+                e.stopPropagation()
+                toggle()
+              })
               break
           }
         }
