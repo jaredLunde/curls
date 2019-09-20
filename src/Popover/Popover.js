@@ -7,7 +7,7 @@ import React, {
   useMemo,
 } from 'react'
 import {css} from '@emotion/core'
-import {createStyleHook, useTheme, createElement} from '@style-hooks/core'
+import {createStyleHook, createElement} from '@style-hooks/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
@@ -34,12 +34,8 @@ export const usePopoverBox = createStyleHook('popover', {}),
   PopoverBox = React.forwardRef((props_, ref) => {
     const {
       placement = 'bottom',
-      transition = ({isVisible, placement}) =>
-        useFade({
-          visible: isVisible,
-          from: 0,
-          to: 1,
-        }),
+      transition = ({isVisible /*, placement*/}) =>
+        useFade({visible: isVisible, from: 0, to: 1}),
       portal,
       style,
       children,
