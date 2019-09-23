@@ -33,6 +33,8 @@ const defaultStyles = css`
 `
 
 let ID = 0
+// TODO: close w/ escape button
+
 export const ModalContext = React.createContext(emptyObj),
   {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),

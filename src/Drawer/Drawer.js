@@ -44,6 +44,7 @@ const defaultStyles = css`
 `
 
 let ID = 0
+// TODO: close w/ escape button
 
 export const DrawerContext = React.createContext({}),
   {Consumer: DrawerConsumer} = DrawerContext,
