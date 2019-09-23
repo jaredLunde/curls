@@ -13,8 +13,10 @@ export const borderRadiusUnit = 'rem',
     }
 
     dp = parseInt(dp)
+    const offset = dp / 16
+    const blur = Math.abs(dp) / 16
     return css`
-      box-shadow: 0 0 ${dp / 16}rem rgba(67, 90, 111, 0.08),
-        0 ${dp / 16}rem ${dp / 16}rem rgba(67, 90, 111, 0.13);
+      box-shadow: 0 0 ${blur}rem rgba(67, 90, 111, 0.08),
+        0 ${offset}rem ${blur}rem rgba(67, 90, 111, 0.13);
     `
   }
