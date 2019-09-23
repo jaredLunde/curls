@@ -37,12 +37,12 @@ export const usePopoverBox = createStyleHook('popover', {}),
       transition = ({isVisible /*, placement*/}) =>
         useFade({visible: isVisible, from: 0, to: 1}),
       portal,
-      style,
       children,
       ...props
     } = useBox(usePopoverBox(props_))
     const matches = useParseBreakpoints(placement)
     const popover = usePopoverContext()
+
     useEffect(() => {
       if (typeof placement === 'function') {
         popover.reposition(placement)
@@ -50,12 +50,18 @@ export const usePopoverBox = createStyleHook('popover', {}),
         popover.reposition(matches.filter(match => match.matches).pop().value)
       }
     }, [matches, popover.reposition])
+
+    useEffect(() => {
+      if (popover.isVisible === true) popover.ref.current.focus()
+    }, popover.isVisible)
+
     const {css} = transition({
       isVisible: popover.isVisible,
       placement: popover.placement,
     })
 
     props.ref = useMergedRef(popover.ref, ref)
+    props.id = props.id || popover.id
     props.children =
       typeof children === 'function'
         ? children(objectWithoutProps(popover, withoutPop))
@@ -69,10 +75,12 @@ export const usePopoverBox = createStyleHook('popover', {}),
     return portalize(createElement('div', props), portal)
   })
 
+let ID = 0
 const PopoverContainer = React.memo(
   ({show, hide, toggle, isVisible, windowSize, scrollY, children}) => {
     const triggerRef = useRef(null),
       popoverRef = useRef(null),
+      id = useRef(`popover-${ID++}`),
       [{style, requestedPlacement, placement}, setState] = useState({
         style: {},
         placement: null,
@@ -97,6 +105,7 @@ const PopoverContainer = React.memo(
           show,
           hide,
           toggle,
+          id,
           style,
           ref: popoverRef,
           placement,
@@ -130,9 +139,10 @@ const PopoverContainer = React.memo(
       prev.scrollY === next.scrollY)
 )
 
-export const PopoverMe = ({children, on}) => {
+export const PopoverMe = props => {
+  const {children, on, tabIndex} = props
   const matches = useParseBreakpoints(on),
-    {show, hide, toggle} = usePopoverContext(),
+    {isVisible, show, hide, toggle, id} = usePopoverContext(),
     elementRef = useRef(null),
     ref = useMergedRef(usePopoverContext().triggerRef, elementRef)
 
@@ -175,7 +185,13 @@ export const PopoverMe = ({children, on}) => {
     }
   }, [elementRef.current, matches, show, hide, toggle])
 
-  return React.cloneElement(children, {ref})
+  return React.cloneElement(children, {
+    tabIndex,
+    'aria-controls': props['aria-controls'] || id,
+    'aria-haspopup': 'true',
+    'aria-expanded': String(isVisible),
+    ref,
+  })
 }
 
 const ScrollPositioner = props =>
