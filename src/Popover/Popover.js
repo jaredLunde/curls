@@ -7,7 +7,7 @@ import React, {
   useMemo,
 } from 'react'
 import {css} from '@emotion/core'
-import {createStyleHook, createElement} from '@style-hooks/core'
+import {createStyleHook, createElement, useStyles} from '@style-hooks/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
@@ -16,8 +16,10 @@ import {useBox} from '../Box'
 import {useFade} from '../Fade'
 import useSwitch from '../useSwitch'
 import useParseBreakpoints from '../useParseBreakpoints'
-import {portalize, objectWithoutProps} from '../utils'
+import {portalize, objectWithoutProps, pushCss} from '../utils'
 import {setPlacementStyle} from './utils'
+import emptyObj from 'empty/object'
+import {useModalContext} from '../Modal'
 
 export const PopoverContext = React.createContext({}),
   {Consumer: PopoverConsumer} = PopoverContext,
@@ -30,16 +32,35 @@ const defaultStyles = css`
   `,
   withoutPop = {ref: 0, triggerRef: 0, style: 0}
 
-export const usePopoverBox = createStyleHook('popover', {}),
+const defaultTransition = ({isVisible /*, placement*/}) =>
+  useFade({visible: isVisible, from: 0, to: 1})
+
+export const usePopoverBox = props => {
+    const popover = usePopoverContext()
+    props = useStyles(
+      'popover',
+      emptyObj,
+      pushCss(props, [defaultStyles, popover.css])
+    )
+    props.id = props.id || popover.id
+    props.tabIndex = props.tabIndex || '0'
+    const {css} = (props.transition || defaultTransition)({
+      isVisible: popover.isVisible,
+      placement: popover.placement,
+    })
+    delete props.transition
+    props.css = props.css
+      ? [defaultStyles, css].concat(props.css)
+      : [defaultStyles, css]
+    props.style = props.style
+      ? Object.assign({}, popover.style, props.style)
+      : popover.style
+    return props
+  },
   PopoverBox = React.forwardRef((props_, ref) => {
-    const {
-      placement = 'bottom',
-      transition = ({isVisible /*, placement*/}) =>
-        useFade({visible: isVisible, from: 0, to: 1}),
-      portal,
-      children,
-      ...props
-    } = useBox(usePopoverBox(props_))
+    const {placement = 'bottom', portal, children, ...props} = useBox(
+      usePopoverBox(props_)
+    )
     const matches = useParseBreakpoints(placement)
     const popover = usePopoverContext()
 
@@ -51,27 +72,12 @@ export const usePopoverBox = createStyleHook('popover', {}),
       }
     }, [matches, popover.reposition])
 
-    useEffect(() => {
-      if (popover.isVisible === true) popover.ref.current.focus()
-    }, popover.isVisible)
-
-    const {css} = transition({
-      isVisible: popover.isVisible,
-      placement: popover.placement,
-    })
-
     props.ref = useMergedRef(popover.ref, ref)
-    props.id = props.id || popover.id
     props.children =
       typeof children === 'function'
         ? children(objectWithoutProps(popover, withoutPop))
         : children
-    props.css = props.css
-      ? [defaultStyles, css].concat(props.css)
-      : [defaultStyles, css]
-    props.style = props.style
-      ? Object.assign({}, popover.style, props.style)
-      : popover.style
+
     return portalize(createElement('div', props), portal)
   })
 
@@ -80,7 +86,7 @@ const PopoverContainer = React.memo(
   ({show, hide, toggle, isVisible, windowSize, scrollY, children}) => {
     const triggerRef = useRef(null),
       popoverRef = useRef(null),
-      id = useRef(`popover-${ID++}`),
+      id = useRef(`curls.popover.${ID++}`).current,
       [{style, requestedPlacement, placement}, setState] = useState({
         style: {},
         placement: null,
@@ -164,7 +170,7 @@ export const PopoverMe = props => {
 
             case 'focus':
               addListener('focus', show)
-              addListener('blur', hide)
+              // addListener('blur', hide)
               break
 
             case 'click':
@@ -186,7 +192,9 @@ export const PopoverMe = props => {
   }, [elementRef.current, matches, show, hide, toggle])
 
   return React.cloneElement(children, {
-    tabIndex,
+    tabIndex:
+      children.props.tabIndex ||
+      (typeof tabIndex === 'string' ? tabIndex : undefined),
     'aria-controls': props['aria-controls'] || id,
     'aria-haspopup': 'true',
     'aria-expanded': String(isVisible),
