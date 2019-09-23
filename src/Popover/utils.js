@@ -224,7 +224,10 @@ export const setPlacementStyle = (
       placement = result
     } else {
       if (__DEV__) {
-        if (result.placement === void 0) {
+        if (
+          typeof result.placement !== 'string' ||
+          typeof result.style !== 'object'
+        ) {
           throw new Error(
             `[Popover] Placement functions must return an object of type:\n` +
               `\n{\n  placement: string,\n  style: {}\n}\n`
