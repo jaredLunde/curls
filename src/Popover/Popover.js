@@ -13,11 +13,11 @@ import useWindowScroll from '@react-hook/window-scroll'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 import useMergedRef from '@react-hook/merged-ref'
 import {useBox} from '../Box'
-import {portalize, objectWithoutProps} from '../utils'
-import {setPlacementStyle} from './utils'
 import {useFade} from '../Fade'
 import useSwitch from '../useSwitch'
 import useParseBreakpoints from '../useParseBreakpoints'
+import {portalize, objectWithoutProps} from '../utils'
+import {setPlacementStyle} from './utils'
 
 export const PopoverContext = React.createContext({}),
   {Consumer: PopoverConsumer} = PopoverContext,
