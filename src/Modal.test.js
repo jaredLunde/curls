@@ -8,32 +8,32 @@ const renderModal = renderProps(Modal)
 
 test('<Modal> -> show', () => {
   const state = renderModal()
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
   act(state.show)
-  expect(state).toMatchSnapshot('visible')
+  expect(state).toMatchSnapshot('open')
 })
 
 test('<Modal> -> hide', () => {
-  const state = renderModal({initiallyVisible: true})
-  expect(state).toMatchSnapshot('visible')
+  const state = renderModal({initialOpen: true})
+  expect(state).toMatchSnapshot('open')
   act(state.hide)
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
 })
 
 test('<Modal> -> toggle', () => {
   const state = renderModal()
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
   act(state.toggle)
-  expect(state).toMatchSnapshot('visible')
+  expect(state).toMatchSnapshot('open')
   act(state.toggle)
-  expect(state).toMatchSnapshot('hidden [2]')
+  expect(state).toMatchSnapshot('closed [2]')
 })
 
 test('<Modal> -> custom transition', () => {
   const state = renderModal({transition: Slide, fromBottom: true})
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
   act(state.show)
-  expect(state).toMatchSnapshot('visible')
+  expect(state).toMatchSnapshot('open')
 })
 
 test('<ModalBox> -> as prop', () => {
@@ -54,7 +54,7 @@ test('<ModalBox> -> as prop', () => {
   expect(rendered.getByTestId('modal-box')).toMatchSnapshot()
 })
 
-test('<ModalBox> -> hidden', () => {
+test('<ModalBox> -> closed', () => {
   let boxState = {}
   let rendered = render(
     <Modal>
@@ -72,10 +72,10 @@ test('<ModalBox> -> hidden', () => {
   expect(rendered.getByTestId('modal-box')).toMatchSnapshot()
 })
 
-test('<ModalBox> -> visible', () => {
+test('<ModalBox> -> open', () => {
   let boxState = {}
   let rendered = render(
-    <Modal initiallyVisible>
+    <Modal initialOpen>
       {() => (
         <ModalBox data-testid="modal-box">
           {cxt => {
@@ -93,7 +93,7 @@ test('<ModalBox> -> visible', () => {
 test('<ModalBox> -> box properties', () => {
   let boxState = {}
   let rendered = render(
-    <Modal initiallyVisible>
+    <Modal initialOpen>
       {() => (
         <ModalBox m="b3" data-testid="modal-box">
           {cxt => {
@@ -110,7 +110,7 @@ test('<ModalBox> -> box properties', () => {
 
 test('<ModalBox> -> element child', () => {
   let rendered = render(
-    <Modal initiallyVisible>
+    <Modal initialOpen>
       {() => (
         <ModalBox data-testid="modal-box">
           <div />

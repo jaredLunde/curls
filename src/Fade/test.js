@@ -21,7 +21,7 @@ test('<Fade> -> show [controlled]', () => {
 })
 
 test('<Fade> -> hide', () => {
-  const state = renderFade({initiallyVisible: true})
+  const state = renderFade({initialVisible: true})
   expect(state.isVisible).toBe(true)
   expect(state.css).toMatchSnapshot('visible')
   act(state.hide)

@@ -21,7 +21,7 @@ test('<Slide> -> show [controlled]', () => {
 })
 
 test('<Slide> -> hide', () => {
-  const state = renderSlide({initiallyVisible: true})
+  const state = renderSlide({initialVisible: true})
   expect(state.isVisible).toBe(true)
   expect(state.css).toMatchSnapshot('visible')
   act(state.hide)

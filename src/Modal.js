@@ -14,12 +14,12 @@ import {Modal, ModalBox, ModalToggle, useFade} from 'curls'
 
 <Modal transition={useFade}>
  <ModalBox p={3} bg='white'>
-   <ModalToggle onClick={hide}>
+   <ModalToggle onClick={close}>
      Hide modal
    </ModalToggle>
  </ModalBox>
 
- <ModalToggle onClick={show}>
+ <ModalToggle onClick={open}>
    Open Modal
  </ModalToggle>
 </Modal>
@@ -52,15 +52,15 @@ export const ModalContext = React.createContext(emptyObj),
   },
   ModalToggle = createAriaPopupToggle(useModalContext),
   ModalBox = createAriaPopup(useModalContext, useModalBox),
-  Modal = ({open, children}) => {
-    let [isOpen, toggle] = useSwitch(false, open)
+  Modal = ({open, initialOpen, children}) => {
+    let [isOpen, toggle] = useSwitch(initialOpen)
     isOpen = open === void 0 || open === null ? isOpen : open
     const id = useRef(`curls.modal.${ID++}`)
     const context = useMemo(
       () => ({
         id: id.current,
-        show: toggle.on,
-        hide: toggle.off,
+        open: toggle.on,
+        close: toggle.off,
         toggle,
         isOpen,
       }),

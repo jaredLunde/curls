@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Drawer> -> custom transition: closed 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.5",
+  "isOpen": false,
+  "open": [Function],
+  "toggle": [Function],
+}
+`;
+
 exports[`<Drawer> -> custom transition: hidden 1`] = `
 Object {
   "css": Array [
@@ -103,6 +113,16 @@ Object {
 }
 `;
 
+exports[`<Drawer> -> hide: open 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.1",
+  "isOpen": false,
+  "open": [Function],
+  "toggle": [Function],
+}
+`;
+
 exports[`<Drawer> -> hide: visible 1`] = `
 Object {
   "css": Array [
@@ -134,6 +154,16 @@ Object {
   "hide": [Function],
   "isVisible": true,
   "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> show: closed 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.0",
+  "isOpen": false,
+  "open": [Function],
   "toggle": [Function],
 }
 `;
@@ -206,6 +236,26 @@ Object {
 }
 `;
 
+exports[`<Drawer> -> toggle: closed [2] 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.2",
+  "isOpen": false,
+  "open": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> toggle: closed 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.2",
+  "isOpen": false,
+  "open": [Function],
+  "toggle": [Function],
+}
+`;
+
 exports[`<Drawer> -> toggle: hidden [2] 1`] = `
 Object {
   "css": Array [
@@ -268,6 +318,16 @@ Object {
   "hide": [Function],
   "isVisible": false,
   "show": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> toggle: open 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.2",
+  "isOpen": true,
+  "open": [Function],
   "toggle": [Function],
 }
 `;
@@ -355,6 +415,33 @@ exports[`<DrawerBox> -> box properties 1`] = `
 />
 `;
 
+exports[`<DrawerBox> -> closed 1`] = `
+.emotion-0 {
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+  -webkit-transform: translate3d(-100%,0,0);
+  -ms-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
+  visibility: hidden;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform;
+  -webkit-transition-property: visibility,transform;
+  transition-property: visibility,transform;
+}
+
+<div
+  class="emotion-0"
+  data-testid="drawer-box"
+  id="curls.drawer.7"
+  tabindex="0"
+/>
+`;
+
 exports[`<DrawerBox> -> element child 1`] = `
 .emotion-0 {
   visibility: visible;
@@ -401,6 +488,33 @@ exports[`<DrawerBox> -> hidden 1`] = `
 <div
   class="emotion-0"
   data-testid="drawer-box"
+/>
+`;
+
+exports[`<DrawerBox> -> open 1`] = `
+.emotion-0 {
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+  -webkit-transform: translate3d(-100%,0,0);
+  -ms-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
+  visibility: hidden;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,-webkit-transform;
+  -webkit-transition-property: visibility,transform;
+  transition-property: visibility,transform;
+}
+
+<div
+  class="emotion-0"
+  data-testid="drawer-box"
+  id="curls.drawer.8"
+  tabindex="0"
 />
 `;
 

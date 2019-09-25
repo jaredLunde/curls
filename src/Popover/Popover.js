@@ -82,7 +82,7 @@ export const usePopoverBox = props => {
 
 let ID = 0
 const PopoverContainer = React.memo(
-  ({show, hide, toggle, isOpen, windowSize, scrollY, children}) => {
+  ({open, close, toggle, isOpen, windowSize, scrollY, children}) => {
     const triggerRef = useRef(null),
       popoverRef = useRef(null),
       id = useRef(`curls.popover.${ID++}`).current,
@@ -107,8 +107,8 @@ const PopoverContainer = React.memo(
       childContext = useMemo(
         () => ({
           isOpen,
-          show,
-          hide,
+          open,
+          close,
           toggle,
           id,
           style,
@@ -117,7 +117,7 @@ const PopoverContainer = React.memo(
           reposition,
           triggerRef,
         }),
-        [isOpen, show, hide, toggle, placement, reposition, style]
+        [isOpen, open, close, toggle, placement, reposition, style]
       )
 
     useLayoutEffect(() => {
@@ -147,7 +147,7 @@ const PopoverContainer = React.memo(
 export const PopoverMe = props => {
   const {children, on, tabIndex} = props
   const matches = useParseBreakpoints(on),
-    {isOpen, show, hide, toggle, id} = usePopoverContext(),
+    {isOpen, open, close, toggle, id} = usePopoverContext(),
     elementRef = useRef(null),
     ref = useMergedRef(usePopoverContext().triggerRef, elementRef)
 
@@ -163,13 +163,13 @@ export const PopoverMe = props => {
         if (match.matches === true) {
           switch (match.value) {
             case 'hover':
-              addListener('mouseenter', show)
-              addListener('mouseleave', hide)
+              addListener('mouseenter', open)
+              addListener('mouseleave', close)
               break
 
             case 'focus':
-              addListener('focus', show)
-              // addListener('blur', hide)
+              addListener('focus', open)
+              // addListener('blur', close)
               break
 
             case 'click':
@@ -188,7 +188,7 @@ export const PopoverMe = props => {
         )
       }
     }
-  }, [elementRef.current, matches, show, hide, toggle])
+  }, [elementRef.current, matches, open, close, toggle])
 
   return React.cloneElement(children, {
     tabIndex:
@@ -208,15 +208,21 @@ const ScrollPositioner = props =>
   )
 
 const sizeOpt = {wait: 240}
-export const Popover = ({repositionOnScroll = false, open, children}) => {
-  const [isOpen, toggle] = useSwitch(false, open)
+export const Popover = ({
+  repositionOnScroll = false,
+  open,
+  initialOpen,
+  children,
+}) => {
+  let [isOpen, toggle] = useSwitch(initialOpen)
+  isOpen = open === void 0 || open === null ? isOpen : open
   const windowSize = useWindowSize(1280, 720, sizeOpt)
   return React.createElement(
     repositionOnScroll ? ScrollPositioner : PopoverContainer,
     {
       children,
-      show: toggle.on,
-      hide: toggle.off,
+      open: toggle.on,
+      close: toggle.off,
       toggle,
       isOpen,
       windowSize,

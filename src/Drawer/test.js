@@ -8,32 +8,32 @@ const renderDrawer = renderProps(Drawer)
 
 test('<Drawer> -> show', () => {
   const state = renderDrawer()
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
   act(state.show)
-  expect(state).toMatchSnapshot('visible')
+  expect(state).toMatchSnapshot('open')
 })
 
 test('<Drawer> -> hide', () => {
-  const state = renderDrawer({initiallyVisible: true})
-  expect(state).toMatchSnapshot('visible')
+  const state = renderDrawer({initiallyOpen: true})
+  expect(state).toMatchSnapshot('open')
   act(state.hide)
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
 })
 
 test('<Drawer> -> toggle', () => {
   const state = renderDrawer()
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
   act(state.toggle)
-  expect(state).toMatchSnapshot('visible')
+  expect(state).toMatchSnapshot('open')
   act(state.toggle)
-  expect(state).toMatchSnapshot('hidden [2]')
+  expect(state).toMatchSnapshot('closed [2]')
 })
 
 test('<Drawer> -> custom transition', () => {
   const state = renderDrawer({transition: useFade, fromBottom: true})
-  expect(state).toMatchSnapshot('hidden')
+  expect(state).toMatchSnapshot('closed')
   act(state.show)
-  expect(state).toMatchSnapshot('visible')
+  expect(state).toMatchSnapshot('open')
 })
 
 test('<DrawerBox> -> as prop', () => {
@@ -54,7 +54,7 @@ test('<DrawerBox> -> as prop', () => {
   expect(rendered.getByTestId('drawer-box')).toMatchSnapshot()
 })
 
-test('<DrawerBox> -> hidden', () => {
+test('<DrawerBox> -> closed', () => {
   let boxState = {}
   let rendered = render(
     <Drawer>
@@ -72,10 +72,10 @@ test('<DrawerBox> -> hidden', () => {
   expect(rendered.getByTestId('drawer-box')).toMatchSnapshot()
 })
 
-test('<DrawerBox> -> visible', () => {
+test('<DrawerBox> -> open', () => {
   let boxState = {}
   let rendered = render(
-    <Drawer initiallyVisible>
+    <Drawer initiallyOpen>
       {() => (
         <DrawerBox data-testid="drawer-box">
           {cxt => {
@@ -93,7 +93,7 @@ test('<DrawerBox> -> visible', () => {
 test('<DrawerBox> -> box properties', () => {
   let boxState = {}
   let rendered = render(
-    <Drawer initiallyVisible>
+    <Drawer initiallyOpen>
       {() => (
         <DrawerBox m="b3" data-testid="drawer-box">
           {cxt => {
@@ -110,7 +110,7 @@ test('<DrawerBox> -> box properties', () => {
 
 test('<DrawerBox> -> element child', () => {
   let rendered = render(
-    <Drawer initiallyVisible>
+    <Drawer initiallyOpen>
       {() => (
         <DrawerBox data-testid="drawer-box">
           <div />

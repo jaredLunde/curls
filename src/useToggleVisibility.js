@@ -13,9 +13,9 @@ export const getDelay = (value, props) =>
 export default (
   useTransition,
   // eslint-disable-next-line no-unused-vars
-  {initiallyVisible = false, visible, ...props}
+  {initialVisible = false, visible, ...props}
 ) => {
-  let [isVisible, toggle] = useSwitch(initiallyVisible)
+  let [isVisible, toggle] = useSwitch(initialVisible)
   isVisible = visible === void 0 || visible === null ? isVisible : visible
   props.isVisible = isVisible
   props.delay = getDelay(isVisible, props)

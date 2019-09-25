@@ -13,12 +13,12 @@ import * as styles from './styles'
     return (
       <>
         <DrawerBox portal bg='black'>
-          {({isOpen, hide}) => {
+          {({isOpen, close}) => {
             return (
               <Text>
                 Is visible? {String(isOpen)}
 
-                <Button onClick={hide}>
+                <Button onClick={close}>
                   Close
                 </Button>
               </Text>
@@ -73,15 +73,15 @@ export const DrawerContext = React.createContext({}),
   },
   DrawerToggle = createAriaPopupToggle(useDrawerContext),
   DrawerBox = createAriaPopup(useDrawerContext, useDrawerBox),
-  Drawer = ({open, children}) => {
-    let [isOpen, toggle] = useSwitch(false, open)
+  Drawer = ({open, initialOpen, children}) => {
+    let [isOpen, toggle] = useSwitch(initialOpen)
     isOpen = open === void 0 || open === null ? isOpen : open
     const id = useRef(`curls.drawer.${ID++}`)
     const context = useMemo(
       () => ({
         id: id.current,
-        show: toggle.on,
-        hide: toggle.off,
+        open: toggle.on,
+        close: toggle.off,
         toggle: toggle,
         isOpen,
       }),

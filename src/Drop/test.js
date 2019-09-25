@@ -21,7 +21,7 @@ test('<Drop> -> show [controlled]', () => {
 })
 
 test('<Drop> -> hide', () => {
-  const state = renderDrop({initiallyVisible: true})
+  const state = renderDrop({initialVisible: true})
   expect(state.isVisible).toBe(true)
   expect(state.css).toMatchSnapshot('visible')
   act(state.hide)
