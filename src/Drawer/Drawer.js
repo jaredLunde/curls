@@ -10,19 +10,19 @@ import useSwitch from '../useSwitch'
 
 /**
 <Drawer fromBottom>
-  {({toggle, isVisible}) => {
+  {({toggle, isOpen}) => {
     return (
       <>
         <DrawerBox portal bg='black'>
-          {({isVisible, hide}) => {
+          {({isOpen, hide}) => {
             return (
-              <Type>
-                Is visible? {String(isVisible)}
+              <Text>
+                Is visible? {String(isOpen)}
 
                 <Button onClick={hide}>
                   Close
                 </Button>
-              </Type>
+              </Text>
             )
           }}
         </DrawerBox>
@@ -52,6 +52,9 @@ const withoutSlide = {
   easing: 0,
 }
 
+// TODO: themeable DrawerToggle, ModalToggle, etc
+//       props = useStyles('drawerToggle', {}, props)
+//       entirely for defaultProps and kinds
 export const DrawerContext = React.createContext({}),
   {Consumer: DrawerConsumer} = DrawerContext,
   useDrawerContext = () => useContext(DrawerContext),
@@ -61,14 +64,19 @@ export const DrawerContext = React.createContext({}),
     nextProps = objectWithoutProps(nextProps, withoutSlide)
     return pushCss(
       nextProps,
-      useSlide(Object.assign({visible: context.isOpen}, props)).css
+      useSlide(
+        Object.assign(
+          {visible: context.isOpen, fromLeft: true, duration: 'fast'},
+          props
+        )
+      ).css
     )
   },
   DrawerToggle = createAriaPopupToggle(useDrawerContext),
   DrawerBox = createAriaPopup(useDrawerContext, useDrawerBox),
   Drawer = ({open, children}) => {
     const toggle = useSwitch(false, open)
-    const id = useRef(`curls.modal.${ID++}`)
+    const id = useRef(`curls.drawer.${ID++}`)
     const context = useMemo(
       () => ({
         id: id.current,
@@ -89,8 +97,8 @@ export const DrawerContext = React.createContext({}),
   }
 
 if (__DEV__) {
-  const slidePropTypes = require('../Slide/propTypes').default
+  const slidePropTexts = require('../Slide/propTypes').default
   Drawer.displayName = 'Drawer'
   DrawerBox.displayName = 'DrawerBox'
-  Drawer.propTypes = slidePropTypes
+  Drawer.propTypes = slidePropTexts
 }

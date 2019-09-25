@@ -25,10 +25,12 @@ import {Modal, ModalBox, ModalToggle, useFade} from 'curls'
 </Modal>
 **/
 const defaultStyles = css`
-  position: absolute;
+  position: fixed;
   margin: auto;
   left: 0;
   right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1000;
 `
 
@@ -37,7 +39,7 @@ let ID = 0
 export const ModalContext = React.createContext(emptyObj),
   {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),
-  useModalFade = ({isOpen}) => useFade({visible: isOpen, from: 0, to: 1}),
+  useModalFade = ({isOpen}) => useFade({visible: isOpen, duration: 'fast'}),
   useModalBox = props => {
     const context = useModalContext()
     props = useStyles('modal', styles, pushCss(props, [defaultStyles]))
