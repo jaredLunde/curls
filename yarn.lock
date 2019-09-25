@@ -1188,6 +1188,11 @@
   resolved "https://registry.yarnpkg.com/@react-hook/passive-layout-effect/-/passive-layout-effect-1.0.0.tgz#f0379e352a77e34bf08fcce6611c4b46e9546b95"
   integrity sha512-g3l7T5SRzCHya0wQrXo75UAYAJG4p87nsYAva5Nl5oXTz06cd0CxA0q8eAs6pQub4Lo5uk2E9V3t+DZadrIKcQ==
 
+"@react-hook/switch@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@react-hook/switch/-/switch-1.0.2.tgz#965819434d912a3ccfbb5684d9f604890dfa98b1"
+  integrity sha512-U0M3XdYlcbZ9TPJ8TlbXqXrqGlEdKwFE4a5HB5oBfUShM/Q5SMIIWtxgbaCekCMUhWm2PDZDJpBEQ95uLKi3yw==
+
 "@react-hook/throttle@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@react-hook/throttle/-/throttle-1.0.1.tgz#53d6f4e28b4e3630092ac278991744be26704871"

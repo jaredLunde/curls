@@ -7,19 +7,18 @@ import React, {
   useMemo,
 } from 'react'
 import {css} from '@emotion/core'
-import {createStyleHook, createElement, useStyles} from '@style-hooks/core'
+import {createElement, useStyles} from '@style-hooks/core'
 import useWindowSize from '@react-hook/window-size'
 import useWindowScroll from '@react-hook/window-scroll'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 import useMergedRef from '@react-hook/merged-ref'
+import useSwitch from '@react-hook/switch'
 import {useBox} from '../Box'
 import {useFade} from '../Fade'
-import useSwitch from '../useSwitch'
 import useParseBreakpoints from '../useParseBreakpoints'
 import {portalize, objectWithoutProps, pushCss} from '../utils'
 import {setPlacementStyle} from './utils'
 import emptyObj from 'empty/object'
-import {useModalContext} from '../Modal'
 
 export const PopoverContext = React.createContext({}),
   {Consumer: PopoverConsumer} = PopoverContext,
@@ -210,7 +209,7 @@ const ScrollPositioner = props =>
 
 const sizeOpt = {wait: 240}
 export const Popover = ({repositionOnScroll = false, open, children}) => {
-  const toggle = useSwitch(false, open)
+  const [isOpen, toggle] = useSwitch(false, open)
   const windowSize = useWindowSize(1280, 720, sizeOpt)
   return React.createElement(
     repositionOnScroll ? ScrollPositioner : PopoverContainer,
@@ -218,8 +217,8 @@ export const Popover = ({repositionOnScroll = false, open, children}) => {
       children,
       show: toggle.on,
       hide: toggle.off,
-      toggle: toggle.toggle,
-      isOpen: toggle.value,
+      toggle,
+      isOpen,
       windowSize,
     }
   )

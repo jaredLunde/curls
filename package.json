@@ -60,6 +60,7 @@
     "@essentials/are-equal": "^1.0.1",
     "@react-hook/merged-ref": "^1.0.0",
     "@react-hook/passive-layout-effect": "^1.0.0",
+    "@react-hook/switch": "^1.0.2",
     "@react-hook/window-scroll": "^1.0.1",
     "@react-hook/window-size": "^1.0.2",
     "@style-hooks/core": "^2.0.1",

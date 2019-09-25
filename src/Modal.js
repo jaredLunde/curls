@@ -2,11 +2,11 @@ import React, {useRef, useMemo, useContext} from 'react'
 import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
 import emptyObj from 'empty/object'
+import useSwitch from '@react-hook/switch'
 import createAriaPopupToggle from './createAriaPopupToggle'
 import createAriaPopup from './createAriaPopup'
 import {pushCss} from './utils'
 import * as styles from './Drawer/styles'
-import useSwitch from './useSwitch'
 import {useFade} from './Fade'
 
 /**
@@ -53,17 +53,18 @@ export const ModalContext = React.createContext(emptyObj),
   ModalToggle = createAriaPopupToggle(useModalContext),
   ModalBox = createAriaPopup(useModalContext, useModalBox),
   Modal = ({open, children}) => {
-    const toggle = useSwitch(false, open)
+    let [isOpen, toggle] = useSwitch(false, open)
+    isOpen = open === void 0 || open === null ? isOpen : open
     const id = useRef(`curls.modal.${ID++}`)
     const context = useMemo(
       () => ({
         id: id.current,
         show: toggle.on,
         hide: toggle.off,
-        toggle: toggle.toggle,
-        isOpen: toggle.value,
+        toggle,
+        isOpen,
       }),
-      [toggle.on, toggle.off, toggle.toggle, toggle.value]
+      [isOpen, toggle.on, toggle.off, toggle]
     )
 
     return (

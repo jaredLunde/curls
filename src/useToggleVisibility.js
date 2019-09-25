@@ -1,4 +1,4 @@
-import useSwitch from './useSwitch'
+import useSwitch from '@react-hook/switch'
 import {useTransitionable} from './Transitionable'
 
 export const getDelay = (value, props) =>
@@ -15,14 +15,15 @@ export default (
   // eslint-disable-next-line no-unused-vars
   {initiallyVisible = false, visible, ...props}
 ) => {
-  const toggler = useSwitch(initiallyVisible, visible)
-  props.isVisible = toggler.value
-  props.delay = getDelay(toggler.value, props)
+  let [isVisible, toggle] = useSwitch(initiallyVisible)
+  isVisible = visible === void 0 || visible === null ? isVisible : visible
+  props.isVisible = isVisible
+  props.delay = getDelay(isVisible, props)
   return {
-    show: toggler.on,
-    hide: toggler.off,
-    toggle: toggler.toggle,
-    isVisible: toggler.value,
+    show: toggle.on,
+    hide: toggle.off,
+    toggle,
+    isVisible,
     css: useTransitionable(useTransition(props)).css,
   }
 }

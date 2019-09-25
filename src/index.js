@@ -76,6 +76,8 @@ export {Slide, useSlide} from './Slide'
 export {Text, useText, prettyText} from './Text'
 export {TextArea, useTextArea} from './TextArea'
 export {Transitionable, useTransitionable} from './Transitionable'
+export {useAriaPopup} from './createAriaPopup'
+export {useAriaPopupToggle} from './createAriaPopupToggle'
 export useToggleVisibility, {getDelay} from './useToggleVisibility'
 export useMediaQuery from './useMediaQuery'
 

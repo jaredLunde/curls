@@ -1,13 +1,12 @@
 import React, {useContext, useMemo, useRef} from 'react'
 import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
+import useSwitch from '@react-hook/switch'
 import createAriaPopupToggle from '../createAriaPopupToggle'
 import createAriaPopup from '../createAriaPopup'
 import {pushCss, objectWithoutProps} from '../utils'
 import {useSlide} from '../Slide'
 import * as styles from './styles'
-import useSwitch from '../useSwitch'
-
 /**
 <Drawer fromBottom>
   {({toggle, isOpen}) => {
@@ -75,17 +74,18 @@ export const DrawerContext = React.createContext({}),
   DrawerToggle = createAriaPopupToggle(useDrawerContext),
   DrawerBox = createAriaPopup(useDrawerContext, useDrawerBox),
   Drawer = ({open, children}) => {
-    const toggle = useSwitch(false, open)
+    let [isOpen, toggle] = useSwitch(false, open)
+    isOpen = open === void 0 || open === null ? isOpen : open
     const id = useRef(`curls.drawer.${ID++}`)
     const context = useMemo(
       () => ({
         id: id.current,
         show: toggle.on,
         hide: toggle.off,
-        toggle: toggle.toggle,
-        isOpen: toggle.value,
+        toggle: toggle,
+        isOpen,
       }),
-      [toggle.on, toggle.off, toggle.toggle, toggle.value]
+      [isOpen, toggle.on, toggle.off, toggle]
     )
 
     return (
