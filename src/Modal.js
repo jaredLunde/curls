@@ -1,13 +1,12 @@
 import React, {useRef, useContext} from 'react'
 import {css} from '@emotion/core'
-import {useStyles, createElement} from '@style-hooks/core'
-import useLayoutEffect from '@react-hook/passive-layout-effect'
-import useMergedRef from '@react-hook/merged-ref'
+import {useStyles} from '@style-hooks/core'
 import emptyObj from 'empty/object'
-import {Button} from './Button'
-import {portalize, pushCss} from './utils'
-import {useBox} from './Box'
+import createAriaPopupToggle from './createAriaPopupToggle'
+import createAriaPopup from './createAriaPopup'
+import {pushCss} from './utils'
 import {useDrop} from './Drop'
+import * as styles from './Drawer/styles'
 
 /**
 import {Modal, ModalBox, ModalToggle, useFade} from 'curls'
@@ -33,51 +32,16 @@ const defaultStyles = css`
 `
 
 let ID = 0
-// TODO: close w/ escape button
 
 export const ModalContext = React.createContext(emptyObj),
   {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),
   useModalBox = props => {
-    const context = useModalContext()
-    props = useStyles(
-      'modal',
-      emptyObj,
-      pushCss(props, [defaultStyles, context.css])
-    )
-    props.id = props.id || context.id
-    props.tabIndex = props.tabIndex || '0'
+    props = useStyles('modal', styles, pushCss(props, [defaultStyles]))
     return props
   },
-  ModalToggle = React.forwardRef((props, ref) => {
-    const context = useModalContext()
-    props = Object.assign(
-      {
-        tabIndex: 0,
-        'aria-controls': context.id,
-        'aria-haspopup': 'true',
-        'aria-expanded': String(context.isVisible),
-        ref,
-      },
-      props
-    )
-    props.onClick = context.toggle
-    return createElement(Button, props)
-  }),
-  ModalBox = React.forwardRef(({children, portal, ...props}, ref) => {
-    const context = useModalContext()
-    const focusRef = useRef(null)
-
-    useLayoutEffect(() => {
-      if (context.isVisible) setTimeout(() => focusRef.current.focus(), 100)
-    }, [context.isVisible])
-
-    props = useBox(useModalBox(props))
-    props.children =
-      typeof children === 'function' ? children(context) : children
-    props.ref = useMergedRef(ref, focusRef)
-    return portalize(createElement('div', props), portal)
-  }),
+  ModalToggle = createAriaPopupToggle(useModalContext),
+  ModalBox = createAriaPopup(useModalContext, useModalBox),
   Modal = props => {
     const context = (props.transition || useDrop)(props)
     context.id = useRef(`curls.modal.${ID++}`).current
