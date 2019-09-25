@@ -1,11 +1,12 @@
-import React, {useContext, useRef} from 'react'
+import React, {useContext, useMemo, useRef} from 'react'
 import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
 import createAriaPopupToggle from '../createAriaPopupToggle'
 import createAriaPopup from '../createAriaPopup'
-import {pushCss} from '../utils'
+import {pushCss, objectWithoutProps} from '../utils'
 import {useSlide} from '../Slide'
 import * as styles from './styles'
+import useSwitch from '../useSwitch'
 
 /**
 <Drawer fromBottom>
@@ -42,27 +43,47 @@ const defaultStyles = css`
 `
 
 let ID = 0
+const withoutSlide = {
+  fromTop: 0,
+  fromRight: 0,
+  fromBottom: 0,
+  fromLeft: 0,
+  duration: 0,
+  easing: 0,
+}
 
 export const DrawerContext = React.createContext({}),
   {Consumer: DrawerConsumer} = DrawerContext,
   useDrawerContext = () => useContext(DrawerContext),
   useDrawerBox = props => {
-    props = useStyles('drawer', styles, pushCss(props, defaultStyles))
-    return props
+    const context = useDrawerContext()
+    let nextProps = useStyles('drawer', styles, pushCss(props, [defaultStyles]))
+    nextProps = objectWithoutProps(nextProps, withoutSlide)
+    return pushCss(
+      nextProps,
+      useSlide(Object.assign({visible: context.isOpen}, props)).css
+    )
   },
   DrawerToggle = createAriaPopupToggle(useDrawerContext),
   DrawerBox = createAriaPopup(useDrawerContext, useDrawerBox),
-  Drawer = props => {
-    const context = (props.transition || useSlide)(props)
-    context.id = useRef(`curls.drawer.${ID++}`).current
+  Drawer = ({open, children}) => {
+    const toggle = useSwitch(false, open)
+    const id = useRef(`curls.modal.${ID++}`)
+    const context = useMemo(
+      () => ({
+        id: id.current,
+        show: toggle.on,
+        hide: toggle.off,
+        toggle: toggle.toggle,
+        isOpen: toggle.value,
+      }),
+      [toggle.on, toggle.off, toggle.toggle, toggle.value]
+    )
+
     return (
       <DrawerContext.Provider
         value={context}
-        children={
-          typeof props.children === 'function'
-            ? props.children(context)
-            : props.children
-        }
+        children={typeof children === 'function' ? children(context) : children}
       />
     )
   }

@@ -9,14 +9,14 @@ export const useAriaPopup = (props, context) => {
   const focusRef = useRef(null)
 
   useLayoutEffect(() => {
-    if (context.isVisible) {
+    // handles closing the modal when the ESC key is pressed
+    if (context.isOpen) {
       setTimeout(() => focusRef.current.focus(), 100)
-      // handles ESC key
       const callback = event => parseInt(event.keyCode) === 27 && context.hide()
       focusRef.current.addEventListener('keyup', callback)
       return () => focusRef.current.removeEventListener('keyup', callback)
     }
-  }, [context.isVisible])
+  }, [context.isOpen])
 
   props.tabIndex = 0
   props.id = props.id || context.id

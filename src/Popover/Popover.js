@@ -32,8 +32,8 @@ const defaultStyles = css`
   `,
   withoutPop = {ref: 0, triggerRef: 0, style: 0}
 
-const defaultTransition = ({isVisible /*, placement*/}) =>
-  useFade({visible: isVisible, from: 0, to: 1})
+const defaultTransition = ({isOpen /*, placement*/}) =>
+  useFade({visible: isOpen, from: 0, to: 1})
 
 export const usePopoverBox = props => {
     const popover = usePopoverContext()
@@ -45,7 +45,7 @@ export const usePopoverBox = props => {
     props.id = props.id || popover.id
     props.tabIndex = props.tabIndex || '0'
     const {css} = (props.transition || defaultTransition)({
-      isVisible: popover.isVisible,
+      isOpen: popover.isOpen,
       placement: popover.placement,
     })
     delete props.transition
@@ -83,7 +83,7 @@ export const usePopoverBox = props => {
 
 let ID = 0
 const PopoverContainer = React.memo(
-  ({show, hide, toggle, isVisible, windowSize, scrollY, children}) => {
+  ({show, hide, toggle, isOpen, windowSize, scrollY, children}) => {
     const triggerRef = useRef(null),
       popoverRef = useRef(null),
       id = useRef(`curls.popover.${ID++}`).current,
@@ -107,7 +107,7 @@ const PopoverContainer = React.memo(
       ),
       childContext = useMemo(
         () => ({
-          isVisible,
+          isOpen,
           show,
           hide,
           toggle,
@@ -118,11 +118,11 @@ const PopoverContainer = React.memo(
           reposition,
           triggerRef,
         }),
-        [isVisible, show, hide, toggle, placement, reposition, style]
+        [isOpen, show, hide, toggle, placement, reposition, style]
       )
 
     useLayoutEffect(() => {
-      isVisible && reposition()
+      isOpen && reposition()
     }, [reposition, windowSize[0], windowSize[1], scrollY])
 
     return (
@@ -135,11 +135,11 @@ const PopoverContainer = React.memo(
     )
   },
   (prev, next) =>
-    (next.isVisible === false &&
-      prev.isVisible === false &&
+    (next.isOpen === false &&
+      prev.isOpen === false &&
       prev.children === next.children) ||
     (prev.children === next.children &&
-      prev.isVisible === next.isVisible &&
+      prev.isOpen === next.isOpen &&
       prev.windowSize[0] === next.windowSize[0] &&
       prev.windowSize[1] === next.windowSize[1] &&
       prev.scrollY === next.scrollY)
@@ -148,7 +148,7 @@ const PopoverContainer = React.memo(
 export const PopoverMe = props => {
   const {children, on, tabIndex} = props
   const matches = useParseBreakpoints(on),
-    {isVisible, show, hide, toggle, id} = usePopoverContext(),
+    {isOpen, show, hide, toggle, id} = usePopoverContext(),
     elementRef = useRef(null),
     ref = useMergedRef(usePopoverContext().triggerRef, elementRef)
 
@@ -197,7 +197,7 @@ export const PopoverMe = props => {
       (typeof tabIndex === 'string' ? tabIndex : undefined),
     'aria-controls': props['aria-controls'] || id,
     'aria-haspopup': 'true',
-    'aria-expanded': String(isVisible),
+    'aria-expanded': String(isOpen),
     ref,
   })
 }
@@ -209,8 +209,8 @@ const ScrollPositioner = props =>
   )
 
 const sizeOpt = {wait: 240}
-export const Popover = ({repositionOnScroll = false, visible, children}) => {
-  const toggle = useSwitch(false, visible)
+export const Popover = ({repositionOnScroll = false, open, children}) => {
+  const toggle = useSwitch(false, open)
   const windowSize = useWindowSize(1280, 720, sizeOpt)
   return React.createElement(
     repositionOnScroll ? ScrollPositioner : PopoverContainer,
@@ -219,7 +219,7 @@ export const Popover = ({repositionOnScroll = false, visible, children}) => {
       show: toggle.on,
       hide: toggle.off,
       toggle: toggle.toggle,
-      isVisible: toggle.value,
+      isOpen: toggle.value,
       windowSize,
     }
   )

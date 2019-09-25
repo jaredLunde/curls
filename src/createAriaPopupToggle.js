@@ -9,11 +9,11 @@ export const useAriaPopupToggle = (props, context) => {
   const seen = useRef(false)
 
   useLayoutEffect(() => {
-    if (context.isVisible === false) {
+    if (context.isOpen === false) {
       if (seen.current === true) focusRef.current.focus()
       seen.current = true
     }
-  }, [context.isVisible])
+  }, [context.isOpen])
 
   const nextProps = Object.assign(
     {
@@ -21,7 +21,7 @@ export const useAriaPopupToggle = (props, context) => {
       tabIndex: 0,
       'aria-controls': context.id,
       'aria-haspopup': 'true',
-      'aria-expanded': String(context.isVisible),
+      'aria-expanded': String(context.isOpen),
       ref: focusRef,
     },
     props

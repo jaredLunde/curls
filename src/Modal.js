@@ -1,12 +1,13 @@
-import React, {useRef, useContext} from 'react'
+import React, {useRef, useMemo, useContext} from 'react'
 import {css} from '@emotion/core'
 import {useStyles} from '@style-hooks/core'
 import emptyObj from 'empty/object'
 import createAriaPopupToggle from './createAriaPopupToggle'
 import createAriaPopup from './createAriaPopup'
 import {pushCss} from './utils'
-import {useDrop} from './Drop'
 import * as styles from './Drawer/styles'
+import useSwitch from './useSwitch'
+import {useFade} from './Fade'
 
 /**
 import {Modal, ModalBox, ModalToggle, useFade} from 'curls'
@@ -36,23 +37,37 @@ let ID = 0
 export const ModalContext = React.createContext(emptyObj),
   {Consumer: ModalConsumer} = ModalContext,
   useModalContext = () => useContext(ModalContext),
+  useModalFade = ({isOpen}) => useFade({visible: isOpen, from: 0, to: 1}),
   useModalBox = props => {
+    const context = useModalContext()
     props = useStyles('modal', styles, pushCss(props, [defaultStyles]))
-    return props
+    const transition = props.transition
+    delete props.transition
+    return pushCss(
+      props,
+      (transition || useModalFade)({isOpen: context.isOpen}).css
+    )
   },
   ModalToggle = createAriaPopupToggle(useModalContext),
   ModalBox = createAriaPopup(useModalContext, useModalBox),
-  Modal = props => {
-    const context = (props.transition || useDrop)(props)
-    context.id = useRef(`curls.modal.${ID++}`).current
+  Modal = ({open, children}) => {
+    const toggle = useSwitch(false, open)
+    const id = useRef(`curls.modal.${ID++}`)
+    const context = useMemo(
+      () => ({
+        id: id.current,
+        show: toggle.on,
+        hide: toggle.off,
+        toggle: toggle.toggle,
+        isOpen: toggle.value,
+      }),
+      [toggle.on, toggle.off, toggle.toggle, toggle.value]
+    )
+
     return (
       <ModalContext.Provider
         value={context}
-        children={
-          typeof props.children === 'function'
-            ? props.children(context)
-            : props.children
-        }
+        children={typeof children === 'function' ? children(context) : children}
       />
     )
   }

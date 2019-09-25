@@ -207,7 +207,7 @@ export const setPlacementStyle = (
   popover,
   windowSize
 ) => {
-  let result,
+  let result = {},
     placement = requestedPlacement
   const triggerRect = trigger.getBoundingClientRect(),
     popoverRect = popover.getBoundingClientRect()
