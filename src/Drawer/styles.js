@@ -4,7 +4,6 @@ const fromY = css`
   right: 0;
   left: 0;
   min-width: 100%;
-  width: 100%;
   min-height: auto;
   overflow-x: auto;
 `

@@ -7,6 +7,7 @@ export createComponent from './createComponent'
 export createRenderProp from './createRenderProp'
 
 export {
+  assignDefaults,
   colorize,
   directionalScale,
   get as getDefault,

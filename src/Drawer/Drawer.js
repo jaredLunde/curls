@@ -4,7 +4,7 @@ import {useStyles} from '@style-hooks/core'
 import useSwitch from '@react-hook/switch'
 import createAriaPopupToggle from '../createAriaPopupToggle'
 import createAriaPopup from '../createAriaPopup'
-import {pushCss, objectWithoutProps} from '../utils'
+import {pushCss, objectWithoutProps, assignDefaults} from '../utils'
 import {useSlide} from '../Slide'
 import * as styles from './styles'
 /**
@@ -59,12 +59,16 @@ export const DrawerContext = React.createContext({}),
   useDrawerContext = () => useContext(DrawerContext),
   useDrawerBox = props => {
     const context = useDrawerContext()
-    let nextProps = useStyles('drawer', styles, pushCss(props, [defaultStyles]))
+    let nextProps = useStyles(
+      'drawer',
+      styles,
+      pushCss(assignDefaults({fromLeft: true}, props), [defaultStyles])
+    )
     nextProps = objectWithoutProps(nextProps, withoutSlide)
     return pushCss(
       nextProps,
       useSlide(
-        Object.assign(
+        assignDefaults(
           {visible: context.isOpen, fromLeft: true, duration: 'fast'},
           props
         )

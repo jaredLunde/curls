@@ -1,3 +1,4 @@
+export assignDefaults from './assignDefaults'
 export colorize from './colorize'
 export directionalScale, {isDirectional} from './directionalScale'
 export get from './get'
