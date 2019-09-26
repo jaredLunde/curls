@@ -43,10 +43,6 @@ const defaultStyles = css`
 
 let ID = 0
 const withoutSlide = {
-  fromTop: 0,
-  fromRight: 0,
-  fromBottom: 0,
-  fromLeft: 0,
   duration: 0,
   easing: 0,
 }

@@ -1,15 +1,15 @@
-const centerX = (triggerRect, popoverRect, windowSize) => ({
+const centerX = (triggerRect, popoverRect, constrainTo) => ({
   left: 'auto',
   right:
-    windowSize[0] -
+    constrainTo.width -
     triggerRect.right -
     (popoverRect.width - triggerRect.width) / 2,
 })
 
-const centerY = (triggerRect, popoverRect, windowSize) => ({
+const centerY = (triggerRect, popoverRect, constrainTo) => ({
   top: 'auto',
   bottom:
-    windowSize[1] -
+    constrainTo.height -
     triggerRect.bottom -
     (popoverRect.height - triggerRect.height) / 2,
 })
@@ -19,9 +19,9 @@ const startXinnerEdge = triggerRect => ({
   right: 'auto',
 })
 
-const startXouterEdge = (triggerRect, boxSize, windowSize) => ({
+const startXouterEdge = (triggerRect, boxSize, constrainTo) => ({
   left: 'auto',
-  right: windowSize[0] - triggerRect.left,
+  right: constrainTo.width - triggerRect.left,
 })
 
 const endXouterEdge = triggerRect => ({
@@ -29,10 +29,10 @@ const endXouterEdge = triggerRect => ({
   right: 'auto',
 })
 
-const endXinnerEdge = (triggerRect, boxSize, windowSize) => {
+const endXinnerEdge = (triggerRect, boxSize, constrainTo) => {
   return {
     left: 'auto',
-    right: windowSize[0] - triggerRect.right,
+    right: constrainTo.width - triggerRect.right,
   }
 }
 
@@ -41,14 +41,14 @@ const startYinnerEdge = triggerRect => ({
   bottom: 'auto',
 })
 
-const startYouterEdge = (triggerRect, boxSize, windowSize) => ({
+const startYouterEdge = (triggerRect, boxSize, constrainTo) => ({
   top: 'auto',
-  bottom: windowSize[1] - triggerRect.top,
+  bottom: constrainTo.height - triggerRect.top,
 })
 
-const endYinnerEdge = (triggerRect, boxSize, windowSize) => ({
+const endYinnerEdge = (triggerRect, boxSize, constrainTo) => ({
   top: 'auto',
-  bottom: windowSize[1] - triggerRect.bottom,
+  bottom: constrainTo.height - triggerRect.bottom,
 })
 
 const endYouterEdge = triggerRect => ({
@@ -57,144 +57,151 @@ const endYouterEdge = triggerRect => ({
 })
 
 const placementCallback = {
-  '': (triggerRect, popoverRect, windowSize) => ({
+  '': (triggerRect, popoverRect, constrainTo) => ({
     placement: 'center',
     style: Object.assign(
-      centerX(triggerRect, popoverRect, windowSize),
-      centerY(triggerRect, popoverRect, windowSize)
+      centerX(triggerRect, popoverRect, constrainTo),
+      centerY(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  top: (triggerRect, popoverRect, windowSize) => ({
+  top: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'top',
     style: Object.assign(
-      centerX(triggerRect, popoverRect, windowSize),
-      startYouterEdge(triggerRect, popoverRect, windowSize)
+      centerX(triggerRect, popoverRect, constrainTo),
+      startYouterEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  topleft: (triggerRect, popoverRect, windowSize) => ({
+  topleft: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'topLeft',
     style: Object.assign(
-      startYouterEdge(triggerRect, popoverRect, windowSize),
-      startXinnerEdge(triggerRect, popoverRect, windowSize)
+      startYouterEdge(triggerRect, popoverRect, constrainTo),
+      startXinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  topright: (triggerRect, popoverRect, windowSize) => ({
+  topright: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'topRight',
     style: Object.assign(
-      startYouterEdge(triggerRect, popoverRect, windowSize),
-      endXinnerEdge(triggerRect, popoverRect, windowSize)
+      startYouterEdge(triggerRect, popoverRect, constrainTo),
+      endXinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innertop: (triggerRect, popoverRect, windowSize) => ({
+  innertop: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerTop',
     style: Object.assign(
-      centerX(triggerRect, popoverRect, windowSize),
-      startYinnerEdge(triggerRect, popoverRect, windowSize)
+      centerX(triggerRect, popoverRect, constrainTo),
+      startYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innertopleft: (triggerRect, popoverRect, windowSize) => ({
+  innertopleft: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerTopLeft',
     style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, windowSize),
-      startYinnerEdge(triggerRect, popoverRect, windowSize)
+      startXinnerEdge(triggerRect, popoverRect, constrainTo),
+      startYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innertopright: (triggerRect, popoverRect, windowSize) => ({
+  innertopright: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerTopRight',
     style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, windowSize),
-      startYinnerEdge(triggerRect, popoverRect, windowSize)
+      endXinnerEdge(triggerRect, popoverRect, constrainTo),
+      startYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  right: (triggerRect, popoverRect, windowSize) => ({
+  right: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'right',
     style: Object.assign(
-      endXouterEdge(triggerRect, popoverRect, windowSize),
-      centerY(triggerRect, popoverRect, windowSize)
+      endXouterEdge(triggerRect, popoverRect, constrainTo),
+      centerY(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  righttop: (triggerRect, popoverRect, windowSize) => ({
+  righttop: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'rightTop',
     style: Object.assign(
-      endXouterEdge(triggerRect, popoverRect, windowSize),
-      startYinnerEdge(triggerRect, popoverRect, windowSize)
+      endXouterEdge(triggerRect, popoverRect, constrainTo),
+      startYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innerright: (triggerRect, popoverRect, windowSize) => ({
+  rightbottom: (triggerRect, popoverRect, constrainTo) => ({
+    placement: 'rightBottom',
+    style: Object.assign(
+      endXouterEdge(triggerRect, popoverRect, constrainTo),
+      endYinnerEdge(triggerRect, popoverRect, constrainTo)
+    ),
+  }),
+  innerright: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerRight',
     style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, windowSize),
-      centerY(triggerRect, popoverRect, windowSize)
+      endXinnerEdge(triggerRect, popoverRect, constrainTo),
+      centerY(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  bottom: (triggerRect, popoverRect, windowSize) => ({
+  bottom: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'bottom',
     style: Object.assign(
-      centerX(triggerRect, popoverRect, windowSize),
-      endYouterEdge(triggerRect, popoverRect, windowSize)
+      centerX(triggerRect, popoverRect, constrainTo),
+      endYouterEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  bottomleft: (triggerRect, popoverRect, windowSize) => ({
+  bottomleft: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'bottomLeft',
     style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, windowSize),
-      endYouterEdge(triggerRect, popoverRect, windowSize)
+      startXinnerEdge(triggerRect, popoverRect, constrainTo),
+      endYouterEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  bottomright: (triggerRect, popoverRect, windowSize) => ({
+  bottomright: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'bottomRight',
     style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, windowSize),
-      endYouterEdge(triggerRect, popoverRect, windowSize)
+      endXinnerEdge(triggerRect, popoverRect, constrainTo),
+      endYouterEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innerbottom: (triggerRect, popoverRect, windowSize) => ({
+  innerbottom: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerBottom',
     style: Object.assign(
-      centerX(triggerRect, popoverRect, windowSize),
-      endYinnerEdge(triggerRect, popoverRect, windowSize)
+      centerX(triggerRect, popoverRect, constrainTo),
+      endYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innerbottomright: (triggerRect, popoverRect, windowSize) => ({
+  innerbottomright: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerBottomRight',
     style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, windowSize),
-      endYinnerEdge(triggerRect, popoverRect, windowSize)
+      endXinnerEdge(triggerRect, popoverRect, constrainTo),
+      endYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innerbottomleft: (triggerRect, popoverRect, windowSize) => ({
+  innerbottomleft: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerBottomLeft',
     style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, windowSize),
-      endYinnerEdge(triggerRect, popoverRect, windowSize)
+      startXinnerEdge(triggerRect, popoverRect, constrainTo),
+      endYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  left: (triggerRect, popoverRect, windowSize) => ({
+  left: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'left',
     style: Object.assign(
-      startXouterEdge(triggerRect, popoverRect, windowSize),
-      centerY(triggerRect, popoverRect, windowSize)
+      startXouterEdge(triggerRect, popoverRect, constrainTo),
+      centerY(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  lefttop: (triggerRect, popoverRect, windowSize) => ({
+  lefttop: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'leftTop',
     style: Object.assign(
-      startXouterEdge(triggerRect, popoverRect, windowSize),
-      startYinnerEdge(triggerRect, popoverRect, windowSize)
+      startXouterEdge(triggerRect, popoverRect, constrainTo),
+      startYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  leftbottom: (triggerRect, popoverRect, windowSize) => ({
+  leftbottom: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'leftBottom',
     style: Object.assign(
-      startXouterEdge(triggerRect, popoverRect, windowSize),
-      endYinnerEdge(triggerRect, popoverRect, windowSize)
+      startXouterEdge(triggerRect, popoverRect, constrainTo),
+      endYinnerEdge(triggerRect, popoverRect, constrainTo)
     ),
   }),
-  innerleft: (triggerRect, popoverRect, windowSize) => ({
+  innerleft: (triggerRect, popoverRect, constrainTo) => ({
     placement: 'innerLeft',
     style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, windowSize),
-      centerY(triggerRect, popoverRect, windowSize)
+      startXinnerEdge(triggerRect, popoverRect, constrainTo),
+      centerY(triggerRect, popoverRect, constrainTo)
     ),
   }),
 }
@@ -205,20 +212,27 @@ export const setPlacementStyle = (
   requestedPlacement,
   trigger,
   popover,
-  windowSize
+  constrainTo
 ) => {
+  if (typeof window !== 'undefined' && constrainTo === window)
+    constrainTo = document.documentElement
   let result = {},
     placement = requestedPlacement
   const triggerRect = trigger.getBoundingClientRect(),
     popoverRect = popover.getBoundingClientRect()
+  constrainTo = {
+    width: constrainTo.offsetWidth,
+    height: constrainTo.offsetHeight,
+    top: constrainTo.offsetTop,
+    right: constrainTo.offsetLeft + constrainTo.offsetWidth,
+    bottom: constrainTo.offsetTop + constrainTo.offsetHeight,
+    left: constrainTo.offsetLeft,
+  }
   popoverRect.width = popover.offsetWidth
   popoverRect.height = popover.offsetHeight
 
   if (typeof placement === 'function') {
-    result = requestedPlacement(triggerRect, popoverRect, {
-      width: windowSize[0],
-      height: windowSize[1],
-    })
+    result = requestedPlacement(triggerRect, popoverRect, constrainTo)
 
     if (typeof result === 'string') {
       placement = result
@@ -240,7 +254,7 @@ export const setPlacementStyle = (
   if (typeof placement === 'string') {
     result = placementCallback[
       placement.toLowerCase().replace(defaultPlacements, '')
-    ](triggerRect, popoverRect, windowSize)
+    ](triggerRect, popoverRect, constrainTo)
   }
 
   result.requestedPlacement = requestedPlacement

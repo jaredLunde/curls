@@ -82,7 +82,16 @@ export const usePopoverBox = props => {
 
 let ID = 0
 const PopoverContainer = React.memo(
-  ({open, close, toggle, isOpen, windowSize, scrollY, children}) => {
+  ({
+    open,
+    close,
+    toggle,
+    isOpen,
+    constrainTo,
+    windowSize,
+    scrollY,
+    children,
+  }) => {
     const triggerRef = useRef(null),
       popoverRef = useRef(null),
       id = useRef(`curls.popover.${ID++}`).current,
@@ -98,11 +107,11 @@ const PopoverContainer = React.memo(
               placement,
               triggerRef.current,
               popoverRef.current,
-              windowSize
+              constrainTo
             )
           )
         },
-        [requestedPlacement, windowSize]
+        [requestedPlacement, constrainTo]
       ),
       childContext = useMemo(
         () => ({
@@ -122,7 +131,7 @@ const PopoverContainer = React.memo(
 
     useLayoutEffect(() => {
       isOpen && reposition()
-    }, [reposition, windowSize[0], windowSize[1], scrollY])
+    }, [reposition, windowSize[0], windowSize[1], scrollY, constrainTo])
 
     return (
       <PopoverContext.Provider
@@ -209,9 +218,10 @@ const ScrollPositioner = props =>
 
 const sizeOpt = {wait: 240}
 export const Popover = ({
-  repositionOnScroll = false,
   open,
   initialOpen,
+  repositionOnScroll = false,
+  constrainTo = typeof document !== 'undefined' && document.documentElement,
   children,
 }) => {
   let [isOpen, toggle] = useSwitch(initialOpen)
@@ -226,6 +236,7 @@ export const Popover = ({
       toggle,
       isOpen,
       windowSize,
+      constrainTo,
     }
   )
 }
