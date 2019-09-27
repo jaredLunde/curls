@@ -56,6 +56,111 @@ const endYouterEdge = triggerRect => ({
   bottom: 'auto',
 })
 
+const constrain = placement => (
+  triggerRect,
+  popoverRect,
+  constrainTo,
+  constrainStrategy
+) => {
+  const flip = constrainStrategy === 'flip',
+    flipX = constrainStrategy === 'flipX',
+    flipY = constrainStrategy === 'flipY'
+
+  if (flip || flipX || flipY) {
+    // center checks
+    if (!placement) {
+      if (flip || flipY) {
+        if (popoverRect.bottom > constrainTo.bottom) {
+          placement = 'top'
+        } else if (popoverRect.top < constrainTo.top) {
+          placement = 'bottom'
+        }
+      }
+
+      if (!placement && (flip || flipX)) {
+        if (popoverRect.left < constrainTo.left) {
+          placement = 'right'
+        } else if (popoverRect.right > constrainTo.right) {
+          placement = 'left'
+        }
+      }
+    }
+    // order of these indexes matters... must be before placement === top check
+    const leftIdx = placement.indexOf('left'),
+      topIdx = placement.indexOf('top')
+
+    if (placement === 'top' || placement === 'bottom') {
+      if (flip || flipX) {
+        // handles center X-axis case
+        if (popoverRect.left < constrainTo.left) {
+          placement += 'left'
+        } else if (popoverRect.right > constrainTo.right) {
+          placement += 'right'
+        }
+      }
+    }
+
+    if (flip || flipX) {
+      // left checks
+      if (
+        (leftIdx === 0 && popoverRect.left < constrainTo.left) ||
+        (leftIdx > 0 && popoverRect.right > constrainTo.right)
+      ) {
+        placement = placement.replace('left', 'right')
+      } else {
+        const rightIdx = placement.indexOf('right')
+        // right checks
+        if (
+          (rightIdx === 0 && popoverRect.right > constrainTo.right) ||
+          (rightIdx > 0 && popoverRect.left < constrainTo.left)
+        ) {
+          placement = placement.replace('right', 'left')
+        }
+      }
+      // handles center Y-axis case
+      if (flip || flipY) {
+        if (placement === 'left' || placement === 'right') {
+          if (popoverRect.top < constrainTo.top) {
+            placement += 'top'
+          } else if (popoverRect.bottom > constrainTo.bottom) {
+            placement += 'bottom'
+          }
+        }
+      }
+    }
+
+    if (flip || flipY) {
+      // top checks
+      if (
+        (topIdx === 0 && popoverRect.top < constrainTo.top) ||
+        (topIdx > 0 && popoverRect.bottom > constrainTo.bottom)
+      ) {
+        placement = placement.replace('top', 'bottom')
+      } else {
+        const bottomIdx = placement.indexOf('bottom')
+        // bottom checks
+        if (
+          (bottomIdx === 0 && popoverRect.bottom > constrainTo.bottom) ||
+          (bottomIdx > 0 && popoverRect.top < constrainTo.top)
+        ) {
+          placement = placement.replace('bottom', 'top')
+        }
+      }
+    }
+  } else if (typeof constrainStrategy === 'function') {
+    placement = constrain(triggerRect, popoverRect, constrainTo)
+
+    if (typeof placement !== 'string') return placement
+  }
+
+  return placementCallback[placement](
+    triggerRect,
+    popoverRect,
+    constrainTo,
+    constrainStrategy
+  )
+}
+
 const placementCallback = {
   '': (triggerRect, popoverRect, constrainTo) => ({
     placement: 'center',
@@ -212,27 +317,37 @@ export const setPlacementStyle = (
   requestedPlacement,
   trigger,
   popover,
-  constrainTo
+  constrainTo,
+  constrainStrategy
 ) => {
+  if (!trigger || !popover) return requestedPlacement
+
   if (typeof window !== 'undefined' && constrainTo === window)
     constrainTo = document.documentElement
   let result = {},
     placement = requestedPlacement
   const triggerRect = trigger.getBoundingClientRect(),
     popoverRect = popover.getBoundingClientRect()
+
   constrainTo = {
     width: constrainTo.offsetWidth,
     height: constrainTo.offsetHeight,
     top: constrainTo.offsetTop,
-    right: constrainTo.offsetLeft + constrainTo.offsetWidth,
-    bottom: constrainTo.offsetTop + constrainTo.offsetHeight,
+    right: constrainTo.offsetWidth,
+    bottom: constrainTo.offsetHeight,
     left: constrainTo.offsetLeft,
   }
+
   popoverRect.width = popover.offsetWidth
   popoverRect.height = popover.offsetHeight
 
   if (typeof placement === 'function') {
-    result = requestedPlacement(triggerRect, popoverRect, constrainTo)
+    result = requestedPlacement(
+      triggerRect,
+      popoverRect,
+      constrainTo,
+      constrainStrategy
+    )
 
     if (typeof result === 'string') {
       placement = result
@@ -252,9 +367,8 @@ export const setPlacementStyle = (
   }
 
   if (typeof placement === 'string') {
-    result = placementCallback[
-      placement.toLowerCase().replace(defaultPlacements, '')
-    ](triggerRect, popoverRect, constrainTo)
+    const fn = constrain(placement.toLowerCase().replace(defaultPlacements, ''))
+    result = fn(triggerRect, popoverRect, constrainTo, constrainStrategy)
   }
 
   result.requestedPlacement = requestedPlacement

@@ -69,7 +69,7 @@ export const usePopoverBox = props => {
       } else if (matches) {
         popover.reposition(matches.filter(match => match.matches).pop().value)
       }
-    }, [matches, popover.reposition])
+    }, [placement, matches, popover.reposition])
 
     props.ref = useMergedRef(popover.ref, ref)
     props.children =
@@ -88,6 +88,7 @@ const PopoverContainer = React.memo(
     toggle,
     isOpen,
     constrainTo,
+    constrainStrategy,
     windowSize,
     scrollY,
     children,
@@ -107,11 +108,12 @@ const PopoverContainer = React.memo(
               placement,
               triggerRef.current,
               popoverRef.current,
-              constrainTo
+              constrainTo,
+              constrainStrategy
             )
           )
         },
-        [requestedPlacement, constrainTo]
+        [requestedPlacement, constrainTo, constrainStrategy]
       ),
       childContext = useMemo(
         () => ({
@@ -131,7 +133,7 @@ const PopoverContainer = React.memo(
 
     useLayoutEffect(() => {
       isOpen && reposition()
-    }, [reposition, windowSize[0], windowSize[1], scrollY, constrainTo])
+    }, [isOpen, reposition, windowSize[0], windowSize[1], scrollY, constrainTo])
 
     return (
       <PopoverContext.Provider
@@ -150,7 +152,9 @@ const PopoverContainer = React.memo(
       prev.isOpen === next.isOpen &&
       prev.windowSize[0] === next.windowSize[0] &&
       prev.windowSize[1] === next.windowSize[1] &&
-      prev.scrollY === next.scrollY)
+      prev.scrollY === next.scrollY &&
+      prev.constrainTo === next.constrainTo &&
+      prev.constrainStrategy === next.constrainStrategy)
 )
 
 export const PopoverMe = props => {
@@ -222,6 +226,7 @@ export const Popover = ({
   initialOpen,
   repositionOnScroll = false,
   constrainTo = typeof document !== 'undefined' && document.documentElement,
+  constrainStrategy = 'flip',
   children,
 }) => {
   let [isOpen, toggle] = useSwitch(initialOpen)
@@ -237,6 +242,7 @@ export const Popover = ({
       isOpen,
       windowSize,
       constrainTo,
+      constrainStrategy,
     }
   )
 }
