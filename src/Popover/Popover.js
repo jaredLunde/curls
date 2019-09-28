@@ -145,9 +145,12 @@ const PopoverContainer = React.memo(
     )
   },
   (prev, next) =>
+    // bails out if the popover is closed and was closed
+    // and the children didn't change
     (next.isOpen === false &&
       prev.isOpen === false &&
       prev.children === next.children) ||
+    // bails out if all else is equal
     (prev.children === next.children &&
       prev.isOpen === next.isOpen &&
       prev.windowSize[0] === next.windowSize[0] &&
