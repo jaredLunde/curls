@@ -42,7 +42,7 @@ export const ModalContext = React.createContext(emptyObj),
   useModalFade = ({isOpen}) => useFade({visible: isOpen, duration: 'fast'}),
   useModalBox = props => {
     const context = useModalContext()
-    props = useStyles('modal', styles, pushCss(props, [defaultStyles]))
+    props = useStyles('modal', styles, pushCss(props, defaultStyles))
     const transition = props.transition
     delete props.transition
     return pushCss(

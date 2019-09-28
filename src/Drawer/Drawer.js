@@ -58,7 +58,7 @@ export const DrawerContext = React.createContext({}),
     let nextProps = useStyles(
       'drawer',
       styles,
-      pushCss(assignDefaults({fromLeft: true}, props), [defaultStyles])
+      pushCss(assignDefaults({fromLeft: true}, props), defaultStyles)
     )
     nextProps = objectWithoutProps(nextProps, withoutSlide)
     return pushCss(
