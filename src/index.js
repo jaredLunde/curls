@@ -79,6 +79,7 @@ export {TextArea, useTextArea} from './TextArea'
 export {Transitionable, useTransitionable} from './Transitionable'
 export {useAriaPopup} from './createAriaPopup'
 export {useAriaPopupToggle} from './createAriaPopupToggle'
+export useBreakpointValueParser from './useBreakpointValueParser'
 export useToggleVisibility, {getDelay} from './useToggleVisibility'
 export useMediaQuery from './useMediaQuery'
 
