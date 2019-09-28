@@ -265,7 +265,7 @@ export const m = memoTheme((value, theme) => {
   if (isDirectional(value))
     return directionalScale('margin-{XYZ}', spacingScale, value, spacingUnit)
   else
-    return value.trim() === 'auto'
+    return typeof value === 'string' && value.trim() === 'auto'
       ? css`
           margin: auto;
         `
