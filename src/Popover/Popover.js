@@ -15,7 +15,7 @@ import useSwitch from '@react-hook/switch'
 import {useBox} from '../Box'
 import {useFade} from '../Fade'
 import useScroll from '../useScroll'
-import useParseBreakpoints from '../useParseBreakpoints'
+import useBreakpointValueParser from '../useBreakpointValueParser'
 import {portalize, objectWithoutProps, pushCss} from '../utils'
 import {setPlacementStyle} from './utils'
 import emptyObj from 'empty/object'
@@ -60,7 +60,7 @@ export const usePopoverBox = props => {
     const {placement = 'bottom', portal, children, ...props} = useBox(
       usePopoverBox(props_)
     )
-    const matches = useParseBreakpoints(placement)
+    const matches = useBreakpointValueParser(placement)
     const popover = usePopoverContext()
     // handles repositioning the popover
     // Yes this is correct, it's useEffect, not useLayoutEffect
@@ -174,7 +174,7 @@ const PopoverContainer = React.memo(
 
 export const PopoverMe = props => {
   const {children, on, tabIndex} = props
-  const matches = useParseBreakpoints(on),
+  const matches = useBreakpointValueParser(on),
     {isOpen, open, close, toggle, id} = usePopoverContext(),
     elementRef = useRef(null),
     ref = useMergedRef(usePopoverContext().triggerRef, elementRef),

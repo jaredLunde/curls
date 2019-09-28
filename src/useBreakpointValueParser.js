@@ -6,7 +6,7 @@ import {useBreakpoint} from './Breakpoint'
 const splitWs = /(?!\[.*)\s+(?![^[]*?\])/g,
   replaceWs = /^\s+|\s+$|\s+(?=\s)/g
 
-const useParseBreakpoints = propValue => {
+const useBreakpointValueParser = propValue => {
   if (typeof propValue !== 'string') return null
 
   const theme = useTheme(),
@@ -64,4 +64,4 @@ const useParseBreakpoints = propValue => {
   }, [matches, breakpoints, theme.breakpoints])
 }
 
-export default useParseBreakpoints
+export default useBreakpointValueParser
