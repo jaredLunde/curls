@@ -2,6 +2,7 @@ import React, {useRef} from 'react'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 import useMergedRef from '@react-hook/merged-ref'
 import {createElement} from '@style-hooks/core'
+import {createStyleHook} from '@style-hooks/core'
 import {Button} from './Button'
 
 export const useAriaPopupToggle = (props, context) => {
@@ -35,9 +36,11 @@ export const useAriaPopupToggle = (props, context) => {
   return nextProps
 }
 
-export default useContext =>
-  React.forwardRef((props, ref) => {
-    const nextProps = useAriaPopupToggle(props, useContext())
+export default (name, useContext) => {
+  const useStylesHook = createStyleHook(name, {})
+  return React.forwardRef((props, ref) => {
+    const nextProps = useStylesHook(useAriaPopupToggle(props, useContext()))
     nextProps.ref = useMergedRef(ref, nextProps.ref)
     return createElement(Button, nextProps)
   })
+}

@@ -71,7 +71,7 @@ export const DrawerContext = React.createContext({}),
       ).css
     )
   },
-  DrawerToggle = createAriaPopupToggle(useDrawerContext),
+  DrawerToggle = createAriaPopupToggle('drawerToggle', useDrawerContext),
   DrawerBox = createAriaPopup(useDrawerContext, useDrawerBox),
   Drawer = ({open, initialOpen, children}) => {
     let [isOpen, toggle] = useSwitch(initialOpen)

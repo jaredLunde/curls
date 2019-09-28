@@ -66,7 +66,6 @@ export const usePopoverBox = props => {
     // Yes this is correct, it's useEffect, not useLayoutEffect
     // Just move on.
     useEffect(() => {
-      console.log('wtf...', matches)
       if (typeof placement === 'function') {
         popover.reposition(placement)
       } else if (matches) {

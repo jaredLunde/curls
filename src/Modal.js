@@ -50,7 +50,7 @@ export const ModalContext = React.createContext(emptyObj),
       (transition || useModalFade)({isOpen: context.isOpen}).css
     )
   },
-  ModalToggle = createAriaPopupToggle(useModalContext),
+  ModalToggle = createAriaPopupToggle('modalToggle', useModalContext),
   ModalBox = createAriaPopup(useModalContext, useModalBox),
   Modal = ({open, initialOpen, children}) => {
     let [isOpen, toggle] = useSwitch(initialOpen)
