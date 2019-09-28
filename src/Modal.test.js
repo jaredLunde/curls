@@ -6,17 +6,17 @@ import {Slide} from './Slide'
 
 const renderModal = renderProps(Modal)
 
-test('<Modal> -> show', () => {
+test('<Modal> -> open', () => {
   const state = renderModal()
   expect(state).toMatchSnapshot('closed')
-  act(state.show)
+  act(state.open)
   expect(state).toMatchSnapshot('open')
 })
 
-test('<Modal> -> hide', () => {
+test('<Modal> -> close', () => {
   const state = renderModal({initialOpen: true})
   expect(state).toMatchSnapshot('open')
-  act(state.hide)
+  act(state.close)
   expect(state).toMatchSnapshot('closed')
 })
 
@@ -32,7 +32,7 @@ test('<Modal> -> toggle', () => {
 test('<Modal> -> custom transition', () => {
   const state = renderModal({transition: Slide, fromBottom: true})
   expect(state).toMatchSnapshot('closed')
-  act(state.show)
+  act(state.open)
   expect(state).toMatchSnapshot('open')
 })
 

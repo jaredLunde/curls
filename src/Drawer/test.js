@@ -6,17 +6,17 @@ import {useFade} from '../Fade'
 
 const renderDrawer = renderProps(Drawer)
 
-test('<Drawer> -> show', () => {
+test('<Drawer> -> open', () => {
   const state = renderDrawer()
   expect(state).toMatchSnapshot('closed')
-  act(state.show)
+  act(state.open)
   expect(state).toMatchSnapshot('open')
 })
 
-test('<Drawer> -> hide', () => {
+test('<Drawer> -> close', () => {
   const state = renderDrawer({initiallyOpen: true})
   expect(state).toMatchSnapshot('open')
-  act(state.hide)
+  act(state.close)
   expect(state).toMatchSnapshot('closed')
 })
 
@@ -32,7 +32,7 @@ test('<Drawer> -> toggle', () => {
 test('<Drawer> -> custom transition', () => {
   const state = renderDrawer({transition: useFade, fromBottom: true})
   expect(state).toMatchSnapshot('closed')
-  act(state.show)
+  act(state.open)
   expect(state).toMatchSnapshot('open')
 })
 

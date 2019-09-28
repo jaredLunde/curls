@@ -1,176 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Modal> -> custom transition: closed 1`] = `
+exports[`<Modal> -> close: closed 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.modal.5",
+  "id": "curls.modal.2",
   "isOpen": false,
   "open": [Function],
   "toggle": [Function],
 }
 `;
 
-exports[`<Modal> -> custom transition: hidden 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1rlvajz",
-      "next": undefined,
-      "styles": "transform:translate3d(0,100%,0);",
-    },
-    Object {
-      "name": "gyp8mm",
-      "styles": "visibility:hidden;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Modal> -> custom transition: visible 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1ni6ja3",
-      "next": undefined,
-      "styles": "transform:translate3d(0,0,0);",
-    },
-    Object {
-      "map": undefined,
-      "name": "1ltorz7",
-      "next": undefined,
-      "styles": "visibility:visible;;transform:translate3d(0,0,0);",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Modal> -> hide: hidden 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "8u2raa",
-      "next": undefined,
-      "styles": "visibility:hidden;;opacity:0;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1opxxdc",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Modal> -> hide: open 1`] = `
+exports[`<Modal> -> close: open 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.modal.1",
+  "id": "curls.modal.2",
   "isOpen": true,
   "open": [Function],
   "toggle": [Function],
 }
 `;
 
-exports[`<Modal> -> hide: visible 1`] = `
+exports[`<Modal> -> custom transition: closed 1`] = `
 Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1tu8joi",
-      "next": undefined,
-      "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1opxxdc",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
+  "close": [Function],
+  "id": "curls.modal.7",
+  "isOpen": false,
+  "open": [Function],
   "toggle": [Function],
 }
 `;
 
-exports[`<Modal> -> show: closed 1`] = `
+exports[`<Modal> -> custom transition: open 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.modal.7",
+  "isOpen": true,
+  "open": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Modal> -> open: closed 1`] = `
 Object {
   "close": [Function],
   "id": "curls.modal.0",
@@ -180,72 +50,12 @@ Object {
 }
 `;
 
-exports[`<Modal> -> show: hidden 1`] = `
+exports[`<Modal> -> open: open 1`] = `
 Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "8u2raa",
-      "next": undefined,
-      "styles": "visibility:hidden;;opacity:0;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1opxxdc",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Modal> -> show: visible 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1tu8joi",
-      "next": undefined,
-      "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1opxxdc",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
+  "close": [Function],
+  "id": "curls.modal.0",
+  "isOpen": true,
+  "open": [Function],
   "toggle": [Function],
 }
 `;
@@ -253,7 +63,7 @@ Object {
 exports[`<Modal> -> toggle: closed [2] 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.modal.2",
+  "id": "curls.modal.4",
   "isOpen": false,
   "open": [Function],
   "toggle": [Function],
@@ -263,79 +73,9 @@ Object {
 exports[`<Modal> -> toggle: closed 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.modal.2",
+  "id": "curls.modal.4",
   "isOpen": false,
   "open": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Modal> -> toggle: hidden [2] 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "8u2raa",
-      "next": undefined,
-      "styles": "visibility:hidden;;opacity:0;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1opxxdc",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Modal> -> toggle: hidden 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "8u2raa",
-      "next": undefined,
-      "styles": "visibility:hidden;;opacity:0;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1opxxdc",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
   "toggle": [Function],
 }
 `;
@@ -343,98 +83,69 @@ Object {
 exports[`<Modal> -> toggle: open 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.modal.2",
+  "id": "curls.modal.4",
   "isOpen": true,
   "open": [Function],
   "toggle": [Function],
 }
 `;
 
-exports[`<Modal> -> toggle: visible 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1tu8joi",
-      "next": undefined,
-      "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1opxxdc",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
 exports[`<ModalBox> -> as prop 1`] = `
 .emotion-0 {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: visibility,-webkit-transform,opacity;
-  -webkit-transition-property: visibility,transform,opacity;
-  transition-property: visibility,transform,opacity;
-  position: absolute;
+  position: fixed;
   margin: auto;
   left: 0;
   right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,opacity;
+  transition-property: visibility,opacity;
 }
 
 <span
   class="emotion-0"
   data-testid="modal-box"
+  id="curls.modal.9"
+  tabindex="0"
 />
 `;
 
 exports[`<ModalBox> -> box properties 1`] = `
 .emotion-0 {
-  visibility: visible;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: visibility,-webkit-transform,opacity;
-  -webkit-transition-property: visibility,transform,opacity;
-  transition-property: visibility,transform,opacity;
-  position: absolute;
+  position: fixed;
   margin: auto;
   left: 0;
   right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 1000;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,opacity;
+  transition-property: visibility,opacity;
   margin-bottom: 1rem;
 }
 
 <div
   class="emotion-0"
   data-testid="modal-box"
+  id="curls.modal.12"
+  tabindex="0"
 />
 `;
 
@@ -462,63 +173,40 @@ exports[`<ModalBox> -> closed 1`] = `
 <div
   class="emotion-0"
   data-testid="modal-box"
-  id="curls.modal.7"
+  id="curls.modal.10"
   tabindex="0"
 />
 `;
 
 exports[`<ModalBox> -> element child 1`] = `
 .emotion-0 {
-  visibility: visible;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: visibility,-webkit-transform,opacity;
-  -webkit-transition-property: visibility,transform,opacity;
-  transition-property: visibility,transform,opacity;
-  position: absolute;
+  position: fixed;
   margin: auto;
   left: 0;
   right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 1000;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: visibility,opacity;
+  transition-property: visibility,opacity;
 }
 
 <div
   class="emotion-0"
   data-testid="modal-box"
+  id="curls.modal.13"
+  tabindex="0"
 >
   <div />
 </div>
-`;
-
-exports[`<ModalBox> -> hidden 1`] = `
-.emotion-0 {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: visibility,-webkit-transform,opacity;
-  -webkit-transition-property: visibility,transform,opacity;
-  transition-property: visibility,transform,opacity;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-<div
-  class="emotion-0"
-  data-testid="modal-box"
-/>
 `;
 
 exports[`<ModalBox> -> open 1`] = `
@@ -545,35 +233,7 @@ exports[`<ModalBox> -> open 1`] = `
 <div
   class="emotion-0"
   data-testid="modal-box"
-  id="curls.modal.8"
+  id="curls.modal.11"
   tabindex="0"
-/>
-`;
-
-exports[`<ModalBox> -> visible 1`] = `
-.emotion-0 {
-  visibility: visible;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: visibility,-webkit-transform,opacity;
-  -webkit-transition-property: visibility,transform,opacity;
-  transition-property: visibility,transform,opacity;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-<div
-  class="emotion-0"
-  data-testid="modal-box"
 />
 `;

@@ -4,6 +4,12 @@ exports[`<Drop> -> delay]: 3000 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1tu8joi",
     "next": undefined,
     "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
@@ -185,6 +191,12 @@ Array [
   },
   Object {
     "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1tu8joi",
     "next": undefined,
     "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
@@ -212,6 +224,12 @@ Array [
 
 exports[`<Drop> -> directions]: fromLeft (36 int) 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "12diew7",
@@ -249,6 +267,12 @@ exports[`<Drop> -> directions]: fromLeft (36 string) 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "12diew7",
     "next": undefined,
     "styles": "transform:translate3d(-36px,0,0);",
@@ -282,6 +306,12 @@ Array [
 
 exports[`<Drop> -> directions]: fromLeft (true) 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "byivbi",
@@ -325,6 +355,12 @@ Array [
   },
   Object {
     "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1tu8joi",
     "next": undefined,
     "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
@@ -352,6 +388,12 @@ Array [
 
 exports[`<Drop> -> directions]: fromRight (36 int) 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "1ridttw",
@@ -389,6 +431,12 @@ exports[`<Drop> -> directions]: fromRight (36 string) 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1ridttw",
     "next": undefined,
     "styles": "transform:translate3d(36px,0,0);",
@@ -422,6 +470,12 @@ Array [
 
 exports[`<Drop> -> directions]: fromRight (true) 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "10pt53e",
@@ -465,6 +519,12 @@ Array [
   },
   Object {
     "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1tu8joi",
     "next": undefined,
     "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
@@ -492,6 +552,12 @@ Array [
 
 exports[`<Drop> -> directions]: fromTop (36 int) 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "i15ueq",
@@ -529,6 +595,12 @@ exports[`<Drop> -> directions]: fromTop (36 string) 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "i15ueq",
     "next": undefined,
     "styles": "transform:translate3d(0,-36px,0);",
@@ -562,6 +634,12 @@ Array [
 
 exports[`<Drop> -> directions]: fromTop (true) 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "lupkji",
@@ -669,6 +747,12 @@ exports[`<Drop> -> hide [controlled]: visible 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1tu8joi",
     "next": undefined,
     "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
@@ -696,6 +780,12 @@ Array [
 
 exports[`<Drop> -> hide: hidden 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "8u2raa",
@@ -727,6 +817,12 @@ exports[`<Drop> -> hide: visible 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1tu8joi",
     "next": undefined,
     "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
@@ -754,6 +850,12 @@ Array [
 
 exports[`<Drop> -> show [controlled]: hidden 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
   Object {
     "map": undefined,
     "name": "8u2raa",
@@ -785,6 +887,12 @@ exports[`<Drop> -> show: visible 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "1tu8joi",
     "next": undefined,
     "styles": "visibility:visible;;transform:translate3d(0,0,0);;visibility:visible;;opacity:1;;",
@@ -812,6 +920,12 @@ Array [
 
 exports[`<Drop> -> toggle [controlled]: visible 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
   Object {
     "map": undefined,
     "name": "1tu8joi",
@@ -843,6 +957,12 @@ exports[`<Drop> -> toggle: hidden [2] 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "8u2raa",
     "next": undefined,
     "styles": "visibility:hidden;;opacity:0;",
@@ -872,6 +992,12 @@ exports[`<Drop> -> toggle: hidden 1`] = `
 Array [
   Object {
     "map": undefined,
+    "name": "1rlvajz",
+    "next": undefined,
+    "styles": "transform:translate3d(0,100%,0);",
+  },
+  Object {
+    "map": undefined,
     "name": "8u2raa",
     "next": undefined,
     "styles": "visibility:hidden;;opacity:0;",
@@ -899,6 +1025,12 @@ Array [
 
 exports[`<Drop> -> toggle: visible 1`] = `
 Array [
+  Object {
+    "map": undefined,
+    "name": "1ni6ja3",
+    "next": undefined,
+    "styles": "transform:translate3d(0,0,0);",
+  },
   Object {
     "map": undefined,
     "name": "1tu8joi",

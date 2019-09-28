@@ -1,164 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Drawer> -> close: closed 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.2",
+  "isOpen": false,
+  "open": [Function],
+  "toggle": [Function],
+}
+`;
+
+exports[`<Drawer> -> close: open 1`] = `
+Object {
+  "close": [Function],
+  "id": "curls.drawer.2",
+  "isOpen": false,
+  "open": [Function],
+  "toggle": [Function],
+}
+`;
+
 exports[`<Drawer> -> custom transition: closed 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.drawer.5",
+  "id": "curls.drawer.6",
   "isOpen": false,
   "open": [Function],
   "toggle": [Function],
 }
 `;
 
-exports[`<Drawer> -> custom transition: hidden 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "8u2raa",
-      "next": undefined,
-      "styles": "visibility:hidden;;opacity:0;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "m616m3",
-      "next": undefined,
-      "styles": "transition-property:visibility, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Drawer> -> custom transition: visible 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "zce4wa",
-      "next": undefined,
-      "styles": "visibility:visible;;opacity:1;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "m616m3",
-      "next": undefined,
-      "styles": "transition-property:visibility, opacity;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Drawer> -> hide: hidden 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "name": "gyp8mm",
-      "styles": "visibility:hidden;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Drawer> -> hide: open 1`] = `
+exports[`<Drawer> -> custom transition: open 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.drawer.1",
-  "isOpen": false,
+  "id": "curls.drawer.6",
+  "isOpen": true,
   "open": [Function],
   "toggle": [Function],
 }
 `;
 
-exports[`<Drawer> -> hide: visible 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1ltorz7",
-      "next": undefined,
-      "styles": "visibility:visible;;transform:translate3d(0,0,0);",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Drawer> -> show: closed 1`] = `
+exports[`<Drawer> -> open: closed 1`] = `
 Object {
   "close": [Function],
   "id": "curls.drawer.0",
@@ -168,70 +50,12 @@ Object {
 }
 `;
 
-exports[`<Drawer> -> show: hidden 1`] = `
+exports[`<Drawer> -> open: open 1`] = `
 Object {
-  "css": Array [
-    Object {
-      "name": "gyp8mm",
-      "styles": "visibility:hidden;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Drawer> -> show: visible 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1ltorz7",
-      "next": undefined,
-      "styles": "visibility:visible;;transform:translate3d(0,0,0);",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
+  "close": [Function],
+  "id": "curls.drawer.0",
+  "isOpen": true,
+  "open": [Function],
   "toggle": [Function],
 }
 `;
@@ -239,7 +63,7 @@ Object {
 exports[`<Drawer> -> toggle: closed [2] 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.drawer.2",
+  "id": "curls.drawer.3",
   "isOpen": false,
   "open": [Function],
   "toggle": [Function],
@@ -249,75 +73,9 @@ Object {
 exports[`<Drawer> -> toggle: closed 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.drawer.2",
+  "id": "curls.drawer.3",
   "isOpen": false,
   "open": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Drawer> -> toggle: hidden [2] 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "name": "gyp8mm",
-      "styles": "visibility:hidden;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
-exports[`<Drawer> -> toggle: hidden 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "name": "gyp8mm",
-      "styles": "visibility:hidden;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": false,
-  "show": [Function],
   "toggle": [Function],
 }
 `;
@@ -325,93 +83,79 @@ Object {
 exports[`<Drawer> -> toggle: open 1`] = `
 Object {
   "close": [Function],
-  "id": "curls.drawer.2",
+  "id": "curls.drawer.3",
   "isOpen": true,
   "open": [Function],
   "toggle": [Function],
 }
 `;
 
-exports[`<Drawer> -> toggle: visible 1`] = `
-Object {
-  "css": Array [
-    Object {
-      "map": undefined,
-      "name": "1ltorz7",
-      "next": undefined,
-      "styles": "visibility:visible;;transform:translate3d(0,0,0);",
-    },
-    Object {
-      "map": undefined,
-      "name": "1nywrpr",
-      "next": undefined,
-      "styles": "transition-duration:320ms;",
-    },
-    Object {
-      "map": undefined,
-      "name": "opk20j",
-      "next": undefined,
-      "styles": "transition-timing-function:linear;",
-    },
-    Object {
-      "map": undefined,
-      "name": "1gvesad",
-      "next": undefined,
-      "styles": "transition-property:visibility, transform;",
-    },
-  ],
-  "hide": [Function],
-  "isVisible": true,
-  "show": [Function],
-  "toggle": [Function],
-}
-`;
-
 exports[`<DrawerBox> -> as prop 1`] = `
 .emotion-0 {
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  min-width: auto;
+  overflow-y: auto;
+  left: 0;
+  right: auto;
+  -webkit-transform: translate3d(-100%,0,0);
+  -ms-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
   visibility: hidden;
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
   -webkit-transition-property: visibility,-webkit-transform;
   -webkit-transition-property: visibility,transform;
   transition-property: visibility,transform;
-  display: block;
-  position: fixed;
-  overflow-y: auto;
-  z-index: 1000;
 }
 
 <span
   class="emotion-0"
   data-testid="drawer-box"
+  id="curls.drawer.8"
+  tabindex="0"
 />
 `;
 
 exports[`<DrawerBox> -> box properties 1`] = `
 .emotion-0 {
-  visibility: visible;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  min-width: auto;
+  overflow-y: auto;
+  left: 0;
+  right: auto;
+  -webkit-transform: translate3d(-100%,0,0);
+  -ms-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
+  visibility: hidden;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
   -webkit-transition-property: visibility,-webkit-transform;
   -webkit-transition-property: visibility,transform;
   transition-property: visibility,transform;
-  display: block;
-  position: fixed;
-  overflow-y: auto;
-  z-index: 1000;
   margin-bottom: 1rem;
 }
 
 <div
   class="emotion-0"
   data-testid="drawer-box"
+  id="curls.drawer.11"
+  tabindex="0"
 />
 `;
 
@@ -421,6 +165,13 @@ exports[`<DrawerBox> -> closed 1`] = `
   position: fixed;
   overflow-y: auto;
   z-index: 1000;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  min-width: auto;
+  overflow-y: auto;
+  left: 0;
+  right: auto;
   -webkit-transform: translate3d(-100%,0,0);
   -ms-transform: translate3d(-100%,0,0);
   transform: translate3d(-100%,0,0);
@@ -437,58 +188,45 @@ exports[`<DrawerBox> -> closed 1`] = `
 <div
   class="emotion-0"
   data-testid="drawer-box"
-  id="curls.drawer.7"
+  id="curls.drawer.9"
   tabindex="0"
 />
 `;
 
 exports[`<DrawerBox> -> element child 1`] = `
 .emotion-0 {
-  visibility: visible;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
+  display: block;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  min-width: auto;
+  overflow-y: auto;
+  left: 0;
+  right: auto;
+  -webkit-transform: translate3d(-100%,0,0);
+  -ms-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
+  visibility: hidden;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
   -webkit-transition-property: visibility,-webkit-transform;
   -webkit-transition-property: visibility,transform;
   transition-property: visibility,transform;
-  display: block;
-  position: fixed;
-  overflow-y: auto;
-  z-index: 1000;
 }
 
 <div
   class="emotion-0"
   data-testid="drawer-box"
+  id="curls.drawer.12"
+  tabindex="0"
 >
   <div />
 </div>
-`;
-
-exports[`<DrawerBox> -> hidden 1`] = `
-.emotion-0 {
-  visibility: hidden;
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: visibility,-webkit-transform;
-  -webkit-transition-property: visibility,transform;
-  transition-property: visibility,transform;
-  display: block;
-  position: fixed;
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-<div
-  class="emotion-0"
-  data-testid="drawer-box"
-/>
 `;
 
 exports[`<DrawerBox> -> open 1`] = `
@@ -497,6 +235,13 @@ exports[`<DrawerBox> -> open 1`] = `
   position: fixed;
   overflow-y: auto;
   z-index: 1000;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  min-width: auto;
+  overflow-y: auto;
+  left: 0;
+  right: auto;
   -webkit-transform: translate3d(-100%,0,0);
   -ms-transform: translate3d(-100%,0,0);
   transform: translate3d(-100%,0,0);
@@ -513,32 +258,7 @@ exports[`<DrawerBox> -> open 1`] = `
 <div
   class="emotion-0"
   data-testid="drawer-box"
-  id="curls.drawer.8"
+  id="curls.drawer.10"
   tabindex="0"
-/>
-`;
-
-exports[`<DrawerBox> -> visible 1`] = `
-.emotion-0 {
-  visibility: visible;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
-  -webkit-transition-duration: 320ms;
-  transition-duration: 320ms;
-  -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: visibility,-webkit-transform;
-  -webkit-transition-property: visibility,transform;
-  transition-property: visibility,transform;
-  display: block;
-  position: fixed;
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-<div
-  class="emotion-0"
-  data-testid="drawer-box"
 />
 `;
