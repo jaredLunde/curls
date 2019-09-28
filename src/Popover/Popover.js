@@ -62,14 +62,27 @@ export const usePopoverBox = props => {
     )
     const matches = useParseBreakpoints(placement)
     const popover = usePopoverContext()
-
+    // handles repositioning the popover
+    // Yes this is correct, it's useEffect, not useLayoutEffect
+    // Just move on.
     useEffect(() => {
+      console.log('wtf...', matches)
       if (typeof placement === 'function') {
         popover.reposition(placement)
       } else if (matches) {
         popover.reposition(matches.filter(match => match.matches).pop().value)
       }
     }, [placement, matches])
+    // handles closing the popover when the ESC key is pressed
+    useLayoutEffect(() => {
+      if (popover.isOpen) {
+        setTimeout(() => popover.ref.current.focus(), 100)
+        const callback = event =>
+          parseInt(event.keyCode) === 27 && popover.close()
+        popover.ref.current.addEventListener('keyup', callback)
+        return () => popover.ref.current.removeEventListener('keyup', callback)
+      }
+    }, [popover.isOpen])
 
     props.ref = useMergedRef(popover.ref, ref)
     props.children =
@@ -165,8 +178,18 @@ export const PopoverMe = props => {
   const matches = useParseBreakpoints(on),
     {isOpen, open, close, toggle, id} = usePopoverContext(),
     elementRef = useRef(null),
-    ref = useMergedRef(usePopoverContext().triggerRef, elementRef)
+    ref = useMergedRef(usePopoverContext().triggerRef, elementRef),
+    seen = useRef(false)
 
+  // returns the focus to the trigger when the popover box closesa
+  useLayoutEffect(() => {
+    if (isOpen === false) {
+      if (seen.current === true) elementRef.current.focus()
+      seen.current = true
+    }
+  }, [isOpen])
+
+  // handles trigger events
   useLayoutEffect(() => {
     if (elementRef.current && Array.isArray(matches)) {
       const listeners = []

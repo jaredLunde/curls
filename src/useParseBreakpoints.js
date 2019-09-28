@@ -1,5 +1,6 @@
 import {useMemo} from 'react'
 import {useTheme} from '@style-hooks/core'
+import {getBreakpointOrder} from './utils'
 import {useBreakpoint} from './Breakpoint'
 
 const splitWs = /(?!\[.*)\s+(?![^[]*?\])/g,
@@ -54,9 +55,13 @@ const useParseBreakpoints = propValue => {
         nextMatches.push(breakpoints[i])
       }
     }
-
+    // makes sure the breakpoint matches are provided in order
+    const order = getBreakpointOrder(theme.breakpoints)
+    nextMatches.sort(
+      (a, b) => order.indexOf(a.breakpoint) - order.indexOf(b.breakpoint)
+    )
     return nextMatches
-  }, [matches, breakpoints])
+  }, [matches, breakpoints, theme.breakpoints])
 }
 
 export default useParseBreakpoints

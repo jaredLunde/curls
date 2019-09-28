@@ -12,7 +12,8 @@ export const useAriaPopup = (props, context) => {
     // handles closing the modal when the ESC key is pressed
     if (context.isOpen) {
       setTimeout(() => focusRef.current.focus(), 100)
-      const callback = event => parseInt(event.keyCode) === 27 && context.hide()
+      const callback = event =>
+        parseInt(event.keyCode) === 27 && context.close()
       focusRef.current.addEventListener('keyup', callback)
       return () => focusRef.current.removeEventListener('keyup', callback)
     }

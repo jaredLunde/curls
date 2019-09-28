@@ -318,7 +318,6 @@ const contain = placement => (
 
     // handles center Y-axis case
     if (flip || flipY) {
-      console.log('Here....')
       if (placement === 'left' || placement === 'right') {
         if (idealRect.top < containIn.top) {
           placement += 'top'
