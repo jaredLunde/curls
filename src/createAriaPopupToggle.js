@@ -18,7 +18,6 @@ export const useAriaPopupToggle = (props, context) => {
 
   const nextProps = Object.assign(
     {
-      id: props.id || context.id.replace('.', '.toggle-'),
       tabIndex: 0,
       'aria-controls': context.id,
       'aria-haspopup': 'true',
