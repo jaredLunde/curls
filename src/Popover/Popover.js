@@ -310,6 +310,19 @@ export const Popover = ({
 }
 
 if (__DEV__) {
+  const PropTypes = require('prop-types')
   Popover.displayName = 'Popover'
   PopoverBox.displayName = 'PopoverBox'
+  Popover.propTypes = {
+    open: PropTypes.bool,
+    initialOpen: PropTypes.bool,
+    repositionOnResize: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+    repositionOnScroll: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+    containStrategy: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  }
+
+  PopoverBox.propTypes = {
+    placement: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    transition: PropTypes.func,
+  }
 }
