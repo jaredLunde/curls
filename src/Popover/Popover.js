@@ -180,10 +180,21 @@ export const PopoverMe = props => {
     ref = useMergedRef(usePopoverContext().triggerRef, elementRef),
     seen = useRef(false)
 
-  // returns the focus to the trigger when the popover box closesa
+  // returns the focus to the trigger when the popover box closes if focus is
+  // not an event that triggers opening the popover
   useLayoutEffect(() => {
     if (isOpen === false) {
-      if (seen.current === true) elementRef.current.focus()
+      if (seen.current === true) {
+        let isTriggeredByFocus = false
+
+        for (let match of matches)
+          if (match.matches === true && match.value === 'focus') {
+            isTriggeredByFocus = true
+            break
+          }
+
+        if (!isTriggeredByFocus) elementRef.current.focus()
+      }
       seen.current = true
     }
   }, [isOpen])
