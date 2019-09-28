@@ -9,12 +9,12 @@ import React, {
 import {css} from '@emotion/core'
 import {createElement, useStyles} from '@style-hooks/core'
 import useWindowSize from '@react-hook/window-size'
-import useWindowScroll from '@react-hook/window-scroll'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 import useMergedRef from '@react-hook/merged-ref'
 import useSwitch from '@react-hook/switch'
 import {useBox} from '../Box'
 import {useFade} from '../Fade'
+import useScroll from '../useScroll'
 import useParseBreakpoints from '../useParseBreakpoints'
 import {portalize, objectWithoutProps, pushCss} from '../utils'
 import {setPlacementStyle} from './utils'
@@ -69,7 +69,7 @@ export const usePopoverBox = props => {
       } else if (matches) {
         popover.reposition(matches.filter(match => match.matches).pop().value)
       }
-    }, [placement, matches, popover.reposition])
+    }, [placement, matches])
 
     props.ref = useMergedRef(popover.ref, ref)
     props.children =
@@ -87,8 +87,8 @@ const PopoverContainer = React.memo(
     close,
     toggle,
     isOpen,
-    constrainTo,
-    constrainStrategy,
+    containIn,
+    containStrategy,
     windowSize,
     scrollY,
     children,
@@ -102,18 +102,18 @@ const PopoverContainer = React.memo(
         requestedPlacement: null,
       }),
       reposition = useCallback(
-        (placement = requestedPlacement) => {
+        nextPlacement => {
           setState(
             setPlacementStyle(
-              placement,
+              nextPlacement,
               triggerRef.current,
               popoverRef.current,
-              constrainTo,
-              constrainStrategy
+              containIn,
+              containStrategy
             )
           )
         },
-        [requestedPlacement, constrainTo, constrainStrategy]
+        [containIn, containStrategy]
       ),
       childContext = useMemo(
         () => ({
@@ -131,9 +131,9 @@ const PopoverContainer = React.memo(
         [isOpen, open, close, toggle, placement, reposition, style]
       )
 
-    useLayoutEffect(() => {
-      isOpen && reposition()
-    }, [isOpen, reposition, windowSize[0], windowSize[1], scrollY, constrainTo])
+    useEffect(() => {
+      isOpen && reposition(requestedPlacement)
+    }, [isOpen, reposition, scrollY, windowSize[0], windowSize[1]])
 
     return (
       <PopoverContext.Provider
@@ -153,8 +153,8 @@ const PopoverContainer = React.memo(
       prev.windowSize[0] === next.windowSize[0] &&
       prev.windowSize[1] === next.windowSize[1] &&
       prev.scrollY === next.scrollY &&
-      prev.constrainTo === next.constrainTo &&
-      prev.constrainStrategy === next.constrainStrategy)
+      prev.containIn === next.containIn &&
+      prev.containStrategy === next.containStrategy)
 )
 
 export const PopoverMe = props => {
@@ -217,7 +217,10 @@ export const PopoverMe = props => {
 const ScrollPositioner = props =>
   React.createElement(
     PopoverContainer,
-    Object.assign({scrollY: useWindowScroll(15)}, props)
+    Object.assign(
+      {scrollY: useScroll(props.containIn, props.repositionOnScroll)},
+      props
+    )
   )
 
 const sizeOpt = {wait: 240}
@@ -225,8 +228,8 @@ export const Popover = ({
   open,
   initialOpen,
   repositionOnScroll = false,
-  constrainTo = typeof document !== 'undefined' && document.documentElement,
-  constrainStrategy = 'flip',
+  containIn = typeof document !== 'undefined' && document.documentElement,
+  containStrategy = 'flip',
   children,
 }) => {
   let [isOpen, toggle] = useSwitch(initialOpen)
@@ -241,8 +244,9 @@ export const Popover = ({
       toggle,
       isOpen,
       windowSize,
-      constrainTo,
-      constrainStrategy,
+      containIn,
+      containStrategy,
+      repositionOnScroll,
     }
   )
 }

@@ -1,86 +1,283 @@
-const centerX = (triggerRect, popoverRect, constrainTo) => ({
+const centerXPos = (triggerRect, popoverRect, containIn) => ({
   left: 'auto',
   right:
-    constrainTo.width -
+    containIn.right -
     triggerRect.right -
     (popoverRect.width - triggerRect.width) / 2,
 })
 
-const centerY = (triggerRect, popoverRect, constrainTo) => ({
+const centerYPos = (triggerRect, popoverRect, containIn) => ({
   top: 'auto',
   bottom:
-    constrainTo.height -
+    containIn.bottom -
     triggerRect.bottom -
     (popoverRect.height - triggerRect.height) / 2,
 })
 
-const startXinnerEdge = triggerRect => ({
+const startXInnerPos = triggerRect => ({
   left: triggerRect.left,
   right: 'auto',
 })
 
-const startXouterEdge = (triggerRect, boxSize, constrainTo) => ({
+const startXOuterPos = (triggerRect, boxSize, containIn) => ({
   left: 'auto',
-  right: constrainTo.width - triggerRect.left,
+  right: containIn.right - triggerRect.left,
 })
 
-const endXouterEdge = triggerRect => ({
+const endXOuterPos = triggerRect => ({
   left: triggerRect.right,
   right: 'auto',
 })
 
-const endXinnerEdge = (triggerRect, boxSize, constrainTo) => {
+const endXInnerPos = (triggerRect, boxSize, containIn) => {
   return {
     left: 'auto',
-    right: constrainTo.width - triggerRect.right,
+    right: containIn.right - triggerRect.right,
   }
 }
 
-const startYinnerEdge = triggerRect => ({
+const startYInnerPos = triggerRect => ({
   top: triggerRect.top,
   bottom: 'auto',
 })
 
-const startYouterEdge = (triggerRect, boxSize, constrainTo) => ({
+const startYOuterPos = (triggerRect, boxSize, containIn) => ({
   top: 'auto',
-  bottom: constrainTo.height - triggerRect.top,
+  bottom: containIn.bottom - triggerRect.top,
 })
 
-const endYinnerEdge = (triggerRect, boxSize, constrainTo) => ({
+const endYInnerPos = (triggerRect, boxSize, containIn) => ({
   top: 'auto',
-  bottom: constrainTo.height - triggerRect.bottom,
+  bottom: containIn.bottom - triggerRect.bottom,
 })
 
-const endYouterEdge = triggerRect => ({
+const endYOuterPos = triggerRect => ({
   top: triggerRect.bottom,
   bottom: 'auto',
 })
 
-const constrain = placement => (
+const centerXRect = (triggerRect, popoverRect) => {
+  const rect = {
+    right: popoverRect.width / 2 - triggerRect.width / 2 + triggerRect.right,
+  }
+  rect.left = rect.right - popoverRect.width
+  return rect
+}
+
+const startXOuterRect = (triggerRect, popoverRect) => {
+  const rect = {right: triggerRect.left}
+  rect.left = rect.right - popoverRect.width
+  return rect
+}
+
+const endXOuterRect = (triggerRect, popoverRect) => {
+  const rect = {left: triggerRect.right}
+  rect.right = rect.left + popoverRect.width
+  return rect
+}
+
+const centerYRect = (triggerRect, popoverRect) => {
+  const rect = {
+    bottom:
+      popoverRect.height / 2 - triggerRect.height / 2 + triggerRect.bottom,
+  }
+  rect.top = rect.bottom - popoverRect.height
+  return rect
+}
+
+const startYOuterRect = (triggerRect, popoverRect) => {
+  const rect = {bottom: triggerRect.top}
+  rect.top = rect.bottom - popoverRect.height
+  return rect
+}
+
+const endYOuterRect = (triggerRect, popoverRect) => {
+  const rect = {top: triggerRect.bottom}
+  rect.bottom = rect.top + popoverRect.height
+  return rect
+}
+
+const startXInnerRect = (triggerRect, popoverRect) => {
+  const rect = {left: triggerRect.left}
+  rect.right = rect.left + popoverRect.width
+  return rect
+}
+
+const endXInnerRect = (triggerRect, popoverRect) => {
+  const rect = {right: triggerRect.right}
+  rect.left = rect.right - popoverRect.width
+  return rect
+}
+
+const startYInnerRect = (triggerRect, popoverRect) => {
+  const rect = {top: triggerRect.top}
+  rect.bottom = rect.top + popoverRect.height
+  return rect
+}
+
+const endYInnerRect = (triggerRect, popoverRect) => {
+  const rect = {bottom: triggerRect.bottom}
+  rect.top = rect.bottom - popoverRect.height
+  return rect
+}
+
+const calcIdealRect = (placement, triggerRect, popoverRect) => {
+  switch (placement) {
+    case 'top':
+      return Object.assign(
+        centerXRect(triggerRect, popoverRect),
+        startYOuterRect(triggerRect, popoverRect)
+      )
+
+    case 'topleft':
+      return Object.assign(
+        startXInnerRect(triggerRect, popoverRect),
+        startYOuterRect(triggerRect, popoverRect)
+      )
+
+    case 'topright':
+      return Object.assign(
+        endXInnerRect(triggerRect, popoverRect),
+        startYOuterRect(triggerRect, popoverRect)
+      )
+
+    case 'right':
+      return Object.assign(
+        endXOuterRect(triggerRect, popoverRect),
+        centerYRect(triggerRect, popoverRect)
+      )
+
+    case 'righttop':
+      return Object.assign(
+        endXOuterRect(triggerRect, popoverRect),
+        startYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'rightbottom':
+      return Object.assign(
+        endXOuterRect(triggerRect, popoverRect),
+        endYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'bottom':
+      return Object.assign(
+        centerXRect(triggerRect, popoverRect),
+        endYOuterRect(triggerRect, popoverRect)
+      )
+
+    case 'bottomleft':
+      return Object.assign(
+        startXInnerRect(triggerRect, popoverRect),
+        endYOuterRect(triggerRect, popoverRect)
+      )
+
+    case 'bottomright':
+      return Object.assign(
+        endXInnerRect(triggerRect, popoverRect),
+        endYOuterRect(triggerRect, popoverRect)
+      )
+
+    case 'left':
+      return Object.assign(
+        startXOuterRect(triggerRect, popoverRect),
+        centerYRect(triggerRect, popoverRect)
+      )
+
+    case 'lefttop':
+      return Object.assign(
+        startXOuterRect(triggerRect, popoverRect),
+        startYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'leftbottom':
+      return Object.assign(
+        startXOuterRect(triggerRect, popoverRect),
+        endYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'innerleft':
+      return Object.assign(
+        startXInnerRect(triggerRect, popoverRect),
+        centerYRect(triggerRect, popoverRect)
+      )
+
+    case 'innerright':
+      return Object.assign(
+        endXInnerRect(triggerRect, popoverRect),
+        centerYRect(triggerRect, popoverRect)
+      )
+
+    case 'innertop':
+      return Object.assign(
+        centerXRect(triggerRect, popoverRect),
+        startYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'innertopleft':
+      return Object.assign(
+        startXInnerRect(triggerRect, popoverRect),
+        startYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'innertopright':
+      return Object.assign(
+        endXInnerRect(triggerRect, popoverRect),
+        startYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'innerbottom':
+      return Object.assign(
+        centerXRect(triggerRect, popoverRect),
+        endYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'innerbottomleft':
+      return Object.assign(
+        startXInnerRect(triggerRect, popoverRect),
+        endYInnerRect(triggerRect, popoverRect)
+      )
+
+    case 'innerbottomright':
+      return Object.assign(
+        endXInnerRect(triggerRect, popoverRect),
+        endYInnerRect(triggerRect, popoverRect)
+      )
+
+    default:
+      return Object.assign(
+        centerXRect(triggerRect, popoverRect),
+        centerYRect(triggerRect, popoverRect)
+      )
+  }
+}
+
+const contain = placement => (
   triggerRect,
   popoverRect,
-  constrainTo,
-  constrainStrategy
+  containIn,
+  containStrategy
 ) => {
-  const flip = constrainStrategy === 'flip',
-    flipX = constrainStrategy === 'flipX',
-    flipY = constrainStrategy === 'flipY'
+  const flip = containStrategy === 'flip',
+    flipX = containStrategy === 'flipX',
+    flipY = containStrategy === 'flipY'
 
   if (flip || flipX || flipY) {
+    const idealRect = calcIdealRect(placement, triggerRect, popoverRect)
+
     // center checks
     if (!placement) {
       if (flip || flipY) {
-        if (popoverRect.bottom > constrainTo.bottom) {
+        if (idealRect.bottom > containIn.bottom) {
           placement = 'top'
-        } else if (popoverRect.top < constrainTo.top) {
+        } else if (idealRect.top < containIn.top) {
           placement = 'bottom'
         }
       }
 
       if (!placement && (flip || flipX)) {
-        if (popoverRect.left < constrainTo.left) {
+        if (idealRect.left < containIn.left) {
           placement = 'right'
-        } else if (popoverRect.right > constrainTo.right) {
+        } else if (idealRect.right > containIn.right) {
           placement = 'left'
         }
       }
@@ -92,9 +289,9 @@ const constrain = placement => (
     if (placement === 'top' || placement === 'bottom') {
       if (flip || flipX) {
         // handles center X-axis case
-        if (popoverRect.left < constrainTo.left) {
+        if (idealRect.left < containIn.left) {
           placement += 'left'
-        } else if (popoverRect.right > constrainTo.right) {
+        } else if (idealRect.right > containIn.right) {
           placement += 'right'
         }
       }
@@ -103,28 +300,36 @@ const constrain = placement => (
     if (flip || flipX) {
       // left checks
       if (
-        (leftIdx === 0 && popoverRect.left < constrainTo.left) ||
-        (leftIdx > 0 && popoverRect.right > constrainTo.right)
+        (leftIdx === 0 && idealRect.left < containIn.left) ||
+        (leftIdx > 0 && idealRect.right > containIn.right)
       ) {
         placement = placement.replace('left', 'right')
       } else {
         const rightIdx = placement.indexOf('right')
         // right checks
         if (
-          (rightIdx === 0 && popoverRect.right > constrainTo.right) ||
-          (rightIdx > 0 && popoverRect.left < constrainTo.left)
+          (rightIdx === 0 && idealRect.right > containIn.right) ||
+          (rightIdx > 0 && idealRect.left < containIn.left)
         ) {
           placement = placement.replace('right', 'left')
         }
       }
-      // handles center Y-axis case
-      if (flip || flipY) {
-        if (placement === 'left' || placement === 'right') {
-          if (popoverRect.top < constrainTo.top) {
-            placement += 'top'
-          } else if (popoverRect.bottom > constrainTo.bottom) {
-            placement += 'bottom'
-          }
+    }
+
+    // handles center Y-axis case
+    if (flip || flipY) {
+      console.log('Here....')
+      if (placement === 'left' || placement === 'right') {
+        if (idealRect.top < containIn.top) {
+          placement += 'top'
+        } else if (idealRect.bottom > containIn.bottom) {
+          placement += 'bottom'
+        }
+      } else if (placement === 'innerleft' || placement === 'innerright') {
+        if (idealRect.top < containIn.top) {
+          placement = placement.replace('inner', 'innertop')
+        } else if (idealRect.bottom > containIn.bottom) {
+          placement = placement.replace('inner', 'innerbottom')
         }
       }
     }
@@ -132,183 +337,221 @@ const constrain = placement => (
     if (flip || flipY) {
       // top checks
       if (
-        (topIdx === 0 && popoverRect.top < constrainTo.top) ||
-        (topIdx > 0 && popoverRect.bottom > constrainTo.bottom)
+        (topIdx === 0 && idealRect.top < containIn.top) ||
+        (topIdx > 0 && idealRect.bottom > containIn.bottom)
       ) {
         placement = placement.replace('top', 'bottom')
       } else {
         const bottomIdx = placement.indexOf('bottom')
         // bottom checks
         if (
-          (bottomIdx === 0 && popoverRect.bottom > constrainTo.bottom) ||
-          (bottomIdx > 0 && popoverRect.top < constrainTo.top)
+          (bottomIdx === 0 && idealRect.bottom > containIn.bottom) ||
+          (bottomIdx > 0 && idealRect.top < containIn.top)
         ) {
           placement = placement.replace('bottom', 'top')
         }
       }
     }
-  } else if (typeof constrainStrategy === 'function') {
-    placement = constrain(triggerRect, popoverRect, constrainTo)
+  } else if (typeof containStrategy === 'function') {
+    placement = contain(triggerRect, popoverRect, containIn)
 
     if (typeof placement !== 'string') return placement
   }
 
-  return placementCallback[placement](
-    triggerRect,
-    popoverRect,
-    constrainTo,
-    constrainStrategy
-  )
+  return calcPlacement(placement, triggerRect, popoverRect, containIn)
 }
 
-const placementCallback = {
-  '': (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'center',
-    style: Object.assign(
-      centerX(triggerRect, popoverRect, constrainTo),
-      centerY(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  top: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'top',
-    style: Object.assign(
-      centerX(triggerRect, popoverRect, constrainTo),
-      startYouterEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  topleft: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'topLeft',
-    style: Object.assign(
-      startYouterEdge(triggerRect, popoverRect, constrainTo),
-      startXinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  topright: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'topRight',
-    style: Object.assign(
-      startYouterEdge(triggerRect, popoverRect, constrainTo),
-      endXinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innertop: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerTop',
-    style: Object.assign(
-      centerX(triggerRect, popoverRect, constrainTo),
-      startYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innertopleft: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerTopLeft',
-    style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, constrainTo),
-      startYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innertopright: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerTopRight',
-    style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, constrainTo),
-      startYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  right: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'right',
-    style: Object.assign(
-      endXouterEdge(triggerRect, popoverRect, constrainTo),
-      centerY(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  righttop: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'rightTop',
-    style: Object.assign(
-      endXouterEdge(triggerRect, popoverRect, constrainTo),
-      startYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  rightbottom: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'rightBottom',
-    style: Object.assign(
-      endXouterEdge(triggerRect, popoverRect, constrainTo),
-      endYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innerright: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerRight',
-    style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, constrainTo),
-      centerY(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  bottom: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'bottom',
-    style: Object.assign(
-      centerX(triggerRect, popoverRect, constrainTo),
-      endYouterEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  bottomleft: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'bottomLeft',
-    style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, constrainTo),
-      endYouterEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  bottomright: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'bottomRight',
-    style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, constrainTo),
-      endYouterEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innerbottom: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerBottom',
-    style: Object.assign(
-      centerX(triggerRect, popoverRect, constrainTo),
-      endYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innerbottomright: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerBottomRight',
-    style: Object.assign(
-      endXinnerEdge(triggerRect, popoverRect, constrainTo),
-      endYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innerbottomleft: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerBottomLeft',
-    style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, constrainTo),
-      endYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  left: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'left',
-    style: Object.assign(
-      startXouterEdge(triggerRect, popoverRect, constrainTo),
-      centerY(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  lefttop: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'leftTop',
-    style: Object.assign(
-      startXouterEdge(triggerRect, popoverRect, constrainTo),
-      startYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  leftbottom: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'leftBottom',
-    style: Object.assign(
-      startXouterEdge(triggerRect, popoverRect, constrainTo),
-      endYinnerEdge(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
-  innerleft: (triggerRect, popoverRect, constrainTo) => ({
-    placement: 'innerLeft',
-    style: Object.assign(
-      startXinnerEdge(triggerRect, popoverRect, constrainTo),
-      centerY(triggerRect, popoverRect, constrainTo)
-    ),
-  }),
+const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
+  switch (placement) {
+    case 'top':
+      return {
+        placement: 'top',
+        style: Object.assign(
+          centerXPos(triggerRect, popoverRect, containIn),
+          startYOuterPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'topleft':
+      return {
+        placement: 'topLeft',
+        style: Object.assign(
+          startYOuterPos(triggerRect, popoverRect, containIn),
+          startXInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'topright':
+      return {
+        placement: 'topRight',
+        style: Object.assign(
+          startYOuterPos(triggerRect, popoverRect, containIn),
+          endXInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'right':
+      return {
+        placement: 'right',
+        style: Object.assign(
+          endXOuterPos(triggerRect, popoverRect, containIn),
+          centerYPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'righttop':
+      return {
+        placement: 'rightTop',
+        style: Object.assign(
+          endXOuterPos(triggerRect, popoverRect, containIn),
+          startYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'rightbottom':
+      return {
+        placement: 'rightBottom',
+        style: Object.assign(
+          endXOuterPos(triggerRect, popoverRect, containIn),
+          endYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'bottom':
+      return {
+        placement: 'bottom',
+        style: Object.assign(
+          centerXPos(triggerRect, popoverRect, containIn),
+          endYOuterPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'bottomleft':
+      return {
+        placement: 'bottomLeft',
+        style: Object.assign(
+          startXInnerPos(triggerRect, popoverRect, containIn),
+          endYOuterPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'bottomright':
+      return {
+        placement: 'bottomRight',
+        style: Object.assign(
+          endXInnerPos(triggerRect, popoverRect, containIn),
+          endYOuterPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'left':
+      return {
+        placement: 'left',
+        style: Object.assign(
+          startXOuterPos(triggerRect, popoverRect, containIn),
+          centerYPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'lefttop':
+      return {
+        placement: 'leftTop',
+        style: Object.assign(
+          startXOuterPos(triggerRect, popoverRect, containIn),
+          startYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'leftbottom':
+      return {
+        placement: 'leftBottom',
+        style: Object.assign(
+          startXOuterPos(triggerRect, popoverRect, containIn),
+          endYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innertop':
+      return {
+        placement: 'innerTop',
+        style: Object.assign(
+          centerXPos(triggerRect, popoverRect, containIn),
+          startYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innertopleft':
+      return {
+        placement: 'innerTopLeft',
+        style: Object.assign(
+          startXInnerPos(triggerRect, popoverRect, containIn),
+          startYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innertopright':
+      return {
+        placement: 'innerTopRight',
+        style: Object.assign(
+          endXInnerPos(triggerRect, popoverRect, containIn),
+          startYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innerright':
+      return {
+        placement: 'innerRight',
+        style: Object.assign(
+          endXInnerPos(triggerRect, popoverRect, containIn),
+          centerYPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innerbottom':
+      return {
+        placement: 'innerBottom',
+        style: Object.assign(
+          centerXPos(triggerRect, popoverRect, containIn),
+          endYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innerbottomright':
+      return {
+        placement: 'innerBottomRight',
+        style: Object.assign(
+          endXInnerPos(triggerRect, popoverRect, containIn),
+          endYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innerbottomleft':
+      return {
+        placement: 'innerBottomLeft',
+        style: Object.assign(
+          startXInnerPos(triggerRect, popoverRect, containIn),
+          endYInnerPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    case 'innerleft':
+      return {
+        placement: 'innerLeft',
+        style: Object.assign(
+          startXInnerPos(triggerRect, popoverRect, containIn),
+          centerYPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+
+    default:
+      return {
+        placement: 'center',
+        style: Object.assign(
+          centerXPos(triggerRect, popoverRect, containIn),
+          centerYPos(triggerRect, popoverRect, containIn)
+        ),
+      }
+  }
 }
 
 const defaultPlacements = /outer|center/g
@@ -317,25 +560,26 @@ export const setPlacementStyle = (
   requestedPlacement,
   trigger,
   popover,
-  constrainTo,
-  constrainStrategy
+  containIn,
+  containStrategy
 ) => {
   if (!trigger || !popover) return requestedPlacement
 
-  if (typeof window !== 'undefined' && constrainTo === window)
-    constrainTo = document.documentElement
+  if (typeof window !== 'undefined' && containIn === window) {
+    containIn = document.documentElement
+  }
   let result = {},
     placement = requestedPlacement
   const triggerRect = trigger.getBoundingClientRect(),
     popoverRect = popover.getBoundingClientRect()
 
-  constrainTo = {
-    width: constrainTo.offsetWidth,
-    height: constrainTo.offsetHeight,
-    top: constrainTo.offsetTop,
-    right: constrainTo.offsetWidth,
-    bottom: constrainTo.offsetHeight,
-    left: constrainTo.offsetLeft,
+  containIn = {
+    width: containIn.offsetWidth,
+    height: containIn.offsetHeight,
+    top: containIn.offsetTop,
+    right: containIn.offsetWidth,
+    bottom: containIn.offsetHeight,
+    left: containIn.offsetLeft,
   }
 
   popoverRect.width = popover.offsetWidth
@@ -345,8 +589,8 @@ export const setPlacementStyle = (
     result = requestedPlacement(
       triggerRect,
       popoverRect,
-      constrainTo,
-      constrainStrategy
+      containIn,
+      containStrategy
     )
 
     if (typeof result === 'string') {
@@ -367,8 +611,8 @@ export const setPlacementStyle = (
   }
 
   if (typeof placement === 'string') {
-    const fn = constrain(placement.toLowerCase().replace(defaultPlacements, ''))
-    result = fn(triggerRect, popoverRect, constrainTo, constrainStrategy)
+    const fn = contain(placement.toLowerCase().replace(defaultPlacements, ''))
+    result = fn(triggerRect, popoverRect, containIn, containStrategy)
   }
 
   result.requestedPlacement = requestedPlacement
