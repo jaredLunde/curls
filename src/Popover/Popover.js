@@ -8,10 +8,11 @@ import React, {
 } from 'react'
 import {css} from '@emotion/core'
 import {createElement, useStyles} from '@style-hooks/core'
-import useWindowSize from '@react-hook/window-size'
+import useWindowSize from '@react-hook/window-size/throttled'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 import useMergedRef from '@react-hook/merged-ref'
 import useSwitch from '@react-hook/switch'
+import emptyArr from 'empty/array'
 import {useBox} from '../Box'
 import {useFade} from '../Fade'
 import useScroll from '../useScroll'
@@ -254,34 +255,55 @@ const ScrollPositioner = props =>
   React.createElement(
     PopoverContainer,
     Object.assign(
-      {scrollY: useScroll(props.containIn, props.repositionOnScroll)},
+      {
+        scrollY: useScroll(
+          props.containIn,
+          props.repositionOnScroll === true ? 30 : props.repositionOnScroll
+        ),
+      },
       props
     )
   )
 
-const sizeOpt = {wait: 240}
+const ResizePositioner = props => {
+  props = Object.assign({}, props)
+  props.windowSize = useWindowSize(1280, 720, {
+    fps: props.repositionOnResize === true ? 30 : props.repositionOnResize,
+  })
+
+  return React.createElement(
+    props.repositionOnScroll ? ScrollPositioner : PopoverContainer,
+    props
+  )
+}
+
 export const Popover = ({
   open,
   initialOpen,
-  repositionOnScroll = false,
+  repositionOnResize = 0,
+  repositionOnScroll = 0,
   containIn = typeof document !== 'undefined' && document.documentElement,
   containStrategy = 'flip',
   children,
 }) => {
   let [isOpen, toggle] = useSwitch(initialOpen)
   isOpen = open === void 0 || open === null ? isOpen : open
-  const windowSize = useWindowSize(1280, 720, sizeOpt)
   return React.createElement(
-    repositionOnScroll ? ScrollPositioner : PopoverContainer,
+    repositionOnResize
+      ? ResizePositioner
+      : repositionOnScroll
+      ? ScrollPositioner
+      : PopoverContainer,
     {
       children,
       open: toggle.on,
       close: toggle.off,
       toggle,
       isOpen,
-      windowSize,
       containIn,
       containStrategy,
+      windowSize: emptyArr,
+      repositionOnResize,
       repositionOnScroll,
     }
   )

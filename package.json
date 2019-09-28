@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "5.0.1",
+  "version": "5.0.3",
   "author": "Jared Lunde <jared@BeStellar.co> (https://jaredLunde.com)",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -62,7 +62,7 @@
     "@react-hook/passive-layout-effect": "^1.0.0",
     "@react-hook/switch": "^1.0.2",
     "@react-hook/throttle": "^1.0.5",
-    "@react-hook/window-size": "^1.0.2",
+    "@react-hook/window-size": "^1.0.6",
     "@style-hooks/core": "^2.0.1",
     "cancelable-promise": "^2.5.0",
     "empty": "^0.10.1",
