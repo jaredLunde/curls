@@ -1,15 +1,20 @@
-const centerXPos = (triggerRect, popoverRect, containIn) => ({
+const windowWidth = () =>
+  window.innerWidth || document.documentElement.clientWidth
+const windowHeight = () =>
+  window.innerHeight || document.documentElement.clientHeight
+
+const centerXPos = (triggerRect, popoverRect) => ({
   left: 'auto',
   right:
-    containIn.right -
+    windowWidth() -
     triggerRect.right -
     (popoverRect.width - triggerRect.width) / 2,
 })
 
-const centerYPos = (triggerRect, popoverRect, containIn) => ({
+const centerYPos = (triggerRect, popoverRect) => ({
   top: 'auto',
   bottom:
-    containIn.bottom -
+    windowHeight() -
     triggerRect.bottom -
     (popoverRect.height - triggerRect.height) / 2,
 })
@@ -19,9 +24,9 @@ const startXInnerPos = triggerRect => ({
   right: 'auto',
 })
 
-const startXOuterPos = (triggerRect, boxSize, containIn) => ({
+const startXOuterPos = triggerRect => ({
   left: 'auto',
-  right: containIn.right - triggerRect.left,
+  right: windowWidth() - triggerRect.left,
 })
 
 const endXOuterPos = triggerRect => ({
@@ -29,10 +34,10 @@ const endXOuterPos = triggerRect => ({
   right: 'auto',
 })
 
-const endXInnerPos = (triggerRect, boxSize, containIn) => {
+const endXInnerPos = triggerRect => {
   return {
     left: 'auto',
-    right: containIn.right - triggerRect.right,
+    right: windowWidth() - triggerRect.right,
   }
 }
 
@@ -41,14 +46,14 @@ const startYInnerPos = triggerRect => ({
   bottom: 'auto',
 })
 
-const startYOuterPos = (triggerRect, boxSize, containIn) => ({
+const startYOuterPos = triggerRect => ({
   top: 'auto',
-  bottom: containIn.bottom - triggerRect.top,
+  bottom: windowHeight() - triggerRect.top,
 })
 
-const endYInnerPos = (triggerRect, boxSize, containIn) => ({
+const endYInnerPos = triggerRect => ({
   top: 'auto',
-  bottom: containIn.bottom - triggerRect.bottom,
+  bottom: windowHeight() - triggerRect.bottom,
 })
 
 const endYOuterPos = triggerRect => ({
@@ -251,33 +256,35 @@ const calcIdealRect = (placement, triggerRect, popoverRect) => {
   }
 }
 
-const contain = placement => (
-  triggerRect,
-  popoverRect,
-  containIn,
-  containStrategy
-) => {
-  const flip = containStrategy === 'flip',
-    flipX = containStrategy === 'flipX',
-    flipY = containStrategy === 'flipY'
+const contain = placement => (triggerRect, popoverRect, containPolicy) => {
+  const flip = containPolicy === 'flip',
+    flipX = containPolicy === 'flipX',
+    flipY = containPolicy === 'flipY'
 
   if (flip || flipX || flipY) {
+    console.log('I calculated ideal...')
     const idealRect = calcIdealRect(placement, triggerRect, popoverRect)
 
     // center checks
     if (!placement) {
       if (flip || flipY) {
-        if (idealRect.bottom > containIn.bottom) {
+        if (
+          idealRect.bottom >
+          (window.innerHeight || document.documentElement.clientHeight)
+        ) {
           placement = 'top'
-        } else if (idealRect.top < containIn.top) {
+        } else if (idealRect.top < 0) {
           placement = 'bottom'
         }
       }
 
       if (!placement && (flip || flipX)) {
-        if (idealRect.left < containIn.left) {
+        if (idealRect.left < 0) {
           placement = 'right'
-        } else if (idealRect.right > containIn.right) {
+        } else if (
+          idealRect.right >
+          (window.innerWidth || document.documentElement.clientWidth)
+        ) {
           placement = 'left'
         }
       }
@@ -289,9 +296,12 @@ const contain = placement => (
     if (placement === 'top' || placement === 'bottom') {
       if (flip || flipX) {
         // handles center X-axis case
-        if (idealRect.left < containIn.left) {
+        if (idealRect.left < 0) {
           placement += 'left'
-        } else if (idealRect.right > containIn.right) {
+        } else if (
+          idealRect.right >
+          (window.innerWidth || document.documentElement.clientWidth)
+        ) {
           placement += 'right'
         }
       }
@@ -300,16 +310,20 @@ const contain = placement => (
     if (flip || flipX) {
       // left checks
       if (
-        (leftIdx === 0 && idealRect.left < containIn.left) ||
-        (leftIdx > 0 && idealRect.right > containIn.right)
+        (leftIdx === 0 && idealRect.left < 0) ||
+        (leftIdx > 0 &&
+          idealRect.right >
+            (window.innerWidth || document.documentElement.clientWidth))
       ) {
         placement = placement.replace('left', 'right')
       } else {
         const rightIdx = placement.indexOf('right')
         // right checks
         if (
-          (rightIdx === 0 && idealRect.right > containIn.right) ||
-          (rightIdx > 0 && idealRect.left < containIn.left)
+          (rightIdx === 0 &&
+            idealRect.right >
+              (window.innerWidth || document.documentElement.clientWidth)) ||
+          (rightIdx > 0 && idealRect.left < 0)
         ) {
           placement = placement.replace('right', 'left')
         }
@@ -319,15 +333,21 @@ const contain = placement => (
     // handles center Y-axis case
     if (flip || flipY) {
       if (placement === 'left' || placement === 'right') {
-        if (idealRect.top < containIn.top) {
+        if (idealRect.top < 0) {
           placement += 'top'
-        } else if (idealRect.bottom > containIn.bottom) {
+        } else if (
+          idealRect.bottom >
+          (window.innerHeight || document.documentElement.clientHeight)
+        ) {
           placement += 'bottom'
         }
       } else if (placement === 'innerleft' || placement === 'innerright') {
-        if (idealRect.top < containIn.top) {
+        if (idealRect.top < 0) {
           placement = placement.replace('inner', 'innertop')
-        } else if (idealRect.bottom > containIn.bottom) {
+        } else if (
+          idealRect.bottom >
+          (window.innerHeight || document.documentElement.clientHeight)
+        ) {
           placement = placement.replace('inner', 'innerbottom')
         }
       }
@@ -336,38 +356,42 @@ const contain = placement => (
     if (flip || flipY) {
       // top checks
       if (
-        (topIdx === 0 && idealRect.top < containIn.top) ||
-        (topIdx > 0 && idealRect.bottom > containIn.bottom)
+        (topIdx === 0 && idealRect.top < 0) ||
+        (topIdx > 0 &&
+          idealRect.bottom >
+            (window.innerHeight || document.documentElement.clientHeight))
       ) {
         placement = placement.replace('top', 'bottom')
       } else {
         const bottomIdx = placement.indexOf('bottom')
         // bottom checks
         if (
-          (bottomIdx === 0 && idealRect.bottom > containIn.bottom) ||
-          (bottomIdx > 0 && idealRect.top < containIn.top)
+          (bottomIdx === 0 &&
+            idealRect.bottom >
+              (window.innerHeight || document.documentElement.clientHeight)) ||
+          (bottomIdx > 0 && idealRect.top < 0)
         ) {
           placement = placement.replace('bottom', 'top')
         }
       }
     }
-  } else if (typeof containStrategy === 'function') {
-    placement = contain(triggerRect, popoverRect, containIn)
+  } else if (typeof containPolicy === 'function') {
+    placement = contain(triggerRect, popoverRect)
 
     if (typeof placement !== 'string') return placement
   }
 
-  return calcPlacement(placement, triggerRect, popoverRect, containIn)
+  return calcPlacement(placement, triggerRect, popoverRect)
 }
 
-const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
+const calcPlacement = (placement, triggerRect, popoverRect) => {
   switch (placement) {
     case 'top':
       return {
         placement: 'top',
         style: Object.assign(
-          centerXPos(triggerRect, popoverRect, containIn),
-          startYOuterPos(triggerRect, popoverRect, containIn)
+          centerXPos(triggerRect, popoverRect),
+          startYOuterPos(triggerRect)
         ),
       }
 
@@ -375,8 +399,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'topLeft',
         style: Object.assign(
-          startYOuterPos(triggerRect, popoverRect, containIn),
-          startXInnerPos(triggerRect, popoverRect, containIn)
+          startYOuterPos(triggerRect),
+          startXInnerPos(triggerRect)
         ),
       }
 
@@ -384,8 +408,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'topRight',
         style: Object.assign(
-          startYOuterPos(triggerRect, popoverRect, containIn),
-          endXInnerPos(triggerRect, popoverRect, containIn)
+          startYOuterPos(triggerRect),
+          endXInnerPos(triggerRect)
         ),
       }
 
@@ -393,8 +417,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'right',
         style: Object.assign(
-          endXOuterPos(triggerRect, popoverRect, containIn),
-          centerYPos(triggerRect, popoverRect, containIn)
+          endXOuterPos(triggerRect),
+          centerYPos(triggerRect, popoverRect)
         ),
       }
 
@@ -402,8 +426,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'rightTop',
         style: Object.assign(
-          endXOuterPos(triggerRect, popoverRect, containIn),
-          startYInnerPos(triggerRect, popoverRect, containIn)
+          endXOuterPos(triggerRect),
+          startYInnerPos(triggerRect)
         ),
       }
 
@@ -411,8 +435,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'rightBottom',
         style: Object.assign(
-          endXOuterPos(triggerRect, popoverRect, containIn),
-          endYInnerPos(triggerRect, popoverRect, containIn)
+          endXOuterPos(triggerRect),
+          endYInnerPos(triggerRect)
         ),
       }
 
@@ -420,8 +444,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'bottom',
         style: Object.assign(
-          centerXPos(triggerRect, popoverRect, containIn),
-          endYOuterPos(triggerRect, popoverRect, containIn)
+          centerXPos(triggerRect, popoverRect),
+          endYOuterPos(triggerRect)
         ),
       }
 
@@ -429,8 +453,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'bottomLeft',
         style: Object.assign(
-          startXInnerPos(triggerRect, popoverRect, containIn),
-          endYOuterPos(triggerRect, popoverRect, containIn)
+          startXInnerPos(triggerRect),
+          endYOuterPos(triggerRect)
         ),
       }
 
@@ -438,8 +462,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'bottomRight',
         style: Object.assign(
-          endXInnerPos(triggerRect, popoverRect, containIn),
-          endYOuterPos(triggerRect, popoverRect, containIn)
+          endXInnerPos(triggerRect),
+          endYOuterPos(triggerRect)
         ),
       }
 
@@ -447,8 +471,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'left',
         style: Object.assign(
-          startXOuterPos(triggerRect, popoverRect, containIn),
-          centerYPos(triggerRect, popoverRect, containIn)
+          startXOuterPos(triggerRect),
+          centerYPos(triggerRect, popoverRect)
         ),
       }
 
@@ -456,8 +480,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'leftTop',
         style: Object.assign(
-          startXOuterPos(triggerRect, popoverRect, containIn),
-          startYInnerPos(triggerRect, popoverRect, containIn)
+          startXOuterPos(triggerRect),
+          startYInnerPos(triggerRect)
         ),
       }
 
@@ -465,8 +489,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'leftBottom',
         style: Object.assign(
-          startXOuterPos(triggerRect, popoverRect, containIn),
-          endYInnerPos(triggerRect, popoverRect, containIn)
+          startXOuterPos(triggerRect),
+          endYInnerPos(triggerRect)
         ),
       }
 
@@ -474,8 +498,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerTop',
         style: Object.assign(
-          centerXPos(triggerRect, popoverRect, containIn),
-          startYInnerPos(triggerRect, popoverRect, containIn)
+          centerXPos(triggerRect, popoverRect),
+          startYInnerPos(triggerRect)
         ),
       }
 
@@ -483,8 +507,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerTopLeft',
         style: Object.assign(
-          startXInnerPos(triggerRect, popoverRect, containIn),
-          startYInnerPos(triggerRect, popoverRect, containIn)
+          startXInnerPos(triggerRect),
+          startYInnerPos(triggerRect)
         ),
       }
 
@@ -492,8 +516,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerTopRight',
         style: Object.assign(
-          endXInnerPos(triggerRect, popoverRect, containIn),
-          startYInnerPos(triggerRect, popoverRect, containIn)
+          endXInnerPos(triggerRect),
+          startYInnerPos(triggerRect)
         ),
       }
 
@@ -501,8 +525,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerRight',
         style: Object.assign(
-          endXInnerPos(triggerRect, popoverRect, containIn),
-          centerYPos(triggerRect, popoverRect, containIn)
+          endXInnerPos(triggerRect),
+          centerYPos(triggerRect, popoverRect)
         ),
       }
 
@@ -510,8 +534,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerBottom',
         style: Object.assign(
-          centerXPos(triggerRect, popoverRect, containIn),
-          endYInnerPos(triggerRect, popoverRect, containIn)
+          centerXPos(triggerRect, popoverRect),
+          endYInnerPos(triggerRect)
         ),
       }
 
@@ -519,8 +543,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerBottomRight',
         style: Object.assign(
-          endXInnerPos(triggerRect, popoverRect, containIn),
-          endYInnerPos(triggerRect, popoverRect, containIn)
+          endXInnerPos(triggerRect),
+          endYInnerPos(triggerRect)
         ),
       }
 
@@ -528,8 +552,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerBottomLeft',
         style: Object.assign(
-          startXInnerPos(triggerRect, popoverRect, containIn),
-          endYInnerPos(triggerRect, popoverRect, containIn)
+          startXInnerPos(triggerRect),
+          endYInnerPos(triggerRect)
         ),
       }
 
@@ -537,8 +561,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'innerLeft',
         style: Object.assign(
-          startXInnerPos(triggerRect, popoverRect, containIn),
-          centerYPos(triggerRect, popoverRect, containIn)
+          startXInnerPos(triggerRect),
+          centerYPos(triggerRect, popoverRect)
         ),
       }
 
@@ -546,8 +570,8 @@ const calcPlacement = (placement, triggerRect, popoverRect, containIn) => {
       return {
         placement: 'center',
         style: Object.assign(
-          centerXPos(triggerRect, popoverRect, containIn),
-          centerYPos(triggerRect, popoverRect, containIn)
+          centerXPos(triggerRect, popoverRect),
+          centerYPos(triggerRect, popoverRect)
         ),
       }
   }
@@ -559,38 +583,21 @@ export const setPlacementStyle = (
   requestedPlacement,
   trigger,
   popover,
-  containIn,
-  containStrategy
+  containPolicy
 ) => {
   if (!trigger || !popover) return requestedPlacement
 
-  if (typeof window !== 'undefined' && containIn === window) {
-    containIn = document.documentElement
-  }
   let result = {},
     placement = requestedPlacement
-  const triggerRect = trigger.getBoundingClientRect(),
+  let triggerRect = trigger.getBoundingClientRect(),
     popoverRect = popover.getBoundingClientRect()
-
-  containIn = {
-    width: containIn.offsetWidth,
-    height: containIn.offsetHeight,
-    top: containIn.offsetTop,
-    right: containIn.offsetWidth,
-    bottom: containIn.offsetHeight,
-    left: containIn.offsetLeft,
-  }
-
+  setTimeout(() => console.log(trigger.getBoundingClientRect()), 4000)
+  console.log(trigger, triggerRect)
   popoverRect.width = popover.offsetWidth
   popoverRect.height = popover.offsetHeight
 
   if (typeof placement === 'function') {
-    result = requestedPlacement(
-      triggerRect,
-      popoverRect,
-      containIn,
-      containStrategy
-    )
+    result = requestedPlacement(triggerRect, popoverRect, containPolicy)
 
     if (typeof result === 'string') {
       placement = result
@@ -611,7 +618,7 @@ export const setPlacementStyle = (
 
   if (typeof placement === 'string') {
     const fn = contain(placement.toLowerCase().replace(defaultPlacements, ''))
-    result = fn(triggerRect, popoverRect, containIn, containStrategy)
+    result = fn(triggerRect, popoverRect, containPolicy)
   }
 
   result.requestedPlacement = requestedPlacement

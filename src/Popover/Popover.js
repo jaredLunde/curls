@@ -100,8 +100,7 @@ const PopoverContainer = React.memo(
     close,
     toggle,
     isOpen,
-    containIn,
-    containStrategy,
+    containPolicy,
     windowSize,
     scrollY,
     children,
@@ -121,12 +120,11 @@ const PopoverContainer = React.memo(
               nextPlacement,
               triggerRef.current,
               popoverRef.current,
-              containIn,
-              containStrategy
+              containPolicy
             )
           )
         },
-        [containIn, containStrategy]
+        [containPolicy]
       ),
       childContext = useMemo(
         () => ({
@@ -169,8 +167,7 @@ const PopoverContainer = React.memo(
       prev.windowSize[0] === next.windowSize[0] &&
       prev.windowSize[1] === next.windowSize[1] &&
       prev.scrollY === next.scrollY &&
-      prev.containIn === next.containIn &&
-      prev.containStrategy === next.containStrategy)
+      prev.containPolicy === next.containPolicy)
 )
 
 export const PopoverMe = props => {
@@ -257,7 +254,7 @@ const ScrollPositioner = props =>
     Object.assign(
       {
         scrollY: useScroll(
-          props.containIn,
+          typeof document !== 'undefined' && document.documentElement,
           props.repositionOnScroll === true ? 30 : props.repositionOnScroll
         ),
       },
@@ -282,8 +279,7 @@ export const Popover = ({
   initialOpen,
   repositionOnResize = 0,
   repositionOnScroll = 0,
-  containIn = typeof document !== 'undefined' && document.documentElement,
-  containStrategy = 'flip',
+  containPolicy = 'flip',
   children,
 }) => {
   let [isOpen, toggle] = useSwitch(initialOpen)
@@ -300,8 +296,7 @@ export const Popover = ({
       close: toggle.off,
       toggle,
       isOpen,
-      containIn,
-      containStrategy,
+      containPolicy,
       windowSize: emptyArr,
       repositionOnResize,
       repositionOnScroll,
@@ -318,7 +313,11 @@ if (__DEV__) {
     initialOpen: PropTypes.bool,
     repositionOnResize: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
     repositionOnScroll: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-    containStrategy: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+    containPolicy: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
   }
 
   PopoverBox.propTypes = {
