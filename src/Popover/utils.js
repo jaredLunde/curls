@@ -268,10 +268,7 @@ const contain = placement => (triggerRect, popoverRect, containPolicy) => {
     // center checks
     if (!placement) {
       if (flip || flipY) {
-        if (
-          idealRect.bottom >
-          (window.innerHeight || document.documentElement.clientHeight)
-        ) {
+        if (idealRect.bottom > windowHeight()) {
           placement = 'top'
         } else if (idealRect.top < 0) {
           placement = 'bottom'
@@ -281,10 +278,7 @@ const contain = placement => (triggerRect, popoverRect, containPolicy) => {
       if (!placement && (flip || flipX)) {
         if (idealRect.left < 0) {
           placement = 'right'
-        } else if (
-          idealRect.right >
-          (window.innerWidth || document.documentElement.clientWidth)
-        ) {
+        } else if (idealRect.right > windowWidth()) {
           placement = 'left'
         }
       }
@@ -298,10 +292,7 @@ const contain = placement => (triggerRect, popoverRect, containPolicy) => {
         // handles center X-axis case
         if (idealRect.left < 0) {
           placement += 'left'
-        } else if (
-          idealRect.right >
-          (window.innerWidth || document.documentElement.clientWidth)
-        ) {
+        } else if (idealRect.right > windowWidth()) {
           placement += 'right'
         }
       }
@@ -311,18 +302,14 @@ const contain = placement => (triggerRect, popoverRect, containPolicy) => {
       // left checks
       if (
         (leftIdx === 0 && idealRect.left < 0) ||
-        (leftIdx > 0 &&
-          idealRect.right >
-            (window.innerWidth || document.documentElement.clientWidth))
+        (leftIdx > 0 && idealRect.right > windowWidth())
       ) {
         placement = placement.replace('left', 'right')
       } else {
         const rightIdx = placement.indexOf('right')
         // right checks
         if (
-          (rightIdx === 0 &&
-            idealRect.right >
-              (window.innerWidth || document.documentElement.clientWidth)) ||
+          (rightIdx === 0 && idealRect.right > windowWidth()) ||
           (rightIdx > 0 && idealRect.left < 0)
         ) {
           placement = placement.replace('right', 'left')
@@ -335,19 +322,13 @@ const contain = placement => (triggerRect, popoverRect, containPolicy) => {
       if (placement === 'left' || placement === 'right') {
         if (idealRect.top < 0) {
           placement += 'top'
-        } else if (
-          idealRect.bottom >
-          (window.innerHeight || document.documentElement.clientHeight)
-        ) {
+        } else if (idealRect.bottom > windowHeight()) {
           placement += 'bottom'
         }
       } else if (placement === 'innerleft' || placement === 'innerright') {
         if (idealRect.top < 0) {
           placement = placement.replace('inner', 'innertop')
-        } else if (
-          idealRect.bottom >
-          (window.innerHeight || document.documentElement.clientHeight)
-        ) {
+        } else if (idealRect.bottom > windowHeight()) {
           placement = placement.replace('inner', 'innerbottom')
         }
       }
@@ -357,18 +338,14 @@ const contain = placement => (triggerRect, popoverRect, containPolicy) => {
       // top checks
       if (
         (topIdx === 0 && idealRect.top < 0) ||
-        (topIdx > 0 &&
-          idealRect.bottom >
-            (window.innerHeight || document.documentElement.clientHeight))
+        (topIdx > 0 && idealRect.bottom > windowHeight())
       ) {
         placement = placement.replace('top', 'bottom')
       } else {
         const bottomIdx = placement.indexOf('bottom')
         // bottom checks
         if (
-          (bottomIdx === 0 &&
-            idealRect.bottom >
-              (window.innerHeight || document.documentElement.clientHeight)) ||
+          (bottomIdx === 0 && idealRect.bottom > windowHeight()) ||
           (bottomIdx > 0 && idealRect.top < 0)
         ) {
           placement = placement.replace('bottom', 'top')
