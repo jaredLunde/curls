@@ -1221,6 +1221,14 @@
   dependencies:
     "@essentials/request-timeout" "^1.0.1"
 
+"@react-hook/window-scroll@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@react-hook/window-scroll/-/window-scroll-1.0.3.tgz#8806f7d70d35d0ed0542f3c1d92226805f29efa9"
+  integrity sha512-h6da7qGYwGAvCXyQXfDI4KCGui7ehGbQtbbFElKU5PZdhv07pCOy6qjAwVXGNrXIIJhfmFZ2gsG1pFtL+Cjrzw==
+  dependencies:
+    "@react-hook/throttle" "^1.0.5"
+    empty "^0.10.1"
+
 "@react-hook/window-size@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@react-hook/window-size/-/window-size-1.0.6.tgz#07775e6d485daa4884b1a2d6afb5b3d9da61482a"

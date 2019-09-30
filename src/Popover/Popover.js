@@ -12,10 +12,10 @@ import useWindowSize from '@react-hook/window-size/throttled'
 import useLayoutEffect from '@react-hook/passive-layout-effect'
 import useMergedRef from '@react-hook/merged-ref'
 import useSwitch from '@react-hook/switch'
+import useWindowScroll from '@react-hook/window-scroll'
 import emptyArr from 'empty/array'
 import {useBox} from '../Box'
 import {useFade} from '../Fade'
-import useScroll from '../useScroll'
 import useBreakpointValueParser from '../useBreakpointValueParser'
 import {portalize, objectWithoutProps, pushCss} from '../utils'
 import {setPlacementStyle} from './utils'
@@ -253,8 +253,7 @@ const ScrollPositioner = props =>
     PopoverContainer,
     Object.assign(
       {
-        scrollY: useScroll(
-          typeof document !== 'undefined' && document.documentElement,
+        scrollY: useWindowScroll(
           props.repositionOnScroll === true ? 30 : props.repositionOnScroll
         ),
       },
