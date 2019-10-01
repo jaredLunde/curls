@@ -126,130 +126,136 @@ const endYInnerRect = (triggerRect, popoverRect) => {
   return rect
 }
 
+const assignY = (a, b) => {
+  a.top = b.top
+  a.bottom = b.bottom
+  return a
+}
+
 const calcIdealRect = (placement, triggerRect, popoverRect) => {
   switch (placement) {
     case 'top':
-      return Object.assign(
+      return assignY(
         centerXRect(triggerRect, popoverRect),
         startYOuterRect(triggerRect, popoverRect)
       )
 
     case 'topleft':
-      return Object.assign(
+      return assignY(
         startXInnerRect(triggerRect, popoverRect),
         startYOuterRect(triggerRect, popoverRect)
       )
 
     case 'topright':
-      return Object.assign(
+      return assignY(
         endXInnerRect(triggerRect, popoverRect),
         startYOuterRect(triggerRect, popoverRect)
       )
 
     case 'right':
-      return Object.assign(
+      return assignY(
         endXOuterRect(triggerRect, popoverRect),
         centerYRect(triggerRect, popoverRect)
       )
 
     case 'righttop':
-      return Object.assign(
+      return assignY(
         endXOuterRect(triggerRect, popoverRect),
         startYInnerRect(triggerRect, popoverRect)
       )
 
     case 'rightbottom':
-      return Object.assign(
+      return assignY(
         endXOuterRect(triggerRect, popoverRect),
         endYInnerRect(triggerRect, popoverRect)
       )
 
     case 'bottom':
-      return Object.assign(
+      return assignY(
         centerXRect(triggerRect, popoverRect),
         endYOuterRect(triggerRect, popoverRect)
       )
 
     case 'bottomleft':
-      return Object.assign(
+      return assignY(
         startXInnerRect(triggerRect, popoverRect),
         endYOuterRect(triggerRect, popoverRect)
       )
 
     case 'bottomright':
-      return Object.assign(
+      return assignY(
         endXInnerRect(triggerRect, popoverRect),
         endYOuterRect(triggerRect, popoverRect)
       )
 
     case 'left':
-      return Object.assign(
+      return assignY(
         startXOuterRect(triggerRect, popoverRect),
         centerYRect(triggerRect, popoverRect)
       )
 
     case 'lefttop':
-      return Object.assign(
+      return assignY(
         startXOuterRect(triggerRect, popoverRect),
         startYInnerRect(triggerRect, popoverRect)
       )
 
     case 'leftbottom':
-      return Object.assign(
+      return assignY(
         startXOuterRect(triggerRect, popoverRect),
         endYInnerRect(triggerRect, popoverRect)
       )
 
     case 'innerleft':
-      return Object.assign(
+      return assignY(
         startXInnerRect(triggerRect, popoverRect),
         centerYRect(triggerRect, popoverRect)
       )
 
     case 'innerright':
-      return Object.assign(
+      return assignY(
         endXInnerRect(triggerRect, popoverRect),
         centerYRect(triggerRect, popoverRect)
       )
 
     case 'innertop':
-      return Object.assign(
+      return assignY(
         centerXRect(triggerRect, popoverRect),
         startYInnerRect(triggerRect, popoverRect)
       )
 
     case 'innertopleft':
-      return Object.assign(
+      return assignY(
         startXInnerRect(triggerRect, popoverRect),
         startYInnerRect(triggerRect, popoverRect)
       )
 
     case 'innertopright':
-      return Object.assign(
+      return assignY(
         endXInnerRect(triggerRect, popoverRect),
         startYInnerRect(triggerRect, popoverRect)
       )
 
     case 'innerbottom':
-      return Object.assign(
+      return assignY(
         centerXRect(triggerRect, popoverRect),
         endYInnerRect(triggerRect, popoverRect)
       )
 
     case 'innerbottomleft':
-      return Object.assign(
+      return assignY(
         startXInnerRect(triggerRect, popoverRect),
         endYInnerRect(triggerRect, popoverRect)
       )
 
     case 'innerbottomright':
-      return Object.assign(
+      return assignY(
         endXInnerRect(triggerRect, popoverRect),
         endYInnerRect(triggerRect, popoverRect)
       )
 
     default:
-      return Object.assign(
+      return assignY(
         centerXRect(triggerRect, popoverRect),
         centerYRect(triggerRect, popoverRect)
       )
@@ -262,7 +268,6 @@ const contain = placement => (triggerRect, popoverRect, containPolicy) => {
     flipY = containPolicy === 'flipY'
 
   if (flip || flipX || flipY) {
-    console.log('I calculated ideal...')
     const idealRect = calcIdealRect(placement, triggerRect, popoverRect)
 
     // center checks
@@ -366,7 +371,7 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'top':
       return {
         placement: 'top',
-        style: Object.assign(
+        style: assignY(
           centerXPos(triggerRect, popoverRect),
           startYOuterPos(triggerRect)
         ),
@@ -375,25 +380,22 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'topleft':
       return {
         placement: 'topLeft',
-        style: Object.assign(
-          startYOuterPos(triggerRect),
-          startXInnerPos(triggerRect)
+        style: assignY(
+          startXInnerPos(triggerRect),
+          startYOuterPos(triggerRect)
         ),
       }
 
     case 'topright':
       return {
         placement: 'topRight',
-        style: Object.assign(
-          startYOuterPos(triggerRect),
-          endXInnerPos(triggerRect)
-        ),
+        style: assignY(endXInnerPos(triggerRect), startYOuterPos(triggerRect)),
       }
 
     case 'right':
       return {
         placement: 'right',
-        style: Object.assign(
+        style: assignY(
           endXOuterPos(triggerRect),
           centerYPos(triggerRect, popoverRect)
         ),
@@ -402,25 +404,19 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'righttop':
       return {
         placement: 'rightTop',
-        style: Object.assign(
-          endXOuterPos(triggerRect),
-          startYInnerPos(triggerRect)
-        ),
+        style: assignY(endXOuterPos(triggerRect), startYInnerPos(triggerRect)),
       }
 
     case 'rightbottom':
       return {
         placement: 'rightBottom',
-        style: Object.assign(
-          endXOuterPos(triggerRect),
-          endYInnerPos(triggerRect)
-        ),
+        style: assignY(endXOuterPos(triggerRect), endYInnerPos(triggerRect)),
       }
 
     case 'bottom':
       return {
         placement: 'bottom',
-        style: Object.assign(
+        style: assignY(
           centerXPos(triggerRect, popoverRect),
           endYOuterPos(triggerRect)
         ),
@@ -429,25 +425,19 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'bottomleft':
       return {
         placement: 'bottomLeft',
-        style: Object.assign(
-          startXInnerPos(triggerRect),
-          endYOuterPos(triggerRect)
-        ),
+        style: assignY(startXInnerPos(triggerRect), endYOuterPos(triggerRect)),
       }
 
     case 'bottomright':
       return {
         placement: 'bottomRight',
-        style: Object.assign(
-          endXInnerPos(triggerRect),
-          endYOuterPos(triggerRect)
-        ),
+        style: assignY(endXInnerPos(triggerRect), endYOuterPos(triggerRect)),
       }
 
     case 'left':
       return {
         placement: 'left',
-        style: Object.assign(
+        style: assignY(
           startXOuterPos(triggerRect),
           centerYPos(triggerRect, popoverRect)
         ),
@@ -456,7 +446,7 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'lefttop':
       return {
         placement: 'leftTop',
-        style: Object.assign(
+        style: assignY(
           startXOuterPos(triggerRect),
           startYInnerPos(triggerRect)
         ),
@@ -465,16 +455,13 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'leftbottom':
       return {
         placement: 'leftBottom',
-        style: Object.assign(
-          startXOuterPos(triggerRect),
-          endYInnerPos(triggerRect)
-        ),
+        style: assignY(startXOuterPos(triggerRect), endYInnerPos(triggerRect)),
       }
 
     case 'innertop':
       return {
         placement: 'innerTop',
-        style: Object.assign(
+        style: assignY(
           centerXPos(triggerRect, popoverRect),
           startYInnerPos(triggerRect)
         ),
@@ -483,7 +470,7 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'innertopleft':
       return {
         placement: 'innerTopLeft',
-        style: Object.assign(
+        style: assignY(
           startXInnerPos(triggerRect),
           startYInnerPos(triggerRect)
         ),
@@ -492,16 +479,13 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'innertopright':
       return {
         placement: 'innerTopRight',
-        style: Object.assign(
-          endXInnerPos(triggerRect),
-          startYInnerPos(triggerRect)
-        ),
+        style: assignY(endXInnerPos(triggerRect), startYInnerPos(triggerRect)),
       }
 
     case 'innerright':
       return {
         placement: 'innerRight',
-        style: Object.assign(
+        style: assignY(
           endXInnerPos(triggerRect),
           centerYPos(triggerRect, popoverRect)
         ),
@@ -510,7 +494,7 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'innerbottom':
       return {
         placement: 'innerBottom',
-        style: Object.assign(
+        style: assignY(
           centerXPos(triggerRect, popoverRect),
           endYInnerPos(triggerRect)
         ),
@@ -519,25 +503,19 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     case 'innerbottomright':
       return {
         placement: 'innerBottomRight',
-        style: Object.assign(
-          endXInnerPos(triggerRect),
-          endYInnerPos(triggerRect)
-        ),
+        style: assignY(endXInnerPos(triggerRect), endYInnerPos(triggerRect)),
       }
 
     case 'innerbottomleft':
       return {
         placement: 'innerBottomLeft',
-        style: Object.assign(
-          startXInnerPos(triggerRect),
-          endYInnerPos(triggerRect)
-        ),
+        style: assignY(startXInnerPos(triggerRect), endYInnerPos(triggerRect)),
       }
 
     case 'innerleft':
       return {
         placement: 'innerLeft',
-        style: Object.assign(
+        style: assignY(
           startXInnerPos(triggerRect),
           centerYPos(triggerRect, popoverRect)
         ),
@@ -546,7 +524,7 @@ const calcPlacement = (placement, triggerRect, popoverRect) => {
     default:
       return {
         placement: 'center',
-        style: Object.assign(
+        style: assignY(
           centerXPos(triggerRect, popoverRect),
           centerYPos(triggerRect, popoverRect)
         ),
@@ -568,8 +546,7 @@ export const setPlacementStyle = (
     placement = requestedPlacement
   let triggerRect = trigger.getBoundingClientRect(),
     popoverRect = popover.getBoundingClientRect()
-  setTimeout(() => console.log(trigger.getBoundingClientRect()), 4000)
-  console.log(trigger, triggerRect)
+
   popoverRect.width = popover.offsetWidth
   popoverRect.height = popover.offsetHeight
 
