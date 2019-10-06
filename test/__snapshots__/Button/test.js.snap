@@ -15,7 +15,6 @@ exports[`<Button> -> active/hover class: 2@hover, 1@active 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -35,10 +34,6 @@ exports[`<Button> -> active/hover class: 2@hover, 1@active 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -75,7 +70,6 @@ exports[`<Button> -> as prop 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -95,10 +89,6 @@ exports[`<Button> -> as prop 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -145,7 +135,6 @@ exports[`<Button> -> box properties 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -166,10 +155,6 @@ exports[`<Button> -> box properties 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -216,7 +201,6 @@ exports[`<Button> -> default scale: lg 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -237,10 +221,6 @@ exports[`<Button> -> default scale: lg 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -287,7 +267,6 @@ exports[`<Button> -> default scale: md 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -308,10 +287,6 @@ exports[`<Button> -> default scale: md 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -358,7 +333,6 @@ exports[`<Button> -> default scale: sm 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -379,10 +353,6 @@ exports[`<Button> -> default scale: sm 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -429,7 +399,6 @@ exports[`<Button> -> flex properties 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -452,10 +421,6 @@ exports[`<Button> -> flex properties 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -502,7 +467,6 @@ exports[`<Button> -> themed scale: css.lg 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -523,10 +487,6 @@ exports[`<Button> -> themed scale: css.lg 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -573,7 +533,6 @@ exports[`<Button> -> themed scale: css.md 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -594,10 +553,6 @@ exports[`<Button> -> themed scale: css.md 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -644,7 +599,6 @@ exports[`<Button> -> themed scale: css.sm 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -665,10 +619,6 @@ exports[`<Button> -> themed scale: css.sm 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -715,7 +665,6 @@ exports[`<Button> -> themed scale: fn.lg 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -736,10 +685,6 @@ exports[`<Button> -> themed scale: fn.lg 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -786,7 +731,6 @@ exports[`<Button> -> themed scale: fn.md 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -807,10 +751,6 @@ exports[`<Button> -> themed scale: fn.md 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {
@@ -857,7 +797,6 @@ exports[`<Button> -> themed scale: fn.sm 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -878,10 +817,6 @@ exports[`<Button> -> themed scale: fn.sm 1`] = `
   border: 0;
   margin: 0;
   padding: 0;
-}
-
-.emotion-0:focus {
-  outline: 0;
 }
 
 .emotion-0:hover {

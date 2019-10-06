@@ -9,7 +9,6 @@ const defaultStyles = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  outline: 0;
   background: none;
   border: 0;
   color: currentColor;
@@ -25,10 +24,6 @@ const defaultStyles = css`
     border: 0;
     margin: 0;
     padding: 0;
-  }
-
-  &:focus {
-    outline: 0;
   }
 `
 

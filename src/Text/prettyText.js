@@ -30,4 +30,9 @@ export default css`
   h6 {
     ${optimizeFor.legibility};
   }
+
+  p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
 `

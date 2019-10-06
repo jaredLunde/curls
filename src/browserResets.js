@@ -2,137 +2,71 @@ import {css} from '@emotion/core'
 
 export default css`
   *,
-  *:before,
-  *:after {
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
-  html {
-    text-size-adjust: 100%;
+  /* Remove default padding */
+  ul[class],
+  ol[class] {
+    padding: 0;
   }
 
-  html,
   body,
-  div,
-  span,
-  iframe,
   h1,
   h2,
   h3,
   h4,
-  h5,
-  h6,
   p,
-  blockquote,
-  pre,
-  a,
-  abbr,
-  acronym,
-  address,
-  big,
-  cite,
-  code,
-  del,
-  dfn,
-  em,
-  img,
-  ins,
-  kbd,
-  q,
-  s,
-  samp,
-  small,
-  strike,
-  strong,
-  sub,
-  sup,
-  tt,
-  var,
-  b,
-  u,
-  i,
-  center,
-  dl,
-  dt,
-  dd,
-  ol,
-  ul,
+  ul[class],
+  ol[class],
   li,
-  fieldset,
-  form,
-  label,
-  legend,
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td,
-  article,
-  aside,
-  canvas,
-  details,
-  embed,
   figure,
   figcaption,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  output,
-  ruby,
-  section,
-  summary,
-  time,
-  mark,
-  audio,
-  video {
+  blockquote,
+  dl,
+  dd {
     margin: 0;
-    padding: 0;
+  }
+
+  nav {
     border: 0;
-    vertical-align: baseline;
   }
 
-  a {
-    text-decoration: none;
+  body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
   }
 
-  a:active,
-  a:hover {
-    outline-width: 0;
-  }
-
-  ol,
-  ul,
-  li {
+  ul[class],
+  ol[class] {
     list-style: none;
   }
 
-  blockquote,
-  q {
-    quotes: none;
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
   }
 
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
-  details,
-  main,
-  summary {
+  img {
+    max-width: 100%;
     display: block;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-play-state: paused !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   [hidden] {
