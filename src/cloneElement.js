@@ -9,7 +9,6 @@ export default (element, props) =>
         ref: element.ref,
       },
       element.props,
-      {},
       props
     )
   )
